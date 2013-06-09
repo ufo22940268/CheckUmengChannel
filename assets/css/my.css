@@ -1,0 +1,23 @@
+.container {
+}
+
+.opt-label {
+    margin-top:6px;
+    margin-right:3px;
+}
+
+.container-header {
+    padding-bottom:6px;
+}
+
+#spinner {
+    margin-top:100px;
+}
+
+#tiny-spinner {
+}
+
+.spinner {
+    /*left:-170px;*/
+    /*top:-18px;*/
+}
