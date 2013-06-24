@@ -9,6 +9,7 @@ import parser
 import json
 import re
 import urllib
+import traceback
 
 logger = logging.getLogger("test");
 class MainHandler(tornado.web.RequestHandler):
@@ -24,11 +25,16 @@ class UploadHandler(tornado.web.RequestHandler):
         outfile.write(file1['body']);
         outfile.close();
 
+        channel = None;
         try: 
-            jo = json.dumps(dict(channel=parser.parseChannel(), state=0));
-            js = str(jo);
-            self.write(js);
+            channel = parser.parseChannel();
         except:
+            traceback.print_exc();
+
+        if channel:
+            jo = json.dumps(dict(channel=channel, state=0));
+            self.write(str(jo));
+        else:
             jo = json.dumps(dict(state=-1));
             self.write(str(jo));
 
@@ -44,5 +50,5 @@ application = tornado.web.Application([
     ]);
 
 if __name__ == "__main__":
-    application.listen(8885)
+    application.listen(8880)
     tornado.ioloop.IOLoop.instance().start()

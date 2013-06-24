@@ -545,7 +545,7 @@
     .line 131
     new-instance v0, Lcom/zhangdan/preferential/data/model/CommonRequest;
 
-    const/16 v1, 0xc82
+    const/16 v1, 0xc84
 
     invoke-direct {v0, v1}, Lcom/zhangdan/preferential/data/model/CommonRequest;-><init>(I)V
 
@@ -582,7 +582,7 @@
     .line 139
     new-instance v0, Lcom/zhangdan/preferential/data/model/CommonRequest;
 
-    const/16 v1, 0xc82
+    const/16 v1, 0xc84
 
     invoke-direct {v0, v1}, Lcom/zhangdan/preferential/data/model/CommonRequest;-><init>(I)V
 

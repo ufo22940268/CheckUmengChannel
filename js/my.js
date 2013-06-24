@@ -6,19 +6,21 @@ $(function () {
     //var url = (window.location.hostname === 'blueimp.github.io' ||
     //            window.location.hostname === 'blueimp.github.io') ?
     //            '//jquery-file-upload.appspot.com/' : 'server/php/';
-    var url = 'http://127.0.0.1:8885/upload';
+    var url = '/upload';
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',
         done: function (e, data) {
             $("#progress").removeClass("active");
-            if (data.result.status == 0) {
-                $("#channel_name").html(data.result.channel);
-                $("#channel").css("visibility", "visible");
-                $("#error").css("visibility", "hidden");
+            $("#parse-result").css("visibility", "visible");
+            if (data.result.state == 0) {
+                $("#parse-result").html("渠道名:" + data.result.channel);
+                $("#parse-result").removeClass("alert-fail");
+                $("#parse-result").addClass("alert-success");
             } else {
-                $("#channel").css("visibility", "hidden");
-                $("#error").css("visibility", "visible");
+                $("#parse-result").html("无效文件");
+                $("#parse-result").removeClass("alert-success");
+                $("#parse-result").addClass("alert-fail");
             }
         },
 

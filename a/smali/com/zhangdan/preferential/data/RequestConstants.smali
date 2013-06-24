@@ -26,7 +26,7 @@
 
 .field public static final CMD_GET_FAV_SHOP:I = 0x2390
 
-.field public static final CMD_ID_PROMOTION_EXTRA:I = 0xc82
+.field public static final CMD_ID_PROMOTION_EXTRA:I = 0xc84
 
 .field public static final CMD_MENU_TAGS:I = 0x44d
 
