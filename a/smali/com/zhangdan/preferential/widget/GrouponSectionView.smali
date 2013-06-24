@@ -1,246 +1,264 @@
 .class public Lcom/zhangdan/preferential/widget/GrouponSectionView;
 .super Lcom/zhangdan/preferential/widget/DetailSectionView;
+.source "GrouponSectionView.java"
 
 
 # instance fields
-.field private c:Landroid/widget/ImageView;
+.field private mDesView:Landroid/widget/TextView;
 
-.field private d:Landroid/widget/TextView;
+.field private mElapseView:Landroid/widget/TextView;
 
-.field private e:Landroid/widget/TextView;
+.field private mOldPriceView:Landroid/widget/TextView;
 
-.field private f:Landroid/widget/TextView;
+.field private mPhotoView:Landroid/widget/ImageView;
 
-.field private g:Landroid/widget/TextView;
+.field private mPriceView:Landroid/widget/TextView;
 
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 3
+    .parameter "context"
 
+    .prologue
+    .line 26
     invoke-direct {p0, p1}, Lcom/zhangdan/preferential/widget/DetailSectionView;-><init>(Landroid/content/Context;)V
 
-    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->a()Landroid/view/ViewGroup;
+    .line 27
+    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->getContentView()Landroid/view/ViewGroup;
 
     move-result-object v0
 
-    iget-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->a:Landroid/view/LayoutInflater;
+    .line 28
+    .local v0, contentView:Landroid/view/ViewGroup;
+    iget-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mInflater:Landroid/view/LayoutInflater;
 
-    const v2, 0x7f03007e
+    const v2, 0x7f030083
 
     invoke-virtual {v1, v2, v0}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
 
-    const v0, 0x7f060151
+    .line 29
+    const v1, 0x7f09015b
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v1}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/widget/ImageView;
+    check-cast v1, Landroid/widget/ImageView;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->c:Landroid/widget/ImageView;
+    iput-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mPhotoView:Landroid/widget/ImageView;
 
-    const v0, 0x7f06014c
+    .line 30
+    const v1, 0x7f090155
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v1}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/widget/TextView;
+    check-cast v1, Landroid/widget/TextView;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->d:Landroid/widget/TextView;
+    iput-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mDesView:Landroid/widget/TextView;
 
-    const v0, 0x7f0601bc
+    .line 31
+    const v1, 0x7f0901c5
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v1}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/widget/TextView;
+    check-cast v1, Landroid/widget/TextView;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->e:Landroid/widget/TextView;
+    iput-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mPriceView:Landroid/widget/TextView;
 
-    const v0, 0x7f0601be
+    .line 32
+    const v1, 0x7f0901c7
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v1}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/widget/TextView;
+    check-cast v1, Landroid/widget/TextView;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->f:Landroid/widget/TextView;
+    iput-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mOldPriceView:Landroid/widget/TextView;
 
-    const v0, 0x7f0601bf
+    .line 33
+    const v1, 0x7f0901c8
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v1}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->findViewById(I)Landroid/view/View;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/widget/TextView;
+    check-cast v1, Landroid/widget/TextView;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->g:Landroid/widget/TextView;
+    iput-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mElapseView:Landroid/widget/TextView;
 
-    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->b()V
+    .line 34
+    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->hideDivider()V
 
+    .line 35
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Lcom/zhangdan/preferential/data/model/l;ILcom/a/a/a/f/b;Lcom/a/a/a/a;)V
-    .locals 8
+.method public bindData(Lcom/zhangdan/preferential/data/model/ShopExtra;ILcom/novoda/imageloader/core/model/ImageTagFactory;Lcom/novoda/imageloader/core/ImageManager;)V
+    .locals 9
+    .parameter "extra"
+    .parameter "typePos"
+    .parameter "factory"
+    .parameter "manager"
 
-    const/4 v6, 0x1
+    .prologue
+    const/4 v7, 0x1
 
-    const/4 v7, 0x0
+    const/4 v8, 0x0
 
-    iget-object v0, p1, Lcom/zhangdan/preferential/data/model/l;->y:Ljava/util/List;
+    .line 39
+    iget-object v2, p1, Lcom/zhangdan/preferential/data/model/ShopExtra;->grouponList:Ljava/util/List;
 
-    invoke-interface {v0}, Ljava/util/List;->size()I
-
-    move-result v0
-
-    if-lt p2, v0, :cond_0
-
-    :goto_0
-    return-void
-
-    :cond_0
-    iget-object v0, p1, Lcom/zhangdan/preferential/data/model/l;->y:Ljava/util/List;
-
-    invoke-interface {v0, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/zhangdan/preferential/data/model/e;
-
-    if-nez p2, :cond_1
-
-    const v1, 0x7f0201db
-
-    invoke-virtual {p0, v1}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->a(I)V
-
-    :goto_1
-    iget-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->d:Landroid/widget/TextView;
-
-    iget-object v2, v0, Lcom/zhangdan/preferential/data/model/e;->h:Ljava/lang/String;
-
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    iget-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->e:Landroid/widget/TextView;
-
-    iget-wide v2, v0, Lcom/zhangdan/preferential/data/model/e;->b:D
-
-    invoke-static {v2, v3}, Ljava/lang/String;->valueOf(D)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    iget-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->g:Landroid/widget/TextView;
-
-    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->getContext()Landroid/content/Context;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    const v3, 0x7f0801cc
-
-    new-array v4, v6, [Ljava/lang/Object;
-
-    const-string v5, "?"
-
-    aput-object v5, v4, v7
-
-    invoke-virtual {v2, v3, v4}, Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    iget-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->f:Landroid/widget/TextView;
-
-    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->getContext()Landroid/content/Context;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    const v3, 0x7f0801cb
-
-    new-array v4, v6, [Ljava/lang/Object;
-
-    iget-wide v5, v0, Lcom/zhangdan/preferential/data/model/e;->a:D
-
-    invoke-static {v5, v6}, Ljava/lang/String;->valueOf(D)Ljava/lang/String;
-
-    move-result-object v5
-
-    aput-object v5, v4, v7
-
-    invoke-virtual {v2, v3, v4}, Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1}, Landroid/widget/TextView;->getContext()Landroid/content/Context;
-
-    new-instance v3, Landroid/text/SpannableString;
-
-    invoke-direct {v3, v2}, Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V
-
-    new-instance v4, Landroid/text/style/StrikethroughSpan;
-
-    invoke-direct {v4}, Landroid/text/style/StrikethroughSpan;-><init>()V
-
-    invoke-virtual {v2}, Ljava/lang/String;->length()I
+    invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v2
 
-    const/16 v5, 0x21
+    if-lt p2, v2, :cond_0
 
-    invoke-virtual {v3, v4, v7, v2, v5}, Landroid/text/SpannableString;->setSpan(Ljava/lang/Object;III)V
+    .line 60
+    :goto_0
+    return-void
 
-    invoke-virtual {v1, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    .line 43
+    :cond_0
+    iget-object v2, p1, Lcom/zhangdan/preferential/data/model/ShopExtra;->grouponList:Ljava/util/List;
 
-    iget-object v1, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->c:Landroid/widget/ImageView;
+    invoke-interface {v2, p2}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    iget-object v2, v0, Lcom/zhangdan/preferential/data/model/e;->f:Ljava/lang/String;
+    move-result-object v0
 
-    invoke-virtual {p0, v1, v2, p3, p4}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->a(Landroid/widget/ImageView;Ljava/lang/String;Lcom/a/a/a/f/b;Lcom/a/a/a/a;)V
+    check-cast v0, Lcom/zhangdan/preferential/data/model/Groupon;
 
+    .line 44
+    .local v0, group:Lcom/zhangdan/preferential/data/model/Groupon;
+    if-nez p2, :cond_1
+
+    .line 45
+    const v2, 0x7f0201e1
+
+    invoke-virtual {p0, v2}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->setIcon(I)V
+
+    .line 50
+    :goto_1
+    iget-object v2, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mDesView:Landroid/widget/TextView;
+
+    iget-object v3, v0, Lcom/zhangdan/preferential/data/model/Groupon;->title:Ljava/lang/String;
+
+    invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 51
+    iget-object v2, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mPriceView:Landroid/widget/TextView;
+
+    iget-wide v3, v0, Lcom/zhangdan/preferential/data/model/Groupon;->price:D
+
+    invoke-static {v3, v4}, Ljava/lang/String;->valueOf(D)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 52
+    iget-object v2, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mElapseView:Landroid/widget/TextView;
+
+    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x7f0701d4
+
+    new-array v5, v7, [Ljava/lang/Object;
+
+    const-string v6, "?"
+
+    aput-object v6, v5, v8
+
+    invoke-virtual {v3, v4, v5}, Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 53
+    iget-object v2, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mOldPriceView:Landroid/widget/TextView;
+
+    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    const v4, 0x7f0701d3
+
+    new-array v5, v7, [Ljava/lang/Object;
+
+    iget-wide v6, v0, Lcom/zhangdan/preferential/data/model/Groupon;->orgPrice:D
+
+    invoke-static {v6, v7}, Ljava/lang/String;->valueOf(D)Ljava/lang/String;
+
+    move-result-object v6
+
+    aput-object v6, v5, v8
+
+    invoke-virtual {v3, v4, v5}, Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Lcom/zhangdan/preferential/utils/ViewUtils;->setupCrossLineText(Landroid/widget/TextView;Ljava/lang/String;)V
+
+    .line 55
+    iget-object v2, p0, Lcom/zhangdan/preferential/widget/GrouponSectionView;->mPhotoView:Landroid/widget/ImageView;
+
+    iget-object v3, v0, Lcom/zhangdan/preferential/data/model/Groupon;->imageUrl:Ljava/lang/String;
+
+    invoke-virtual {p0, v2, v3, p3, p4}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->loadPhoto(Landroid/widget/ImageView;Ljava/lang/String;Lcom/novoda/imageloader/core/model/ImageTagFactory;Lcom/novoda/imageloader/core/ImageManager;)V
+
+    .line 57
     new-instance v1, Landroid/content/Intent;
 
     const-string v2, "com.zhangdan.preferential.MIX_VIEW_GROUPON"
 
     invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
+    .line 58
+    .local v1, intent:Landroid/content/Intent;
     const-string v2, "groupon_url"
 
-    iget-object v0, v0, Lcom/zhangdan/preferential/data/model/e;->g:Ljava/lang/String;
+    iget-object v3, v0, Lcom/zhangdan/preferential/data/model/Groupon;->sourceUrl:Ljava/lang/String;
 
-    invoke-virtual {v1, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->a()Landroid/view/ViewGroup;
+    .line 59
+    invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->getContentView()Landroid/view/ViewGroup;
 
-    move-result-object v0
+    move-result-object v2
 
-    new-instance v2, Lcom/zhangdan/preferential/widget/b;
+    new-instance v3, Lcom/zhangdan/preferential/widget/DetailSectionView$OnLaunchIntentListener;
 
-    invoke-direct {v2, p0, v1}, Lcom/zhangdan/preferential/widget/b;-><init>(Lcom/zhangdan/preferential/widget/DetailSectionView;Landroid/content/Intent;)V
+    invoke-direct {v3, p0, v1}, Lcom/zhangdan/preferential/widget/DetailSectionView$OnLaunchIntentListener;-><init>(Lcom/zhangdan/preferential/widget/DetailSectionView;Landroid/content/Intent;)V
 
-    invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-virtual {v2, v3}, Landroid/view/ViewGroup;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    goto/16 :goto_0
+    goto :goto_0
 
+    .line 47
+    .end local v1           #intent:Landroid/content/Intent;
     :cond_1
-    const v1, 0x7f02039c
+    const v2, 0x7f0203a3
 
-    invoke-virtual {p0, v1}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->a(I)V
+    invoke-virtual {p0, v2}, Lcom/zhangdan/preferential/widget/GrouponSectionView;->setIcon(I)V
 
-    goto/16 :goto_1
+    goto :goto_1
 .end method

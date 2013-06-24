@@ -2,6 +2,17 @@
 .super Ljava/lang/Thread;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/baidu/mapapi/d;->a(IILjava/lang/String;Lcom/baidu/mapapi/d$a;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x8
+    name = null
+.end annotation
+
+
 # instance fields
 .field final synthetic a:Ljava/lang/String;
 
@@ -31,7 +42,7 @@
 
 
 # virtual methods
-.method public final run()V
+.method public run()V
     .locals 8
 
     const/4 v2, 0x0

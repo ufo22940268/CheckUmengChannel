@@ -1,936 +1,1080 @@
 .class public Lcom/zhangdan/app/activities/sms/SmsBillActivity;
 .super Lcom/zhangdan/app/activities/WrappedActivity;
+.source "SmsBillActivity.java"
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
-.implements Lcom/zhangdan/app/f/b;
-.implements Lcom/zhangdan/app/g/a;
+.implements Lcom/zhangdan/app/shake/OnShakeListener;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/zhangdan/app/activities/sms/SmsBillActivity$MyHandler;
+    }
+.end annotation
+
+
+# static fields
+.field public static final EXTRA_KEY_SCAN_SMS:Ljava/lang/String; = "scan_sms"
+
+.field public static final SMS_LIST:Ljava/lang/String; = "sms_list"
+
+.field public static final UPDATE:I = 0x1
+
+.field public static final UPDATE_SMS:Ljava/lang/String; = "update_sms"
 
 
 # instance fields
-.field c:Landroid/content/BroadcastReceiver;
+.field private isScaning:Z
 
-.field private d:Landroid/widget/ListView;
+.field private mApp:Lcom/zhangdan/app/ZhangdanApplication;
 
-.field private e:Ljava/util/List;
+.field mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-.field private f:Lcom/zhangdan/app/activities/sms/r;
+.field private mHandler:Lcom/zhangdan/app/activities/sms/SmsBillActivity$MyHandler;
 
-.field private g:Z
+.field private mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-.field private h:Landroid/widget/TextView;
+.field private mListView:Landroid/widget/ListView;
 
-.field private i:Landroid/widget/RelativeLayout;
+.field private mRela:Landroid/widget/RelativeLayout;
 
-.field private j:Lcom/zhangdan/app/f/a;
+.field private mScanCount:I
 
-.field private k:Lcom/zhangdan/app/ZhangdanApplication;
+.field private mShakeManager:Lcom/zhangdan/app/shake/ShakeManager;
 
-.field private l:Lcom/zhangdan/app/activities/sms/q;
+.field private mSmsBillBaseAdapter:Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;
 
-.field private m:Ljava/util/List;
+.field private mSmsBillDataInfos:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Lcom/zhangdan/app/sms/SmsBillData;",
+            ">;"
+        }
+    .end annotation
+.end field
 
-.field private n:Lcom/zhangdan/app/g/b;
+.field private mSmsTempBillDataInfos:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Lcom/zhangdan/app/sms/SmsBillData;",
+            ">;"
+        }
+    .end annotation
+.end field
 
-.field private o:I
-
-.field private p:Lcom/zhangdan/app/activities/mailimport/e;
+.field private mText:Landroid/widget/TextView;
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 2
 
+    .prologue
     const/4 v1, 0x0
 
+    .line 42
     invoke-direct {p0}, Lcom/zhangdan/app/activities/WrappedActivity;-><init>()V
 
+    .line 53
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
 
-    iput-boolean v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->g:Z
+    .line 57
+    iput-boolean v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->isScaning:Z
 
-    new-instance v0, Lcom/zhangdan/app/activities/sms/q;
+    .line 65
+    new-instance v0, Lcom/zhangdan/app/activities/sms/SmsBillActivity$MyHandler;
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/sms/q;-><init>(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
+    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity$MyHandler;-><init>(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->l:Lcom/zhangdan/app/activities/sms/q;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mHandler:Lcom/zhangdan/app/activities/sms/SmsBillActivity$MyHandler;
 
+    .line 67
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->m:Ljava/util/List;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsTempBillDataInfos:Ljava/util/List;
 
-    iput v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->o:I
+    .line 70
+    iput v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mScanCount:I
 
-    new-instance v0, Lcom/zhangdan/app/activities/sms/o;
+    .line 288
+    new-instance v0, Lcom/zhangdan/app/activities/sms/SmsBillActivity$2;
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/sms/o;-><init>(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
+    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity$2;-><init>(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->c:Landroid/content/BroadcastReceiver;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
+    .line 328
     return-void
 .end method
 
-.method static synthetic a(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)Landroid/widget/TextView;
+.method static synthetic access$000(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)Z
     .locals 1
+    .parameter "x0"
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->h:Landroid/widget/TextView;
-
-    return-object v0
-.end method
-
-.method static synthetic a(Lcom/zhangdan/app/activities/sms/SmsBillActivity;I)V
-    .locals 0
-
-    iput p1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->o:I
-
-    return-void
-.end method
-
-.method static synthetic a(Lcom/zhangdan/app/activities/sms/SmsBillActivity;Ljava/util/List;)V
-    .locals 0
-
-    iput-object p1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
-
-    return-void
-.end method
-
-.method static synthetic a(Lcom/zhangdan/app/activities/sms/SmsBillActivity;Z)V
-    .locals 0
-
-    iput-boolean p1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->g:Z
-
-    return-void
-.end method
-
-.method static synthetic b(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)Ljava/util/List;
-    .locals 1
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
-
-    return-object v0
-.end method
-
-.method static synthetic c(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
-    .locals 0
-
-    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->k()V
-
-    return-void
-.end method
-
-.method static synthetic d(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)I
-    .locals 1
-
-    iget v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->o:I
+    .prologue
+    .line 42
+    iget-boolean v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->isScaning:Z
 
     return v0
 .end method
 
-.method static synthetic e(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)Lcom/zhangdan/app/activities/sms/q;
-    .locals 1
+.method static synthetic access$002(Lcom/zhangdan/app/activities/sms/SmsBillActivity;Z)Z
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->l:Lcom/zhangdan/app/activities/sms/q;
+    .prologue
+    .line 42
+    iput-boolean p1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->isScaning:Z
+
+    return p1
+.end method
+
+.method static synthetic access$100(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)Ljava/util/List;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 42
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
 
     return-object v0
 .end method
 
-.method static synthetic f(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
-    .locals 5
+.method static synthetic access$102(Lcom/zhangdan/app/activities/sms/SmsBillActivity;Ljava/util/List;)Ljava/util/List;
+    .locals 0
+    .parameter "x0"
+    .parameter "x1"
 
-    const/4 v2, 0x0
+    .prologue
+    .line 42
+    iput-object p1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
 
-    iget-object v3, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
+    return-object p1
+.end method
 
-    monitor-enter v3
+.method static synthetic access$200(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)Landroid/widget/TextView;
+    .locals 1
+    .parameter "x0"
 
-    :try_start_0
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->m:Ljava/util/List;
+    .prologue
+    .line 42
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mText:Landroid/widget/TextView;
 
-    invoke-interface {v0}, Ljava/util/List;->clear()V
+    return-object v0
+.end method
 
-    move v1, v2
+.method static synthetic access$300(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
+    .locals 0
+    .parameter "x0"
 
+    .prologue
+    .line 42
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getSmsUserBank()V
+
+    return-void
+.end method
+
+.method static synthetic access$408(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)I
+    .locals 2
+    .parameter "x0"
+
+    .prologue
+    .line 42
+    iget v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mScanCount:I
+
+    add-int/lit8 v1, v0, 0x1
+
+    iput v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mScanCount:I
+
+    return v0
+.end method
+
+.method static synthetic access$500(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)Lcom/zhangdan/app/activities/sms/SmsBillActivity$MyHandler;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 42
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mHandler:Lcom/zhangdan/app/activities/sms/SmsBillActivity$MyHandler;
+
+    return-object v0
+.end method
+
+.method static synthetic access$600(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
+    .locals 0
+    .parameter "x0"
+
+    .prologue
+    .line 42
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->update()V
+
+    return-void
+.end method
+
+.method private getSmsUserBank()V
+    .locals 15
+
+    .prologue
+    .line 122
+    invoke-static {p0}, Lcom/zhangdan/app/data/db/util/SmsUserBankDbUtil;->loadAllSmsUserBankInfos(Landroid/content/Context;)Ljava/util/List;
+
+    move-result-object v12
+
+    .line 123
+    .local v12, userBankInfos:Ljava/util/List;,"Ljava/util/List<Lcom/zhangdan/app/data/model/UserBankInfo;>;"
+    if-eqz v12, :cond_0
+
+    if-eqz v12, :cond_1
+
+    invoke-interface {v12}, Ljava/util/List;->isEmpty()Z
+
+    move-result v13
+
+    if-nez v13, :cond_1
+
+    .line 124
+    :cond_0
+    invoke-direct {p0, v12}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->merge(Ljava/util/List;)V
+
+    .line 125
+    :cond_1
+    iget-object v13, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
+
+    if-eqz v13, :cond_3
+
+    if-eqz v12, :cond_3
+
+    .line 126
+    const/4 v9, 0x0
+
+    .local v9, j:I
     :goto_0
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
+    invoke-interface {v12}, Ljava/util/List;->size()I
 
-    invoke-interface {v0}, Ljava/util/List;->size()I
+    move-result v13
 
-    move-result v0
+    if-ge v9, v13, :cond_3
 
-    if-lt v1, v0, :cond_0
+    .line 127
+    invoke-interface {v12, v9}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    monitor-exit v3
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    move-result-object v8
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->f:Lcom/zhangdan/app/activities/sms/r;
+    check-cast v8, Lcom/zhangdan/app/data/model/UserBankInfo;
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->m:Ljava/util/List;
+    .line 128
+    .local v8, info:Lcom/zhangdan/app/data/model/UserBankInfo;
+    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/UserBankInfo;->getBankId()I
 
-    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/sms/r;->a(Ljava/util/List;)V
+    move-result v1
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->f:Lcom/zhangdan/app/activities/sms/r;
+    .line 129
+    .local v1, bankId:I
+    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/UserBankInfo;->getUbId()J
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/activities/sms/r;->notifyDataSetChanged()V
+    move-result-wide v13
 
-    const v0, 0x7f0601a4
+    long-to-int v2, v13
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
+    .line 130
+    .local v2, billId:I
+    const/4 v13, 0x0
+
+    invoke-static {p0, v1, v2, v13}, Lcom/zhangdan/app/sms/BillRegexDbUtil;->getCountWithBillType(Landroid/content/Context;III)I
+
+    move-result v3
+
+    .line 131
+    .local v3, billSum:I
+    const/4 v13, 0x1
+
+    invoke-static {p0, v1, v2, v13}, Lcom/zhangdan/app/sms/BillRegexDbUtil;->getCountWithBillType(Landroid/content/Context;III)I
+
+    move-result v4
+
+    .line 132
+    .local v4, costSum:I
+    const/4 v13, 0x2
+
+    invoke-static {p0, v1, v2, v13}, Lcom/zhangdan/app/sms/BillRegexDbUtil;->getCountWithBillType(Landroid/content/Context;III)I
+
+    move-result v7
+
+    .line 133
+    .local v7, incomeSum:I
+    const/4 v13, 0x4
+
+    invoke-static {p0, v1, v2, v13}, Lcom/zhangdan/app/sms/BillRegexDbUtil;->getCountWithBillType(Landroid/content/Context;III)I
+
+    move-result v6
+
+    .line 134
+    .local v6, discountSum:I
+    const/4 v13, 0x3
+
+    invoke-static {p0, v1, v2, v13}, Lcom/zhangdan/app/sms/BillRegexDbUtil;->getCountWithBillType(Landroid/content/Context;III)I
+
+    move-result v10
+
+    .line 135
+    .local v10, otherSum:I
+    new-instance v11, Lcom/zhangdan/app/sms/SmsBillData;
+
+    invoke-direct {v11}, Lcom/zhangdan/app/sms/SmsBillData;-><init>()V
+
+    .line 136
+    .local v11, sms:Lcom/zhangdan/app/sms/SmsBillData;
+    invoke-virtual {v11, v1}, Lcom/zhangdan/app/sms/SmsBillData;->setBankId(I)V
+
+    .line 137
+    invoke-virtual {v11, v2}, Lcom/zhangdan/app/sms/SmsBillData;->setBillId(I)V
+
+    .line 138
+    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/UserBankInfo;->getSimpleName()Ljava/lang/String;
+
+    move-result-object v13
+
+    invoke-virtual {v11, v13}, Lcom/zhangdan/app/sms/SmsBillData;->setBankName(Ljava/lang/String;)V
+
+    .line 139
+    invoke-virtual {v11, v3}, Lcom/zhangdan/app/sms/SmsBillData;->setBillNum(I)V
+
+    .line 140
+    invoke-virtual {v11, v4}, Lcom/zhangdan/app/sms/SmsBillData;->setCostNum(I)V
+
+    .line 141
+    invoke-virtual {v11, v7}, Lcom/zhangdan/app/sms/SmsBillData;->setIncomeNum(I)V
+
+    .line 142
+    invoke-virtual {v11, v6}, Lcom/zhangdan/app/sms/SmsBillData;->setDiscountNum(I)V
+
+    .line 143
+    invoke-virtual {v11, v10}, Lcom/zhangdan/app/sms/SmsBillData;->setOtherNum(I)V
+
+    .line 144
+    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/UserBankInfo;->getCardNo()Ljava/lang/String;
+
+    move-result-object v13
+
+    invoke-virtual {v11, v13}, Lcom/zhangdan/app/sms/SmsBillData;->setCardNum(Ljava/lang/String;)V
+
+    .line 145
+    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/UserBankInfo;->getPaymentDueDate()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 146
+    .local v5, date:Ljava/lang/String;
+    if-eqz v5, :cond_2
+
+    .line 147
+    const-string v13, "-"
+
+    invoke-virtual {v5, v13}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 148
+    .local v0, array:[Ljava/lang/String;
+    const/4 v13, 0x2
+
+    aget-object v13, v0, v13
+
+    invoke-virtual {v11, v13}, Lcom/zhangdan/app/sms/SmsBillData;->setPayDate(Ljava/lang/String;)V
+
+    .line 151
+    .end local v0           #array:[Ljava/lang/String;
+    :cond_2
+    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/UserBankInfo;->getNameOnBill()Ljava/lang/String;
+
+    move-result-object v13
+
+    invoke-virtual {v11, v13}, Lcom/zhangdan/app/sms/SmsBillData;->setTruename(Ljava/lang/String;)V
+
+    .line 152
+    iget-object v13, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
+
+    invoke-interface {v13, v11}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 126
+    add-int/lit8 v9, v9, 0x1
+
+    goto :goto_0
+
+    .line 156
+    .end local v1           #bankId:I
+    .end local v2           #billId:I
+    .end local v3           #billSum:I
+    .end local v4           #costSum:I
+    .end local v5           #date:Ljava/lang/String;
+    .end local v6           #discountSum:I
+    .end local v7           #incomeSum:I
+    .end local v8           #info:Lcom/zhangdan/app/data/model/UserBankInfo;
+    .end local v9           #j:I
+    .end local v10           #otherSum:I
+    .end local v11           #sms:Lcom/zhangdan/app/sms/SmsBillData;
+    :cond_3
+    return-void
+.end method
+
+.method private initialView()V
+    .locals 3
+
+    .prologue
+    .line 217
+    const v1, 0x7f0901ad
+
+    invoke-virtual {p0, v1}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     check-cast v0, Landroid/widget/RelativeLayout;
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->i:Landroid/widget/RelativeLayout;
+    .line 218
+    .local v0, search:Landroid/widget/RelativeLayout;
+    invoke-virtual {v0, p0}, Landroid/widget/RelativeLayout;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->m:Ljava/util/List;
+    .line 219
+    const v1, 0x7f0901ae
 
-    invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->i:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    :goto_1
-    return-void
-
-    :cond_0
-    :try_start_1
-    iget-object v4, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->m:Ljava/util/List;
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
-
-    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/zhangdan/app/sms/SmsBillData;
-
-    invoke-interface {v4, v0}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    add-int/lit8 v0, v1, 0x1
-
-    move v1, v0
-
-    goto :goto_0
-
-    :catchall_0
-    move-exception v0
-
-    monitor-exit v3
-
-    throw v0
-
-    :cond_1
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->i:Landroid/widget/RelativeLayout;
-
-    const/16 v1, 0x8
-
-    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
-    goto :goto_1
-.end method
-
-.method static synthetic g(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)Z
-    .locals 1
-
-    iget-boolean v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->g:Z
-
-    return v0
-.end method
-
-.method private k()V
-    .locals 17
-
-    invoke-static/range {p0 .. p0}, Lcom/zhangdan/app/data/db/b/l;->a(Landroid/content/Context;)Ljava/util/List;
-
-    move-result-object v13
-
-    if-eqz v13, :cond_0
-
-    if-eqz v13, :cond_2
-
-    invoke-interface {v13}, Ljava/util/List;->isEmpty()Z
-
-    move-result v1
-
-    if-nez v1, :cond_2
-
-    :cond_0
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->k:Lcom/zhangdan/app/ZhangdanApplication;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/ZhangdanApplication;->b()Lcom/zhangdan/app/c/a;
+    invoke-virtual {p0, v1}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Lcom/zhangdan/app/c/a;->c()Ljava/util/List;
+    check-cast v1, Landroid/widget/ListView;
 
-    move-result-object v14
+    iput-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mListView:Landroid/widget/ListView;
 
-    if-eqz v13, :cond_1
+    .line 220
+    new-instance v1, Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;
 
-    const/4 v1, 0x0
+    invoke-direct {v1, p0}, Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;-><init>(Landroid/content/Context;)V
 
-    move v11, v1
+    iput-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillBaseAdapter:Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;
 
+    .line 221
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillBaseAdapter:Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;
+
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
+
+    invoke-virtual {v1, v2}, Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;->setData(Ljava/util/List;)V
+
+    .line 222
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mListView:Landroid/widget/ListView;
+
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillBaseAdapter:Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;
+
+    invoke-virtual {v1, v2}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
+
+    .line 223
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mListView:Landroid/widget/ListView;
+
+    new-instance v2, Lcom/zhangdan/app/activities/sms/SmsBillActivity$1;
+
+    invoke-direct {v2, p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity$1;-><init>(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
+
+    invoke-virtual {v1, v2}, Landroid/widget/ListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
+
+    .line 246
+    return-void
+.end method
+
+.method private merge(Ljava/util/List;)V
+    .locals 27
+    .parameter
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List",
+            "<",
+            "Lcom/zhangdan/app/data/model/UserBankInfo;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 159
+    .local p1, userBankInfos:Ljava/util/List;,"Ljava/util/List<Lcom/zhangdan/app/data/model/UserBankInfo;>;"
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mApp:Lcom/zhangdan/app/ZhangdanApplication;
+
+    invoke-virtual {v2}, Lcom/zhangdan/app/ZhangdanApplication;->getDataManager()Lcom/zhangdan/app/global/DataManager;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Lcom/zhangdan/app/global/DataManager;->getUserBankInfoList()Ljava/util/List;
+
+    move-result-object v21
+
+    .line 160
+    .local v21, list:Ljava/util/List;,"Ljava/util/List<Lcom/zhangdan/app/data/model/UserBankInfo;>;"
+    if-eqz p1, :cond_4
+
+    .line 161
+    const/4 v15, 0x0
+
+    .local v15, i:I
     :goto_0
-    invoke-interface {v14}, Ljava/util/List;->size()I
-
-    move-result v1
-
-    if-lt v11, v1, :cond_4
-
-    :cond_1
-    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-static {v1}, Lcom/zhangdan/app/data/db/b/l;->b(Landroid/content/Context;)Ljava/util/List;
-
-    move-result-object v9
-
-    const/4 v1, 0x0
-
-    move v7, v1
-
-    :goto_1
-    invoke-interface {v9}, Ljava/util/List;->size()I
-
-    move-result v1
-
-    if-lt v7, v1, :cond_9
-
-    :cond_2
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
-
-    if-eqz v1, :cond_3
-
-    if-eqz v13, :cond_3
-
-    const/4 v1, 0x0
-
-    move v2, v1
-
-    :goto_2
-    invoke-interface {v13}, Ljava/util/List;->size()I
-
-    move-result v1
-
-    if-lt v2, v1, :cond_e
-
-    :cond_3
-    return-void
-
-    :cond_4
-    invoke-interface {v14, v11}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lcom/zhangdan/app/data/model/j;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->h()Ljava/lang/String;
-
-    move-result-object v15
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->g()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->e()I
-
-    move-result v16
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->o()Ljava/lang/String;
-
-    move-result-object v4
-
-    invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_5
-
-    const-string v1, "/"
-
-    const-string v2, "-"
-
-    invoke-virtual {v4, v1, v2}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
-
-    move-result-object v4
-
-    :cond_5
-    const/4 v1, 0x0
-
-    move v12, v1
-
-    :goto_3
-    invoke-interface {v13}, Ljava/util/List;->size()I
-
-    move-result v1
-
-    if-lt v12, v1, :cond_6
-
-    add-int/lit8 v1, v11, 0x1
-
-    move v11, v1
-
-    goto :goto_0
-
-    :cond_6
-    invoke-interface {v13, v12}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    move-object v8, v1
-
-    check-cast v8, Lcom/zhangdan/app/data/model/j;
-
-    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/j;->e()I
-
-    move-result v1
-
-    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/j;->h()Ljava/lang/String;
-
-    move-result-object v7
-
-    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/j;->g()Ljava/lang/String;
-
-    move-result-object v9
-
-    move/from16 v0, v16
-
-    if-ne v0, v1, :cond_8
-
-    invoke-static {v15}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_7
-
-    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_7
-
-    invoke-virtual {v15, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_7
-
-    invoke-static {v9}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_7
-
-    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_7
-
-    invoke-virtual {v8, v3}, Lcom/zhangdan/app/data/model/j;->b(Ljava/lang/String;)V
-
-    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/j;->c()J
-
-    move-result-wide v5
-
-    invoke-static/range {v1 .. v6}, Lcom/zhangdan/app/data/db/b/l;->a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V
-
-    :cond_7
-    invoke-static {v9}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_8
-
-    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_8
-
-    invoke-virtual {v9, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_8
-
-    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_8
-
-    invoke-static {v15}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_8
-
-    invoke-virtual {v8, v15}, Lcom/zhangdan/app/data/model/j;->c(Ljava/lang/String;)V
-
-    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v5
-
-    const/4 v7, 0x0
-
-    invoke-virtual {v8}, Lcom/zhangdan/app/data/model/j;->c()J
-
-    move-result-wide v9
-
-    move-object v6, v15
-
-    move-object v8, v4
-
-    invoke-static/range {v5 .. v10}, Lcom/zhangdan/app/data/db/b/l;->a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V
-
-    :cond_8
-    add-int/lit8 v1, v12, 0x1
-
-    move v12, v1
-
-    goto :goto_3
-
-    :cond_9
-    invoke-interface {v9, v7}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lcom/zhangdan/app/data/model/j;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->h()Ljava/lang/String;
-
-    move-result-object v10
-
-    invoke-static {v10}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    invoke-interface/range {v21 .. v21}, Ljava/util/List;->size()I
 
     move-result v2
 
-    if-nez v2, :cond_b
+    if-ge v15, v2, :cond_4
 
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->c()J
+    .line 162
+    move-object/from16 v0, v21
 
-    move-result-wide v11
+    invoke-interface {v0, v15}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
+    move-result-object v18
+
+    check-cast v18, Lcom/zhangdan/app/data/model/UserBankInfo;
+
+    .line 163
+    .local v18, info:Lcom/zhangdan/app/data/model/UserBankInfo;
+    invoke-virtual/range {v18 .. v18}, Lcom/zhangdan/app/data/model/UserBankInfo;->getCardNo()Ljava/lang/String;
+
+    move-result-object v14
+
+    .line 164
+    .local v14, cardNo:Ljava/lang/String;
+    invoke-virtual/range {v18 .. v18}, Lcom/zhangdan/app/data/model/UserBankInfo;->getNameOnBill()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 165
+    .local v4, name:Ljava/lang/String;
+    invoke-virtual/range {v18 .. v18}, Lcom/zhangdan/app/data/model/UserBankInfo;->getBankId()I
+
+    move-result v12
+
+    .line 166
+    .local v12, bankid:I
+    invoke-virtual/range {v18 .. v18}, Lcom/zhangdan/app/data/model/UserBankInfo;->getPaymentDueDate()Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 167
+    .local v5, paymentdueDate:Ljava/lang/String;
+    invoke-static {v5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    .line 168
+    const-string v2, "/"
+
+    const-string v3, "-"
+
+    invoke-virtual {v5, v2, v3}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 169
+    :cond_0
+    const/16 v20, 0x0
+
+    .local v20, j:I
+    :goto_1
+    invoke-interface/range {p1 .. p1}, Ljava/util/List;->size()I
+
+    move-result v2
+
+    move/from16 v0, v20
+
+    if-ge v0, v2, :cond_3
+
+    .line 170
+    move-object/from16 v0, p1
+
+    move/from16 v1, v20
+
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v25
+
+    check-cast v25, Lcom/zhangdan/app/data/model/UserBankInfo;
+
+    .line 171
+    .local v25, temp:Lcom/zhangdan/app/data/model/UserBankInfo;
+    invoke-virtual/range {v25 .. v25}, Lcom/zhangdan/app/data/model/UserBankInfo;->getBankId()I
+
+    move-result v22
+
+    .line 172
+    .local v22, smsBankid:I
+    invoke-virtual/range {v25 .. v25}, Lcom/zhangdan/app/data/model/UserBankInfo;->getCardNo()Ljava/lang/String;
+
+    move-result-object v23
+
+    .line 173
+    .local v23, smsCardNo:Ljava/lang/String;
+    invoke-virtual/range {v25 .. v25}, Lcom/zhangdan/app/data/model/UserBankInfo;->getNameOnBill()Ljava/lang/String;
+
+    move-result-object v24
+
+    .line 174
+    .local v24, smsTrueName:Ljava/lang/String;
+    move/from16 v0, v22
+
+    if-ne v12, v0, :cond_2
+
+    .line 175
+    invoke-static {v14}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    invoke-static/range {v23 .. v23}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v14, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    .line 176
+    invoke-static/range {v24 .. v24}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
+    invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_1
+
+    .line 178
+    move-object/from16 v0, v25
+
+    invoke-virtual {v0, v4}, Lcom/zhangdan/app/data/model/UserBankInfo;->setNameOnBill(Ljava/lang/String;)V
+
+    .line 179
     invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
 
-    move-result-object v1
-
-    invoke-static {v1, v11, v12}, Lcom/zhangdan/app/data/db/b/l;->b(Landroid/content/Context;J)V
-
-    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    const/4 v8, 0x0
-
-    invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    move-result-object v1
-
-    sget-object v2, Lcom/zhangdan/app/data/db/a/n;->a:Landroid/net/Uri;
+    move-result-object v2
 
     const/4 v3, 0x0
 
-    new-instance v4, Ljava/lang/StringBuilder;
+    invoke-virtual/range {v25 .. v25}, Lcom/zhangdan/app/data/model/UserBankInfo;->getUbId()J
 
-    const-string v5, "card_no =\'"
+    move-result-wide v6
 
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-static/range {v2 .. v7}, Lcom/zhangdan/app/data/db/util/SmsUserBankDbUtil;->updateSmsUserBankInfo(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V
 
-    invoke-virtual {v4, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 182
+    :cond_1
+    invoke-static/range {v24 .. v24}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result-object v4
+    move-result v2
 
-    const-string v5, "\'"
+    if-nez v2, :cond_2
 
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result-object v4
+    move-result v2
 
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    if-nez v2, :cond_2
 
-    move-result-object v4
+    move-object/from16 v0, v24
 
-    const/4 v5, 0x0
+    invoke-virtual {v0, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    const/4 v6, 0x0
+    move-result v2
 
-    invoke-virtual/range {v1 .. v6}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    if-eqz v2, :cond_2
 
-    move-result-object v2
+    .line 183
+    invoke-static/range {v23 .. v23}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    if-eqz v2, :cond_10
+    move-result v2
 
-    invoke-interface {v2}, Landroid/database/Cursor;->moveToFirst()Z
+    if-eqz v2, :cond_2
 
-    move-result v1
+    invoke-static {v14}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    if-eqz v1, :cond_10
+    move-result v2
 
-    new-instance v1, Lcom/zhangdan/app/data/model/j;
+    if-nez v2, :cond_2
 
-    invoke-direct {v1}, Lcom/zhangdan/app/data/model/j;-><init>()V
+    .line 185
+    move-object/from16 v0, v25
 
-    const-string v3, "_id"
+    invoke-virtual {v0, v14}, Lcom/zhangdan/app/data/model/UserBankInfo;->setCardNo(Ljava/lang/String;)V
 
-    invoke-interface {v2, v3}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+    .line 186
+    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
 
-    move-result v3
+    move-result-object v6
 
-    invoke-interface {v2, v3}, Landroid/database/Cursor;->getLong(I)J
+    const/4 v8, 0x0
 
-    move-result-wide v3
+    invoke-virtual/range {v25 .. v25}, Lcom/zhangdan/app/data/model/UserBankInfo;->getUbId()J
 
-    invoke-virtual {v1, v3, v4}, Lcom/zhangdan/app/data/model/j;->a(J)V
+    move-result-wide v10
 
-    invoke-virtual {v1, v10}, Lcom/zhangdan/app/data/model/j;->c(Ljava/lang/String;)V
+    move-object v7, v14
 
-    :goto_4
-    if-eqz v2, :cond_a
+    move-object v9, v5
 
-    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+    invoke-static/range {v6 .. v11}, Lcom/zhangdan/app/data/db/util/SmsUserBankDbUtil;->updateSmsUserBankInfo(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V
 
-    :cond_a
+    .line 169
+    :cond_2
+    add-int/lit8 v20, v20, 0x1
+
+    goto/16 :goto_1
+
+    .line 161
+    .end local v22           #smsBankid:I
+    .end local v23           #smsCardNo:Ljava/lang/String;
+    .end local v24           #smsTrueName:Ljava/lang/String;
+    .end local v25           #temp:Lcom/zhangdan/app/data/model/UserBankInfo;
+    :cond_3
+    add-int/lit8 v15, v15, 0x1
+
+    goto/16 :goto_0
+
+    .line 194
+    .end local v4           #name:Ljava/lang/String;
+    .end local v5           #paymentdueDate:Ljava/lang/String;
+    .end local v12           #bankid:I
+    .end local v14           #cardNo:Ljava/lang/String;
+    .end local v15           #i:I
+    .end local v18           #info:Lcom/zhangdan/app/data/model/UserBankInfo;
+    .end local v20           #j:I
+    :cond_4
     invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
 
     move-result-object v2
 
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->c()J
+    invoke-static {v2}, Lcom/zhangdan/app/data/db/util/SmsUserBankDbUtil;->queryTheSameCard(Landroid/content/Context;)Ljava/util/List;
 
-    move-result-wide v3
+    move-result-object v19
 
-    long-to-int v1, v3
+    .line 195
+    .local v19, infos:Ljava/util/List;,"Ljava/util/List<Lcom/zhangdan/app/data/model/UserBankInfo;>;"
+    const/4 v15, 0x0
 
-    long-to-int v3, v11
+    .restart local v15       #i:I
+    :goto_2
+    invoke-interface/range {v19 .. v19}, Ljava/util/List;->size()I
 
-    invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    move-result v2
+
+    if-ge v15, v2, :cond_7
+
+    .line 196
+    move-object/from16 v0, v19
+
+    invoke-interface {v0, v15}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v18
+
+    check-cast v18, Lcom/zhangdan/app/data/model/UserBankInfo;
+
+    .line 197
+    .restart local v18       #info:Lcom/zhangdan/app/data/model/UserBankInfo;
+    invoke-virtual/range {v18 .. v18}, Lcom/zhangdan/app/data/model/UserBankInfo;->getCardNo()Ljava/lang/String;
+
+    move-result-object v13
+
+    .line 198
+    .local v13, card:Ljava/lang/String;
+    invoke-static {v13}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_6
+
+    .line 199
+    invoke-virtual/range {v18 .. v18}, Lcom/zhangdan/app/data/model/UserBankInfo;->getUbId()J
+
+    move-result-wide v16
+
+    .line 200
+    .local v16, id:J
+    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
 
     move-result-object v2
 
-    new-instance v4, Landroid/content/ContentValues;
+    move-wide/from16 v0, v16
 
-    invoke-direct {v4}, Landroid/content/ContentValues;-><init>()V
+    invoke-static {v2, v0, v1}, Lcom/zhangdan/app/data/db/util/SmsUserBankDbUtil;->deleteSmsUserBank(Landroid/content/Context;J)V
 
-    const-string v5, "bill_id"
+    .line 201
+    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
 
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-result-object v2
 
-    move-result-object v1
+    invoke-static {v2, v13}, Lcom/zhangdan/app/data/db/util/SmsUserBankDbUtil;->queryBillIdWitchCard(Landroid/content/Context;Ljava/lang/String;)Lcom/zhangdan/app/data/model/UserBankInfo;
 
-    invoke-virtual {v4, v5, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+    move-result-object v26
 
-    sget-object v1, Lcom/zhangdan/app/sms/f;->a:Landroid/net/Uri;
+    .line 202
+    .local v26, usr:Lcom/zhangdan/app/data/model/UserBankInfo;
+    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    move-result-object v2
 
-    const-string v6, "bill_id="
+    invoke-virtual/range {v26 .. v26}, Lcom/zhangdan/app/data/model/UserBankInfo;->getUbId()J
 
-    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    move-result-wide v6
 
-    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    long-to-int v3, v6
 
-    move-result-object v3
+    move-wide/from16 v0, v16
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    long-to-int v6, v0
 
-    move-result-object v3
+    invoke-static {v2, v3, v6}, Lcom/zhangdan/app/sms/BillRegexDbUtil;->updateBillId(Landroid/content/Context;II)V
 
-    const/4 v5, 0x0
+    .line 203
+    if-eqz p1, :cond_6
 
-    invoke-virtual {v2, v1, v4, v3, v5}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    .line 204
+    const/16 v20, 0x0
 
-    if-eqz v13, :cond_b
+    .restart local v20       #j:I
+    :goto_3
+    invoke-interface/range {p1 .. p1}, Ljava/util/List;->size()I
 
-    const/4 v1, 0x0
+    move-result v2
 
-    move v2, v1
+    move/from16 v0, v20
 
-    :goto_5
-    invoke-interface {v13}, Ljava/util/List;->size()I
+    if-ge v0, v2, :cond_6
 
-    move-result v1
+    .line 205
+    move-object/from16 v0, p1
 
-    if-lt v2, v1, :cond_c
+    move/from16 v1, v20
 
-    :cond_b
-    add-int/lit8 v1, v7, 0x1
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move v7, v1
+    move-result-object v25
 
-    goto/16 :goto_1
+    check-cast v25, Lcom/zhangdan/app/data/model/UserBankInfo;
 
-    :cond_c
-    invoke-interface {v13, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    .line 206
+    .restart local v25       #temp:Lcom/zhangdan/app/data/model/UserBankInfo;
+    invoke-virtual/range {v25 .. v25}, Lcom/zhangdan/app/data/model/UserBankInfo;->getUbId()J
 
-    move-result-object v1
+    move-result-wide v2
 
-    check-cast v1, Lcom/zhangdan/app/data/model/j;
+    cmp-long v2, v2, v16
 
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->c()J
+    if-nez v2, :cond_5
 
-    move-result-wide v3
+    .line 207
+    move-object/from16 v0, p1
 
-    cmp-long v3, v3, v11
+    move-object/from16 v1, v25
 
-    if-nez v3, :cond_d
+    invoke-interface {v0, v1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
 
-    invoke-interface {v13, v1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
+    .line 204
+    :cond_5
+    add-int/lit8 v20, v20, 0x1
 
-    :cond_d
-    add-int/lit8 v1, v2, 0x1
+    goto :goto_3
 
-    move v2, v1
+    .line 195
+    .end local v16           #id:J
+    .end local v20           #j:I
+    .end local v25           #temp:Lcom/zhangdan/app/data/model/UserBankInfo;
+    .end local v26           #usr:Lcom/zhangdan/app/data/model/UserBankInfo;
+    :cond_6
+    add-int/lit8 v15, v15, 0x1
 
-    goto :goto_5
+    goto :goto_2
 
-    :cond_e
-    invoke-interface {v13, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lcom/zhangdan/app/data/model/j;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->e()I
-
-    move-result v3
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->c()J
-
-    move-result-wide v4
-
-    long-to-int v4, v4
-
-    const/4 v5, 0x0
-
-    move-object/from16 v0, p0
-
-    invoke-static {v0, v3, v4, v5}, Lcom/zhangdan/app/sms/d;->b(Landroid/content/Context;III)I
-
-    move-result v5
-
-    const/4 v6, 0x1
-
-    move-object/from16 v0, p0
-
-    invoke-static {v0, v3, v4, v6}, Lcom/zhangdan/app/sms/d;->b(Landroid/content/Context;III)I
-
-    move-result v6
-
-    const/4 v7, 0x2
-
-    move-object/from16 v0, p0
-
-    invoke-static {v0, v3, v4, v7}, Lcom/zhangdan/app/sms/d;->b(Landroid/content/Context;III)I
-
-    move-result v7
-
-    const/4 v8, 0x4
-
-    move-object/from16 v0, p0
-
-    invoke-static {v0, v3, v4, v8}, Lcom/zhangdan/app/sms/d;->b(Landroid/content/Context;III)I
-
-    move-result v8
-
-    const/4 v9, 0x3
-
-    move-object/from16 v0, p0
-
-    invoke-static {v0, v3, v4, v9}, Lcom/zhangdan/app/sms/d;->b(Landroid/content/Context;III)I
-
-    move-result v9
-
-    new-instance v10, Lcom/zhangdan/app/sms/SmsBillData;
-
-    invoke-direct {v10}, Lcom/zhangdan/app/sms/SmsBillData;-><init>()V
-
-    invoke-virtual {v10, v3}, Lcom/zhangdan/app/sms/SmsBillData;->d(I)V
-
-    invoke-virtual {v10, v4}, Lcom/zhangdan/app/sms/SmsBillData;->a(I)V
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->f()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v10, v3}, Lcom/zhangdan/app/sms/SmsBillData;->b(Ljava/lang/String;)V
-
-    invoke-virtual {v10, v5}, Lcom/zhangdan/app/sms/SmsBillData;->g(I)V
-
-    invoke-virtual {v10, v6}, Lcom/zhangdan/app/sms/SmsBillData;->e(I)V
-
-    invoke-virtual {v10, v7}, Lcom/zhangdan/app/sms/SmsBillData;->f(I)V
-
-    invoke-virtual {v10, v8}, Lcom/zhangdan/app/sms/SmsBillData;->b(I)V
-
-    invoke-virtual {v10, v9}, Lcom/zhangdan/app/sms/SmsBillData;->c(I)V
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->h()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v10, v3}, Lcom/zhangdan/app/sms/SmsBillData;->d(Ljava/lang/String;)V
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->o()Ljava/lang/String;
-
-    move-result-object v3
-
-    if-eqz v3, :cond_f
-
-    const-string v4, "-"
-
-    invoke-virtual {v3, v4}, Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;
-
-    move-result-object v3
-
-    const/4 v4, 0x2
-
-    aget-object v3, v3, v4
-
-    invoke-virtual {v10, v3}, Lcom/zhangdan/app/sms/SmsBillData;->e(Ljava/lang/String;)V
-
-    :cond_f
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/j;->g()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v10, v1}, Lcom/zhangdan/app/sms/SmsBillData;->c(Ljava/lang/String;)V
-
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
-
-    invoke-interface {v1, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    add-int/lit8 v1, v2, 0x1
-
-    move v2, v1
-
-    goto/16 :goto_2
-
-    :cond_10
-    move-object v1, v8
-
-    goto/16 :goto_4
+    .line 214
+    .end local v13           #card:Ljava/lang/String;
+    .end local v18           #info:Lcom/zhangdan/app/data/model/UserBankInfo;
+    :cond_7
+    return-void
 .end method
 
-.method private l()V
+.method private startScanSms()V
     .locals 3
 
+    .prologue
+    .line 354
     new-instance v0, Landroid/content/Intent;
 
     const-class v1, Lcom/zhangdan/app/service/SmsService;
 
     invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
+    .line 355
+    .local v0, intent:Landroid/content/Intent;
     const-string v1, "is_scan_all"
 
     const/4 v2, 0x0
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
+    .line 356
     invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
 
+    .line 357
     return-void
+.end method
+
+.method private update()V
+    .locals 4
+
+    .prologue
+    .line 311
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
+
+    monitor-enter v2
+
+    .line 312
+    :try_start_0
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsTempBillDataInfos:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->clear()V
+
+    .line 313
+    const/4 v0, 0x0
+
+    .local v0, i:I
+    :goto_0
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->size()I
+
+    move-result v1
+
+    if-ge v0, v1, :cond_0
+
+    .line 314
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsTempBillDataInfos:Ljava/util/List;
+
+    iget-object v3, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
+
+    invoke-interface {v3, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    invoke-interface {v1, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 313
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    .line 316
+    :cond_0
+    monitor-exit v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 318
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillBaseAdapter:Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;
+
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsTempBillDataInfos:Ljava/util/List;
+
+    invoke-virtual {v1, v2}, Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;->setData(Ljava/util/List;)V
+
+    .line 319
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillBaseAdapter:Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;
+
+    invoke-virtual {v1}, Lcom/zhangdan/app/activities/sms/SmsBillBaseAdapter;->notifyDataSetChanged()V
+
+    .line 320
+    const v1, 0x7f0901ac
+
+    invoke-virtual {p0, v1}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/widget/RelativeLayout;
+
+    iput-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mRela:Landroid/widget/RelativeLayout;
+
+    .line 321
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsTempBillDataInfos:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->isEmpty()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_1
+
+    .line 322
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mRela:Landroid/widget/RelativeLayout;
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v1, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    .line 326
+    :goto_1
+    return-void
+
+    .line 316
+    .end local v0           #i:I
+    :catchall_0
+    move-exception v1
+
+    :try_start_1
+    monitor-exit v2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v1
+
+    .line 324
+    .restart local v0       #i:I
+    :cond_1
+    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mRela:Landroid/widget/RelativeLayout;
+
+    const/16 v2, 0x8
+
+    invoke-virtual {v1, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+
+    goto :goto_1
 .end method
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;)V
-    .locals 1
-
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplication()Landroid/app/Application;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
-
-    invoke-virtual {v0, p1}, Lcom/zhangdan/app/ZhangdanApplication;->a(Ljava/lang/String;)V
-
-    invoke-static {p1}, Lcom/zhangdan/app/h/d;->a(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    :cond_0
-    :goto_0
-    return-void
-
-    :cond_1
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/f/a;->c()V
-
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
-
-    goto :goto_0
-.end method
-
-.method public final j()V
-    .locals 1
-
-    iget-boolean v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->g:Z
-
-    if-eqz v0, :cond_0
-
-    :goto_0
-    return-void
-
-    :cond_0
-    iget v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->o:I
-
-    if-nez v0, :cond_1
-
-    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->l()V
-
-    goto :goto_0
-
-    :cond_1
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->finish()V
-
-    goto :goto_0
-.end method
-
 .method public onBackPressed()V
     .locals 2
 
-    iget-boolean v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->g:Z
+    .prologue
+    .line 114
+    iget-boolean v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->isScaning:Z
 
     if-eqz v0, :cond_0
 
+    .line 115
     const-string v0, "\u6b63\u5728\u626b\u63cf\uff0c\u8bf7\u7a0d\u5019..."
 
     const/4 v1, 0x1
@@ -941,9 +1085,11 @@
 
     invoke-virtual {v0}, Landroid/widget/Toast;->show()V
 
+    .line 119
     :goto_0
     return-void
 
+    .line 117
     :cond_0
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->finish()V
 
@@ -952,244 +1098,200 @@
 
 .method public onClick(Landroid/view/View;)V
     .locals 1
+    .parameter "v"
 
+    .prologue
+    .line 279
     invoke-virtual {p1}, Landroid/view/View;->getId()I
 
     move-result v0
 
+    .line 280
+    .local v0, id:I
     packed-switch v0, :pswitch_data_0
 
+    .line 286
     :goto_0
     return-void
 
+    .line 282
     :pswitch_0
-    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->l()V
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->startScanSms()V
 
     goto :goto_0
 
+    .line 280
     :pswitch_data_0
-    .packed-switch 0x7f0601a5
+    .packed-switch 0x7f0901ad
         :pswitch_0
     .end packed-switch
 .end method
 
 .method protected onCreate(Landroid/os/Bundle;)V
-    .locals 4
+    .locals 6
+    .parameter "arg0"
 
-    const/4 v3, 0x1
+    .prologue
+    const/4 v5, 0x1
 
-    const/4 v2, 0x0
+    const/4 v4, 0x0
 
+    .line 76
     invoke-super {p0, p1}, Lcom/zhangdan/app/activities/WrappedActivity;->onCreate(Landroid/os/Bundle;)V
 
-    const v0, 0x7f030078
+    .line 77
+    const v2, 0x7f03007e
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->setContentView(I)V
+    invoke-virtual {p0, v2}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->setContentView(I)V
 
+    .line 78
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplication()Landroid/app/Application;
 
-    move-result-object v0
+    move-result-object v2
 
-    check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
+    check-cast v2, Lcom/zhangdan/app/ZhangdanApplication;
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->k:Lcom/zhangdan/app/ZhangdanApplication;
+    iput-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mApp:Lcom/zhangdan/app/ZhangdanApplication;
 
-    new-instance v0, Lcom/zhangdan/app/activities/mailimport/e;
+    .line 80
+    new-instance v2, Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-    const v1, 0x7f06003c
+    const v3, 0x7f09003c
 
-    invoke-virtual {p0, v1}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v3}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
 
-    move-result-object v1
+    move-result-object v3
 
-    invoke-direct {v0, p0, v1, v3}, Lcom/zhangdan/app/activities/mailimport/e;-><init>(Landroid/app/Activity;Landroid/view/View;I)V
+    invoke-direct {v2, p0, v3, v5}, Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;-><init>(Landroid/app/Activity;Landroid/view/View;I)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->p:Lcom/zhangdan/app/activities/mailimport/e;
+    iput-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplication()Landroid/app/Application;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/ZhangdanApplication;->a()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/zhangdan/app/h/d;->a(Ljava/lang/String;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    new-instance v0, Lcom/zhangdan/app/f/a;
-
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Lcom/zhangdan/app/f/a;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
-
-    invoke-virtual {v0, p0}, Lcom/zhangdan/app/f/a;->a(Lcom/zhangdan/app/f/b;)V
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/f/a;->a()V
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/f/a;->b()V
-
-    :cond_0
+    .line 82
     new-instance v0, Landroid/content/IntentFilter;
 
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
-    const-string v1, "scan_finish"
+    .line 83
+    .local v0, fliter:Landroid/content/IntentFilter;
+    const-string v2, "scan_finish"
 
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+    invoke-virtual {v0, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    const-string v1, "scan_process"
+    .line 84
+    const-string v2, "scan_process"
 
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+    invoke-virtual {v0, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    const-string v1, "scan_start"
+    .line 85
+    const-string v2, "scan_start"
 
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+    invoke-virtual {v0, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    const-string v1, "update_sms"
+    .line 86
+    const-string v2, "update_sms"
 
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+    invoke-virtual {v0, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->c:Landroid/content/BroadcastReceiver;
+    .line 87
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-    invoke-virtual {p0, v1, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    invoke-virtual {p0, v2, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->k()V
+    .line 88
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getSmsUserBank()V
 
-    const v0, 0x7f0601a5
+    .line 89
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->initialView()V
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
+    .line 90
+    const v2, 0x7f0901af
 
-    move-result-object v0
+    invoke-virtual {p0, v2}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
 
-    check-cast v0, Landroid/widget/RelativeLayout;
+    move-result-object v2
 
-    invoke-virtual {v0, p0}, Landroid/widget/RelativeLayout;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    check-cast v2, Landroid/widget/TextView;
 
-    const v0, 0x7f0601a6
+    iput-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mText:Landroid/widget/TextView;
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
+    .line 91
+    const v2, 0x7f0901ac
 
-    move-result-object v0
+    invoke-virtual {p0, v2}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
 
-    check-cast v0, Landroid/widget/ListView;
+    move-result-object v2
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->d:Landroid/widget/ListView;
+    check-cast v2, Landroid/widget/RelativeLayout;
 
-    new-instance v0, Lcom/zhangdan/app/activities/sms/r;
+    iput-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mRela:Landroid/widget/RelativeLayout;
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/sms/r;-><init>(Landroid/content/Context;)V
+    .line 92
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mSmsBillDataInfos:Ljava/util/List;
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->f:Lcom/zhangdan/app/activities/sms/r;
+    invoke-interface {v2}, Ljava/util/List;->isEmpty()Z
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->f:Lcom/zhangdan/app/activities/sms/r;
+    move-result v2
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
+    if-eqz v2, :cond_1
 
-    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/sms/r;->a(Ljava/util/List;)V
+    .line 93
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mRela:Landroid/widget/RelativeLayout;
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->d:Landroid/widget/ListView;
+    invoke-virtual {v2, v4}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->f:Lcom/zhangdan/app/activities/sms/r;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->d:Landroid/widget/ListView;
-
-    new-instance v1, Lcom/zhangdan/app/activities/sms/p;
-
-    invoke-direct {v1, p0}, Lcom/zhangdan/app/activities/sms/p;-><init>(Lcom/zhangdan/app/activities/sms/SmsBillActivity;)V
-
-    invoke-virtual {v0, v1}, Landroid/widget/ListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
-
-    const v0, 0x7f0601a7
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/TextView;
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->h:Landroid/widget/TextView;
-
-    const v0, 0x7f0601a4
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/RelativeLayout;
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->i:Landroid/widget/RelativeLayout;
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->e:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_2
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->i:Landroid/widget/RelativeLayout;
-
-    invoke-virtual {v0, v2}, Landroid/widget/RelativeLayout;->setVisibility(I)V
-
+    .line 98
     :goto_0
-    new-instance v0, Lcom/zhangdan/app/g/b;
+    new-instance v2, Lcom/zhangdan/app/shake/ShakeManager;
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/app/g/b;-><init>(Landroid/content/Context;)V
+    invoke-direct {v2, p0}, Lcom/zhangdan/app/shake/ShakeManager;-><init>(Landroid/content/Context;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->n:Lcom/zhangdan/app/g/b;
+    iput-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mShakeManager:Lcom/zhangdan/app/shake/ShakeManager;
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->n:Lcom/zhangdan/app/g/b;
+    .line 99
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mShakeManager:Lcom/zhangdan/app/shake/ShakeManager;
 
-    invoke-virtual {v0, p0}, Lcom/zhangdan/app/g/b;->a(Lcom/zhangdan/app/g/a;)V
+    invoke-virtual {v2, p0}, Lcom/zhangdan/app/shake/ShakeManager;->setOnShakeListener(Lcom/zhangdan/app/shake/OnShakeListener;)V
 
+    .line 101
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->getIntent()Landroid/content/Intent;
 
-    move-result-object v0
+    move-result-object v2
 
-    const-string v1, "scan_sms"
+    const-string v3, "scan_sms"
 
-    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
+    invoke-virtual {v2, v3, v4}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
 
-    move-result v0
+    move-result v1
 
-    if-ne v0, v3, :cond_1
+    .line 102
+    .local v1, scanSmsFlag:I
+    if-ne v1, v5, :cond_0
 
-    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->l()V
+    .line 103
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->startScanSms()V
 
-    :cond_1
+    .line 105
+    :cond_0
     return-void
 
-    :cond_2
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->i:Landroid/widget/RelativeLayout;
+    .line 95
+    .end local v1           #scanSmsFlag:I
+    :cond_1
+    iget-object v2, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mRela:Landroid/widget/RelativeLayout;
 
-    const/16 v1, 0x8
+    const/16 v3, 0x8
 
-    invoke-virtual {v0, v1}, Landroid/widget/RelativeLayout;->setVisibility(I)V
+    invoke-virtual {v2, v3}, Landroid/widget/RelativeLayout;->setVisibility(I)V
 
     goto :goto_0
 .end method
 
 .method public onCreateOptionsMenu(Landroid/view/Menu;)Z
     .locals 1
+    .parameter "menu"
 
+    .prologue
+    .line 250
     const/4 v0, 0x1
 
     return v0
@@ -1198,69 +1300,111 @@
 .method protected onDestroy()V
     .locals 1
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->c:Landroid/content/BroadcastReceiver;
+    .prologue
+    .line 255
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
+    .line 256
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mShakeManager:Lcom/zhangdan/app/shake/ShakeManager;
+
+    invoke-virtual {v0}, Lcom/zhangdan/app/shake/ShakeManager;->destroy()V
+
+    .line 257
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->j:Lcom/zhangdan/app/f/a;
+    .line 258
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/f/a;->c()V
+    invoke-virtual {v0}, Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;->onDestroy()V
 
-    :cond_0
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->n:Lcom/zhangdan/app/g/b;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/g/b;->c()V
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->p:Lcom/zhangdan/app/activities/mailimport/e;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->p:Lcom/zhangdan/app/activities/mailimport/e;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/activities/mailimport/e;->a()V
-
+    .line 259
     const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->p:Lcom/zhangdan/app/activities/mailimport/e;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-    :cond_1
+    .line 261
+    :cond_0
     invoke-super {p0}, Lcom/zhangdan/app/activities/WrappedActivity;->onDestroy()V
 
+    .line 262
     return-void
 .end method
 
 .method protected onPause()V
     .locals 1
 
+    .prologue
+    .line 266
     invoke-super {p0}, Lcom/zhangdan/app/activities/WrappedActivity;->onPause()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->n:Lcom/zhangdan/app/g/b;
+    .line 267
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mShakeManager:Lcom/zhangdan/app/shake/ShakeManager;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/g/b;->b()V
+    invoke-virtual {v0}, Lcom/zhangdan/app/shake/ShakeManager;->pause()V
 
+    .line 268
     return-void
 .end method
 
 .method protected onResume()V
     .locals 1
 
+    .prologue
+    .line 272
     invoke-super {p0}, Lcom/zhangdan/app/activities/WrappedActivity;->onResume()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->n:Lcom/zhangdan/app/g/b;
+    .line 273
+    iget-object v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mShakeManager:Lcom/zhangdan/app/shake/ShakeManager;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/g/b;->a()V
+    invoke-virtual {v0}, Lcom/zhangdan/app/shake/ShakeManager;->start()V
 
+    .line 274
     return-void
 .end method
 
 .method protected onSaveInstanceState(Landroid/os/Bundle;)V
     .locals 0
+    .parameter "outState"
 
+    .prologue
+    .line 109
     invoke-super {p0, p1}, Lcom/zhangdan/app/activities/WrappedActivity;->onSaveInstanceState(Landroid/os/Bundle;)V
 
+    .line 110
     return-void
+.end method
+
+.method public onShake()V
+    .locals 1
+
+    .prologue
+    .line 362
+    iget-boolean v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->isScaning:Z
+
+    if-eqz v0, :cond_0
+
+    .line 370
+    :goto_0
+    return-void
+
+    .line 365
+    :cond_0
+    iget v0, p0, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->mScanCount:I
+
+    if-nez v0, :cond_1
+
+    .line 366
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->startScanSms()V
+
+    goto :goto_0
+
+    .line 368
+    :cond_1
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/sms/SmsBillActivity;->finish()V
+
+    goto :goto_0
 .end method

@@ -1,5 +1,14 @@
 .class public abstract Lcom/actionbarsherlock/view/Window;
 .super Landroid/view/Window;
+.source "Window.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/actionbarsherlock/view/Window$Callback;
+    }
+.end annotation
 
 
 # static fields
@@ -19,8 +28,12 @@
 # direct methods
 .method private constructor <init>(Landroid/content/Context;)V
     .locals 0
+    .parameter "context"
 
+    .prologue
+    .line 48
     invoke-direct {p0, p1}, Landroid/view/Window;-><init>(Landroid/content/Context;)V
 
+    .line 49
     return-void
 .end method

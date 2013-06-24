@@ -1,4 +1,4 @@
-.class final synthetic Lsdk/b/a/a/e/d/b;
+.class synthetic Lsdk/b/a/a/e/d/b;
 .super Ljava/lang/Object;
 
 

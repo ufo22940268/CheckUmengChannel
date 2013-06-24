@@ -1,4 +1,4 @@
-.class final Lcom/igexin/a/a/c/a;
+.class Lcom/igexin/a/a/c/a;
 .super Ljava/lang/Object;
 
 
@@ -24,7 +24,7 @@
 
     iput v0, p0, Lcom/igexin/a/a/c/a;->d:I
 
-    invoke-static {p1}, Lcom/igexin/a/a/a/i;->a(Ljava/lang/Object;)V
+    invoke-static {p1}, Lcom/igexin/a/a/a/k;->a(Ljava/lang/Object;)V
 
     const-string v0, "\r\n?"
 
@@ -45,37 +45,9 @@
     return-void
 .end method
 
-.method private o()Ljava/lang/String;
-    .locals 3
-
-    iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
-
-    iget v1, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    iget-object v2, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
-
-    invoke-virtual {v2}, Ljava/lang/String;->length()I
-
-    move-result v2
-
-    invoke-virtual {v0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
-
-    invoke-virtual {v1}, Ljava/lang/String;->length()I
-
-    move-result v1
-
-    iput v1, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    return-object v0
-.end method
-
 
 # virtual methods
-.method final a()I
+.method a()I
     .locals 1
 
     iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
@@ -83,7 +55,7 @@
     return v0
 .end method
 
-.method final a(C)Ljava/lang/String;
+.method a(C)Ljava/lang/String;
     .locals 3
 
     iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
@@ -120,14 +92,14 @@
     return-object v0
 
     :cond_0
-    invoke-direct {p0}, Lcom/igexin/a/a/c/a;->o()Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/igexin/a/a/c/a;->i()Ljava/lang/String;
 
     move-result-object v0
 
     goto :goto_0
 .end method
 
-.method final a(Ljava/lang/String;)Ljava/lang/String;
+.method a(Ljava/lang/String;)Ljava/lang/String;
     .locals 3
 
     iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
@@ -164,14 +136,14 @@
     return-object v0
 
     :cond_0
-    invoke-direct {p0}, Lcom/igexin/a/a/c/a;->o()Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/igexin/a/a/c/a;->i()Ljava/lang/String;
 
     move-result-object v0
 
     goto :goto_0
 .end method
 
-.method final varargs a([C)Ljava/lang/String;
+.method varargs a([C)Ljava/lang/String;
     .locals 5
 
     iget v1, p0, Lcom/igexin/a/a/c/a;->c:I
@@ -181,7 +153,7 @@
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_0
 
     iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
 
@@ -196,29 +168,16 @@
     const/4 v0, 0x0
 
     :goto_1
-    if-ge v0, v3, :cond_0
+    if-ge v0, v3, :cond_2
 
     aget-char v4, p1, v0
 
-    if-eq v4, v2, :cond_1
-
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_1
+    if-ne v4, v2, :cond_1
 
     :cond_0
     iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
 
-    add-int/lit8 v0, v0, 0x1
-
-    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    goto :goto_0
-
-    :cond_1
-    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    if-le v0, v1, :cond_2
+    if-le v0, v1, :cond_3
 
     iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
 
@@ -231,13 +190,27 @@
     :goto_2
     return-object v0
 
+    :cond_1
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_1
+
     :cond_2
+    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    add-int/lit8 v0, v0, 0x1
+
+    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    goto :goto_0
+
+    :cond_3
     const-string v0, ""
 
     goto :goto_2
 .end method
 
-.method final b()Z
+.method b()Z
     .locals 2
 
     iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
@@ -257,7 +230,7 @@
     goto :goto_0
 .end method
 
-.method final b(C)Z
+.method b(C)Z
     .locals 2
 
     invoke-virtual {p0}, Lcom/igexin/a/a/c/a;->b()Z
@@ -287,7 +260,7 @@
     goto :goto_0
 .end method
 
-.method final b(Ljava/lang/String;)Z
+.method b(Ljava/lang/String;)Z
     .locals 2
 
     iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
@@ -298,30 +271,10 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
-
-    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result v1
-
-    add-int/2addr v0, v1
-
-    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    const/4 v0, 0x1
-
-    :goto_0
     return v0
-
-    :cond_0
-    const/4 v0, 0x0
-
-    goto :goto_0
 .end method
 
-.method final varargs b([C)Z
+.method varargs b([C)Z
     .locals 5
 
     const/4 v0, 0x0
@@ -366,7 +319,7 @@
     goto :goto_1
 .end method
 
-.method final c()C
+.method c()C
     .locals 2
 
     invoke-virtual {p0}, Lcom/igexin/a/a/c/a;->b()Z
@@ -392,16 +345,16 @@
     goto :goto_0
 .end method
 
-.method final c(Ljava/lang/String;)Z
+.method c(Ljava/lang/String;)Z
     .locals 6
-
-    const/4 v1, 0x1
-
-    const/4 v4, 0x0
 
     iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
 
+    const/4 v1, 0x1
+
     iget v2, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    const/4 v4, 0x0
 
     invoke-virtual {p1}, Ljava/lang/String;->length()I
 
@@ -413,28 +366,10 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
-
-    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    invoke-virtual {p1}, Ljava/lang/String;->length()I
-
-    move-result v2
-
-    add-int/2addr v0, v2
-
-    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    :goto_0
-    return v1
-
-    :cond_0
-    move v1, v4
-
-    goto :goto_0
+    return v0
 .end method
 
-.method final d()C
+.method d()C
     .locals 2
 
     invoke-virtual {p0}, Lcom/igexin/a/a/c/a;->b()Z
@@ -466,8 +401,94 @@
     goto :goto_0
 .end method
 
-.method final d(Ljava/lang/String;)Z
-    .locals 4
+.method d(Ljava/lang/String;)Z
+    .locals 2
+
+    invoke-virtual {p0, p1}, Lcom/igexin/a/a/c/a;->b(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    move-result v1
+
+    add-int/2addr v0, v1
+
+    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method e()V
+    .locals 1
+
+    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    add-int/lit8 v0, v0, -0x1
+
+    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    return-void
+.end method
+
+.method e(Ljava/lang/String;)Z
+    .locals 2
+
+    invoke-virtual {p0, p1}, Lcom/igexin/a/a/c/a;->c(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    invoke-virtual {p1}, Ljava/lang/String;->length()I
+
+    move-result v1
+
+    add-int/2addr v0, v1
+
+    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method f()V
+    .locals 1
+
+    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    add-int/lit8 v0, v0, 0x1
+
+    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    return-void
+.end method
+
+.method f(Ljava/lang/String;)Z
+    .locals 5
+
+    const/4 v4, -0x1
 
     invoke-virtual {p1}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
@@ -485,7 +506,7 @@
 
     move-result v0
 
-    if-gez v0, :cond_0
+    if-gt v0, v4, :cond_0
 
     iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
 
@@ -495,7 +516,7 @@
 
     move-result v0
 
-    if-ltz v0, :cond_1
+    if-le v0, v4, :cond_1
 
     :cond_0
     const/4 v0, 0x1
@@ -509,31 +530,7 @@
     goto :goto_0
 .end method
 
-.method final e()V
-    .locals 1
-
-    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    add-int/lit8 v0, v0, -0x1
-
-    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    return-void
-.end method
-
-.method final f()V
-    .locals 1
-
-    iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    add-int/lit8 v0, v0, 0x1
-
-    iput v0, p0, Lcom/igexin/a/a/c/a;->c:I
-
-    return-void
-.end method
-
-.method final g()V
+.method g()V
     .locals 1
 
     iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
@@ -543,7 +540,7 @@
     return-void
 .end method
 
-.method final h()V
+.method h()V
     .locals 1
 
     iget v0, p0, Lcom/igexin/a/a/c/a;->d:I
@@ -553,7 +550,35 @@
     return-void
 .end method
 
-.method final i()Ljava/lang/String;
+.method i()Ljava/lang/String;
+    .locals 3
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
+
+    iget v1, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    iget-object v2, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
+
+    invoke-virtual {v2}, Ljava/lang/String;->length()I
+
+    move-result v2
+
+    invoke-virtual {v0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;
+
+    invoke-virtual {v1}, Ljava/lang/String;->length()I
+
+    move-result v1
+
+    iput v1, p0, Lcom/igexin/a/a/c/a;->c:I
+
+    return-object v0
+.end method
+
+.method j()Ljava/lang/String;
     .locals 3
 
     iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
@@ -611,7 +636,7 @@
     return-object v0
 .end method
 
-.method final j()Ljava/lang/String;
+.method k()Ljava/lang/String;
     .locals 3
 
     iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
@@ -701,7 +726,7 @@
     return-object v0
 .end method
 
-.method final k()Ljava/lang/String;
+.method l()Ljava/lang/String;
     .locals 3
 
     iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
@@ -768,7 +793,7 @@
     return-object v0
 .end method
 
-.method final l()Ljava/lang/String;
+.method m()Ljava/lang/String;
     .locals 3
 
     iget v0, p0, Lcom/igexin/a/a/c/a;->c:I
@@ -816,7 +841,7 @@
     return-object v0
 .end method
 
-.method final m()Z
+.method n()Z
     .locals 3
 
     const/4 v0, 0x0
@@ -863,7 +888,7 @@
     goto :goto_0
 .end method
 
-.method final n()Z
+.method o()Z
     .locals 3
 
     const/4 v0, 0x0
@@ -900,7 +925,7 @@
     goto :goto_0
 .end method
 
-.method public final toString()Ljava/lang/String;
+.method public toString()Ljava/lang/String;
     .locals 2
 
     iget-object v0, p0, Lcom/igexin/a/a/c/a;->a:Ljava/lang/String;

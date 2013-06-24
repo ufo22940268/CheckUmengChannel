@@ -5,6 +5,17 @@
 .implements Landroid/view/View$OnClickListener;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/baidu/mapapi/PlaceCaterActivity;->a(Landroid/util/DisplayMetrics;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
 # instance fields
 .field final synthetic a:Lcom/baidu/mapapi/PlaceCaterActivity;
 
@@ -44,9 +55,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "tel:"
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
 

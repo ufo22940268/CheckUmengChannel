@@ -1,43 +1,56 @@
-.class public final Lcom/baidu/location/i;
+.class public Lcom/baidu/location/i;
 .super Ljava/lang/Object;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/location/i$b;,
+        Lcom/baidu/location/i$a;
+    }
+.end annotation
+
+
+# static fields
+.field public static final new:Ljava/lang/String; = "android.com.baidu.location.TIMER.NOTIFY"
+
+
 # instance fields
-.field private a:Ljava/lang/String;
+.field private a:I
 
-.field private b:Ljava/util/ArrayList;
+.field private b:J
 
-.field private c:F
+.field private byte:Ljava/util/ArrayList;
 
-.field private d:Lcom/baidu/location/a;
+.field private c:Z
 
-.field private e:J
+.field private case:Lcom/baidu/location/BDLocation;
 
-.field private f:Lcom/baidu/location/e;
+.field private char:J
 
-.field private g:Landroid/content/Context;
+.field private d:Lcom/baidu/location/LocationClient;
 
-.field private h:I
+.field private do:Ljava/lang/String;
 
-.field private i:J
+.field private else:Lcom/baidu/location/i$b;
 
-.field private j:Z
+.field private for:Landroid/app/AlarmManager;
 
-.field private k:Z
+.field private goto:F
 
-.field private l:Landroid/app/PendingIntent;
+.field private if:Landroid/content/Context;
 
-.field private m:Landroid/app/AlarmManager;
+.field private int:Lcom/baidu/location/i$a;
 
-.field private n:Lcom/baidu/location/i$b;
+.field private long:Z
 
-.field private o:Lcom/baidu/location/aj;
+.field private try:Landroid/app/PendingIntent;
 
-.field private p:Z
+.field private void:Z
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Lcom/baidu/location/e;)V
+.method public constructor <init>(Landroid/content/Context;Lcom/baidu/location/LocationClient;)V
     .locals 5
 
     const-wide/16 v3, 0x0
@@ -50,55 +63,55 @@
 
     const-string v0, "baidu_location_service"
 
-    iput-object v0, p0, Lcom/baidu/location/i;->a:Ljava/lang/String;
+    iput-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
 
-    iput-object v1, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
+    iput-object v1, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
 
     const v0, 0x7f7fffff
 
-    iput v0, p0, Lcom/baidu/location/i;->c:F
+    iput v0, p0, Lcom/baidu/location/i;->goto:F
 
-    iput-object v1, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/a;
+    iput-object v1, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
 
-    iput-wide v3, p0, Lcom/baidu/location/i;->e:J
+    iput-wide v3, p0, Lcom/baidu/location/i;->b:J
 
-    iput-object v1, p0, Lcom/baidu/location/i;->f:Lcom/baidu/location/e;
+    iput-object v1, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/LocationClient;
 
-    iput-object v1, p0, Lcom/baidu/location/i;->g:Landroid/content/Context;
+    iput-object v1, p0, Lcom/baidu/location/i;->if:Landroid/content/Context;
 
-    iput v2, p0, Lcom/baidu/location/i;->h:I
+    iput v2, p0, Lcom/baidu/location/i;->a:I
 
-    iput-wide v3, p0, Lcom/baidu/location/i;->i:J
+    iput-wide v3, p0, Lcom/baidu/location/i;->char:J
 
-    iput-boolean v2, p0, Lcom/baidu/location/i;->j:Z
+    iput-boolean v2, p0, Lcom/baidu/location/i;->void:Z
 
-    iput-boolean v2, p0, Lcom/baidu/location/i;->k:Z
+    iput-boolean v2, p0, Lcom/baidu/location/i;->long:Z
 
-    iput-object v1, p0, Lcom/baidu/location/i;->l:Landroid/app/PendingIntent;
+    iput-object v1, p0, Lcom/baidu/location/i;->try:Landroid/app/PendingIntent;
 
-    iput-object v1, p0, Lcom/baidu/location/i;->m:Landroid/app/AlarmManager;
+    iput-object v1, p0, Lcom/baidu/location/i;->for:Landroid/app/AlarmManager;
 
-    iput-object v1, p0, Lcom/baidu/location/i;->n:Lcom/baidu/location/i$b;
+    iput-object v1, p0, Lcom/baidu/location/i;->else:Lcom/baidu/location/i$b;
 
-    new-instance v0, Lcom/baidu/location/aj;
+    new-instance v0, Lcom/baidu/location/i$a;
 
-    invoke-direct {v0, p0}, Lcom/baidu/location/aj;-><init>(Lcom/baidu/location/i;)V
+    invoke-direct {v0, p0}, Lcom/baidu/location/i$a;-><init>(Lcom/baidu/location/i;)V
 
-    iput-object v0, p0, Lcom/baidu/location/i;->o:Lcom/baidu/location/aj;
+    iput-object v0, p0, Lcom/baidu/location/i;->int:Lcom/baidu/location/i$a;
 
-    iput-boolean v2, p0, Lcom/baidu/location/i;->p:Z
+    iput-boolean v2, p0, Lcom/baidu/location/i;->c:Z
 
-    iput-object p1, p0, Lcom/baidu/location/i;->g:Landroid/content/Context;
+    iput-object p1, p0, Lcom/baidu/location/i;->if:Landroid/content/Context;
 
-    iput-object p2, p0, Lcom/baidu/location/i;->f:Lcom/baidu/location/e;
+    iput-object p2, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/LocationClient;
 
-    iget-object v0, p0, Lcom/baidu/location/i;->f:Lcom/baidu/location/e;
+    iget-object v0, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/LocationClient;
 
-    iget-object v1, p0, Lcom/baidu/location/i;->o:Lcom/baidu/location/aj;
+    iget-object v1, p0, Lcom/baidu/location/i;->int:Lcom/baidu/location/i$a;
 
-    invoke-virtual {v0, v1}, Lcom/baidu/location/e;->a(Lcom/baidu/location/c;)V
+    invoke-virtual {v0, v1}, Lcom/baidu/location/LocationClient;->registerNotifyLocationListener(Lcom/baidu/location/BDLocationListener;)V
 
-    iget-object v0, p0, Lcom/baidu/location/i;->g:Landroid/content/Context;
+    iget-object v0, p0, Lcom/baidu/location/i;->if:Landroid/content/Context;
 
     const-string v1, "alarm"
 
@@ -108,15 +121,15 @@
 
     check-cast v0, Landroid/app/AlarmManager;
 
-    iput-object v0, p0, Lcom/baidu/location/i;->m:Landroid/app/AlarmManager;
+    iput-object v0, p0, Lcom/baidu/location/i;->for:Landroid/app/AlarmManager;
 
     new-instance v0, Lcom/baidu/location/i$b;
 
     invoke-direct {v0, p0}, Lcom/baidu/location/i$b;-><init>(Lcom/baidu/location/i;)V
 
-    iput-object v0, p0, Lcom/baidu/location/i;->n:Lcom/baidu/location/i$b;
+    iput-object v0, p0, Lcom/baidu/location/i;->else:Lcom/baidu/location/i$b;
 
-    iput-boolean v2, p0, Lcom/baidu/location/i;->p:Z
+    iput-boolean v2, p0, Lcom/baidu/location/i;->c:Z
 
     return-void
 .end method
@@ -124,9 +137,134 @@
 .method static synthetic a(Lcom/baidu/location/i;)Ljava/lang/String;
     .locals 1
 
-    iget-object v0, p0, Lcom/baidu/location/i;->a:Ljava/lang/String;
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
 
     return-object v0
+.end method
+
+.method private a()V
+    .locals 8
+
+    const/16 v1, 0x2710
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x1
+
+    invoke-direct {p0}, Lcom/baidu/location/i;->do()Z
+
+    move-result v0
+
+    if-nez v0, :cond_1
+
+    :cond_0
+    :goto_0
+    return-void
+
+    :cond_1
+    iget v0, p0, Lcom/baidu/location/i;->goto:F
+
+    const v4, 0x459c4000
+
+    cmpl-float v0, v0, v4
+
+    if-lez v0, :cond_2
+
+    const v0, 0x927c0
+
+    :goto_1
+    iget-boolean v4, p0, Lcom/baidu/location/i;->long:Z
+
+    if-eqz v4, :cond_6
+
+    iput-boolean v2, p0, Lcom/baidu/location/i;->long:Z
+
+    :goto_2
+    iget v0, p0, Lcom/baidu/location/i;->a:I
+
+    if-eqz v0, :cond_5
+
+    iget-wide v4, p0, Lcom/baidu/location/i;->char:J
+
+    iget v0, p0, Lcom/baidu/location/i;->a:I
+
+    int-to-long v6, v0
+
+    add-long/2addr v4, v6
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v6
+
+    sub-long/2addr v4, v6
+
+    int-to-long v6, v1
+
+    cmp-long v0, v6, v4
+
+    if-lez v0, :cond_5
+
+    move v0, v2
+
+    :goto_3
+    if-eqz v0, :cond_0
+
+    iput v1, p0, Lcom/baidu/location/i;->a:I
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    iput-wide v0, p0, Lcom/baidu/location/i;->char:J
+
+    iget v0, p0, Lcom/baidu/location/i;->a:I
+
+    int-to-long v0, v0
+
+    invoke-direct {p0, v0, v1}, Lcom/baidu/location/i;->a(J)V
+
+    goto :goto_0
+
+    :cond_2
+    iget v0, p0, Lcom/baidu/location/i;->goto:F
+
+    const/high16 v4, 0x447a
+
+    cmpl-float v0, v0, v4
+
+    if-lez v0, :cond_3
+
+    const v0, 0x1d4c0
+
+    goto :goto_1
+
+    :cond_3
+    iget v0, p0, Lcom/baidu/location/i;->goto:F
+
+    const/high16 v4, 0x43fa
+
+    cmpl-float v0, v0, v4
+
+    if-lez v0, :cond_4
+
+    const v0, 0xea60
+
+    goto :goto_1
+
+    :cond_4
+    move v0, v1
+
+    goto :goto_1
+
+    :cond_5
+    move v0, v3
+
+    goto :goto_3
+
+    :cond_6
+    move v1, v0
+
+    goto :goto_2
 .end method
 
 .method private a(J)V
@@ -134,18 +272,18 @@
 
     const/4 v4, 0x0
 
-    iget-boolean v0, p0, Lcom/baidu/location/i;->j:Z
+    iget-boolean v0, p0, Lcom/baidu/location/i;->void:Z
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/baidu/location/i;->m:Landroid/app/AlarmManager;
+    iget-object v0, p0, Lcom/baidu/location/i;->for:Landroid/app/AlarmManager;
 
-    iget-object v1, p0, Lcom/baidu/location/i;->l:Landroid/app/PendingIntent;
+    iget-object v1, p0, Lcom/baidu/location/i;->try:Landroid/app/PendingIntent;
 
     invoke-virtual {v0, v1}, Landroid/app/AlarmManager;->cancel(Landroid/app/PendingIntent;)V
 
     :cond_0
-    iget-object v0, p0, Lcom/baidu/location/i;->g:Landroid/content/Context;
+    iget-object v0, p0, Lcom/baidu/location/i;->if:Landroid/content/Context;
 
     new-instance v1, Landroid/content/Intent;
 
@@ -159,9 +297,9 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/baidu/location/i;->l:Landroid/app/PendingIntent;
+    iput-object v0, p0, Lcom/baidu/location/i;->try:Landroid/app/PendingIntent;
 
-    iget-object v0, p0, Lcom/baidu/location/i;->m:Landroid/app/AlarmManager;
+    iget-object v0, p0, Lcom/baidu/location/i;->for:Landroid/app/AlarmManager;
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
@@ -169,41 +307,49 @@
 
     add-long/2addr v1, p1
 
-    iget-object v3, p0, Lcom/baidu/location/i;->l:Landroid/app/PendingIntent;
+    iget-object v3, p0, Lcom/baidu/location/i;->try:Landroid/app/PendingIntent;
 
     invoke-virtual {v0, v4, v1, v2, v3}, Landroid/app/AlarmManager;->set(IJLandroid/app/PendingIntent;)V
 
-    iget-object v0, p0, Lcom/baidu/location/i;->a:Ljava/lang/String;
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    const-string v1, "timer start:"
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v2, "timer start:"
 
-    invoke-virtual {v0, p1, p2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, p1, p2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
     return-void
 .end method
 
-.method static synthetic a(Lcom/baidu/location/i;Lcom/baidu/location/a;)V
+.method private a(Lcom/baidu/location/BDLocation;)V
     .locals 12
 
-    iget-object v0, p0, Lcom/baidu/location/i;->a:Ljava/lang/String;
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    const-string v1, "notify new loation"
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
     const/4 v0, 0x0
 
-    iput-boolean v0, p0, Lcom/baidu/location/i;->j:Z
+    iput-boolean v0, p0, Lcom/baidu/location/i;->void:Z
 
-    invoke-virtual {p1}, Lcom/baidu/location/a;->d()I
+    invoke-virtual {p1}, Lcom/baidu/location/BDLocation;->getLocType()I
 
     move-result v0
 
@@ -211,7 +357,7 @@
 
     if-eq v0, v1, :cond_1
 
-    invoke-virtual {p1}, Lcom/baidu/location/a;->d()I
+    invoke-virtual {p1}, Lcom/baidu/location/BDLocation;->getLocType()I
 
     move-result v0
 
@@ -219,7 +365,7 @@
 
     if-eq v0, v1, :cond_1
 
-    invoke-virtual {p1}, Lcom/baidu/location/a;->d()I
+    invoke-virtual {p1}, Lcom/baidu/location/BDLocation;->getLocType()I
 
     move-result v0
 
@@ -240,7 +386,7 @@
 
     move-result-wide v0
 
-    iget-wide v2, p0, Lcom/baidu/location/i;->e:J
+    iget-wide v2, p0, Lcom/baidu/location/i;->b:J
 
     sub-long/2addr v0, v2
 
@@ -250,17 +396,17 @@
 
     if-ltz v0, :cond_0
 
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
 
     if-eqz v0, :cond_0
 
-    iput-object p1, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/a;
+    iput-object p1, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
-    iput-wide v0, p0, Lcom/baidu/location/i;->e:J
+    iput-wide v0, p0, Lcom/baidu/location/i;->b:J
 
     const/4 v0, 0x1
 
@@ -268,7 +414,7 @@
 
     const v0, 0x7f7fffff
 
-    iget-object v1, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
 
     invoke-virtual {v1}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
@@ -276,7 +422,6 @@
 
     move v10, v0
 
-    :cond_2
     :goto_1
     invoke-interface {v11}, Ljava/util/Iterator;->hasNext()Z
 
@@ -290,19 +435,19 @@
 
     move-object v9, v0
 
-    check-cast v9, Lcom/baidu/location/d;
+    check-cast v9, Lcom/baidu/location/BDNotifyListener;
 
-    invoke-virtual {p1}, Lcom/baidu/location/a;->a()D
+    invoke-virtual {p1}, Lcom/baidu/location/BDLocation;->getLatitude()D
 
     move-result-wide v0
 
-    invoke-virtual {p1}, Lcom/baidu/location/a;->b()D
+    invoke-virtual {p1}, Lcom/baidu/location/BDLocation;->getLongitude()D
 
     move-result-wide v2
 
-    iget-wide v4, v9, Lcom/baidu/location/d;->f:D
+    iget-wide v4, v9, Lcom/baidu/location/BDNotifyListener;->mLatitudeC:D
 
-    iget-wide v6, v9, Lcom/baidu/location/d;->g:D
+    iget-wide v6, v9, Lcom/baidu/location/BDNotifyListener;->mLongitudeC:D
 
     invoke-static/range {v0 .. v8}, Landroid/location/Location;->distanceBetween(DDDD[F)V
 
@@ -310,342 +455,238 @@
 
     aget v0, v8, v0
 
-    iget v1, v9, Lcom/baidu/location/d;->c:F
+    iget v1, v9, Lcom/baidu/location/BDNotifyListener;->mRadius:F
 
     sub-float/2addr v0, v1
 
-    invoke-virtual {p1}, Lcom/baidu/location/a;->c()F
+    invoke-virtual {p1}, Lcom/baidu/location/BDLocation;->getRadius()F
 
     move-result v1
 
     sub-float/2addr v0, v1
 
-    iget-object v1, p0, Lcom/baidu/location/i;->a:Ljava/lang/String;
+    iget-object v1, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    const-string v2, "distance:"
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v3, "distance:"
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
     const/4 v1, 0x0
 
     cmpl-float v1, v0, v1
 
-    if-lez v1, :cond_3
+    if-lez v1, :cond_2
 
     cmpg-float v1, v0, v10
 
-    if-gez v1, :cond_2
+    if-gez v1, :cond_3
 
+    :goto_2
     move v10, v0
 
     goto :goto_1
 
-    :cond_3
-    iget v0, v9, Lcom/baidu/location/d;->h:I
+    :cond_2
+    iget v0, v9, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
     const/4 v1, 0x3
 
-    if-ge v0, v1, :cond_2
+    if-ge v0, v1, :cond_3
 
-    iget v0, v9, Lcom/baidu/location/d;->h:I
+    iget v0, v9, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
     add-int/lit8 v0, v0, 0x1
 
-    iput v0, v9, Lcom/baidu/location/d;->h:I
+    iput v0, v9, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
     const/4 v0, 0x0
 
     aget v0, v8, v0
 
-    invoke-static {v0}, Lcom/baidu/location/d;->a(F)V
+    invoke-virtual {v9, p1, v0}, Lcom/baidu/location/BDNotifyListener;->onNotify(Lcom/baidu/location/BDLocation;F)V
 
-    iget v0, v9, Lcom/baidu/location/d;->h:I
+    iget v0, v9, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
     const/4 v1, 0x3
 
-    if-ge v0, v1, :cond_2
+    if-ge v0, v1, :cond_3
 
     const/4 v0, 0x1
 
-    iput-boolean v0, p0, Lcom/baidu/location/i;->k:Z
+    iput-boolean v0, p0, Lcom/baidu/location/i;->long:Z
 
-    goto :goto_1
+    :cond_3
+    move v0, v10
+
+    goto :goto_2
 
     :cond_4
-    iget v0, p0, Lcom/baidu/location/i;->c:F
+    iget v0, p0, Lcom/baidu/location/i;->goto:F
 
     cmpg-float v0, v10, v0
 
     if-gez v0, :cond_5
 
-    iput v10, p0, Lcom/baidu/location/i;->c:F
+    iput v10, p0, Lcom/baidu/location/i;->goto:F
 
     :cond_5
     const/4 v0, 0x0
 
-    iput v0, p0, Lcom/baidu/location/i;->h:I
+    iput v0, p0, Lcom/baidu/location/i;->a:I
 
-    invoke-direct {p0}, Lcom/baidu/location/i;->b()V
+    invoke-direct {p0}, Lcom/baidu/location/i;->a()V
 
     goto/16 :goto_0
 .end method
 
-.method static synthetic b(Lcom/baidu/location/i;)Ljava/util/ArrayList;
+.method static synthetic a(Lcom/baidu/location/i;Lcom/baidu/location/BDLocation;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Lcom/baidu/location/i;->a(Lcom/baidu/location/BDLocation;)V
+
+    return-void
+.end method
+
+.method static synthetic do(Lcom/baidu/location/i;)Ljava/util/ArrayList;
     .locals 1
 
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
 
     return-object v0
 .end method
 
-.method private b()V
-    .locals 7
+.method private do()Z
+    .locals 4
 
-    const/16 v4, 0x2710
+    const/4 v0, 0x0
 
-    const/4 v3, 0x1
+    iget-object v1, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
 
-    const/4 v2, 0x0
+    if-eqz v1, :cond_0
 
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
+    iget-object v1, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
 
-    if-eqz v0, :cond_0
+    invoke-virtual {v1}, Ljava/util/ArrayList;->isEmpty()Z
 
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
+    move-result v1
 
-    invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_3
+    if-eqz v1, :cond_2
 
     :cond_0
-    move v1, v2
+    move v1, v0
 
     :cond_1
-    if-nez v1, :cond_4
+    return v1
 
     :cond_2
+    iget-object v1, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
+
+    invoke-virtual {v1}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+
+    move-result-object v2
+
+    move v1, v0
+
     :goto_0
-    return-void
-
-    :cond_3
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
-
-    move-result-object v5
-
-    move v1, v2
-
-    :goto_1
-    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
 
-    check-cast v0, Lcom/baidu/location/d;
+    check-cast v0, Lcom/baidu/location/BDNotifyListener;
 
-    iget v0, v0, Lcom/baidu/location/d;->h:I
+    iget v0, v0, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
-    const/4 v6, 0x3
+    const/4 v3, 0x3
 
-    if-ge v0, v6, :cond_a
+    if-ge v0, v3, :cond_3
 
-    move v0, v3
+    const/4 v0, 0x1
 
-    :goto_2
+    :goto_1
     move v1, v0
-
-    goto :goto_1
-
-    :cond_4
-    iget v0, p0, Lcom/baidu/location/i;->c:F
-
-    const v1, 0x459c4000
-
-    cmpl-float v0, v0, v1
-
-    if-lez v0, :cond_6
-
-    const v0, 0x927c0
-
-    :goto_3
-    iget-boolean v1, p0, Lcom/baidu/location/i;->k:Z
-
-    if-eqz v1, :cond_9
-
-    iput-boolean v2, p0, Lcom/baidu/location/i;->k:Z
-
-    :goto_4
-    iget v0, p0, Lcom/baidu/location/i;->h:I
-
-    if-eqz v0, :cond_5
-
-    iget-wide v0, p0, Lcom/baidu/location/i;->i:J
-
-    iget v5, p0, Lcom/baidu/location/i;->h:I
-
-    int-to-long v5, v5
-
-    add-long/2addr v0, v5
-
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v5
-
-    sub-long/2addr v0, v5
-
-    int-to-long v5, v4
-
-    cmp-long v0, v5, v0
-
-    if-lez v0, :cond_5
-
-    move v3, v2
-
-    :cond_5
-    if-eqz v3, :cond_2
-
-    iput v4, p0, Lcom/baidu/location/i;->h:I
-
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v0
-
-    iput-wide v0, p0, Lcom/baidu/location/i;->i:J
-
-    iget v0, p0, Lcom/baidu/location/i;->h:I
-
-    int-to-long v0, v0
-
-    invoke-direct {p0, v0, v1}, Lcom/baidu/location/i;->a(J)V
 
     goto :goto_0
 
-    :cond_6
-    iget v0, p0, Lcom/baidu/location/i;->c:F
-
-    const/high16 v1, 0x447a
-
-    cmpl-float v0, v0, v1
-
-    if-lez v0, :cond_7
-
-    const v0, 0x1d4c0
-
-    goto :goto_3
-
-    :cond_7
-    iget v0, p0, Lcom/baidu/location/i;->c:F
-
-    const/high16 v1, 0x43fa
-
-    cmpl-float v0, v0, v1
-
-    if-lez v0, :cond_8
-
-    const v0, 0xea60
-
-    goto :goto_3
-
-    :cond_8
-    move v0, v4
-
-    goto :goto_3
-
-    :cond_9
-    move v4, v0
-
-    goto :goto_4
-
-    :cond_a
+    :cond_3
     move v0, v1
 
-    goto :goto_2
+    goto :goto_1
 .end method
 
-.method static synthetic c(Lcom/baidu/location/i;)Lcom/baidu/location/e;
+.method static synthetic if(Lcom/baidu/location/i;)Lcom/baidu/location/LocationClient;
     .locals 1
 
-    iget-object v0, p0, Lcom/baidu/location/i;->f:Lcom/baidu/location/e;
+    iget-object v0, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/LocationClient;
 
     return-object v0
 .end method
 
 
 # virtual methods
-.method public final a(Lcom/baidu/location/d;)I
+.method public a(Lcom/baidu/location/BDNotifyListener;)V
     .locals 12
 
     const/4 v11, 0x3
 
-    const/4 v10, 0x0
+    const/4 v10, 0x1
 
-    const/4 v9, 0x1
+    const/4 v9, 0x0
 
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    iget-object v2, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "2gcj"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
+
+    iget-object v0, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
 
     if-nez v0, :cond_0
 
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
+    :goto_0
+    return-void
 
     :cond_0
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    iput-boolean v9, p1, Lcom/baidu/location/d;->i:Z
-
-    iput-object p0, p1, Lcom/baidu/location/d;->j:Lcom/baidu/location/i;
-
-    iget-boolean v0, p0, Lcom/baidu/location/i;->p:Z
-
-    if-nez v0, :cond_1
-
-    iget-object v0, p0, Lcom/baidu/location/i;->g:Landroid/content/Context;
-
-    iget-object v1, p0, Lcom/baidu/location/i;->n:Lcom/baidu/location/i$b;
-
-    new-instance v2, Landroid/content/IntentFilter;
-
-    const-string v3, "android.com.baidu.location.TIMER.NOTIFY"
-
-    invoke-direct {v2, v3}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-
-    iput-boolean v9, p0, Lcom/baidu/location/i;->p:Z
-
-    :cond_1
-    iget-object v0, p1, Lcom/baidu/location/d;->e:Ljava/lang/String;
-
-    if-nez v0, :cond_2
-
-    :goto_0
-    return v9
-
-    :cond_2
-    iget-object v0, p1, Lcom/baidu/location/d;->e:Ljava/lang/String;
+    iget-object v0, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
 
     const-string v1, "gcj02"
 
@@ -653,17 +694,17 @@
 
     move-result v0
 
-    if-nez v0, :cond_3
+    if-nez v0, :cond_1
 
-    iget-wide v0, p1, Lcom/baidu/location/d;->b:D
+    iget-wide v0, p1, Lcom/baidu/location/BDNotifyListener;->mLongitude:D
 
-    iget-wide v2, p1, Lcom/baidu/location/d;->a:D
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLatitude:D
 
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-object v5, p1, Lcom/baidu/location/d;->e:Ljava/lang/String;
+    iget-object v5, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
 
     invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -679,96 +720,446 @@
 
     move-result-object v4
 
-    invoke-static {v0, v1, v2, v3, v4}, Lcom/baidu/location/Jni;->a(DDLjava/lang/String;)[D
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/baidu/location/Jni;->if(DDLjava/lang/String;)[D
+
+    move-result-object v0
+
+    aget-wide v1, v0, v9
+
+    iput-wide v1, p1, Lcom/baidu/location/BDNotifyListener;->mLongitudeC:D
+
+    aget-wide v0, v0, v10
+
+    iput-wide v0, p1, Lcom/baidu/location/BDNotifyListener;->mLatitudeC:D
+
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    iget-object v2, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "2gcj"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
+
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "coor:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLongitude:D
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ","
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLatitude:D
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ":"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLongitudeC:D
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, ","
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLatitudeC:D
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
+
+    :cond_1
+    iget-object v0, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
+
+    if-eqz v0, :cond_2
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
+    iget-wide v2, p0, Lcom/baidu/location/i;->b:J
+
+    sub-long/2addr v0, v2
+
+    const-wide/32 v2, 0x493e0
+
+    cmp-long v0, v0, v2
+
+    if-lez v0, :cond_4
+
+    :cond_2
+    iget-object v0, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/LocationClient;
+
+    invoke-virtual {v0}, Lcom/baidu/location/LocationClient;->requestNotifyLocation()V
+
+    :cond_3
+    :goto_1
+    invoke-direct {p0}, Lcom/baidu/location/i;->a()V
+
+    goto/16 :goto_0
+
+    :cond_4
+    new-array v8, v10, [F
+
+    iget-object v0, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
+
+    invoke-virtual {v0}, Lcom/baidu/location/BDLocation;->getLatitude()D
+
+    move-result-wide v0
+
+    iget-object v2, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
+
+    invoke-virtual {v2}, Lcom/baidu/location/BDLocation;->getLongitude()D
+
+    move-result-wide v2
+
+    iget-wide v4, p1, Lcom/baidu/location/BDNotifyListener;->mLatitudeC:D
+
+    iget-wide v6, p1, Lcom/baidu/location/BDNotifyListener;->mLongitudeC:D
+
+    invoke-static/range {v0 .. v8}, Landroid/location/Location;->distanceBetween(DDDD[F)V
+
+    aget v0, v8, v9
+
+    iget v1, p1, Lcom/baidu/location/BDNotifyListener;->mRadius:F
+
+    sub-float/2addr v0, v1
+
+    iget-object v1, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
+
+    invoke-virtual {v1}, Lcom/baidu/location/BDLocation;->getRadius()F
+
+    move-result v1
+
+    sub-float/2addr v0, v1
+
+    const/4 v1, 0x0
+
+    cmpl-float v1, v0, v1
+
+    if-lez v1, :cond_5
+
+    iget v1, p0, Lcom/baidu/location/i;->goto:F
+
+    cmpg-float v1, v0, v1
+
+    if-gez v1, :cond_3
+
+    iput v0, p0, Lcom/baidu/location/i;->goto:F
+
+    goto :goto_1
+
+    :cond_5
+    iget v0, p1, Lcom/baidu/location/BDNotifyListener;->Notified:I
+
+    if-ge v0, v11, :cond_3
+
+    iget v0, p1, Lcom/baidu/location/BDNotifyListener;->Notified:I
+
+    add-int/lit8 v0, v0, 0x1
+
+    iput v0, p1, Lcom/baidu/location/BDNotifyListener;->Notified:I
+
+    iget-object v0, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
+
+    aget v1, v8, v9
+
+    invoke-virtual {p1, v0, v1}, Lcom/baidu/location/BDNotifyListener;->onNotify(Lcom/baidu/location/BDLocation;F)V
+
+    iget v0, p1, Lcom/baidu/location/BDNotifyListener;->Notified:I
+
+    if-ge v0, v11, :cond_3
+
+    iput-boolean v10, p0, Lcom/baidu/location/i;->long:Z
+
+    goto :goto_1
+.end method
+
+.method public do(Lcom/baidu/location/BDNotifyListener;)I
+    .locals 2
+
+    iget-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x0
+
+    :goto_0
+    return v0
+
+    :cond_0
+    iget-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
+
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
+
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+    :cond_1
+    iget-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
+
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    if-nez v0, :cond_2
+
+    iget-boolean v0, p0, Lcom/baidu/location/i;->void:Z
+
+    if-eqz v0, :cond_2
+
+    iget-object v0, p0, Lcom/baidu/location/i;->for:Landroid/app/AlarmManager;
+
+    iget-object v1, p0, Lcom/baidu/location/i;->try:Landroid/app/PendingIntent;
+
+    invoke-virtual {v0, v1}, Landroid/app/AlarmManager;->cancel(Landroid/app/PendingIntent;)V
+
+    :cond_2
+    const/4 v0, 0x1
+
+    goto :goto_0
+.end method
+
+.method public if(Lcom/baidu/location/BDNotifyListener;)I
+    .locals 12
+
+    const/4 v11, 0x3
+
+    const/4 v10, 0x0
+
+    const/4 v9, 0x1
+
+    iget-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
+
+    :cond_0
+    iget-object v0, p0, Lcom/baidu/location/i;->byte:Ljava/util/ArrayList;
+
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    iput-boolean v9, p1, Lcom/baidu/location/BDNotifyListener;->isAdded:Z
+
+    iput-object p0, p1, Lcom/baidu/location/BDNotifyListener;->mNotifyCache:Lcom/baidu/location/i;
+
+    iget-boolean v0, p0, Lcom/baidu/location/i;->c:Z
+
+    if-nez v0, :cond_1
+
+    iget-object v0, p0, Lcom/baidu/location/i;->if:Landroid/content/Context;
+
+    iget-object v1, p0, Lcom/baidu/location/i;->else:Lcom/baidu/location/i$b;
+
+    new-instance v2, Landroid/content/IntentFilter;
+
+    const-string v3, "android.com.baidu.location.TIMER.NOTIFY"
+
+    invoke-direct {v2, v3}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+
+    iput-boolean v9, p0, Lcom/baidu/location/i;->c:Z
+
+    :cond_1
+    iget-object v0, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
+
+    if-nez v0, :cond_2
+
+    :goto_0
+    return v9
+
+    :cond_2
+    iget-object v0, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
+
+    const-string v1, "gcj02"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_3
+
+    iget-wide v0, p1, Lcom/baidu/location/BDNotifyListener;->mLongitude:D
+
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLatitude:D
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    iget-object v5, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const-string v5, "2gcj"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/baidu/location/Jni;->if(DDLjava/lang/String;)[D
 
     move-result-object v0
 
     aget-wide v1, v0, v10
 
-    iput-wide v1, p1, Lcom/baidu/location/d;->g:D
+    iput-wide v1, p1, Lcom/baidu/location/BDNotifyListener;->mLongitudeC:D
 
     aget-wide v0, v0, v9
 
-    iput-wide v0, p1, Lcom/baidu/location/d;->f:D
+    iput-wide v0, p1, Lcom/baidu/location/BDNotifyListener;->mLatitudeC:D
 
-    iget-object v0, p0, Lcom/baidu/location/i;->a:Ljava/lang/String;
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-object v1, p1, Lcom/baidu/location/d;->e:Ljava/lang/String;
+    iget-object v2, p1, Lcom/baidu/location/BDNotifyListener;->mCoorType:Ljava/lang/String;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string v1, "2gcj"
+    const-string v2, "2gcj"
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    move-result-object v1
 
-    iget-object v0, p0, Lcom/baidu/location/i;->a:Ljava/lang/String;
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
 
-    const-string v1, "coor:"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-wide v1, p1, Lcom/baidu/location/d;->b:D
+    const-string v2, "coor:"
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string v1, ","
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLongitude:D
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    iget-wide v1, p1, Lcom/baidu/location/d;->a:D
+    const-string v2, ","
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string v1, ":"
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLatitude:D
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    iget-wide v1, p1, Lcom/baidu/location/d;->g:D
+    const-string v2, ":"
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string v1, ","
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLongitudeC:D
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    iget-wide v1, p1, Lcom/baidu/location/d;->f:D
+    const-string v2, ","
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    iget-wide v2, p1, Lcom/baidu/location/BDNotifyListener;->mLatitudeC:D
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(D)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_3
-    iget-object v0, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/a;
+    iget-object v0, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
 
     if-eqz v0, :cond_4
 
@@ -776,7 +1167,7 @@
 
     move-result-wide v0
 
-    iget-wide v2, p0, Lcom/baidu/location/i;->e:J
+    iget-wide v2, p0, Lcom/baidu/location/i;->b:J
 
     sub-long/2addr v0, v2
 
@@ -787,46 +1178,46 @@
     if-lez v0, :cond_6
 
     :cond_4
-    iget-object v0, p0, Lcom/baidu/location/i;->f:Lcom/baidu/location/e;
+    iget-object v0, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/LocationClient;
 
-    invoke-virtual {v0}, Lcom/baidu/location/e;->a()V
+    invoke-virtual {v0}, Lcom/baidu/location/LocationClient;->requestNotifyLocation()V
 
     :cond_5
     :goto_1
-    invoke-direct {p0}, Lcom/baidu/location/i;->b()V
+    invoke-direct {p0}, Lcom/baidu/location/i;->a()V
 
     goto/16 :goto_0
 
     :cond_6
     new-array v8, v9, [F
 
-    iget-object v0, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/a;
+    iget-object v0, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
 
-    invoke-virtual {v0}, Lcom/baidu/location/a;->a()D
+    invoke-virtual {v0}, Lcom/baidu/location/BDLocation;->getLatitude()D
 
     move-result-wide v0
 
-    iget-object v2, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/a;
+    iget-object v2, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
 
-    invoke-virtual {v2}, Lcom/baidu/location/a;->b()D
+    invoke-virtual {v2}, Lcom/baidu/location/BDLocation;->getLongitude()D
 
     move-result-wide v2
 
-    iget-wide v4, p1, Lcom/baidu/location/d;->f:D
+    iget-wide v4, p1, Lcom/baidu/location/BDNotifyListener;->mLatitudeC:D
 
-    iget-wide v6, p1, Lcom/baidu/location/d;->g:D
+    iget-wide v6, p1, Lcom/baidu/location/BDNotifyListener;->mLongitudeC:D
 
     invoke-static/range {v0 .. v8}, Landroid/location/Location;->distanceBetween(DDDD[F)V
 
     aget v0, v8, v10
 
-    iget v1, p1, Lcom/baidu/location/d;->c:F
+    iget v1, p1, Lcom/baidu/location/BDNotifyListener;->mRadius:F
 
     sub-float/2addr v0, v1
 
-    iget-object v1, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/a;
+    iget-object v1, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
 
-    invoke-virtual {v1}, Lcom/baidu/location/a;->c()F
+    invoke-virtual {v1}, Lcom/baidu/location/BDLocation;->getRadius()F
 
     move-result v1
 
@@ -838,132 +1229,84 @@
 
     if-lez v1, :cond_7
 
-    iget v1, p0, Lcom/baidu/location/i;->c:F
+    iget v1, p0, Lcom/baidu/location/i;->goto:F
 
     cmpg-float v1, v0, v1
 
     if-gez v1, :cond_5
 
-    iput v0, p0, Lcom/baidu/location/i;->c:F
+    iput v0, p0, Lcom/baidu/location/i;->goto:F
 
     goto :goto_1
 
     :cond_7
-    iget v0, p1, Lcom/baidu/location/d;->h:I
+    iget v0, p1, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
     if-ge v0, v11, :cond_5
 
-    iget v0, p1, Lcom/baidu/location/d;->h:I
+    iget v0, p1, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
     add-int/lit8 v0, v0, 0x1
 
-    iput v0, p1, Lcom/baidu/location/d;->h:I
+    iput v0, p1, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
-    iget-object v0, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/a;
+    iget-object v0, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
 
-    aget v0, v8, v10
+    aget v1, v8, v10
 
-    invoke-static {v0}, Lcom/baidu/location/d;->a(F)V
+    invoke-virtual {p1, v0, v1}, Lcom/baidu/location/BDNotifyListener;->onNotify(Lcom/baidu/location/BDLocation;F)V
 
-    iget v0, p1, Lcom/baidu/location/d;->h:I
+    iget v0, p1, Lcom/baidu/location/BDNotifyListener;->Notified:I
 
     if-ge v0, v11, :cond_5
 
-    iput-boolean v9, p0, Lcom/baidu/location/i;->k:Z
+    iput-boolean v9, p0, Lcom/baidu/location/i;->long:Z
 
     goto :goto_1
 .end method
 
-.method public final a()V
+.method public if()V
     .locals 2
 
-    iget-boolean v0, p0, Lcom/baidu/location/i;->j:Z
+    iget-boolean v0, p0, Lcom/baidu/location/i;->void:Z
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/baidu/location/i;->m:Landroid/app/AlarmManager;
+    iget-object v0, p0, Lcom/baidu/location/i;->for:Landroid/app/AlarmManager;
 
-    iget-object v1, p0, Lcom/baidu/location/i;->l:Landroid/app/PendingIntent;
+    iget-object v1, p0, Lcom/baidu/location/i;->try:Landroid/app/PendingIntent;
 
     invoke-virtual {v0, v1}, Landroid/app/AlarmManager;->cancel(Landroid/app/PendingIntent;)V
 
     :cond_0
     const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/baidu/location/i;->d:Lcom/baidu/location/a;
+    iput-object v0, p0, Lcom/baidu/location/i;->case:Lcom/baidu/location/BDLocation;
 
     const-wide/16 v0, 0x0
 
-    iput-wide v0, p0, Lcom/baidu/location/i;->e:J
+    iput-wide v0, p0, Lcom/baidu/location/i;->b:J
 
-    iget-boolean v0, p0, Lcom/baidu/location/i;->p:Z
+    iget-boolean v0, p0, Lcom/baidu/location/i;->c:Z
 
     if-eqz v0, :cond_1
 
-    iget-object v0, p0, Lcom/baidu/location/i;->a:Ljava/lang/String;
+    iget-object v0, p0, Lcom/baidu/location/i;->do:Ljava/lang/String;
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    const-string v1, "unregister..."
 
-    iget-object v0, p0, Lcom/baidu/location/i;->g:Landroid/content/Context;
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
-    iget-object v1, p0, Lcom/baidu/location/i;->n:Lcom/baidu/location/i$b;
+    iget-object v0, p0, Lcom/baidu/location/i;->if:Landroid/content/Context;
+
+    iget-object v1, p0, Lcom/baidu/location/i;->else:Lcom/baidu/location/i$b;
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
     :cond_1
     const/4 v0, 0x0
 
-    iput-boolean v0, p0, Lcom/baidu/location/i;->p:Z
+    iput-boolean v0, p0, Lcom/baidu/location/i;->c:Z
 
     return-void
-.end method
-
-.method public final b(Lcom/baidu/location/d;)I
-    .locals 2
-
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
-
-    if-nez v0, :cond_0
-
-    const/4 v0, 0x0
-
-    :goto_0
-    return v0
-
-    :cond_0
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
-
-    :cond_1
-    iget-object v0, p0, Lcom/baidu/location/i;->b:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v0
-
-    if-nez v0, :cond_2
-
-    iget-boolean v0, p0, Lcom/baidu/location/i;->j:Z
-
-    if-eqz v0, :cond_2
-
-    iget-object v0, p0, Lcom/baidu/location/i;->m:Landroid/app/AlarmManager;
-
-    iget-object v1, p0, Lcom/baidu/location/i;->l:Landroid/app/PendingIntent;
-
-    invoke-virtual {v0, v1}, Landroid/app/AlarmManager;->cancel(Landroid/app/PendingIntent;)V
-
-    :cond_2
-    const/4 v0, 0x1
-
-    goto :goto_0
 .end method

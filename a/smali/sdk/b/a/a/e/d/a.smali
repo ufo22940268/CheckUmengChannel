@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/d/a;
+.class public Lsdk/b/a/a/e/d/a;
 .super Ljava/lang/Object;
 
 
@@ -34,7 +34,7 @@
 
     iput-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v0
 
@@ -64,136 +64,122 @@
     return-object v0
 .end method
 
-.method private a(J)V
-    .locals 2
 
-    new-instance v0, Ljava/lang/StringBuilder;
+# virtual methods
+.method public a(JJ)J
+    .locals 1
 
-    const-string v1, "--\u5fc3\u8df3\u95f4\u9694\u8c03\u6574 interval:"
+    cmp-long v0, p1, p3
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    if-lez v0, :cond_0
 
-    invoke-virtual {v0, p1, p2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    :goto_0
+    return-wide p1
 
-    move-result-object v0
+    :cond_0
+    move-wide p1, p3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    goto :goto_0
+.end method
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+.method public a(J)V
+    .locals 3
+
+    const-string v0, "GexinSdk"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "--\u5fc3\u8df3\u95f4\u9694\u8c03\u6574 interval:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1, p2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     iput-wide p1, p0, Lsdk/b/a/a/e/d/a;->a:J
 
     return-void
 .end method
 
-.method private a(Lsdk/b/a/a/e/d/d;)V
-    .locals 2
+.method public a(Lsdk/b/a/a/e/d/c;)V
+    .locals 12
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-wide/16 v10, 0x2
 
-    const-string v1, "--\u5fc3\u8df3\u72b6\u6001\u8f6c\u6362 state:"
+    const-wide/16 v8, 0x1
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-wide/32 v6, 0x1d4c0
 
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    const-wide/32 v4, 0x3a980
 
-    move-result-object v0
+    const-string v0, "GexinSdk"
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    iput-object p1, p0, Lsdk/b/a/a/e/d/a;->b:Lsdk/b/a/a/e/d/d;
+    const-string v2, "--\u5fc3\u8df3onEvent state:"
 
-    const-wide/16 v0, 0x0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iput-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
+    move-result-object v1
 
-    return-void
-.end method
+    iget-object v2, p0, Lsdk/b/a/a/e/d/a;->b:Lsdk/b/a/a/e/d/d;
 
-.method private static b(J)J
-    .locals 3
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    const-wide/32 v0, 0x3a980
+    move-result-object v1
 
-    cmp-long v2, p0, v0
+    const-string v2, " event:"
 
-    if-lez v2, :cond_0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    :goto_0
-    return-wide p0
+    move-result-object v1
 
-    :cond_0
-    move-wide p0, v0
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    goto :goto_0
-.end method
+    move-result-object v1
 
+    const-string v2, " heart:"
 
-# virtual methods
-.method public final a(Lsdk/b/a/a/e/d/c;)V
-    .locals 14
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-wide/32 v2, 0xcd140
+    move-result-object v1
 
-    const-wide/16 v12, 0x2
+    iget-wide v2, p0, Lsdk/b/a/a/e/d/a;->a:J
 
-    const-wide/16 v10, 0x1
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    const-wide/32 v8, 0x1d4c0
+    move-result-object v1
 
-    const-wide/32 v6, 0x3a980
+    const-string v2, " retries:"
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, "--\u5fc3\u8df3onEvent state:"
+    move-result-object v1
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    iget-wide v2, p0, Lsdk/b/a/a/e/d/a;->c:J
 
-    iget-object v1, p0, Lsdk/b/a/a/e/d/a;->b:Lsdk/b/a/a/e/d/d;
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    move-result-object v1
 
-    move-result-object v0
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    const-string v1, " event:"
+    move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, " heart:"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    iget-wide v4, p0, Lsdk/b/a/a/e/d/a;->a:J
-
-    invoke-virtual {v0, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, " retries:"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    iget-wide v4, p0, Lsdk/b/a/a/e/d/a;->c:J
-
-    invoke-virtual {v0, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/e/d/b;->b:[I
 
@@ -227,61 +213,57 @@
     :pswitch_1
     iget-wide v0, p0, Lsdk/b/a/a/e/d/a;->a:J
 
-    add-long/2addr v0, v8
+    add-long/2addr v0, v6
 
-    cmp-long v4, v0, v2
+    const-wide/32 v2, 0xcd140
 
-    if-gez v4, :cond_1
+    invoke-virtual {p0, v0, v1, v2, v3}, Lsdk/b/a/a/e/d/a;->b(JJ)J
 
-    :goto_1
-    invoke-direct {p0, v0, v1}, Lsdk/b/a/a/e/d/a;->a(J)V
+    move-result-wide v0
+
+    invoke-virtual {p0, v0, v1}, Lsdk/b/a/a/e/d/a;->a(J)V
 
     sget-object v0, Lsdk/b/a/a/e/d/d;->a:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto :goto_0
-
-    :cond_1
-    move-wide v0, v2
-
-    goto :goto_1
 
     :pswitch_2
     iget-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
 
-    add-long/2addr v0, v10
+    add-long/2addr v0, v8
 
     iput-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
 
     iget-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
 
-    cmp-long v0, v0, v12
+    cmp-long v0, v0, v10
 
     if-ltz v0, :cond_0
 
     iget-wide v0, p0, Lsdk/b/a/a/e/d/a;->a:J
 
-    sub-long/2addr v0, v8
+    sub-long/2addr v0, v6
 
-    invoke-static {v0, v1}, Lsdk/b/a/a/e/d/a;->b(J)J
+    invoke-virtual {p0, v0, v1, v4, v5}, Lsdk/b/a/a/e/d/a;->a(JJ)J
 
     move-result-wide v0
 
-    invoke-direct {p0, v0, v1}, Lsdk/b/a/a/e/d/a;->a(J)V
+    invoke-virtual {p0, v0, v1}, Lsdk/b/a/a/e/d/a;->a(J)V
 
     sget-object v0, Lsdk/b/a/a/e/d/d;->b:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto :goto_0
 
     :pswitch_3
-    invoke-direct {p0, v6, v7}, Lsdk/b/a/a/e/d/a;->a(J)V
+    invoke-virtual {p0, v4, v5}, Lsdk/b/a/a/e/d/a;->a(J)V
 
     sget-object v0, Lsdk/b/a/a/e/d/d;->a:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto :goto_0
 
@@ -301,47 +283,47 @@
     :pswitch_5
     sget-object v0, Lsdk/b/a/a/e/d/d;->b:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto :goto_0
 
     :pswitch_6
     iget-wide v0, p0, Lsdk/b/a/a/e/d/a;->a:J
 
-    sub-long/2addr v0, v8
+    sub-long/2addr v0, v6
 
-    invoke-static {v0, v1}, Lsdk/b/a/a/e/d/a;->b(J)J
+    invoke-virtual {p0, v0, v1, v4, v5}, Lsdk/b/a/a/e/d/a;->a(JJ)J
 
     move-result-wide v0
 
-    invoke-direct {p0, v0, v1}, Lsdk/b/a/a/e/d/a;->a(J)V
+    invoke-virtual {p0, v0, v1}, Lsdk/b/a/a/e/d/a;->a(J)V
 
     iget-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
 
-    add-long/2addr v0, v10
+    add-long/2addr v0, v8
 
     iput-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
 
     iget-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
 
-    cmp-long v0, v0, v12
+    cmp-long v0, v0, v10
 
     if-ltz v0, :cond_0
 
-    invoke-direct {p0, v6, v7}, Lsdk/b/a/a/e/d/a;->a(J)V
+    invoke-virtual {p0, v4, v5}, Lsdk/b/a/a/e/d/a;->a(J)V
 
     sget-object v0, Lsdk/b/a/a/e/d/d;->c:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto :goto_0
 
     :pswitch_7
-    invoke-direct {p0, v6, v7}, Lsdk/b/a/a/e/d/a;->a(J)V
+    invoke-virtual {p0, v4, v5}, Lsdk/b/a/a/e/d/a;->a(J)V
 
     sget-object v0, Lsdk/b/a/a/e/d/d;->a:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto :goto_0
 
@@ -359,31 +341,29 @@
     goto/16 :goto_0
 
     :pswitch_9
-    invoke-direct {p0, v6, v7}, Lsdk/b/a/a/e/d/a;->a(J)V
+    invoke-virtual {p0, v4, v5}, Lsdk/b/a/a/e/d/a;->a(J)V
 
     sget-object v0, Lsdk/b/a/a/e/d/d;->a:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto/16 :goto_0
 
     :pswitch_a
     sget-object v0, Lsdk/b/a/a/e/d/d;->c:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto/16 :goto_0
 
     :pswitch_b
-    invoke-direct {p0, v6, v7}, Lsdk/b/a/a/e/d/a;->a(J)V
+    invoke-virtual {p0, v4, v5}, Lsdk/b/a/a/e/d/a;->a(J)V
 
     sget-object v0, Lsdk/b/a/a/e/d/d;->a:Lsdk/b/a/a/e/d/d;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/d;)V
 
     goto/16 :goto_0
-
-    nop
 
     :pswitch_data_0
     .packed-switch 0x1
@@ -417,7 +397,41 @@
     .end packed-switch
 .end method
 
-.method public final b()J
+.method public a(Lsdk/b/a/a/e/d/d;)V
+    .locals 3
+
+    const-string v0, "GexinSdk"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "--\u5fc3\u8df3\u72b6\u6001\u8f6c\u6362 state:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    iput-object p1, p0, Lsdk/b/a/a/e/d/a;->b:Lsdk/b/a/a/e/d/d;
+
+    const-wide/16 v0, 0x0
+
+    iput-wide v0, p0, Lsdk/b/a/a/e/d/a;->c:J
+
+    return-void
+.end method
+
+.method public b()J
     .locals 9
 
     const/16 v8, 0xb
@@ -430,9 +444,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "getHeartbeatInterval interval = "
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v3, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -442,7 +460,7 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v2, p0, Lsdk/b/a/a/e/d/a;->d:Landroid/net/ConnectivityManager;
 
@@ -463,9 +481,25 @@
 
     const-string v2, "GexinSdk"
 
-    const-string v3, "getHeartbeatInterval no network interval = 3600000"
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "getHeartbeatInterval no network interval = "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_1
     sget v2, Lsdk/b/a/a/c/h;->q:I
@@ -482,9 +516,13 @@
 
     new-instance v5, Ljava/lang/StringBuilder;
 
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v6, "getHeartbeatInterval \u624b\u52a8\u8bbe\u5b9a\u7684\u5fc3\u8df3\u5468\u671f  myHeartbeatInterval = "
 
-    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
 
     invoke-virtual {v5, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -494,7 +532,7 @@
 
     move-result-object v5
 
-    invoke-static {v4, v5}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v4, v5}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     cmp-long v4, v0, v2
 
@@ -504,9 +542,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "getHeartbeatInterval \u5fc3\u8df3\u5468\u671f\u624b\u52a8\u8bbe\u5b9a interval = "
 
-    invoke-direct {v1, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -516,7 +558,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     move-wide v0, v2
 
@@ -591,9 +633,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "getHeartbeatInterval \u9759\u9ed8\u65f6\u95f4 interval = "
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v3, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -603,16 +649,20 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_4
     const-string v2, "GexinSdk"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "getHeartbeatInterval return interval = "
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v3, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -622,7 +672,7 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     return-wide v0
 
@@ -634,6 +684,22 @@
     add-int/2addr v1, v4
 
     invoke-virtual {v0, v8, v1}, Ljava/util/Calendar;->set(II)V
+
+    goto :goto_0
+.end method
+
+.method public b(JJ)J
+    .locals 1
+
+    cmp-long v0, p1, p3
+
+    if-gez v0, :cond_0
+
+    :goto_0
+    return-wide p1
+
+    :cond_0
+    move-wide p1, p3
 
     goto :goto_0
 .end method

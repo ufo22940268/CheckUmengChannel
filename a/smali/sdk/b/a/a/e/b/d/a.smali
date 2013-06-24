@@ -1,35 +1,43 @@
-.class public final Lsdk/b/a/a/e/b/d/a;
+.class public Lsdk/b/a/a/e/b/d/a;
 .super Lsdk/b/a/a/e/b/c;
 
 
 # instance fields
-.field private a:Z
+.field private f:Z
 
-.field private b:Z
+.field private g:Z
 
 
 # direct methods
 .method public constructor <init>(Ljava/lang/String;[B)V
-    .locals 5
+    .locals 1
 
     const/4 v0, 0x1
 
     invoke-direct {p0, p1}, Lsdk/b/a/a/e/b/c;-><init>(Ljava/lang/String;)V
 
-    iput-boolean v0, p0, Lsdk/b/a/a/e/b/d/a;->a:Z
+    iput-boolean v0, p0, Lsdk/b/a/a/e/b/d/a;->f:Z
 
-    iput-boolean v0, p0, Lsdk/b/a/a/e/b/d/a;->b:Z
+    iput-boolean v0, p0, Lsdk/b/a/a/e/b/d/a;->g:Z
 
-    iget-boolean v0, p0, Lsdk/b/a/a/e/b/d/a;->a:Z
+    invoke-direct {p0, p2}, Lsdk/b/a/a/e/b/d/a;->c([B)V
+
+    return-void
+.end method
+
+.method private c([B)V
+    .locals 5
+
+    iget-boolean v0, p0, Lsdk/b/a/a/e/b/d/a;->f:Z
 
     if-eqz v0, :cond_0
 
-    invoke-static {p2}, Lsdk/c/a/b/g;->a([B)[B
+    invoke-static {p1}, Lsdk/c/a/b/g;->a([B)[B
 
-    move-result-object p2
+    move-result-object p1
 
     :cond_0
-    iget-boolean v0, p0, Lsdk/b/a/a/e/b/d/a;->b:Z
+    iget-boolean v0, p0, Lsdk/b/a/a/e/b/d/a;->g:Z
 
     if-eqz v0, :cond_1
 
@@ -41,9 +49,9 @@
 
     move-result-object v0
 
-    invoke-static {p2, v0}, Lsdk/c/a/a/a;->a([B[B)[B
+    invoke-static {p1, v0}, Lsdk/c/a/a/a;->a([B[B)[B
 
-    move-result-object p2
+    move-result-object p1
 
     :cond_1
     new-instance v0, Lorg/json/JSONObject;
@@ -63,7 +71,9 @@
 
     move-result-object v3
 
-    invoke-static {v3}, Lsdk/c/a/b/g;->c([B)[B
+    const/4 v4, 0x0
+
+    invoke-static {v3, v4}, Lsdk/c/a/b/g;->d([BI)[B
 
     move-result-object v3
 
@@ -75,13 +85,13 @@
 
     const-string v1, "isCompressed"
 
-    iget-boolean v2, p0, Lsdk/b/a/a/e/b/d/a;->a:Z
+    iget-boolean v2, p0, Lsdk/b/a/a/e/b/d/a;->f:Z
 
     invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Z)Lorg/json/JSONObject;
 
     const-string v1, "isEncrypted"
 
-    iget-boolean v2, p0, Lsdk/b/a/a/e/b/d/a;->b:Z
+    iget-boolean v2, p0, Lsdk/b/a/a/e/b/d/a;->g:Z
 
     invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Z)Lorg/json/JSONObject;
 
@@ -89,7 +99,9 @@
 
     new-instance v2, Ljava/lang/String;
 
-    invoke-static {p2}, Lsdk/c/a/b/g;->c([B)[B
+    const/4 v3, 0x0
+
+    invoke-static {p1, v3}, Lsdk/c/a/b/g;->d([BI)[B
 
     move-result-object v3
 
@@ -107,7 +119,7 @@
 
     move-result-object v0
 
-    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/b/d/a;->b([B)V
+    invoke-virtual {p0, v0}, Lsdk/b/a/a/e/b/d/a;->a([B)V
     :try_end_0
     .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
     .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_1
@@ -140,7 +152,7 @@
 
 
 # virtual methods
-.method public final b()I
+.method public b()I
     .locals 1
 
     const/4 v0, 0x0

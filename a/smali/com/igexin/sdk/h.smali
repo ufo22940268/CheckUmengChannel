@@ -1,23 +1,19 @@
-.class final Lcom/igexin/sdk/h;
+.class Lcom/igexin/sdk/h;
 .super Ljava/lang/Object;
 
 # interfaces
-.implements Landroid/content/DialogInterface$OnClickListener;
+.implements Landroid/view/View$OnKeyListener;
 
 
 # instance fields
-.field final synthetic a:Lsdk/b/a/a/b/m;
-
-.field final synthetic b:Lcom/igexin/sdk/SdkActivity;
+.field final synthetic a:Lcom/igexin/sdk/SdkActivity;
 
 
 # direct methods
-.method constructor <init>(Lcom/igexin/sdk/SdkActivity;Lsdk/b/a/a/b/m;)V
+.method constructor <init>(Lcom/igexin/sdk/SdkActivity;)V
     .locals 0
 
-    iput-object p1, p0, Lcom/igexin/sdk/h;->b:Lcom/igexin/sdk/SdkActivity;
-
-    iput-object p2, p0, Lcom/igexin/sdk/h;->a:Lsdk/b/a/a/b/m;
+    iput-object p1, p0, Lcom/igexin/sdk/h;->a:Lcom/igexin/sdk/SdkActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -26,56 +22,46 @@
 
 
 # virtual methods
-.method public final onClick(Landroid/content/DialogInterface;I)V
-    .locals 5
+.method public onKey(Landroid/view/View;ILandroid/view/KeyEvent;)Z
+    .locals 1
 
-    iget-object v1, p0, Lcom/igexin/sdk/h;->b:Lcom/igexin/sdk/SdkActivity;
+    invoke-virtual {p3}, Landroid/view/KeyEvent;->getAction()I
 
-    iget-object v0, p0, Lcom/igexin/sdk/h;->b:Lcom/igexin/sdk/SdkActivity;
+    move-result v0
 
-    invoke-static {v0}, Lcom/igexin/sdk/SdkActivity;->a(Lcom/igexin/sdk/SdkActivity;)Ljava/lang/String;
+    if-nez v0, :cond_0
 
-    move-result-object v2
+    const/4 v0, 0x4
 
-    iget-object v0, p0, Lcom/igexin/sdk/h;->b:Lcom/igexin/sdk/SdkActivity;
+    if-ne p2, v0, :cond_0
 
-    invoke-static {v0}, Lcom/igexin/sdk/SdkActivity;->b(Lcom/igexin/sdk/SdkActivity;)Ljava/lang/String;
+    iget-object v0, p0, Lcom/igexin/sdk/h;->a:Lcom/igexin/sdk/SdkActivity;
 
-    move-result-object v3
-
-    iget-object v0, p0, Lcom/igexin/sdk/h;->a:Lsdk/b/a/a/b/m;
-
-    invoke-virtual {v0}, Lsdk/b/a/a/b/m;->c()Ljava/util/List;
+    invoke-static {v0}, Lcom/igexin/sdk/SdkActivity;->d(Lcom/igexin/sdk/SdkActivity;)Landroid/webkit/WebView;
 
     move-result-object v0
 
-    const/4 v4, 0x2
+    invoke-virtual {v0}, Landroid/webkit/WebView;->canGoBack()Z
 
-    invoke-interface {v0, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    move-result v0
 
-    move-result-object v0
+    if-eqz v0, :cond_0
 
-    check-cast v0, Lsdk/b/a/a/b/e;
+    iget-object v0, p0, Lcom/igexin/sdk/h;->a:Lcom/igexin/sdk/SdkActivity;
 
-    invoke-virtual {v0}, Lsdk/b/a/a/b/e;->b()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-static {v1, v2, v3, v0}, Lcom/igexin/sdk/SdkActivity;->a(Lcom/igexin/sdk/SdkActivity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-static {v0}, Lcom/igexin/sdk/SdkActivity;->d(Lcom/igexin/sdk/SdkActivity;)Landroid/webkit/WebView;
 
     move-result-object v0
 
-    iget-object v1, p0, Lcom/igexin/sdk/h;->b:Lcom/igexin/sdk/SdkActivity;
+    invoke-virtual {v0}, Landroid/webkit/WebView;->goBack()V
 
-    invoke-virtual {v1, v0}, Lcom/igexin/sdk/SdkActivity;->sendBroadcast(Landroid/content/Intent;)V
+    const/4 v0, 0x1
 
-    iget-object v0, p0, Lcom/igexin/sdk/h;->b:Lcom/igexin/sdk/SdkActivity;
+    :goto_0
+    return v0
 
-    invoke-static {v0}, Lcom/igexin/sdk/SdkActivity;->c(Lcom/igexin/sdk/SdkActivity;)Z
+    :cond_0
+    const/4 v0, 0x0
 
-    iget-object v0, p0, Lcom/igexin/sdk/h;->b:Lcom/igexin/sdk/SdkActivity;
-
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkActivity;->finish()V
-
-    return-void
+    goto :goto_0
 .end method

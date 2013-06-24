@@ -13,24 +13,26 @@
 
 
 # virtual methods
-.method public final a()V
-    .locals 5
+.method public a()V
+    .locals 6
 
     invoke-static {}, Lsdk/b/a/a/c/h;->a()Lsdk/b/a/a/c/h;
 
-    iget-object v0, p0, Lsdk/b/a/a/c/j;->c:Landroid/database/sqlite/SQLiteDatabase;
+    move-result-object v0
 
-    const/16 v1, 0x12
+    iget-object v1, p0, Lsdk/b/a/a/c/j;->c:Landroid/database/sqlite/SQLiteDatabase;
 
-    const-string v2, "lastOfflineTime"
+    const/16 v2, 0x12
 
-    sget-wide v3, Lsdk/b/a/a/c/h;->r:J
+    const-string v3, "lastOfflineTime"
 
-    invoke-static {v3, v4}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+    sget-wide v4, Lsdk/b/a/a/c/h;->r:J
 
-    move-result-object v3
+    invoke-static {v4, v5}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
 
-    invoke-static {v0, v1, v2, v3}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    move-result-object v4
+
+    invoke-static {v0, v1, v2, v3, v4}, Lsdk/b/a/a/c/h;->a(Lsdk/b/a/a/c/h;Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     return-void
 .end method

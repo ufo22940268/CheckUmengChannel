@@ -69,21 +69,19 @@
 
     const/4 v0, 0x0
 
-    invoke-direct {p0, p1, v0}, Lsdk/c/a/e/d;-><init>(IB)V
+    invoke-direct {p0, p1, v0}, Lsdk/c/a/e/d;-><init>(ILsdk/c/a/e/a/d;)V
 
     return-void
 .end method
 
-.method private constructor <init>(IB)V
+.method public constructor <init>(ILsdk/c/a/e/a/d;)V
     .locals 1
 
     invoke-direct {p0}, Lsdk/c/a/e/a;-><init>()V
 
     iput p1, p0, Lsdk/c/a/e/d;->M:I
 
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lsdk/c/a/e/d;->W:Lsdk/c/a/e/a/d;
+    iput-object p2, p0, Lsdk/c/a/e/d;->W:Lsdk/c/a/e/a/d;
 
     new-instance v0, Ljava/util/concurrent/locks/ReentrantLock;
 
@@ -168,21 +166,86 @@
     .end packed-switch
 .end method
 
-.method public a_()V
-    .locals 1
+.method public a(Ljava/util/concurrent/TimeUnit;)J
+    .locals 3
 
-    const/4 v0, 0x0
+    invoke-virtual {p0}, Lsdk/c/a/e/d;->m()J
 
-    iput-object v0, p0, Lsdk/c/a/e/d;->P:Ljava/lang/Object;
+    move-result-wide v0
 
-    iput-object v0, p0, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
+    sget-object v2, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
 
-    iput-object v0, p0, Lsdk/c/a/e/d;->U:Ljava/lang/Thread;
+    invoke-virtual {p1, v0, v1, v2}, Ljava/util/concurrent/TimeUnit;->convert(JLjava/util/concurrent/TimeUnit;)J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method public final a(I)V
+    .locals 2
+
+    iget-byte v0, p0, Lsdk/c/a/e/d;->a:B
+
+    and-int/lit8 v0, v0, 0xf
+
+    int-to-byte v0, v0
+
+    iput-byte v0, p0, Lsdk/c/a/e/d;->a:B
+
+    iget-byte v0, p0, Lsdk/c/a/e/d;->a:B
+
+    and-int/lit8 v1, p1, 0xf
+
+    shl-int/lit8 v1, v1, 0x4
+
+    or-int/2addr v0, v1
+
+    int-to-byte v0, v0
+
+    iput-byte v0, p0, Lsdk/c/a/e/d;->a:B
 
     return-void
 .end method
 
-.method public c()V
+.method public final a(ILsdk/c/a/e/a/g;)V
+    .locals 2
+
+    if-gez p1, :cond_0
+
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    const-string v1, "second must > 0"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    :cond_0
+    iput p1, p0, Lsdk/c/a/e/d;->L:I
+
+    iput-object p2, p0, Lsdk/c/a/e/d;->Q:Lsdk/c/a/e/a/g;
+
+    return-void
+.end method
+
+.method public final a(J)V
+    .locals 0
+
+    iput-wide p1, p0, Lsdk/c/a/e/d;->J:J
+
+    return-void
+.end method
+
+.method public final a(Lsdk/c/a/e/a/d;)V
+    .locals 0
+
+    iput-object p1, p0, Lsdk/c/a/e/d;->W:Lsdk/c/a/e/a/d;
+
+    return-void
+.end method
+
+.method public b_()V
     .locals 1
 
     invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
@@ -198,7 +261,7 @@
     return-void
 .end method
 
-.method public d()V
+.method public c()V
     .locals 1
 
     iget-boolean v0, p0, Lsdk/c/a/e/d;->x:Z
@@ -210,13 +273,13 @@
     if-eqz v0, :cond_1
 
     :cond_0
-    invoke-virtual {p0}, Lsdk/c/a/e/d;->a_()V
+    invoke-virtual {p0}, Lsdk/c/a/e/d;->f()V
 
     :cond_1
     return-void
 .end method
 
-.method public e()V
+.method public d()V
     .locals 1
 
     const/4 v0, 0x1
@@ -226,10 +289,44 @@
     return-void
 .end method
 
-.method protected abstract f()V
+.method protected abstract e()V
 .end method
 
-.method final k()J
+.method public f()V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lsdk/c/a/e/d;->P:Ljava/lang/Object;
+
+    iput-object v0, p0, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
+
+    iput-object v0, p0, Lsdk/c/a/e/d;->U:Ljava/lang/Thread;
+
+    return-void
+.end method
+
+.method final l()V
+    .locals 2
+
+    iget v0, p0, Lsdk/c/a/e/d;->V:I
+
+    add-int/lit8 v0, v0, 0x1
+
+    iput v0, p0, Lsdk/c/a/e/d;->V:I
+
+    iget v0, p0, Lsdk/c/a/e/d;->V:I
+
+    const v1, 0x40fffffe
+
+    and-int/2addr v0, v1
+
+    iput v0, p0, Lsdk/c/a/e/d;->V:I
+
+    return-void
+.end method
+
+.method m()J
     .locals 4
 
     iget-wide v0, p0, Lsdk/c/a/e/d;->H:J
@@ -243,7 +340,7 @@
     return-wide v0
 .end method
 
-.method public final l()V
+.method public final n()V
     .locals 1
 
     const/4 v0, 0x1
@@ -253,7 +350,7 @@
     return-void
 .end method
 
-.method public final m()Z
+.method public final o()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/c/a/e/d;->z:Z
@@ -261,7 +358,7 @@
     return v0
 .end method
 
-.method public final n()Z
+.method public final p()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/c/a/e/d;->y:Z
@@ -269,7 +366,7 @@
     return v0
 .end method
 
-.method public final o()Z
+.method public final q()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/c/a/e/d;->E:Z
@@ -277,29 +374,13 @@
     return v0
 .end method
 
-.method public final p()V
-    .locals 1
-
-    iget-byte v0, p0, Lsdk/c/a/e/d;->a:B
-
-    and-int/lit8 v0, v0, 0xf
-
-    int-to-byte v0, v0
-
-    iput-byte v0, p0, Lsdk/c/a/e/d;->a:B
-
-    iget-byte v0, p0, Lsdk/c/a/e/d;->a:B
-
-    or-int/lit8 v0, v0, 0x0
-
-    int-to-byte v0, v0
-
-    iput-byte v0, p0, Lsdk/c/a/e/d;->a:B
+.method protected r()V
+    .locals 0
 
     return-void
 .end method
 
-.method public final q()V
+.method public final s()V
     .locals 1
 
     const/4 v0, 0x1
@@ -309,7 +390,7 @@
     return-void
 .end method
 
-.method protected final r()V
+.method protected t()V
     .locals 2
 
     const/4 v1, 0x0
@@ -367,8 +448,8 @@
     goto :goto_0
 .end method
 
-.method protected final s()V
-    .locals 1
+.method protected u()V
+    .locals 2
 
     iget-object v0, p0, Lsdk/c/a/e/d;->W:Lsdk/c/a/e/a/d;
 
@@ -376,18 +457,10 @@
 
     iget-object v0, p0, Lsdk/c/a/e/d;->W:Lsdk/c/a/e/a/d;
 
-    sget-object v0, Lsdk/c/a/e/a/e;->a:Lsdk/c/a/e/a/e;
+    sget-object v1, Lsdk/c/a/e/a/e;->a:Lsdk/c/a/e/a/e;
+
+    invoke-interface {v0, v1}, Lsdk/c/a/e/a/d;->a(Lsdk/c/a/e/a/e;)V
 
     :cond_0
-    return-void
-.end method
-
-.method public final t()V
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lsdk/c/a/e/d;->W:Lsdk/c/a/e/a/d;
-
     return-void
 .end method

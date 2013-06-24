@@ -1,5 +1,15 @@
 .class public abstract Landroid/support/v4/app/FragmentManager;
 .super Ljava/lang/Object;
+.source "FragmentManager.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/support/v4/app/FragmentManager$OnBackStackChangedListener;,
+        Landroid/support/v4/app/FragmentManager$BackStackEntry;
+    }
+.end annotation
 
 
 # static fields
@@ -10,16 +20,23 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
+    .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 114
     return-void
 .end method
 
 .method public static enableDebugLogging(Z)V
     .locals 0
+    .parameter "enabled"
 
+    .prologue
+    .line 334
     sput-boolean p0, Landroid/support/v4/app/FragmentManagerImpl;->DEBUG:Z
 
+    .line 335
     return-void
 .end method
 
@@ -57,6 +74,8 @@
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
 
+    .prologue
+    .line 139
     invoke-virtual {p0}, Landroid/support/v4/app/FragmentManager;->beginTransaction()Landroid/support/v4/app/FragmentTransaction;
 
     move-result-object v0

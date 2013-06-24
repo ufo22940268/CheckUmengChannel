@@ -12,10 +12,37 @@
 .field private d:I
 
 .field private e:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiResult;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private f:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiInfo;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private g:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKCityListInfo;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # direct methods
@@ -49,6 +76,15 @@
 
 .method a(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiInfo;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKPoiResult;->f:Ljava/util/ArrayList;
 
@@ -65,6 +101,15 @@
 
 .method b(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiResult;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKPoiResult;->e:Ljava/util/ArrayList;
 
@@ -81,6 +126,15 @@
 
 .method c(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKCityListInfo;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKPoiResult;->g:Ljava/util/ArrayList;
 
@@ -97,6 +151,15 @@
 
 .method public getAllPoi()Ljava/util/ArrayList;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiInfo;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MKPoiResult;->f:Ljava/util/ArrayList;
 
@@ -159,6 +222,15 @@
 
 .method public getMultiPoiResult()Ljava/util/ArrayList;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiResult;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MKPoiResult;->e:Ljava/util/ArrayList;
 

@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/a/e;
+.class public Lsdk/b/a/a/a/e;
 .super Lsdk/b/a/a/a/a;
 
 
@@ -65,7 +65,7 @@
 
 
 # virtual methods
-.method public final a()V
+.method public a()V
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/a/e;->b:Lcom/igexin/sdk/SdkMainService;
@@ -89,7 +89,7 @@
     goto :goto_0
 .end method
 
-.method public final a(Ljava/lang/Object;)Z
+.method public a(Ljava/lang/Object;Lsdk/c/a/e/e;)Z
     .locals 3
 
     const/4 v0, 0x1
@@ -116,7 +116,7 @@
     return v0
 .end method
 
-.method public final a(Lsdk/c/a/e/d;)Z
+.method public a(Lsdk/c/a/e/d;Lsdk/c/a/e/e;)Z
     .locals 3
 
     const/4 v0, 0x0
@@ -155,7 +155,7 @@
     goto :goto_0
 .end method
 
-.method public final b()V
+.method public b()V
     .locals 5
 
     const/4 v4, 0x1
@@ -208,7 +208,7 @@
     :cond_2
     iget-object v0, p0, Lsdk/b/a/a/a/e;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->c()I
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->g()I
 
     move-result v0
 

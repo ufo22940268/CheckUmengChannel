@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/c/g;
+.class public Lsdk/b/a/a/c/g;
 .super Ljava/lang/Object;
 
 
@@ -13,7 +13,7 @@
 
 
 # direct methods
-.method public constructor <init>()V
+.method public constructor <init>(Lcom/igexin/sdk/SdkMainService;)V
     .locals 1
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -33,12 +33,12 @@
     return-void
 .end method
 
-.method public static a()V
+.method public static a(Lcom/igexin/sdk/SdkMainService;)V
     .locals 1
 
     new-instance v0, Lsdk/b/a/a/c/g;
 
-    invoke-direct {v0}, Lsdk/b/a/a/c/g;-><init>()V
+    invoke-direct {v0, p0}, Lsdk/b/a/a/c/g;-><init>(Lcom/igexin/sdk/SdkMainService;)V
 
     sput-object v0, Lsdk/b/a/a/c/g;->b:Lsdk/b/a/a/c/g;
 

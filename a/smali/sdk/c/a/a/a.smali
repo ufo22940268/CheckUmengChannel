@@ -1,9 +1,9 @@
-.class public final Lsdk/c/a/a/a;
+.class public Lsdk/c/a/a/a;
 .super Ljava/lang/Object;
 
 
 # direct methods
-.method private static a([III)V
+.method public static a([III)V
     .locals 2
 
     aget v0, p0, p1
@@ -15,6 +15,61 @@
     aput v0, p0, p2
 
     return-void
+.end method
+
+.method public static a([B)Z
+    .locals 6
+
+    const/4 v1, 0x0
+
+    array-length v3, p0
+
+    if-lez v3, :cond_2
+
+    const/16 v0, 0x100
+
+    if-gt v3, v0, :cond_2
+
+    move v2, v1
+
+    move v0, v1
+
+    :goto_0
+    if-ge v2, v3, :cond_1
+
+    aget-byte v4, p0, v2
+
+    and-int/lit16 v4, v4, 0xff
+
+    const/16 v5, 0xe
+
+    if-ne v4, v5, :cond_0
+
+    add-int/lit8 v0, v0, 0x1
+
+    const/4 v4, 0x3
+
+    if-le v0, v4, :cond_0
+
+    move v0, v1
+
+    :goto_1
+    return v0
+
+    :cond_0
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    :cond_1
+    const/4 v0, 0x1
+
+    goto :goto_1
+
+    :cond_2
+    move v0, v1
+
+    goto :goto_1
 .end method
 
 .method public static a([BLjava/lang/String;)[B
@@ -34,47 +89,13 @@
 .method public static a([B[B)[B
     .locals 7
 
-    const/16 v6, 0x100
-
     const/4 v1, 0x0
 
-    array-length v3, p1
+    invoke-static {p1}, Lsdk/c/a/a/a;->a([B)Z
 
-    if-lez v3, :cond_2
+    move-result v0
 
-    if-gt v3, v6, :cond_2
-
-    move v2, v1
-
-    move v0, v1
-
-    :goto_0
-    if-ge v2, v3, :cond_1
-
-    aget-byte v4, p1, v2
-
-    and-int/lit16 v4, v4, 0xff
-
-    const/16 v5, 0xe
-
-    if-ne v4, v5, :cond_0
-
-    add-int/lit8 v0, v0, 0x1
-
-    const/4 v4, 0x3
-
-    if-gt v0, v4, :cond_2
-
-    :cond_0
-    add-int/lit8 v2, v2, 0x1
-
-    goto :goto_0
-
-    :cond_1
-    const/4 v0, 0x1
-
-    :goto_1
-    if-nez v0, :cond_3
+    if-nez v0, :cond_0
 
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -84,15 +105,12 @@
 
     throw v0
 
-    :cond_2
-    move v0, v1
-
-    goto :goto_1
-
-    :cond_3
+    :cond_0
     array-length v0, p0
 
-    if-gtz v0, :cond_4
+    const/4 v2, 0x1
+
+    if-ge v0, v2, :cond_1
 
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -102,31 +120,33 @@
 
     throw v0
 
-    :cond_4
-    new-array v3, v6, [I
+    :cond_1
+    const/16 v0, 0x100
+
+    new-array v3, v0, [I
 
     move v0, v1
 
-    :goto_2
+    :goto_0
     array-length v2, v3
 
-    if-ge v0, v2, :cond_5
+    if-ge v0, v2, :cond_2
 
     aput v0, v3, v0
 
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_2
+    goto :goto_0
 
-    :cond_5
+    :cond_2
     move v0, v1
 
     move v2, v1
 
-    :goto_3
+    :goto_1
     array-length v4, v3
 
-    if-ge v0, v4, :cond_6
+    if-ge v0, v4, :cond_3
 
     aget v4, v3, v0
 
@@ -148,9 +168,9 @@
 
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_3
+    goto :goto_1
 
-    :cond_6
+    :cond_3
     array-length v0, p0
 
     new-array v4, v0, [B
@@ -159,10 +179,10 @@
 
     move v2, v1
 
-    :goto_4
+    :goto_2
     array-length v5, v4
 
-    if-ge v1, v5, :cond_7
+    if-ge v1, v5, :cond_4
 
     add-int/lit8 v0, v0, 0x1
 
@@ -196,9 +216,9 @@
 
     add-int/lit8 v1, v1, 0x1
 
-    goto :goto_4
+    goto :goto_2
 
-    :cond_7
+    :cond_4
     return-object v4
 .end method
 

@@ -1,4 +1,4 @@
-.class public final Lsdk/a/a/a/a/a/o;
+.class public Lsdk/a/a/a/a/a/o;
 .super Lsdk/c/b/a/b/b;
 
 
@@ -37,57 +37,55 @@
 
 
 # virtual methods
-.method public final a([B)V
-    .locals 6
-
-    const/16 v1, 0xc
-
-    const/4 v3, 0x2
+.method public a([B)V
+    .locals 5
 
     const/4 v0, 0x0
 
     invoke-static {p1, v0}, Lsdk/c/a/b/g;->a([BI)I
 
-    move-result v2
+    move-result v1
 
-    iput v2, p0, Lsdk/a/a/a/a/a/o;->a:I
+    iput v1, p0, Lsdk/a/a/a/a/a/o;->a:I
 
-    aget-byte v2, p1, v3
+    const/4 v1, 0x2
+
+    aget-byte v2, p1, v1
 
     and-int/lit16 v2, v2, 0xc0
 
     iput v2, p0, Lsdk/a/a/a/a/a/o;->b:I
 
-    aget-byte v2, p1, v3
+    aget-byte v1, p1, v1
 
-    invoke-static {v2}, Lsdk/a/a/a/a/a/o;->a(B)Ljava/lang/String;
+    invoke-virtual {p0, v1}, Lsdk/a/a/a/a/a/o;->a(B)Ljava/lang/String;
 
-    move-result-object v2
+    move-result-object v1
 
-    iput-object v2, p0, Lsdk/a/a/a/a/a/o;->c:Ljava/lang/String;
+    iput-object v1, p0, Lsdk/a/a/a/a/a/o;->c:Ljava/lang/String;
 
-    const/4 v2, 0x3
+    const/4 v1, 0x3
 
-    invoke-static {p1, v2}, Lsdk/c/a/b/g;->c([BI)J
+    invoke-static {p1, v1}, Lsdk/c/a/b/g;->c([BI)J
 
-    move-result-wide v2
+    move-result-wide v1
 
-    iput-wide v2, p0, Lsdk/a/a/a/a/a/o;->d:J
+    iput-wide v1, p0, Lsdk/a/a/a/a/a/o;->d:J
 
-    const/16 v2, 0xb
+    const/16 v1, 0xb
 
-    aget-byte v2, p1, v2
+    aget-byte v1, p1, v1
 
-    and-int/lit16 v2, v2, 0xff
+    and-int/lit16 v2, v1, 0xff
+
+    const/16 v1, 0xc
 
     :try_start_0
     new-instance v3, Ljava/lang/String;
 
-    const/16 v4, 0xc
+    iget-object v4, p0, Lsdk/a/a/a/a/a/o;->c:Ljava/lang/String;
 
-    iget-object v5, p0, Lsdk/a/a/a/a/a/o;->c:Ljava/lang/String;
-
-    invoke-direct {v3, p1, v4, v2, v5}, Ljava/lang/String;-><init>([BIILjava/lang/String;)V
+    invoke-direct {v3, p1, v1, v2, v4}, Ljava/lang/String;-><init>([BIILjava/lang/String;)V
 
     iput-object v3, p0, Lsdk/a/a/a/a/a/o;->e:Ljava/lang/String;
     :try_end_0
@@ -129,9 +127,11 @@
     :goto_1
     invoke-static {p1, v1}, Lsdk/c/a/b/g;->c([BI)J
 
-    move-result-wide v0
+    move-result-wide v2
 
-    iput-wide v0, p0, Lsdk/a/a/a/a/a/o;->f:J
+    iput-wide v2, p0, Lsdk/a/a/a/a/a/o;->f:J
+
+    add-int/lit8 v0, v1, 0x8
 
     return-void
 
@@ -146,7 +146,7 @@
     goto :goto_0
 .end method
 
-.method public final a()[B
+.method public c()[B
     .locals 6
 
     const/4 v1, 0x0
@@ -175,9 +175,11 @@
     move-result-object v2
 
     :goto_0
-    array-length v4, v3
+    const/16 v4, 0x15
 
-    add-int/lit8 v4, v4, 0x15
+    array-length v5, v3
+
+    add-int/2addr v4, v5
 
     if-eqz v2, :cond_0
 
@@ -194,43 +196,49 @@
 
     invoke-static {v1, v0, v4}, Lsdk/c/a/b/g;->b(I[BI)I
 
-    iget v1, p0, Lsdk/a/a/a/a/a/o;->b:I
+    move-result v1
 
-    iget-object v4, p0, Lsdk/a/a/a/a/a/o;->c:Ljava/lang/String;
+    iget v4, p0, Lsdk/a/a/a/a/a/o;->b:I
 
-    invoke-static {v4}, Lsdk/a/a/a/a/a/o;->a(Ljava/lang/String;)I
+    iget-object v5, p0, Lsdk/a/a/a/a/a/o;->c:Ljava/lang/String;
+
+    invoke-virtual {p0, v5}, Lsdk/a/a/a/a/a/o;->a(Ljava/lang/String;)I
+
+    move-result v5
+
+    or-int/2addr v4, v5
+
+    invoke-static {v4, v0, v1}, Lsdk/c/a/b/g;->c(I[BI)I
 
     move-result v4
 
-    or-int/2addr v1, v4
-
-    const/4 v4, 0x2
-
-    invoke-static {v1, v0, v4}, Lsdk/c/a/b/g;->c(I[BI)I
+    add-int/2addr v1, v4
 
     iget-wide v4, p0, Lsdk/a/a/a/a/a/o;->d:J
 
-    const/4 v1, 0x3
-
     invoke-static {v4, v5, v0, v1}, Lsdk/c/a/b/g;->a(J[BI)I
 
-    array-length v1, v3
+    move-result v4
 
-    const/16 v4, 0xb
+    add-int/2addr v1, v4
 
-    invoke-static {v1, v0, v4}, Lsdk/c/a/b/g;->c(I[BI)I
+    array-length v4, v3
 
-    const/4 v1, 0x0
+    invoke-static {v4, v0, v1}, Lsdk/c/a/b/g;->c(I[BI)I
 
-    const/16 v4, 0xc
+    move-result v4
+
+    add-int/2addr v1, v4
+
+    const/4 v4, 0x0
 
     array-length v5, v3
 
-    invoke-static {v3, v1, v0, v4, v5}, Lsdk/c/a/b/g;->a([BI[BII)I
+    invoke-static {v3, v4, v0, v1, v5}, Lsdk/c/a/b/g;->a([BI[BII)I
 
-    move-result v1
+    move-result v3
 
-    add-int/lit8 v1, v1, 0xc
+    add-int/2addr v1, v3
 
     array-length v3, v2
 
@@ -253,6 +261,10 @@
     iget-wide v2, p0, Lsdk/a/a/a/a/a/o;->f:J
 
     invoke-static {v2, v3, v0, v1}, Lsdk/c/a/b/g;->a(J[BI)I
+
+    move-result v2
+
+    add-int/2addr v1, v2
 
     :goto_1
     return-object v0

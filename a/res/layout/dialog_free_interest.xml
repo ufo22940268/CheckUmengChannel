@@ -9,8 +9,6 @@
         </RelativeLayout>
     </LinearLayout>
     <LinearLayout android:orientation="vertical" android:background="@drawable/dialog_content_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/RelativeLayout_Title">
-        <LinearLayout android:orientation="vertical" android:id="@id/LinearLayout_Content" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <TextView android:id="@id/TextView_Divider_Line" android:background="#fff0f0f0" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-        <ListView android:id="@id/ListView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:cacheColorHint="#00000000" android:divider="@null" />
+        <ListView android:id="@id/ListView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:listSelector="@*android:color/transparent" android:cacheColorHint="#00000000" android:divider="@drawable/category_divider_line" />
     </LinearLayout>
 </RelativeLayout>

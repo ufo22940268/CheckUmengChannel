@@ -1,5 +1,6 @@
 .class public Lcom/actionbarsherlock/internal/widget/ActionBarContainer;
 .super Lcom/actionbarsherlock/internal/nineoldandroids/widget/NineFrameLayout;
+.source "ActionBarContainer.java"
 
 
 # instance fields
@@ -23,139 +24,172 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
+    .parameter "context"
 
+    .prologue
+    .line 52
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
+    .line 53
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 6
+    .locals 8
+    .parameter "context"
+    .parameter "attrs"
 
-    const/4 v1, 0x0
+    .prologue
+    const/4 v5, 0x0
 
-    const/4 v0, 0x1
+    const/4 v4, 0x1
 
+    .line 56
     invoke-direct {p0, p1, p2}, Lcom/actionbarsherlock/internal/nineoldandroids/widget/NineFrameLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    const/4 v2, 0x0
+    .line 58
+    const/4 v6, 0x0
 
-    invoke-virtual {p0, v2}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {p0, v6}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    sget-object v2, Lcom/actionbarsherlock/R$styleable;->SherlockActionBar:[I
+    .line 60
+    sget-object v6, Lcom/actionbarsherlock/R$styleable;->SherlockActionBar:[I
 
-    invoke-virtual {p1, p2, v2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    invoke-virtual {p1, p2, v6}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
-    move-result-object v2
+    move-result-object v0
 
-    const/4 v3, 0x2
+    .line 62
+    .local v0, a:Landroid/content/res/TypedArray;
+    const/4 v6, 0x2
 
-    invoke-virtual {v2, v3}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v0, v6}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v3
+    move-result-object v6
 
-    iput-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
+    iput-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
 
-    const/16 v3, 0xc
+    .line 63
+    const/16 v6, 0xc
 
-    invoke-virtual {v2, v3}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v0, v6}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v3
+    move-result-object v6
 
-    iput-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
+    iput-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
 
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
+    .line 67
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
 
-    instance-of v3, v3, Landroid/graphics/drawable/ColorDrawable;
+    instance-of v6, v6, Landroid/graphics/drawable/ColorDrawable;
 
-    if-eqz v3, :cond_0
+    if-eqz v6, :cond_0
 
-    sget v3, Landroid/os/Build$VERSION;->SDK_INT:I
+    sget v6, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    const/16 v4, 0xb
+    const/16 v7, 0xb
 
-    if-ge v3, v4, :cond_0
+    if-ge v6, v7, :cond_0
 
-    sget-object v3, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+    .line 68
+    sget-object v6, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
-    invoke-static {v0, v0, v3}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    invoke-static {v4, v4, v6}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
-    move-result-object v3
+    move-result-object v1
 
-    new-instance v4, Landroid/graphics/Canvas;
+    .line 69
+    .local v1, bitmap:Landroid/graphics/Bitmap;
+    new-instance v2, Landroid/graphics/Canvas;
 
-    invoke-direct {v4, v3}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+    invoke-direct {v2, v1}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
+    .line 70
+    .local v2, c:Landroid/graphics/Canvas;
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v5, v4}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+    invoke-virtual {v6, v2}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    invoke-virtual {v3, v1, v1}, Landroid/graphics/Bitmap;->getPixel(II)I
-
-    move-result v4
-
-    invoke-virtual {v3}, Landroid/graphics/Bitmap;->recycle()V
-
-    new-instance v3, Lcom/actionbarsherlock/internal/widget/IcsColorDrawable;
-
-    invoke-direct {v3, v4}, Lcom/actionbarsherlock/internal/widget/IcsColorDrawable;-><init>(I)V
-
-    iput-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
-
-    :cond_0
-    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getId()I
+    .line 71
+    invoke-virtual {v1, v5, v5}, Landroid/graphics/Bitmap;->getPixel(II)I
 
     move-result v3
 
-    sget v4, Lcom/actionbarsherlock/R$id;->abs__split_action_bar:I
+    .line 72
+    .local v3, color:I
+    invoke-virtual {v1}, Landroid/graphics/Bitmap;->recycle()V
 
-    if-ne v3, v4, :cond_1
+    .line 73
+    new-instance v6, Lcom/actionbarsherlock/internal/widget/IcsColorDrawable;
 
-    iput-boolean v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsSplit:Z
+    invoke-direct {v6, v3}, Lcom/actionbarsherlock/internal/widget/IcsColorDrawable;-><init>(I)V
 
-    const/4 v3, 0x3
+    iput-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v2, v3}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    .line 76
+    .end local v1           #bitmap:Landroid/graphics/Bitmap;
+    .end local v2           #c:Landroid/graphics/Canvas;
+    .end local v3           #color:I
+    :cond_0
+    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getId()I
 
-    move-result-object v3
+    move-result v6
 
-    iput-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
+    sget v7, Lcom/actionbarsherlock/R$id;->abs__split_action_bar:I
 
+    if-ne v6, v7, :cond_1
+
+    .line 77
+    iput-boolean v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsSplit:Z
+
+    .line 78
+    const/4 v6, 0x3
+
+    invoke-virtual {v0, v6}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v6
+
+    iput-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
+
+    .line 81
     :cond_1
-    invoke-virtual {v2}, Landroid/content/res/TypedArray;->recycle()V
+    invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    iget-boolean v2, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsSplit:Z
+    .line 83
+    iget-boolean v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsSplit:Z
 
-    if-eqz v2, :cond_4
+    if-eqz v6, :cond_4
 
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
 
-    if-nez v2, :cond_3
+    if-nez v6, :cond_3
 
     :cond_2
     :goto_0
-    invoke-virtual {p0, v0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->setWillNotDraw(Z)V
+    invoke-virtual {p0, v4}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->setWillNotDraw(Z)V
 
+    .line 85
     return-void
 
     :cond_3
-    move v0, v1
+    move v4, v5
 
+    .line 83
     goto :goto_0
 
     :cond_4
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
 
-    if-nez v2, :cond_5
+    if-nez v6, :cond_5
 
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
 
-    if-eqz v2, :cond_2
+    if-eqz v6, :cond_2
 
     :cond_5
-    move v0, v1
+    move v4, v5
 
     goto :goto_0
 .end method
@@ -165,6 +199,8 @@
 .method public getTabContainer()Landroid/view/View;
     .locals 1
 
+    .prologue
+    .line 158
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
     return-object v0
@@ -172,7 +208,10 @@
 
 .method public onDraw(Landroid/graphics/Canvas;)V
     .locals 1
+    .parameter "canvas"
 
+    .prologue
+    .line 163
     invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getWidth()I
 
     move-result v0
@@ -185,15 +224,18 @@
 
     if-nez v0, :cond_1
 
+    .line 177
     :cond_0
     :goto_0
     return-void
 
+    .line 167
     :cond_1
     iget-boolean v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsSplit:Z
 
     if-eqz v0, :cond_2
 
+    .line 168
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_0
@@ -204,15 +246,18 @@
 
     goto :goto_0
 
+    .line 170
     :cond_2
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_3
 
+    .line 171
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
+    .line 173
     :cond_3
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
 
@@ -222,6 +267,7 @@
 
     if-eqz v0, :cond_0
 
+    .line 174
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
@@ -232,8 +278,11 @@
 .method public onFinishInflate()V
     .locals 1
 
+    .prologue
+    .line 89
     invoke-super {p0}, Lcom/actionbarsherlock/internal/nineoldandroids/widget/NineFrameLayout;->onFinishInflate()V
 
+    .line 90
     sget v0, Lcom/actionbarsherlock/R$id;->abs__action_bar:I
 
     invoke-virtual {p0, v0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->findViewById(I)Landroid/view/View;
@@ -244,14 +293,19 @@
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
 
+    .line 91
     return-void
 .end method
 
 .method public onHoverEvent(Landroid/view/MotionEvent;)Z
     .locals 1
+    .parameter "ev"
 
+    .prologue
+    .line 137
     invoke-super {p0, p1}, Lcom/actionbarsherlock/internal/nineoldandroids/widget/NineFrameLayout;->onHoverEvent(Landroid/view/MotionEvent;)Z
 
+    .line 140
     const/4 v0, 0x1
 
     return v0
@@ -259,7 +313,10 @@
 
 .method public onInterceptTouchEvent(Landroid/view/MotionEvent;)Z
     .locals 1
+    .parameter "ev"
 
+    .prologue
+    .line 124
     iget-boolean v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsTransitioning:Z
 
     if-nez v0, :cond_0
@@ -268,355 +325,457 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_1
 
-    const/4 v0, 0x0
+    :cond_0
+    const/4 v0, 0x1
 
     :goto_0
     return v0
 
-    :cond_0
-    const/4 v0, 0x1
+    :cond_1
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method
 
 .method public onLayout(ZIIII)V
-    .locals 8
+    .locals 13
+    .parameter "changed"
+    .parameter "l"
+    .parameter "t"
+    .parameter "r"
+    .parameter "b"
 
-    const/16 v4, 0x8
-
-    const/4 v1, 0x1
-
-    const/4 v2, 0x0
-
+    .prologue
+    .line 209
     invoke-super/range {p0 .. p5}, Lcom/actionbarsherlock/internal/nineoldandroids/widget/NineFrameLayout;->onLayout(ZIIII)V
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    .line 211
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    if-eqz v0, :cond_2
+    if-eqz v8, :cond_1
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
+    invoke-virtual {v8}, Landroid/view/View;->getVisibility()I
 
-    move-result v0
+    move-result v8
 
-    if-eq v0, v4, :cond_2
+    const/16 v9, 0x8
 
-    move v0, v1
+    if-eq v8, v9, :cond_1
 
+    const/4 v4, 0x1
+
+    .line 213
+    .local v4, hasTabs:Z
     :goto_0
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    if-eqz v3, :cond_0
+    if-eqz v8, :cond_4
 
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    invoke-virtual {v3}, Landroid/view/View;->getVisibility()I
+    invoke-virtual {v8}, Landroid/view/View;->getVisibility()I
 
-    move-result v3
+    move-result v8
 
-    if-eq v3, v4, :cond_0
+    const/16 v9, 0x8
 
+    if-eq v8, v9, :cond_4
+
+    .line 214
     invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getMeasuredHeight()I
 
-    move-result v3
+    move-result v2
 
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    .line 215
+    .local v2, containerHeight:I
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    invoke-virtual {v4}, Landroid/view/View;->getMeasuredHeight()I
-
-    move-result v4
-
-    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
-
-    invoke-virtual {v5}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getDisplayOptions()I
-
-    move-result v5
-
-    and-int/lit8 v5, v5, 0x2
-
-    if-nez v5, :cond_5
-
-    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getChildCount()I
-
-    move-result v5
-
-    move v3, v2
-
-    :goto_1
-    if-lt v3, v5, :cond_3
-
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
-
-    invoke-virtual {v3, p2, v2, p4, v4}, Landroid/view/View;->layout(IIII)V
-
-    :cond_0
-    :goto_2
-    iget-boolean v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsSplit:Z
-
-    if-eqz v3, :cond_6
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
-
-    if-eqz v0, :cond_a
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getMeasuredWidth()I
-
-    move-result v3
-
-    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getMeasuredHeight()I
-
-    move-result v4
-
-    invoke-virtual {v0, v2, v2, v3, v4}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
-
-    :goto_3
-    if-eqz v1, :cond_1
-
-    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->invalidate()V
-
-    :cond_1
-    return-void
-
-    :cond_2
-    move v0, v2
-
-    goto :goto_0
-
-    :cond_3
-    invoke-virtual {p0, v3}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getChildAt(I)Landroid/view/View;
-
-    move-result-object v6
-
-    iget-object v7, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
-
-    if-eq v6, v7, :cond_4
-
-    iget-object v7, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
-
-    invoke-virtual {v7}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->isCollapsed()Z
+    invoke-virtual {v8}, Landroid/view/View;->getMeasuredHeight()I
 
     move-result v7
 
-    if-nez v7, :cond_4
+    .line 217
+    .local v7, tabHeight:I
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
 
-    invoke-virtual {v6, v4}, Landroid/view/View;->offsetTopAndBottom(I)V
+    invoke-virtual {v8}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getDisplayOptions()I
 
-    :cond_4
-    add-int/lit8 v3, v3, 0x1
+    move-result v8
+
+    and-int/lit8 v8, v8, 0x2
+
+    if-nez v8, :cond_7
+
+    .line 219
+    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getChildCount()I
+
+    move-result v3
+
+    .line 220
+    .local v3, count:I
+    const/4 v5, 0x0
+
+    .local v5, i:I
+    :goto_1
+    if-ge v5, v3, :cond_3
+
+    .line 221
+    invoke-virtual {p0, v5}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v1
+
+    .line 223
+    .local v1, child:Landroid/view/View;
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+
+    if-ne v1, v8, :cond_2
+
+    .line 220
+    :cond_0
+    :goto_2
+    add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
 
-    :cond_5
-    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    .line 211
+    .end local v1           #child:Landroid/view/View;
+    .end local v2           #containerHeight:I
+    .end local v3           #count:I
+    .end local v4           #hasTabs:Z
+    .end local v5           #i:I
+    .end local v7           #tabHeight:I
+    :cond_1
+    const/4 v4, 0x0
 
-    sub-int v4, v3, v4
+    goto :goto_0
 
-    invoke-virtual {v5, p2, v4, p4, v3}, Landroid/view/View;->layout(IIII)V
+    .line 225
+    .restart local v1       #child:Landroid/view/View;
+    .restart local v2       #containerHeight:I
+    .restart local v3       #count:I
+    .restart local v4       #hasTabs:Z
+    .restart local v5       #i:I
+    .restart local v7       #tabHeight:I
+    :cond_2
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+
+    invoke-virtual {v8}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->isCollapsed()Z
+
+    move-result v8
+
+    if-nez v8, :cond_0
+
+    .line 226
+    invoke-virtual {v1, v7}, Landroid/view/View;->offsetTopAndBottom(I)V
 
     goto :goto_2
 
-    :cond_6
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
+    .line 229
+    .end local v1           #child:Landroid/view/View;
+    :cond_3
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    if-eqz v3, :cond_9
+    const/4 v9, 0x0
 
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
+    move/from16 v0, p4
 
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+    invoke-virtual {v8, p2, v9, v0, v7}, Landroid/view/View;->layout(IIII)V
 
-    invoke-virtual {v4}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getLeft()I
+    .line 235
+    .end local v2           #containerHeight:I
+    .end local v3           #count:I
+    .end local v5           #i:I
+    .end local v7           #tabHeight:I
+    :cond_4
+    :goto_3
+    const/4 v6, 0x0
 
-    move-result v4
+    .line 236
+    .local v6, needsInvalidate:Z
+    iget-boolean v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsSplit:Z
 
-    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+    if-eqz v8, :cond_8
 
-    invoke-virtual {v5}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getTop()I
+    .line 237
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
 
-    move-result v5
+    if-eqz v8, :cond_5
 
-    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+    .line 238
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v6}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getRight()I
+    const/4 v9, 0x0
 
-    move-result v6
+    const/4 v10, 0x0
 
-    iget-object v7, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getMeasuredWidth()I
 
-    invoke-virtual {v7}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getBottom()I
+    move-result v11
 
-    move-result v7
+    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getMeasuredHeight()I
 
-    invoke-virtual {v3, v4, v5, v6, v7}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    move-result v12
 
-    move v3, v1
+    invoke-virtual {v8, v9, v10, v11, v12}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
+    .line 239
+    const/4 v6, 0x1
+
+    .line 254
+    :cond_5
     :goto_4
-    if-eqz v0, :cond_7
+    if-eqz v6, :cond_6
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
+    .line 255
+    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->invalidate()V
 
-    if-eqz v0, :cond_7
+    .line 257
+    :cond_6
+    return-void
 
-    move v2, v1
-
+    .line 231
+    .end local v6           #needsInvalidate:Z
+    .restart local v2       #containerHeight:I
+    .restart local v7       #tabHeight:I
     :cond_7
-    iput-boolean v2, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsStacked:Z
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    if-eqz v2, :cond_8
+    sub-int v9, v2, v7
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
+    move/from16 v0, p4
 
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
-
-    invoke-virtual {v2}, Landroid/view/View;->getLeft()I
-
-    move-result v2
-
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
-
-    invoke-virtual {v3}, Landroid/view/View;->getTop()I
-
-    move-result v3
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
-
-    invoke-virtual {v4}, Landroid/view/View;->getRight()I
-
-    move-result v4
-
-    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
-
-    invoke-virtual {v5}, Landroid/view/View;->getBottom()I
-
-    move-result v5
-
-    invoke-virtual {v0, v2, v3, v4, v5}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    invoke-virtual {v8, p2, v9, v0, v2}, Landroid/view/View;->layout(IIII)V
 
     goto :goto_3
 
+    .line 242
+    .end local v2           #containerHeight:I
+    .end local v7           #tabHeight:I
+    .restart local v6       #needsInvalidate:Z
     :cond_8
-    move v1, v3
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
 
-    goto :goto_3
+    if-eqz v8, :cond_9
 
+    .line 243
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
+
+    iget-object v9, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+
+    invoke-virtual {v9}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getLeft()I
+
+    move-result v9
+
+    iget-object v10, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+
+    invoke-virtual {v10}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getTop()I
+
+    move-result v10
+
+    iget-object v11, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+
+    invoke-virtual {v11}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getRight()I
+
+    move-result v11
+
+    iget-object v12, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+
+    invoke-virtual {v12}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getBottom()I
+
+    move-result v12
+
+    invoke-virtual {v8, v9, v10, v11, v12}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+
+    .line 245
+    const/4 v6, 0x1
+
+    .line 247
     :cond_9
-    move v3, v2
+    if-eqz v4, :cond_a
+
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
+
+    if-eqz v8, :cond_a
+
+    const/4 v8, 0x1
+
+    :goto_5
+    iput-boolean v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsStacked:Z
+
+    if-eqz v8, :cond_5
+
+    .line 248
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
+
+    iget-object v9, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+
+    invoke-virtual {v9}, Landroid/view/View;->getLeft()I
+
+    move-result v9
+
+    iget-object v10, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+
+    invoke-virtual {v10}, Landroid/view/View;->getTop()I
+
+    move-result v10
+
+    iget-object v11, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+
+    invoke-virtual {v11}, Landroid/view/View;->getRight()I
+
+    move-result v11
+
+    iget-object v12, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+
+    invoke-virtual {v12}, Landroid/view/View;->getBottom()I
+
+    move-result v12
+
+    invoke-virtual {v8, v9, v10, v11, v12}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+
+    .line 250
+    const/4 v6, 0x1
 
     goto :goto_4
 
+    .line 247
     :cond_a
-    move v1, v2
+    const/4 v8, 0x0
 
-    goto :goto_3
+    goto :goto_5
 .end method
 
 .method public onMeasure(II)V
-    .locals 4
+    .locals 6
+    .parameter "widthMeasureSpec"
+    .parameter "heightMeasureSpec"
 
+    .prologue
+    .line 188
     invoke-super {p0, p1, p2}, Lcom/actionbarsherlock/internal/nineoldandroids/widget/NineFrameLayout;->onMeasure(II)V
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+    .line 190
+    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
 
-    if-nez v0, :cond_1
+    if-nez v4, :cond_1
 
+    .line 205
     :cond_0
     :goto_0
     return-void
 
+    .line 192
     :cond_1
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
 
-    invoke-virtual {v0}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    invoke-virtual {v4}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Landroid/widget/FrameLayout$LayoutParams;
+    check-cast v1, Landroid/widget/FrameLayout$LayoutParams;
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+    .line 193
+    .local v1, lp:Landroid/widget/FrameLayout$LayoutParams;
+    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
 
-    invoke-virtual {v1}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->isCollapsed()Z
+    invoke-virtual {v4}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->isCollapsed()Z
 
-    move-result v1
+    move-result v4
 
-    if-eqz v1, :cond_2
+    if-eqz v4, :cond_2
 
     const/4 v0, 0x0
 
+    .line 196
+    .local v0, actionBarViewHeight:I
     :goto_1
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    if-eqz v1, :cond_0
+    if-eqz v4, :cond_0
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    invoke-virtual {v1}, Landroid/view/View;->getVisibility()I
+    invoke-virtual {v4}, Landroid/view/View;->getVisibility()I
 
-    move-result v1
+    move-result v4
 
-    const/16 v2, 0x8
+    const/16 v5, 0x8
 
-    if-eq v1, v2, :cond_0
+    if-eq v4, v5, :cond_0
 
+    .line 197
     invoke-static {p2}, Landroid/view/View$MeasureSpec;->getMode(I)I
-
-    move-result v1
-
-    const/high16 v2, -0x8000
-
-    if-ne v1, v2, :cond_0
-
-    invoke-static {p2}, Landroid/view/View$MeasureSpec;->getSize(I)I
-
-    move-result v1
-
-    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getMeasuredWidth()I
-
-    move-result v2
-
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
-
-    invoke-virtual {v3}, Landroid/view/View;->getMeasuredHeight()I
 
     move-result v3
 
-    add-int/2addr v0, v3
+    .line 198
+    .local v3, mode:I
+    const/high16 v4, -0x8000
 
-    invoke-static {v0, v1}, Ljava/lang/Math;->min(II)I
+    if-ne v3, v4, :cond_0
 
-    move-result v0
+    .line 199
+    invoke-static {p2}, Landroid/view/View$MeasureSpec;->getSize(I)I
 
-    invoke-virtual {p0, v2, v0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->setMeasuredDimension(II)V
+    move-result v2
+
+    .line 200
+    .local v2, maxHeight:I
+    invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->getMeasuredWidth()I
+
+    move-result v4
+
+    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+
+    invoke-virtual {v5}, Landroid/view/View;->getMeasuredHeight()I
+
+    move-result v5
+
+    add-int/2addr v5, v0
+
+    invoke-static {v5, v2}, Ljava/lang/Math;->min(II)I
+
+    move-result v5
+
+    invoke-virtual {p0, v4, v5}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->setMeasuredDimension(II)V
 
     goto :goto_0
 
+    .line 193
+    .end local v0           #actionBarViewHeight:I
+    .end local v2           #maxHeight:I
+    .end local v3           #mode:I
     :cond_2
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
+    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mActionBarView:Lcom/actionbarsherlock/internal/widget/ActionBarView;
 
-    invoke-virtual {v1}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getMeasuredHeight()I
+    invoke-virtual {v4}, Lcom/actionbarsherlock/internal/widget/ActionBarView;->getMeasuredHeight()I
 
-    move-result v1
+    move-result v4
 
-    iget v2, v0, Landroid/widget/FrameLayout$LayoutParams;->topMargin:I
+    iget v5, v1, Landroid/widget/FrameLayout$LayoutParams;->topMargin:I
 
-    add-int/2addr v1, v2
+    add-int/2addr v4, v5
 
-    iget v0, v0, Landroid/widget/FrameLayout$LayoutParams;->bottomMargin:I
+    iget v5, v1, Landroid/widget/FrameLayout$LayoutParams;->bottomMargin:I
 
-    add-int/2addr v0, v1
+    add-int v0, v4, v5
 
     goto :goto_1
 .end method
 
 .method public onTouchEvent(Landroid/view/MotionEvent;)Z
     .locals 1
+    .parameter "ev"
 
+    .prologue
+    .line 129
     invoke-super {p0, p1}, Lcom/actionbarsherlock/internal/nineoldandroids/widget/NineFrameLayout;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
+    .line 132
     const/4 v0, 0x1
 
     return v0
@@ -624,77 +783,110 @@
 
 .method public setPrimaryBackground(Landroid/graphics/drawable/Drawable;)V
     .locals 0
+    .parameter "bg"
 
+    .prologue
+    .line 94
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mBackground:Landroid/graphics/drawable/Drawable;
 
+    .line 95
     invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->invalidate()V
 
+    .line 96
     return-void
 .end method
 
 .method public setSplitBackground(Landroid/graphics/drawable/Drawable;)V
     .locals 0
+    .parameter "bg"
 
+    .prologue
+    .line 104
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mSplitBackground:Landroid/graphics/drawable/Drawable;
 
+    .line 105
     invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->invalidate()V
 
+    .line 106
     return-void
 .end method
 
 .method public setStackedBackground(Landroid/graphics/drawable/Drawable;)V
     .locals 0
+    .parameter "bg"
 
+    .prologue
+    .line 99
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mStackedBackground:Landroid/graphics/drawable/Drawable;
 
+    .line 100
     invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->invalidate()V
 
+    .line 101
     return-void
 .end method
 
 .method public setTabContainer(Lcom/actionbarsherlock/internal/widget/ScrollingTabContainerView;)V
     .locals 2
+    .parameter "tabView"
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    .prologue
+    .line 144
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    if-eqz v0, :cond_0
+    if-eqz v1, :cond_0
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
+    .line 145
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
-    invoke-virtual {p0, v0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->removeView(Landroid/view/View;)V
+    invoke-virtual {p0, v1}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->removeView(Landroid/view/View;)V
 
+    .line 147
     :cond_0
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mTabContainer:Landroid/view/View;
 
+    .line 148
     if-eqz p1, :cond_1
 
+    .line 149
     invoke-virtual {p0, p1}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->addView(Landroid/view/View;)V
 
+    .line 150
     invoke-virtual {p1}, Lcom/actionbarsherlock/internal/widget/ScrollingTabContainerView;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v0
 
+    .line 151
+    .local v0, lp:Landroid/view/ViewGroup$LayoutParams;
     const/4 v1, -0x1
 
     iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->width:I
 
+    .line 152
     const/4 v1, -0x2
 
     iput v1, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
 
-    const/4 v0, 0x0
+    .line 153
+    const/4 v1, 0x0
 
-    invoke-virtual {p1, v0}, Lcom/actionbarsherlock/internal/widget/ScrollingTabContainerView;->setAllowCollapse(Z)V
+    invoke-virtual {p1, v1}, Lcom/actionbarsherlock/internal/widget/ScrollingTabContainerView;->setAllowCollapse(Z)V
 
+    .line 155
+    .end local v0           #lp:Landroid/view/ViewGroup$LayoutParams;
     :cond_1
     return-void
 .end method
 
 .method public setTransitioning(Z)V
     .locals 1
+    .parameter "isTransitioning"
 
+    .prologue
+    .line 117
     iput-boolean p1, p0, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->mIsTransitioning:Z
 
+    .line 118
     if-eqz p1, :cond_0
 
     const/high16 v0, 0x6
@@ -702,8 +894,10 @@
     :goto_0
     invoke-virtual {p0, v0}, Lcom/actionbarsherlock/internal/widget/ActionBarContainer;->setDescendantFocusability(I)V
 
+    .line 120
     return-void
 
+    .line 118
     :cond_0
     const/high16 v0, 0x4
 

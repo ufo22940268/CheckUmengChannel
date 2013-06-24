@@ -1,4 +1,4 @@
-.class public final Lsdk/download/h;
+.class public Lsdk/download/h;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -22,7 +22,7 @@
 
 
 # virtual methods
-.method public final a()V
+.method public a()V
     .locals 3
 
     iget-object v1, p0, Lsdk/download/h;->a:Lsdk/download/DownloadService;
@@ -32,7 +32,7 @@
     :try_start_0
     iget-object v0, p0, Lsdk/download/h;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v0}, Lsdk/download/DownloadService;->c(Lsdk/download/DownloadService;)Ljava/lang/Object;
+    invoke-static {v0}, Lsdk/download/DownloadService;->b(Lsdk/download/DownloadService;)Ljava/lang/Object;
 
     move-result-object v0
 
@@ -58,8 +58,6 @@
     :goto_0
     :try_start_2
     monitor-exit v1
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     return-void
 
@@ -67,6 +65,8 @@
     move-exception v0
 
     monitor-exit v1
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     throw v0
 
@@ -76,12 +76,14 @@
     goto :goto_0
 .end method
 
-.method public final onServiceConnected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
+.method public onServiceConnected(Landroid/content/ComponentName;Landroid/os/IBinder;)V
     .locals 6
+
+    const/4 v1, 0x0
 
     iget-object v0, p0, Lsdk/download/h;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v0}, Lsdk/download/DownloadService;->b(Lsdk/download/DownloadService;)Z
+    invoke-static {v0, v1}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Z)Z
 
     iget-object v1, p0, Lsdk/download/h;->a:Lsdk/download/DownloadService;
 
@@ -143,7 +145,7 @@
 
     iget-object v0, p0, Lsdk/download/h;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v0}, Lsdk/download/DownloadService;->c(Lsdk/download/DownloadService;)Ljava/lang/Object;
+    invoke-static {v0}, Lsdk/download/DownloadService;->b(Lsdk/download/DownloadService;)Ljava/lang/Object;
 
     move-result-object v0
 
@@ -173,8 +175,6 @@
     move-exception v0
 
     invoke-virtual {v0}, Ljava/lang/ClassNotFoundException;->printStackTrace()V
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     goto :goto_0
 
@@ -182,6 +182,8 @@
     move-exception v0
 
     monitor-exit v1
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     throw v0
 
@@ -231,7 +233,7 @@
     goto :goto_0
 .end method
 
-.method public final onServiceDisconnected(Landroid/content/ComponentName;)V
+.method public onServiceDisconnected(Landroid/content/ComponentName;)V
     .locals 3
 
     iget-object v1, p0, Lsdk/download/h;->a:Lsdk/download/DownloadService;
@@ -246,8 +248,6 @@
     invoke-static {v0, v2}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Ljava/lang/Object;)Ljava/lang/Object;
 
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     return-void
 
@@ -255,6 +255,8 @@
     move-exception v0
 
     monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

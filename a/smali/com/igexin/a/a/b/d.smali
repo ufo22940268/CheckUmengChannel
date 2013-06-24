@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/a/a/b/d;
+.class public Lcom/igexin/a/a/b/d;
 .super Lcom/igexin/a/a/b/l;
 
 
@@ -19,7 +19,7 @@
 
 
 # virtual methods
-.method public final a()Ljava/lang/String;
+.method public a()Ljava/lang/String;
     .locals 1
 
     const-string v0, "#data"
@@ -27,7 +27,19 @@
     return-object v0
 .end method
 
-.method final a(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
+.method a(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/igexin/a/a/b/d;->b()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    return-void
+.end method
+
+.method public b()Ljava/lang/String;
     .locals 2
 
     iget-object v0, p0, Lcom/igexin/a/a/b/d;->c:Lcom/igexin/a/a/b/b;
@@ -38,21 +50,19 @@
 
     move-result-object v0
 
-    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    return-void
+    return-object v0
 .end method
 
-.method final b(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
+.method b(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
     .locals 0
 
     return-void
 .end method
 
-.method public final toString()Ljava/lang/String;
+.method public toString()Ljava/lang/String;
     .locals 1
 
-    invoke-virtual {p0}, Lcom/igexin/a/a/b/d;->b()Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/igexin/a/a/b/d;->a_()Ljava/lang/String;
 
     move-result-object v0
 

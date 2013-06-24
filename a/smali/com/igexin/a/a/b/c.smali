@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/a/a/b/c;
+.class public Lcom/igexin/a/a/b/c;
 .super Lcom/igexin/a/a/b/l;
 
 
@@ -19,7 +19,7 @@
 
 
 # virtual methods
-.method public final a()Ljava/lang/String;
+.method public a()Ljava/lang/String;
     .locals 1
 
     const-string v0, "#comment"
@@ -27,8 +27,8 @@
     return-object v0
 .end method
 
-.method final a(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
-    .locals 3
+.method a(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
+    .locals 2
 
     invoke-virtual {p3}, Lcom/igexin/a/a/b/f;->d()Z
 
@@ -36,7 +36,7 @@
 
     if-eqz v0, :cond_0
 
-    invoke-static {p1, p2, p3}, Lcom/igexin/a/a/b/c;->c(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
+    invoke-virtual {p0, p1, p2, p3}, Lcom/igexin/a/a/b/c;->c(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
 
     :cond_0
     const-string v0, "<!--"
@@ -45,11 +45,7 @@
 
     move-result-object v0
 
-    iget-object v1, p0, Lcom/igexin/a/a/b/c;->c:Lcom/igexin/a/a/b/b;
-
-    const-string v2, "comment"
-
-    invoke-virtual {v1, v2}, Lcom/igexin/a/a/b/b;->a(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/igexin/a/a/b/c;->b()Ljava/lang/String;
 
     move-result-object v1
 
@@ -64,16 +60,30 @@
     return-void
 .end method
 
-.method final b(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
+.method public b()Ljava/lang/String;
+    .locals 2
+
+    iget-object v0, p0, Lcom/igexin/a/a/b/c;->c:Lcom/igexin/a/a/b/b;
+
+    const-string v1, "comment"
+
+    invoke-virtual {v0, v1}, Lcom/igexin/a/a/b/b;->a(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method b(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
     .locals 0
 
     return-void
 .end method
 
-.method public final toString()Ljava/lang/String;
+.method public toString()Ljava/lang/String;
     .locals 1
 
-    invoke-virtual {p0}, Lcom/igexin/a/a/b/c;->b()Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/igexin/a/a/b/c;->a_()Ljava/lang/String;
 
     move-result-object v0
 

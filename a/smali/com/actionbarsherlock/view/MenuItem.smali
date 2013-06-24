@@ -1,5 +1,15 @@
 .class public interface abstract Lcom/actionbarsherlock/view/MenuItem;
 .super Ljava/lang/Object;
+.source "MenuItem.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/actionbarsherlock/view/MenuItem$OnActionExpandListener;,
+        Lcom/actionbarsherlock/view/MenuItem$OnMenuItemClickListener;
+    }
+.end annotation
 
 
 # static fields

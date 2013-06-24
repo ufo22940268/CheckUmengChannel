@@ -1,4 +1,4 @@
-.class public final Lsdk/a/a/a/a;
+.class public Lsdk/a/a/a/a;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -26,14 +26,10 @@
 
 
 # virtual methods
-.method public final synthetic a(Ljava/lang/Object;Ljava/lang/Object;)Lsdk/c/a/e/d;
+.method public a(Ljava/lang/String;Ljava/lang/Integer;Lsdk/c/a/b/c;)Lsdk/c/a/b/f;
     .locals 2
 
     const/4 v0, 0x0
-
-    check-cast p1, Ljava/lang/String;
-
-    check-cast p2, Lsdk/c/a/b/c;
 
     const-string v1, "socket"
 
@@ -45,8 +41,13 @@
 
     iget-object v1, p0, Lsdk/a/a/a/a;->a:Landroid/net/ConnectivityManager;
 
-    if-eqz v1, :cond_0
+    if-nez v1, :cond_1
 
+    :cond_0
+    :goto_0
+    return-object v0
+
+    :cond_1
     iget-object v1, p0, Lsdk/a/a/a/a;->a:Landroid/net/ConnectivityManager;
 
     invoke-virtual {v1}, Landroid/net/ConnectivityManager;->getActiveNetworkInfo()Landroid/net/NetworkInfo;
@@ -59,16 +60,11 @@
 
     move-result v1
 
-    if-nez v1, :cond_1
+    if-eqz v1, :cond_0
 
-    :cond_0
-    :goto_0
-    return-object v0
-
-    :cond_1
     new-instance v0, Lsdk/c/a/b/a/a/f;
 
-    invoke-direct {v0, p1, p2}, Lsdk/c/a/b/a/a/f;-><init>(Ljava/lang/String;Lsdk/c/a/b/c;)V
+    invoke-direct {v0, p1, p3}, Lsdk/c/a/b/a/a/f;-><init>(Ljava/lang/String;Lsdk/c/a/b/c;)V
 
     goto :goto_0
 
@@ -86,4 +82,20 @@
     invoke-direct {v0, p1}, Lsdk/c/a/b/a/a/b;-><init>(Ljava/lang/String;)V
 
     goto :goto_0
+.end method
+
+.method public bridge synthetic a(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lsdk/c/a/e/d;
+    .locals 1
+
+    check-cast p1, Ljava/lang/String;
+
+    check-cast p2, Ljava/lang/Integer;
+
+    check-cast p3, Lsdk/c/a/b/c;
+
+    invoke-virtual {p0, p1, p2, p3}, Lsdk/a/a/a/a;->a(Ljava/lang/String;Ljava/lang/Integer;Lsdk/c/a/b/c;)Lsdk/c/a/b/f;
+
+    move-result-object v0
+
+    return-object v0
 .end method

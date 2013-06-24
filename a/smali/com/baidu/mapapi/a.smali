@@ -2,6 +2,14 @@
 .super Landroid/view/View;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/a$1;
+    }
+.end annotation
+
+
 # static fields
 .field private static J:Ljava/lang/reflect/Method;
 
@@ -68,6 +76,15 @@
 .field private r:Lcom/baidu/mapapi/MapView;
 
 .field private s:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Lcom/baidu/mapapi/Overlay;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private t:Z
 
@@ -653,14 +670,15 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
-
-    add-int/lit8 v1, v1, -0x1
-
-    goto :goto_0
+    if-eqz v0, :cond_1
 
     :cond_0
     return v0
+
+    :cond_1
+    add-int/lit8 v1, v1, -0x1
+
+    goto :goto_0
 .end method
 
 .method a(Landroid/view/MotionEvent;)Z
@@ -932,19 +950,21 @@
 
     invoke-static {v0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
 
+    move-result-object v3
+
+    const-string v4, "getPointerCount"
+
+    const/4 v0, 0x0
+
+    check-cast v0, [Ljava/lang/Class;
+
+    invoke-virtual {v3, v4, v0}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+
     move-result-object v0
 
-    const-string v3, "getPointerCount"
+    sput-object v0, Lcom/baidu/mapapi/a;->J:Ljava/lang/reflect/Method;
 
-    const/4 v4, 0x0
-
-    invoke-virtual {v0, v3, v4}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-
-    move-result-object v3
-
-    sput-object v3, Lcom/baidu/mapapi/a;->J:Ljava/lang/reflect/Method;
-
-    const-string v3, "getX"
+    const-string v0, "getX"
 
     const/4 v4, 0x1
 
@@ -956,13 +976,13 @@
 
     aput-object v6, v4, v5
 
-    invoke-virtual {v0, v3, v4}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    invoke-virtual {v3, v0, v4}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
 
-    move-result-object v3
+    move-result-object v0
 
-    sput-object v3, Lcom/baidu/mapapi/a;->L:Ljava/lang/reflect/Method;
+    sput-object v0, Lcom/baidu/mapapi/a;->L:Ljava/lang/reflect/Method;
 
-    const-string v3, "getY"
+    const-string v0, "getY"
 
     const/4 v4, 0x1
 
@@ -974,7 +994,7 @@
 
     aput-object v6, v4, v5
 
-    invoke-virtual {v0, v3, v4}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    invoke-virtual {v3, v0, v4}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
 
     move-result-object v0
 
@@ -1265,13 +1285,13 @@
 
     move-result v0
 
-    float-to-int v0, v0
+    float-to-int v1, v0
 
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
-    move-result v1
+    move-result v0
 
-    float-to-int v1, v1
+    float-to-int v0, v0
 
     iget-boolean v3, p0, Lcom/baidu/mapapi/a;->u:Z
 
@@ -1299,7 +1319,7 @@
 
     iget v4, p0, Lcom/baidu/mapapi/a;->n:I
 
-    sub-int v4, v0, v4
+    sub-int v4, v1, v4
 
     invoke-static {v4}, Ljava/lang/Math;->abs(I)I
 
@@ -1309,7 +1329,7 @@
 
     iget v4, p0, Lcom/baidu/mapapi/a;->o:I
 
-    sub-int v4, v1, v4
+    sub-int v4, v0, v4
 
     invoke-static {v4}, Ljava/lang/Math;->abs(I)I
 
@@ -1352,7 +1372,7 @@
 
     iget v4, p0, Lcom/baidu/mapapi/a;->n:I
 
-    sub-int/2addr v4, v0
+    sub-int/2addr v4, v1
 
     invoke-static {v4}, Ljava/lang/Math;->abs(I)I
 
@@ -1362,7 +1382,7 @@
 
     iget v4, p0, Lcom/baidu/mapapi/a;->o:I
 
-    sub-int/2addr v4, v1
+    sub-int/2addr v4, v0
 
     invoke-static {v4}, Ljava/lang/Math;->abs(I)I
 
@@ -1370,38 +1390,38 @@
 
     if-ge v4, v3, :cond_10
 
-    iget v0, p0, Lcom/baidu/mapapi/a;->n:I
-
-    iget v1, p0, Lcom/baidu/mapapi/a;->o:I
-
-    :cond_10
-    iput v0, p0, Lcom/baidu/mapapi/a;->p:I
-
-    iput v1, p0, Lcom/baidu/mapapi/a;->q:I
-
-    sput v0, Lcom/baidu/mapapi/Mj;->n:I
-
-    sput v1, Lcom/baidu/mapapi/Mj;->o:I
-
-    const/4 v3, 0x5
-
-    invoke-static {v3, v0, v1}, Lcom/baidu/mapapi/Mj;->MapProc(III)I
-
-    iget v3, p0, Lcom/baidu/mapapi/a;->n:I
-
-    sub-int/2addr v0, v3
-
-    invoke-static {v0}, Ljava/lang/Math;->abs(I)I
-
-    move-result v0
-
-    const/16 v3, 0x14
-
-    if-ge v0, v3, :cond_a
+    iget v1, p0, Lcom/baidu/mapapi/a;->n:I
 
     iget v0, p0, Lcom/baidu/mapapi/a;->o:I
 
-    sub-int v0, v1, v0
+    :cond_10
+    iput v1, p0, Lcom/baidu/mapapi/a;->p:I
+
+    iput v0, p0, Lcom/baidu/mapapi/a;->q:I
+
+    sput v1, Lcom/baidu/mapapi/Mj;->n:I
+
+    sput v0, Lcom/baidu/mapapi/Mj;->o:I
+
+    const/4 v3, 0x5
+
+    invoke-static {v3, v1, v0}, Lcom/baidu/mapapi/Mj;->MapProc(III)I
+
+    iget v3, p0, Lcom/baidu/mapapi/a;->n:I
+
+    sub-int/2addr v1, v3
+
+    invoke-static {v1}, Ljava/lang/Math;->abs(I)I
+
+    move-result v1
+
+    const/16 v3, 0x14
+
+    if-ge v1, v3, :cond_a
+
+    iget v1, p0, Lcom/baidu/mapapi/a;->o:I
+
+    sub-int/2addr v0, v1
 
     invoke-static {v0}, Ljava/lang/Math;->abs(I)I
 
@@ -1502,7 +1522,7 @@
 
     iget v4, p0, Lcom/baidu/mapapi/a;->p:I
 
-    sub-int/2addr v4, v0
+    sub-int/2addr v4, v1
 
     invoke-static {v4}, Ljava/lang/Math;->abs(I)I
 
@@ -1512,7 +1532,7 @@
 
     iget v4, p0, Lcom/baidu/mapapi/a;->q:I
 
-    sub-int/2addr v4, v1
+    sub-int/2addr v4, v0
 
     invoke-static {v4}, Ljava/lang/Math;->abs(I)I
 
@@ -1530,7 +1550,7 @@
 
     if-ge v3, v4, :cond_12
 
-    invoke-virtual {p0, v2, v0, v1}, Lcom/baidu/mapapi/a;->a(III)V
+    invoke-virtual {p0, v2, v1, v0}, Lcom/baidu/mapapi/a;->a(III)V
 
     :cond_12
     iput-wide v8, p0, Lcom/baidu/mapapi/a;->v:J
@@ -1614,8 +1634,6 @@
     invoke-static {v0, v1, v3}, Lcom/baidu/mapapi/Mj;->MapProc(III)I
 
     goto/16 :goto_6
-
-    nop
 
     :pswitch_data_0
     .packed-switch 0x0
@@ -1739,6 +1757,8 @@
 
     packed-switch v0, :pswitch_data_0
 
+    invoke-direct {p0, p1}, Lcom/baidu/mapapi/a;->c(Landroid/graphics/Canvas;)V
+
     invoke-direct {p0, p1}, Lcom/baidu/mapapi/a;->d(Landroid/graphics/Canvas;)V
 
     goto :goto_0
@@ -1751,14 +1771,16 @@
     :pswitch_1
     invoke-direct {p0, p1}, Lcom/baidu/mapapi/a;->d(Landroid/graphics/Canvas;)V
 
+    invoke-direct {p0, p1}, Lcom/baidu/mapapi/a;->c(Landroid/graphics/Canvas;)V
+
     goto :goto_0
 
     :pswitch_2
+    invoke-direct {p0, p1}, Lcom/baidu/mapapi/a;->c(Landroid/graphics/Canvas;)V
+
     invoke-direct {p0, p1}, Lcom/baidu/mapapi/a;->d(Landroid/graphics/Canvas;)V
 
     goto :goto_0
-
-    nop
 
     :pswitch_data_0
     .packed-switch 0x1
@@ -1820,14 +1842,15 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
-
-    add-int/lit8 v1, v1, -0x1
-
-    goto :goto_0
+    if-eqz v0, :cond_1
 
     :cond_0
     return v0
+
+    :cond_1
+    add-int/lit8 v1, v1, -0x1
+
+    goto :goto_0
 .end method
 
 .method b(Landroid/view/MotionEvent;)Z
@@ -1866,18 +1889,28 @@
 
     move-result v0
 
-    if-nez v0, :cond_0
-
-    add-int/lit8 v1, v1, -0x1
-
-    goto :goto_0
+    if-eqz v0, :cond_1
 
     :cond_0
     return v0
+
+    :cond_1
+    add-int/lit8 v1, v1, -0x1
+
+    goto :goto_0
 .end method
 
 .method public final c()Ljava/util/List;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Lcom/baidu/mapapi/Overlay;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/a;->s:Ljava/util/List;
 
@@ -1951,10 +1984,9 @@
 
     packed-switch v0, :pswitch_data_0
 
-    :goto_0
     invoke-virtual {p0, p1}, Lcom/baidu/mapapi/a;->b(Landroid/graphics/Canvas;)V
 
-    :goto_1
+    :goto_0
     return-void
 
     :pswitch_0
@@ -1999,7 +2031,7 @@
     :cond_0
     invoke-virtual {p0, p1}, Lcom/baidu/mapapi/a;->b(Landroid/graphics/Canvas;)V
 
-    goto :goto_1
+    goto :goto_0
 
     :pswitch_1
     iget v0, p0, Lcom/baidu/mapapi/a;->H:I
@@ -2047,7 +2079,7 @@
     :cond_1
     invoke-virtual {p0, p1}, Lcom/baidu/mapapi/a;->b(Landroid/graphics/Canvas;)V
 
-    goto :goto_1
+    goto :goto_0
 
     :pswitch_2
     iget v0, p0, Lcom/baidu/mapapi/a;->H:I
@@ -2055,6 +2087,8 @@
     if-ne v0, v1, :cond_2
 
     iput v7, p0, Lcom/baidu/mapapi/a;->E:I
+
+    invoke-virtual {p0, p1}, Lcom/baidu/mapapi/a;->b(Landroid/graphics/Canvas;)V
 
     goto :goto_0
 
@@ -2081,7 +2115,7 @@
 
     double-to-int v0, v3
 
-    :goto_2
+    :goto_1
     int-to-double v3, v0
 
     sub-double/2addr v3, v1
@@ -2098,7 +2132,9 @@
 
     add-double v0, v1, v12
 
-    :goto_3
+    add-int/lit8 v2, v3, -0x1
+
+    :goto_2
     invoke-static {v8, v9, v0, v1}, Ljava/lang/Math;->pow(DD)D
 
     move-result-wide v0
@@ -2109,7 +2145,7 @@
 
     invoke-virtual {p0}, Lcom/baidu/mapapi/a;->postInvalidate()V
 
-    goto/16 :goto_1
+    goto/16 :goto_0
 
     :cond_3
     const-wide/high16 v3, 0x3fe0
@@ -2118,12 +2154,14 @@
 
     double-to-int v0, v3
 
-    goto :goto_2
+    goto :goto_1
 
     :cond_4
     sub-double v0, v1, v12
 
-    goto :goto_3
+    add-int/lit8 v2, v3, 0x1
+
+    goto :goto_2
 
     :cond_5
     int-to-double v3, v0
@@ -2169,7 +2207,7 @@
     :cond_6
     iput v7, p0, Lcom/baidu/mapapi/a;->E:I
 
-    goto/16 :goto_1
+    goto/16 :goto_0
 
     :pswitch_3
     iget v0, p0, Lcom/baidu/mapapi/a;->H:I
@@ -2186,7 +2224,7 @@
 
     iput v7, p0, Lcom/baidu/mapapi/a;->F:I
 
-    goto/16 :goto_1
+    goto/16 :goto_0
 
     :cond_7
     iget-wide v0, p0, Lcom/baidu/mapapi/a;->e:D
@@ -2224,7 +2262,7 @@
     iput-wide v0, p0, Lcom/baidu/mapapi/a;->e:D
 
     :cond_8
-    :goto_4
+    :goto_3
     iget-wide v0, p0, Lcom/baidu/mapapi/a;->e:D
 
     iget v2, p0, Lcom/baidu/mapapi/a;->F:I
@@ -2271,7 +2309,7 @@
 
     invoke-virtual {p0}, Lcom/baidu/mapapi/a;->postInvalidate()V
 
-    goto/16 :goto_1
+    goto/16 :goto_0
 
     :cond_b
     iget v2, p0, Lcom/baidu/mapapi/a;->F:I
@@ -2296,7 +2334,7 @@
 
     iput-wide v0, p0, Lcom/baidu/mapapi/a;->e:D
 
-    goto :goto_4
+    goto :goto_3
 
     :cond_c
     invoke-virtual {p0, p1}, Lcom/baidu/mapapi/a;->b(Landroid/graphics/Canvas;)V
@@ -2309,9 +2347,7 @@
 
     iput v7, p0, Lcom/baidu/mapapi/a;->F:I
 
-    goto/16 :goto_1
-
-    nop
+    goto/16 :goto_0
 
     :pswitch_data_0
     .packed-switch 0x0

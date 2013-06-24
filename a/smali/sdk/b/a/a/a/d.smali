@@ -1,4 +1,4 @@
-.class final Lsdk/b/a/a/a/d;
+.class Lsdk/b/a/a/a/d;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -36,7 +36,7 @@
 
 
 # virtual methods
-.method public final accept(Ljava/io/File;)Z
+.method public accept(Ljava/io/File;)Z
     .locals 4
 
     iget-wide v0, p0, Lsdk/b/a/a/a/d;->a:J

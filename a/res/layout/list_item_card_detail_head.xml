@@ -14,5 +14,6 @@
         <TextView android:textSize="12.0sp" android:textColor="#ff333333" android:id="@id/TextView_Card_Detail_Need_Min_Label" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/card_detail_min_pay" android:layout_below="@id/TextView_Card_Detail_Need_Pay_Label" />
         <TextView android:textSize="12.0sp" android:textColor="#ff333333" android:id="@id/TextView_Card_Detail_Min_Pay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_toRightOf="@id/TextView_Card_Detail_Need_Min_Label" android:layout_alignTop="@id/TextView_Card_Detail_Need_Min_Label" />
     </RelativeLayout>
-    <ImageView android:background="@drawable/card_detail_white_full_line" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/RelativeLayout_Card_Detail_Content_Detail" />
+    <ImageView android:id="@id/imageview" android:background="@drawable/card_detail_white_full_line" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/RelativeLayout_Card_Detail_Content_Detail" />
+    <include android:id="@id/banner" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/imageview" layout="@layout/preferential_banner" />
 </RelativeLayout>

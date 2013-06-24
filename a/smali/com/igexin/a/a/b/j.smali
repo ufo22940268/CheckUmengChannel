@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/a/a/b/j;
+.class public Lcom/igexin/a/a/b/j;
 .super Ljava/lang/Object;
 
 
@@ -160,6 +160,8 @@
 
     sput-object v0, Lcom/igexin/a/a/b/j;->a:Ljava/util/Map;
 
+    sget-object v0, Lcom/igexin/a/a/b/j;->a:Ljava/util/Map;
+
     invoke-static {v0}, Lcom/igexin/a/a/b/j;->a(Ljava/util/Map;)Ljava/util/Map;
 
     move-result-object v0
@@ -210,31 +212,41 @@
 .end method
 
 .method static a(Ljava/lang/String;Lcom/igexin/a/a/b/f;)Ljava/lang/String;
-    .locals 7
-
-    const/16 v6, 0x3b
+    .locals 2
 
     invoke-virtual {p1}, Lcom/igexin/a/a/b/f;->c()Ljava/nio/charset/CharsetEncoder;
 
-    move-result-object v2
+    move-result-object v0
 
     invoke-virtual {p1}, Lcom/igexin/a/a/b/f;->a()Lcom/igexin/a/a/b/k;
 
+    move-result-object v1
+
+    invoke-static {p0, v0, v1}, Lcom/igexin/a/a/b/j;->a(Ljava/lang/String;Ljava/nio/charset/CharsetEncoder;Lcom/igexin/a/a/b/k;)Ljava/lang/String;
+
     move-result-object v0
 
-    new-instance v3, Ljava/lang/StringBuilder;
+    return-object v0
+.end method
+
+.method static a(Ljava/lang/String;Ljava/nio/charset/CharsetEncoder;Lcom/igexin/a/a/b/k;)Ljava/lang/String;
+    .locals 6
+
+    const/16 v5, 0x3b
+
+    new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
-    move-result v1
+    move-result v0
 
-    mul-int/lit8 v1, v1, 0x2
+    mul-int/lit8 v0, v0, 0x2
 
-    invoke-direct {v3, v1}, Ljava/lang/StringBuilder;-><init>(I)V
+    invoke-direct {v2, v0}, Ljava/lang/StringBuilder;-><init>(I)V
 
-    invoke-virtual {v0}, Lcom/igexin/a/a/b/k;->a()Ljava/util/Map;
+    invoke-virtual {p2}, Lcom/igexin/a/a/b/k;->a()Ljava/util/Map;
 
-    move-result-object v4
+    move-result-object v3
 
     const/4 v0, 0x0
 
@@ -255,29 +267,29 @@
 
     move-result-object v0
 
-    invoke-interface {v4, v0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+    invoke-interface {v3, v0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
-    move-result v5
+    move-result v4
 
-    if-eqz v5, :cond_0
+    if-eqz v4, :cond_0
 
-    const/16 v5, 0x26
+    const/16 v4, 0x26
 
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
-    invoke-interface {v4, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v3, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Ljava/lang/String;
 
-    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    invoke-virtual {v0, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     :goto_1
     add-int/lit8 v0, v1, 0x1
@@ -289,43 +301,43 @@
     :cond_0
     invoke-virtual {v0}, Ljava/lang/Character;->charValue()C
 
-    move-result v5
+    move-result v4
 
-    invoke-virtual {v2, v5}, Ljava/nio/charset/CharsetEncoder;->canEncode(C)Z
+    invoke-virtual {p1, v4}, Ljava/nio/charset/CharsetEncoder;->canEncode(C)Z
 
-    move-result v5
+    move-result v4
 
-    if-eqz v5, :cond_1
+    if-eqz v4, :cond_1
 
     invoke-virtual {v0}, Ljava/lang/Character;->charValue()C
 
     move-result v0
 
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     goto :goto_1
 
     :cond_1
-    const-string v5, "&#"
+    const-string v4, "&#"
 
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v4
 
     invoke-virtual {v0}, Ljava/lang/Character;->charValue()C
 
     move-result v0
 
-    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
-    invoke-virtual {v0, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     goto :goto_1
 
     :cond_2
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
@@ -536,9 +548,13 @@
 
     new-instance v2, Ljava/lang/StringBuilder;
 
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v3, "Error loading entities resource: "
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     invoke-virtual {v0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 

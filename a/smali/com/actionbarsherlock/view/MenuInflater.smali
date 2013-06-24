@@ -1,11 +1,37 @@
 .class public Lcom/actionbarsherlock/view/MenuInflater;
 .super Ljava/lang/Object;
+.source "MenuInflater.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/actionbarsherlock/view/MenuInflater$MenuState;,
+        Lcom/actionbarsherlock/view/MenuInflater$InflatedOnMenuItemClickListener;
+    }
+.end annotation
 
 
 # static fields
 .field private static final ACTION_PROVIDER_CONSTRUCTOR_SIGNATURE:[Ljava/lang/Class; = null
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "[",
+            "Ljava/lang/Class",
+            "<*>;"
+        }
+    .end annotation
+.end field
 
 .field private static final ACTION_VIEW_CONSTRUCTOR_SIGNATURE:[Ljava/lang/Class; = null
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "[",
+            "Ljava/lang/Class",
+            "<*>;"
+        }
+    .end annotation
+.end field
 
 .field private static final LOG_TAG:Ljava/lang/String; = "MenuInflater"
 
@@ -32,6 +58,8 @@
 .method static constructor <clinit>()V
     .locals 3
 
+    .prologue
+    .line 61
     const/4 v0, 0x1
 
     new-array v0, v0, [Ljava/lang/Class;
@@ -44,6 +72,9 @@
 
     sput-object v0, Lcom/actionbarsherlock/view/MenuInflater;->ACTION_VIEW_CONSTRUCTOR_SIGNATURE:[Ljava/lang/Class;
 
+    .line 63
+    sget-object v0, Lcom/actionbarsherlock/view/MenuInflater;->ACTION_VIEW_CONSTRUCTOR_SIGNATURE:[Ljava/lang/Class;
+
     sput-object v0, Lcom/actionbarsherlock/view/MenuInflater;->ACTION_PROVIDER_CONSTRUCTOR_SIGNATURE:[Ljava/lang/Class;
 
     return-void
@@ -51,13 +82,19 @@
 
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 2
+    .parameter "context"
 
+    .prologue
+    .line 77
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 78
     iput-object p1, p0, Lcom/actionbarsherlock/view/MenuInflater;->mContext:Landroid/content/Context;
 
+    .line 79
     iput-object p1, p0, Lcom/actionbarsherlock/view/MenuInflater;->mRealOwner:Ljava/lang/Object;
 
+    .line 80
     const/4 v0, 0x1
 
     new-array v0, v0, [Ljava/lang/Object;
@@ -68,22 +105,31 @@
 
     iput-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mActionViewConstructorArguments:[Ljava/lang/Object;
 
+    .line 81
     iget-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mActionViewConstructorArguments:[Ljava/lang/Object;
 
     iput-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mActionProviderConstructorArguments:[Ljava/lang/Object;
 
+    .line 82
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Ljava/lang/Object;)V
     .locals 2
+    .parameter "context"
+    .parameter "realOwner"
 
+    .prologue
+    .line 90
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 91
     iput-object p1, p0, Lcom/actionbarsherlock/view/MenuInflater;->mContext:Landroid/content/Context;
 
+    .line 92
     iput-object p2, p0, Lcom/actionbarsherlock/view/MenuInflater;->mRealOwner:Ljava/lang/Object;
 
+    .line 93
     const/4 v0, 0x1
 
     new-array v0, v0, [Ljava/lang/Object;
@@ -94,56 +140,74 @@
 
     iput-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mActionViewConstructorArguments:[Ljava/lang/Object;
 
+    .line 94
     iget-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mActionViewConstructorArguments:[Ljava/lang/Object;
 
     iput-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mActionProviderConstructorArguments:[Ljava/lang/Object;
 
+    .line 95
     return-void
 .end method
 
-.method static synthetic access$0(Lcom/actionbarsherlock/view/MenuInflater;)Landroid/content/Context;
+.method static synthetic access$100(Lcom/actionbarsherlock/view/MenuInflater;)Landroid/content/Context;
     .locals 1
+    .parameter "x0"
 
+    .prologue
+    .line 47
     iget-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mContext:Landroid/content/Context;
 
     return-object v0
 .end method
 
-.method static synthetic access$1()[Ljava/lang/Class;
+.method static synthetic access$200()[Ljava/lang/Class;
     .locals 1
 
+    .prologue
+    .line 47
     sget-object v0, Lcom/actionbarsherlock/view/MenuInflater;->ACTION_PROVIDER_CONSTRUCTOR_SIGNATURE:[Ljava/lang/Class;
 
     return-object v0
 .end method
 
-.method static synthetic access$2(Lcom/actionbarsherlock/view/MenuInflater;)[Ljava/lang/Object;
+.method static synthetic access$300(Lcom/actionbarsherlock/view/MenuInflater;)[Ljava/lang/Object;
     .locals 1
+    .parameter "x0"
 
+    .prologue
+    .line 47
     iget-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mActionProviderConstructorArguments:[Ljava/lang/Object;
 
     return-object v0
 .end method
 
-.method static synthetic access$3(Lcom/actionbarsherlock/view/MenuInflater;)Ljava/lang/Object;
+.method static synthetic access$400(Lcom/actionbarsherlock/view/MenuInflater;)Ljava/lang/Object;
     .locals 1
+    .parameter "x0"
 
+    .prologue
+    .line 47
     iget-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mRealOwner:Ljava/lang/Object;
 
     return-object v0
 .end method
 
-.method static synthetic access$4()[Ljava/lang/Class;
+.method static synthetic access$500()[Ljava/lang/Class;
     .locals 1
 
+    .prologue
+    .line 47
     sget-object v0, Lcom/actionbarsherlock/view/MenuInflater;->ACTION_VIEW_CONSTRUCTOR_SIGNATURE:[Ljava/lang/Class;
 
     return-object v0
 .end method
 
-.method static synthetic access$5(Lcom/actionbarsherlock/view/MenuInflater;)[Ljava/lang/Object;
+.method static synthetic access$600(Lcom/actionbarsherlock/view/MenuInflater;)[Ljava/lang/Object;
     .locals 1
+    .parameter "x0"
 
+    .prologue
+    .line 47
     iget-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mActionViewConstructorArguments:[Ljava/lang/Object;
 
     return-object v0
@@ -151,271 +215,317 @@
 
 .method private parseMenu(Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Lcom/actionbarsherlock/view/Menu;)V
     .locals 10
+    .parameter "parser"
+    .parameter "attrs"
+    .parameter "menu"
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lorg/xmlpull/v1/XmlPullParserException;,
+            Ljava/io/IOException;
+        }
+    .end annotation
 
-    const/4 v4, 0x0
+    .prologue
+    .line 128
+    new-instance v2, Lcom/actionbarsherlock/view/MenuInflater$MenuState;
 
-    const/4 v1, 0x1
+    invoke-direct {v2, p0, p3}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;-><init>(Lcom/actionbarsherlock/view/MenuInflater;Lcom/actionbarsherlock/view/Menu;)V
 
-    const/4 v6, 0x0
-
-    new-instance v7, Lcom/actionbarsherlock/view/MenuInflater$MenuState;
-
-    invoke-direct {v7, p0, p3}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;-><init>(Lcom/actionbarsherlock/view/MenuInflater;Lcom/actionbarsherlock/view/Menu;)V
-
+    .line 130
+    .local v2, menuState:Lcom/actionbarsherlock/view/MenuInflater$MenuState;
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getEventType()I
 
     move-result v0
 
+    .line 132
+    .local v0, eventType:I
+    const/4 v1, 0x0
+
+    .line 133
+    .local v1, lookingForEndOfUnknownTag:Z
+    const/4 v6, 0x0
+
+    .line 137
+    .local v6, unknownTagName:Ljava/lang/String;
     :cond_0
-    const/4 v2, 0x2
+    const/4 v7, 0x2
 
-    if-ne v0, v2, :cond_2
+    if-ne v0, v7, :cond_3
 
+    .line 138
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getName()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v5
 
-    const-string v2, "menu"
+    .line 139
+    .local v5, tagName:Ljava/lang/String;
+    const-string v7, "menu"
 
-    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v2
+    move-result v7
 
-    if-eqz v2, :cond_1
+    if-eqz v7, :cond_2
 
+    .line 141
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->next()I
 
     move-result v0
 
+    .line 150
+    .end local v5           #tagName:Ljava/lang/String;
     :goto_0
-    move-object v2, v4
+    const/4 v3, 0x0
 
-    move v5, v6
-
-    move v3, v0
-
-    move v0, v6
-
+    .line 151
+    .local v3, reachedEndOfMenu:Z
     :goto_1
-    if-eqz v0, :cond_3
+    if-nez v3, :cond_b
 
-    return-void
+    .line 152
+    packed-switch v0, :pswitch_data_0
 
+    .line 202
     :cond_1
-    new-instance v1, Ljava/lang/RuntimeException;
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    const-string v3, "Expecting menu, got "
-
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-direct {v1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    :cond_2
-    invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->next()I
-
-    move-result v0
-
-    if-ne v0, v1, :cond_0
-
-    goto :goto_0
-
-    :cond_3
-    packed-switch v3, :pswitch_data_0
-
-    :cond_4
-    move v3, v5
-
     :goto_2
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->next()I
 
-    move-result v5
-
-    move v9, v3
-
-    move v3, v5
-
-    move v5, v9
+    move-result v0
 
     goto :goto_1
 
-    :pswitch_0
-    if-nez v5, :cond_4
+    .line 145
+    .end local v3           #reachedEndOfMenu:Z
+    .restart local v5       #tagName:Ljava/lang/String;
+    :cond_2
+    new-instance v7, Ljava/lang/RuntimeException;
 
+    new-instance v8, Ljava/lang/StringBuilder;
+
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v9, "Expecting menu, got "
+
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v8
+
+    invoke-direct {v7, v8}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    throw v7
+
+    .line 147
+    .end local v5           #tagName:Ljava/lang/String;
+    :cond_3
+    invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->next()I
+
+    move-result v0
+
+    .line 148
+    const/4 v7, 0x1
+
+    if-ne v0, v7, :cond_0
+
+    goto :goto_0
+
+    .line 154
+    .restart local v3       #reachedEndOfMenu:Z
+    :pswitch_0
+    if-nez v1, :cond_1
+
+    .line 158
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getName()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    const-string v8, "group"
+    .line 159
+    .restart local v5       #tagName:Ljava/lang/String;
+    const-string v7, "group"
 
-    invoke-virtual {v3, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v8
+    move-result v7
 
-    if-eqz v8, :cond_5
+    if-eqz v7, :cond_4
 
-    invoke-virtual {v7, p2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->readGroup(Landroid/util/AttributeSet;)V
-
-    move v3, v5
+    .line 160
+    invoke-virtual {v2, p2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->readGroup(Landroid/util/AttributeSet;)V
 
     goto :goto_2
 
+    .line 161
+    :cond_4
+    const-string v7, "item"
+
+    invoke-virtual {v5, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_5
+
+    .line 162
+    invoke-virtual {v2, p2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->readItem(Landroid/util/AttributeSet;)V
+
+    goto :goto_2
+
+    .line 163
     :cond_5
-    const-string v8, "item"
+    const-string v7, "menu"
 
-    invoke-virtual {v3, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v8
+    move-result v7
 
-    if-eqz v8, :cond_6
+    if-eqz v7, :cond_6
 
-    invoke-virtual {v7, p2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->readItem(Landroid/util/AttributeSet;)V
+    .line 165
+    invoke-virtual {v2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->addSubMenuItem()Lcom/actionbarsherlock/view/SubMenu;
 
-    move v3, v5
+    move-result-object v4
+
+    .line 168
+    .local v4, subMenu:Lcom/actionbarsherlock/view/SubMenu;
+    invoke-direct {p0, p1, p2, v4}, Lcom/actionbarsherlock/view/MenuInflater;->parseMenu(Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Lcom/actionbarsherlock/view/Menu;)V
 
     goto :goto_2
 
+    .line 170
+    .end local v4           #subMenu:Lcom/actionbarsherlock/view/SubMenu;
     :cond_6
-    const-string v8, "menu"
+    const/4 v1, 0x1
 
-    invoke-virtual {v3, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    .line 171
+    move-object v6, v5
 
-    move-result v8
-
-    if-eqz v8, :cond_7
-
-    invoke-virtual {v7}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->addSubMenuItem()Lcom/actionbarsherlock/view/SubMenu;
-
-    move-result-object v3
-
-    invoke-direct {p0, p1, p2, v3}, Lcom/actionbarsherlock/view/MenuInflater;->parseMenu(Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Lcom/actionbarsherlock/view/Menu;)V
-
-    move v3, v5
-
+    .line 173
     goto :goto_2
 
-    :cond_7
-    move-object v2, v3
-
-    move v3, v1
-
-    goto :goto_2
-
+    .line 176
+    .end local v5           #tagName:Ljava/lang/String;
     :pswitch_1
     invoke-interface {p1}, Lorg/xmlpull/v1/XmlPullParser;->getName()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    if-eqz v5, :cond_8
+    .line 177
+    .restart local v5       #tagName:Ljava/lang/String;
+    if-eqz v1, :cond_7
 
-    invoke-virtual {v3, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v8
+    move-result v7
 
-    if-eqz v8, :cond_8
+    if-eqz v7, :cond_7
 
-    move-object v2, v4
+    .line 178
+    const/4 v1, 0x0
 
-    move v3, v6
+    .line 179
+    const/4 v6, 0x0
 
     goto :goto_2
 
+    .line 180
+    :cond_7
+    const-string v7, "group"
+
+    invoke-virtual {v5, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_8
+
+    .line 181
+    invoke-virtual {v2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->resetGroup()V
+
+    goto :goto_2
+
+    .line 182
     :cond_8
-    const-string v8, "group"
+    const-string v7, "item"
 
-    invoke-virtual {v3, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v8
+    move-result v7
 
-    if-eqz v8, :cond_9
+    if-eqz v7, :cond_a
 
-    invoke-virtual {v7}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->resetGroup()V
+    .line 185
+    invoke-virtual {v2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->hasAddedItem()Z
 
-    move v3, v5
+    move-result v7
 
-    goto :goto_2
+    if-nez v7, :cond_1
 
-    :cond_9
-    const-string v8, "item"
+    .line 186
+    #getter for: Lcom/actionbarsherlock/view/MenuInflater$MenuState;->itemActionProvider:Lcom/actionbarsherlock/view/ActionProvider;
+    invoke-static {v2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->access$000(Lcom/actionbarsherlock/view/MenuInflater$MenuState;)Lcom/actionbarsherlock/view/ActionProvider;
 
-    invoke-virtual {v3, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result-object v7
 
-    move-result v8
-
-    if-eqz v8, :cond_b
-
-    invoke-virtual {v7}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->hasAddedItem()Z
-
-    move-result v3
-
-    if-nez v3, :cond_4
+    if-eqz v7, :cond_9
 
     #getter for: Lcom/actionbarsherlock/view/MenuInflater$MenuState;->itemActionProvider:Lcom/actionbarsherlock/view/ActionProvider;
-    invoke-static {v7}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->access$0(Lcom/actionbarsherlock/view/MenuInflater$MenuState;)Lcom/actionbarsherlock/view/ActionProvider;
+    invoke-static {v2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->access$000(Lcom/actionbarsherlock/view/MenuInflater$MenuState;)Lcom/actionbarsherlock/view/ActionProvider;
 
-    move-result-object v3
+    move-result-object v7
 
-    if-eqz v3, :cond_a
+    invoke-virtual {v7}, Lcom/actionbarsherlock/view/ActionProvider;->hasSubMenu()Z
 
-    #getter for: Lcom/actionbarsherlock/view/MenuInflater$MenuState;->itemActionProvider:Lcom/actionbarsherlock/view/ActionProvider;
-    invoke-static {v7}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->access$0(Lcom/actionbarsherlock/view/MenuInflater$MenuState;)Lcom/actionbarsherlock/view/ActionProvider;
+    move-result v7
 
-    move-result-object v3
+    if-eqz v7, :cond_9
 
-    invoke-virtual {v3}, Lcom/actionbarsherlock/view/ActionProvider;->hasSubMenu()Z
-
-    move-result v3
-
-    if-eqz v3, :cond_a
-
-    invoke-virtual {v7}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->addSubMenuItem()Lcom/actionbarsherlock/view/SubMenu;
-
-    move v3, v5
-
-    goto :goto_2
-
-    :cond_a
-    invoke-virtual {v7}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->addItem()V
-
-    move v3, v5
-
-    goto :goto_2
-
-    :cond_b
-    const-string v8, "menu"
-
-    invoke-virtual {v3, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_4
-
-    move v0, v1
-
-    move v3, v5
+    .line 188
+    invoke-virtual {v2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->addSubMenuItem()Lcom/actionbarsherlock/view/SubMenu;
 
     goto/16 :goto_2
 
+    .line 190
+    :cond_9
+    invoke-virtual {v2}, Lcom/actionbarsherlock/view/MenuInflater$MenuState;->addItem()V
+
+    goto/16 :goto_2
+
+    .line 193
+    :cond_a
+    const-string v7, "menu"
+
+    invoke-virtual {v5, v7}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v7
+
+    if-eqz v7, :cond_1
+
+    .line 194
+    const/4 v3, 0x1
+
+    goto/16 :goto_2
+
+    .line 199
+    .end local v5           #tagName:Ljava/lang/String;
     :pswitch_2
-    new-instance v0, Ljava/lang/RuntimeException;
+    new-instance v7, Ljava/lang/RuntimeException;
 
-    const-string v1, "Unexpected end of document"
+    const-string v8, "Unexpected end of document"
 
-    invoke-direct {v0, v1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v7, v8}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw v7
 
+    .line 204
+    :cond_b
+    return-void
+
+    .line 152
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_2
@@ -427,73 +537,93 @@
 
 # virtual methods
 .method public inflate(ILcom/actionbarsherlock/view/Menu;)V
-    .locals 4
+    .locals 5
+    .parameter "menuRes"
+    .parameter "menu"
 
-    const/4 v1, 0x0
+    .prologue
+    .line 107
+    const/4 v2, 0x0
 
+    .line 109
+    .local v2, parser:Landroid/content/res/XmlResourceParser;
     :try_start_0
-    iget-object v0, p0, Lcom/actionbarsherlock/view/MenuInflater;->mContext:Landroid/content/Context;
+    iget-object v3, p0, Lcom/actionbarsherlock/view/MenuInflater;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    invoke-virtual {v3, p1}, Landroid/content/res/Resources;->getLayout(I)Landroid/content/res/XmlResourceParser;
+
+    move-result-object v2
+
+    .line 110
+    invoke-static {v2}, Landroid/util/Xml;->asAttributeSet(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
 
     move-result-object v0
 
-    invoke-virtual {v0, p1}, Landroid/content/res/Resources;->getLayout(I)Landroid/content/res/XmlResourceParser;
-
-    move-result-object v1
-
-    invoke-static {v1}, Landroid/util/Xml;->asAttributeSet(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
-
-    move-result-object v0
-
-    invoke-direct {p0, v1, v0, p2}, Lcom/actionbarsherlock/view/MenuInflater;->parseMenu(Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Lcom/actionbarsherlock/view/Menu;)V
+    .line 112
+    .local v0, attrs:Landroid/util/AttributeSet;
+    invoke-direct {p0, v2, v0, p2}, Lcom/actionbarsherlock/view/MenuInflater;->parseMenu(Lorg/xmlpull/v1/XmlPullParser;Landroid/util/AttributeSet;Lcom/actionbarsherlock/view/Menu;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Lorg/xmlpull/v1/XmlPullParserException; {:try_start_0 .. :try_end_0} :catch_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_1
 
-    if-eqz v1, :cond_0
+    .line 118
+    if-eqz v2, :cond_0
 
-    invoke-interface {v1}, Landroid/content/res/XmlResourceParser;->close()V
+    invoke-interface {v2}, Landroid/content/res/XmlResourceParser;->close()V
 
+    .line 120
     :cond_0
     return-void
 
+    .line 113
+    .end local v0           #attrs:Landroid/util/AttributeSet;
     :catch_0
-    move-exception v0
+    move-exception v1
 
+    .line 114
+    .local v1, e:Lorg/xmlpull/v1/XmlPullParserException;
     :try_start_1
-    new-instance v2, Landroid/view/InflateException;
+    new-instance v3, Landroid/view/InflateException;
 
-    const-string v3, "Error inflating menu XML"
+    const-string v4, "Error inflating menu XML"
 
-    invoke-direct {v2, v3, v0}, Landroid/view/InflateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-direct {v3, v4, v1}, Landroid/view/InflateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    throw v2
+    throw v3
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
+    .line 118
+    .end local v1           #e:Lorg/xmlpull/v1/XmlPullParserException;
     :catchall_0
-    move-exception v0
+    move-exception v3
 
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_1
 
-    invoke-interface {v1}, Landroid/content/res/XmlResourceParser;->close()V
+    invoke-interface {v2}, Landroid/content/res/XmlResourceParser;->close()V
 
     :cond_1
-    throw v0
+    throw v3
 
+    .line 115
     :catch_1
-    move-exception v0
+    move-exception v1
 
+    .line 116
+    .local v1, e:Ljava/io/IOException;
     :try_start_2
-    new-instance v2, Landroid/view/InflateException;
+    new-instance v3, Landroid/view/InflateException;
 
-    const-string v3, "Error inflating menu XML"
+    const-string v4, "Error inflating menu XML"
 
-    invoke-direct {v2, v3, v0}, Landroid/view/InflateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    invoke-direct {v3, v4, v1}, Landroid/view/InflateException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    throw v2
+    throw v3
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 .end method

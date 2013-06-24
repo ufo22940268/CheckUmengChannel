@@ -499,7 +499,7 @@
 
     move-result v2
 
-    if-lez v2, :cond_c
+    if-lez v2, :cond_b
 
     new-instance v9, Lcom/baidu/mapapi/MKRoutePlan;
 
@@ -534,7 +534,7 @@
     :goto_0
     array-length v2, v11
 
-    if-ge v5, v2, :cond_b
+    if-ge v5, v2, :cond_a
 
     new-instance v12, Lcom/baidu/mapapi/MKRoute;
 
@@ -570,7 +570,7 @@
 
     move-result v3
 
-    if-eqz v3, :cond_8
+    if-eqz v3, :cond_7
 
     const-string v3, "link"
 
@@ -591,7 +591,7 @@
     move v4, v3
 
     :goto_1
-    if-ge v4, v13, :cond_7
+    if-ge v4, v13, :cond_6
 
     const-string v3, "aryX%d"
 
@@ -649,15 +649,24 @@
 
     move-result-object v17
 
-    if-eqz v16, :cond_6
+    if-nez v16, :cond_1
 
+    :cond_0
+    :goto_2
+    add-int/lit8 v3, v4, 0x1
+
+    move v4, v3
+
+    goto :goto_1
+
+    :cond_1
     new-instance v18, Ljava/util/ArrayList;
 
     invoke-direct/range {v18 .. v18}, Ljava/util/ArrayList;-><init>()V
 
     const/4 v3, 0x0
 
-    :goto_2
+    :goto_3
     move-object/from16 v0, v16
 
     array-length v0, v0
@@ -666,9 +675,9 @@
 
     move/from16 v0, v19
 
-    if-ge v3, v0, :cond_2
+    if-ge v3, v0, :cond_3
 
-    if-eqz v3, :cond_0
+    if-eqz v3, :cond_2
 
     aget v19, v17, v3
 
@@ -680,7 +689,7 @@
 
     move/from16 v1, v20
 
-    if-ne v0, v1, :cond_0
+    if-ne v0, v1, :cond_2
 
     aget v19, v16, v3
 
@@ -692,9 +701,14 @@
 
     move/from16 v1, v20
 
-    if-eq v0, v1, :cond_1
+    if-ne v0, v1, :cond_2
 
-    :cond_0
+    :goto_4
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_3
+
+    :cond_2
     new-instance v19, Lcom/baidu/mapapi/GeoPoint;
 
     aget v20, v17, v3
@@ -704,13 +718,33 @@
     invoke-direct/range {v19 .. v21}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
 
     invoke-virtual/range {v18 .. v19}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    :cond_1
-    add-int/lit8 v3, v3, 0x1
+    goto :goto_4
 
-    goto :goto_2
+    :catch_0
+    move-exception v2
 
-    :cond_2
+    const-string v3, "MKSearchNotifier"
+
+    const-string v4, "parse DrivingRouteResult error!"
+
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v3, "MKSearchNotifier"
+
+    invoke-virtual {v2}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v3, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :goto_5
+    return-void
+
+    :cond_3
+    :try_start_1
     move-object/from16 v0, v18
 
     invoke-virtual {v14, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -771,7 +805,7 @@
 
     move-result-object v17
 
-    if-eqz v16, :cond_6
+    if-eqz v16, :cond_0
 
     new-instance v18, Ljava/util/ArrayList;
 
@@ -779,7 +813,7 @@
 
     const/4 v3, 0x0
 
-    :goto_3
+    :goto_6
     move-object/from16 v0, v16
 
     array-length v0, v0
@@ -790,7 +824,7 @@
 
     if-ge v3, v0, :cond_5
 
-    if-eqz v3, :cond_3
+    if-eqz v3, :cond_4
 
     aget v19, v17, v3
 
@@ -802,7 +836,7 @@
 
     move/from16 v1, v20
 
-    if-ne v0, v1, :cond_3
+    if-ne v0, v1, :cond_4
 
     aget v19, v16, v3
 
@@ -814,9 +848,14 @@
 
     move/from16 v1, v20
 
-    if-eq v0, v1, :cond_4
+    if-ne v0, v1, :cond_4
 
-    :cond_3
+    :goto_7
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_6
+
+    :cond_4
     new-instance v19, Lcom/baidu/mapapi/GeoPoint;
 
     aget v20, v17, v3
@@ -827,36 +866,28 @@
 
     invoke-virtual/range {v18 .. v19}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_4
-    add-int/lit8 v3, v3, 0x1
-
-    goto :goto_3
+    goto :goto_7
 
     :cond_5
     move-object/from16 v0, v18
 
     invoke-virtual {v15, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+    goto/16 :goto_2
+
     :cond_6
-    add-int/lit8 v3, v4, 0x1
-
-    move v4, v3
-
-    goto/16 :goto_1
-
-    :cond_7
     invoke-virtual {v12, v14}, Lcom/baidu/mapapi/MKRoute;->b(Ljava/util/ArrayList;)V
 
     iput-object v15, v12, Lcom/baidu/mapapi/MKRoute;->a:Ljava/util/ArrayList;
 
-    :cond_8
+    :cond_7
     const-string v3, "aryStep"
 
     invoke-virtual {v2, v3}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
 
     move-result v3
 
-    if-eqz v3, :cond_a
+    if-eqz v3, :cond_9
 
     new-instance v4, Ljava/util/ArrayList;
 
@@ -872,10 +903,10 @@
 
     move v3, v2
 
-    :goto_4
+    :goto_8
     array-length v2, v13
 
-    if-ge v3, v2, :cond_9
+    if-ge v3, v2, :cond_8
 
     aget-object v2, v13, v3
 
@@ -933,12 +964,12 @@
 
     move v3, v2
 
-    goto :goto_4
+    goto :goto_8
 
-    :cond_9
+    :cond_8
     invoke-virtual {v12, v4}, Lcom/baidu/mapapi/MKRoute;->a(Ljava/util/ArrayList;)V
 
-    :cond_a
+    :cond_9
     invoke-virtual {v10, v12}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     add-int/lit8 v2, v5, 0x1
@@ -947,27 +978,19 @@
 
     goto/16 :goto_0
 
-    :cond_b
+    :cond_a
     invoke-virtual {v9, v10}, Lcom/baidu/mapapi/MKRoutePlan;->a(Ljava/util/ArrayList;)V
 
     invoke-virtual {v8, v9}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_c
+    :cond_b
     move-object/from16 v0, p2
 
     invoke-virtual {v0, v8}, Lcom/baidu/mapapi/MKDrivingRouteResult;->a(Ljava/util/ArrayList;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    :goto_5
-    return-void
-
-    :catch_0
-    move-exception v2
-
-    invoke-virtual {v2}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    goto :goto_5
+    goto/16 :goto_5
 .end method
 
 .method private a(Landroid/os/Bundle;Lcom/baidu/mapapi/MKPoiResult;I)V
@@ -1213,7 +1236,19 @@
     :catch_0
     move-exception v2
 
+    const-string v3, "MKSearchNotifier"
+
+    const-string v4, "parse PoiResult error!"
+
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v3, "MKSearchNotifier"
+
     invoke-virtual {v2}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v3, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto/16 :goto_0
 
@@ -1516,7 +1551,19 @@
     :catch_1
     move-exception v2
 
+    const-string v3, "MKSearchNotifier"
+
+    const-string v4, "parse PoiResult error!"
+
+    invoke-static {v3, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v3, "MKSearchNotifier"
+
     invoke-virtual {v2}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v3, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto/16 :goto_0
 
@@ -1591,6 +1638,12 @@
 
     :catch_0
     move-exception v0
+
+    const-string v0, "MKSearchNotifier"
+
+    const-string v1, "parse SuggestionResult error!"
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_1
 
@@ -1713,7 +1766,7 @@
     move v8, v3
 
     :goto_1
-    if-ge v8, v13, :cond_15
+    if-ge v8, v13, :cond_11
 
     new-instance v14, Lcom/baidu/mapapi/MKTransitRoutePlan;
 
@@ -1749,7 +1802,7 @@
 
     move-result-object v4
 
-    if-nez v4, :cond_17
+    if-nez v4, :cond_13
 
     const/4 v4, 0x0
 
@@ -1765,7 +1818,7 @@
     :goto_3
     array-length v4, v5
 
-    if-ge v7, v4, :cond_b
+    if-ge v7, v4, :cond_9
 
     new-instance v16, Lcom/baidu/mapapi/MKLine;
 
@@ -1963,7 +2016,7 @@
 
     move-result-object v17
 
-    if-eqz v17, :cond_6
+    if-eqz v17, :cond_5
 
     new-instance v18, Ljava/util/ArrayList;
 
@@ -1986,7 +2039,7 @@
 
     move/from16 v0, v20
 
-    if-ge v6, v0, :cond_5
+    if-ge v6, v0, :cond_4
 
     if-eqz v6, :cond_3
 
@@ -2012,7 +2065,12 @@
 
     move/from16 v1, v21
 
-    if-eq v0, v1, :cond_4
+    if-ne v0, v1, :cond_3
+
+    :goto_5
+    add-int/lit8 v6, v6, 0x1
+
+    goto :goto_4
 
     :cond_3
     new-instance v20, Lcom/baidu/mapapi/GeoPoint;
@@ -2028,27 +2086,46 @@
     move-object/from16 v1, v20
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_5
+
+    :catch_0
+    move-exception v3
+
+    const-string v4, "MKSearchNotifier"
+
+    const-string v5, "parse TransitRouteResult error!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearchNotifier"
+
+    invoke-virtual {v3}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v4, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    goto/16 :goto_0
 
     :cond_4
-    add-int/lit8 v6, v6, 0x1
-
-    goto :goto_4
-
-    :cond_5
+    :try_start_1
     move-object/from16 v0, v16
 
     move-object/from16 v1, v18
 
     invoke-virtual {v0, v1}, Lcom/baidu/mapapi/MKLine;->a(Ljava/util/ArrayList;)V
 
-    :cond_6
+    :cond_5
     const-string v6, "aryMcX"
 
     invoke-virtual {v4, v6}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v6
 
-    if-eqz v6, :cond_a
+    if-eqz v6, :cond_8
 
     new-instance v17, Ljava/util/ArrayList;
 
@@ -2064,16 +2141,16 @@
 
     const/4 v4, 0x0
 
-    :goto_5
+    :goto_6
     array-length v0, v6
 
     move/from16 v19, v0
 
     move/from16 v0, v19
 
-    if-ge v4, v0, :cond_9
+    if-ge v4, v0, :cond_7
 
-    if-eqz v4, :cond_7
+    if-eqz v4, :cond_6
 
     aget v19, v18, v4
 
@@ -2085,7 +2162,7 @@
 
     move/from16 v1, v20
 
-    if-ne v0, v1, :cond_7
+    if-ne v0, v1, :cond_6
 
     aget v19, v6, v4
 
@@ -2097,9 +2174,14 @@
 
     move/from16 v1, v20
 
-    if-eq v0, v1, :cond_8
+    if-ne v0, v1, :cond_6
 
-    :cond_7
+    :goto_7
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_6
+
+    :cond_6
     new-instance v19, Lcom/baidu/mapapi/GeoPoint;
 
     aget v20, v18, v4
@@ -2114,19 +2196,16 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_8
-    add-int/lit8 v4, v4, 0x1
+    goto :goto_7
 
-    goto :goto_5
-
-    :cond_9
+    :cond_7
     move-object/from16 v0, v17
 
     move-object/from16 v1, v16
 
     iput-object v0, v1, Lcom/baidu/mapapi/MKLine;->a:Ljava/util/ArrayList;
 
-    :cond_a
+    :cond_8
     invoke-virtual/range {v15 .. v16}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     add-int/lit8 v4, v7, 0x1
@@ -2135,7 +2214,7 @@
 
     goto/16 :goto_3
 
-    :cond_b
+    :cond_9
     invoke-virtual {v14, v15}, Lcom/baidu/mapapi/MKTransitRoutePlan;->setLine(Ljava/util/ArrayList;)V
 
     new-instance v7, Ljava/util/ArrayList;
@@ -2148,7 +2227,7 @@
 
     move-result-object v3
 
-    if-nez v3, :cond_16
+    if-nez v3, :cond_12
 
     const/4 v3, 0x0
 
@@ -2156,43 +2235,43 @@
 
     move-object v4, v3
 
-    :goto_6
+    :goto_8
     const/4 v3, 0x0
 
-    move v5, v3
+    move v6, v3
 
-    :goto_7
+    :goto_9
     array-length v3, v4
 
-    if-ge v5, v3, :cond_14
+    if-ge v6, v3, :cond_10
 
     new-instance v15, Lcom/baidu/mapapi/MKRoute;
 
     invoke-direct {v15}, Lcom/baidu/mapapi/MKRoute;-><init>()V
 
-    aget-object v3, v4, v5
+    aget-object v3, v4, v6
 
     check-cast v3, Landroid/os/Bundle;
 
-    const-string v6, "distance"
+    const-string v5, "distance"
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getInt(Ljava/lang/String;)I
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->getInt(Ljava/lang/String;)I
 
-    move-result v6
+    move-result v5
 
-    invoke-virtual {v15, v6}, Lcom/baidu/mapapi/MKRoute;->a(I)V
+    invoke-virtual {v15, v5}, Lcom/baidu/mapapi/MKRoute;->a(I)V
 
-    const/4 v6, 0x2
+    const/4 v5, 0x2
 
-    invoke-virtual {v15, v6}, Lcom/baidu/mapapi/MKRoute;->b(I)V
+    invoke-virtual {v15, v5}, Lcom/baidu/mapapi/MKRoute;->b(I)V
 
-    const-string v6, "getOffTip"
+    const-string v5, "getOffTip"
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
 
-    move-result-object v6
+    move-result-object v5
 
-    invoke-virtual {v15, v6}, Lcom/baidu/mapapi/MKRoute;->a(Ljava/lang/String;)V
+    invoke-virtual {v15, v5}, Lcom/baidu/mapapi/MKRoute;->a(Ljava/lang/String;)V
 
     new-instance v16, Ljava/util/ArrayList;
 
@@ -2202,19 +2281,19 @@
 
     invoke-direct/range {v17 .. v17}, Ljava/util/ArrayList;-><init>()V
 
-    const-string v6, "startX"
+    const-string v5, "startX"
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
 
-    move-result v6
+    move-result v5
 
-    if-eqz v6, :cond_c
+    if-eqz v5, :cond_a
 
-    const-string v6, "startX"
+    const-string v5, "startX"
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getInt(Ljava/lang/String;)I
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->getInt(Ljava/lang/String;)I
 
-    move-result v6
+    move-result v5
 
     const-string v18, "startY"
 
@@ -2230,36 +2309,36 @@
 
     move/from16 v1, v18
 
-    invoke-direct {v0, v1, v6}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
+    invoke-direct {v0, v1, v5}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
 
     move-object/from16 v0, v19
 
     invoke-virtual {v15, v0}, Lcom/baidu/mapapi/MKRoute;->a(Lcom/baidu/mapapi/GeoPoint;)V
 
-    :cond_c
-    const-string v6, "aryX"
+    :cond_a
+    const-string v5, "aryX"
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
 
-    move-result v6
+    move-result v5
 
-    if-eqz v6, :cond_f
+    if-eqz v5, :cond_c
 
-    const-string v6, "aryX"
+    const-string v5, "aryX"
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v18
 
-    const-string v6, "aryY"
+    const-string v5, "aryY"
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v19
 
-    const/4 v6, 0x0
+    const/4 v5, 0x0
 
-    :goto_8
+    :goto_a
     move-object/from16 v0, v18
 
     array-length v0, v0
@@ -2268,13 +2347,13 @@
 
     move/from16 v0, v20
 
-    if-ge v6, v0, :cond_f
+    if-ge v5, v0, :cond_c
 
-    if-eqz v6, :cond_d
+    if-eqz v5, :cond_b
 
-    aget v20, v19, v6
+    aget v20, v19, v5
 
-    add-int/lit8 v21, v6, -0x1
+    add-int/lit8 v21, v5, -0x1
 
     aget v21, v19, v21
 
@@ -2282,11 +2361,11 @@
 
     move/from16 v1, v21
 
-    if-ne v0, v1, :cond_d
+    if-ne v0, v1, :cond_b
 
-    aget v20, v18, v6
+    aget v20, v18, v5
 
-    add-int/lit8 v21, v6, -0x1
+    add-int/lit8 v21, v5, -0x1
 
     aget v21, v18, v21
 
@@ -2294,14 +2373,19 @@
 
     move/from16 v1, v21
 
-    if-eq v0, v1, :cond_e
+    if-ne v0, v1, :cond_b
 
-    :cond_d
+    :goto_b
+    add-int/lit8 v5, v5, 0x1
+
+    goto :goto_a
+
+    :cond_b
     new-instance v20, Lcom/baidu/mapapi/GeoPoint;
 
-    aget v21, v19, v6
+    aget v21, v19, v5
 
-    aget v22, v18, v6
+    aget v22, v18, v5
 
     invoke-direct/range {v20 .. v22}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
 
@@ -2311,35 +2395,32 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_e
-    add-int/lit8 v6, v6, 0x1
+    goto :goto_b
 
-    goto :goto_8
+    :cond_c
+    const-string v5, "aryMcX"
 
-    :cond_f
-    const-string v6, "aryMcX"
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
+    move-result v5
 
-    move-result v6
+    if-eqz v5, :cond_e
 
-    if-eqz v6, :cond_12
+    const-string v5, "aryMcX"
 
-    const-string v6, "aryMcX"
-
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v18
 
-    const-string v6, "aryMcY"
+    const-string v5, "aryMcY"
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v19
 
-    const/4 v6, 0x0
+    const/4 v5, 0x0
 
-    :goto_9
+    :goto_c
     move-object/from16 v0, v18
 
     array-length v0, v0
@@ -2348,13 +2429,13 @@
 
     move/from16 v0, v20
 
-    if-ge v6, v0, :cond_12
+    if-ge v5, v0, :cond_e
 
-    if-eqz v6, :cond_10
+    if-eqz v5, :cond_d
 
-    aget v20, v19, v6
+    aget v20, v19, v5
 
-    add-int/lit8 v21, v6, -0x1
+    add-int/lit8 v21, v5, -0x1
 
     aget v21, v19, v21
 
@@ -2362,11 +2443,11 @@
 
     move/from16 v1, v21
 
-    if-ne v0, v1, :cond_10
+    if-ne v0, v1, :cond_d
 
-    aget v20, v18, v6
+    aget v20, v18, v5
 
-    add-int/lit8 v21, v6, -0x1
+    add-int/lit8 v21, v5, -0x1
 
     aget v21, v18, v21
 
@@ -2374,14 +2455,19 @@
 
     move/from16 v1, v21
 
-    if-eq v0, v1, :cond_11
+    if-ne v0, v1, :cond_d
 
-    :cond_10
+    :goto_d
+    add-int/lit8 v5, v5, 0x1
+
+    goto :goto_c
+
+    :cond_d
     new-instance v20, Lcom/baidu/mapapi/GeoPoint;
 
-    aget v21, v19, v6
+    aget v21, v19, v5
 
-    aget v22, v18, v6
+    aget v22, v18, v5
 
     invoke-direct/range {v20 .. v22}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
 
@@ -2391,25 +2477,22 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_11
-    add-int/lit8 v6, v6, 0x1
+    goto :goto_d
 
-    goto :goto_9
+    :cond_e
+    const-string v5, "endX"
 
-    :cond_12
-    const-string v6, "endX"
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
+    move-result v5
 
-    move-result v6
+    if-eqz v5, :cond_f
 
-    if-eqz v6, :cond_13
+    const-string v5, "endX"
 
-    const-string v6, "endX"
+    invoke-virtual {v3, v5}, Landroid/os/Bundle;->getInt(Ljava/lang/String;)I
 
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getInt(Ljava/lang/String;)I
-
-    move-result v6
+    move-result v5
 
     const-string v18, "endY"
 
@@ -2423,13 +2506,13 @@
 
     move-object/from16 v0, v18
 
-    invoke-direct {v0, v3, v6}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
+    invoke-direct {v0, v3, v5}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
 
     move-object/from16 v0, v18
 
     invoke-virtual {v15, v0}, Lcom/baidu/mapapi/MKRoute;->b(Lcom/baidu/mapapi/GeoPoint;)V
 
-    :cond_13
+    :cond_f
     new-instance v3, Ljava/util/ArrayList;
 
     invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
@@ -2452,13 +2535,13 @@
 
     invoke-virtual {v7, v15}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    add-int/lit8 v3, v5, 0x1
+    add-int/lit8 v3, v6, 0x1
 
-    move v5, v3
+    move v6, v3
 
-    goto/16 :goto_7
+    goto/16 :goto_9
 
-    :cond_14
+    :cond_10
     invoke-virtual {v14, v7}, Lcom/baidu/mapapi/MKTransitRoutePlan;->a(Ljava/util/ArrayList;)V
 
     invoke-virtual {v11, v14}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -2469,28 +2552,21 @@
 
     goto/16 :goto_1
 
-    :cond_15
+    :cond_11
     move-object/from16 v0, p2
 
     invoke-virtual {v0, v11}, Lcom/baidu/mapapi/MKTransitRouteResult;->a(Ljava/util/ArrayList;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
     goto/16 :goto_0
 
-    :catch_0
-    move-exception v3
-
-    invoke-virtual {v3}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    goto/16 :goto_0
-
-    :cond_16
+    :cond_12
     move-object v4, v3
 
-    goto/16 :goto_6
+    goto/16 :goto_8
 
-    :cond_17
+    :cond_13
     move-object v5, v4
 
     goto/16 :goto_2
@@ -2592,7 +2668,7 @@
 
     move-result v3
 
-    if-lez v3, :cond_c
+    if-lez v3, :cond_b
 
     new-instance v10, Lcom/baidu/mapapi/MKRoutePlan;
 
@@ -2627,7 +2703,7 @@
     :goto_0
     array-length v3, v12
 
-    if-ge v6, v3, :cond_b
+    if-ge v6, v3, :cond_a
 
     new-instance v13, Lcom/baidu/mapapi/MKRoute;
 
@@ -2663,7 +2739,7 @@
 
     move-result v4
 
-    if-eqz v4, :cond_8
+    if-eqz v4, :cond_7
 
     const-string v4, "link"
 
@@ -2684,7 +2760,7 @@
     move v5, v4
 
     :goto_1
-    if-ge v5, v14, :cond_7
+    if-ge v5, v14, :cond_6
 
     const-string v4, "aryX%d"
 
@@ -2742,15 +2818,24 @@
 
     move-result-object v18
 
-    if-eqz v17, :cond_6
+    if-nez v17, :cond_1
 
+    :cond_0
+    :goto_2
+    add-int/lit8 v4, v5, 0x1
+
+    move v5, v4
+
+    goto :goto_1
+
+    :cond_1
     new-instance v19, Ljava/util/ArrayList;
 
     invoke-direct/range {v19 .. v19}, Ljava/util/ArrayList;-><init>()V
 
     const/4 v4, 0x0
 
-    :goto_2
+    :goto_3
     move-object/from16 v0, v17
 
     array-length v0, v0
@@ -2759,9 +2844,9 @@
 
     move/from16 v0, v20
 
-    if-ge v4, v0, :cond_2
+    if-ge v4, v0, :cond_3
 
-    if-eqz v4, :cond_0
+    if-eqz v4, :cond_2
 
     aget v20, v18, v4
 
@@ -2773,7 +2858,7 @@
 
     move/from16 v1, v21
 
-    if-ne v0, v1, :cond_0
+    if-ne v0, v1, :cond_2
 
     aget v20, v17, v4
 
@@ -2785,9 +2870,14 @@
 
     move/from16 v1, v21
 
-    if-eq v0, v1, :cond_1
+    if-ne v0, v1, :cond_2
 
-    :cond_0
+    :goto_4
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_3
+
+    :cond_2
     new-instance v20, Lcom/baidu/mapapi/GeoPoint;
 
     aget v21, v18, v4
@@ -2797,13 +2887,33 @@
     invoke-direct/range {v20 .. v22}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
 
     invoke-virtual/range {v19 .. v20}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    :cond_1
-    add-int/lit8 v4, v4, 0x1
+    goto :goto_4
 
-    goto :goto_2
+    :catch_0
+    move-exception v3
 
-    :cond_2
+    const-string v4, "MKSearchNotifier"
+
+    const-string v5, "parse WalkingRouteResult error!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearchNotifier"
+
+    invoke-virtual {v3}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v4, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :goto_5
+    return-void
+
+    :cond_3
+    :try_start_1
     move-object/from16 v0, v19
 
     invoke-virtual {v15, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
@@ -2864,7 +2974,7 @@
 
     move-result-object v18
 
-    if-eqz v17, :cond_6
+    if-eqz v17, :cond_0
 
     new-instance v19, Ljava/util/ArrayList;
 
@@ -2872,7 +2982,7 @@
 
     const/4 v4, 0x0
 
-    :goto_3
+    :goto_6
     move-object/from16 v0, v17
 
     array-length v0, v0
@@ -2883,7 +2993,7 @@
 
     if-ge v4, v0, :cond_5
 
-    if-eqz v4, :cond_3
+    if-eqz v4, :cond_4
 
     aget v20, v18, v4
 
@@ -2895,7 +3005,7 @@
 
     move/from16 v1, v21
 
-    if-ne v0, v1, :cond_3
+    if-ne v0, v1, :cond_4
 
     aget v20, v17, v4
 
@@ -2907,9 +3017,14 @@
 
     move/from16 v1, v21
 
-    if-eq v0, v1, :cond_4
+    if-ne v0, v1, :cond_4
 
-    :cond_3
+    :goto_7
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_6
+
+    :cond_4
     new-instance v20, Lcom/baidu/mapapi/GeoPoint;
 
     aget v21, v18, v4
@@ -2920,10 +3035,7 @@
 
     invoke-virtual/range {v19 .. v20}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_4
-    add-int/lit8 v4, v4, 0x1
-
-    goto :goto_3
+    goto :goto_7
 
     :cond_5
     move-object/from16 v0, v16
@@ -2932,28 +3044,23 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+    goto/16 :goto_2
+
     :cond_6
-    add-int/lit8 v4, v5, 0x1
-
-    move v5, v4
-
-    goto/16 :goto_1
-
-    :cond_7
     invoke-virtual {v13, v15}, Lcom/baidu/mapapi/MKRoute;->b(Ljava/util/ArrayList;)V
 
     move-object/from16 v0, v16
 
     iput-object v0, v13, Lcom/baidu/mapapi/MKRoute;->a:Ljava/util/ArrayList;
 
-    :cond_8
+    :cond_7
     const-string v4, "aryStep"
 
     invoke-virtual {v3, v4}, Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z
 
     move-result v4
 
-    if-eqz v4, :cond_a
+    if-eqz v4, :cond_9
 
     new-instance v5, Ljava/util/ArrayList;
 
@@ -2971,8 +3078,8 @@
 
     move v4, v3
 
-    :goto_4
-    if-ge v4, v15, :cond_9
+    :goto_8
+    if-ge v4, v15, :cond_8
 
     aget-object v3, v14, v4
 
@@ -3044,12 +3151,12 @@
 
     move v4, v3
 
-    goto :goto_4
+    goto :goto_8
 
-    :cond_9
+    :cond_8
     invoke-virtual {v13, v5}, Lcom/baidu/mapapi/MKRoute;->a(Ljava/util/ArrayList;)V
 
-    :cond_a
+    :cond_9
     invoke-virtual {v11, v13}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     add-int/lit8 v3, v6, 0x1
@@ -3058,31 +3165,33 @@
 
     goto/16 :goto_0
 
-    :cond_b
+    :cond_a
     invoke-virtual {v10, v11}, Lcom/baidu/mapapi/MKRoutePlan;->a(Ljava/util/ArrayList;)V
 
     invoke-virtual {v9, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_c
+    :cond_b
     move-object/from16 v0, p2
 
     invoke-virtual {v0, v9}, Lcom/baidu/mapapi/MKWalkingRouteResult;->a(Ljava/util/ArrayList;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    :goto_5
-    return-void
-
-    :catch_0
-    move-exception v3
-
-    invoke-virtual {v3}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    goto :goto_5
+    goto/16 :goto_5
 .end method
 
 .method private a(Landroid/os/Bundle;Ljava/util/ArrayList;)V
     .locals 10
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/os/Bundle;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiInfo;",
+            ">;)V"
+        }
+    .end annotation
 
     const-string v0, "aryCaption"
 
@@ -3209,7 +3318,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_7
 
     const-string v0, "link"
 
@@ -3219,10 +3328,12 @@
 
     const/4 v0, 0x0
 
-    :goto_0
-    if-ge v0, v5, :cond_7
+    move v1, v0
 
-    const-string v1, "aryX%d"
+    :goto_0
+    if-ge v1, v5, :cond_6
+
+    const-string v0, "aryX%d"
 
     const/4 v6, 0x1
 
@@ -3230,21 +3341,21 @@
 
     const/4 v7, 0x0
 
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v8
 
     aput-object v8, v6, v7
 
-    invoke-static {v1, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v0, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {p1, v1}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+    invoke-virtual {p1, v0}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v6
 
-    const-string v1, "aryY%d"
+    const-string v0, "aryY%d"
 
     const/4 v7, 0x1
 
@@ -3252,71 +3363,108 @@
 
     const/4 v8, 0x0
 
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v9
 
     aput-object v9, v7, v8
 
-    invoke-static {v1, v7}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v0, v7}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {p1, v1}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+    invoke-virtual {p1, v0}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v7
 
-    if-eqz v6, :cond_6
-
-    new-instance v8, Ljava/util/ArrayList;
-
-    invoke-direct {v8}, Ljava/util/ArrayList;-><init>()V
-
-    array-length v9, v6
-
-    const/4 v1, 0x0
-
-    :goto_1
-    if-ge v1, v9, :cond_2
-
-    if-eqz v1, :cond_0
-
-    aget v10, v7, v1
-
-    add-int/lit8 v11, v1, -0x1
-
-    aget v11, v7, v11
-
-    if-ne v10, v11, :cond_0
-
-    aget v10, v6, v1
-
-    add-int/lit8 v11, v1, -0x1
-
-    aget v11, v6, v11
-
-    if-eq v10, v11, :cond_1
+    if-nez v6, :cond_1
 
     :cond_0
+    :goto_1
+    add-int/lit8 v0, v1, 0x1
+
+    move v1, v0
+
+    goto :goto_0
+
+    :cond_1
+    new-instance v8, Ljava/util/ArrayList;
+
+    invoke-direct {v8}, Ljava/util/ArrayList;-><init>()V
+
+    array-length v9, v6
+
+    const/4 v0, 0x0
+
+    :goto_2
+    if-ge v0, v9, :cond_3
+
+    if-eqz v0, :cond_2
+
+    aget v10, v7, v0
+
+    add-int/lit8 v11, v0, -0x1
+
+    aget v11, v7, v11
+
+    if-ne v10, v11, :cond_2
+
+    aget v10, v6, v0
+
+    add-int/lit8 v11, v0, -0x1
+
+    aget v11, v6, v11
+
+    if-ne v10, v11, :cond_2
+
+    :goto_3
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_2
+
+    :cond_2
     new-instance v10, Lcom/baidu/mapapi/GeoPoint;
 
-    aget v11, v7, v1
+    aget v11, v7, v0
 
-    aget v12, v6, v1
+    aget v12, v6, v0
 
     invoke-direct {v10, v11, v12}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
 
     invoke-virtual {v8, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    :cond_1
-    add-int/lit8 v1, v1, 0x1
+    goto :goto_3
 
-    goto :goto_1
+    :catch_0
+    move-exception v0
 
-    :cond_2
+    const-string v1, "MKSearchNotifier"
+
+    const-string v2, "parse BusDetail error!"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v1, "MKSearchNotifier"
+
+    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :goto_4
+    const/4 v0, 0x1
+
+    :goto_5
+    return v0
+
+    :cond_3
+    :try_start_1
     invoke-virtual {v3, v8}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    const-string v1, "aryMcX%d"
+    const-string v0, "aryMcX%d"
 
     const/4 v6, 0x1
 
@@ -3324,21 +3472,21 @@
 
     const/4 v7, 0x0
 
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v8
 
     aput-object v8, v6, v7
 
-    invoke-static {v1, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v0, v6}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {p1, v1}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+    invoke-virtual {p1, v0}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v6
 
-    const-string v1, "aryMcY%d"
+    const-string v0, "aryMcY%d"
 
     const/4 v7, 0x1
 
@@ -3346,21 +3494,21 @@
 
     const/4 v8, 0x0
 
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v9
 
     aput-object v9, v7, v8
 
-    invoke-static {v1, v7}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    invoke-static {v0, v7}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v0
 
-    invoke-virtual {p1, v1}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+    invoke-virtual {p1, v0}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
 
     move-result-object v7
 
-    if-eqz v6, :cond_6
+    if-eqz v6, :cond_0
 
     new-instance v8, Ljava/util/ArrayList;
 
@@ -3368,54 +3516,53 @@
 
     array-length v9, v6
 
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
-    :goto_2
-    if-ge v1, v9, :cond_5
+    :goto_6
+    if-ge v0, v9, :cond_5
 
-    if-eqz v1, :cond_3
+    if-eqz v0, :cond_4
 
-    aget v10, v7, v1
+    aget v10, v7, v0
 
-    add-int/lit8 v11, v1, -0x1
+    add-int/lit8 v11, v0, -0x1
 
     aget v11, v7, v11
 
-    if-ne v10, v11, :cond_3
+    if-ne v10, v11, :cond_4
 
-    aget v10, v6, v1
+    aget v10, v6, v0
 
-    add-int/lit8 v11, v1, -0x1
+    add-int/lit8 v11, v0, -0x1
 
     aget v11, v6, v11
 
-    if-eq v10, v11, :cond_4
+    if-ne v10, v11, :cond_4
 
-    :cond_3
+    :goto_7
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_6
+
+    :cond_4
     new-instance v10, Lcom/baidu/mapapi/GeoPoint;
 
-    aget v11, v7, v1
+    aget v11, v7, v0
 
-    aget v12, v6, v1
+    aget v12, v6, v0
 
     invoke-direct {v10, v11, v12}, Lcom/baidu/mapapi/GeoPoint;-><init>(II)V
 
     invoke-virtual {v8, v10}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    :cond_4
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_2
+    goto :goto_7
 
     :cond_5
     invoke-virtual {v4, v8}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+    goto/16 :goto_1
+
     :cond_6
-    add-int/lit8 v0, v0, 0x1
-
-    goto/16 :goto_0
-
-    :cond_7
     invoke-virtual {v2, v3}, Lcom/baidu/mapapi/MKRoute;->b(Ljava/util/ArrayList;)V
 
     iput-object v4, v2, Lcom/baidu/mapapi/MKRoute;->a:Ljava/util/ArrayList;
@@ -3432,7 +3579,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_b
+    if-eqz v0, :cond_a
 
     new-instance v4, Ljava/util/ArrayList;
 
@@ -3446,25 +3593,24 @@
 
     array-length v0, v5
 
-    if-eq v0, v3, :cond_9
+    if-eq v0, v3, :cond_8
 
     const/4 v0, 0x0
 
-    :goto_3
-    return v0
+    goto :goto_5
+
+    :cond_7
+    const/4 v0, 0x0
+
+    goto/16 :goto_5
 
     :cond_8
     const/4 v0, 0x0
 
-    goto :goto_3
-
-    :cond_9
-    const/4 v0, 0x0
-
     move v1, v0
 
-    :goto_4
-    if-ge v1, v3, :cond_a
+    :goto_8
+    if-ge v1, v3, :cond_9
 
     aget-object v0, v5, v1
 
@@ -3506,9 +3652,9 @@
 
     move v1, v0
 
-    goto :goto_4
+    goto :goto_8
 
-    :cond_a
+    :cond_9
     invoke-virtual {v2, v4}, Lcom/baidu/mapapi/MKRoute;->a(Ljava/util/ArrayList;)V
 
     const/4 v0, 0x0
@@ -3538,29 +3684,29 @@
     move-result-object v0
 
     invoke-virtual {v2, v0}, Lcom/baidu/mapapi/MKRoute;->b(Lcom/baidu/mapapi/GeoPoint;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    :goto_5
-    const/4 v0, 0x1
+    goto/16 :goto_4
 
-    goto :goto_3
-
-    :cond_b
+    :cond_a
     const/4 v0, 0x0
 
-    goto :goto_3
-
-    :catch_0
-    move-exception v0
-
-    invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
-
-    goto :goto_5
+    goto/16 :goto_5
 .end method
 
 .method private b(Landroid/os/Bundle;Ljava/util/ArrayList;)V
     .locals 6
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/os/Bundle;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKCityListInfo;",
+            ">;)V"
+        }
+    .end annotation
 
     const-string v0, "aryCity"
 
@@ -3668,7 +3814,7 @@
 
     move-result-object v6
 
-    if-eqz v6, :cond_21
+    if-eqz v6, :cond_22
 
     move v1, v2
 
@@ -3677,7 +3823,7 @@
 
     move-result v0
 
-    if-ge v1, v0, :cond_21
+    if-ge v1, v0, :cond_22
 
     invoke-virtual {v6, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
@@ -4085,7 +4231,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_20
+    if-eqz v0, :cond_21
 
     :goto_3
     iget-object v0, p0, Lcom/baidu/mapapi/m;->a:Lcom/baidu/mapapi/MKSearchListener;
@@ -4143,7 +4289,7 @@
 
     move-result v0
 
-    if-lez v0, :cond_1f
+    if-lez v0, :cond_20
 
     :goto_4
     if-nez v4, :cond_16
@@ -4211,11 +4357,11 @@
 
     if-ne v0, v5, :cond_1b
 
-    if-eqz v1, :cond_1e
+    if-eqz v1, :cond_1f
 
     const-string v0, ""
 
-    if-eq v1, v0, :cond_1e
+    if-eq v1, v0, :cond_1f
 
     move v0, v4
 
@@ -4252,8 +4398,19 @@
     :pswitch_e
     iget v0, p1, Lcom/baidu/mapapi/MKEvent;->b:I
 
-    if-nez v0, :cond_1d
+    if-eqz v0, :cond_1d
 
+    iget-object v0, p0, Lcom/baidu/mapapi/m;->a:Lcom/baidu/mapapi/MKSearchListener;
+
+    iget v1, p1, Lcom/baidu/mapapi/MKEvent;->c:I
+
+    iget v2, p1, Lcom/baidu/mapapi/MKEvent;->b:I
+
+    invoke-interface {v0, v1, v2}, Lcom/baidu/mapapi/MKSearchListener;->onGetPoiDetailSearchResult(II)V
+
+    goto/16 :goto_0
+
+    :cond_1d
     const v0, 0xa80041
 
     iget v1, p1, Lcom/baidu/mapapi/MKEvent;->c:I
@@ -4262,7 +4419,7 @@
 
     move-result-object v0
 
-    if-eqz v0, :cond_1d
+    if-eqz v0, :cond_1e
 
     new-instance v1, Landroid/content/Intent;
 
@@ -4282,7 +4439,6 @@
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    :cond_1d
     iget-object v0, p0, Lcom/baidu/mapapi/m;->a:Lcom/baidu/mapapi/MKSearchListener;
 
     iget v1, p1, Lcom/baidu/mapapi/MKEvent;->c:I
@@ -4294,21 +4450,32 @@
     goto/16 :goto_0
 
     :cond_1e
+    iget-object v0, p0, Lcom/baidu/mapapi/m;->a:Lcom/baidu/mapapi/MKSearchListener;
+
+    iget v1, p1, Lcom/baidu/mapapi/MKEvent;->c:I
+
+    iget v2, p1, Lcom/baidu/mapapi/MKEvent;->b:I
+
+    invoke-interface {v0, v1, v2}, Lcom/baidu/mapapi/MKSearchListener;->onGetPoiDetailSearchResult(II)V
+
+    goto/16 :goto_0
+
+    :cond_1f
     move v0, v2
 
     goto :goto_5
 
-    :cond_1f
+    :cond_20
     move v4, v2
 
     goto/16 :goto_4
 
-    :cond_20
+    :cond_21
     move v2, v3
 
     goto/16 :goto_3
 
-    :cond_21
+    :cond_22
     move v4, v2
 
     goto/16 :goto_2

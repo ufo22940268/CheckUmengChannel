@@ -7,7 +7,7 @@
 
 
 # instance fields
-.field public a:Lcom/igexin/sdk/aidl/i;
+.field public a:Lcom/igexin/sdk/aidl/g;
 
 .field private b:Landroid/os/Handler;
 
@@ -28,39 +28,81 @@
 
     invoke-direct {v0, p0}, Lcom/igexin/sdk/coordinator/e;-><init>(Lcom/igexin/sdk/coordinator/SdkMsgService;)V
 
-    iput-object v0, p0, Lcom/igexin/sdk/coordinator/SdkMsgService;->a:Lcom/igexin/sdk/aidl/i;
+    iput-object v0, p0, Lcom/igexin/sdk/coordinator/SdkMsgService;->a:Lcom/igexin/sdk/aidl/g;
 
     return-void
 .end method
 
-.method public static a(Ljava/lang/String;Lcom/igexin/sdk/coordinator/d;)I
-    .locals 8
+.method public static a()Lcom/igexin/sdk/coordinator/SdkMsgService;
+    .locals 1
+
+    sget-object v0, Lcom/igexin/sdk/coordinator/SdkMsgService;->d:Lcom/igexin/sdk/coordinator/SdkMsgService;
+
+    return-object v0
+.end method
+
+.method static synthetic a(Lcom/igexin/sdk/coordinator/SdkMsgService;)Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/sdk/coordinator/SdkMsgService;->c:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method static synthetic b(Lcom/igexin/sdk/coordinator/SdkMsgService;)Landroid/os/Handler;
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/sdk/coordinator/SdkMsgService;->b:Landroid/os/Handler;
+
+    return-object v0
+.end method
+
+.method static synthetic b()Lcom/igexin/sdk/coordinator/SdkMsgService;
+    .locals 1
+
+    sget-object v0, Lcom/igexin/sdk/coordinator/SdkMsgService;->d:Lcom/igexin/sdk/coordinator/SdkMsgService;
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public a(Ljava/lang/String;Lcom/igexin/sdk/coordinator/d;)I
+    .locals 9
 
     const/4 v1, 0x0
 
     const/4 v0, -0x1
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    const-string v2, "GexinMsgService"
 
-    const-string v3, "check pkgname = "
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v4, "check pkgname = "
 
-    move-result-object v2
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v3
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    if-eqz p0, :cond_2
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    if-eqz p1, :cond_2
 
     invoke-static {}, Lsdk/b/a/a/c/a;->a()Lsdk/b/a/a/c/a;
 
     move-result-object v2
 
-    invoke-virtual {v2, p0}, Lsdk/b/a/a/c/a;->a(Ljava/lang/String;)Lcom/igexin/sdk/coordinator/c;
+    invoke-virtual {v2, p1}, Lsdk/b/a/a/c/a;->a(Ljava/lang/String;)Lcom/igexin/sdk/coordinator/c;
 
     move-result-object v2
 
@@ -76,37 +118,53 @@
 
     move-result-wide v3
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    const-string v5, "GexinMsgService"
 
-    const-string v6, "check expireTime = "
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v5, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    const-string v7, "check expireTime = "
 
-    move-result-object v5
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v6
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v6, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    new-instance v5, Ljava/lang/StringBuilder;
+    move-result-object v6
 
-    const-string v6, "check nowTime = "
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    move-result-object v6
+
+    invoke-static {v5, v6}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v5, "GexinMsgService"
+
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v7, "check nowTime = "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v6
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v6
+    move-result-wide v7
 
-    invoke-virtual {v5, v6, v7}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7, v8}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    move-result-object v5
+    move-result-object v6
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v6
+
+    invoke-static {v5, v6}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
@@ -116,7 +174,11 @@
 
     if-lez v3, :cond_1
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v1, "GexinMsgService"
+
+    const-string v2, "check expireTime \u8fc7\u671f"
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     move v1, v0
 
@@ -142,14 +204,18 @@
 
     move-result-object v3
 
-    if-eq v3, p1, :cond_0
+    if-eq v3, p2, :cond_0
 
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
 
     :cond_2
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v1, "GexinMsgService"
+
+    const-string v2, "check pkgname \u4e3a\u7a7a expireTime \u8fc7\u671f"
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     move v1, v0
 
@@ -161,187 +227,7 @@
     goto :goto_0
 .end method
 
-.method public static a()Lcom/igexin/sdk/coordinator/SdkMsgService;
-    .locals 1
-
-    sget-object v0, Lcom/igexin/sdk/coordinator/SdkMsgService;->d:Lcom/igexin/sdk/coordinator/SdkMsgService;
-
-    return-object v0
-.end method
-
-.method static synthetic a(Lcom/igexin/sdk/coordinator/SdkMsgService;)Ljava/lang/String;
-    .locals 1
-
-    iget-object v0, p0, Lcom/igexin/sdk/coordinator/SdkMsgService;->c:Ljava/lang/String;
-
-    return-object v0
-.end method
-
-.method public static a(Landroid/content/Context;Ljava/lang/String;)V
-    .locals 7
-
-    :try_start_0
-    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v0
-
-    const/16 v2, 0x80
-
-    invoke-virtual {v0, v1, v2}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
-
-    move-result-object v0
-
-    iget-object v2, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
-
-    if-eqz v2, :cond_0
-
-    iget-object v2, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
-
-    const-string v3, "appid"
-
-    invoke-virtual {v2, v3}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v2
-
-    iget-object v3, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
-
-    const-string v4, "appsecret"
-
-    invoke-virtual {v3, v4}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v3
-
-    iget-object v4, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
-
-    const-string v5, "appkey"
-
-    invoke-virtual {v4, v5}, Landroid/os/Bundle;->get(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v4
-
-    if-eqz v4, :cond_1
-
-    iget-object v0, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
-
-    const-string v4, "appkey"
-
-    invoke-virtual {v0, v4}, Landroid/os/Bundle;->get(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    :goto_0
-    new-instance v4, Landroid/content/Intent;
-
-    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v5
-
-    const-class v6, Lcom/igexin/sdk/SdkMainService;
-
-    invoke-direct {v4, v5, v6}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    const-string v6, "com.igexin.sdk.aidl.action."
-
-    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    const-string v5, "appid"
-
-    invoke-virtual {v4, v5, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    const-string v2, "appsecret"
-
-    invoke-virtual {v4, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    const-string v2, "appkey"
-
-    invoke-virtual {v4, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    const-string v0, "action"
-
-    const-string v2, "com.igexin.action.initialize"
-
-    invoke-virtual {v4, v0, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    const-string v0, "packageName"
-
-    invoke-virtual {v4, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    const-string v0, "op_app"
-
-    invoke-virtual {v4, v0, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-
-    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-virtual {v0, v4}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
-    :try_end_0
-    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
-
-    :cond_0
-    :goto_1
-    invoke-virtual {p0}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
-
-    new-instance v0, Lcom/igexin/sdk/e;
-
-    invoke-direct {v0, p0}, Lcom/igexin/sdk/e;-><init>(Landroid/content/Context;)V
-
-    invoke-virtual {v0}, Lcom/igexin/sdk/e;->a()V
-
-    return-void
-
-    :cond_1
-    const/4 v0, 0x0
-
-    goto :goto_0
-
-    :catch_0
-    move-exception v0
-
-    invoke-virtual {v0}, Landroid/content/pm/PackageManager$NameNotFoundException;->printStackTrace()V
-
-    goto :goto_1
-.end method
-
-.method static synthetic b(Lcom/igexin/sdk/coordinator/SdkMsgService;)Landroid/os/Handler;
-    .locals 1
-
-    iget-object v0, p0, Lcom/igexin/sdk/coordinator/SdkMsgService;->b:Landroid/os/Handler;
-
-    return-object v0
-.end method
-
-.method static synthetic b()Lcom/igexin/sdk/coordinator/SdkMsgService;
-    .locals 1
-
-    sget-object v0, Lcom/igexin/sdk/coordinator/SdkMsgService;->d:Lcom/igexin/sdk/coordinator/SdkMsgService;
-
-    return-object v0
-.end method
-
-
-# virtual methods
-.method public final a(Ljava/lang/String;)Ljava/lang/String;
+.method public a(Ljava/lang/String;)Ljava/lang/String;
     .locals 5
 
     const/4 v2, 0x0
@@ -409,10 +295,160 @@
     goto :goto_1
 .end method
 
+.method public a(Landroid/content/Context;Ljava/lang/String;)V
+    .locals 7
+
+    :try_start_0
+    invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v0
+
+    const/16 v2, 0x80
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
+
+    move-result-object v0
+
+    iget-object v2, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
+
+    if-eqz v2, :cond_0
+
+    iget-object v2, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
+
+    const-string v3, "appid"
+
+    invoke-virtual {v2, v3}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    iget-object v3, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
+
+    const-string v4, "appsecret"
+
+    invoke-virtual {v3, v4}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v3
+
+    iget-object v4, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
+
+    const-string v5, "appkey"
+
+    invoke-virtual {v4, v5}, Landroid/os/Bundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    if-eqz v4, :cond_1
+
+    iget-object v0, v0, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
+
+    const-string v4, "appkey"
+
+    invoke-virtual {v0, v4}, Landroid/os/Bundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    :goto_0
+    new-instance v4, Landroid/content/Intent;
+
+    invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v5
+
+    const-class v6, Lcom/igexin/sdk/SdkMainService;
+
+    invoke-direct {v4, v5, v6}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "com.igexin.sdk.aidl.action."
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    const-string v5, "appid"
+
+    invoke-virtual {v4, v5, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    const-string v2, "appsecret"
+
+    invoke-virtual {v4, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    const-string v2, "appkey"
+
+    invoke-virtual {v4, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    const-string v0, "action"
+
+    const-string v2, "com.igexin.action.initialize"
+
+    invoke-virtual {v4, v0, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    const-string v0, "packageName"
+
+    invoke-virtual {v4, v0, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    const-string v0, "op_app"
+
+    invoke-virtual {v4, v0, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v4}, Landroid/content/Context;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+    :try_end_0
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    :cond_0
+    :goto_1
+    invoke-virtual {p1}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+
+    new-instance v0, Lcom/igexin/sdk/b;
+
+    invoke-direct {v0, p1}, Lcom/igexin/sdk/b;-><init>(Landroid/content/Context;)V
+
+    invoke-virtual {v0}, Lcom/igexin/sdk/b;->a()V
+
+    return-void
+
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+
+    :catch_0
+    move-exception v0
+
+    invoke-virtual {v0}, Landroid/content/pm/PackageManager$NameNotFoundException;->printStackTrace()V
+
+    goto :goto_1
+.end method
+
 .method public onBind(Landroid/content/Intent;)Landroid/os/IBinder;
     .locals 1
 
-    iget-object v0, p0, Lcom/igexin/sdk/coordinator/SdkMsgService;->a:Lcom/igexin/sdk/aidl/i;
+    iget-object v0, p0, Lcom/igexin/sdk/coordinator/SdkMsgService;->a:Lcom/igexin/sdk/aidl/g;
 
     return-object v0
 .end method

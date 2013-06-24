@@ -3,11 +3,14 @@
 
 
 # virtual methods
-.method public abstract a(Lsdk/c/a/e/a/f;)Z
+.method public abstract a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/e;)Z
 .end method
 
-.method public abstract a(Lsdk/c/a/e/d;)Z
+.method public abstract a(Lsdk/c/a/e/d;Lsdk/c/a/e/e;)Z
 .end method
 
-.method public abstract d()J
+.method public abstract i()Z
+.end method
+
+.method public abstract j()J
 .end method

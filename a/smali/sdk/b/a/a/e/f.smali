@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/f;
+.class public Lsdk/b/a/a/e/f;
 .super Ljava/lang/Object;
 
 

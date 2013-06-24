@@ -1,91 +1,79 @@
-.class public final Lcom/igexin/a/a/d/d;
-.super Ljava/lang/Object;
-
-
-# instance fields
-.field private a:Lcom/igexin/a/a/d/e;
+.class final Lcom/igexin/a/a/d/d;
+.super Lcom/igexin/a/a/d/c;
 
 
 # direct methods
-.method public constructor <init>(Lcom/igexin/a/a/d/e;)V
+.method constructor <init>(Ljava/util/Collection;)V
     .locals 0
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0, p1}, Lcom/igexin/a/a/d/c;-><init>(Ljava/util/Collection;)V
 
-    iput-object p1, p0, Lcom/igexin/a/a/d/d;->a:Lcom/igexin/a/a/d/e;
+    return-void
+.end method
+
+.method varargs constructor <init>([Lcom/igexin/a/a/d/g;)V
+    .locals 1
+
+    invoke-static {p1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+
+    move-result-object v0
+
+    invoke-direct {p0, v0}, Lcom/igexin/a/a/d/d;-><init>(Ljava/util/Collection;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Lcom/igexin/a/a/b/l;)V
-    .locals 3
+.method public a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
+    .locals 2
+
+    iget-object v0, p0, Lcom/igexin/a/a/d/d;->a:Ljava/util/List;
+
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :cond_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/igexin/a/a/d/g;
+
+    invoke-virtual {v0, p1, p2}, Lcom/igexin/a/a/d/g;->a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
 
     const/4 v0, 0x0
 
-    move-object v1, p1
-
     :goto_0
-    if-eqz v1, :cond_2
-
-    iget-object v2, p0, Lcom/igexin/a/a/d/d;->a:Lcom/igexin/a/a/d/e;
-
-    invoke-interface {v2, v1, v0}, Lcom/igexin/a/a/d/e;->a(Lcom/igexin/a/a/b/l;I)V
-
-    invoke-virtual {v1}, Lcom/igexin/a/a/b/l;->u()Ljava/util/List;
-
-    move-result-object v2
-
-    invoke-interface {v2}, Ljava/util/List;->size()I
-
-    move-result v2
-
-    if-lez v2, :cond_0
-
-    invoke-virtual {v1}, Lcom/igexin/a/a/b/l;->t()Lcom/igexin/a/a/b/l;
-
-    move-result-object v1
-
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    :goto_1
-    invoke-virtual {v1}, Lcom/igexin/a/a/b/l;->w()Lcom/igexin/a/a/b/l;
-
-    move-result-object v2
-
-    if-nez v2, :cond_1
-
-    if-lez v0, :cond_1
-
-    iget-object v2, p0, Lcom/igexin/a/a/d/d;->a:Lcom/igexin/a/a/d/e;
-
-    invoke-interface {v2, v1, v0}, Lcom/igexin/a/a/d/e;->b(Lcom/igexin/a/a/b/l;I)V
-
-    invoke-virtual {v1}, Lcom/igexin/a/a/b/l;->r()Lcom/igexin/a/a/b/l;
-
-    move-result-object v1
-
-    add-int/lit8 v0, v0, -0x1
-
-    goto :goto_1
+    return v0
 
     :cond_1
-    iget-object v2, p0, Lcom/igexin/a/a/d/d;->a:Lcom/igexin/a/a/d/e;
-
-    invoke-interface {v2, v1, v0}, Lcom/igexin/a/a/d/e;->b(Lcom/igexin/a/a/b/l;I)V
-
-    if-eq v1, p1, :cond_2
-
-    invoke-virtual {v1}, Lcom/igexin/a/a/b/l;->w()Lcom/igexin/a/a/b/l;
-
-    move-result-object v1
+    const/4 v0, 0x1
 
     goto :goto_0
+.end method
 
-    :cond_2
-    return-void
+.method public toString()Ljava/lang/String;
+    .locals 2
+
+    iget-object v0, p0, Lcom/igexin/a/a/d/d;->a:Ljava/util/List;
+
+    const-string v1, " "
+
+    invoke-static {v0, v1}, Lcom/igexin/a/a/a/j;->a(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
 .end method

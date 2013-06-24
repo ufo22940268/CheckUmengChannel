@@ -1,73 +1,170 @@
 .class public Lcom/zhangdan/app/activities/BaseFragmentActivity;
 .super Landroid/support/v4/app/FragmentActivity;
+.source "BaseFragmentActivity.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;,
+        Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;
+    }
+.end annotation
 
 
 # instance fields
-.field protected a:Z
+.field protected mIsActive:Z
 
-.field private b:Lcom/zhangdan/app/activities/b;
+.field private mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;
 
-.field private c:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+.field private mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     const/4 v0, 0x0
 
+    .line 33
     invoke-direct {p0}, Landroid/support/v4/app/FragmentActivity;-><init>()V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->b:Lcom/zhangdan/app/activities/b;
+    .line 35
+    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->c:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+    .line 36
+    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
 
+    .line 38
     const/4 v0, 0x1
 
-    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->a:Z
+    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mIsActive:Z
 
+    .line 187
     return-void
 .end method
 
 
 # virtual methods
-.method protected onCreate(Landroid/os/Bundle;)V
+.method public getCurrUserInfo()Lcom/zhangdan/app/data/model/UserInfo;
     .locals 2
 
-    invoke-super {p0, p1}, Landroid/support/v4/app/FragmentActivity;->onCreate(Landroid/os/Bundle;)V
-
+    .prologue
+    .line 127
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->getApplication()Landroid/app/Application;
 
     move-result-object v0
 
     check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/ZhangdanApplication;->d()V
+    .line 128
+    .local v0, app:Lcom/zhangdan/app/ZhangdanApplication;
+    invoke-virtual {v0}, Lcom/zhangdan/app/ZhangdanApplication;->getCurrUserInfo()Lcom/zhangdan/app/data/model/UserInfo;
 
-    new-instance v0, Lcom/zhangdan/app/activities/b;
+    move-result-object v1
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/b;-><init>(Lcom/zhangdan/app/activities/BaseFragmentActivity;)V
+    return-object v1
+.end method
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->b:Lcom/zhangdan/app/activities/b;
+.method public getDataManager()Lcom/zhangdan/app/global/DataManager;
+    .locals 2
 
-    new-instance v0, Landroid/content/IntentFilter;
+    .prologue
+    .line 132
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->getApplication()Landroid/app/Application;
 
-    invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
+    move-result-object v0
 
-    const-string v1, "com.zhangdan.app.log_off"
+    check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
 
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+    .line 133
+    .local v0, app:Lcom/zhangdan/app/ZhangdanApplication;
+    invoke-virtual {v0}, Lcom/zhangdan/app/ZhangdanApplication;->getDataManager()Lcom/zhangdan/app/global/DataManager;
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->b:Lcom/zhangdan/app/activities/b;
+    move-result-object v1
 
-    invoke-virtual {p0, v1, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    return-object v1
+.end method
 
+.method protected onAboutUsOptionSelected()V
+    .locals 2
+
+    .prologue
+    .line 175
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    .line 176
+    .local v0, intent:Landroid/content/Intent;
+    const-class v1, Lcom/zhangdan/app/activities/setting/AboutUsActivity;
+
+    invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+
+    .line 177
+    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->startActivity(Landroid/content/Intent;)V
+
+    .line 178
+    return-void
+.end method
+
+.method protected onCreate(Landroid/os/Bundle;)V
+    .locals 4
+    .parameter "savedInstanceState"
+
+    .prologue
+    .line 42
+    invoke-super {p0, p1}, Landroid/support/v4/app/FragmentActivity;->onCreate(Landroid/os/Bundle;)V
+
+    .line 43
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->getApplication()Landroid/app/Application;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
+
+    .line 44
+    .local v0, app:Lcom/zhangdan/app/ZhangdanApplication;
+    invoke-virtual {v0}, Lcom/zhangdan/app/ZhangdanApplication;->reloadDataOnRestore()V
+
+    .line 46
+    new-instance v2, Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;
+
+    invoke-direct {v2, p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;-><init>(Lcom/zhangdan/app/activities/BaseFragmentActivity;)V
+
+    iput-object v2, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;
+
+    .line 47
+    new-instance v1, Landroid/content/IntentFilter;
+
+    invoke-direct {v1}, Landroid/content/IntentFilter;-><init>()V
+
+    .line 48
+    .local v1, filter:Landroid/content/IntentFilter;
+    const-string v2, "com.zhangdan.app.log_off"
+
+    invoke-virtual {v1, v2}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+
+    .line 49
+    invoke-static {p0}, Landroid/support/v4/content/LocalBroadcastManager;->getInstance(Landroid/content/Context;)Landroid/support/v4/content/LocalBroadcastManager;
+
+    move-result-object v2
+
+    iget-object v3, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;
+
+    invoke-virtual {v2, v3, v1}, Landroid/support/v4/content/LocalBroadcastManager;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)V
+
+    .line 50
     return-void
 .end method
 
 .method public onCreateOptionsMenu(Landroid/view/Menu;)Z
     .locals 2
+    .parameter "menu"
 
+    .prologue
+    .line 139
     new-instance v0, Landroid/view/MenuInflater;
 
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->getApplication()Landroid/app/Application;
@@ -80,6 +177,7 @@
 
     invoke-virtual {v0, v1, p1}, Landroid/view/MenuInflater;->inflate(ILandroid/view/Menu;)V
 
+    .line 140
     invoke-super {p0, p1}, Landroid/support/v4/app/FragmentActivity;->onCreateOptionsMenu(Landroid/view/Menu;)Z
 
     move-result v0
@@ -88,31 +186,88 @@
 .end method
 
 .method protected onDestroy()V
-    .locals 1
+    .locals 2
 
+    .prologue
+    .line 54
     invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onDestroy()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->b:Lcom/zhangdan/app/activities/b;
+    .line 55
+    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->b:Lcom/zhangdan/app/activities/b;
+    .line 56
+    invoke-static {p0}, Landroid/support/v4/content/LocalBroadcastManager;->getInstance(Landroid/content/Context;)Landroid/support/v4/content/LocalBroadcastManager;
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+    move-result-object v0
 
+    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$LogoffBroadcastReceiver;
+
+    invoke-virtual {v0, v1}, Landroid/support/v4/content/LocalBroadcastManager;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+
+    .line 58
     :cond_0
     return-void
 .end method
 
-.method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
+.method protected onHomeOptionSelected()V
     .locals 2
 
+    .prologue
+    .line 163
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    .line 164
+    .local v0, intent:Landroid/content/Intent;
+    const-class v1, Lcom/zhangdan/app/activities/MainFragmentActivity;
+
+    invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+
+    .line 165
+    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->startActivity(Landroid/content/Intent;)V
+
+    .line 166
+    return-void
+.end method
+
+.method protected onImportOptionSelectd()V
+    .locals 2
+
+    .prologue
+    .line 169
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    .line 170
+    .local v0, intent:Landroid/content/Intent;
+    const-class v1, Lcom/zhangdan/app/activities/mailimport/MailImportActivity;
+
+    invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+
+    .line 171
+    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->startActivity(Landroid/content/Intent;)V
+
+    .line 172
+    return-void
+.end method
+
+.method public onOptionsItemSelected(Landroid/view/MenuItem;)Z
+    .locals 1
+    .parameter "item"
+
+    .prologue
+    .line 145
     invoke-interface {p1}, Landroid/view/MenuItem;->getItemId()I
 
     move-result v0
 
     packed-switch v0, :pswitch_data_0
 
+    .line 159
     :goto_0
     invoke-super {p0, p1}, Landroid/support/v4/app/FragmentActivity;->onOptionsItemSelected(Landroid/view/MenuItem;)Z
 
@@ -120,47 +275,27 @@
 
     return v0
 
+    .line 147
     :pswitch_0
-    new-instance v0, Landroid/content/Intent;
-
-    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
-
-    const-class v1, Lcom/zhangdan/app/activities/MainFragmentActivity;
-
-    invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->startActivity(Landroid/content/Intent;)V
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->onHomeOptionSelected()V
 
     goto :goto_0
 
+    .line 151
     :pswitch_1
-    new-instance v0, Landroid/content/Intent;
-
-    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
-
-    const-class v1, Lcom/zhangdan/app/activities/mailimport/MailImportActivity;
-
-    invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->startActivity(Landroid/content/Intent;)V
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->onImportOptionSelectd()V
 
     goto :goto_0
 
+    .line 155
     :pswitch_2
-    new-instance v0, Landroid/content/Intent;
-
-    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
-
-    const-class v1, Lcom/zhangdan/app/activities/setting/AboutUsActivity;
-
-    invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->startActivity(Landroid/content/Intent;)V
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->onAboutUsOptionSelected()V
 
     goto :goto_0
 
+    .line 145
     :pswitch_data_0
-    .packed-switch 0x7f06033d
+    .packed-switch 0x7f090348
         :pswitch_0
         :pswitch_1
         :pswitch_2
@@ -170,145 +305,235 @@
 .method protected onPause()V
     .locals 0
 
+    .prologue
+    .line 99
     invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onPause()V
 
-    invoke-static {p0}, Lcom/umeng/a/a;->a(Landroid/content/Context;)V
+    .line 100
+    invoke-static {p0}, Lcom/umeng/analytics/MobclickAgent;->onPause(Landroid/content/Context;)V
 
+    .line 101
     return-void
 .end method
 
 .method protected onRestart()V
-    .locals 5
+    .locals 0
 
-    const/4 v4, 0x1
-
+    .prologue
+    .line 62
     invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onRestart()V
 
-    iget-boolean v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->a:Z
+    .line 63
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->onRestartFromBackground()V
 
-    if-nez v0, :cond_0
+    .line 64
+    return-void
+.end method
 
-    iput-boolean v4, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->a:Z
+.method protected onRestartFromBackground()V
+    .locals 9
 
+    .prologue
+    const/4 v8, 0x1
+
+    .line 67
+    iget-boolean v4, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mIsActive:Z
+
+    if-nez v4, :cond_0
+
+    .line 69
+    iput-boolean v8, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mIsActive:Z
+
+    .line 70
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v0
+    move-result-wide v1
 
-    sget-wide v2, Lcom/zhangdan/app/ZhangdanApplication;->a:J
+    .line 71
+    .local v1, now:J
+    sget-wide v4, Lcom/zhangdan/app/ZhangdanApplication;->RUN_TO_BACKGROUND_TIME:J
 
-    sub-long/2addr v0, v2
+    sub-long v4, v1, v4
 
-    const-wide/16 v2, 0x2710
+    const-wide/16 v6, 0x2710
 
-    cmp-long v0, v0, v2
+    cmp-long v4, v4, v6
 
-    if-ltz v0, :cond_0
+    if-gez v4, :cond_1
 
-    invoke-static {p0}, Lcom/zhangdan/app/data/a/b;->e(Landroid/content/Context;)Ljava/lang/String;
+    .line 82
+    .end local v1           #now:J
+    :cond_0
+    :goto_0
+    return-void
 
-    move-result-object v0
+    .line 73
+    .restart local v1       #now:J
+    :cond_1
+    invoke-static {p0}, Lcom/zhangdan/app/data/sharedprefs/SharedPreferMgr;->getLocalPwd(Landroid/content/Context;)Ljava/lang/String;
 
-    invoke-static {v0}, Lcom/zhangdan/app/h/d;->a(Ljava/lang/String;)Z
+    move-result-object v3
 
-    move-result v0
+    .line 74
+    .local v3, pwd:Ljava/lang/String;
+    invoke-static {v3}, Lcom/zhangdan/app/util/CommonMethod;->isEmpty(Ljava/lang/String;)Z
 
-    if-nez v0, :cond_0
+    move-result v4
 
+    if-nez v4, :cond_0
+
+    .line 75
     new-instance v0, Landroid/content/Intent;
 
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    const-class v1, Lcom/zhangdan/app/activities/setting/LockActivity;
+    .line 76
+    .local v0, intent:Landroid/content/Intent;
+    const-class v4, Lcom/zhangdan/app/activities/setting/LockActivity;
 
-    invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+    invoke-virtual {v0, p0, v4}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
 
-    const-string v1, "set_pwd"
+    .line 77
+    const-string v4, "set_pwd"
 
-    invoke-virtual {v0, v1, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
+    invoke-virtual {v0, v4, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
+    .line 78
     invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->startActivity(Landroid/content/Intent;)V
 
-    const v0, 0x7f040003
+    .line 79
+    const v4, 0x7f040003
 
-    const v1, 0x7f040005
+    const v5, 0x7f040005
 
-    invoke-virtual {p0, v0, v1}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->overridePendingTransition(II)V
+    invoke-virtual {p0, v4, v5}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->overridePendingTransition(II)V
 
-    :cond_0
-    return-void
+    goto :goto_0
 .end method
 
 .method protected onResume()V
     .locals 2
 
+    .prologue
+    .line 86
     invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onResume()V
 
-    invoke-static {p0}, Lcom/umeng/a/a;->b(Landroid/content/Context;)V
+    .line 87
+    invoke-static {p0}, Lcom/umeng/analytics/MobclickAgent;->onResume(Landroid/content/Context;)V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->c:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+    .line 88
+    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
-    new-instance v0, Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+    .line 89
+    new-instance v1, Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;-><init>(Lcom/zhangdan/app/activities/BaseFragmentActivity;)V
+    invoke-direct {v1, p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;-><init>(Lcom/zhangdan/app/activities/BaseFragmentActivity;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->c:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+    iput-object v1, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
 
+    .line 90
     new-instance v0, Landroid/content/IntentFilter;
 
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
+    .line 91
+    .local v0, screenfilter:Landroid/content/IntentFilter;
     const-string v1, "android.intent.action.SCREEN_OFF"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
+    .line 92
     const-string v1, "android.intent.action.SCREEN_ON"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->c:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+    .line 93
+    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
 
     invoke-virtual {p0, v1, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
+    .line 95
+    .end local v0           #screenfilter:Landroid/content/IntentFilter;
     :cond_0
     return-void
 .end method
 
-.method protected onStop()V
+.method protected onRunToBackground()V
     .locals 2
 
-    invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onStop()V
-
-    invoke-static {p0}, Lcom/zhangdan/app/h/d;->f(Landroid/content/Context;)Z
+    .prologue
+    .line 114
+    invoke-static {p0}, Lcom/zhangdan/app/util/CommonMethod;->isAppOnForeground(Landroid/content/Context;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
+    .line 116
     const/4 v0, 0x0
 
-    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->a:Z
+    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mIsActive:Z
 
+    .line 117
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
-    sput-wide v0, Lcom/zhangdan/app/ZhangdanApplication;->a:J
+    sput-wide v0, Lcom/zhangdan/app/ZhangdanApplication;->RUN_TO_BACKGROUND_TIME:J
 
+    .line 119
     :cond_0
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->c:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+    return-void
+.end method
 
-    if-eqz v0, :cond_1
+.method protected onStop()V
+    .locals 1
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->c:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+    .prologue
+    .line 105
+    invoke-super {p0}, Landroid/support/v4/app/FragmentActivity;->onStop()V
+
+    .line 106
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->onRunToBackground()V
+
+    .line 107
+    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+
+    if-eqz v0, :cond_0
+
+    .line 108
+    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
 
     invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
+    .line 109
     const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->c:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseFragmentActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseFragmentActivity$ScreenActionReceiver;
 
-    :cond_1
+    .line 111
+    :cond_0
+    return-void
+.end method
+
+.method public setCurrUserInfo(Lcom/zhangdan/app/data/model/UserInfo;)V
+    .locals 1
+    .parameter "userInfo"
+
+    .prologue
+    .line 122
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseFragmentActivity;->getApplication()Landroid/app/Application;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
+
+    .line 123
+    .local v0, app:Lcom/zhangdan/app/ZhangdanApplication;
+    invoke-virtual {v0, p1}, Lcom/zhangdan/app/ZhangdanApplication;->setCurrUserInfo(Lcom/zhangdan/app/data/model/UserInfo;)V
+
+    .line 124
     return-void
 .end method

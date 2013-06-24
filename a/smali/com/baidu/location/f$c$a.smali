@@ -2,6 +2,17 @@
 .super Landroid/content/BroadcastReceiver;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/baidu/location/f$c;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = "a"
+.end annotation
+
+
 # instance fields
 .field final synthetic a:Lcom/baidu/location/f$c;
 
@@ -38,9 +49,9 @@
 
     iget-object v0, p0, Lcom/baidu/location/f$c$a;->a:Lcom/baidu/location/f$c;
 
-    iget-object v0, v0, Lcom/baidu/location/f$c;->a:Lcom/baidu/location/f;
+    iget-object v0, v0, Lcom/baidu/location/f$c;->e:Lcom/baidu/location/f;
 
-    iget-object v0, v0, Lcom/baidu/location/f;->b:Landroid/os/Handler;
+    iget-object v0, v0, Lcom/baidu/location/f;->R:Landroid/os/Handler;
 
     const/16 v1, 0x65
 

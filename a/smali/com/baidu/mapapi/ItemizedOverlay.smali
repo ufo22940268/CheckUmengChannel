@@ -5,6 +5,26 @@
 .implements Lcom/baidu/mapapi/Overlay$Snappable;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/ItemizedOverlay$OnFocusChangeListener;,
+        Lcom/baidu/mapapi/ItemizedOverlay$a;,
+        Lcom/baidu/mapapi/ItemizedOverlay$b;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<Item:",
+        "Lcom/baidu/mapapi/OverlayItem;",
+        ">",
+        "Lcom/baidu/mapapi/Overlay;",
+        "Lcom/baidu/mapapi/Overlay$Snappable;"
+    }
+.end annotation
+
+
 # static fields
 .field private static d:I
 
@@ -17,6 +37,13 @@
 .field private c:Landroid/graphics/drawable/Drawable;
 
 .field private e:Lcom/baidu/mapapi/ItemizedOverlay$a;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/baidu/mapapi/ItemizedOverlay",
+            "<TItem;>.a;"
+        }
+    .end annotation
+.end field
 
 .field private f:Lcom/baidu/mapapi/ItemizedOverlay$OnFocusChangeListener;
 
@@ -169,6 +196,14 @@
 
 .method static a(Lcom/baidu/mapapi/ItemizedOverlay;)Landroid/graphics/drawable/Drawable;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/baidu/mapapi/ItemizedOverlay",
+            "<*>;)",
+            "Landroid/graphics/drawable/Drawable;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/ItemizedOverlay;->b:Landroid/graphics/drawable/Drawable;
 
@@ -313,6 +348,11 @@
 
 # virtual methods
 .method protected abstract createItem(I)Lcom/baidu/mapapi/OverlayItem;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)TItem;"
+        }
+    .end annotation
 .end method
 
 .method public draw(Landroid/graphics/Canvas;Lcom/baidu/mapapi/MapView;Z)V
@@ -469,6 +509,11 @@
 
 .method public getFocus()Lcom/baidu/mapapi/OverlayItem;
     .locals 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()TItem;"
+        }
+    .end annotation
 
     const/4 v0, 0x0
 
@@ -504,6 +549,11 @@
 
 .method public final getItem(I)Lcom/baidu/mapapi/OverlayItem;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)TItem;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/ItemizedOverlay;->e:Lcom/baidu/mapapi/ItemizedOverlay$a;
 
@@ -551,69 +601,76 @@
 .end method
 
 .method protected hitTest(Lcom/baidu/mapapi/OverlayItem;Landroid/graphics/drawable/Drawable;II)Z
-    .locals 3
+    .locals 4
 
     invoke-virtual {p2}, Landroid/graphics/drawable/Drawable;->getBounds()Landroid/graphics/Rect;
 
     move-result-object v0
 
-    iget v1, v0, Landroid/graphics/Rect;->left:I
-
-    add-int/lit8 v1, v1, -0xa
-
-    iput v1, v0, Landroid/graphics/Rect;->left:I
-
-    iget v1, v0, Landroid/graphics/Rect;->right:I
-
-    add-int/lit8 v1, v1, 0xa
-
-    iput v1, v0, Landroid/graphics/Rect;->right:I
-
-    iget v1, v0, Landroid/graphics/Rect;->bottom:I
-
-    add-int/lit8 v1, v1, 0xa
-
-    iput v1, v0, Landroid/graphics/Rect;->bottom:I
-
-    iget v1, v0, Landroid/graphics/Rect;->top:I
-
-    add-int/lit8 v1, v1, -0xa
-
-    iput v1, v0, Landroid/graphics/Rect;->top:I
-
-    invoke-virtual {v0, p3, p4}, Landroid/graphics/Rect;->contains(II)Z
-
-    move-result v1
+    const/16 v1, 0xa
 
     iget v2, v0, Landroid/graphics/Rect;->left:I
 
-    add-int/lit8 v2, v2, 0xa
+    sub-int/2addr v2, v1
 
     iput v2, v0, Landroid/graphics/Rect;->left:I
 
     iget v2, v0, Landroid/graphics/Rect;->right:I
 
-    add-int/lit8 v2, v2, -0xa
+    add-int/2addr v2, v1
 
     iput v2, v0, Landroid/graphics/Rect;->right:I
 
     iget v2, v0, Landroid/graphics/Rect;->bottom:I
 
-    add-int/lit8 v2, v2, -0xa
+    add-int/2addr v2, v1
 
     iput v2, v0, Landroid/graphics/Rect;->bottom:I
 
     iget v2, v0, Landroid/graphics/Rect;->top:I
 
-    add-int/lit8 v2, v2, 0xa
+    sub-int/2addr v2, v1
 
     iput v2, v0, Landroid/graphics/Rect;->top:I
 
-    return v1
+    invoke-virtual {v0, p3, p4}, Landroid/graphics/Rect;->contains(II)Z
+
+    move-result v2
+
+    iget v3, v0, Landroid/graphics/Rect;->left:I
+
+    add-int/2addr v3, v1
+
+    iput v3, v0, Landroid/graphics/Rect;->left:I
+
+    iget v3, v0, Landroid/graphics/Rect;->right:I
+
+    sub-int/2addr v3, v1
+
+    iput v3, v0, Landroid/graphics/Rect;->right:I
+
+    iget v3, v0, Landroid/graphics/Rect;->bottom:I
+
+    sub-int/2addr v3, v1
+
+    iput v3, v0, Landroid/graphics/Rect;->bottom:I
+
+    iget v3, v0, Landroid/graphics/Rect;->top:I
+
+    add-int/2addr v1, v3
+
+    iput v1, v0, Landroid/graphics/Rect;->top:I
+
+    return v2
 .end method
 
 .method public nextFocus(Z)Lcom/baidu/mapapi/OverlayItem;
     .locals 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(Z)TItem;"
+        }
+    .end annotation
 
     const/4 v2, -0x1
 
@@ -855,6 +912,11 @@
 
 .method public setFocus(Lcom/baidu/mapapi/OverlayItem;)V
     .locals 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TItem;)V"
+        }
+    .end annotation
 
     const/4 v2, -0x1
 

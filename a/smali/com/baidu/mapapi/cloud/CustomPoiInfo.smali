@@ -22,6 +22,16 @@
 .field public name:Ljava/lang/String;
 
 .field public poiExtend:Ljava/util/Map;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Map",
+            "<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Object;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field public poiType:I
 

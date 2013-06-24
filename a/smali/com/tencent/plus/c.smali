@@ -1,132 +1,49 @@
-.class final Lcom/tencent/plus/c;
-.super Landroid/view/View;
+.class Lcom/tencent/plus/c;
+.super Ljava/lang/Object;
+.source "ProGuard"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field final synthetic a:Lcom/tencent/plus/ImageActivity;
+.field final synthetic a:Lcom/tencent/plus/d;
 
 
 # direct methods
-.method public constructor <init>(Lcom/tencent/plus/ImageActivity;Landroid/content/Context;)V
+.method constructor <init>(Lcom/tencent/plus/d;)V
     .locals 0
+    .parameter
 
-    iput-object p1, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/ImageActivity;
+    .prologue
+    .line 279
+    iput-object p1, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/d;
 
-    invoke-direct {p0, p2}, Landroid/view/View;-><init>(Landroid/content/Context;)V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Landroid/widget/Button;)V
-    .locals 5
+.method public run()V
+    .locals 1
 
-    new-instance v0, Landroid/graphics/drawable/StateListDrawable;
+    .prologue
+    .line 281
+    iget-object v0, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/d;
 
-    invoke-direct {v0}, Landroid/graphics/drawable/StateListDrawable;-><init>()V
+    iget-object v0, v0, Lcom/tencent/plus/d;->a:Lcom/tencent/plus/TouchView;
 
-    iget-object v1, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/ImageActivity;
+    invoke-virtual {v0}, Lcom/tencent/plus/TouchView;->clearAnimation()V
 
-    const-string v2, "com.tencent.plus.blue_normal.png"
+    .line 283
+    iget-object v0, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/d;
 
-    invoke-static {v1, v2}, Lcom/tencent/plus/ImageActivity;->a(Lcom/tencent/plus/ImageActivity;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
+    iget-object v0, v0, Lcom/tencent/plus/d;->a:Lcom/tencent/plus/TouchView;
 
-    move-result-object v1
+    invoke-static {v0}, Lcom/tencent/plus/TouchView;->a(Lcom/tencent/plus/TouchView;)V
 
-    iget-object v2, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/ImageActivity;
-
-    const-string v3, "com.tencent.plus.blue_down.png"
-
-    invoke-static {v2, v3}, Lcom/tencent/plus/ImageActivity;->a(Lcom/tencent/plus/ImageActivity;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v2
-
-    iget-object v3, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/ImageActivity;
-
-    const-string v4, "com.tencent.plus.blue_disable.png"
-
-    invoke-static {v3, v4}, Lcom/tencent/plus/ImageActivity;->a(Lcom/tencent/plus/ImageActivity;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    sget-object v4, Landroid/view/View;->PRESSED_ENABLED_STATE_SET:[I
-
-    invoke-virtual {v0, v4, v2}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    sget-object v2, Landroid/view/View;->ENABLED_FOCUSED_STATE_SET:[I
-
-    invoke-virtual {v0, v2, v1}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    sget-object v2, Landroid/view/View;->ENABLED_STATE_SET:[I
-
-    invoke-virtual {v0, v2, v1}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    sget-object v2, Landroid/view/View;->FOCUSED_STATE_SET:[I
-
-    invoke-virtual {v0, v2, v1}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    sget-object v1, Landroid/view/View;->EMPTY_STATE_SET:[I
-
-    invoke-virtual {v0, v1, v3}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    invoke-virtual {p1, v0}, Landroid/widget/Button;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
-
-    return-void
-.end method
-
-.method public final b(Landroid/widget/Button;)V
-    .locals 5
-
-    new-instance v0, Landroid/graphics/drawable/StateListDrawable;
-
-    invoke-direct {v0}, Landroid/graphics/drawable/StateListDrawable;-><init>()V
-
-    iget-object v1, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/ImageActivity;
-
-    const-string v2, "com.tencent.plus.gray_normal.png"
-
-    invoke-static {v1, v2}, Lcom/tencent/plus/ImageActivity;->a(Lcom/tencent/plus/ImageActivity;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/ImageActivity;
-
-    const-string v3, "com.tencent.plus.gray_down.png"
-
-    invoke-static {v2, v3}, Lcom/tencent/plus/ImageActivity;->a(Lcom/tencent/plus/ImageActivity;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v2
-
-    iget-object v3, p0, Lcom/tencent/plus/c;->a:Lcom/tencent/plus/ImageActivity;
-
-    const-string v4, "com.tencent.plus.gray_disable.png"
-
-    invoke-static {v3, v4}, Lcom/tencent/plus/ImageActivity;->a(Lcom/tencent/plus/ImageActivity;Ljava/lang/String;)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    sget-object v4, Landroid/view/View;->PRESSED_ENABLED_STATE_SET:[I
-
-    invoke-virtual {v0, v4, v2}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    sget-object v2, Landroid/view/View;->ENABLED_FOCUSED_STATE_SET:[I
-
-    invoke-virtual {v0, v2, v1}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    sget-object v2, Landroid/view/View;->ENABLED_STATE_SET:[I
-
-    invoke-virtual {v0, v2, v1}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    sget-object v2, Landroid/view/View;->FOCUSED_STATE_SET:[I
-
-    invoke-virtual {v0, v2, v1}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    sget-object v1, Landroid/view/View;->EMPTY_STATE_SET:[I
-
-    invoke-virtual {v0, v1, v3}, Landroid/graphics/drawable/StateListDrawable;->addState([ILandroid/graphics/drawable/Drawable;)V
-
-    invoke-virtual {p1, v0}, Landroid/widget/Button;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
-
+    .line 285
     return-void
 .end method

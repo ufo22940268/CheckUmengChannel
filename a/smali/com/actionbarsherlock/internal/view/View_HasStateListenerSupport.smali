@@ -1,5 +1,6 @@
 .class public interface abstract Lcom/actionbarsherlock/internal/view/View_HasStateListenerSupport;
 .super Ljava/lang/Object;
+.source "View_HasStateListenerSupport.java"
 
 
 # virtual methods

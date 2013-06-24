@@ -138,85 +138,105 @@
     return-void
 .end method
 
-.method private a()V
-    .locals 1
 
-    iget-object v0, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
+# virtual methods
+.method public final a(Lsdk/c/a/e/d;Lsdk/c/a/e/d;)I
+    .locals 7
 
-    if-eqz v0, :cond_0
+    const/4 v2, 0x1
 
-    iget-object v0, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
+    const/4 v1, -0x1
 
-    invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->release()V
+    iget v0, p1, Lsdk/c/a/e/d;->N:I
 
-    :cond_0
-    return-void
-.end method
+    iget v3, p2, Lsdk/c/a/e/d;->N:I
 
-.method private static a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/a/c;)Z
-    .locals 2
+    if-le v0, v3, :cond_1
 
-    invoke-interface {p0}, Lsdk/c/a/e/a/f;->b()I
+    move v0, v1
+
+    :goto_0
+    iget-wide v3, p1, Lsdk/c/a/e/d;->H:J
+
+    iget-wide v5, p2, Lsdk/c/a/e/d;->H:J
+
+    cmp-long v3, v3, v5
+
+    if-nez v3, :cond_5
+
+    :goto_1
+    if-nez v0, :cond_0
+
+    invoke-virtual {p1}, Ljava/lang/Object;->hashCode()I
 
     move-result v0
 
-    const/high16 v1, -0x8000
-
-    if-le v0, v1, :cond_2
-
-    if-gez v0, :cond_2
-
-    move-object v0, p0
-
-    check-cast v0, Lsdk/c/a/e/d;
-
-    iget-boolean v1, v0, Lsdk/c/a/e/d;->F:Z
-
-    if-eqz v1, :cond_1
-
-    invoke-interface {p1, v0}, Lsdk/c/a/e/a/c;->a(Lsdk/c/a/e/d;)Z
+    invoke-virtual {p2}, Ljava/lang/Object;->hashCode()I
 
     move-result v1
 
-    :goto_0
-    if-eqz v1, :cond_0
-
-    invoke-virtual {v0}, Lsdk/c/a/e/d;->d()V
+    sub-int/2addr v0, v1
 
     :cond_0
-    move v0, v1
-
-    :goto_1
     return v0
 
     :cond_1
-    invoke-interface {p1, p0}, Lsdk/c/a/e/a/c;->a(Lsdk/c/a/e/a/f;)Z
+    iget v0, p1, Lsdk/c/a/e/d;->N:I
 
-    move-result v1
+    iget v3, p2, Lsdk/c/a/e/d;->N:I
+
+    if-ge v0, v3, :cond_2
+
+    move v0, v2
 
     goto :goto_0
 
     :cond_2
-    if-ltz v0, :cond_3
+    iget v0, p1, Lsdk/c/a/e/d;->I:I
 
-    const v1, 0x7fffffff
+    iget v3, p2, Lsdk/c/a/e/d;->I:I
 
-    if-ge v0, v1, :cond_3
+    if-ge v0, v3, :cond_3
 
-    invoke-interface {p1, p0}, Lsdk/c/a/e/a/c;->a(Lsdk/c/a/e/a/f;)Z
+    move v0, v1
 
-    move-result v0
+    goto :goto_0
+
+    :cond_3
+    iget v0, p1, Lsdk/c/a/e/d;->I:I
+
+    iget v3, p2, Lsdk/c/a/e/d;->I:I
+
+    if-le v0, v3, :cond_4
+
+    move v0, v2
+
+    goto :goto_0
+
+    :cond_4
+    const/4 v0, 0x0
+
+    goto :goto_0
+
+    :cond_5
+    iget-wide v3, p1, Lsdk/c/a/e/d;->H:J
+
+    iget-wide v5, p2, Lsdk/c/a/e/d;->H:J
+
+    cmp-long v0, v3, v5
+
+    if-gez v0, :cond_6
+
+    move v0, v1
 
     goto :goto_1
 
-    :cond_3
-    const/4 v0, 0x0
+    :cond_6
+    move v0, v2
 
     goto :goto_1
 .end method
 
-
-# virtual methods
 .method public final a(J)V
     .locals 5
 
@@ -266,7 +286,7 @@
     invoke-virtual {v0, v4, v1, v2, v3}, Landroid/app/AlarmManager;->set(IJLandroid/app/PendingIntent;)V
 
     :cond_1
-    invoke-direct {p0}, Lsdk/c/a/e/e;->a()V
+    invoke-virtual {p0}, Lsdk/c/a/e/e;->i()V
 
     return-void
 .end method
@@ -324,9 +344,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "AlarmTaskSchedule."
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
@@ -348,9 +372,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "AlarmTaskScheduleBak."
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
@@ -386,9 +414,13 @@
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "AlarmNioTaskSchedule."
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
@@ -416,9 +448,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "AlarmTaskSchedule."
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
@@ -452,9 +488,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "AlarmTaskScheduleBak."
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
@@ -547,13 +587,13 @@
     :cond_2
     check-cast p1, Lsdk/c/a/e/a/f;
 
-    invoke-interface {p1}, Lsdk/c/a/e/a/f;->i()Z
+    invoke-interface {p1}, Lsdk/c/a/e/a/f;->j()Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    invoke-interface {p1, v0}, Lsdk/c/a/e/a/f;->a(Z)V
+    invoke-interface {p1, v0}, Lsdk/c/a/e/a/f;->b(Z)V
 
     iget-object v0, p0, Lsdk/c/a/e/e;->l:Ljava/util/concurrent/ConcurrentLinkedQueue;
 
@@ -593,7 +633,7 @@
 
     move-result-object v2
 
-    invoke-interface {p1}, Lsdk/c/a/e/a/c;->d()J
+    invoke-interface {p1}, Lsdk/c/a/e/a/c;->j()J
 
     move-result-wide v3
 
@@ -619,7 +659,7 @@
     :try_start_1
     iget-object v0, p0, Lsdk/c/a/e/e;->k:Ljava/util/HashMap;
 
-    invoke-interface {p1}, Lsdk/c/a/e/a/c;->d()J
+    invoke-interface {p1}, Lsdk/c/a/e/a/c;->j()J
 
     move-result-wide v2
 
@@ -631,9 +671,9 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    invoke-virtual {v1}, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
-
     const/4 v0, 0x1
+
+    invoke-virtual {v1}, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
 
     goto :goto_0
 
@@ -643,6 +683,68 @@
     invoke-virtual {v1}, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
 
     throw v0
+.end method
+
+.method final a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/a/c;)Z
+    .locals 2
+
+    invoke-interface {p1}, Lsdk/c/a/e/a/f;->b()I
+
+    move-result v0
+
+    const/high16 v1, -0x8000
+
+    if-le v0, v1, :cond_2
+
+    if-gez v0, :cond_2
+
+    move-object v0, p1
+
+    check-cast v0, Lsdk/c/a/e/d;
+
+    iget-boolean v1, v0, Lsdk/c/a/e/d;->F:Z
+
+    if-eqz v1, :cond_1
+
+    invoke-interface {p2, v0, p0}, Lsdk/c/a/e/a/c;->a(Lsdk/c/a/e/d;Lsdk/c/a/e/e;)Z
+
+    move-result v1
+
+    :goto_0
+    if-eqz v1, :cond_0
+
+    invoke-virtual {v0}, Lsdk/c/a/e/d;->c()V
+
+    :cond_0
+    move v0, v1
+
+    :goto_1
+    return v0
+
+    :cond_1
+    invoke-interface {p2, p1, p0}, Lsdk/c/a/e/a/c;->a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/e;)Z
+
+    move-result v1
+
+    goto :goto_0
+
+    :cond_2
+    if-ltz v0, :cond_3
+
+    const v1, 0x7fffffff
+
+    if-ge v0, v1, :cond_3
+
+    invoke-interface {p2, p1, p0}, Lsdk/c/a/e/a/c;->a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/e;)Z
+
+    move-result v0
+
+    goto :goto_1
+
+    :cond_3
+    const/4 v0, 0x0
+
+    goto :goto_1
 .end method
 
 .method public final a(Lsdk/c/a/e/d;Z)Z
@@ -721,12 +823,14 @@
 
     if-nez p3, :cond_5
 
-    invoke-virtual {p1}, Lsdk/c/a/e/d;->e()V
+    invoke-virtual {p1}, Lsdk/c/a/e/d;->d()V
 
     :try_start_0
-    invoke-virtual {p1}, Lsdk/c/a/e/d;->c()V
+    invoke-virtual {p1}, Lsdk/c/a/e/d;->b_()V
 
     invoke-virtual {p1}, Lsdk/c/a/e/d;->r()V
+
+    invoke-virtual {p1}, Lsdk/c/a/e/d;->t()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
@@ -735,7 +839,7 @@
 
     if-nez v1, :cond_3
 
-    invoke-virtual {p1}, Lsdk/c/a/e/d;->d()V
+    invoke-virtual {p1}, Lsdk/c/a/e/d;->c()V
 
     :cond_3
     move v1, v0
@@ -752,13 +856,13 @@
 
     iput-object v0, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
 
-    invoke-virtual {p1}, Lsdk/c/a/e/d;->l()V
+    invoke-virtual {p1}, Lsdk/c/a/e/d;->n()V
 
-    invoke-virtual {p1}, Lsdk/c/a/e/d;->s()V
+    invoke-virtual {p1}, Lsdk/c/a/e/d;->u()V
 
     invoke-virtual {p0, p1}, Lsdk/c/a/e/e;->a(Ljava/lang/Object;)Z
 
-    invoke-virtual {p0}, Lsdk/c/a/e/e;->h()V
+    invoke-virtual {p0}, Lsdk/c/a/e/e;->j()V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
@@ -766,7 +870,7 @@
 
     if-nez v0, :cond_1
 
-    invoke-virtual {p1}, Lsdk/c/a/e/d;->d()V
+    invoke-virtual {p1}, Lsdk/c/a/e/d;->c()V
 
     goto :goto_0
 
@@ -777,7 +881,7 @@
 
     if-nez v1, :cond_4
 
-    invoke-virtual {p1}, Lsdk/c/a/e/d;->d()V
+    invoke-virtual {p1}, Lsdk/c/a/e/d;->c()V
 
     :cond_4
     throw v0
@@ -841,7 +945,7 @@
 
     invoke-virtual {p1, p0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    invoke-direct {p0}, Lsdk/c/a/e/e;->a()V
+    invoke-virtual {p0}, Lsdk/c/a/e/e;->i()V
 
     iput-object v1, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
 
@@ -872,104 +976,17 @@
 .end method
 
 .method public synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 7
-
-    const/4 v2, 0x1
-
-    const/4 v1, -0x1
+    .locals 1
 
     check-cast p1, Lsdk/c/a/e/d;
 
     check-cast p2, Lsdk/c/a/e/d;
 
-    iget v0, p1, Lsdk/c/a/e/d;->N:I
-
-    iget v3, p2, Lsdk/c/a/e/d;->N:I
-
-    if-le v0, v3, :cond_1
-
-    move v0, v1
-
-    :goto_0
-    iget-wide v3, p1, Lsdk/c/a/e/d;->H:J
-
-    iget-wide v5, p2, Lsdk/c/a/e/d;->H:J
-
-    cmp-long v3, v3, v5
-
-    if-nez v3, :cond_5
-
-    :goto_1
-    if-nez v0, :cond_0
-
-    invoke-virtual {p1}, Ljava/lang/Object;->hashCode()I
+    invoke-virtual {p0, p1, p2}, Lsdk/c/a/e/e;->a(Lsdk/c/a/e/d;Lsdk/c/a/e/d;)I
 
     move-result v0
 
-    invoke-virtual {p2}, Ljava/lang/Object;->hashCode()I
-
-    move-result v1
-
-    sub-int/2addr v0, v1
-
-    :cond_0
     return v0
-
-    :cond_1
-    iget v0, p1, Lsdk/c/a/e/d;->N:I
-
-    iget v3, p2, Lsdk/c/a/e/d;->N:I
-
-    if-ge v0, v3, :cond_2
-
-    move v0, v2
-
-    goto :goto_0
-
-    :cond_2
-    iget v0, p1, Lsdk/c/a/e/d;->I:I
-
-    iget v3, p2, Lsdk/c/a/e/d;->I:I
-
-    if-ge v0, v3, :cond_3
-
-    move v0, v1
-
-    goto :goto_0
-
-    :cond_3
-    iget v0, p1, Lsdk/c/a/e/d;->I:I
-
-    iget v3, p2, Lsdk/c/a/e/d;->I:I
-
-    if-le v0, v3, :cond_4
-
-    move v0, v2
-
-    goto :goto_0
-
-    :cond_4
-    const/4 v0, 0x0
-
-    goto :goto_0
-
-    :cond_5
-    iget-wide v3, p1, Lsdk/c/a/e/d;->H:J
-
-    iget-wide v5, p2, Lsdk/c/a/e/d;->H:J
-
-    cmp-long v0, v3, v5
-
-    if-gez v0, :cond_6
-
-    move v0, v1
-
-    goto :goto_1
-
-    :cond_6
-    move v0, v2
-
-    goto :goto_1
 .end method
 
 .method public final g()V
@@ -989,7 +1006,41 @@
     return-void
 .end method
 
-.method protected final h()V
+.method public final h()V
+    .locals 1
+
+    iget-boolean v0, p0, Lsdk/c/a/e/e;->z:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
+
+    invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->acquire()V
+
+    :cond_0
+    return-void
+.end method
+
+.method public final i()V
+    .locals 1
+
+    iget-object v0, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
+
+    invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->release()V
+
+    :cond_0
+    return-void
+.end method
+
+.method protected final j()V
     .locals 1
 
     iget-object v0, p0, Lsdk/c/a/e/e;->j:Lsdk/c/a/e/i;
@@ -1012,7 +1063,7 @@
     return-void
 .end method
 
-.method final i()V
+.method final k()V
     .locals 9
 
     const/high16 v8, -0x8000
@@ -1036,7 +1087,7 @@
 
     const/4 v1, 0x1
 
-    invoke-interface {v0, v1}, Lsdk/c/a/e/a/f;->a(Z)V
+    invoke-interface {v0, v1}, Lsdk/c/a/e/a/f;->b(Z)V
 
     const/4 v2, 0x0
 
@@ -1053,7 +1104,7 @@
 
     if-nez v1, :cond_0
 
-    invoke-interface {v0}, Lsdk/c/a/e/a/f;->j()J
+    invoke-interface {v0}, Lsdk/c/a/e/a/f;->k()J
 
     move-result-wide v4
 
@@ -1077,7 +1128,13 @@
 
     if-eqz v1, :cond_7
 
-    invoke-static {v0, v1}, Lsdk/c/a/e/e;->a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/a/c;)Z
+    invoke-interface {v1}, Lsdk/c/a/e/a/c;->i()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_7
+
+    invoke-virtual {p0, v0, v1}, Lsdk/c/a/e/e;->a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/a/c;)Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
@@ -1101,7 +1158,7 @@
 
     check-cast v0, Lsdk/c/a/e/d;
 
-    invoke-virtual {v0}, Lsdk/c/a/e/d;->d()V
+    invoke-virtual {v0}, Lsdk/c/a/e/d;->c()V
 
     :cond_1
     invoke-virtual {v3}, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
@@ -1133,7 +1190,13 @@
 
     check-cast v1, Lsdk/c/a/e/a/c;
 
-    invoke-static {v0, v1}, Lsdk/c/a/e/e;->a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/a/c;)Z
+    invoke-interface {v1}, Lsdk/c/a/e/a/c;->i()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_3
+
+    invoke-virtual {p0, v0, v1}, Lsdk/c/a/e/e;->a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/a/c;)Z
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
@@ -1159,7 +1222,7 @@
 
     check-cast v0, Lsdk/c/a/e/d;
 
-    invoke-virtual {v0}, Lsdk/c/a/e/d;->d()V
+    invoke-virtual {v0}, Lsdk/c/a/e/d;->c()V
 
     :cond_4
     invoke-virtual {v3}, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
@@ -1181,7 +1244,7 @@
 
     check-cast v0, Lsdk/c/a/e/d;
 
-    invoke-virtual {v0}, Lsdk/c/a/e/d;->d()V
+    invoke-virtual {v0}, Lsdk/c/a/e/d;->c()V
 
     :cond_5
     invoke-virtual {v3}, Ljava/util/concurrent/locks/ReentrantLock;->unlock()V
@@ -1245,17 +1308,7 @@
     return-void
 
     :cond_1
-    iget-boolean v0, p0, Lsdk/c/a/e/e;->z:Z
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lsdk/c/a/e/e;->q:Landroid/os/PowerManager$WakeLock;
-
-    invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->acquire()V
+    invoke-virtual {p0}, Lsdk/c/a/e/e;->h()V
 
     goto :goto_0
 
@@ -1276,7 +1329,7 @@
 
     iput-boolean v0, p0, Lsdk/c/a/e/e;->z:Z
 
-    invoke-direct {p0}, Lsdk/c/a/e/e;->a()V
+    invoke-virtual {p0}, Lsdk/c/a/e/e;->i()V
 
     goto :goto_0
 
@@ -1306,7 +1359,7 @@
     if-eqz v0, :cond_5
 
     :cond_4
-    invoke-virtual {p0}, Lsdk/c/a/e/e;->h()V
+    invoke-virtual {p0}, Lsdk/c/a/e/e;->j()V
 
     goto :goto_0
 
@@ -1323,17 +1376,17 @@
 
     if-eqz v0, :cond_0
 
-    invoke-static {}, Lsdk/c/a/b/a/a/d;->g()Lsdk/c/a/b/a/a/d;
+    invoke-static {}, Lsdk/c/a/b/a/a/d;->h()Lsdk/c/a/b/a/a/d;
 
     move-result-object v0
 
     if-eqz v0, :cond_0
 
-    invoke-static {}, Lsdk/c/a/b/a/a/d;->g()Lsdk/c/a/b/a/a/d;
+    invoke-static {}, Lsdk/c/a/b/a/a/d;->h()Lsdk/c/a/b/a/a/d;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lsdk/c/a/b/a/a/d;->h()V
+    invoke-virtual {v0}, Lsdk/c/a/b/a/a/d;->i()V
 
     goto :goto_0
 .end method

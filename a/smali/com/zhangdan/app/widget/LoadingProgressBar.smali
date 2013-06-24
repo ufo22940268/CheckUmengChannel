@@ -1,289 +1,371 @@
 .class public Lcom/zhangdan/app/widget/LoadingProgressBar;
 .super Landroid/widget/ImageView;
+.source "LoadingProgressBar.java"
 
 
 # instance fields
-.field private a:Landroid/graphics/drawable/Drawable;
+.field private mBgDrawable:Landroid/graphics/drawable/Drawable;
 
-.field private b:Landroid/graphics/drawable/Drawable;
+.field private mCurrProgress:I
 
-.field private c:Landroid/graphics/drawable/Drawable;
+.field private mHeight:I
 
-.field private d:I
+.field private mMaxProgress:I
 
-.field private e:I
+.field private mProgressDrawable:Landroid/graphics/drawable/Drawable;
 
-.field private f:I
+.field private mShadowDrawable:Landroid/graphics/drawable/Drawable;
 
-.field private g:I
+.field private mWidth:I
 
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 5
+    .locals 10
+    .parameter "context"
+    .parameter "attrs"
 
-    const/4 v4, 0x2
+    .prologue
+    const/4 v8, 0x2
 
-    const/4 v2, 0x1
+    const/4 v7, 0x1
 
-    const/4 v3, 0x0
+    const/4 v9, 0x0
 
+    .line 33
     invoke-direct {p0, p1, p2}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    sget-object v0, Lcom/zhangdan/app/R$styleable;->f:[I
+    .line 34
+    sget-object v6, Lcom/zhangdan/app/R$styleable;->LoadingProgressBar:[I
 
-    invoke-virtual {p1, p2, v0}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    invoke-virtual {p1, p2, v6}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    invoke-virtual {v0, v3}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    .line 35
+    .local v0, arr:Landroid/content/res/TypedArray;
+    invoke-virtual {v0, v9}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v1
+    move-result-object v6
 
-    iput-object v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->a:Landroid/graphics/drawable/Drawable;
+    iput-object v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mBgDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0, v2}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    .line 36
+    invoke-virtual {v0, v7}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v1
+    move-result-object v6
 
-    iput-object v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->b:Landroid/graphics/drawable/Drawable;
+    iput-object v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mProgressDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0, v4}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    .line 37
+    invoke-virtual {v0, v8}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v1
+    move-result-object v6
 
-    iput-object v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->c:Landroid/graphics/drawable/Drawable;
+    iput-object v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mShadowDrawable:Landroid/graphics/drawable/Drawable;
 
-    const/4 v1, 0x3
+    .line 38
+    const/4 v6, 0x3
 
-    const/16 v2, 0x64
+    const/16 v7, 0x64
 
-    invoke-virtual {v0, v1, v2}, Landroid/content/res/TypedArray;->getInt(II)I
+    invoke-virtual {v0, v6, v7}, Landroid/content/res/TypedArray;->getInt(II)I
 
-    move-result v1
+    move-result v6
 
-    iput v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->d:I
+    iput v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mMaxProgress:I
 
-    const/4 v1, 0x4
+    .line 39
+    const/4 v6, 0x4
 
-    invoke-virtual {v0, v1, v3}, Landroid/content/res/TypedArray;->getInt(II)I
+    invoke-virtual {v0, v6, v9}, Landroid/content/res/TypedArray;->getInt(II)I
 
-    move-result v1
+    move-result v6
 
-    iput v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->e:I
+    iput v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mCurrProgress:I
 
+    .line 40
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->a:Landroid/graphics/drawable/Drawable;
+    .line 42
+    iget-object v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mBgDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+    invoke-virtual {v6}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
-    move-result v0
+    move-result v6
 
-    iput v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->f:I
+    iput v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mWidth:I
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->a:Landroid/graphics/drawable/Drawable;
+    .line 43
+    iget-object v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mBgDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+    invoke-virtual {v6}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
-    move-result v0
+    move-result v6
 
-    iput v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->g:I
+    iput v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mHeight:I
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->a:Landroid/graphics/drawable/Drawable;
+    .line 45
+    iget-object v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mBgDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->f:I
+    iget v7, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mWidth:I
 
-    iget v2, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->g:I
+    iget v8, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mHeight:I
 
-    invoke-virtual {v0, v3, v3, v1, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    invoke-virtual {v6, v9, v9, v7, v8}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->b:Landroid/graphics/drawable/Drawable;
+    .line 46
+    iget-object v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mProgressDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->f:I
+    iget v7, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mWidth:I
 
-    iget v2, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->g:I
+    iget v8, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mHeight:I
 
-    invoke-virtual {v0, v3, v3, v1, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    invoke-virtual {v6, v9, v9, v7, v8}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->c:Landroid/graphics/drawable/Drawable;
+    .line 47
+    iget-object v6, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mShadowDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->f:I
+    iget v7, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mWidth:I
 
-    iget v2, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->g:I
+    iget v8, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mHeight:I
 
-    invoke-virtual {v0, v3, v3, v1, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    invoke-virtual {v6, v9, v9, v7, v8}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
+    .line 52
     :try_start_0
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+    sget v4, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    const/16 v1, 0xb
+    .line 53
+    .local v4, sdkVersion:I
+    const/16 v6, 0xb
 
-    if-lt v0, v1, :cond_0
+    if-lt v4, v6, :cond_0
 
+    .line 54
     invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
-    move-result-object v0
+    move-result-object v5
 
+    .line 56
+    .local v5, viewCls:Ljava/lang/Class;,"Ljava/lang/Class<*>;"
     :try_start_1
-    const-string v1, "setLayerType"
+    const-string v6, "setLayerType"
 
-    const/4 v2, 0x2
+    const/4 v7, 0x2
 
-    new-array v2, v2, [Ljava/lang/Class;
+    new-array v7, v7, [Ljava/lang/Class;
 
-    const/4 v3, 0x0
+    const/4 v8, 0x0
 
-    sget-object v4, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+    sget-object v9, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
 
-    aput-object v4, v2, v3
+    aput-object v9, v7, v8
 
-    const/4 v3, 0x1
+    const/4 v8, 0x1
 
-    const-class v4, Landroid/graphics/Paint;
+    const-class v9, Landroid/graphics/Paint;
 
-    aput-object v4, v2, v3
+    aput-object v9, v7, v8
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    invoke-virtual {v5, v6, v7}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
 
-    move-result-object v1
+    move-result-object v3
 
-    const-string v2, "LAYER_TYPE_SOFTWARE"
+    .line 57
+    .local v3, m:Ljava/lang/reflect/Method;
+    const-string v6, "LAYER_TYPE_SOFTWARE"
 
-    invoke-virtual {v0, v2}, Ljava/lang/Class;->getField(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    invoke-virtual {v5, v6}, Ljava/lang/Class;->getField(Ljava/lang/String;)Ljava/lang/reflect/Field;
 
-    move-result-object v0
+    move-result-object v6
 
-    invoke-virtual {v0, p0}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v6, p0}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v6
 
-    check-cast v0, Ljava/lang/Integer;
+    check-cast v6, Ljava/lang/Integer;
 
-    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+    invoke-virtual {v6}, Ljava/lang/Integer;->intValue()I
 
-    move-result v0
+    move-result v2
 
-    const/4 v2, 0x2
+    .line 58
+    .local v2, layerTypeSofterware:I
+    const/4 v6, 0x2
 
-    new-array v2, v2, [Ljava/lang/Object;
+    new-array v6, v6, [Ljava/lang/Object;
 
-    const/4 v3, 0x0
+    const/4 v7, 0x0
 
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v0
+    move-result-object v8
 
-    aput-object v0, v2, v3
+    aput-object v8, v6, v7
 
-    const/4 v0, 0x1
+    const/4 v7, 0x1
 
-    const/4 v3, 0x0
+    const/4 v8, 0x0
 
-    aput-object v3, v2, v0
+    aput-object v8, v6, v7
 
-    invoke-virtual {v1, p0, v2}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v3, p0, v6}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
+    .line 66
+    .end local v2           #layerTypeSofterware:I
+    .end local v3           #m:Ljava/lang/reflect/Method;
+    .end local v4           #sdkVersion:I
+    .end local v5           #viewCls:Ljava/lang/Class;,"Ljava/lang/Class<*>;"
     :cond_0
     :goto_0
     return-void
 
+    .line 59
+    .restart local v4       #sdkVersion:I
+    .restart local v5       #viewCls:Ljava/lang/Class;,"Ljava/lang/Class<*>;"
     :catch_0
-    move-exception v0
+    move-exception v1
 
+    .line 60
+    .local v1, e:Ljava/lang/Exception;
     :try_start_2
-    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
+    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
     :try_end_2
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
 
     goto :goto_0
 
+    .line 63
+    .end local v1           #e:Ljava/lang/Exception;
+    .end local v4           #sdkVersion:I
+    .end local v5           #viewCls:Ljava/lang/Class;,"Ljava/lang/Class<*>;"
     :catch_1
-    move-exception v0
+    move-exception v1
 
-    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
+    .line 64
+    .restart local v1       #e:Ljava/lang/Exception;
+    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
     goto :goto_0
 .end method
 
 
 # virtual methods
-.method public final a(I)V
-    .locals 0
-
-    iput p1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->e:I
-
-    invoke-virtual {p0}, Lcom/zhangdan/app/widget/LoadingProgressBar;->invalidate()V
-
-    return-void
-.end method
-
 .method protected onDraw(Landroid/graphics/Canvas;)V
-    .locals 3
+    .locals 4
+    .parameter "canvas"
+
+    .prologue
+    const/4 v3, 0x0
+
+    .line 76
+    invoke-super {p0, p1}, Landroid/widget/ImageView;->onDraw(Landroid/graphics/Canvas;)V
+
+    .line 77
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mBgDrawable:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+
+    .line 78
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
+
+    .line 79
+    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mCurrProgress:I
+
+    int-to-float v1, v1
 
     const/4 v2, 0x0
 
-    invoke-super {p0, p1}, Landroid/widget/ImageView;->onDraw(Landroid/graphics/Canvas;)V
+    add-float/2addr v1, v2
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->a:Landroid/graphics/drawable/Drawable;
+    iget v2, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mMaxProgress:I
 
-    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+    int-to-float v2, v2
 
-    invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
+    div-float/2addr v1, v2
 
-    iget v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->e:I
+    iget v2, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mWidth:I
 
-    int-to-float v0, v0
+    int-to-float v2, v2
 
-    const/4 v1, 0x0
+    mul-float/2addr v1, v2
 
-    add-float/2addr v0, v1
+    float-to-int v0, v1
 
-    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->d:I
+    .line 80
+    .local v0, right:I
+    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mHeight:I
 
-    int-to-float v1, v1
+    invoke-virtual {p1, v3, v3, v0, v1}, Landroid/graphics/Canvas;->clipRect(IIII)Z
 
-    div-float/2addr v0, v1
+    .line 81
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mProgressDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->f:I
+    invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
-    int-to-float v1, v1
-
-    mul-float/2addr v0, v1
-
-    float-to-int v0, v0
-
-    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->g:I
-
-    invoke-virtual {p1, v2, v2, v0, v1}, Landroid/graphics/Canvas;->clipRect(IIII)Z
-
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->b:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
+    .line 82
     invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->c:Landroid/graphics/drawable/Drawable;
+    .line 83
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mShadowDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+    invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
+    .line 84
     return-void
 .end method
 
 .method protected onMeasure(II)V
     .locals 2
+    .parameter "widthMeasureSpec"
+    .parameter "heightMeasureSpec"
 
+    .prologue
+    .line 70
     invoke-super {p0, p1, p2}, Landroid/widget/ImageView;->onMeasure(II)V
 
-    iget v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->f:I
+    .line 71
+    iget v0, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mWidth:I
 
-    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->g:I
+    iget v1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mHeight:I
 
     invoke-virtual {p0, v0, v1}, Lcom/zhangdan/app/widget/LoadingProgressBar;->setMeasuredDimension(II)V
 
+    .line 72
+    return-void
+.end method
+
+.method public setMaxProgress(I)V
+    .locals 0
+    .parameter "maxProgress"
+
+    .prologue
+    .line 102
+    iput p1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mMaxProgress:I
+
+    .line 103
+    invoke-virtual {p0}, Lcom/zhangdan/app/widget/LoadingProgressBar;->invalidate()V
+
+    .line 104
+    return-void
+.end method
+
+.method public setProgress(I)V
+    .locals 0
+    .parameter "progresss"
+
+    .prologue
+    .line 92
+    iput p1, p0, Lcom/zhangdan/app/widget/LoadingProgressBar;->mCurrProgress:I
+
+    .line 93
+    invoke-virtual {p0}, Lcom/zhangdan/app/widget/LoadingProgressBar;->invalidate()V
+
+    .line 94
     return-void
 .end method

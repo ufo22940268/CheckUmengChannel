@@ -1,450 +1,229 @@
-.class public final Lcom/igexin/a/a/a/h;
-.super Ljava/lang/Object;
+.class public Lcom/igexin/a/a/a/h;
+.super Lcom/igexin/a/a/a/g;
+
+# interfaces
+.implements Lcom/igexin/a/a/e;
 
 
-# static fields
-.field private static final a:[Ljava/lang/String;
+# instance fields
+.field private e:I
+
+.field private f:Z
+
+.field private g:Ljava/util/Collection;
+
+.field private h:Z
+
+.field private i:Z
+
+.field private j:Lcom/igexin/a/a/c/ad;
 
 
 # direct methods
-.method static constructor <clinit>()V
+.method private constructor <init>()V
     .locals 3
-
-    const/16 v0, 0xb
-
-    new-array v0, v0, [Ljava/lang/String;
 
     const/4 v1, 0x0
 
-    const-string v2, ""
+    const/4 v0, 0x0
 
-    aput-object v2, v0, v1
+    invoke-direct {p0, v0}, Lcom/igexin/a/a/a/g;-><init>(Lcom/igexin/a/a/a/f;)V
 
-    const/4 v1, 0x1
+    iput-boolean v1, p0, Lcom/igexin/a/a/a/h;->h:Z
 
-    const-string v2, " "
+    iput-boolean v1, p0, Lcom/igexin/a/a/a/h;->i:Z
 
-    aput-object v2, v0, v1
+    const/16 v0, 0xbb8
 
-    const/4 v1, 0x2
+    iput v0, p0, Lcom/igexin/a/a/a/h;->e:I
 
-    const-string v2, "  "
+    const/4 v0, 0x1
 
-    aput-object v2, v0, v1
+    iput-boolean v0, p0, Lcom/igexin/a/a/a/h;->f:Z
 
-    const/4 v1, 0x3
+    new-instance v0, Ljava/util/ArrayList;
 
-    const-string v2, "   "
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    aput-object v2, v0, v1
+    iput-object v0, p0, Lcom/igexin/a/a/a/h;->g:Ljava/util/Collection;
 
-    const/4 v1, 0x4
+    sget-object v0, Lcom/igexin/a/a/d;->a:Lcom/igexin/a/a/d;
 
-    const-string v2, "    "
+    iput-object v0, p0, Lcom/igexin/a/a/a/h;->b:Lcom/igexin/a/a/d;
 
-    aput-object v2, v0, v1
+    iget-object v0, p0, Lcom/igexin/a/a/a/h;->c:Ljava/util/Map;
 
-    const/4 v1, 0x5
+    const-string v1, "Accept-Encoding"
 
-    const-string v2, "     "
+    const-string v2, "gzip"
 
-    aput-object v2, v0, v1
+    invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    const/4 v1, 0x6
+    invoke-static {}, Lcom/igexin/a/a/c/ad;->b()Lcom/igexin/a/a/c/ad;
 
-    const-string v2, "      "
+    move-result-object v0
 
-    aput-object v2, v0, v1
-
-    const/4 v1, 0x7
-
-    const-string v2, "       "
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x8
-
-    const-string v2, "        "
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0x9
-
-    const-string v2, "         "
-
-    aput-object v2, v0, v1
-
-    const/16 v1, 0xa
-
-    const-string v2, "          "
-
-    aput-object v2, v0, v1
-
-    sput-object v0, Lcom/igexin/a/a/a/h;->a:[Ljava/lang/String;
+    iput-object v0, p0, Lcom/igexin/a/a/a/h;->j:Lcom/igexin/a/a/c/ad;
 
     return-void
 .end method
 
-.method public static a(I)Ljava/lang/String;
-    .locals 3
+.method synthetic constructor <init>(Lcom/igexin/a/a/a/f;)V
+    .locals 0
 
-    if-gez p0, :cond_0
+    invoke-direct {p0}, Lcom/igexin/a/a/a/h;-><init>()V
 
-    new-instance v0, Ljava/lang/IllegalArgumentException;
-
-    const-string v1, "width must be > 0"
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    :cond_0
-    sget-object v0, Lcom/igexin/a/a/a/h;->a:[Ljava/lang/String;
-
-    array-length v0, v0
-
-    if-ge p0, v0, :cond_1
-
-    sget-object v0, Lcom/igexin/a/a/a/h;->a:[Ljava/lang/String;
-
-    aget-object v0, v0, p0
-
-    :goto_0
-    return-object v0
-
-    :cond_1
-    new-array v1, p0, [C
-
-    const/4 v0, 0x0
-
-    :goto_1
-    if-ge v0, p0, :cond_2
-
-    const/16 v2, 0x20
-
-    aput-char v2, v1, v0
-
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_1
-
-    :cond_2
-    invoke-static {v1}, Ljava/lang/String;->valueOf([C)Ljava/lang/String;
-
-    move-result-object v0
-
-    goto :goto_0
+    return-void
 .end method
 
-.method public static a(Ljava/util/Collection;Ljava/lang/String;)Ljava/lang/String;
-    .locals 4
 
-    invoke-interface {p0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v0
-
-    if-nez v0, :cond_1
-
-    const-string v0, ""
-
-    :cond_0
-    :goto_0
-    return-object v0
-
-    :cond_1
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    const/16 v3, 0x40
-
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(I)V
-
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    :goto_1
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_2
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    goto :goto_1
-
-    :cond_2
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    goto :goto_0
-.end method
-
-.method public static a(Ljava/lang/String;)Z
-    .locals 5
-
-    const/4 v1, 0x1
-
-    const/4 v0, 0x0
-
-    if-eqz p0, :cond_0
-
-    invoke-virtual {p0}, Ljava/lang/String;->length()I
-
-    move-result v2
-
-    if-nez v2, :cond_2
-
-    :cond_0
-    move v0, v1
-
-    :cond_1
-    :goto_0
-    return v0
-
-    :cond_2
-    invoke-virtual {p0}, Ljava/lang/String;->length()I
-
-    move-result v3
-
-    move v2, v0
-
-    :goto_1
-    if-ge v2, v3, :cond_3
-
-    invoke-virtual {p0, v2}, Ljava/lang/String;->codePointAt(I)I
-
-    move-result v4
-
-    invoke-static {v4}, Lcom/igexin/a/a/a/h;->b(I)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_1
-
-    add-int/lit8 v2, v2, 0x1
-
-    goto :goto_1
-
-    :cond_3
-    move v0, v1
-
-    goto :goto_0
-.end method
-
-.method public static varargs a(Ljava/lang/String;[Ljava/lang/String;)Z
-    .locals 4
-
-    const/4 v0, 0x0
-
-    array-length v2, p1
-
-    move v1, v0
-
-    :goto_0
-    if-ge v1, v2, :cond_0
-
-    aget-object v3, p1, v1
-
-    invoke-virtual {v3, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_1
-
-    const/4 v0, 0x1
-
-    :cond_0
-    return v0
-
-    :cond_1
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_0
-.end method
-
-.method public static b(I)Z
+# virtual methods
+.method public synthetic a(I)Lcom/igexin/a/a/e;
     .locals 1
 
-    const/16 v0, 0x20
+    invoke-virtual {p0, p1}, Lcom/igexin/a/a/a/h;->b(I)Lcom/igexin/a/a/a/h;
 
-    if-eq p0, v0, :cond_0
+    move-result-object v0
 
-    const/16 v0, 0x9
+    return-object v0
+.end method
 
-    if-eq p0, v0, :cond_0
+.method public bridge synthetic a(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
 
-    const/16 v0, 0xa
+    invoke-super {p0, p1}, Lcom/igexin/a/a/a/g;->a(Ljava/lang/String;)Ljava/lang/String;
 
-    if-eq p0, v0, :cond_0
+    move-result-object v0
 
-    const/16 v0, 0xc
+    return-object v0
+.end method
 
-    if-eq p0, v0, :cond_0
+.method public bridge synthetic a()Ljava/net/URL;
+    .locals 1
 
-    const/16 v0, 0xd
+    invoke-super {p0}, Lcom/igexin/a/a/a/g;->a()Ljava/net/URL;
 
-    if-ne p0, v0, :cond_1
+    move-result-object v0
 
-    :cond_0
+    return-object v0
+.end method
+
+.method public b(I)Lcom/igexin/a/a/a/h;
+    .locals 2
+
+    if-ltz p1, :cond_0
+
     const/4 v0, 0x1
 
     :goto_0
-    return v0
+    const-string v1, "Timeout milliseconds must be 0 (infinite) or greater"
 
-    :cond_1
+    invoke-static {v0, v1}, Lcom/igexin/a/a/a/k;->a(ZLjava/lang/String;)V
+
+    iput p1, p0, Lcom/igexin/a/a/a/h;->e:I
+
+    return-object p0
+
+    :cond_0
     const/4 v0, 0x0
 
     goto :goto_0
 .end method
 
-.method public static b(Ljava/lang/String;)Z
-    .locals 4
+.method public bridge synthetic b()Lcom/igexin/a/a/d;
+    .locals 1
 
-    const/4 v0, 0x0
+    invoke-super {p0}, Lcom/igexin/a/a/a/g;->b()Lcom/igexin/a/a/d;
 
-    if-eqz p0, :cond_0
+    move-result-object v0
 
-    invoke-virtual {p0}, Ljava/lang/String;->length()I
-
-    move-result v1
-
-    if-nez v1, :cond_1
-
-    :cond_0
-    :goto_0
-    return v0
-
-    :cond_1
-    invoke-virtual {p0}, Ljava/lang/String;->length()I
-
-    move-result v2
-
-    move v1, v0
-
-    :goto_1
-    if-ge v1, v2, :cond_2
-
-    invoke-virtual {p0, v1}, Ljava/lang/String;->codePointAt(I)I
-
-    move-result v3
-
-    invoke-static {v3}, Ljava/lang/Character;->isDigit(I)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    add-int/lit8 v1, v1, 0x1
-
-    goto :goto_1
-
-    :cond_2
-    const/4 v0, 0x1
-
-    goto :goto_0
+    return-object v0
 .end method
 
-.method public static c(Ljava/lang/String;)Ljava/lang/String;
-    .locals 10
+.method public bridge synthetic b(Ljava/lang/String;)Z
+    .locals 1
 
-    const/16 v9, 0x20
-
-    const/4 v1, 0x1
-
-    const/4 v3, 0x0
-
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    invoke-virtual {p0}, Ljava/lang/String;->length()I
+    invoke-super {p0, p1}, Lcom/igexin/a/a/a/g;->b(Ljava/lang/String;)Z
 
     move-result v0
 
-    invoke-direct {v5, v0}, Ljava/lang/StringBuilder;-><init>(I)V
+    return v0
+.end method
 
-    invoke-virtual {p0}, Ljava/lang/String;->length()I
+.method public bridge synthetic c()Ljava/util/Map;
+    .locals 1
 
-    move-result v6
+    invoke-super {p0}, Lcom/igexin/a/a/a/g;->c()Ljava/util/Map;
 
-    move v4, v3
+    move-result-object v0
 
-    move v0, v3
+    return-object v0
+.end method
 
-    move v2, v3
+.method public bridge synthetic d()Ljava/util/Map;
+    .locals 1
 
-    :goto_0
-    if-ge v4, v6, :cond_3
+    invoke-super {p0}, Lcom/igexin/a/a/a/g;->d()Ljava/util/Map;
 
-    invoke-virtual {p0, v4}, Ljava/lang/String;->codePointAt(I)I
+    move-result-object v0
 
-    move-result v7
+    return-object v0
+.end method
 
-    invoke-static {v7}, Lcom/igexin/a/a/a/h;->b(I)Z
+.method public bridge synthetic d(Ljava/lang/String;)Z
+    .locals 1
 
-    move-result v8
+    invoke-super {p0, p1}, Lcom/igexin/a/a/a/g;->d(Ljava/lang/String;)Z
 
-    if-eqz v8, :cond_2
+    move-result v0
 
-    if-eqz v2, :cond_0
+    return v0
+.end method
 
-    move v0, v1
+.method public e()I
+    .locals 1
 
-    :goto_1
-    add-int/lit8 v4, v4, 0x1
+    iget v0, p0, Lcom/igexin/a/a/a/h;->e:I
 
-    goto :goto_0
+    return v0
+.end method
 
-    :cond_0
-    if-eq v7, v9, :cond_1
+.method public f()Z
+    .locals 1
 
-    move v0, v1
+    iget-boolean v0, p0, Lcom/igexin/a/a/a/h;->f:Z
 
-    :cond_1
-    invoke-virtual {v5, v9}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    return v0
+.end method
 
-    move v2, v1
+.method public g()Z
+    .locals 1
 
-    goto :goto_1
+    iget-boolean v0, p0, Lcom/igexin/a/a/a/h;->h:Z
 
-    :cond_2
-    invoke-virtual {v5, v7}, Ljava/lang/StringBuilder;->appendCodePoint(I)Ljava/lang/StringBuilder;
+    return v0
+.end method
 
-    move v2, v3
+.method public h()Z
+    .locals 1
 
-    goto :goto_1
+    iget-boolean v0, p0, Lcom/igexin/a/a/a/h;->i:Z
 
-    :cond_3
-    if-eqz v0, :cond_4
+    return v0
+.end method
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+.method public i()Ljava/util/Collection;
+    .locals 1
 
-    move-result-object p0
+    iget-object v0, p0, Lcom/igexin/a/a/a/h;->g:Ljava/util/Collection;
 
-    :cond_4
-    return-object p0
+    return-object v0
+.end method
+
+.method public j()Lcom/igexin/a/a/c/ad;
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/a/a/a/h;->j:Lcom/igexin/a/a/c/ad;
+
+    return-object v0
 .end method

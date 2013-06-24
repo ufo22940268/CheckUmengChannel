@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/c/e;
+.class public Lsdk/b/a/a/c/e;
 .super Landroid/database/sqlite/SQLiteOpenHelper;
 
 
@@ -41,18 +41,22 @@
     return-void
 .end method
 
-.method private static a(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+.method private a(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     .locals 3
 
     new-instance v0, Ljava/lang/StringBuffer;
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "delete from "
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -62,7 +66,7 @@
 
     move-result-object v1
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -79,7 +83,7 @@
     return-object v0
 .end method
 
-.method private static a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
+.method private a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
     .locals 5
 
     const/4 v0, 0x0
@@ -90,7 +94,7 @@
 
     invoke-direct {v2, v1}, Ljava/lang/StringBuffer;-><init>(Ljava/lang/String;)V
 
-    array-length v1, p0
+    array-length v1, p1
 
     const/4 v3, 0x1
 
@@ -99,13 +103,13 @@
     move v1, v0
 
     :goto_0
-    if-ge v1, p2, :cond_3
+    if-ge v1, p3, :cond_3
 
     new-instance v3, Ljava/lang/StringBuilder;
 
     invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    aget-object v4, p0, v0
+    aget-object v4, p1, v0
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -117,7 +121,7 @@
 
     move-result-object v3
 
-    aget-object v4, p1, v1
+    aget-object v4, p2, v1
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -135,7 +139,7 @@
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    add-int/lit8 v3, p2, -0x1
+    add-int/lit8 v3, p3, -0x1
 
     if-ge v1, v3, :cond_0
 
@@ -150,13 +154,13 @@
 
     :cond_1
     :goto_1
-    if-ge v0, p2, :cond_3
+    if-ge v0, p3, :cond_3
 
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    aget-object v3, p0, v0
+    aget-object v3, p1, v0
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -168,7 +172,7 @@
 
     move-result-object v1
 
-    aget-object v3, p1, v0
+    aget-object v3, p2, v0
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -186,7 +190,7 @@
 
     invoke-virtual {v2, v1}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    add-int/lit8 v1, p2, -0x1
+    add-int/lit8 v1, p3, -0x1
 
     if-ge v0, v1, :cond_2
 
@@ -209,7 +213,7 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+.method public a(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     .locals 9
 
     const/4 v8, 0x0
@@ -227,19 +231,19 @@
     :try_start_0
     iget-object v0, p0, Lsdk/b/a/a/c/e;->a:Landroid/database/sqlite/SQLiteDatabase;
 
-    const/4 v4, 0x0
-
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
-
     move-object v1, p1
 
     move-object v2, p2
 
     move-object v3, p3
 
-    move-object v5, p4
+    move-object v4, p4
+
+    move-object v5, p5
+
+    move-object v6, p6
+
+    move-object/from16 v7, p7
 
     invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     :try_end_0
@@ -251,9 +255,13 @@
     :try_start_1
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "DBHelper================="
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -261,7 +269,11 @@
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v1
+
+    const-string v2, "query Success!"
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v1, p0, Lsdk/b/a/a/c/e;->a:Landroid/database/sqlite/SQLiteDatabase;
 
@@ -288,9 +300,13 @@
     :try_start_2
     new-instance v2, Ljava/lang/StringBuilder;
 
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v3, "DBHelper================="
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -302,9 +318,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "query Error!:"
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v1}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
@@ -318,7 +338,7 @@
 
     move-result-object v1
 
-    invoke-static {v2, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
@@ -343,7 +363,7 @@
     goto :goto_1
 .end method
 
-.method public final a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+.method public a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     .locals 9
 
     const/4 v1, 0x1
@@ -365,8 +385,6 @@
     :try_start_0
     iget-object v0, p0, Lsdk/b/a/a/c/e;->a:Landroid/database/sqlite/SQLiteDatabase;
 
-    const/4 v2, 0x0
-
     const/4 v3, 0x0
 
     const/4 v4, 0x0
@@ -377,7 +395,9 @@
 
     move-object v1, p1
 
-    move-object v7, p4
+    move-object v2, p4
+
+    move-object v7, p5
 
     invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     :try_end_0
@@ -390,9 +410,13 @@
     :try_start_1
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "DBHelper================="
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -400,7 +424,11 @@
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v1
+
+    const-string v2, "Query Success!"
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v1, p0, Lsdk/b/a/a/c/e;->a:Landroid/database/sqlite/SQLiteDatabase;
 
@@ -428,23 +456,21 @@
 
     iget-object v0, p0, Lsdk/b/a/a/c/e;->a:Landroid/database/sqlite/SQLiteDatabase;
 
-    const/4 v2, 0x0
-
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    const/4 v3, 0x0
+    const/4 v2, 0x0
 
-    aget-object v3, p2, v3
+    aget-object v2, p2, v2
 
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    const-string v3, "= ?"
+    const-string v2, "= ?"
 
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -458,9 +484,11 @@
 
     move-object v1, p1
 
+    move-object v2, p4
+
     move-object v4, p3
 
-    move-object v7, p4
+    move-object v7, p5
 
     invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
@@ -471,11 +499,9 @@
     :cond_1
     iget-object v0, p0, Lsdk/b/a/a/c/e;->a:Landroid/database/sqlite/SQLiteDatabase;
 
-    const/4 v2, 0x0
-
     array-length v1, p3
 
-    invoke-static {p2, p3, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
+    invoke-direct {p0, p2, p3, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
 
     move-result-object v3
 
@@ -487,7 +513,9 @@
 
     move-object v1, p1
 
-    move-object v7, p4
+    move-object v2, p4
+
+    move-object v7, p5
 
     invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
@@ -498,11 +526,9 @@
     :cond_2
     iget-object v0, p0, Lsdk/b/a/a/c/e;->a:Landroid/database/sqlite/SQLiteDatabase;
 
-    const/4 v2, 0x0
-
     array-length v1, p2
 
-    invoke-static {p2, p3, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
+    invoke-direct {p0, p2, p3, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
 
     move-result-object v3
 
@@ -514,7 +540,9 @@
 
     move-object v1, p1
 
-    move-object v7, p4
+    move-object v2, p4
+
+    move-object v7, p5
 
     invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     :try_end_2
@@ -536,9 +564,13 @@
     :try_start_3
     new-instance v2, Ljava/lang/StringBuilder;
 
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v3, "DBHelper================="
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -550,9 +582,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "Query Error!:"
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v1}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
 
@@ -566,7 +602,7 @@
 
     move-result-object v1
 
-    invoke-static {v2, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
@@ -574,7 +610,7 @@
 
     invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
 
-    goto :goto_1
+    goto/16 :goto_1
 
     :catchall_0
     move-exception v0
@@ -591,7 +627,7 @@
     goto :goto_2
 .end method
 
-.method public final a()V
+.method public a()V
     .locals 2
 
     :try_start_0
@@ -611,12 +647,12 @@
 
     const-string v1, "closeDatabase fail"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_0
 .end method
 
-.method public final a(Ljava/lang/String;Landroid/content/ContentValues;)V
+.method public a(Ljava/lang/String;Landroid/content/ContentValues;)V
     .locals 2
 
     invoke-virtual {p0}, Lsdk/b/a/a/c/e;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
@@ -640,7 +676,11 @@
 
     invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v0, "DBHelper"
+
+    const-string v1, "Insert sucess!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
@@ -660,7 +700,7 @@
 
     const-string v1, "Insert Error!"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
@@ -680,7 +720,7 @@
     throw v0
 .end method
 
-.method public final a(Ljava/lang/String;Landroid/content/ContentValues;[Ljava/lang/String;[Ljava/lang/String;)V
+.method public a(Ljava/lang/String;Landroid/content/ContentValues;[Ljava/lang/String;[Ljava/lang/String;)V
     .locals 3
 
     const/4 v1, 0x1
@@ -776,9 +816,13 @@
     :goto_2
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "DBHelper================="
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -786,7 +830,11 @@
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v0
+
+    const-string v1, "Query Success!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
@@ -799,9 +847,13 @@
     :try_start_2
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "DBHelper================="
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -813,7 +865,7 @@
 
     const-string v1, "Query Error!"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
@@ -829,7 +881,7 @@
 
     array-length v1, p4
 
-    invoke-static {p3, p4, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
+    invoke-direct {p0, p3, p4, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
 
     move-result-object v1
 
@@ -857,7 +909,7 @@
 
     array-length v1, p3
 
-    invoke-static {p3, p4, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
+    invoke-direct {p0, p3, p4, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
 
     move-result-object v1
 
@@ -871,7 +923,7 @@
     goto :goto_2
 .end method
 
-.method public final a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V
+.method public a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V
     .locals 3
 
     const/4 v1, 0x1
@@ -899,9 +951,13 @@
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "DBHelper================="
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -909,7 +965,11 @@
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v0
+
+    const-string v1, "Delete Success!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     :goto_0
     iget-object v0, p0, Lsdk/b/a/a/c/e;->a:Landroid/database/sqlite/SQLiteDatabase;
@@ -964,9 +1024,13 @@
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "DBHelper================="
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -974,7 +1038,11 @@
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v0
+
+    const-string v1, "Delete Success!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
@@ -987,9 +1055,13 @@
     :try_start_2
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "DBHelper================="
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1001,7 +1073,7 @@
 
     const-string v1, "Delete Error!"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
@@ -1017,11 +1089,11 @@
 
     array-length v1, p3
 
-    invoke-static {p2, p3, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
+    invoke-direct {p0, p2, p3, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-static {p1, v1}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {p0, p1, v1}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
@@ -1029,9 +1101,13 @@
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "DBHelper================="
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1039,12 +1115,16 @@
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v0
+
+    const-string v1, "Delete Success!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_0
 
-    goto :goto_0
+    goto/16 :goto_0
 
     :catchall_0
     move-exception v0
@@ -1061,11 +1141,11 @@
 
     array-length v1, p2
 
-    invoke-static {p2, p3, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
+    invoke-direct {p0, p2, p3, v1}, Lsdk/b/a/a/c/e;->a([Ljava/lang/String;[Ljava/lang/String;I)Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-static {p1, v1}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {p0, p1, v1}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
@@ -1073,9 +1153,13 @@
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "DBHelper================="
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -1083,7 +1167,11 @@
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v0
+
+    const-string v1, "Delete Success!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
@@ -1091,7 +1179,7 @@
     goto/16 :goto_0
 .end method
 
-.method public final onCreate(Landroid/database/sqlite/SQLiteDatabase;)V
+.method public onCreate(Landroid/database/sqlite/SQLiteDatabase;)V
     .locals 2
 
     invoke-virtual {p1}, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
@@ -1113,7 +1201,11 @@
 
     invoke-virtual {p1, v0}, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;)V
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v0, "DBHelper  create tables"
+
+    const-string v1, " success!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-virtual {p1}, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
     :try_end_0
@@ -1133,7 +1225,7 @@
 
     const-string v1, " fail!"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
@@ -1149,7 +1241,7 @@
     throw v0
 .end method
 
-.method public final onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
+.method public onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
     .locals 1
 
     const-string v0, "DROP TABLE IF EXISTS table_appinfo"

@@ -6,14 +6,8 @@
 
 
 # virtual methods
-.method public abstract a(IILjava/lang/String;)I
+.method public abstract a(I)Z
 .end method
 
-.method public abstract a(Ljava/lang/String;)I
-.end method
-
-.method public abstract b(Ljava/lang/String;)I
-.end method
-
-.method public abstract c(Ljava/lang/String;)I
+.method public abstract a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)Z
 .end method

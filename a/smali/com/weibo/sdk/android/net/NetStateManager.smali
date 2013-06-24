@@ -1,40 +1,87 @@
-.class public final Lcom/weibo/sdk/android/net/NetStateManager;
+.class public Lcom/weibo/sdk/android/net/NetStateManager;
 .super Ljava/lang/Object;
+.source "NetStateManager.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/weibo/sdk/android/net/NetStateManager$NetState;,
+        Lcom/weibo/sdk/android/net/NetStateManager$NetStateReceive;
+    }
+.end annotation
 
 
 # static fields
-.field public static a:Lcom/weibo/sdk/android/net/f;
+.field public static CUR_NETSTATE:Lcom/weibo/sdk/android/net/NetStateManager$NetState;
 
-.field private static b:Landroid/content/Context;
+.field private static mContext:Landroid/content/Context;
 
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
 
-    sget-object v0, Lcom/weibo/sdk/android/net/f;->a:Lcom/weibo/sdk/android/net/f;
+    .prologue
+    .line 21
+    sget-object v0, Lcom/weibo/sdk/android/net/NetStateManager$NetState;->Mobile:Lcom/weibo/sdk/android/net/NetStateManager$NetState;
 
-    sput-object v0, Lcom/weibo/sdk/android/net/NetStateManager;->a:Lcom/weibo/sdk/android/net/f;
+    sput-object v0, Lcom/weibo/sdk/android/net/NetStateManager;->CUR_NETSTATE:Lcom/weibo/sdk/android/net/NetStateManager$NetState;
+
+    .line 18
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 0
+
+    .prologue
+    .line 18
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method public static a()Lorg/apache/http/HttpHost;
-    .locals 6
+.method static synthetic access$0(Landroid/content/Context;)V
+    .locals 0
+    .parameter
 
+    .prologue
+    .line 19
+    sput-object p0, Lcom/weibo/sdk/android/net/NetStateManager;->mContext:Landroid/content/Context;
+
+    return-void
+.end method
+
+.method public static getAPN()Lorg/apache/http/HttpHost;
+    .locals 9
+
+    .prologue
     const/4 v2, 0x0
 
+    .line 48
+    const/4 v7, 0x0
+
+    .line 49
+    .local v7, proxy:Lorg/apache/http/HttpHost;
     const-string v0, "content://telephony/carriers/preferapn"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
-    sget-object v0, Lcom/weibo/sdk/android/net/NetStateManager;->b:Landroid/content/Context;
+    .line 50
+    .local v1, uri:Landroid/net/Uri;
+    const/4 v6, 0x0
 
-    if-eqz v0, :cond_2
+    .line 51
+    .local v6, mCursor:Landroid/database/Cursor;
+    sget-object v0, Lcom/weibo/sdk/android/net/NetStateManager;->mContext:Landroid/content/Context;
 
-    sget-object v0, Lcom/weibo/sdk/android/net/NetStateManager;->b:Landroid/content/Context;
+    if-eqz v0, :cond_0
+
+    .line 52
+    sget-object v0, Lcom/weibo/sdk/android/net/NetStateManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -48,61 +95,58 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
+    move-result-object v6
+
+    .line 54
+    :cond_0
+    if-eqz v6, :cond_2
+
+    invoke-interface {v6}, Landroid/database/Cursor;->moveToFirst()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    .line 56
+    const-string v0, "proxy"
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {v6, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    move-result-object v8
+
+    .line 57
+    .local v8, proxyStr:Ljava/lang/String;
+    if-eqz v8, :cond_1
+
+    invoke-virtual {v8}, Ljava/lang/String;->trim()Ljava/lang/String;
+
     move-result-object v0
 
-    :goto_0
-    if-eqz v0, :cond_1
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
 
-    invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
+    move-result v0
 
-    move-result v1
+    if-lez v0, :cond_1
 
-    if-eqz v1, :cond_1
+    .line 58
+    new-instance v7, Lorg/apache/http/HttpHost;
 
-    const-string v1, "proxy"
+    .end local v7           #proxy:Lorg/apache/http/HttpHost;
+    const/16 v0, 0x50
 
-    invoke-interface {v0, v1}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
+    invoke-direct {v7, v8, v0}, Lorg/apache/http/HttpHost;-><init>(Ljava/lang/String;I)V
 
-    move-result v1
-
-    invoke-interface {v0, v1}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
-
-    move-result-object v1
-
-    if-eqz v1, :cond_0
-
-    invoke-virtual {v1}, Ljava/lang/String;->trim()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/String;->length()I
-
-    move-result v3
-
-    if-lez v3, :cond_0
-
-    new-instance v2, Lorg/apache/http/HttpHost;
-
-    const/16 v3, 0x50
-
-    invoke-direct {v2, v1, v3}, Lorg/apache/http/HttpHost;-><init>(Ljava/lang/String;I)V
-
-    :cond_0
-    invoke-interface {v0}, Landroid/database/Cursor;->close()V
-
+    .line 60
+    .restart local v7       #proxy:Lorg/apache/http/HttpHost;
     :cond_1
-    return-object v2
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
+    .line 62
+    .end local v8           #proxyStr:Ljava/lang/String;
     :cond_2
-    move-object v0, v2
-
-    goto :goto_0
-.end method
-
-.method static synthetic a(Landroid/content/Context;)V
-    .locals 0
-
-    sput-object p0, Lcom/weibo/sdk/android/net/NetStateManager;->b:Landroid/content/Context;
-
-    return-void
+    return-object v7
 .end method

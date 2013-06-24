@@ -2,6 +2,17 @@
 .super Landroid/os/Handler;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/baidu/mapapi/PlaceCaterActivity;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x8
+    name = null
+.end annotation
+
+
 # direct methods
 .method constructor <init>()V
     .locals 0
@@ -13,7 +24,7 @@
 
 
 # virtual methods
-.method public final handleMessage(Landroid/os/Message;)V
+.method public handleMessage(Landroid/os/Message;)V
     .locals 3
 
     iget v0, p1, Landroid/os/Message;->what:I

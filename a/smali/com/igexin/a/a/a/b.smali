@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/a/a/a/b;
+.class public Lcom/igexin/a/a/a/b;
 .super Ljava/util/LinkedList;
 
 
@@ -13,7 +13,7 @@
 
 
 # virtual methods
-.method public final a()Ljava/lang/Object;
+.method public a()Ljava/lang/Object;
     .locals 1
 
     invoke-virtual {p0}, Lcom/igexin/a/a/a/b;->size()I
@@ -35,7 +35,7 @@
     goto :goto_0
 .end method
 
-.method public final b()Ljava/lang/Object;
+.method public b()Ljava/lang/Object;
     .locals 1
 
     invoke-virtual {p0}, Lcom/igexin/a/a/a/b;->size()I
@@ -57,10 +57,10 @@
     goto :goto_0
 .end method
 
-.method public final c()Ljava/util/Iterator;
+.method public c()Ljava/util/Iterator;
     .locals 3
 
-    new-instance v0, Lcom/igexin/a/a/a/c;
+    new-instance v0, Lcom/igexin/a/a/a/d;
 
     invoke-virtual {p0}, Lcom/igexin/a/a/a/b;->size()I
 
@@ -68,7 +68,7 @@
 
     const/4 v2, 0x0
 
-    invoke-direct {v0, p0, v1, v2}, Lcom/igexin/a/a/a/c;-><init>(Lcom/igexin/a/a/a/b;IB)V
+    invoke-direct {v0, p0, v1, v2}, Lcom/igexin/a/a/a/d;-><init>(Lcom/igexin/a/a/a/b;ILcom/igexin/a/a/a/c;)V
 
     return-object v0
 .end method

@@ -109,7 +109,7 @@
 
 
 # virtual methods
-.method public final a()Ljava/util/Map;
+.method public a()Ljava/util/Map;
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/a/a/b/k;->d:Ljava/util/Map;

@@ -1,4 +1,4 @@
-.class final Lsdk/b/a/a/c/i;
+.class Lsdk/b/a/a/c/i;
 .super Lsdk/b/a/a/e/a/c;
 
 
@@ -19,7 +19,7 @@
 
 
 # virtual methods
-.method public final a()V
+.method public a()V
     .locals 2
 
     iget-object v0, p0, Lsdk/b/a/a/c/i;->a:Lsdk/b/a/a/c/h;
@@ -28,11 +28,11 @@
 
     invoke-virtual {v0, v1}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;)V
 
-    invoke-static {}, Lsdk/b/a/a/c/h;->i()V
+    invoke-static {}, Lsdk/b/a/a/c/h;->j()V
 
     iget-object v0, p0, Lsdk/b/a/a/c/i;->a:Lsdk/b/a/a/c/h;
 
-    invoke-static {}, Lsdk/b/a/a/c/h;->j()V
+    invoke-static {v0}, Lsdk/b/a/a/c/h;->a(Lsdk/b/a/a/c/h;)V
 
     sget-object v0, Lsdk/b/a/a/c/h;->D:Ljava/util/HashMap;
 

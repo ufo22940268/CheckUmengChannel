@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/a/a/b/b;
+.class public Lcom/igexin/a/a/b/b;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -25,7 +25,7 @@
 
 
 # virtual methods
-.method public final a()I
+.method public a()I
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/a/a/b/b;->a:Ljava/util/LinkedHashMap;
@@ -47,10 +47,10 @@
     goto :goto_0
 .end method
 
-.method public final a(Ljava/lang/String;)Ljava/lang/String;
+.method public a(Ljava/lang/String;)Ljava/lang/String;
     .locals 2
 
-    invoke-static {p1}, Lcom/igexin/a/a/a/i;->a(Ljava/lang/String;)V
+    invoke-static {p1}, Lcom/igexin/a/a/a/k;->a(Ljava/lang/String;)V
 
     iget-object v0, p0, Lcom/igexin/a/a/b/b;->a:Ljava/util/LinkedHashMap;
 
@@ -88,10 +88,10 @@
     goto :goto_0
 .end method
 
-.method public final a(Lcom/igexin/a/a/b/a;)V
+.method public a(Lcom/igexin/a/a/b/a;)V
     .locals 2
 
-    invoke-static {p1}, Lcom/igexin/a/a/a/i;->a(Ljava/lang/Object;)V
+    invoke-static {p1}, Lcom/igexin/a/a/a/k;->a(Ljava/lang/Object;)V
 
     iget-object v0, p0, Lcom/igexin/a/a/b/b;->a:Ljava/util/LinkedHashMap;
 
@@ -117,7 +117,7 @@
     return-void
 .end method
 
-.method public final a(Lcom/igexin/a/a/b/b;)V
+.method public a(Lcom/igexin/a/a/b/b;)V
     .locals 2
 
     invoke-virtual {p1}, Lcom/igexin/a/a/b/b;->a()I
@@ -154,7 +154,7 @@
     goto :goto_0
 .end method
 
-.method public final a(Ljava/lang/String;Ljava/lang/String;)V
+.method public a(Ljava/lang/String;Ljava/lang/String;)V
     .locals 1
 
     new-instance v0, Lcom/igexin/a/a/b/a;
@@ -166,7 +166,7 @@
     return-void
 .end method
 
-.method final a(Ljava/lang/StringBuilder;Lcom/igexin/a/a/b/f;)V
+.method a(Ljava/lang/StringBuilder;Lcom/igexin/a/a/b/f;)V
     .locals 3
 
     iget-object v0, p0, Lcom/igexin/a/a/b/b;->a:Ljava/util/LinkedHashMap;
@@ -215,7 +215,7 @@
     goto :goto_0
 .end method
 
-.method public final b()Ljava/util/List;
+.method public b()Ljava/util/List;
     .locals 3
 
     iget-object v0, p0, Lcom/igexin/a/a/b/b;->a:Ljava/util/LinkedHashMap;
@@ -279,7 +279,7 @@
     goto :goto_0
 .end method
 
-.method public final b(Ljava/lang/String;)Z
+.method public b(Ljava/lang/String;)Z
     .locals 2
 
     iget-object v0, p0, Lcom/igexin/a/a/b/b;->a:Ljava/util/LinkedHashMap;
@@ -309,7 +309,43 @@
     goto :goto_0
 .end method
 
-.method public final c()Lcom/igexin/a/a/b/b;
+.method public c()Ljava/lang/String;
+    .locals 3
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    new-instance v1, Lcom/igexin/a/a/b/e;
+
+    const-string v2, ""
+
+    invoke-direct {v1, v2}, Lcom/igexin/a/a/b/e;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v1}, Lcom/igexin/a/a/b/e;->d()Lcom/igexin/a/a/b/f;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v0, v1}, Lcom/igexin/a/a/b/b;->a(Ljava/lang/StringBuilder;Lcom/igexin/a/a/b/f;)V
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public synthetic clone()Ljava/lang/Object;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/igexin/a/a/b/b;->d()Lcom/igexin/a/a/b/b;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public d()Lcom/igexin/a/a/b/b;
     .locals 5
 
     iget-object v0, p0, Lcom/igexin/a/a/b/b;->a:Ljava/util/LinkedHashMap;
@@ -368,7 +404,7 @@
 
     move-result-object v4
 
-    invoke-virtual {v1}, Lcom/igexin/a/a/b/a;->c()Lcom/igexin/a/a/b/a;
+    invoke-virtual {v1}, Lcom/igexin/a/a/b/a;->d()Lcom/igexin/a/a/b/a;
 
     move-result-object v1
 
@@ -386,17 +422,7 @@
     throw v1
 .end method
 
-.method public final synthetic clone()Ljava/lang/Object;
-    .locals 1
-
-    invoke-virtual {p0}, Lcom/igexin/a/a/b/b;->c()Lcom/igexin/a/a/b/b;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public final equals(Ljava/lang/Object;)Z
+.method public equals(Ljava/lang/Object;)Z
     .locals 4
 
     const/4 v0, 0x1
@@ -448,7 +474,7 @@
     goto :goto_1
 .end method
 
-.method public final hashCode()I
+.method public hashCode()I
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/a/a/b/b;->a:Ljava/util/LinkedHashMap;
@@ -470,7 +496,7 @@
     goto :goto_0
 .end method
 
-.method public final iterator()Ljava/util/Iterator;
+.method public iterator()Ljava/util/Iterator;
     .locals 1
 
     invoke-virtual {p0}, Lcom/igexin/a/a/b/b;->b()Ljava/util/List;
@@ -484,26 +510,10 @@
     return-object v0
 .end method
 
-.method public final toString()Ljava/lang/String;
-    .locals 3
+.method public toString()Ljava/lang/String;
+    .locals 1
 
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    new-instance v1, Lcom/igexin/a/a/b/e;
-
-    const-string v2, ""
-
-    invoke-direct {v1, v2}, Lcom/igexin/a/a/b/e;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v1}, Lcom/igexin/a/a/b/e;->c()Lcom/igexin/a/a/b/f;
-
-    move-result-object v1
-
-    invoke-virtual {p0, v0, v1}, Lcom/igexin/a/a/b/b;->a(Ljava/lang/StringBuilder;Lcom/igexin/a/a/b/f;)V
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/igexin/a/a/b/b;->c()Ljava/lang/String;
 
     move-result-object v0
 

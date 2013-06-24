@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/c/h;
+.class public Lsdk/b/a/a/c/h;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -277,7 +277,7 @@
 
     const-string v1, "instance is null"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_0
     sget-object v0, Lsdk/b/a/a/c/h;->T:Lsdk/b/a/a/c/h;
@@ -459,15 +459,95 @@
     goto :goto_0
 .end method
 
-.method static synthetic a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
-    .locals 0
+.method private a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    .locals 3
 
-    invoke-static {p0, p1, p2, p3}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    new-instance v0, Landroid/content/ContentValues;
+
+    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+
+    const-string v1, "id"
+
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+
+    const-string v1, "name"
+
+    invoke-virtual {v0, v1, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v1, "value"
+
+    invoke-virtual {v0, v1, p4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v1, "config"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p1, v1, v2, v0}, Landroid/database/sqlite/SQLiteDatabase;->replace(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     return-void
 .end method
 
-.method private static a(Ljava/io/InputStream;)V
+.method private a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;[B)V
+    .locals 3
+
+    new-instance v0, Landroid/content/ContentValues;
+
+    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+
+    const-string v1, "id"
+
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+
+    const-string v1, "name"
+
+    invoke-virtual {v0, v1, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v1, "value"
+
+    invoke-virtual {v0, v1, p4}, Landroid/content/ContentValues;->put(Ljava/lang/String;[B)V
+
+    const-string v1, "config"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p1, v1, v2, v0}, Landroid/database/sqlite/SQLiteDatabase;->replace(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+
+    return-void
+.end method
+
+.method private a(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;)V
+    .locals 3
+
+    new-instance v0, Landroid/content/ContentValues;
+
+    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+
+    const-string v1, "imsi"
+
+    invoke-virtual {v0, v1, p2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v1, "number"
+
+    invoke-virtual {v0, v1, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v1, "configimsi"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {p1, v1, v2, v0}, Landroid/database/sqlite/SQLiteDatabase;->replace(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+
+    return-void
+.end method
+
+.method public static a(Ljava/io/InputStream;)V
     .locals 4
 
     :try_start_0
@@ -543,9 +623,11 @@
 
     sput-object v2, Lsdk/b/a/a/c/d;->c:[Ljava/lang/String;
 
-    const/4 v1, 0x0
+    sget-object v1, Lsdk/b/a/a/c/d;->c:[Ljava/lang/String;
 
-    aget-object v1, v2, v1
+    const/4 v2, 0x0
+
+    aget-object v1, v1, v2
 
     sput-object v1, Lsdk/b/a/a/c/d;->d:Ljava/lang/String;
 
@@ -692,6 +774,22 @@
     goto :goto_0
 .end method
 
+.method static synthetic a(Lsdk/b/a/a/c/h;)V
+    .locals 0
+
+    invoke-direct {p0}, Lsdk/b/a/a/c/h;->o()V
+
+    return-void
+.end method
+
+.method static synthetic a(Lsdk/b/a/a/c/h;Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    .locals 0
+
+    invoke-direct {p0, p1, p2, p3, p4}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+
+    return-void
+.end method
+
 .method public static a(J)Z
     .locals 5
 
@@ -728,7 +826,7 @@
     goto :goto_0
 .end method
 
-.method private static b(Landroid/content/Context;)Ljava/lang/String;
+.method public static b(Landroid/content/Context;)Ljava/lang/String;
     .locals 1
 
     const-string v0, "wifi"
@@ -748,82 +846,6 @@
     move-result-object v0
 
     return-object v0
-.end method
-
-.method public static b()V
-    .locals 5
-
-    const-wide/16 v3, 0x0
-
-    const/4 v2, 0x0
-
-    const/4 v1, 0x0
-
-    sput-wide v3, Lsdk/b/a/a/c/h;->a:J
-
-    sput-boolean v2, Lsdk/b/a/a/c/h;->c:Z
-
-    const/4 v0, 0x1
-
-    sput-boolean v0, Lsdk/b/a/a/c/h;->b:Z
-
-    sput-object v1, Lsdk/b/a/a/c/h;->d:Ljava/lang/String;
-
-    sput-wide v3, Lsdk/b/a/a/c/h;->l:J
-
-    sput-object v1, Lsdk/b/a/a/c/h;->w:Ljava/lang/String;
-
-    sput-boolean v2, Lsdk/b/a/a/c/h;->x:Z
-
-    sput-boolean v2, Lsdk/b/a/a/c/h;->y:Z
-
-    sput-object v1, Lsdk/b/a/a/c/h;->T:Lsdk/b/a/a/c/h;
-
-    sput-object v1, Lsdk/b/a/a/c/h;->H:Ljava/lang/String;
-
-    sput-object v1, Lsdk/b/a/a/c/h;->I:Ljava/lang/String;
-
-    sput-object v1, Lsdk/b/a/a/c/h;->J:Ljava/lang/String;
-
-    sput-object v1, Lsdk/b/a/a/c/h;->K:Ljava/lang/String;
-
-    sput-object v1, Lsdk/b/a/a/c/h;->G:Ljava/lang/String;
-
-    sput-object v1, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
-
-    return-void
-.end method
-
-.method private static b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
-    .locals 3
-
-    new-instance v0, Landroid/content/ContentValues;
-
-    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
-
-    const-string v1, "id"
-
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v1, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
-
-    const-string v1, "name"
-
-    invoke-virtual {v0, v1, p2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
-    const-string v1, "value"
-
-    invoke-virtual {v0, v1, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
-    const-string v1, "config"
-
-    const/4 v2, 0x0
-
-    invoke-virtual {p0, v1, v2, v0}, Landroid/database/sqlite/SQLiteDatabase;->replace(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
-
-    return-void
 .end method
 
 .method public static b(Ljava/lang/String;)V
@@ -854,6 +876,8 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_4
+
+    if-eqz v0, :cond_0
 
     :try_start_2
     invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
@@ -1104,7 +1128,7 @@
 
     const/4 v5, 0x0
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v2
 
@@ -1129,9 +1153,25 @@
 
     const-string v2, "GexinSdk"
 
-    const-string v3, "getValidNextHitTime no network set time = 3600000"
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "getValidNextHitTime no network set time = "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     move-wide p0, v0
 
@@ -1152,7 +1192,7 @@
 
     const-string v3, "getValidNextHitTime checkIsSilentTime true"
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
@@ -1205,16 +1245,20 @@
 
     const-string v4, "getValidNextHitTime day+1"
 
-    invoke-static {v3, v4}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v4}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_2
     const-string v3, "GexinSdk"
 
     new-instance v4, Ljava/lang/StringBuilder;
 
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v5, "getValidNextHitTime date.getTimeInMillis()="
 
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
 
     invoke-virtual {v2}, Ljava/util/Calendar;->getTimeInMillis()J
 
@@ -1228,15 +1272,19 @@
 
     move-result-object v4
 
-    invoke-static {v3, v4}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v4}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     const-string v3, "GexinSdk"
 
     new-instance v4, Ljava/lang/StringBuilder;
 
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v5, "getValidNextHitTime nowTime="
 
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
 
     invoke-virtual {v4, v0, v1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -1246,7 +1294,7 @@
 
     move-result-object v4
 
-    invoke-static {v3, v4}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v4}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-virtual {v2}, Ljava/util/Calendar;->getTimeInMillis()J
 
@@ -1259,9 +1307,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "getValidNextHitTime heartbeatInterval = "
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     sget v4, Lsdk/b/a/a/c/h;->q:I
 
@@ -1273,15 +1325,19 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     const-string v2, "GexinSdk"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "getValidNextHitTime heartBeatTime = "
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     sget-wide v4, Lsdk/b/a/a/a/b;->d:J
 
@@ -1293,7 +1349,7 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     sget v2, Lsdk/b/a/a/c/h;->q:I
 
@@ -1317,16 +1373,20 @@
 
     const-string v1, "getValidNextHitTime \u91cd\u65b0\u767b\u5f55\u8d85\u8fc75\u6b21"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_4
     const-string v0, "GexinSdk"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "getValidNextHitTime time="
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p0, p1}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -1336,7 +1396,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     return-wide p0
 
@@ -1443,6 +1503,8 @@
     .catchall {:try_start_1 .. :try_end_1} :catchall_2
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_8
 
+    if-eqz v0, :cond_0
+
     :try_start_2
     invoke-virtual {v0}, Ljava/io/FileInputStream;->close()V
     :try_end_2
@@ -1508,7 +1570,7 @@
 
     move-result-object v0
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v2
 
@@ -1697,31 +1759,45 @@
     .catchall {:try_start_5 .. :try_end_5} :catchall_2
     .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_0
 
+    if-eqz v3, :cond_3
+
     :try_start_6
     invoke-virtual {v3}, Ljava/io/FileInputStream;->close()V
     :try_end_6
     .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_1
 
+    :cond_3
     :goto_5
+    if-eqz v2, :cond_4
+
     :try_start_7
     invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->close()V
     :try_end_7
     .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_2
 
+    :cond_4
     :goto_6
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v1, "GexinSdk"
 
-    const-string v2, "read file applist=="
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v3, "read file applist=="
 
-    move-result-object v1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_4
 
@@ -1733,23 +1809,23 @@
     move-object v3, v1
 
     :goto_7
-    if-eqz v3, :cond_3
+    if-eqz v3, :cond_5
 
     :try_start_8
     invoke-virtual {v3}, Ljava/io/FileInputStream;->close()V
     :try_end_8
     .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_5
 
-    :cond_3
+    :cond_5
     :goto_8
-    if-eqz v2, :cond_4
+    if-eqz v2, :cond_6
 
     :try_start_9
     invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->close()V
     :try_end_9
     .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_6
 
-    :cond_4
+    :cond_6
     :goto_9
     throw v0
 
@@ -1814,83 +1890,64 @@
     goto :goto_1
 .end method
 
-.method static synthetic i()V
-    .locals 0
+.method public static i()Ljava/util/HashMap;
+    .locals 3
 
-    invoke-static {}, Lsdk/b/a/a/c/h;->m()V
-
-    return-void
-.end method
-
-.method static synthetic j()V
-    .locals 4
+    const/4 v1, 0x0
 
     new-instance v0, Ljava/io/File;
 
-    const-string v1, "/sdcard/libs/"
+    const-string v2, "/sdcard/libs/imsi.db"
 
-    invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v0}, Ljava/io/File;->exists()Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
-
-    :cond_0
-    const/4 v1, 0x0
+    invoke-direct {v0, v2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
     :try_start_0
-    new-instance v0, Ljava/io/FileOutputStream;
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
 
-    const-string v2, "/sdcard/libs/com.igexin.sdk.deviceId.db"
+    move-result v2
 
-    invoke-direct {v0, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/lang/String;)V
+    if-nez v2, :cond_0
+
+    invoke-virtual {v0}, Ljava/io/File;->createNewFile()Z
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    :try_start_1
-    sget-object v1, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_5
+    move-object v0, v1
 
-    if-nez v1, :cond_2
-
-    :try_start_2
-    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
-    :try_end_2
-    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_3
-
-    :cond_1
     :goto_0
-    return-void
-
-    :cond_2
-    :try_start_3
-    sget-object v1, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
-
-    invoke-virtual {v1}, Ljava/lang/String;->getBytes()[B
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/io/FileOutputStream;->write([B)V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
-    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_5
-
-    :try_start_4
-    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
-    :try_end_4
-    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
-
-    goto :goto_0
+    return-object v0
 
     :catch_0
     move-exception v0
+
+    :cond_0
+    new-instance v0, Ljava/util/HashMap;
+
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    :try_start_1
+    new-instance v0, Ljava/io/FileInputStream;
+
+    const-string v2, "/sdcard/libs/imsi.db"
+
+    invoke-direct {v0, v2}, Ljava/io/FileInputStream;-><init>(Ljava/lang/String;)V
+
+    new-instance v2, Ljava/io/ObjectInputStream;
+
+    invoke-direct {v2, v0}, Ljava/io/ObjectInputStream;-><init>(Ljava/io/InputStream;)V
+
+    invoke-interface {v2}, Ljava/io/ObjectInput;->readObject()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/util/HashMap;
+
+    invoke-interface {v2}, Ljava/io/ObjectInput;->close()V
+    :try_end_1
+    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/io/StreamCorruptedException; {:try_start_1 .. :try_end_1} :catch_2
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_3
+    .catch Ljava/lang/ClassNotFoundException; {:try_start_1 .. :try_end_1} :catch_4
 
     goto :goto_0
 
@@ -1899,61 +1956,36 @@
 
     move-object v0, v1
 
-    :goto_1
-    if-eqz v0, :cond_1
-
-    :try_start_5
-    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
-    :try_end_5
-    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_2
-
     goto :goto_0
 
     :catch_2
     move-exception v0
 
+    move-object v0, v1
+
     goto :goto_0
-
-    :catchall_0
-    move-exception v0
-
-    :goto_2
-    if-eqz v1, :cond_3
-
-    :try_start_6
-    invoke-virtual {v1}, Ljava/io/FileOutputStream;->close()V
-    :try_end_6
-    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_4
-
-    :cond_3
-    :goto_3
-    throw v0
 
     :catch_3
     move-exception v0
 
+    move-object v0, v1
+
     goto :goto_0
 
     :catch_4
-    move-exception v1
+    move-exception v0
 
-    goto :goto_3
+    move-object v0, v1
 
-    :catchall_1
-    move-exception v1
+    goto :goto_0
+.end method
 
-    move-object v3, v1
+.method static synthetic j()V
+    .locals 0
 
-    move-object v1, v0
+    invoke-static {}, Lsdk/b/a/a/c/h;->m()V
 
-    move-object v0, v3
-
-    goto :goto_2
-
-    :catch_5
-    move-exception v1
-
-    goto :goto_1
+    return-void
 .end method
 
 .method private static k()Ljava/lang/String;
@@ -1976,9 +2008,13 @@
     :cond_0
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "/sdcard/libs//"
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     sget-object v1, Lcom/igexin/sdk/SdkMainService;->E:Ljava/lang/String;
 
@@ -2004,9 +2040,13 @@
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "/data/data/"
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     sget-object v1, Lcom/igexin/sdk/SdkMainService;->E:Ljava/lang/String;
 
@@ -2116,6 +2156,8 @@
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_4
+
+    if-eqz v0, :cond_0
 
     :try_start_2
     invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
@@ -2284,7 +2326,7 @@
 
     sget-object v0, Lsdk/b/a/a/c/h;->I:Ljava/lang/String;
 
-    if-nez v0, :cond_3
+    if-nez v0, :cond_5
 
     const-string v0, "cantgetimei"
 
@@ -2304,35 +2346,49 @@
     .catchall {:try_start_5 .. :try_end_5} :catchall_2
     .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_0
 
+    if-eqz v3, :cond_3
+
     :try_start_6
     invoke-virtual {v3}, Ljava/io/FileInputStream;->close()V
     :try_end_6
     .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_1
 
+    :cond_3
     :goto_6
+    if-eqz v2, :cond_4
+
     :try_start_7
     invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->close()V
     :try_end_7
     .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_2
 
+    :cond_4
     :goto_7
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v1, "GexinSdk"
 
-    const-string v2, "read file session=="
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v3, "read file session=="
 
-    move-result-object v1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_4
 
-    :cond_3
+    :cond_5
     :try_start_8
     sget-object v0, Lsdk/b/a/a/c/h;->I:Ljava/lang/String;
     :try_end_8
@@ -2349,23 +2405,23 @@
     move-object v3, v1
 
     :goto_8
-    if-eqz v3, :cond_4
+    if-eqz v3, :cond_6
 
     :try_start_9
     invoke-virtual {v3}, Ljava/io/FileInputStream;->close()V
     :try_end_9
     .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_5
 
-    :cond_4
+    :cond_6
     :goto_9
-    if-eqz v2, :cond_5
+    if-eqz v2, :cond_7
 
     :try_start_a
     invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->close()V
     :try_end_a
     .catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_6
 
-    :cond_5
+    :cond_7
     :goto_a
     throw v0
 
@@ -2430,7 +2486,145 @@
     goto :goto_1
 .end method
 
-.method private static o()Ljava/lang/String;
+.method private o()V
+    .locals 4
+
+    new-instance v0, Ljava/io/File;
+
+    const-string v1, "/sdcard/libs/"
+
+    invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
+
+    :cond_0
+    const/4 v1, 0x0
+
+    :try_start_0
+    new-instance v0, Ljava/io/FileOutputStream;
+
+    const-string v2, "/sdcard/libs/com.igexin.sdk.deviceId.db"
+
+    invoke-direct {v0, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/lang/String;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
+
+    :try_start_1
+    sget-object v1, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_5
+
+    if-nez v1, :cond_2
+
+    if-eqz v0, :cond_1
+
+    :try_start_2
+    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
+    :try_end_2
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_3
+
+    :cond_1
+    :goto_0
+    return-void
+
+    :cond_2
+    :try_start_3
+    sget-object v1, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
+
+    invoke-virtual {v1}, Ljava/lang/String;->getBytes()[B
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/io/FileOutputStream;->write([B)V
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_5
+
+    if-eqz v0, :cond_1
+
+    :try_start_4
+    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
+    :try_end_4
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
+
+    goto :goto_0
+
+    :catch_0
+    move-exception v0
+
+    goto :goto_0
+
+    :catch_1
+    move-exception v0
+
+    move-object v0, v1
+
+    :goto_1
+    if-eqz v0, :cond_1
+
+    :try_start_5
+    invoke-virtual {v0}, Ljava/io/FileOutputStream;->close()V
+    :try_end_5
+    .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_2
+
+    goto :goto_0
+
+    :catch_2
+    move-exception v0
+
+    goto :goto_0
+
+    :catchall_0
+    move-exception v0
+
+    :goto_2
+    if-eqz v1, :cond_3
+
+    :try_start_6
+    invoke-virtual {v1}, Ljava/io/FileOutputStream;->close()V
+    :try_end_6
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_4
+
+    :cond_3
+    :goto_3
+    throw v0
+
+    :catch_3
+    move-exception v0
+
+    goto :goto_0
+
+    :catch_4
+    move-exception v1
+
+    goto :goto_3
+
+    :catchall_1
+    move-exception v1
+
+    move-object v3, v1
+
+    move-object v1, v0
+
+    move-object v0, v3
+
+    goto :goto_2
+
+    :catch_5
+    move-exception v1
+
+    goto :goto_1
+.end method
+
+.method private p()Ljava/lang/String;
     .locals 6
 
     const/4 v3, 0x0
@@ -2500,7 +2694,7 @@
 
     const/4 v5, -0x1
 
-    if-eq v3, v5, :cond_3
+    if-eq v3, v5, :cond_4
 
     const/4 v5, 0x0
 
@@ -2531,7 +2725,7 @@
 
     :cond_2
     :goto_3
-    if-eqz v2, :cond_6
+    if-eqz v2, :cond_8
 
     :try_start_5
     invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->close()V
@@ -2540,24 +2734,33 @@
 
     move-object v0, v1
 
+    :cond_3
     :goto_4
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v1, "GexinSdk"
 
-    const-string v2, "read file deiceId=="
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v3, "read file deiceId=="
 
-    move-result-object v1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_0
 
-    :cond_3
+    :cond_4
     :try_start_6
     invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
@@ -2572,12 +2775,17 @@
     .catchall {:try_start_6 .. :try_end_6} :catchall_2
     .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_0
 
+    if-eqz v4, :cond_5
+
     :try_start_7
     invoke-virtual {v4}, Ljava/io/FileInputStream;->close()V
     :try_end_7
     .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_3
 
+    :cond_5
     :goto_5
+    if-eqz v2, :cond_3
+
     :try_start_8
     invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->close()V
     :try_end_8
@@ -2605,23 +2813,23 @@
     move-object v4, v3
 
     :goto_6
-    if-eqz v4, :cond_4
+    if-eqz v4, :cond_6
 
     :try_start_9
     invoke-virtual {v4}, Ljava/io/FileInputStream;->close()V
     :try_end_9
     .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_5
 
-    :cond_4
+    :cond_6
     :goto_7
-    if-eqz v2, :cond_5
+    if-eqz v2, :cond_7
 
     :try_start_a
     invoke-virtual {v2}, Ljava/io/ByteArrayOutputStream;->close()V
     :try_end_a
     .catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_6
 
-    :cond_5
+    :cond_7
     :goto_8
     throw v0
 
@@ -2680,105 +2888,15 @@
 
     goto :goto_2
 
-    :cond_6
+    :cond_8
     move-object v0, v1
 
     goto :goto_4
 .end method
 
-.method private static p()Ljava/util/HashMap;
-    .locals 3
-
-    const/4 v1, 0x0
-
-    new-instance v0, Ljava/io/File;
-
-    const-string v2, "/sdcard/libs/imsi.db"
-
-    invoke-direct {v0, v2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    :try_start_0
-    invoke-virtual {v0}, Ljava/io/File;->exists()Z
-
-    move-result v2
-
-    if-nez v2, :cond_0
-
-    invoke-virtual {v0}, Ljava/io/File;->createNewFile()Z
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-
-    move-object v0, v1
-
-    :goto_0
-    return-object v0
-
-    :catch_0
-    move-exception v0
-
-    :cond_0
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
-    :try_start_1
-    new-instance v0, Ljava/io/FileInputStream;
-
-    const-string v2, "/sdcard/libs/imsi.db"
-
-    invoke-direct {v0, v2}, Ljava/io/FileInputStream;-><init>(Ljava/lang/String;)V
-
-    new-instance v2, Ljava/io/ObjectInputStream;
-
-    invoke-direct {v2, v0}, Ljava/io/ObjectInputStream;-><init>(Ljava/io/InputStream;)V
-
-    invoke-interface {v2}, Ljava/io/ObjectInput;->readObject()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/util/HashMap;
-
-    invoke-interface {v2}, Ljava/io/ObjectInput;->close()V
-    :try_end_1
-    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
-    .catch Ljava/io/StreamCorruptedException; {:try_start_1 .. :try_end_1} :catch_2
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_3
-    .catch Ljava/lang/ClassNotFoundException; {:try_start_1 .. :try_end_1} :catch_4
-
-    goto :goto_0
-
-    :catch_1
-    move-exception v0
-
-    move-object v0, v1
-
-    goto :goto_0
-
-    :catch_2
-    move-exception v0
-
-    move-object v0, v1
-
-    goto :goto_0
-
-    :catch_3
-    move-exception v0
-
-    move-object v0, v1
-
-    goto :goto_0
-
-    :catch_4
-    move-exception v0
-
-    move-object v0, v1
-
-    goto :goto_0
-.end method
-
 
 # virtual methods
-.method public final a(Landroid/database/sqlite/SQLiteDatabase;)V
+.method public a(Landroid/database/sqlite/SQLiteDatabase;)V
     .locals 1
 
     const-string v0, "create table if not exists config (id integer primary key,name text,value text)"
@@ -2798,7 +2916,7 @@
     return-void
 .end method
 
-.method public final a(Landroid/database/sqlite/SQLiteDatabase;Landroid/database/Cursor;)V
+.method public a(Landroid/database/sqlite/SQLiteDatabase;Landroid/database/Cursor;)V
     .locals 10
 
     const/4 v7, 0x1
@@ -2830,6 +2948,8 @@
 
     const/4 v1, 0x0
 
+    const/4 v3, 0x1
+
     invoke-interface {p2, v1}, Landroid/database/Cursor;->getInt(I)I
 
     move-result v4
@@ -2838,13 +2958,11 @@
 
     iget v1, p0, Lsdk/b/a/a/c/h;->V:I
 
-    const/4 v3, 0x2
+    const/4 v8, 0x2
 
-    if-le v1, v3, :cond_3
+    if-le v1, v8, :cond_3
 
-    const/4 v1, 0x1
-
-    invoke-interface {p2, v1}, Landroid/database/Cursor;->getBlob(I)[B
+    invoke-interface {p2, v3}, Landroid/database/Cursor;->getBlob(I)[B
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
@@ -2918,10 +3036,8 @@
     return-void
 
     :cond_3
-    const/4 v1, 0x1
-
     :try_start_4
-    invoke-interface {p2, v1}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    invoke-interface {p2, v3}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
     move-result-object v1
 
@@ -3463,7 +3579,11 @@
 
     :cond_1c
     :goto_16
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v1, "GexinSdk"
+
+    const-string v2, "session error."
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     if-eqz v0, :cond_1e
 
@@ -3495,9 +3615,9 @@
     :cond_1e
     sget-object v0, Lsdk/b/a/a/c/h;->F:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->i()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->p()V
 
-    invoke-static {}, Lsdk/b/a/a/c/h;->o()Ljava/lang/String;
+    invoke-direct {p0}, Lsdk/b/a/a/c/h;->p()Ljava/lang/String;
 
     move-result-object v0
 
@@ -3530,9 +3650,13 @@
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "A-"
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     sget-object v1, Lsdk/b/a/a/c/h;->I:Ljava/lang/String;
 
@@ -3644,6 +3768,8 @@
 
     sput-object v0, Lsdk/b/a/a/c/h;->G:Ljava/lang/String;
 
+    sget-object v0, Lsdk/b/a/a/c/h;->G:Ljava/lang/String;
+
     if-eqz v0, :cond_23
 
     sget-object v0, Lsdk/b/a/a/c/h;->G:Ljava/lang/String;
@@ -3657,17 +3783,19 @@
     if-eqz v0, :cond_24
 
     :cond_23
-    invoke-static {}, Lsdk/b/a/a/c/h;->p()Ljava/util/HashMap;
+    invoke-static {}, Lsdk/b/a/a/c/h;->i()Ljava/util/HashMap;
 
     move-result-object v0
 
     if-eqz v0, :cond_24
 
-    invoke-static {}, Lsdk/b/a/a/c/h;->p()Ljava/util/HashMap;
+    invoke-static {}, Lsdk/b/a/a/c/h;->i()Ljava/util/HashMap;
 
     move-result-object v0
 
     sput-object v0, Lsdk/b/a/a/c/h;->D:Ljava/util/HashMap;
+
+    sget-object v0, Lsdk/b/a/a/c/h;->D:Ljava/util/HashMap;
 
     sget-object v1, Lsdk/b/a/a/c/h;->J:Ljava/lang/String;
 
@@ -3688,8 +3816,6 @@
     invoke-interface {p2}, Landroid/database/Cursor;->close()V
 
     goto/16 :goto_4
-
-    nop
 
     :pswitch_data_0
     .packed-switch 0x1
@@ -3721,12 +3847,54 @@
     .end packed-switch
 .end method
 
-.method public final b(Landroid/database/sqlite/SQLiteDatabase;)V
-    .locals 8
+.method public b()V
+    .locals 5
 
-    const-wide/16 v6, 0x0
+    const-wide/16 v3, 0x0
 
-    const/4 v5, 0x0
+    const/4 v2, 0x0
+
+    const/4 v1, 0x0
+
+    sput-wide v3, Lsdk/b/a/a/c/h;->a:J
+
+    sput-boolean v2, Lsdk/b/a/a/c/h;->c:Z
+
+    const/4 v0, 0x1
+
+    sput-boolean v0, Lsdk/b/a/a/c/h;->b:Z
+
+    sput-object v1, Lsdk/b/a/a/c/h;->d:Ljava/lang/String;
+
+    sput-wide v3, Lsdk/b/a/a/c/h;->l:J
+
+    sput-object v1, Lsdk/b/a/a/c/h;->w:Ljava/lang/String;
+
+    sput-boolean v2, Lsdk/b/a/a/c/h;->x:Z
+
+    sput-boolean v2, Lsdk/b/a/a/c/h;->y:Z
+
+    sput-object v1, Lsdk/b/a/a/c/h;->T:Lsdk/b/a/a/c/h;
+
+    sput-object v1, Lsdk/b/a/a/c/h;->H:Ljava/lang/String;
+
+    sput-object v1, Lsdk/b/a/a/c/h;->I:Ljava/lang/String;
+
+    sput-object v1, Lsdk/b/a/a/c/h;->J:Ljava/lang/String;
+
+    sput-object v1, Lsdk/b/a/a/c/h;->K:Ljava/lang/String;
+
+    sput-object v1, Lsdk/b/a/a/c/h;->G:Ljava/lang/String;
+
+    sput-object v1, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method public b(Landroid/database/sqlite/SQLiteDatabase;)V
+    .locals 6
+
+    const-wide/16 v4, 0x0
 
     sget-object v0, Lsdk/b/a/a/c/h;->I:Ljava/lang/String;
 
@@ -3753,33 +3921,11 @@
 
     move-result-object v0
 
-    const-string v1, "session"
+    const/4 v1, 0x1
 
-    new-instance v2, Landroid/content/ContentValues;
+    const-string v2, "session"
 
-    invoke-direct {v2}, Landroid/content/ContentValues;-><init>()V
-
-    const-string v3, "id"
-
-    const/4 v4, 0x1
-
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v4
-
-    invoke-virtual {v2, v3, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
-
-    const-string v3, "name"
-
-    invoke-virtual {v2, v3, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
-    const-string v1, "value"
-
-    invoke-virtual {v2, v1, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;[B)V
-
-    const-string v0, "config"
-
-    invoke-virtual {p1, v0, v5, v2}, Landroid/database/sqlite/SQLiteDatabase;->replace(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-direct {p0, p1, v1, v2, v0}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;[B)V
 
     const/4 v0, 0x6
 
@@ -3791,7 +3937,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x8
 
@@ -3803,7 +3949,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/c/h;->d:Ljava/lang/String;
 
@@ -3824,7 +3970,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0xa
 
@@ -3836,7 +3982,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0xb
 
@@ -3848,7 +3994,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0xc
 
@@ -3860,7 +4006,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0xf
 
@@ -3872,7 +4018,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0xd
 
@@ -3884,7 +4030,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x10
 
@@ -3896,7 +4042,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x11
 
@@ -3908,7 +4054,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x12
 
@@ -3920,7 +4066,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x13
 
@@ -3932,7 +4078,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x14
 
@@ -3944,7 +4090,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x15
 
@@ -3956,7 +4102,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x16
 
@@ -3968,7 +4114,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x17
 
@@ -3980,7 +4126,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     const/16 v0, 0x18
 
@@ -3992,11 +4138,11 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     sget-wide v0, Lsdk/b/a/a/c/h;->h:J
 
-    cmp-long v0, v0, v6
+    cmp-long v0, v0, v4
 
     if-eqz v0, :cond_1
 
@@ -4010,12 +4156,12 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     :cond_1
     sget-wide v0, Lsdk/b/a/a/c/h;->i:J
 
-    cmp-long v0, v0, v6
+    cmp-long v0, v0, v4
 
     if-eqz v0, :cond_2
 
@@ -4029,7 +4175,7 @@
 
     move-result-object v2
 
-    invoke-static {p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->b(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, p1, v0, v1, v2}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;ILjava/lang/String;Ljava/lang/String;)V
 
     :cond_2
     sget-object v0, Lsdk/b/a/a/c/h;->J:Ljava/lang/String;
@@ -4048,21 +4194,7 @@
 
     sget-object v1, Lsdk/b/a/a/c/h;->G:Ljava/lang/String;
 
-    new-instance v2, Landroid/content/ContentValues;
-
-    invoke-direct {v2}, Landroid/content/ContentValues;-><init>()V
-
-    const-string v3, "imsi"
-
-    invoke-virtual {v2, v3, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
-    const-string v0, "number"
-
-    invoke-virtual {v2, v0, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
-    const-string v0, "configimsi"
-
-    invoke-virtual {p1, v0, v5, v2}, Landroid/database/sqlite/SQLiteDatabase;->replace(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-direct {p0, p1, v0, v1}, Lsdk/b/a/a/c/h;->a(Landroid/database/sqlite/SQLiteDatabase;Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_3
     return-void
@@ -4073,7 +4205,7 @@
     goto/16 :goto_0
 .end method
 
-.method public final d()V
+.method public d()V
     .locals 4
 
     sget-object v0, Lsdk/b/a/a/c/h;->F:Lcom/igexin/sdk/SdkMainService;

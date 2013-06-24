@@ -1,4 +1,4 @@
-.class public final Lsdk/a/a/a/a/a/g;
+.class public Lsdk/a/a/a/a/a/g;
 .super Lsdk/c/b/a/b/b;
 
 
@@ -27,8 +27,8 @@
 
 
 # virtual methods
-.method public final a([B)V
-    .locals 5
+.method public a([B)V
+    .locals 6
 
     const/4 v1, 0x1
 
@@ -36,17 +36,27 @@
 
     aget-byte v3, p1, v2
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "LoginResult"
 
-    const-string v4, "info:"
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v5, "info:"
 
-    move-result-object v0
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v4
+
+    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v0, v4}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     and-int/lit8 v0, v3, 0x40
 
@@ -70,7 +80,7 @@
 
     if-eqz v0, :cond_1
 
-    invoke-static {v3}, Lsdk/a/a/a/a/a/g;->a(B)Ljava/lang/String;
+    invoke-virtual {p0, v3}, Lsdk/a/a/a/a/a/g;->a(B)Ljava/lang/String;
 
     move-result-object v0
 
@@ -79,6 +89,10 @@
     invoke-static {p1, v1}, Lsdk/c/a/b/g;->a([BI)I
 
     move-result v0
+
+    add-int/lit8 v1, v0, 0x2
+
+    add-int/lit8 v1, v1, 0x1
 
     :try_start_0
     new-instance v1, Ljava/lang/String;
@@ -108,12 +122,12 @@
     goto :goto_1
 .end method
 
-.method public final a()[B
-    .locals 8
-
-    const/4 v5, 0x1
+.method public c()[B
+    .locals 7
 
     const/4 v1, 0x0
+
+    const/4 v2, 0x1
 
     const/4 v3, 0x0
 
@@ -123,10 +137,12 @@
 
     const/16 v0, 0x40
 
-    :goto_0
-    iget-boolean v2, p0, Lsdk/a/a/a/a/a/g;->b:Z
+    int-to-byte v0, v0
 
-    if-eqz v2, :cond_1
+    :goto_0
+    iget-boolean v4, p0, Lsdk/a/a/a/a/a/g;->b:Z
+
+    if-eqz v4, :cond_1
 
     or-int/lit16 v0, v0, 0x80
 
@@ -137,9 +153,9 @@
     :try_start_0
     iget-object v0, p0, Lsdk/a/a/a/a/a/g;->d:Ljava/lang/String;
 
-    iget-object v6, p0, Lsdk/a/a/a/a/a/g;->c:Ljava/lang/String;
+    iget-object v5, p0, Lsdk/a/a/a/a/a/g;->c:Ljava/lang/String;
 
-    invoke-virtual {v0, v6}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
+    invoke-virtual {v0, v5}, Ljava/lang/String;->getBytes(Ljava/lang/String;)[B
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -153,21 +169,21 @@
     add-int/lit8 v3, v2, 0x3
 
     :goto_1
-    iget-object v6, p0, Lsdk/a/a/a/a/a/g;->c:Ljava/lang/String;
+    iget-object v5, p0, Lsdk/a/a/a/a/a/g;->c:Ljava/lang/String;
 
-    invoke-static {v6}, Lsdk/a/a/a/a/a/g;->a(Ljava/lang/String;)I
+    invoke-virtual {p0, v5}, Lsdk/a/a/a/a/a/g;->a(Ljava/lang/String;)I
 
-    move-result v6
+    move-result v5
 
-    or-int/2addr v4, v6
+    or-int/2addr v4, v5
 
     int-to-byte v4, v4
 
-    move v7, v4
+    move v6, v4
 
     move v4, v3
 
-    move v3, v7
+    move v3, v6
 
     :goto_2
     add-int/lit8 v4, v4, 0x8
@@ -176,17 +192,23 @@
 
     invoke-static {v3, v4, v1}, Lsdk/c/a/b/g;->c(I[BI)I
 
-    iget-boolean v3, p0, Lsdk/a/a/a/a/a/g;->b:Z
+    move-result v3
 
-    if-eqz v3, :cond_0
+    iget-boolean v5, p0, Lsdk/a/a/a/a/a/g;->b:Z
 
-    invoke-static {v2, v4, v5}, Lsdk/c/a/b/g;->b(I[BI)I
+    if-eqz v5, :cond_0
+
+    invoke-static {v2, v4, v3}, Lsdk/c/a/b/g;->b(I[BI)I
+
+    move-result v3
 
     if-eqz v0, :cond_0
 
-    const/4 v3, 0x2
-
     invoke-static {v0, v1, v4, v3, v2}, Lsdk/c/a/b/g;->a([BI[BII)I
+
+    move-result v0
+
+    add-int/2addr v0, v3
 
     :cond_0
     return-object v4
@@ -209,15 +231,15 @@
     goto :goto_3
 
     :cond_1
+    move v4, v2
+
     move v2, v1
 
-    move v4, v5
-
-    move v7, v0
+    move v6, v0
 
     move-object v0, v3
 
-    move v3, v7
+    move v3, v6
 
     goto :goto_2
 

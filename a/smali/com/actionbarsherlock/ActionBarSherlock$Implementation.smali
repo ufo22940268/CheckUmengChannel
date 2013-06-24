@@ -1,5 +1,6 @@
 .class public interface abstract annotation Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
 .super Ljava/lang/Object;
+.source "ActionBarSherlock.java"
 
 # interfaces
 .implements Ljava/lang/annotation/Annotation;
@@ -11,6 +12,15 @@
         api = -0x1
         dpi = -0x1
     .end subannotation
+.end annotation
+
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/actionbarsherlock/ActionBarSherlock;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x2609
+    name = "Implementation"
 .end annotation
 
 .annotation runtime Ljava/lang/annotation/Retention;

@@ -1,6 +1,4 @@
 {
-	"sys_browser_enable": 1,
-	"webview_enable": 1,
-	"ta_enable": 1,
-	"frequency": 24
+	"Common_ta_enable": 1,
+	"Common_frequency": 24
 }

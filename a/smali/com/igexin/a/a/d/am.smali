@@ -1,48 +1,63 @@
-.class public final Lcom/igexin/a/a/d/am;
-.super Lcom/igexin/a/a/d/al;
+.class Lcom/igexin/a/a/d/am;
+.super Lcom/igexin/a/a/d/ah;
 
 
 # direct methods
-.method public constructor <init>(I)V
+.method public constructor <init>(Lcom/igexin/a/a/d/g;)V
     .locals 0
 
-    invoke-direct {p0, p1}, Lcom/igexin/a/a/d/al;-><init>(I)V
+    invoke-direct {p0}, Lcom/igexin/a/a/d/ah;-><init>()V
+
+    iput-object p1, p0, Lcom/igexin/a/a/d/am;->a:Lcom/igexin/a/a/d/g;
 
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
-    .locals 2
+.method public a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
+    .locals 3
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/b/i;->l()Ljava/lang/Integer;
+    const/4 v0, 0x0
 
-    move-result-object v0
+    if-ne p1, p2, :cond_1
 
-    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
-
-    move-result v0
-
-    iget v1, p0, Lcom/igexin/a/a/d/am;->a:I
-
-    if-le v0, v1, :cond_0
-
-    const/4 v0, 0x1
-
+    :cond_0
     :goto_0
     return v0
 
-    :cond_0
-    const/4 v0, 0x0
+    :cond_1
+    invoke-virtual {p2}, Lcom/igexin/a/a/b/i;->l()Lcom/igexin/a/a/b/i;
+
+    move-result-object v1
+
+    :goto_1
+    if-eq v1, p1, :cond_0
+
+    iget-object v2, p0, Lcom/igexin/a/a/d/am;->a:Lcom/igexin/a/a/d/g;
+
+    invoke-virtual {v2, p1, v1}, Lcom/igexin/a/a/d/g;->a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    const/4 v0, 0x1
 
     goto :goto_0
+
+    :cond_2
+    invoke-virtual {v1}, Lcom/igexin/a/a/b/i;->l()Lcom/igexin/a/a/b/i;
+
+    move-result-object v1
+
+    goto :goto_1
 .end method
 
-.method public final toString()Ljava/lang/String;
+.method public toString()Ljava/lang/String;
     .locals 4
 
-    const-string v0, ":gt(%d)"
+    const-string v0, ":parent%s"
 
     const/4 v1, 0x1
 
@@ -50,11 +65,7 @@
 
     const/4 v2, 0x0
 
-    iget v3, p0, Lcom/igexin/a/a/d/am;->a:I
-
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v3
+    iget-object v3, p0, Lcom/igexin/a/a/d/am;->a:Lcom/igexin/a/a/d/g;
 
     aput-object v3, v1, v2
 

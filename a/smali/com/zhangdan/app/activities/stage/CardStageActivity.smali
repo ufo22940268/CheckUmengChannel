@@ -1,41 +1,50 @@
 .class public Lcom/zhangdan/app/activities/stage/CardStageActivity;
 .super Lcom/zhangdan/app/activities/WrappedActivity;
+.source "CardStageActivity.java"
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
 
 
+# static fields
+.field public static final KEY_BILL_STAGE:Ljava/lang/String; = "bill_stage"
+
+
 # instance fields
-.field private c:Lcom/zhangdan/app/data/model/e;
+.field private mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-.field private d:Ljava/text/DecimalFormat;
+.field private mCardStageView:Lcom/zhangdan/app/activities/stage/CardStageView;
 
-.field private e:[I
+.field private mColorRes:[I
 
-.field private f:Lcom/zhangdan/app/activities/stage/CardStageView;
+.field private mDecimalFormat:Ljava/text/DecimalFormat;
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 2
 
+    .prologue
+    .line 30
     invoke-direct {p0}, Lcom/zhangdan/app/activities/WrappedActivity;-><init>()V
 
+    .line 35
     new-instance v0, Ljava/text/DecimalFormat;
 
     const-string v1, "#0.00"
 
     invoke-direct {v0, v1}, Ljava/text/DecimalFormat;-><init>(Ljava/lang/String;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->d:Ljava/text/DecimalFormat;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mDecimalFormat:Ljava/text/DecimalFormat;
 
+    .line 36
     const/4 v0, 0x5
 
     new-array v0, v0, [I
 
     fill-array-data v0, :array_0
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->e:[I
+    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mColorRes:[I
 
     return-void
 
@@ -43,11 +52,11 @@
 
     :array_0
     .array-data 0x4
-        0xeat 0x0t 0x2t 0x7ft
-        0xebt 0x0t 0x2t 0x7ft
-        0xect 0x0t 0x2t 0x7ft
         0xedt 0x0t 0x2t 0x7ft
         0xeet 0x0t 0x2t 0x7ft
+        0xeft 0x0t 0x2t 0x7ft
+        0xf0t 0x0t 0x2t 0x7ft
+        0xf1t 0x0t 0x2t 0x7ft
     .end array-data
 .end method
 
@@ -55,469 +64,717 @@
 # virtual methods
 .method public onClick(Landroid/view/View;)V
     .locals 2
+    .parameter "v"
 
+    .prologue
+    .line 123
     invoke-virtual {p1}, Landroid/view/View;->getId()I
 
     move-result v0
 
-    const v1, 0x7f060039
+    const v1, 0x7f090039
 
     if-ne v0, v1, :cond_0
 
+    .line 124
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->finish()V
 
+    .line 126
     :cond_0
     return-void
 .end method
 
 .method protected onCreate(Landroid/os/Bundle;)V
-    .locals 13
+    .locals 25
+    .parameter "savedInstanceState"
 
-    invoke-super {p0, p1}, Lcom/zhangdan/app/activities/WrappedActivity;->onCreate(Landroid/os/Bundle;)V
+    .prologue
+    .line 42
+    invoke-super/range {p0 .. p1}, Lcom/zhangdan/app/activities/WrappedActivity;->onCreate(Landroid/os/Bundle;)V
 
-    const v0, 0x7f03002c
+    .line 43
+    const v21, 0x7f03002c
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->setContentView(I)V
+    move-object/from16 v0, p0
 
-    const v0, 0x7f06003c
+    move/from16 v1, v21
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->setContentView(I)V
 
-    move-result-object v0
+    .line 45
+    const v21, 0x7f09003c
 
-    const v1, 0x7f06003c
+    move-object/from16 v0, p0
 
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    move/from16 v1, v21
 
-    move-result-object v1
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
 
-    const v2, 0x7f02038b
+    move-result-object v21
 
-    invoke-virtual {v1, v2}, Landroid/view/View;->setBackgroundResource(I)V
+    invoke-static/range {v21 .. v21}, Lcom/zhangdan/app/activities/CommTitleMgr;->displayBlueTitle(Landroid/view/View;)V
 
-    const v1, 0x7f0601da
+    .line 46
+    const v21, 0x7f090039
 
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    move-object/from16 v0, p0
 
-    move-result-object v0
+    move/from16 v1, v21
 
-    const v1, 0x7f020009
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
 
-    invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
+    move-result-object v21
 
-    const v0, 0x7f060039
+    move-object/from16 v0, v21
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
+    move-object/from16 v1, p0
 
-    move-result-object v0
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    invoke-virtual {v0, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->getApplication()Landroid/app/Application;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
-
-    const-string v1, "bill_stage"
-
-    invoke-virtual {v0, v1}, Lcom/zhangdan/app/ZhangdanApplication;->b(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lcom/zhangdan/app/data/model/e;
-
-    iput-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    const-string v1, "bill_stage"
-
-    invoke-virtual {v0, v1}, Lcom/zhangdan/app/ZhangdanApplication;->c(Ljava/lang/String;)V
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    if-nez v0, :cond_0
-
-    if-eqz p1, :cond_0
-
-    const-string v0, "bill_stage"
-
-    invoke-virtual {p1, v0}, Landroid/os/Bundle;->getSerializable(Ljava/lang/String;)Ljava/io/Serializable;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/zhangdan/app/data/model/e;
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    :cond_0
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/model/e;->f()I
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/model/e;->b()Ljava/util/List;
-
-    move-result-object v0
-
-    new-instance v1, Lcom/zhangdan/app/activities/stage/d;
-
-    invoke-direct {v1}, Lcom/zhangdan/app/activities/stage/d;-><init>()V
-
-    invoke-static {v0, v1}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
-
-    new-instance v1, Ljava/lang/StringBuffer;
-
-    invoke-direct {v1}, Ljava/lang/StringBuffer;-><init>()V
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/model/e;->c()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    move-result-object v0
-
-    const-string v2, "["
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    move-result-object v0
-
-    iget-object v2, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v2}, Lcom/zhangdan/app/data/model/e;->d()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    move-result-object v0
-
-    const-string v2, "]\u5206\u671f"
-
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
-
-    const v0, 0x7f06003a
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/TextView;
-
-    invoke-virtual {v1}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    const v0, 0x7f0600ad
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ImageView;
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/e;->a()I
-
-    move-result v1
-
-    invoke-static {v1}, Lcom/zhangdan/app/data/a;->a(I)I
-
-    move-result v1
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setBackgroundResource(I)V
-
-    const v0, 0x7f0600ae
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/TextView;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    const-string v2, "\uffe5"
-
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    iget-object v2, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->d:Ljava/text/DecimalFormat;
-
-    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v3}, Lcom/zhangdan/app/data/model/e;->g()D
-
-    move-result-wide v3
-
-    invoke-virtual {v2, v3, v4}, Ljava/text/DecimalFormat;->format(D)Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    const v0, 0x7f0600a9
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
-
-    const v0, 0x7f0600ab
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/HorizontalScrollView;
-
-    new-instance v1, Lcom/zhangdan/app/activities/stage/CardStageView;
-
-    iget-object v2, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    invoke-direct {v1, p0, v2}, Lcom/zhangdan/app/activities/stage/CardStageView;-><init>(Landroid/content/Context;Lcom/zhangdan/app/data/model/e;)V
-
-    iput-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->f:Lcom/zhangdan/app/activities/stage/CardStageView;
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->f:Lcom/zhangdan/app/activities/stage/CardStageView;
-
-    invoke-virtual {v0, v1}, Landroid/widget/HorizontalScrollView;->addView(Landroid/view/View;)V
-
-    const v0, 0x7f0600aa
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/RelativeLayout;
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/e;->b()Ljava/util/List;
-
-    move-result-object v8
-
-    invoke-interface {v8}, Ljava/util/List;->size()I
-
-    move-result v9
-
-    const v2, 0x7f0600ac
-
-    const/4 v1, 0x0
-
-    move v6, v1
-
-    move v7, v2
-
-    :goto_0
-    if-lt v6, v9, :cond_2
-
-    :cond_1
-    return-void
-
-    :cond_2
-    invoke-interface {v8, v6}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lcom/zhangdan/app/data/model/d;
-
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->getLayoutInflater()Landroid/view/LayoutInflater;
-
-    move-result-object v2
-
-    const v3, 0x7f0300d0
-
-    const/4 v4, 0x0
-
-    invoke-virtual {v2, v3, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
-
-    move-result-object v10
-
-    const v2, 0x7f0602dd
-
-    invoke-virtual {v10, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v2
-
-    check-cast v2, Landroid/widget/ImageView;
-
-    const v3, 0x7f0602e3
-
-    invoke-virtual {v10, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v3
-
-    check-cast v3, Landroid/widget/TextView;
-
-    const v4, 0x7f0602e0
-
-    invoke-virtual {v10, v4}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    .line 48
+    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->getApplication()Landroid/app/Application;
 
     move-result-object v4
 
-    check-cast v4, Landroid/widget/TextView;
+    check-cast v4, Lcom/zhangdan/app/ZhangdanApplication;
 
-    const v5, 0x7f0602e2
+    .line 49
+    .local v4, app:Lcom/zhangdan/app/ZhangdanApplication;
+    const-string v21, "bill_stage"
 
-    invoke-virtual {v10, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    move-object/from16 v0, v21
 
-    move-result-object v5
+    invoke-virtual {v4, v0}, Lcom/zhangdan/app/ZhangdanApplication;->getCacheObject(Ljava/lang/String;)Ljava/lang/Object;
 
-    check-cast v5, Landroid/widget/TextView;
+    move-result-object v21
 
-    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->e:[I
+    check-cast v21, Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    rem-int/lit8 v12, v6, 0x5
+    move-object/from16 v0, v21
 
-    aget v11, v11, v12
+    move-object/from16 v1, p0
 
-    invoke-virtual {v2, v11}, Landroid/widget/ImageView;->setImageResource(I)V
+    iput-object v0, v1, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/d;->a()Ljava/lang/String;
+    .line 50
+    const-string v21, "bill_stage"
 
-    move-result-object v2
+    move-object/from16 v0, v21
 
-    invoke-virtual {v3, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    invoke-virtual {v4, v0}, Lcom/zhangdan/app/ZhangdanApplication;->removeCacheObject(Ljava/lang/String;)V
 
-    const v2, 0x7f08010b
+    .line 51
+    move-object/from16 v0, p0
 
-    const/4 v3, 0x1
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    new-array v3, v3, [Ljava/lang/Object;
+    move-object/from16 v21, v0
 
-    const/4 v11, 0x0
+    if-nez v21, :cond_0
 
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/d;->c()I
+    .line 52
+    if-eqz p1, :cond_0
 
-    move-result v12
+    .line 53
+    const-string v21, "bill_stage"
 
-    invoke-static {v12}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    move-object/from16 v0, p1
 
-    move-result-object v12
+    move-object/from16 v1, v21
 
-    aput-object v12, v3, v11
+    invoke-virtual {v0, v1}, Landroid/os/Bundle;->getSerializable(Ljava/lang/String;)Ljava/io/Serializable;
 
-    invoke-virtual {p0, v2, v3}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+    move-result-object v21
 
-    move-result-object v2
+    check-cast v21, Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    invoke-virtual {v4, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    move-object/from16 v0, v21
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    move-object/from16 v1, p0
 
-    const-string v3, "\uffe5"
+    iput-object v0, v1, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    .line 57
+    :cond_0
+    move-object/from16 v0, p0
 
-    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->d:Ljava/text/DecimalFormat;
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/d;->e()D
+    move-object/from16 v21, v0
 
-    move-result-wide v11
+    if-eqz v21, :cond_1
 
-    invoke-virtual {v3, v11, v12}, Ljava/text/DecimalFormat;->format(D)Ljava/lang/String;
+    move-object/from16 v0, p0
 
-    move-result-object v1
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-object/from16 v21, v0
 
-    move-result-object v1
+    invoke-virtual/range {v21 .. v21}, Lcom/zhangdan/app/data/model/BillStageInfo;->getMaxPeriodCount()I
 
-    const-string v2, "/\u671f"
+    move-result v21
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    if-nez v21, :cond_2
 
-    move-result-object v1
+    .line 105
+    :cond_1
+    return-void
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 60
+    :cond_2
+    move-object/from16 v0, p0
 
-    move-result-object v1
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    invoke-virtual {v5, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    move-object/from16 v21, v0
 
-    new-instance v1, Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-virtual/range {v21 .. v21}, Lcom/zhangdan/app/data/model/BillStageInfo;->getStageList()Ljava/util/List;
 
-    const/4 v2, -0x1
+    move-result-object v21
 
-    const/4 v3, -0x2
+    new-instance v22, Lcom/zhangdan/app/activities/stage/StageGroupComparator;
 
-    invoke-direct {v1, v2, v3}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
+    invoke-direct/range {v22 .. v22}, Lcom/zhangdan/app/activities/stage/StageGroupComparator;-><init>()V
 
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->getResources()Landroid/content/res/Resources;
+    invoke-static/range {v21 .. v22}, Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
 
-    move-result-object v2
+    .line 62
+    new-instance v13, Ljava/lang/StringBuffer;
 
-    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    invoke-direct {v13}, Ljava/lang/StringBuffer;-><init>()V
 
-    move-result-object v2
+    .line 63
+    .local v13, sb:Ljava/lang/StringBuffer;
+    move-object/from16 v0, p0
 
-    iget v2, v2, Landroid/util/DisplayMetrics;->density:F
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    const/high16 v3, 0x4120
+    move-object/from16 v21, v0
 
-    mul-float/2addr v3, v2
+    invoke-virtual/range {v21 .. v21}, Lcom/zhangdan/app/data/model/BillStageInfo;->getBankName()Ljava/lang/String;
 
-    float-to-int v3, v3
+    move-result-object v21
 
-    iput v3, v1, Landroid/widget/RelativeLayout$LayoutParams;->leftMargin:I
+    move-object/from16 v0, v21
 
-    const/high16 v3, 0x4120
+    invoke-virtual {v13, v0}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    mul-float/2addr v3, v2
+    move-result-object v21
 
-    float-to-int v3, v3
+    const-string v22, "["
 
-    iput v3, v1, Landroid/widget/RelativeLayout$LayoutParams;->rightMargin:I
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    const/high16 v3, 0x4120
+    move-result-object v21
 
-    mul-float/2addr v2, v3
+    move-object/from16 v0, p0
 
-    float-to-int v2, v2
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    iput v2, v1, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+    move-object/from16 v22, v0
 
-    const/4 v2, 0x3
+    invoke-virtual/range {v22 .. v22}, Lcom/zhangdan/app/data/model/BillStageInfo;->getCardNo()Ljava/lang/String;
 
-    invoke-virtual {v1, v2, v7}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
+    move-result-object v22
 
-    add-int/lit8 v2, v6, 0x1
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    invoke-virtual {v10, v2}, Landroid/view/View;->setId(I)V
+    move-result-object v21
 
-    invoke-virtual {v0, v10, v1}, Landroid/widget/RelativeLayout;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    const-string v22, "]"
 
-    add-int/lit8 v1, v6, 0x1
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    move v6, v1
+    move-result-object v21
 
-    move v7, v2
+    const-string v22, "\u5206\u671f"
+
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
+
+    .line 64
+    const v21, 0x7f09003a
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v21
+
+    check-cast v21, Landroid/widget/TextView;
+
+    invoke-virtual {v13}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
+
+    move-result-object v22
+
+    invoke-virtual/range {v21 .. v22}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 66
+    const v21, 0x7f0900b1
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v8
+
+    check-cast v8, Landroid/widget/ImageView;
+
+    .line 67
+    .local v8, imgBankIcon:Landroid/widget/ImageView;
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
+
+    move-object/from16 v21, v0
+
+    invoke-virtual/range {v21 .. v21}, Lcom/zhangdan/app/data/model/BillStageInfo;->getBankId()I
+
+    move-result v21
+
+    invoke-static/range {v21 .. v21}, Lcom/zhangdan/app/data/BankIconRes;->getBankIconResId(I)I
+
+    move-result v21
+
+    move/from16 v0, v21
+
+    invoke-virtual {v8, v0}, Landroid/widget/ImageView;->setBackgroundResource(I)V
+
+    .line 68
+    const v21, 0x7f0900b2
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v19
+
+    check-cast v19, Landroid/widget/TextView;
+
+    .line 69
+    .local v19, tvTotalAmount:Landroid/widget/TextView;
+    new-instance v21, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v21 .. v21}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v22, "\uffe5"
+
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v21
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mDecimalFormat:Ljava/text/DecimalFormat;
+
+    move-object/from16 v22, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Lcom/zhangdan/app/data/model/BillStageInfo;->getTotalBillAmount()D
+
+    move-result-wide v23
+
+    invoke-virtual/range {v22 .. v24}, Ljava/text/DecimalFormat;->format(D)Ljava/lang/String;
+
+    move-result-object v22
+
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v21
+
+    invoke-virtual/range {v21 .. v21}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v21
+
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 71
+    const v21, 0x7f0900ad
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v21
+
+    const/16 v22, 0x0
+
+    invoke-virtual/range {v21 .. v22}, Landroid/view/View;->setVisibility(I)V
+
+    .line 72
+    const v21, 0x7f0900af
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v14
+
+    check-cast v14, Landroid/widget/HorizontalScrollView;
+
+    .line 73
+    .local v14, scrollView:Landroid/widget/HorizontalScrollView;
+    new-instance v21, Lcom/zhangdan/app/activities/stage/CardStageView;
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
+
+    move-object/from16 v22, v0
+
+    move-object/from16 v0, v21
+
+    move-object/from16 v1, p0
+
+    move-object/from16 v2, v22
+
+    invoke-direct {v0, v1, v2}, Lcom/zhangdan/app/activities/stage/CardStageView;-><init>(Landroid/content/Context;Lcom/zhangdan/app/data/model/BillStageInfo;)V
+
+    move-object/from16 v0, v21
+
+    move-object/from16 v1, p0
+
+    iput-object v0, v1, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mCardStageView:Lcom/zhangdan/app/activities/stage/CardStageView;
+
+    .line 74
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mCardStageView:Lcom/zhangdan/app/activities/stage/CardStageView;
+
+    move-object/from16 v21, v0
+
+    move-object/from16 v0, v21
+
+    invoke-virtual {v14, v0}, Landroid/widget/HorizontalScrollView;->addView(Landroid/view/View;)V
+
+    .line 76
+    const v21, 0x7f0900ae
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v10
+
+    check-cast v10, Landroid/widget/RelativeLayout;
+
+    .line 77
+    .local v10, layout:Landroid/widget/RelativeLayout;
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
+
+    move-object/from16 v21, v0
+
+    invoke-virtual/range {v21 .. v21}, Lcom/zhangdan/app/data/model/BillStageInfo;->getStageList()Ljava/util/List;
+
+    move-result-object v11
+
+    .line 78
+    .local v11, list:Ljava/util/List;,"Ljava/util/List<Lcom/zhangdan/app/data/model/BillStageGroup;>;"
+    invoke-interface {v11}, Ljava/util/List;->size()I
+
+    move-result v15
+
+    .line 79
+    .local v15, size:I
+    const v3, 0x7f0900b0
+
+    .line 80
+    .local v3, aboveAnchorId:I
+    const/4 v7, 0x0
+
+    .local v7, i:I
+    :goto_0
+    if-ge v7, v15, :cond_1
+
+    .line 81
+    invoke-interface {v11, v7}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Lcom/zhangdan/app/data/model/BillStageGroup;
+
+    .line 82
+    .local v6, group:Lcom/zhangdan/app/data/model/BillStageGroup;
+    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->getLayoutInflater()Landroid/view/LayoutInflater;
+
+    move-result-object v21
+
+    const v22, 0x7f0300d5
+
+    const/16 v23, 0x0
+
+    invoke-virtual/range {v21 .. v23}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+
+    move-result-object v20
+
+    .line 83
+    .local v20, view:Landroid/view/View;
+    const v21, 0x7f0902e9
+
+    invoke-virtual/range {v20 .. v21}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v9
+
+    check-cast v9, Landroid/widget/ImageView;
+
+    .line 84
+    .local v9, imgColorBlock:Landroid/widget/ImageView;
+    const v21, 0x7f0902ef
+
+    invoke-virtual/range {v20 .. v21}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v17
+
+    check-cast v17, Landroid/widget/TextView;
+
+    .line 85
+    .local v17, tvBillName:Landroid/widget/TextView;
+    const v21, 0x7f0902ec
+
+    invoke-virtual/range {v20 .. v21}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v18
+
+    check-cast v18, Landroid/widget/TextView;
+
+    .line 86
+    .local v18, tvRemainPeriod:Landroid/widget/TextView;
+    const v21, 0x7f0902ee
+
+    invoke-virtual/range {v20 .. v21}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v16
+
+    check-cast v16, Landroid/widget/TextView;
+
+    .line 88
+    .local v16, tvAmount:Landroid/widget/TextView;
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mColorRes:[I
+
+    move-object/from16 v21, v0
+
+    rem-int/lit8 v22, v7, 0x5
+
+    aget v21, v21, v22
+
+    move/from16 v0, v21
+
+    invoke-virtual {v9, v0}, Landroid/widget/ImageView;->setImageResource(I)V
+
+    .line 89
+    invoke-virtual {v6}, Lcom/zhangdan/app/data/model/BillStageGroup;->getDesc()Ljava/lang/String;
+
+    move-result-object v21
+
+    move-object/from16 v0, v17
+
+    move-object/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 90
+    const v21, 0x7f070110
+
+    const/16 v22, 0x1
+
+    move/from16 v0, v22
+
+    new-array v0, v0, [Ljava/lang/Object;
+
+    move-object/from16 v22, v0
+
+    const/16 v23, 0x0
+
+    invoke-virtual {v6}, Lcom/zhangdan/app/data/model/BillStageGroup;->getItemCount()I
+
+    move-result v24
+
+    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v24
+
+    aput-object v24, v22, v23
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, v21
+
+    move-object/from16 v2, v22
+
+    invoke-virtual {v0, v1, v2}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v21
+
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 91
+    new-instance v21, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v21 .. v21}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v22, "\uffe5"
+
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v21
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mDecimalFormat:Ljava/text/DecimalFormat;
+
+    move-object/from16 v22, v0
+
+    invoke-virtual {v6}, Lcom/zhangdan/app/data/model/BillStageGroup;->getFirstPeriodAmount()D
+
+    move-result-wide v23
+
+    invoke-virtual/range {v22 .. v24}, Ljava/text/DecimalFormat;->format(D)Ljava/lang/String;
+
+    move-result-object v22
+
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v21
+
+    const-string v22, "/\u671f"
+
+    invoke-virtual/range {v21 .. v22}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v21
+
+    invoke-virtual/range {v21 .. v21}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v21
+
+    move-object/from16 v0, v16
+
+    move-object/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 93
+    new-instance v12, Landroid/widget/RelativeLayout$LayoutParams;
+
+    const/16 v21, -0x1
+
+    const/16 v22, -0x2
+
+    move/from16 v0, v21
+
+    move/from16 v1, v22
+
+    invoke-direct {v12, v0, v1}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
+
+    .line 94
+    .local v12, params:Landroid/widget/RelativeLayout$LayoutParams;
+    invoke-virtual/range {p0 .. p0}, Lcom/zhangdan/app/activities/stage/CardStageActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v21
+
+    invoke-virtual/range {v21 .. v21}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v21
+
+    move-object/from16 v0, v21
+
+    iget v5, v0, Landroid/util/DisplayMetrics;->density:F
+
+    .line 95
+    .local v5, density:F
+    const/high16 v21, 0x4120
+
+    mul-float v21, v21, v5
+
+    move/from16 v0, v21
+
+    float-to-int v0, v0
+
+    move/from16 v21, v0
+
+    move/from16 v0, v21
+
+    iput v0, v12, Landroid/widget/RelativeLayout$LayoutParams;->leftMargin:I
+
+    .line 96
+    const/high16 v21, 0x4120
+
+    mul-float v21, v21, v5
+
+    move/from16 v0, v21
+
+    float-to-int v0, v0
+
+    move/from16 v21, v0
+
+    move/from16 v0, v21
+
+    iput v0, v12, Landroid/widget/RelativeLayout$LayoutParams;->rightMargin:I
+
+    .line 97
+    const/high16 v21, 0x4120
+
+    mul-float v21, v21, v5
+
+    move/from16 v0, v21
+
+    float-to-int v0, v0
+
+    move/from16 v21, v0
+
+    move/from16 v0, v21
+
+    iput v0, v12, Landroid/widget/RelativeLayout$LayoutParams;->topMargin:I
+
+    .line 99
+    const/16 v21, 0x3
+
+    move/from16 v0, v21
+
+    invoke-virtual {v12, v0, v3}, Landroid/widget/RelativeLayout$LayoutParams;->addRule(II)V
+
+    .line 100
+    add-int/lit8 v3, v7, 0x1
+
+    .line 101
+    move-object/from16 v0, v20
+
+    invoke-virtual {v0, v3}, Landroid/view/View;->setId(I)V
+
+    .line 102
+    move-object/from16 v0, v20
+
+    invoke-virtual {v10, v0, v12}, Landroid/widget/RelativeLayout;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 80
+    add-int/lit8 v7, v7, 0x1
 
     goto/16 :goto_0
 .end method
@@ -525,30 +782,40 @@
 .method protected onDestroy()V
     .locals 1
 
+    .prologue
+    .line 115
     invoke-super {p0}, Lcom/zhangdan/app/activities/WrappedActivity;->onDestroy()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->f:Lcom/zhangdan/app/activities/stage/CardStageView;
+    .line 116
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mCardStageView:Lcom/zhangdan/app/activities/stage/CardStageView;
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->f:Lcom/zhangdan/app/activities/stage/CardStageView;
+    .line 117
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mCardStageView:Lcom/zhangdan/app/activities/stage/CardStageView;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/activities/stage/CardStageView;->a()V
+    invoke-virtual {v0}, Lcom/zhangdan/app/activities/stage/CardStageView;->destroy()V
 
+    .line 119
     :cond_0
     return-void
 .end method
 
 .method protected onSaveInstanceState(Landroid/os/Bundle;)V
     .locals 2
+    .parameter "outState"
 
+    .prologue
+    .line 109
     invoke-super {p0, p1}, Lcom/zhangdan/app/activities/WrappedActivity;->onSaveInstanceState(Landroid/os/Bundle;)V
 
+    .line 110
     const-string v0, "bill_stage"
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->c:Lcom/zhangdan/app/data/model/e;
+    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageActivity;->mBillStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Bundle;->putSerializable(Ljava/lang/String;Ljava/io/Serializable;)V
 
+    .line 111
     return-void
 .end method

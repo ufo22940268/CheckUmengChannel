@@ -1,4 +1,4 @@
-.class final Lsdk/b/a/a/e/b/b;
+.class Lsdk/b/a/a/e/b/b;
 .super Landroid/os/Handler;
 
 
@@ -19,7 +19,7 @@
 
 
 # virtual methods
-.method public final handleMessage(Landroid/os/Message;)V
+.method public handleMessage(Landroid/os/Message;)V
     .locals 5
 
     const/4 v4, 0x0

@@ -2,8 +2,35 @@
 .super Lcom/baidu/mapapi/ItemizedOverlay;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/TransitOverlay$1;,
+        Lcom/baidu/mapapi/TransitOverlay$a;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/baidu/mapapi/ItemizedOverlay",
+        "<",
+        "Lcom/baidu/mapapi/OverlayItem;",
+        ">;"
+    }
+.end annotation
+
+
 # instance fields
 .field private a:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/TransitOverlay$a;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private b:Lcom/baidu/mapapi/MapView;
 

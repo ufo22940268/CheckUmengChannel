@@ -1,50 +1,66 @@
-.class final enum Lcom/igexin/a/a/c/ac;
-.super Lcom/igexin/a/a/c/r;
+.class Lcom/igexin/a/a/c/ac;
+.super Ljava/util/ArrayList;
+
+
+# instance fields
+.field private final a:I
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method constructor <init>(II)V
+    .locals 0
 
-    const/16 v0, 0x11
+    invoke-direct {p0, p1}, Ljava/util/ArrayList;-><init>(I)V
 
-    const/4 v1, 0x0
-
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/r;-><init>(Ljava/lang/String;IB)V
+    iput p2, p0, Lcom/igexin/a/a/c/ac;->a:I
 
     return-void
 .end method
 
+.method static a(I)Lcom/igexin/a/a/c/ac;
+    .locals 2
+
+    new-instance v0, Lcom/igexin/a/a/c/ac;
+
+    const/16 v1, 0x10
+
+    invoke-direct {v0, v1, p0}, Lcom/igexin/a/a/c/ac;-><init>(II)V
+
+    return-object v0
+.end method
+
+.method static b()Lcom/igexin/a/a/c/ac;
+    .locals 2
+
+    const/4 v1, 0x0
+
+    new-instance v0, Lcom/igexin/a/a/c/ac;
+
+    invoke-direct {v0, v1, v1}, Lcom/igexin/a/a/c/ac;-><init>(II)V
+
+    return-object v0
+.end method
+
 
 # virtual methods
-.method final a(Lcom/igexin/a/a/c/q;Lcom/igexin/a/a/c/a;)V
-    .locals 1
+.method a()Z
+    .locals 2
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->m()Z
+    invoke-virtual {p0}, Lcom/igexin/a/a/c/ac;->size()I
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    iget v1, p0, Lcom/igexin/a/a/c/ac;->a:I
 
-    const/4 v0, 0x0
+    if-ge v0, v1, :cond_0
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Z)Lcom/igexin/a/a/c/n;
-
-    sget-object v0, Lcom/igexin/a/a/c/ac;->s:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    const/4 v0, 0x1
 
     :goto_0
-    return-void
+    return v0
 
     :cond_0
-    const-string v0, "</"
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Ljava/lang/String;)V
-
-    sget-object v0, Lcom/igexin/a/a/c/ac;->f:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method

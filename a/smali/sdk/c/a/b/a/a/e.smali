@@ -1,4 +1,4 @@
-.class final Lsdk/c/a/b/a/a/e;
+.class Lsdk/c/a/b/a/a/e;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -22,16 +22,12 @@
 
 
 # virtual methods
-.method public final synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
+.method public a(Lsdk/c/a/b/a/a/f;Lsdk/c/a/b/a/a/f;)I
     .locals 8
 
     const/4 v0, 0x1
 
     const/4 v1, -0x1
-
-    check-cast p1, Lsdk/c/a/b/a/a/f;
-
-    check-cast p2, Lsdk/c/a/b/a/a/f;
 
     if-nez p1, :cond_1
 
@@ -95,4 +91,18 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method public synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    .locals 1
+
+    check-cast p1, Lsdk/c/a/b/a/a/f;
+
+    check-cast p2, Lsdk/c/a/b/a/a/f;
+
+    invoke-virtual {p0, p1, p2}, Lsdk/c/a/b/a/a/e;->a(Lsdk/c/a/b/a/a/f;Lsdk/c/a/b/a/a/f;)I
+
+    move-result v0
+
+    return v0
 .end method

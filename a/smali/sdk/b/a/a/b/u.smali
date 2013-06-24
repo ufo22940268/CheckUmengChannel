@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/b/u;
+.class public Lsdk/b/a/a/b/u;
 .super Lsdk/b/a/a/b/d;
 
 
@@ -17,7 +17,7 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;)V
+.method public a(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/u;->a:Ljava/lang/String;

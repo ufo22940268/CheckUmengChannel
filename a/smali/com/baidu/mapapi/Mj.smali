@@ -2,6 +2,15 @@
 .super Ljava/lang/Object;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/Mj$b;,
+        Lcom/baidu/mapapi/Mj$a;
+    }
+.end annotation
+
+
 # static fields
 .field private static W:Lcom/baidu/mapapi/b;
 
@@ -10,6 +19,13 @@
 .field private static Y:Ljava/lang/reflect/Method;
 
 .field private static Z:Ljava/lang/Class;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/lang/Class",
+            "<*>;"
+        }
+    .end annotation
+.end field
 
 .field static a:Lcom/baidu/mapapi/f;
 
@@ -86,6 +102,15 @@
 .field private final K:J
 
 .field private L:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Landroid/telephony/NeighboringCellInfo;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private M:J
 
@@ -104,12 +129,39 @@
 .field private T:I
 
 .field private U:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Landroid/net/wifi/ScanResult;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private V:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Landroid/net/wifi/ScanResult;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private aa:Landroid/os/Handler;
 
 .field private ab:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/Mj$b;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private z:Landroid/telephony/TelephonyManager;
 
@@ -215,7 +267,19 @@
     :catch_0
     move-exception v0
 
+    const-string v1, "BMapApiEngine_v1_3_5"
+
+    const-string v2, "BMapApiEngine_v1_3_5 library not found!"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v1, "BMapApiEngine_v1_3_5"
+
     invoke-virtual {v0}, Ljava/lang/UnsatisfiedLinkError;->getLocalizedMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_0
 .end method
@@ -636,6 +700,8 @@
 
     sput-object v1, Lcom/baidu/mapapi/Mj;->Z:Ljava/lang/Class;
 
+    sget-object v1, Lcom/baidu/mapapi/Mj;->Z:Ljava/lang/Class;
+
     const-string v2, "getBaseStationId"
 
     const/4 v3, 0x0
@@ -886,7 +952,13 @@
     :catch_1
     move-exception v0
 
+    const-string v1, "baidumap"
+
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     const/4 v0, 0x0
 
@@ -1441,9 +1513,13 @@
 
     new-instance v2, Ljava/lang/StringBuilder;
 
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v3, "Android_"
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     sget-object v3, Lcom/baidu/mapapi/Mj;->x:Ljava/lang/String;
 
@@ -1737,7 +1813,13 @@
     :catch_0
     move-exception v0
 
+    const-string v1, "baidumap"
+
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     sput-object v11, Lcom/baidu/mapapi/Mj;->W:Lcom/baidu/mapapi/b;
 
@@ -1964,7 +2046,13 @@
     :catch_0
     move-exception v0
 
+    const-string v1, "baidumap"
+
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     sput-object v2, Lcom/baidu/mapapi/Mj;->W:Lcom/baidu/mapapi/b;
 
@@ -2214,6 +2302,8 @@
 
     check-cast v0, Ljava/lang/Integer;
 
+    check-cast v0, Ljava/lang/Integer;
+
     invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
 
     move-result v0
@@ -2310,6 +2400,8 @@
     const-string v8, ""
 
     const-string v9, ""
+
+    const-string v0, ""
 
     const-string v6, ""
 

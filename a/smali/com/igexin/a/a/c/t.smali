@@ -1,119 +1,150 @@
-.class final enum Lcom/igexin/a/a/c/t;
-.super Lcom/igexin/a/a/c/r;
+.class synthetic Lcom/igexin/a/a/c/t;
+.super Ljava/lang/Object;
+
+
+# static fields
+.field static final synthetic a:[I
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method static constructor <clinit>()V
+    .locals 3
 
-    const/16 v0, 0x9
-
-    const/4 v1, 0x0
-
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/r;-><init>(Ljava/lang/String;IB)V
-
-    return-void
-.end method
-
-
-# virtual methods
-.method final a(Lcom/igexin/a/a/c/q;Lcom/igexin/a/a/c/a;)V
-    .locals 2
-
-    const/4 v0, 0x7
-
-    new-array v0, v0, [C
-
-    fill-array-data v0, :array_0
-
-    invoke-virtual {p2, v0}, Lcom/igexin/a/a/c/a;->a([C)Ljava/lang/String;
+    invoke-static {}, Lcom/igexin/a/a/c/ao;->a()[Lcom/igexin/a/a/c/ao;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+    array-length v0, v0
 
-    move-result-object v0
+    new-array v0, v0, [I
 
-    iget-object v1, p1, Lcom/igexin/a/a/c/q;->b:Lcom/igexin/a/a/c/n;
+    sput-object v0, Lcom/igexin/a/a/c/t;->a:[I
 
-    invoke-virtual {v1, v0}, Lcom/igexin/a/a/c/n;->b(Ljava/lang/String;)V
+    :try_start_0
+    sget-object v0, Lcom/igexin/a/a/c/t;->a:[I
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->d()C
+    sget-object v1, Lcom/igexin/a/a/c/ao;->d:Lcom/igexin/a/a/c/ao;
 
-    move-result v0
+    invoke-virtual {v1}, Lcom/igexin/a/a/c/ao;->ordinal()I
 
-    sparse-switch v0, :sswitch_data_0
+    move-result v1
+
+    const/4 v2, 0x1
+
+    aput v2, v0, v1
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_5
 
     :goto_0
+    :try_start_1
+    sget-object v0, Lcom/igexin/a/a/c/t;->a:[I
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->a:Lcom/igexin/a/a/c/ao;
+
+    invoke-virtual {v1}, Lcom/igexin/a/a/c/ao;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    aput v2, v0, v1
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_4
+
+    :goto_1
+    :try_start_2
+    sget-object v0, Lcom/igexin/a/a/c/t;->a:[I
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->b:Lcom/igexin/a/a/c/ao;
+
+    invoke-virtual {v1}, Lcom/igexin/a/a/c/ao;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    aput v2, v0, v1
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_3
+
+    :goto_2
+    :try_start_3
+    sget-object v0, Lcom/igexin/a/a/c/t;->a:[I
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->c:Lcom/igexin/a/a/c/ao;
+
+    invoke-virtual {v1}, Lcom/igexin/a/a/c/ao;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x4
+
+    aput v2, v0, v1
+    :try_end_3
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_2
+
+    :goto_3
+    :try_start_4
+    sget-object v0, Lcom/igexin/a/a/c/t;->a:[I
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->e:Lcom/igexin/a/a/c/ao;
+
+    invoke-virtual {v1}, Lcom/igexin/a/a/c/ao;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x5
+
+    aput v2, v0, v1
+    :try_end_4
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_1
+
+    :goto_4
+    :try_start_5
+    sget-object v0, Lcom/igexin/a/a/c/t;->a:[I
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->f:Lcom/igexin/a/a/c/ao;
+
+    invoke-virtual {v1}, Lcom/igexin/a/a/c/ao;->ordinal()I
+
+    move-result v1
+
+    const/4 v2, 0x6
+
+    aput v2, v0, v1
+    :try_end_5
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_0
+
+    :goto_5
     return-void
 
-    :sswitch_0
-    sget-object v0, Lcom/igexin/a/a/c/t;->H:Lcom/igexin/a/a/c/r;
+    :catch_0
+    move-exception v0
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    goto :goto_5
 
-    goto :goto_0
+    :catch_1
+    move-exception v0
 
-    :sswitch_1
-    sget-object v0, Lcom/igexin/a/a/c/t;->P:Lcom/igexin/a/a/c/r;
+    goto :goto_4
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    :catch_2
+    move-exception v0
 
-    goto :goto_0
+    goto :goto_3
 
-    :sswitch_2
-    invoke-virtual {p1}, Lcom/igexin/a/a/c/q;->c()V
+    :catch_3
+    move-exception v0
 
-    sget-object v0, Lcom/igexin/a/a/c/t;->a:Lcom/igexin/a/a/c/r;
+    goto :goto_2
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    :catch_4
+    move-exception v0
 
-    goto :goto_0
+    goto :goto_1
 
-    :sswitch_3
-    iget-object v0, p1, Lcom/igexin/a/a/c/q;->b:Lcom/igexin/a/a/c/n;
-
-    invoke-static {}, Lcom/igexin/a/a/c/r;->a()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Lcom/igexin/a/a/c/n;->b(Ljava/lang/String;)V
+    :catch_5
+    move-exception v0
 
     goto :goto_0
-
-    :sswitch_4
-    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/q;->d(Lcom/igexin/a/a/c/r;)V
-
-    sget-object v0, Lcom/igexin/a/a/c/t;->a:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
-
-    goto :goto_0
-
-    nop
-
-    :array_0
-    .array-data 0x2
-        0x9t 0x0t
-        0xat 0x0t
-        0xct 0x0t
-        0x20t 0x0t
-        0x2ft 0x0t
-        0x3et 0x0t
-        0x0t 0x0t
-    .end array-data
-
-    nop
-
-    :sswitch_data_0
-    .sparse-switch
-        0x0 -> :sswitch_3
-        0x9 -> :sswitch_0
-        0xa -> :sswitch_0
-        0xc -> :sswitch_0
-        0x20 -> :sswitch_0
-        0x2f -> :sswitch_1
-        0x3e -> :sswitch_2
-        0xffff -> :sswitch_4
-    .end sparse-switch
 .end method

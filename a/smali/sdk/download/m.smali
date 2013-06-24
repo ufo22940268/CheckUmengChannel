@@ -1,4 +1,4 @@
-.class final Lsdk/download/m;
+.class Lsdk/download/m;
 .super Ljava/lang/Object;
 
 
@@ -55,9 +55,90 @@
     return-void
 .end method
 
+.method private static final a(C)Z
+    .locals 1
+
+    const/16 v0, 0x5f
+
+    if-eq p0, v0, :cond_1
+
+    const/16 v0, 0x41
+
+    if-lt p0, v0, :cond_0
+
+    const/16 v0, 0x5a
+
+    if-le p0, v0, :cond_1
+
+    :cond_0
+    const/16 v0, 0x61
+
+    if-lt p0, v0, :cond_2
+
+    const/16 v0, 0x7a
+
+    if-gt p0, v0, :cond_2
+
+    :cond_1
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_2
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method private static final b(C)Z
+    .locals 1
+
+    const/16 v0, 0x5f
+
+    if-eq p0, v0, :cond_2
+
+    const/16 v0, 0x41
+
+    if-lt p0, v0, :cond_0
+
+    const/16 v0, 0x5a
+
+    if-le p0, v0, :cond_2
+
+    :cond_0
+    const/16 v0, 0x61
+
+    if-lt p0, v0, :cond_1
+
+    const/16 v0, 0x7a
+
+    if-le p0, v0, :cond_2
+
+    :cond_1
+    const/16 v0, 0x30
+
+    if-lt p0, v0, :cond_3
+
+    const/16 v0, 0x39
+
+    if-gt p0, v0, :cond_3
+
+    :cond_2
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_3
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
 
 # virtual methods
-.method public final a()I
+.method public a()I
     .locals 1
 
     iget v0, p0, Lsdk/download/m;->d:I
@@ -65,50 +146,50 @@
     return v0
 .end method
 
-.method public final b()V
+.method public b()V
     .locals 8
 
-    const/4 v1, 0x0
+    const/4 v7, 0x6
 
-    const/16 v7, 0x27
+    const/4 v6, 0x4
 
-    const/4 v2, 0x1
+    const/16 v5, 0x27
 
-    const/4 v6, 0x5
+    const/4 v4, 0x5
 
-    const/16 v5, 0x3d
+    const/16 v3, 0x3d
 
-    iget-object v3, p0, Lsdk/download/m;->e:[C
+    iget-object v0, p0, Lsdk/download/m;->e:[C
 
     :goto_0
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    array-length v4, v3
+    array-length v2, v0
 
-    if-ge v0, v4, :cond_0
+    if-ge v1, v2, :cond_0
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    const/16 v4, 0x20
+    const/16 v2, 0x20
 
-    if-ne v0, v4, :cond_0
+    if-ne v1, v2, :cond_0
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    iput v1, p0, Lsdk/download/m;->c:I
 
     goto :goto_0
 
     :cond_0
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    array-length v4, v3
+    array-length v2, v0
 
-    if-ne v0, v4, :cond_2
+    if-ne v1, v2, :cond_2
 
     const/16 v0, 0x9
 
@@ -119,13 +200,13 @@
     return-void
 
     :cond_2
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    const/16 v4, 0x28
+    const/16 v2, 0x28
 
-    if-ne v0, v4, :cond_3
+    if-ne v1, v2, :cond_3
 
     iget v0, p0, Lsdk/download/m;->c:I
 
@@ -133,18 +214,20 @@
 
     iput v0, p0, Lsdk/download/m;->c:I
 
-    iput v2, p0, Lsdk/download/m;->d:I
+    const/4 v0, 0x1
+
+    iput v0, p0, Lsdk/download/m;->d:I
 
     goto :goto_1
 
     :cond_3
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    const/16 v4, 0x29
+    const/16 v2, 0x29
 
-    if-ne v0, v4, :cond_4
+    if-ne v1, v2, :cond_4
 
     iget v0, p0, Lsdk/download/m;->c:I
 
@@ -159,13 +242,13 @@
     goto :goto_1
 
     :cond_4
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    const/16 v4, 0x3f
+    const/16 v2, 0x3f
 
-    if-ne v0, v4, :cond_5
+    if-ne v1, v2, :cond_5
 
     iget v0, p0, Lsdk/download/m;->c:I
 
@@ -173,38 +256,36 @@
 
     iput v0, p0, Lsdk/download/m;->c:I
 
-    const/4 v0, 0x6
-
-    iput v0, p0, Lsdk/download/m;->d:I
+    iput v7, p0, Lsdk/download/m;->d:I
 
     goto :goto_1
 
     :cond_5
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    if-ne v0, v5, :cond_6
+    if-ne v1, v3, :cond_6
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    iput v1, p0, Lsdk/download/m;->c:I
 
-    iput v6, p0, Lsdk/download/m;->d:I
+    iput v4, p0, Lsdk/download/m;->d:I
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    array-length v1, v3
+    array-length v2, v0
 
-    if-ge v0, v1, :cond_1
+    if-ge v1, v2, :cond_1
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v0, v0, v1
 
-    if-ne v0, v5, :cond_1
+    if-ne v0, v3, :cond_1
 
     iget v0, p0, Lsdk/download/m;->c:I
 
@@ -215,33 +296,33 @@
     goto :goto_1
 
     :cond_6
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    const/16 v4, 0x3e
+    const/16 v2, 0x3e
 
-    if-ne v0, v4, :cond_7
+    if-ne v1, v2, :cond_7
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    iput v1, p0, Lsdk/download/m;->c:I
 
-    iput v6, p0, Lsdk/download/m;->d:I
+    iput v4, p0, Lsdk/download/m;->d:I
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    array-length v1, v3
+    array-length v2, v0
 
-    if-ge v0, v1, :cond_1
+    if-ge v1, v2, :cond_1
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v0, v0, v1
 
-    if-ne v0, v5, :cond_1
+    if-ne v0, v3, :cond_1
 
     iget v0, p0, Lsdk/download/m;->c:I
 
@@ -252,37 +333,37 @@
     goto :goto_1
 
     :cond_7
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    const/16 v4, 0x3c
+    const/16 v2, 0x3c
 
-    if-ne v0, v4, :cond_9
+    if-ne v1, v2, :cond_9
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    iput v1, p0, Lsdk/download/m;->c:I
 
-    iput v6, p0, Lsdk/download/m;->d:I
+    iput v4, p0, Lsdk/download/m;->d:I
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    array-length v1, v3
+    array-length v2, v0
 
-    if-ge v0, v1, :cond_1
+    if-ge v1, v2, :cond_1
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    if-eq v0, v5, :cond_8
+    if-eq v1, v3, :cond_8
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v0, v0, v1
 
     const/16 v1, 0x3e
 
@@ -298,33 +379,33 @@
     goto/16 :goto_1
 
     :cond_9
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    const/16 v4, 0x21
+    const/16 v2, 0x21
 
-    if-ne v0, v4, :cond_b
+    if-ne v1, v2, :cond_b
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    iput v1, p0, Lsdk/download/m;->c:I
 
-    iput v6, p0, Lsdk/download/m;->d:I
+    iput v4, p0, Lsdk/download/m;->d:I
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    array-length v1, v3
+    array-length v2, v0
 
-    if-ge v0, v1, :cond_a
+    if-ge v1, v2, :cond_a
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v0, v0, v1
 
-    if-ne v0, v5, :cond_a
+    if-ne v0, v3, :cond_a
 
     iget v0, p0, Lsdk/download/m;->c:I
 
@@ -344,126 +425,63 @@
     throw v0
 
     :cond_b
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    const/16 v4, 0x5f
+    invoke-static {v1}, Lsdk/download/m;->a(C)Z
 
-    if-eq v0, v4, :cond_d
+    move-result v1
 
-    const/16 v4, 0x41
+    if-eqz v1, :cond_12
 
-    if-lt v0, v4, :cond_c
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    const/16 v4, 0x5a
+    iget v2, p0, Lsdk/download/m;->c:I
 
-    if-le v0, v4, :cond_d
+    add-int/lit8 v2, v2, 0x1
 
-    :cond_c
-    const/16 v4, 0x61
-
-    if-lt v0, v4, :cond_11
-
-    const/16 v4, 0x7a
-
-    if-gt v0, v4, :cond_11
-
-    :cond_d
-    move v0, v2
+    iput v2, p0, Lsdk/download/m;->c:I
 
     :goto_2
-    if-eqz v0, :cond_19
+    iget v2, p0, Lsdk/download/m;->c:I
 
-    iget v4, p0, Lsdk/download/m;->c:I
+    array-length v3, v0
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    if-ge v2, v3, :cond_c
 
-    add-int/lit8 v0, v0, 0x1
+    iget v2, p0, Lsdk/download/m;->c:I
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    aget-char v2, v0, v2
 
-    :goto_3
-    iget v0, p0, Lsdk/download/m;->c:I
+    invoke-static {v2}, Lsdk/download/m;->b(C)Z
 
-    array-length v5, v3
+    move-result v2
 
-    if-ge v0, v5, :cond_13
+    if-eqz v2, :cond_c
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v2, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    add-int/lit8 v2, v2, 0x1
 
-    const/16 v5, 0x5f
-
-    if-eq v0, v5, :cond_10
-
-    const/16 v5, 0x41
-
-    if-lt v0, v5, :cond_e
-
-    const/16 v5, 0x5a
-
-    if-le v0, v5, :cond_10
-
-    :cond_e
-    const/16 v5, 0x61
-
-    if-lt v0, v5, :cond_f
-
-    const/16 v5, 0x7a
-
-    if-le v0, v5, :cond_10
-
-    :cond_f
-    const/16 v5, 0x30
-
-    if-lt v0, v5, :cond_12
-
-    const/16 v5, 0x39
-
-    if-gt v0, v5, :cond_12
-
-    :cond_10
-    move v0, v2
-
-    :goto_4
-    if-eqz v0, :cond_13
-
-    iget v0, p0, Lsdk/download/m;->c:I
-
-    add-int/lit8 v0, v0, 0x1
-
-    iput v0, p0, Lsdk/download/m;->c:I
-
-    goto :goto_3
-
-    :cond_11
-    move v0, v1
+    iput v2, p0, Lsdk/download/m;->c:I
 
     goto :goto_2
 
-    :cond_12
-    move v0, v1
-
-    goto :goto_4
-
-    :cond_13
+    :cond_c
     iget-object v0, p0, Lsdk/download/m;->a:Ljava/lang/String;
 
-    iget v1, p0, Lsdk/download/m;->c:I
+    iget v2, p0, Lsdk/download/m;->c:I
 
-    invoke-virtual {v0, v4, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    invoke-virtual {v0, v1, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v0
 
-    iget v1, p0, Lsdk/download/m;->c:I
+    iget v2, p0, Lsdk/download/m;->c:I
 
-    sub-int/2addr v1, v4
+    sub-int v1, v2, v1
 
-    const/4 v2, 0x4
-
-    if-gt v1, v2, :cond_17
+    if-gt v1, v6, :cond_10
 
     const-string v1, "IS"
 
@@ -471,7 +489,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_14
+    if-eqz v1, :cond_d
 
     const/4 v0, 0x7
 
@@ -479,14 +497,14 @@
 
     goto/16 :goto_1
 
-    :cond_14
+    :cond_d
     const-string v1, "OR"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-nez v1, :cond_15
+    if-nez v1, :cond_e
 
     const-string v1, "AND"
 
@@ -494,23 +512,23 @@
 
     move-result v1
 
-    if-eqz v1, :cond_16
+    if-eqz v1, :cond_f
 
-    :cond_15
+    :cond_e
     const/4 v0, 0x3
 
     iput v0, p0, Lsdk/download/m;->d:I
 
     goto/16 :goto_1
 
-    :cond_16
+    :cond_f
     const-string v1, "NULL"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_17
+    if-eqz v1, :cond_10
 
     const/16 v0, 0x8
 
@@ -518,22 +536,20 @@
 
     goto/16 :goto_1
 
-    :cond_17
+    :cond_10
     iget-object v1, p0, Lsdk/download/m;->b:Ljava/util/Set;
 
     invoke-interface {v1, v0}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
 
     move-result v0
 
-    if-eqz v0, :cond_18
+    if-eqz v0, :cond_11
 
-    const/4 v0, 0x4
-
-    iput v0, p0, Lsdk/download/m;->d:I
+    iput v6, p0, Lsdk/download/m;->d:I
 
     goto/16 :goto_1
 
-    :cond_18
+    :cond_11
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "unrecognized column or keyword"
@@ -542,69 +558,69 @@
 
     throw v0
 
-    :cond_19
-    iget v0, p0, Lsdk/download/m;->c:I
+    :cond_12
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    if-ne v0, v7, :cond_1d
+    if-ne v1, v5, :cond_16
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    iput v1, p0, Lsdk/download/m;->c:I
 
-    :goto_5
-    iget v0, p0, Lsdk/download/m;->c:I
+    :goto_3
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    array-length v1, v3
+    array-length v2, v0
 
-    if-ge v0, v1, :cond_1b
+    if-ge v1, v2, :cond_14
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    if-ne v0, v7, :cond_1a
+    if-ne v1, v5, :cond_13
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    array-length v1, v3
+    array-length v2, v0
 
-    if-ge v0, v1, :cond_1b
+    if-ge v1, v2, :cond_14
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    aget-char v0, v3, v0
+    aget-char v1, v0, v1
 
-    if-ne v0, v7, :cond_1b
+    if-ne v1, v5, :cond_14
 
-    iget v0, p0, Lsdk/download/m;->c:I
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    iput v1, p0, Lsdk/download/m;->c:I
 
-    :cond_1a
-    iget v0, p0, Lsdk/download/m;->c:I
+    :cond_13
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    add-int/lit8 v0, v0, 0x1
+    add-int/lit8 v1, v1, 0x1
 
-    iput v0, p0, Lsdk/download/m;->c:I
+    iput v1, p0, Lsdk/download/m;->c:I
 
-    goto :goto_5
+    goto :goto_3
 
-    :cond_1b
-    iget v0, p0, Lsdk/download/m;->c:I
+    :cond_14
+    iget v1, p0, Lsdk/download/m;->c:I
 
-    array-length v1, v3
+    array-length v0, v0
 
-    if-ne v0, v1, :cond_1c
+    if-ne v1, v0, :cond_15
 
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
@@ -614,20 +630,18 @@
 
     throw v0
 
-    :cond_1c
+    :cond_15
     iget v0, p0, Lsdk/download/m;->c:I
 
     add-int/lit8 v0, v0, 0x1
 
     iput v0, p0, Lsdk/download/m;->c:I
 
-    const/4 v0, 0x6
-
-    iput v0, p0, Lsdk/download/m;->d:I
+    iput v7, p0, Lsdk/download/m;->d:I
 
     goto/16 :goto_1
 
-    :cond_1d
+    :cond_16
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
     const-string v1, "illegal character"

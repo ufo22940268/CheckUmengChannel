@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/b/m;
+.class public Lsdk/b/a/a/b/m;
 .super Lsdk/b/a/a/b/d;
 
 # interfaces
@@ -34,7 +34,7 @@
 
 
 # virtual methods
-.method public final a()Ljava/lang/String;
+.method public a()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/m;->a:Ljava/lang/String;
@@ -42,7 +42,7 @@
     return-object v0
 .end method
 
-.method public final a(Ljava/lang/String;)V
+.method public a(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/m;->a:Ljava/lang/String;
@@ -50,7 +50,7 @@
     return-void
 .end method
 
-.method public final a(Ljava/util/List;)V
+.method public a(Ljava/util/List;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/m;->f:Ljava/util/List;
@@ -58,7 +58,7 @@
     return-void
 .end method
 
-.method public final b()Ljava/lang/String;
+.method public b()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/m;->b:Ljava/lang/String;
@@ -66,7 +66,7 @@
     return-object v0
 .end method
 
-.method public final b(Ljava/lang/String;)V
+.method public b(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/m;->b:Ljava/lang/String;
@@ -74,7 +74,7 @@
     return-void
 .end method
 
-.method public final c()Ljava/util/List;
+.method public c()Ljava/util/List;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/m;->f:Ljava/util/List;
@@ -82,7 +82,7 @@
     return-object v0
 .end method
 
-.method public final c(Ljava/lang/String;)V
+.method public c(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/m;->c:Ljava/lang/String;
@@ -90,7 +90,7 @@
     return-void
 .end method
 
-.method public final d()Ljava/lang/String;
+.method public d()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/m;->c:Ljava/lang/String;
@@ -98,7 +98,7 @@
     return-object v0
 .end method
 
-.method public final d(Ljava/lang/String;)V
+.method public d(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/m;->d:Ljava/lang/String;
@@ -106,7 +106,7 @@
     return-void
 .end method
 
-.method public final e()Ljava/lang/String;
+.method public e()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/m;->e:Ljava/lang/String;
@@ -114,7 +114,7 @@
     return-object v0
 .end method
 
-.method public final e(Ljava/lang/String;)V
+.method public e(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/m;->e:Ljava/lang/String;

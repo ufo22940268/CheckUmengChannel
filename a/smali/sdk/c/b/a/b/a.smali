@@ -1,4 +1,4 @@
-.class public final Lsdk/c/b/a/b/a;
+.class public Lsdk/c/b/a/b/a;
 .super Ljava/lang/Object;
 
 
@@ -23,7 +23,7 @@
 
 
 # virtual methods
-.method public final a([B)V
+.method public a([B)V
     .locals 1
 
     if-nez p1, :cond_0

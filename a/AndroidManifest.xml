@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest android:versionCode="23" android:versionName="3.6.0" package="com.zhangdan.app"
+<manifest android:versionCode="24" android:versionName="3.6.1" package="com.zhangdan.app"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="16" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
@@ -21,6 +20,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="com.zhangdan.app.access_zhangdan_db" />
+    <permission android:name="com.zhangdan.app.access_zhangdan_db" />
     <application android:theme="@style/AppTheme" android:label="@string/app_name" android:icon="@drawable/icon" android:name=".ZhangdanApplication">
         <activity android:name=".activities.SplashActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation">
             <intent-filter>
@@ -79,6 +80,7 @@
         <activity android:name=".activities.stage.CardStageActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
         <activity android:name=".activities.shopping.AllShoppingSheetActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
         <activity android:name=".activities.newimport.FirstLoginActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".activities.newimport.FirstInputPwdActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
         <activity android:name=".activities.newimport.RelevantAccountActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
         <activity android:name=".activities.chart.ChartActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
         <activity android:name=".activities.setting.UserAgreementActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
@@ -203,7 +205,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:theme="@android:style/Theme.Dialog" android:name="com.zhangdan.preferential.WeiboLoginActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation">
+        <activity android:theme="@*android:style/Theme.Dialog" android:name="com.zhangdan.preferential.WeiboLoginActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation">
             <intent-filter>
                 <action android:name="com.zhangdan.preferential.LOGIN_WEIBO" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -215,14 +217,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <service android:name="com.zhangdan.preferential.UpdatePositionService">
-            <intent-filter>
-                <action android:name="android.intent.action.UPDATE_POSITION" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </service>
+        <activity android:name="com.zhangdan.banka.kh.BankaMainActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".activities.handinput.HandInputBillActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
+        <activity android:name=".activities.mailimport.MailHelpActivity" android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation" />
         <activity android:label="@string/app_name" android:name="com.tencent.weibo.webview.OAuthV2AuthorizeWebView" />
-        <provider android:name=".data.db.DataProvider" android:authorities="com.zhangdan.app" />
+        <provider android:name=".data.db.DataProvider" android:permission="com.zhangdan.app.access_zhangdan_db" android:authorities="com.zhangdan.app" />
         <service android:name=".service.DownloadDataService" />
         <service android:name=".service.SyncService" />
         <service android:name=".service.AddDeviceService" />
@@ -236,11 +235,11 @@
                 <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.RepaymentNotifyReceiver" />
+        <receiver android:name=".receiver.RepaymentNotifyReceiver" android:exported="false" />
         <meta-data android:name="appid" android:value="nf0v98xkm48xxbRutIUl6" />
         <meta-data android:name="appkey" android:value="Apctq7Juxf7ZuOlyzKe5m7" />
         <meta-data android:name="appsecret" android:value="CwXBlbGB1J6yesQYScKPu9" />
-        <activity android:theme="@android:style/Theme.Translucent.NoTitleBar" android:name="com.igexin.sdk.SdkActivity" android:process="com.zhangdan.app.pushservice" android:taskAffinity="android.task.SdkActivityTask" android:excludeFromRecents="true">
+        <activity android:theme="@*android:style/Theme.Translucent.NoTitleBar" android:name="com.igexin.sdk.SdkActivity" android:process="com.zhangdan.app.pushservice" android:taskAffinity="android.task.SdkActivityTask" android:excludeFromRecents="true">
             <intent-filter>
                 <action android:name="com.igexin.action.popupact.com.zhangdan.app" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -275,6 +274,6 @@
         <service android:name="com.umeng.common.net.DownloadingService" android:exported="true" android:process=":DownloadingService" />
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote" />
         <meta-data android:name="UMENG_APPKEY" android:value="4f93beaa52701533e9000002" />
-        <meta-data android:name="UMENG_CHANNEL" android:value="小米_原" />
+        <meta-data android:name="UMENG_CHANNEL" android:value="官网_原" />
     </application>
 </manifest>

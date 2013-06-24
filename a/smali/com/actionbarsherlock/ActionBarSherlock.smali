@@ -1,15 +1,52 @@
 .class public abstract Lcom/actionbarsherlock/ActionBarSherlock;
 .super Ljava/lang/Object;
+.source "ActionBarSherlock.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/actionbarsherlock/ActionBarSherlock$OnActionModeStartedListener;,
+        Lcom/actionbarsherlock/ActionBarSherlock$OnActionModeFinishedListener;,
+        Lcom/actionbarsherlock/ActionBarSherlock$OnPrepareOptionsMenuListener;,
+        Lcom/actionbarsherlock/ActionBarSherlock$OnPreparePanelListener;,
+        Lcom/actionbarsherlock/ActionBarSherlock$OnOptionsItemSelectedListener;,
+        Lcom/actionbarsherlock/ActionBarSherlock$OnMenuItemSelectedListener;,
+        Lcom/actionbarsherlock/ActionBarSherlock$OnCreateOptionsMenuListener;,
+        Lcom/actionbarsherlock/ActionBarSherlock$OnCreatePanelMenuListener;,
+        Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    }
+.end annotation
 
 
 # static fields
 .field private static final CONSTRUCTOR_ARGS:[Ljava/lang/Class; = null
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "[",
+            "Ljava/lang/Class",
+            "<*>;"
+        }
+    .end annotation
+.end field
 
 .field protected static final DEBUG:Z = false
 
 .field public static final FLAG_DELEGATE:I = 0x1
 
 .field private static final IMPLEMENTATIONS:Ljava/util/HashMap; = null
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/HashMap",
+            "<",
+            "Lcom/actionbarsherlock/ActionBarSherlock$Implementation;",
+            "Ljava/lang/Class",
+            "<+",
+            "Lcom/actionbarsherlock/ActionBarSherlock;",
+            ">;>;"
+        }
+    .end annotation
+.end field
 
 .field protected static final TAG:Ljava/lang/String; = "ActionBarSherlock"
 
@@ -26,6 +63,8 @@
 .method static constructor <clinit>()V
     .locals 3
 
+    .prologue
+    .line 45
     const/4 v0, 0x2
 
     new-array v0, v0, [Ljava/lang/Class;
@@ -44,30 +83,40 @@
 
     sput-object v0, Lcom/actionbarsherlock/ActionBarSherlock;->CONSTRUCTOR_ARGS:[Ljava/lang/Class;
 
+    .line 46
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     sput-object v0, Lcom/actionbarsherlock/ActionBarSherlock;->IMPLEMENTATIONS:Ljava/util/HashMap;
 
+    .line 51
     const-class v0, Lcom/actionbarsherlock/internal/ActionBarSherlockCompat;
 
     invoke-static {v0}, Lcom/actionbarsherlock/ActionBarSherlock;->registerImplementation(Ljava/lang/Class;)V
 
+    .line 52
     const-class v0, Lcom/actionbarsherlock/internal/ActionBarSherlockNative;
 
     invoke-static {v0}, Lcom/actionbarsherlock/ActionBarSherlock;->registerImplementation(Ljava/lang/Class;)V
 
+    .line 53
     return-void
 .end method
 
 .method protected constructor <init>(Landroid/app/Activity;I)V
     .locals 1
+    .parameter "activity"
+    .parameter "flags"
 
+    .prologue
+    .line 255
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 258
     iput-object p1, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
+    .line 259
     and-int/lit8 v0, p2, 0x1
 
     if-eqz v0, :cond_0
@@ -77,8 +126,10 @@
     :goto_0
     iput-boolean v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mIsDelegate:Z
 
+    .line 260
     return-void
 
+    .line 259
     :cond_0
     const/4 v0, 0x0
 
@@ -86,67 +137,90 @@
 .end method
 
 .method public static registerImplementation(Ljava/lang/Class;)V
-    .locals 3
+    .locals 4
+    .parameter
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Class",
+            "<+",
+            "Lcom/actionbarsherlock/ActionBarSherlock;",
+            ">;)V"
+        }
+    .end annotation
 
-    const-class v0, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    .prologue
+    .line 122
+    .local p0, implementationClass:Ljava/lang/Class;,"Ljava/lang/Class<+Lcom/actionbarsherlock/ActionBarSherlock;>;"
+    const-class v1, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
 
-    invoke-virtual {p0, v0}, Ljava/lang/Class;->isAnnotationPresent(Ljava/lang/Class;)Z
+    invoke-virtual {p0, v1}, Ljava/lang/Class;->isAnnotationPresent(Ljava/lang/Class;)Z
 
-    move-result v0
+    move-result v1
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    .line 123
+    new-instance v1, Ljava/lang/IllegalArgumentException;
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    const-string v2, "Class "
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v3, "Class "
 
-    invoke-virtual {p0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {p0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v3
 
-    const-string v2, " is not annotated with @Implementation"
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    move-result-object v2
 
-    move-result-object v1
+    const-string v3, " is not annotated with @Implementation"
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    throw v0
+    move-result-object v2
 
+    invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 124
     :cond_0
-    sget-object v0, Lcom/actionbarsherlock/ActionBarSherlock;->IMPLEMENTATIONS:Ljava/util/HashMap;
+    sget-object v1, Lcom/actionbarsherlock/ActionBarSherlock;->IMPLEMENTATIONS:Ljava/util/HashMap;
 
-    invoke-virtual {v0, p0}, Ljava/util/HashMap;->containsValue(Ljava/lang/Object;)Z
+    invoke-virtual {v1, p0}, Ljava/util/HashMap;->containsValue(Ljava/lang/Object;)Z
 
-    move-result v0
+    move-result v1
 
-    if-eqz v0, :cond_1
+    if-eqz v1, :cond_1
 
+    .line 132
     :goto_0
     return-void
 
+    .line 129
     :cond_1
-    const-class v0, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    const-class v1, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
 
-    invoke-virtual {p0, v0}, Ljava/lang/Class;->getAnnotation(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
+    invoke-virtual {p0, v1}, Ljava/lang/Class;->getAnnotation(Ljava/lang/Class;)Ljava/lang/annotation/Annotation;
 
     move-result-object v0
 
     check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
 
+    .line 131
+    .local v0, impl:Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
     sget-object v1, Lcom/actionbarsherlock/ActionBarSherlock;->IMPLEMENTATIONS:Ljava/util/HashMap;
 
     invoke-virtual {v1, v0, p0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
@@ -156,7 +230,20 @@
 
 .method public static unregisterImplementation(Ljava/lang/Class;)Z
     .locals 1
+    .parameter
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Class",
+            "<+",
+            "Lcom/actionbarsherlock/ActionBarSherlock;",
+            ">;)Z"
+        }
+    .end annotation
 
+    .prologue
+    .line 143
+    .local p0, implementationClass:Ljava/lang/Class;,"Ljava/lang/Class<+Lcom/actionbarsherlock/ActionBarSherlock;>;"
     sget-object v0, Lcom/actionbarsherlock/ActionBarSherlock;->IMPLEMENTATIONS:Ljava/util/HashMap;
 
     invoke-virtual {v0}, Ljava/util/HashMap;->values()Ljava/util/Collection;
@@ -172,7 +259,10 @@
 
 .method public static wrap(Landroid/app/Activity;)Lcom/actionbarsherlock/ActionBarSherlock;
     .locals 1
+    .parameter "activity"
 
+    .prologue
+    .line 155
     const/4 v0, 0x0
 
     invoke-static {p0, v0}, Lcom/actionbarsherlock/ActionBarSherlock;->wrap(Landroid/app/Activity;I)Lcom/actionbarsherlock/ActionBarSherlock;
@@ -183,306 +273,365 @@
 .end method
 
 .method public static wrap(Landroid/app/Activity;I)Lcom/actionbarsherlock/ActionBarSherlock;
-    .locals 7
+    .locals 16
+    .parameter "activity"
+    .parameter "flags"
 
-    const/16 v6, 0xd5
+    .prologue
+    .line 169
+    new-instance v6, Ljava/util/HashMap;
 
-    const/4 v2, 0x1
+    sget-object v13, Lcom/actionbarsherlock/ActionBarSherlock;->IMPLEMENTATIONS:Ljava/util/HashMap;
 
+    invoke-direct {v6, v13}, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V
+
+    .line 174
+    .local v6, impls:Ljava/util/HashMap;,"Ljava/util/HashMap<Lcom/actionbarsherlock/ActionBarSherlock$Implementation;Ljava/lang/Class<+Lcom/actionbarsherlock/ActionBarSherlock;>;>;"
     const/4 v3, 0x0
 
-    new-instance v4, Ljava/util/HashMap;
+    .line 175
+    .local v3, hasQualfier:Z
+    invoke-virtual {v6}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
 
-    sget-object v0, Lcom/actionbarsherlock/ActionBarSherlock;->IMPLEMENTATIONS:Ljava/util/HashMap;
+    move-result-object v13
 
-    invoke-direct {v4, v0}, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V
+    invoke-interface {v13}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
-    invoke-virtual {v4}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+    move-result-object v4
 
-    move-result-object v0
-
-    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
+    .local v4, i$:Ljava/util/Iterator;
     :cond_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v0
+    move-result v13
 
-    if-nez v0, :cond_7
+    if-eqz v13, :cond_1
 
-    move v0, v3
+    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    :goto_0
-    if-eqz v0, :cond_2
+    move-result-object v8
 
-    invoke-virtual {p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
+    check-cast v8, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
 
-    move-result-object v0
+    .line 177
+    .local v8, key:Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    invoke-interface {v8}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->dpi()I
 
-    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    move-result v13
 
-    move-result-object v0
+    const/16 v14, 0xd5
 
-    iget v0, v0, Landroid/util/DisplayMetrics;->densityDpi:I
+    if-ne v13, v14, :cond_0
 
-    if-ne v0, v6, :cond_8
+    .line 178
+    const/4 v3, 0x1
 
-    move v1, v2
-
-    :goto_1
-    invoke-virtual {v4}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v5
-
+    .line 182
+    .end local v8           #key:Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
     :cond_1
-    :goto_2
-    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+    if-eqz v3, :cond_6
 
-    move-result v0
+    .line 183
+    invoke-virtual/range {p0 .. p0}, Landroid/app/Activity;->getResources()Landroid/content/res/Resources;
 
-    if-nez v0, :cond_9
+    move-result-object v13
 
+    invoke-virtual {v13}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v13
+
+    iget v13, v13, Landroid/util/DisplayMetrics;->densityDpi:I
+
+    const/16 v14, 0xd5
+
+    if-ne v13, v14, :cond_5
+
+    const/4 v7, 0x1
+
+    .line 184
+    .local v7, isTvDpi:Z
+    :goto_0
+    invoke-virtual {v6}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+
+    move-result-object v13
+
+    invoke-interface {v13}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v11
+
+    .local v11, keys:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/actionbarsherlock/ActionBarSherlock$Implementation;>;"
     :cond_2
-    invoke-virtual {v4}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+    :goto_1
+    invoke-interface {v11}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result-object v0
+    move-result v13
 
-    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+    if-eqz v13, :cond_6
 
-    move-result-object v1
+    .line 185
+    invoke-interface {v11}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v13
+
+    check-cast v13, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+
+    invoke-interface {v13}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->dpi()I
+
+    move-result v10
+
+    .line 186
+    .local v10, keyDpi:I
+    if-eqz v7, :cond_3
+
+    const/16 v13, 0xd5
+
+    if-ne v10, v13, :cond_4
 
     :cond_3
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+    if-nez v7, :cond_2
 
-    move-result v0
+    const/16 v13, 0xd5
 
-    if-nez v0, :cond_c
+    if-ne v10, v13, :cond_2
 
-    move v0, v3
-
-    :goto_3
-    if-eqz v0, :cond_6
-
-    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    invoke-virtual {v4}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v5
-
+    .line 188
     :cond_4
-    :goto_4
-    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v0
-
-    if-nez v0, :cond_d
-
-    invoke-virtual {v4}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
-    :cond_5
-    :goto_5
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v0
-
-    if-nez v0, :cond_f
-
-    :cond_6
-    invoke-virtual {v4}, Ljava/util/HashMap;->size()I
-
-    move-result v0
-
-    if-le v0, v2, :cond_10
-
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "More than one implementation matches configuration."
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    :cond_7
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
-
-    invoke-interface {v0}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->dpi()I
-
-    move-result v0
-
-    if-ne v0, v6, :cond_0
-
-    move v0, v2
-
-    goto :goto_0
-
-    :cond_8
-    move v1, v3
+    invoke-interface {v11}, Ljava/util/Iterator;->remove()V
 
     goto :goto_1
 
+    .line 183
+    .end local v7           #isTvDpi:Z
+    .end local v10           #keyDpi:I
+    .end local v11           #keys:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/actionbarsherlock/ActionBarSherlock$Implementation;>;"
+    :cond_5
+    const/4 v7, 0x0
+
+    goto :goto_0
+
+    .line 194
+    :cond_6
+    const/4 v3, 0x0
+
+    .line 195
+    invoke-virtual {v6}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+
+    move-result-object v13
+
+    invoke-interface {v13}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v4
+
+    :cond_7
+    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v13
+
+    if-eqz v13, :cond_8
+
+    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+
+    .line 196
+    .restart local v8       #key:Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    invoke-interface {v8}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->api()I
+
+    move-result v13
+
+    const/4 v14, -0x1
+
+    if-eq v13, v14, :cond_7
+
+    .line 197
+    const/4 v3, 0x1
+
+    .line 201
+    .end local v8           #key:Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    :cond_8
+    if-eqz v3, :cond_d
+
+    .line 202
+    sget v12, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    .line 203
+    .local v12, runtimeApi:I
+    const/4 v0, 0x0
+
+    .line 204
+    .local v0, bestApi:I
+    invoke-virtual {v6}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+
+    move-result-object v13
+
+    invoke-interface {v13}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v11
+
+    .restart local v11       #keys:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/actionbarsherlock/ActionBarSherlock$Implementation;>;"
     :cond_9
-    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    :goto_2
+    invoke-interface {v11}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result-object v0
+    move-result v13
 
-    check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    if-eqz v13, :cond_b
 
-    invoke-interface {v0}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->dpi()I
+    .line 205
+    invoke-interface {v11}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result v0
+    move-result-object v13
 
-    if-eqz v1, :cond_a
+    check-cast v13, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
 
-    if-ne v0, v6, :cond_b
+    invoke-interface {v13}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->api()I
 
-    :cond_a
-    if-nez v1, :cond_1
+    move-result v9
 
-    if-ne v0, v6, :cond_1
+    .line 206
+    .local v9, keyApi:I
+    if-le v9, v12, :cond_a
 
-    :cond_b
-    invoke-interface {v5}, Ljava/util/Iterator;->remove()V
+    .line 207
+    invoke-interface {v11}, Ljava/util/Iterator;->remove()V
 
     goto :goto_2
 
+    .line 208
+    :cond_a
+    if-le v9, v0, :cond_9
+
+    .line 209
+    move v0, v9
+
+    goto :goto_2
+
+    .line 212
+    .end local v9           #keyApi:I
+    :cond_b
+    invoke-virtual {v6}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+
+    move-result-object v13
+
+    invoke-interface {v13}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v11
+
     :cond_c
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    :goto_3
+    invoke-interface {v11}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result-object v0
+    move-result v13
 
-    check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    if-eqz v13, :cond_d
 
-    invoke-interface {v0}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->api()I
+    .line 213
+    invoke-interface {v11}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    move-result v0
+    move-result-object v13
 
-    const/4 v5, -0x1
+    check-cast v13, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
 
-    if-eq v0, v5, :cond_3
+    invoke-interface {v13}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->api()I
 
-    move v0, v2
+    move-result v13
+
+    if-eq v13, v0, :cond_c
+
+    .line 214
+    invoke-interface {v11}, Ljava/util/Iterator;->remove()V
 
     goto :goto_3
 
+    .line 219
+    .end local v0           #bestApi:I
+    .end local v11           #keys:Ljava/util/Iterator;,"Ljava/util/Iterator<Lcom/actionbarsherlock/ActionBarSherlock$Implementation;>;"
+    .end local v12           #runtimeApi:I
     :cond_d
-    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-virtual {v6}, Ljava/util/HashMap;->size()I
 
-    move-result-object v0
+    move-result v13
 
-    check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    const/4 v14, 0x1
 
-    invoke-interface {v0}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->api()I
+    if-le v13, v14, :cond_e
 
-    move-result v0
+    .line 220
+    new-instance v13, Ljava/lang/IllegalStateException;
 
-    if-le v0, v1, :cond_e
+    const-string v14, "More than one implementation matches configuration."
 
-    invoke-interface {v5}, Ljava/util/Iterator;->remove()V
+    invoke-direct {v13, v14}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
-    goto :goto_4
+    throw v13
 
+    .line 222
     :cond_e
-    if-le v0, v3, :cond_4
+    invoke-virtual {v6}, Ljava/util/HashMap;->isEmpty()Z
 
-    move v3, v0
+    move-result v13
 
-    goto :goto_4
+    if-eqz v13, :cond_f
 
+    .line 223
+    new-instance v13, Ljava/lang/IllegalStateException;
+
+    const-string v14, "No implementations match configuration."
+
+    invoke-direct {v13, v14}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v13
+
+    .line 225
     :cond_f
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-virtual {v6}, Ljava/util/HashMap;->values()Ljava/util/Collection;
 
-    move-result-object v0
+    move-result-object v13
 
-    check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;
+    invoke-interface {v13}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
-    invoke-interface {v0}, Lcom/actionbarsherlock/ActionBarSherlock$Implementation;->api()I
+    move-result-object v13
 
-    move-result v0
+    invoke-interface {v13}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    if-eq v0, v3, :cond_5
+    move-result-object v5
 
-    invoke-interface {v1}, Ljava/util/Iterator;->remove()V
+    check-cast v5, Ljava/lang/Class;
 
-    goto :goto_5
-
-    :cond_10
-    invoke-virtual {v4}, Ljava/util/HashMap;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_11
-
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "No implementations match configuration."
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    :cond_11
-    invoke-virtual {v4}, Ljava/util/HashMap;->values()Ljava/util/Collection;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/lang/Class;
-
+    .line 229
+    .local v5, impl:Ljava/lang/Class;,"Ljava/lang/Class<+Lcom/actionbarsherlock/ActionBarSherlock;>;"
     :try_start_0
-    sget-object v1, Lcom/actionbarsherlock/ActionBarSherlock;->CONSTRUCTOR_ARGS:[Ljava/lang/Class;
+    sget-object v13, Lcom/actionbarsherlock/ActionBarSherlock;->CONSTRUCTOR_ARGS:[Ljava/lang/Class;
 
-    invoke-virtual {v0, v1}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    invoke-virtual {v5, v13}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
 
-    move-result-object v0
+    move-result-object v1
 
-    const/4 v1, 0x2
+    .line 230
+    .local v1, ctor:Ljava/lang/reflect/Constructor;,"Ljava/lang/reflect/Constructor<+Lcom/actionbarsherlock/ActionBarSherlock;>;"
+    const/4 v13, 0x2
 
-    new-array v1, v1, [Ljava/lang/Object;
+    new-array v13, v13, [Ljava/lang/Object;
 
-    const/4 v2, 0x0
+    const/4 v14, 0x0
 
-    aput-object p0, v1, v2
+    aput-object p0, v13, v14
 
-    const/4 v2, 0x1
+    const/4 v14, 0x1
 
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static/range {p1 .. p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v3
+    move-result-object v15
 
-    aput-object v3, v1, v2
+    aput-object v15, v13, v14
 
-    invoke-virtual {v0, v1}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v1, v13}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v13
 
-    check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock;
+    check-cast v13, Lcom/actionbarsherlock/ActionBarSherlock;
     :try_end_0
     .catch Ljava/lang/NoSuchMethodException; {:try_start_0 .. :try_end_0} :catch_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_1
@@ -490,52 +639,72 @@
     .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_3
     .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_4
 
-    return-object v0
+    return-object v13
 
+    .line 231
+    .end local v1           #ctor:Ljava/lang/reflect/Constructor;,"Ljava/lang/reflect/Constructor<+Lcom/actionbarsherlock/ActionBarSherlock;>;"
     :catch_0
-    move-exception v0
+    move-exception v2
 
-    new-instance v1, Ljava/lang/RuntimeException;
+    .line 232
+    .local v2, e:Ljava/lang/NoSuchMethodException;
+    new-instance v13, Ljava/lang/RuntimeException;
 
-    invoke-direct {v1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+    invoke-direct {v13, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
 
-    throw v1
+    throw v13
 
+    .line 233
+    .end local v2           #e:Ljava/lang/NoSuchMethodException;
     :catch_1
-    move-exception v0
+    move-exception v2
 
-    new-instance v1, Ljava/lang/RuntimeException;
+    .line 234
+    .local v2, e:Ljava/lang/IllegalArgumentException;
+    new-instance v13, Ljava/lang/RuntimeException;
 
-    invoke-direct {v1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+    invoke-direct {v13, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
 
-    throw v1
+    throw v13
 
+    .line 235
+    .end local v2           #e:Ljava/lang/IllegalArgumentException;
     :catch_2
-    move-exception v0
+    move-exception v2
 
-    new-instance v1, Ljava/lang/RuntimeException;
+    .line 236
+    .local v2, e:Ljava/lang/InstantiationException;
+    new-instance v13, Ljava/lang/RuntimeException;
 
-    invoke-direct {v1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+    invoke-direct {v13, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
 
-    throw v1
+    throw v13
 
+    .line 237
+    .end local v2           #e:Ljava/lang/InstantiationException;
     :catch_3
-    move-exception v0
+    move-exception v2
 
-    new-instance v1, Ljava/lang/RuntimeException;
+    .line 238
+    .local v2, e:Ljava/lang/IllegalAccessException;
+    new-instance v13, Ljava/lang/RuntimeException;
 
-    invoke-direct {v1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+    invoke-direct {v13, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
 
-    throw v1
+    throw v13
 
+    .line 239
+    .end local v2           #e:Ljava/lang/IllegalAccessException;
     :catch_4
-    move-exception v0
+    move-exception v2
 
-    new-instance v1, Ljava/lang/RuntimeException;
+    .line 240
+    .local v2, e:Ljava/lang/reflect/InvocationTargetException;
+    new-instance v13, Ljava/lang/RuntimeException;
 
-    invoke-direct {v1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+    invoke-direct {v13, v2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
 
-    throw v1
+    throw v13
 .end method
 
 
@@ -544,134 +713,174 @@
 .end method
 
 .method protected final callbackCreateOptionsMenu(Lcom/actionbarsherlock/view/Menu;)Z
-    .locals 2
+    .locals 3
+    .parameter "menu"
 
-    const/4 v0, 0x1
+    .prologue
+    .line 556
+    const/4 v1, 0x1
 
-    iget-object v1, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
+    .line 557
+    .local v1, result:Z
+    iget-object v2, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
-    instance-of v1, v1, Lcom/actionbarsherlock/ActionBarSherlock$OnCreatePanelMenuListener;
+    instance-of v2, v2, Lcom/actionbarsherlock/ActionBarSherlock$OnCreatePanelMenuListener;
 
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_1
 
+    .line 558
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
     check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$OnCreatePanelMenuListener;
 
-    const/4 v1, 0x0
+    .line 559
+    .local v0, listener:Lcom/actionbarsherlock/ActionBarSherlock$OnCreatePanelMenuListener;
+    const/4 v2, 0x0
 
-    invoke-interface {v0, v1, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnCreatePanelMenuListener;->onCreatePanelMenu(ILcom/actionbarsherlock/view/Menu;)Z
+    invoke-interface {v0, v2, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnCreatePanelMenuListener;->onCreatePanelMenu(ILcom/actionbarsherlock/view/Menu;)Z
 
-    move-result v0
+    move-result v1
 
+    .line 566
+    .end local v0           #listener:Lcom/actionbarsherlock/ActionBarSherlock$OnCreatePanelMenuListener;
     :cond_0
     :goto_0
-    return v0
+    return v1
 
+    .line 560
     :cond_1
-    iget-object v1, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
+    iget-object v2, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
-    instance-of v1, v1, Lcom/actionbarsherlock/ActionBarSherlock$OnCreateOptionsMenuListener;
+    instance-of v2, v2, Lcom/actionbarsherlock/ActionBarSherlock$OnCreateOptionsMenuListener;
 
-    if-eqz v1, :cond_0
+    if-eqz v2, :cond_0
 
+    .line 561
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
     check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$OnCreateOptionsMenuListener;
 
+    .line 562
+    .local v0, listener:Lcom/actionbarsherlock/ActionBarSherlock$OnCreateOptionsMenuListener;
     invoke-interface {v0, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnCreateOptionsMenuListener;->onCreateOptionsMenu(Lcom/actionbarsherlock/view/Menu;)Z
 
-    move-result v0
+    move-result v1
 
     goto :goto_0
 .end method
 
 .method protected final callbackOptionsItemSelected(Lcom/actionbarsherlock/view/MenuItem;)Z
-    .locals 2
+    .locals 3
+    .parameter "item"
 
+    .prologue
+    .line 600
     const/4 v1, 0x0
 
-    iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
+    .line 601
+    .local v1, result:Z
+    iget-object v2, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
-    instance-of v0, v0, Lcom/actionbarsherlock/ActionBarSherlock$OnMenuItemSelectedListener;
+    instance-of v2, v2, Lcom/actionbarsherlock/ActionBarSherlock$OnMenuItemSelectedListener;
 
-    if-eqz v0, :cond_0
+    if-eqz v2, :cond_1
 
+    .line 602
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
     check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$OnMenuItemSelectedListener;
 
-    invoke-interface {v0, v1, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnMenuItemSelectedListener;->onMenuItemSelected(ILcom/actionbarsherlock/view/MenuItem;)Z
+    .line 603
+    .local v0, listener:Lcom/actionbarsherlock/ActionBarSherlock$OnMenuItemSelectedListener;
+    const/4 v2, 0x0
 
-    move-result v0
+    invoke-interface {v0, v2, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnMenuItemSelectedListener;->onMenuItemSelected(ILcom/actionbarsherlock/view/MenuItem;)Z
 
-    :goto_0
-    return v0
+    move-result v1
 
+    .line 610
+    .end local v0           #listener:Lcom/actionbarsherlock/ActionBarSherlock$OnMenuItemSelectedListener;
     :cond_0
-    iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
+    :goto_0
+    return v1
 
-    instance-of v0, v0, Lcom/actionbarsherlock/ActionBarSherlock$OnOptionsItemSelectedListener;
+    .line 604
+    :cond_1
+    iget-object v2, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
-    if-eqz v0, :cond_1
+    instance-of v2, v2, Lcom/actionbarsherlock/ActionBarSherlock$OnOptionsItemSelectedListener;
 
+    if-eqz v2, :cond_0
+
+    .line 605
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
     check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$OnOptionsItemSelectedListener;
 
+    .line 606
+    .local v0, listener:Lcom/actionbarsherlock/ActionBarSherlock$OnOptionsItemSelectedListener;
     invoke-interface {v0, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnOptionsItemSelectedListener;->onOptionsItemSelected(Lcom/actionbarsherlock/view/MenuItem;)Z
 
-    move-result v0
-
-    goto :goto_0
-
-    :cond_1
-    move v0, v1
+    move-result v1
 
     goto :goto_0
 .end method
 
 .method protected final callbackPrepareOptionsMenu(Lcom/actionbarsherlock/view/Menu;)Z
-    .locals 3
+    .locals 4
+    .parameter "menu"
 
-    const/4 v0, 0x1
+    .prologue
+    .line 577
+    const/4 v1, 0x1
 
-    iget-object v1, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
+    .line 578
+    .local v1, result:Z
+    iget-object v2, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
-    instance-of v1, v1, Lcom/actionbarsherlock/ActionBarSherlock$OnPreparePanelListener;
+    instance-of v2, v2, Lcom/actionbarsherlock/ActionBarSherlock$OnPreparePanelListener;
 
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_1
 
+    .line 579
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
     check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$OnPreparePanelListener;
 
-    const/4 v1, 0x0
-
+    .line 580
+    .local v0, listener:Lcom/actionbarsherlock/ActionBarSherlock$OnPreparePanelListener;
     const/4 v2, 0x0
 
-    invoke-interface {v0, v1, v2, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnPreparePanelListener;->onPreparePanel(ILandroid/view/View;Lcom/actionbarsherlock/view/Menu;)Z
+    const/4 v3, 0x0
 
-    move-result v0
+    invoke-interface {v0, v2, v3, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnPreparePanelListener;->onPreparePanel(ILandroid/view/View;Lcom/actionbarsherlock/view/Menu;)Z
 
+    move-result v1
+
+    .line 587
+    .end local v0           #listener:Lcom/actionbarsherlock/ActionBarSherlock$OnPreparePanelListener;
     :cond_0
     :goto_0
-    return v0
+    return v1
 
+    .line 581
     :cond_1
-    iget-object v1, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
+    iget-object v2, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
-    instance-of v1, v1, Lcom/actionbarsherlock/ActionBarSherlock$OnPrepareOptionsMenuListener;
+    instance-of v2, v2, Lcom/actionbarsherlock/ActionBarSherlock$OnPrepareOptionsMenuListener;
 
-    if-eqz v1, :cond_0
+    if-eqz v2, :cond_0
 
+    .line 582
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
     check-cast v0, Lcom/actionbarsherlock/ActionBarSherlock$OnPrepareOptionsMenuListener;
 
+    .line 583
+    .local v0, listener:Lcom/actionbarsherlock/ActionBarSherlock$OnPrepareOptionsMenuListener;
     invoke-interface {v0, p1}, Lcom/actionbarsherlock/ActionBarSherlock$OnPrepareOptionsMenuListener;->onPrepareOptionsMenu(Lcom/actionbarsherlock/view/Menu;)Z
 
-    move-result v0
+    move-result v1
 
     goto :goto_0
 .end method
@@ -679,6 +888,8 @@
 .method public dispatchCloseOptionsMenu()Z
     .locals 1
 
+    .prologue
+    .line 376
     const/4 v0, 0x0
 
     return v0
@@ -686,7 +897,10 @@
 
 .method public dispatchConfigurationChanged(Landroid/content/res/Configuration;)V
     .locals 0
+    .parameter "newConfig"
 
+    .prologue
+    .line 289
     return-void
 .end method
 
@@ -696,6 +910,8 @@
 .method public dispatchDestroy()V
     .locals 0
 
+    .prologue
+    .line 538
     return-void
 .end method
 
@@ -704,7 +920,10 @@
 
 .method public dispatchKeyEvent(Landroid/view/KeyEvent;)Z
     .locals 1
+    .parameter "event"
 
+    .prologue
+    .line 436
     const/4 v0, 0x0
 
     return v0
@@ -712,7 +931,11 @@
 
 .method public dispatchMenuOpened(ILandroid/view/Menu;)Z
     .locals 1
+    .parameter "featureId"
+    .parameter "menu"
 
+    .prologue
+    .line 506
     const/4 v0, 0x0
 
     return v0
@@ -721,6 +944,8 @@
 .method public dispatchOpenOptionsMenu()Z
     .locals 1
 
+    .prologue
+    .line 356
     const/4 v0, 0x0
 
     return v0
@@ -731,25 +956,36 @@
 
 .method public dispatchPanelClosed(ILandroid/view/Menu;)V
     .locals 0
+    .parameter "featureId"
+    .parameter "menu"
 
+    .prologue
+    .line 524
     return-void
 .end method
 
 .method public dispatchPause()V
     .locals 0
 
+    .prologue
+    .line 317
     return-void
 .end method
 
 .method public dispatchPostCreate(Landroid/os/Bundle;)V
     .locals 0
+    .parameter "savedInstanceState"
 
+    .prologue
+    .line 397
     return-void
 .end method
 
 .method public dispatchPostResume()V
     .locals 0
 
+    .prologue
+    .line 303
     return-void
 .end method
 
@@ -758,25 +994,37 @@
 
 .method public dispatchRestoreInstanceState(Landroid/os/Bundle;)V
     .locals 0
+    .parameter "savedInstanceState"
 
+    .prologue
+    .line 542
     return-void
 .end method
 
 .method public dispatchSaveInstanceState(Landroid/os/Bundle;)V
     .locals 0
+    .parameter "outState"
 
+    .prologue
+    .line 540
     return-void
 .end method
 
 .method public dispatchStop()V
     .locals 0
 
+    .prologue
+    .line 331
     return-void
 .end method
 
 .method public dispatchTitleChanged(Ljava/lang/CharSequence;I)V
     .locals 0
+    .parameter "title"
+    .parameter "color"
 
+    .prologue
+    .line 415
     return-void
 .end method
 
@@ -786,16 +1034,20 @@
 .method public getMenuInflater()Lcom/actionbarsherlock/view/MenuInflater;
     .locals 3
 
+    .prologue
+    .line 773
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mMenuInflater:Lcom/actionbarsherlock/view/MenuInflater;
 
     if-nez v0, :cond_0
 
+    .line 774
     invoke-virtual {p0}, Lcom/actionbarsherlock/ActionBarSherlock;->getActionBar()Lcom/actionbarsherlock/app/ActionBar;
 
     move-result-object v0
 
     if-eqz v0, :cond_1
 
+    .line 775
     new-instance v0, Lcom/actionbarsherlock/view/MenuInflater;
 
     invoke-virtual {p0}, Lcom/actionbarsherlock/ActionBarSherlock;->getThemedContext()Landroid/content/Context;
@@ -808,12 +1060,14 @@
 
     iput-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mMenuInflater:Lcom/actionbarsherlock/view/MenuInflater;
 
+    .line 780
     :cond_0
     :goto_0
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mMenuInflater:Lcom/actionbarsherlock/view/MenuInflater;
 
     return-object v0
 
+    .line 777
     :cond_1
     new-instance v0, Lcom/actionbarsherlock/view/MenuInflater;
 
@@ -840,15 +1094,19 @@
 
 .method public setContentView(Landroid/view/View;)V
     .locals 2
+    .parameter "view"
 
+    .prologue
     const/4 v1, -0x1
 
+    .line 671
     new-instance v0, Landroid/view/ViewGroup$LayoutParams;
 
     invoke-direct {v0, v1, v1}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
 
     invoke-virtual {p0, p1, v0}, Lcom/actionbarsherlock/ActionBarSherlock;->setContentView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    .line 672
     return-void
 .end method
 
@@ -872,7 +1130,10 @@
 
 .method public setTitle(I)V
     .locals 1
+    .parameter "resId"
 
+    .prologue
+    .line 703
     iget-object v0, p0, Lcom/actionbarsherlock/ActionBarSherlock;->mActivity:Landroid/app/Activity;
 
     invoke-virtual {v0, p1}, Landroid/app/Activity;->getString(I)Ljava/lang/String;
@@ -881,6 +1142,7 @@
 
     invoke-virtual {p0, v0}, Lcom/actionbarsherlock/ActionBarSherlock;->setTitle(Ljava/lang/CharSequence;)V
 
+    .line 704
     return-void
 .end method
 

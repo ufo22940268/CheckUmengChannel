@@ -1,55 +1,68 @@
-.class final Lcom/tencent/plus/f;
-.super Ljava/lang/Thread;
+.class Lcom/tencent/plus/f;
+.super Ljava/lang/Object;
+.source "ProGuard"
+
+# interfaces
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field final synthetic a:Landroid/content/Context;
-
-.field final synthetic b:Landroid/os/Bundle;
-
-.field final synthetic c:Lcom/tencent/plus/ImageActivity;
+.field final synthetic a:Lcom/tencent/plus/ImageActivity;
 
 
 # direct methods
-.method constructor <init>(Lcom/tencent/plus/ImageActivity;Landroid/content/Context;Landroid/os/Bundle;)V
+.method constructor <init>(Lcom/tencent/plus/ImageActivity;)V
     .locals 0
+    .parameter
 
-    iput-object p1, p0, Lcom/tencent/plus/f;->c:Lcom/tencent/plus/ImageActivity;
+    .prologue
+    .line 463
+    iput-object p1, p0, Lcom/tencent/plus/f;->a:Lcom/tencent/plus/ImageActivity;
 
-    iput-object p2, p0, Lcom/tencent/plus/f;->a:Landroid/content/Context;
-
-    iput-object p3, p0, Lcom/tencent/plus/f;->b:Landroid/os/Bundle;
-
-    invoke-direct {p0}, Ljava/lang/Thread;-><init>()V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
+.method public onClick(Landroid/view/View;)V
     .locals 4
+    .parameter
 
-    :try_start_0
-    iget-object v0, p0, Lcom/tencent/plus/f;->a:Landroid/content/Context;
+    .prologue
+    .line 466
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    const-string v1, "http://cgi.qplus.com/report/report"
+    move-result-wide v0
 
-    const-string v2, "GET"
+    iget-object v2, p0, Lcom/tencent/plus/f;->a:Lcom/tencent/plus/ImageActivity;
 
-    iget-object v3, p0, Lcom/tencent/plus/f;->b:Landroid/os/Bundle;
+    invoke-static {v2}, Lcom/tencent/plus/ImageActivity;->i(Lcom/tencent/plus/ImageActivity;)J
 
-    invoke-static {v0, v1, v2, v3}, Lcom/tencent/a/n;->a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Lcom/tencent/a/p;
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    move-result-wide v2
 
-    :goto_0
+    sub-long/2addr v0, v2
+
+    .line 467
+    iget-object v2, p0, Lcom/tencent/plus/f;->a:Lcom/tencent/plus/ImageActivity;
+
+    const-string v3, "10656"
+
+    invoke-virtual {v2, v3, v0, v1}, Lcom/tencent/plus/ImageActivity;->a(Ljava/lang/String;J)V
+
+    .line 468
+    iget-object v0, p0, Lcom/tencent/plus/f;->a:Lcom/tencent/plus/ImageActivity;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lcom/tencent/plus/ImageActivity;->setResult(I)V
+
+    .line 469
+    iget-object v0, p0, Lcom/tencent/plus/f;->a:Lcom/tencent/plus/ImageActivity;
+
+    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->j(Lcom/tencent/plus/ImageActivity;)V
+
+    .line 470
     return-void
-
-    :catch_0
-    move-exception v0
-
-    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
-
-    goto :goto_0
 .end method

@@ -2,6 +2,17 @@
 .super Landroid/content/BroadcastReceiver;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/baidu/location/i;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = "b"
+.end annotation
+
+
 # instance fields
 .field final synthetic a:Lcom/baidu/location/i;
 
@@ -20,17 +31,21 @@
 
 # virtual methods
 .method public onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 1
+    .locals 2
 
     iget-object v0, p0, Lcom/baidu/location/i$b;->a:Lcom/baidu/location/i;
 
     invoke-static {v0}, Lcom/baidu/location/i;->a(Lcom/baidu/location/i;)Ljava/lang/String;
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    move-result-object v0
+
+    const-string v1, "timer expire,request location..."
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v0, p0, Lcom/baidu/location/i$b;->a:Lcom/baidu/location/i;
 
-    invoke-static {v0}, Lcom/baidu/location/i;->b(Lcom/baidu/location/i;)Ljava/util/ArrayList;
+    invoke-static {v0}, Lcom/baidu/location/i;->do(Lcom/baidu/location/i;)Ljava/util/ArrayList;
 
     move-result-object v0
 
@@ -38,7 +53,7 @@
 
     iget-object v0, p0, Lcom/baidu/location/i$b;->a:Lcom/baidu/location/i;
 
-    invoke-static {v0}, Lcom/baidu/location/i;->b(Lcom/baidu/location/i;)Ljava/util/ArrayList;
+    invoke-static {v0}, Lcom/baidu/location/i;->do(Lcom/baidu/location/i;)Ljava/util/ArrayList;
 
     move-result-object v0
 
@@ -55,11 +70,11 @@
     :cond_1
     iget-object v0, p0, Lcom/baidu/location/i$b;->a:Lcom/baidu/location/i;
 
-    invoke-static {v0}, Lcom/baidu/location/i;->c(Lcom/baidu/location/i;)Lcom/baidu/location/e;
+    invoke-static {v0}, Lcom/baidu/location/i;->if(Lcom/baidu/location/i;)Lcom/baidu/location/LocationClient;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/baidu/location/e;->a()V
+    invoke-virtual {v0}, Lcom/baidu/location/LocationClient;->requestNotifyLocation()V
 
     goto :goto_0
 .end method

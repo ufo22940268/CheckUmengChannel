@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/b/h;
+.class public Lsdk/b/a/a/b/h;
 .super Lsdk/b/a/a/b/d;
 
 
@@ -17,7 +17,7 @@
 
 
 # virtual methods
-.method public final a(J)V
+.method public a(J)V
     .locals 0
 
     iput-wide p1, p0, Lsdk/b/a/a/b/h;->a:J

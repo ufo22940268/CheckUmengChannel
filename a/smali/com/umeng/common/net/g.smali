@@ -1,42 +1,57 @@
-.class final Lcom/umeng/common/net/g;
+.class Lcom/umeng/common/net/g;
 .super Ljava/lang/Object;
+.source "DownloadingService.java"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public a:Ljava/lang/String;
+.field final synthetic a:Ljava/lang/String;
 
-.field public b:Ljava/lang/String;
-
-.field public c:Ljava/lang/String;
-
-.field public d:Ljava/lang/String;
-
-.field public e:Ljava/lang/String;
-
-.field public f:[Ljava/lang/String;
-
-.field public g:Z
+.field final synthetic b:Lcom/umeng/common/net/DownloadingService;
 
 
 # direct methods
-.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    .locals 1
+.method constructor <init>(Lcom/umeng/common/net/DownloadingService;Ljava/lang/String;)V
+    .locals 0
+    .parameter
+    .parameter
+
+    .prologue
+    .line 891
+    iput-object p1, p0, Lcom/umeng/common/net/g;->b:Lcom/umeng/common/net/DownloadingService;
+
+    iput-object p2, p0, Lcom/umeng/common/net/g;->a:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    const/4 v0, 0x0
+    return-void
+.end method
 
-    iput-object v0, p0, Lcom/umeng/common/net/g;->f:[Ljava/lang/String;
 
-    const/4 v0, 0x0
+# virtual methods
+.method public run()V
+    .locals 3
 
-    iput-boolean v0, p0, Lcom/umeng/common/net/g;->g:Z
+    .prologue
+    .line 894
+    iget-object v0, p0, Lcom/umeng/common/net/g;->b:Lcom/umeng/common/net/DownloadingService;
 
-    iput-object p1, p0, Lcom/umeng/common/net/g;->a:Ljava/lang/String;
+    invoke-static {v0}, Lcom/umeng/common/net/DownloadingService;->a(Lcom/umeng/common/net/DownloadingService;)Landroid/content/Context;
 
-    iput-object p2, p0, Lcom/umeng/common/net/g;->b:Ljava/lang/String;
+    move-result-object v0
 
-    iput-object p3, p0, Lcom/umeng/common/net/g;->c:Ljava/lang/String;
+    iget-object v1, p0, Lcom/umeng/common/net/g;->a:Ljava/lang/String;
 
+    const/4 v2, 0x0
+
+    invoke-static {v0, v1, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
+
+    .line 895
     return-void
 .end method

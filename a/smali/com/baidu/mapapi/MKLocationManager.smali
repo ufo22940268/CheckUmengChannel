@@ -24,8 +24,26 @@
 .field private d:J
 
 .field private e:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Lcom/baidu/mapapi/LocationListener;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private f:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Landroid/hardware/SensorEventListener;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private g:Landroid/hardware/SensorEventListener;
 

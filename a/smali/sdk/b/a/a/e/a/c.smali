@@ -54,10 +54,10 @@
     return v0
 .end method
 
-.method public final c()V
+.method public b_()V
     .locals 2
 
-    invoke-super {p0}, Lsdk/c/a/e/d;->c()V
+    invoke-super {p0}, Lsdk/c/a/e/d;->b_()V
 
     iget-object v0, p0, Lsdk/b/a/a/e/a/c;->e:Landroid/content/Context;
 
@@ -69,7 +69,11 @@
 
     invoke-virtual {p0}, Lsdk/b/a/a/e/a/c;->a()V
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
+
+    const-string v1, "db task ok!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v0, p0, Lsdk/b/a/a/e/a/c;->g:Lsdk/b/a/a/e/a/b;
 
@@ -93,10 +97,10 @@
     return-void
 .end method
 
-.method public final d()V
-    .locals 1
+.method public c()V
+    .locals 3
 
-    invoke-super {p0}, Lsdk/c/a/e/d;->d()V
+    invoke-super {p0}, Lsdk/c/a/e/d;->c()V
 
     iget-object v0, p0, Lsdk/b/a/a/e/a/c;->d:Landroid/database/Cursor;
 
@@ -124,14 +128,18 @@
     :catch_0
     move-exception v0
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v1, "GexinSdk"
+
+    const-string v2, "@@@ close cursor exception."
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
 
     goto :goto_0
 .end method
 
-.method public final e()V
+.method public d()V
     .locals 1
 
     const/4 v0, 0x1
@@ -143,7 +151,7 @@
     return-void
 .end method
 
-.method protected final f()V
+.method protected e()V
     .locals 0
 
     invoke-static {}, Lsdk/b/a/a/e/a/d;->a()V

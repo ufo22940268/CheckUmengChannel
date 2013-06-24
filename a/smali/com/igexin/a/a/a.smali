@@ -3,11 +3,11 @@
 
 
 # virtual methods
-.method public abstract a()Lcom/igexin/a/a/a;
+.method public abstract a(I)Lcom/igexin/a/a/a;
 .end method
 
 .method public abstract a(Ljava/net/URL;)Lcom/igexin/a/a/a;
 .end method
 
-.method public abstract b()Lcom/igexin/a/a/b/e;
+.method public abstract a()Lcom/igexin/a/a/b/e;
 .end method

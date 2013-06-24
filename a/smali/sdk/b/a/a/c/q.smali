@@ -1,4 +1,4 @@
-.class final Lsdk/b/a/a/c/q;
+.class Lsdk/b/a/a/c/q;
 .super Lsdk/b/a/a/e/a/c;
 
 
@@ -23,7 +23,7 @@
 
 
 # virtual methods
-.method public final a()V
+.method public a()V
     .locals 7
 
     iget-object v0, p0, Lsdk/b/a/a/c/q;->c:Landroid/database/sqlite/SQLiteDatabase;

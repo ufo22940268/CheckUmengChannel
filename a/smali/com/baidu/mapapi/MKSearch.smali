@@ -209,14 +209,38 @@
     :catch_0
     move-exception v1
 
+    const-string v2, "MKSearch busLineSearch:"
+
+    const-string v3, "busLine city error!!"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v2, "MKSearch busLineSearch:"
+
     invoke-virtual {v1}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v2, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_2
 
     :catch_1
     move-exception v1
 
+    const-string v2, "MKSearch busLineSearch:"
+
+    const-string v3, "busLine name error!!"
+
+    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v2, "MKSearch busLineSearch:"
+
     invoke-virtual {v1}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v2, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_3
 .end method
@@ -377,14 +401,38 @@
     :catch_0
     move-exception v0
 
+    const-string v4, "MKSearch drivingSearch:"
+
+    const-string v5, "translate start name error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch drivingSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_3
 
     :catch_1
     move-exception v0
 
+    const-string v4, "MKSearch drivingSearch:"
+
+    const-string v5, "translate start city error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch drivingSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_4
 
@@ -491,14 +539,38 @@
     :catch_2
     move-exception v0
 
+    const-string v4, "MKSearch drivingSearch:"
+
+    const-string v5, "translate end name error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch drivingSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_6
 
     :catch_3
     move-exception v0
 
+    const-string v4, "MKSearch drivingSearch:"
+
+    const-string v5, "translate end city error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch drivingSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_7
 
@@ -1532,7 +1604,19 @@
     :catch_0
     move-exception v2
 
+    const-string v4, "MKSearch poiSearchInCity:"
+
+    const-string v5, "translate city error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch poiSearchInCity:"
+
     invoke-virtual {v2}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v4, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_2
 .end method
@@ -2321,14 +2405,38 @@
     :catch_0
     move-exception v0
 
+    const-string v4, "MKSearch transitSearch:"
+
+    const-string v5, "translate city error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch transitSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_2
 
     :catch_1
     move-exception v0
 
+    const-string v4, "MKSearch transitSearch:"
+
+    const-string v5, "translate start name error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch transitSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_4
 
@@ -2406,7 +2514,19 @@
     :catch_2
     move-exception v0
 
+    const-string v4, "MKSearch transitSearch:"
+
+    const-string v5, "translate end name error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch transitSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_6
 
@@ -2598,14 +2718,38 @@
     :catch_0
     move-exception v0
 
+    const-string v4, "MKSearch walkingSearch:"
+
+    const-string v5, "translate start name error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch walkingSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_3
 
     :catch_1
     move-exception v0
 
+    const-string v4, "MKSearch walkingSearch:"
+
+    const-string v5, "translate start city error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch walkingSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_4
 
@@ -2712,14 +2856,38 @@
     :catch_2
     move-exception v0
 
+    const-string v4, "MKSearch walkingSearch:"
+
+    const-string v5, "translate end name error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch walkingSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_6
 
     :catch_3
     move-exception v0
 
+    const-string v4, "MKSearch walkingSearch:"
+
+    const-string v5, "translate end city error!!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v4, "MKSearch walkingSearch:"
+
     invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_7
 

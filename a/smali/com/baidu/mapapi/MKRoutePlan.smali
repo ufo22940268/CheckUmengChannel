@@ -6,6 +6,15 @@
 .field private a:I
 
 .field private b:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKRoute;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # direct methods
@@ -29,6 +38,15 @@
 
 .method a(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKRoute;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKRoutePlan;->b:Ljava/util/ArrayList;
 

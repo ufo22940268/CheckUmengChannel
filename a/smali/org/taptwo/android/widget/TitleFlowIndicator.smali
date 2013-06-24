@@ -1,308 +1,538 @@
 .class public Lorg/taptwo/android/widget/TitleFlowIndicator;
 .super Landroid/widget/TextView;
+.source "TitleFlowIndicator.java"
 
 # interfaces
-.implements Lorg/taptwo/android/widget/b;
+.implements Lorg/taptwo/android/widget/FlowIndicator;
+
+
+# static fields
+.field private static final CLIP_PADDING:F = 0.0f
+
+.field private static final FOOTER_COLOR:I = -0x3bbb
+
+.field private static final FOOTER_LINE_HEIGHT:F = 4.0f
+
+.field private static final FOOTER_TRIANGLE_HEIGHT:F = 10.0f
+
+.field private static final MONOSPACE:I = 0x3
+
+.field private static final SANS:I = 0x1
+
+.field private static final SELECTED_BOLD:Z = false
+
+.field private static final SELECTED_COLOR:I = -0x3bbb
+
+.field private static final SERIF:I = 0x2
+
+.field private static final TEXT_COLOR:I = -0x555556
+
+.field private static final TEXT_SIZE:I = 0xf
+
+.field private static final TITLE_PADDING:F = 10.0f
 
 
 # instance fields
-.field private a:Lorg/taptwo/android/widget/ViewFlow;
+.field private clipPadding:F
 
-.field private b:I
+.field private currentPosition:I
 
-.field private c:Lorg/taptwo/android/widget/c;
+.field private currentScroll:I
 
-.field private d:I
+.field private footerLineHeight:F
 
-.field private e:Landroid/graphics/Paint;
+.field private footerTriangleHeight:F
 
-.field private f:Landroid/graphics/Paint;
+.field private paintFooterLine:Landroid/graphics/Paint;
 
-.field private g:Landroid/graphics/Path;
+.field private paintFooterTriangle:Landroid/graphics/Paint;
 
-.field private h:Landroid/graphics/Paint;
+.field private paintSelected:Landroid/graphics/Paint;
 
-.field private i:Landroid/graphics/Paint;
+.field private paintText:Landroid/graphics/Paint;
 
-.field private j:F
+.field private path:Landroid/graphics/Path;
 
-.field private k:F
+.field private titlePadding:F
 
-.field private l:F
+.field private titleProvider:Lorg/taptwo/android/widget/TitleProvider;
 
-.field private m:F
+.field private typeface:Landroid/graphics/Typeface;
 
-.field private n:Landroid/graphics/Typeface;
+.field private viewFlow:Lorg/taptwo/android/widget/ViewFlow;
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 13
+.method public constructor <init>(Landroid/content/Context;)V
+    .locals 8
+    .parameter "context"
 
-    const/16 v7, -0x3bbb
+    .prologue
+    const/16 v3, -0x3bbb
 
-    const/high16 v12, 0x4120
+    const/high16 v2, 0x4170
 
-    const/4 v11, 0x1
+    const/4 v4, 0x0
 
-    const/4 v10, 0x0
+    .line 79
+    invoke-direct {p0, p1}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
-    invoke-direct {p0, p1, p2}, Landroid/widget/TextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    .line 52
+    iput v4, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentScroll:I
 
-    iput v10, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->b:I
-
+    .line 53
     const/4 v0, 0x0
 
-    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->c:Lorg/taptwo/android/widget/c;
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->titleProvider:Lorg/taptwo/android/widget/TitleProvider;
 
-    iput v10, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
+    .line 54
+    iput v4, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
 
-    const-string v0, "http://schemas.android.com/apk/res/android"
-
-    const-string v1, "typeface"
-
-    invoke-interface {p2, v0, v1, v10}, Landroid/util/AttributeSet;->getAttributeIntValue(Ljava/lang/String;Ljava/lang/String;I)I
-
-    move-result v0
-
-    const-string v1, "http://schemas.android.com/apk/res/android"
-
-    const-string v2, "textStyle"
-
-    invoke-interface {p2, v1, v2, v10}, Landroid/util/AttributeSet;->getAttributeIntValue(Ljava/lang/String;Ljava/lang/String;I)I
-
-    move-result v2
-
-    sget-object v1, Lcom/zhangdan/app/R$styleable;->w:[I
-
-    invoke-virtual {p1, p2, v1}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
-
-    move-result-object v1
-
-    const/16 v3, 0xa
-
-    invoke-virtual {v1, v3}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
-
-    move-result-object v3
-
-    const/16 v4, 0x8
-
-    invoke-virtual {v1, v4, v7}, Landroid/content/res/TypedArray;->getColor(II)I
-
-    move-result v4
-
-    const/4 v5, 0x7
+    .line 80
+    const v1, -0x555556
 
     const/high16 v6, 0x4080
 
-    invoke-virtual {v1, v5, v6}, Landroid/content/res/TypedArray;->getDimension(IF)F
+    move-object v0, p0
 
-    move-result v5
+    move v5, v2
 
-    iput v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
+    move v7, v3
 
-    const/16 v5, 0x9
+    invoke-direct/range {v0 .. v7}, Lorg/taptwo/android/widget/TitleFlowIndicator;->initDraw(IFIZFFI)V
 
-    invoke-virtual {v1, v5, v12}, Landroid/content/res/TypedArray;->getDimension(IF)F
+    .line 81
+    return-void
+.end method
 
-    move-result v5
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    .locals 13
+    .parameter "context"
+    .parameter "attrs"
 
-    iput v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->j:F
+    .prologue
+    .line 90
+    invoke-direct {p0, p1, p2}, Landroid/widget/TextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    const/4 v5, 0x2
+    .line 52
+    const/4 v0, 0x0
 
-    invoke-virtual {v1, v5, v7}, Landroid/content/res/TypedArray;->getColor(II)I
+    iput v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentScroll:I
 
-    move-result v5
+    .line 53
+    const/4 v0, 0x0
 
-    const/4 v6, 0x3
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->titleProvider:Lorg/taptwo/android/widget/TitleProvider;
 
-    invoke-virtual {v1, v6, v10}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    .line 54
+    const/4 v0, 0x0
 
-    move-result v6
+    iput v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
 
-    const/4 v7, 0x5
+    .line 93
+    const-string v0, "http://schemas.android.com/apk/res/android"
 
-    const v8, -0x555556
+    const-string v6, "typeface"
 
-    invoke-virtual {v1, v7, v8}, Landroid/content/res/TypedArray;->getColor(II)I
+    const/4 v12, 0x0
 
-    move-result v7
+    invoke-interface {p2, v0, v6, v12}, Landroid/util/AttributeSet;->getAttributeIntValue(Ljava/lang/String;Ljava/lang/String;I)I
 
-    const/4 v8, 0x6
+    move-result v11
 
-    const/high16 v9, 0x4170
+    .line 94
+    .local v11, typefaceIndex:I
+    const-string v0, "http://schemas.android.com/apk/res/android"
 
-    invoke-virtual {v1, v8, v9}, Landroid/content/res/TypedArray;->getDimension(IF)F
+    const-string v6, "textStyle"
 
-    move-result v8
+    const/4 v12, 0x0
 
-    const/4 v9, 0x4
-
-    invoke-virtual {v1, v9, v8}, Landroid/content/res/TypedArray;->getDimension(IF)F
-
-    move-result v9
-
-    invoke-virtual {v1, v10, v12}, Landroid/content/res/TypedArray;->getDimension(IF)F
+    invoke-interface {p2, v0, v6, v12}, Landroid/util/AttributeSet;->getAttributeIntValue(Ljava/lang/String;Ljava/lang/String;I)I
 
     move-result v10
 
-    iput v10, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->k:F
+    .line 95
+    .local v10, textStyleIndex:I
+    sget-object v0, Lorg/taptwo/android/widget/viewflow/R$styleable;->TitleFlowIndicator:[I
 
-    const/4 v10, 0x0
+    invoke-virtual {p1, p2, v0}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
-    invoke-virtual {v1, v11, v10}, Landroid/content/res/TypedArray;->getDimension(IF)F
+    move-result-object v8
+
+    .line 97
+    .local v8, a:Landroid/content/res/TypedArray;
+    const/16 v0, 0xa
+
+    invoke-virtual {v8, v0}, Landroid/content/res/TypedArray;->getString(I)Ljava/lang/String;
+
+    move-result-object v9
+
+    .line 99
+    .local v9, customTypeface:Ljava/lang/String;
+    const/16 v0, 0x8
+
+    const/16 v6, -0x3bbb
+
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getColor(II)I
+
+    move-result v7
+
+    .line 100
+    .local v7, footerColor:I
+    const/4 v0, 0x7
+
+    const/high16 v6, 0x4080
+
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getDimension(IF)F
+
+    move-result v0
+
+    iput v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
+
+    .line 101
+    const/16 v0, 0x9
+
+    const/high16 v6, 0x4120
+
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getDimension(IF)F
+
+    move-result v0
+
+    iput v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerTriangleHeight:F
+
+    .line 102
+    const/4 v0, 0x2
+
+    const/16 v6, -0x3bbb
+
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getColor(II)I
+
+    move-result v3
+
+    .line 103
+    .local v3, selectedColor:I
+    const/4 v0, 0x3
+
+    const/4 v6, 0x0
+
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+
+    move-result v4
+
+    .line 104
+    .local v4, selectedBold:Z
+    const/4 v0, 0x5
+
+    const v6, -0x555556
+
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getColor(II)I
 
     move-result v1
 
-    iput v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->l:F
+    .line 105
+    .local v1, textColor:I
+    const/4 v0, 0x6
 
-    iget v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
+    const/high16 v6, 0x4170
 
-    new-instance v10, Landroid/graphics/Paint;
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getDimension(IF)F
 
-    invoke-direct {v10}, Landroid/graphics/Paint;-><init>()V
+    move-result v2
 
-    iput-object v10, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->e:Landroid/graphics/Paint;
+    .line 106
+    .local v2, textSize:F
+    const/4 v0, 0x4
 
-    iget-object v10, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->e:Landroid/graphics/Paint;
+    invoke-virtual {v8, v0, v2}, Landroid/content/res/TypedArray;->getDimension(IF)F
 
-    invoke-virtual {v10, v7}, Landroid/graphics/Paint;->setColor(I)V
+    move-result v5
 
-    iget-object v7, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->e:Landroid/graphics/Paint;
+    .line 107
+    .local v5, selectedSize:F
+    const/4 v0, 0x0
 
-    invoke-virtual {v7, v8}, Landroid/graphics/Paint;->setTextSize(F)V
+    const/high16 v6, 0x4120
 
-    iget-object v7, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->e:Landroid/graphics/Paint;
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getDimension(IF)F
 
-    invoke-virtual {v7, v11}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+    move-result v0
 
-    new-instance v7, Landroid/graphics/Paint;
+    iput v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->titlePadding:F
 
-    invoke-direct {v7}, Landroid/graphics/Paint;-><init>()V
+    .line 108
+    const/4 v0, 0x1
 
-    iput-object v7, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->f:Landroid/graphics/Paint;
+    const/4 v6, 0x0
 
-    iget-object v7, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->f:Landroid/graphics/Paint;
+    invoke-virtual {v8, v0, v6}, Landroid/content/res/TypedArray;->getDimension(IF)F
 
-    invoke-virtual {v7, v5}, Landroid/graphics/Paint;->setColor(I)V
+    move-result v0
 
-    iget-object v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->f:Landroid/graphics/Paint;
+    iput v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->clipPadding:F
 
-    invoke-virtual {v5, v9}, Landroid/graphics/Paint;->setTextSize(F)V
+    .line 109
+    iget v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
 
-    iget-object v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->f:Landroid/graphics/Paint;
+    move-object v0, p0
 
-    invoke-virtual {v5, v6}, Landroid/graphics/Paint;->setFakeBoldText(Z)V
+    invoke-direct/range {v0 .. v7}, Lorg/taptwo/android/widget/TitleFlowIndicator;->initDraw(IFIZFFI)V
 
-    iget-object v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->f:Landroid/graphics/Paint;
+    .line 111
+    if-eqz v9, :cond_0
 
-    invoke-virtual {v5, v11}, Landroid/graphics/Paint;->setAntiAlias(Z)V
-
-    new-instance v5, Landroid/graphics/Paint;
-
-    invoke-direct {v5}, Landroid/graphics/Paint;-><init>()V
-
-    iput-object v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->h:Landroid/graphics/Paint;
-
-    iget-object v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->h:Landroid/graphics/Paint;
-
-    sget-object v6, Landroid/graphics/Paint$Style;->FILL_AND_STROKE:Landroid/graphics/Paint$Style;
-
-    invoke-virtual {v5, v6}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
-
-    iget-object v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->h:Landroid/graphics/Paint;
-
-    invoke-virtual {v5, v1}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->h:Landroid/graphics/Paint;
-
-    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setColor(I)V
-
-    new-instance v1, Landroid/graphics/Paint;
-
-    invoke-direct {v1}, Landroid/graphics/Paint;-><init>()V
-
-    iput-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->i:Landroid/graphics/Paint;
-
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->i:Landroid/graphics/Paint;
-
-    sget-object v5, Landroid/graphics/Paint$Style;->FILL_AND_STROKE:Landroid/graphics/Paint$Style;
-
-    invoke-virtual {v1, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
-
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->i:Landroid/graphics/Paint;
-
-    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setColor(I)V
-
-    if-eqz v3, :cond_0
-
+    .line 112
     invoke-virtual {p1}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
 
     move-result-object v0
 
-    invoke-static {v0, v3}, Landroid/graphics/Typeface;->createFromAsset(Landroid/content/res/AssetManager;Ljava/lang/String;)Landroid/graphics/Typeface;
+    invoke-static {v0, v9}, Landroid/graphics/Typeface;->createFromAsset(Landroid/content/res/AssetManager;Ljava/lang/String;)Landroid/graphics/Typeface;
 
     move-result-object v0
 
-    move-object v1, p0
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->typeface:Landroid/graphics/Typeface;
 
+    .line 115
     :goto_0
-    iput-object v0, v1, Lorg/taptwo/android/widget/TitleFlowIndicator;->n:Landroid/graphics/Typeface;
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->typeface:Landroid/graphics/Typeface;
 
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->n:Landroid/graphics/Typeface;
-
-    invoke-static {v0, v2}, Landroid/graphics/Typeface;->create(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
+    invoke-static {v0, v10}, Landroid/graphics/Typeface;->create(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
 
     move-result-object v0
 
-    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->n:Landroid/graphics/Typeface;
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->typeface:Landroid/graphics/Typeface;
 
+    .line 117
     return-void
 
+    .line 114
     :cond_0
-    packed-switch v0, :pswitch_data_0
+    invoke-direct {p0, v11}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getTypefaceByIndex(I)Landroid/graphics/Typeface;
 
-    sget-object v0, Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;
+    move-result-object v0
 
-    move-object v1, p0
-
-    goto :goto_0
-
-    :pswitch_0
-    sget-object v0, Landroid/graphics/Typeface;->SANS_SERIF:Landroid/graphics/Typeface;
-
-    move-object v1, p0
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->typeface:Landroid/graphics/Typeface;
 
     goto :goto_0
-
-    :pswitch_1
-    sget-object v0, Landroid/graphics/Typeface;->SERIF:Landroid/graphics/Typeface;
-
-    move-object v1, p0
-
-    goto :goto_0
-
-    :pswitch_2
-    sget-object v0, Landroid/graphics/Typeface;->MONOSPACE:Landroid/graphics/Typeface;
-
-    move-object v1, p0
-
-    goto :goto_0
-
-    nop
-
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-        :pswitch_1
-        :pswitch_2
-    .end packed-switch
 .end method
 
-.method private a(Landroid/graphics/Rect;I)V
-    .locals 2
+.method private calcBounds(ILandroid/graphics/Paint;)Landroid/graphics/Rect;
+    .locals 4
+    .parameter "index"
+    .parameter "paint"
 
+    .prologue
+    .line 305
+    invoke-direct {p0, p1}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getTitle(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 307
+    .local v1, title:Ljava/lang/String;
+    new-instance v0, Landroid/graphics/Rect;
+
+    invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
+
+    .line 308
+    .local v0, bounds:Landroid/graphics/Rect;
+    invoke-virtual {p2, v1}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+
+    move-result v2
+
+    float-to-int v2, v2
+
+    iput v2, v0, Landroid/graphics/Rect;->right:I
+
+    .line 309
+    invoke-virtual {p2}, Landroid/graphics/Paint;->descent()F
+
+    move-result v2
+
+    invoke-virtual {p2}, Landroid/graphics/Paint;->ascent()F
+
+    move-result v3
+
+    sub-float/2addr v2, v3
+
+    float-to-int v2, v2
+
+    iput v2, v0, Landroid/graphics/Rect;->bottom:I
+
+    .line 310
+    return-object v0
+.end method
+
+.method private calculateAllBounds(Landroid/graphics/Paint;)Ljava/util/ArrayList;
+    .locals 8
+    .parameter "paint"
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/graphics/Paint;",
+            ")",
+            "Ljava/util/ArrayList",
+            "<",
+            "Landroid/graphics/Rect;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 279
+    new-instance v4, Ljava/util/ArrayList;
+
+    invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
+
+    .line 281
+    .local v4, list:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/graphics/Rect;>;"
+    iget-object v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->viewFlow:Lorg/taptwo/android/widget/ViewFlow;
+
+    if-eqz v6, :cond_0
+
+    iget-object v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->viewFlow:Lorg/taptwo/android/widget/ViewFlow;
+
+    invoke-virtual {v6}, Lorg/taptwo/android/widget/ViewFlow;->getAdapter()Landroid/widget/Adapter;
+
+    move-result-object v6
+
+    if-eqz v6, :cond_0
+
+    iget-object v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->viewFlow:Lorg/taptwo/android/widget/ViewFlow;
+
+    invoke-virtual {v6}, Lorg/taptwo/android/widget/ViewFlow;->getAdapter()Landroid/widget/Adapter;
+
+    move-result-object v6
+
+    invoke-interface {v6}, Landroid/widget/Adapter;->getCount()I
+
+    move-result v1
+
+    .line 282
+    .local v1, count:I
+    :goto_0
+    const/4 v3, 0x0
+
+    .local v3, iLoop:I
+    :goto_1
+    if-ge v3, v1, :cond_1
+
+    .line 283
+    invoke-direct {p0, v3, p1}, Lorg/taptwo/android/widget/TitleFlowIndicator;->calcBounds(ILandroid/graphics/Paint;)Landroid/graphics/Rect;
+
+    move-result-object v0
+
+    .line 284
+    .local v0, bounds:Landroid/graphics/Rect;
+    iget v6, v0, Landroid/graphics/Rect;->right:I
+
+    iget v7, v0, Landroid/graphics/Rect;->left:I
+
+    sub-int v5, v6, v7
+
+    .line 285
+    .local v5, w:I
+    iget v6, v0, Landroid/graphics/Rect;->bottom:I
+
+    iget v7, v0, Landroid/graphics/Rect;->top:I
+
+    sub-int v2, v6, v7
+
+    .line 286
+    .local v2, h:I
+    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v6
+
+    div-int/lit8 v6, v6, 0x2
+
+    div-int/lit8 v7, v5, 0x2
+
+    sub-int/2addr v6, v7
+
+    iget v7, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentScroll:I
+
+    sub-int/2addr v6, v7
+
+    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v7
+
+    mul-int/2addr v7, v3
+
+    add-int/2addr v6, v7
+
+    iput v6, v0, Landroid/graphics/Rect;->left:I
+
+    .line 287
+    iget v6, v0, Landroid/graphics/Rect;->left:I
+
+    add-int/2addr v6, v5
+
+    iput v6, v0, Landroid/graphics/Rect;->right:I
+
+    .line 288
+    const/4 v6, 0x0
+
+    iput v6, v0, Landroid/graphics/Rect;->top:I
+
+    .line 289
+    iput v2, v0, Landroid/graphics/Rect;->bottom:I
+
+    .line 290
+    invoke-virtual {v4, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 282
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_1
+
+    .line 281
+    .end local v0           #bounds:Landroid/graphics/Rect;
+    .end local v1           #count:I
+    .end local v2           #h:I
+    .end local v3           #iLoop:I
+    .end local v5           #w:I
+    :cond_0
+    const/4 v1, 0x1
+
+    goto :goto_0
+
+    .line 293
+    .restart local v1       #count:I
+    .restart local v3       #iLoop:I
+    :cond_1
+    return-object v4
+.end method
+
+.method private clipViewOnTheLeft(Landroid/graphics/Rect;I)V
+    .locals 1
+    .parameter "curViewBound"
+    .parameter "curViewWidth"
+
+    .prologue
+    .line 267
+    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->clipPadding:F
+
+    float-to-int v0, v0
+
+    add-int/lit8 v0, v0, 0x0
+
+    iput v0, p1, Landroid/graphics/Rect;->left:I
+
+    .line 268
+    iput p2, p1, Landroid/graphics/Rect;->right:I
+
+    .line 269
+    return-void
+.end method
+
+.method private clipViewOnTheRight(Landroid/graphics/Rect;I)V
+    .locals 2
+    .parameter "curViewBound"
+    .parameter "curViewWidth"
+
+    .prologue
+    .line 254
     invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
 
     move-result v0
@@ -313,7 +543,7 @@
 
     add-int/2addr v0, v1
 
-    iget v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->l:F
+    iget v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->clipPadding:F
 
     float-to-int v1, v1
 
@@ -321,821 +551,1183 @@
 
     iput v0, p1, Landroid/graphics/Rect;->right:I
 
+    .line 255
     iget v0, p1, Landroid/graphics/Rect;->right:I
 
     sub-int/2addr v0, p2
 
     iput v0, p1, Landroid/graphics/Rect;->left:I
 
+    .line 256
     return-void
 .end method
 
-.method private b(Landroid/graphics/Rect;I)V
-    .locals 1
+.method private getTitle(I)Ljava/lang/String;
+    .locals 3
+    .parameter "pos"
 
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->l:F
+    .prologue
+    .line 321
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    float-to-int v0, v0
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    add-int/lit8 v0, v0, 0x0
+    const-string v2, "title "
 
-    iput v0, p1, Landroid/graphics/Rect;->left:I
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    iput p2, p1, Landroid/graphics/Rect;->right:I
+    move-result-object v1
 
-    return-void
-.end method
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-.method private c(I)Ljava/lang/String;
-    .locals 2
+    move-result-object v1
 
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    const-string v1, "title "
-
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->c:Lorg/taptwo/android/widget/c;
+    .line 323
+    .local v0, title:Ljava/lang/String;
+    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->titleProvider:Lorg/taptwo/android/widget/TitleProvider;
 
     if-eqz v1, :cond_0
 
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->c:Lorg/taptwo/android/widget/c;
+    .line 324
+    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->titleProvider:Lorg/taptwo/android/widget/TitleProvider;
 
-    invoke-interface {v0}, Lorg/taptwo/android/widget/c;->a()Ljava/lang/String;
+    invoke-interface {v1, p1}, Lorg/taptwo/android/widget/TitleProvider;->getTitle(I)Ljava/lang/String;
 
     move-result-object v0
 
+    .line 326
     :cond_0
     return-object v0
 .end method
 
+.method private getTypefaceByIndex(I)Landroid/graphics/Typeface;
+    .locals 1
+    .parameter "typefaceIndex"
 
-# virtual methods
-.method public final a(I)V
-    .locals 0
+    .prologue
+    .line 434
+    packed-switch p1, :pswitch_data_0
 
-    iput p1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->invalidate()V
-
-    return-void
-.end method
-
-.method public final b(I)V
-    .locals 0
-
-    iput p1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->b:I
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->invalidate()V
-
-    return-void
-.end method
-
-.method protected onDraw(Landroid/graphics/Canvas;)V
-    .locals 14
-
-    const/4 v1, 0x1
-
-    const/high16 v13, 0x4120
-
-    const/high16 v12, 0x3f80
-
-    const/4 v3, 0x0
-
-    const/high16 v11, 0x4000
-
-    invoke-super {p0, p1}, Landroid/widget/TextView;->onDraw(Landroid/graphics/Canvas;)V
-
-    iget-object v4, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->e:Landroid/graphics/Paint;
-
-    new-instance v5, Ljava/util/ArrayList;
-
-    invoke-direct {v5}, Ljava/util/ArrayList;-><init>()V
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->a:Lorg/taptwo/android/widget/ViewFlow;
-
-    if-eqz v0, :cond_4
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->a:Lorg/taptwo/android/widget/ViewFlow;
-
-    invoke-virtual {v0}, Lorg/taptwo/android/widget/ViewFlow;->getAdapter()Landroid/widget/Adapter;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_4
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->a:Lorg/taptwo/android/widget/ViewFlow;
-
-    invoke-virtual {v0}, Lorg/taptwo/android/widget/ViewFlow;->getAdapter()Landroid/widget/Adapter;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Landroid/widget/Adapter;->getCount()I
-
-    move-result v0
+    .line 444
+    sget-object v0, Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;
 
     :goto_0
-    move v2, v3
+    return-object v0
 
-    :goto_1
-    if-lt v2, v0, :cond_5
+    .line 436
+    :pswitch_0
+    sget-object v0, Landroid/graphics/Typeface;->SANS_SERIF:Landroid/graphics/Typeface;
 
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->a:Lorg/taptwo/android/widget/ViewFlow;
+    goto :goto_0
 
-    if-eqz v0, :cond_6
+    .line 439
+    :pswitch_1
+    sget-object v0, Landroid/graphics/Typeface;->SERIF:Landroid/graphics/Typeface;
 
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->a:Lorg/taptwo/android/widget/ViewFlow;
+    goto :goto_0
 
-    invoke-virtual {v0}, Lorg/taptwo/android/widget/ViewFlow;->getAdapter()Landroid/widget/Adapter;
+    .line 442
+    :pswitch_2
+    sget-object v0, Landroid/graphics/Typeface;->MONOSPACE:Landroid/graphics/Typeface;
 
-    move-result-object v0
+    goto :goto_0
 
-    if-eqz v0, :cond_6
+    .line 434
+    nop
 
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->a:Lorg/taptwo/android/widget/ViewFlow;
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+        :pswitch_1
+        :pswitch_2
+    .end packed-switch
+.end method
 
-    invoke-virtual {v0}, Lorg/taptwo/android/widget/ViewFlow;->getAdapter()Landroid/widget/Adapter;
+.method private initDraw(IFIZFFI)V
+    .locals 2
+    .parameter "textColor"
+    .parameter "textSize"
+    .parameter "selectedColor"
+    .parameter "selectedBold"
+    .parameter "selectedSize"
+    .parameter "footerLineHeight"
+    .parameter "footerColor"
 
-    move-result-object v0
+    .prologue
+    const/4 v1, 0x1
 
-    invoke-interface {v0}, Landroid/widget/Adapter;->getCount()I
+    .line 123
+    new-instance v0, Landroid/graphics/Paint;
 
-    move-result v1
+    invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
 
-    move v2, v1
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintText:Landroid/graphics/Paint;
 
-    :goto_2
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
+    .line 124
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintText:Landroid/graphics/Paint;
 
-    invoke-virtual {v5, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual {v0, p1}, Landroid/graphics/Paint;->setColor(I)V
 
-    move-result-object v0
+    .line 125
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintText:Landroid/graphics/Paint;
 
-    check-cast v0, Landroid/graphics/Rect;
+    invoke-virtual {v0, p2}, Landroid/graphics/Paint;->setTextSize(F)V
 
-    iget v1, v0, Landroid/graphics/Rect;->right:I
+    .line 126
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintText:Landroid/graphics/Paint;
 
-    iget v4, v0, Landroid/graphics/Rect;->left:I
+    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setAntiAlias(Z)V
 
-    sub-int/2addr v1, v4
+    .line 127
+    new-instance v0, Landroid/graphics/Paint;
 
-    iget v4, v0, Landroid/graphics/Rect;->left:I
+    invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
 
-    if-gez v4, :cond_0
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintSelected:Landroid/graphics/Paint;
 
-    invoke-direct {p0, v0, v1}, Lorg/taptwo/android/widget/TitleFlowIndicator;->b(Landroid/graphics/Rect;I)V
+    .line 128
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintSelected:Landroid/graphics/Paint;
 
-    :cond_0
-    iget v4, v0, Landroid/graphics/Rect;->right:I
+    invoke-virtual {v0, p3}, Landroid/graphics/Paint;->setColor(I)V
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+    .line 129
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintSelected:Landroid/graphics/Paint;
 
-    move-result v6
+    invoke-virtual {v0, p5}, Landroid/graphics/Paint;->setTextSize(F)V
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+    .line 130
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintSelected:Landroid/graphics/Paint;
 
-    move-result v7
+    invoke-virtual {v0, p4}, Landroid/graphics/Paint;->setFakeBoldText(Z)V
 
-    add-int/2addr v6, v7
+    .line 131
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintSelected:Landroid/graphics/Paint;
 
-    if-le v4, v6, :cond_1
+    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setAntiAlias(Z)V
 
-    invoke-direct {p0, v0, v1}, Lorg/taptwo/android/widget/TitleFlowIndicator;->a(Landroid/graphics/Rect;I)V
+    .line 132
+    new-instance v0, Landroid/graphics/Paint;
 
-    :cond_1
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
+    invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
 
-    if-lez v0, :cond_2
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterLine:Landroid/graphics/Paint;
 
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
+    .line 133
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterLine:Landroid/graphics/Paint;
 
-    add-int/lit8 v0, v0, -0x1
+    sget-object v1, Landroid/graphics/Paint$Style;->FILL_AND_STROKE:Landroid/graphics/Paint$Style;
 
-    move v4, v0
+    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
 
-    :goto_3
-    if-gez v4, :cond_7
+    .line 134
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterLine:Landroid/graphics/Paint;
 
-    :cond_2
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
+    invoke-virtual {v0, p6}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
-    add-int/lit8 v1, v2, -0x1
+    .line 135
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterLine:Landroid/graphics/Paint;
 
-    if-ge v0, v1, :cond_3
+    invoke-virtual {v0, p7}, Landroid/graphics/Paint;->setColor(I)V
 
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
+    .line 136
+    new-instance v0, Landroid/graphics/Paint;
 
-    add-int/lit8 v0, v0, 0x1
+    invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
 
-    move v4, v0
+    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterTriangle:Landroid/graphics/Paint;
 
-    :goto_4
-    if-lt v4, v2, :cond_9
+    .line 137
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterTriangle:Landroid/graphics/Paint;
 
-    :cond_3
-    :goto_5
-    if-lt v3, v2, :cond_b
+    sget-object v1, Landroid/graphics/Paint$Style;->FILL_AND_STROKE:Landroid/graphics/Paint$Style;
 
-    new-instance v0, Landroid/graphics/Path;
+    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
 
-    invoke-direct {v0}, Landroid/graphics/Path;-><init>()V
+    .line 138
+    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterTriangle:Landroid/graphics/Paint;
 
-    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
+    invoke-virtual {v0, p7}, Landroid/graphics/Paint;->setColor(I)V
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getHeight()I
-
-    move-result v0
-
-    add-int/lit8 v0, v0, -0x1
-
-    int-to-float v1, v0
-
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
-
-    rem-float/2addr v0, v11
-
-    cmpl-float v0, v0, v12
-
-    if-nez v0, :cond_10
-
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
-
-    div-float/2addr v0, v11
-
-    :goto_6
-    sub-float v0, v1, v0
-
-    float-to-int v0, v0
-
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    const/4 v2, 0x0
-
-    int-to-float v3, v0
-
-    invoke-virtual {v1, v2, v3}, Landroid/graphics/Path;->moveTo(FF)V
-
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
-
-    move-result v2
-
-    int-to-float v2, v2
-
-    int-to-float v0, v0
-
-    invoke-virtual {v1, v2, v0}, Landroid/graphics/Path;->lineTo(FF)V
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    invoke-virtual {v0}, Landroid/graphics/Path;->close()V
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->h:Landroid/graphics/Paint;
-
-    invoke-virtual {p1, v0, v1}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
-
-    new-instance v0, Landroid/graphics/Path;
-
-    invoke-direct {v0}, Landroid/graphics/Path;-><init>()V
-
-    iput-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
-
-    move-result v1
-
-    div-int/lit8 v1, v1, 0x2
-
-    int-to-float v1, v1
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getHeight()I
-
-    move-result v2
-
-    int-to-float v2, v2
-
-    iget v3, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
-
-    sub-float/2addr v2, v3
-
-    iget v3, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->j:F
-
-    sub-float/2addr v2, v3
-
-    invoke-virtual {v0, v1, v2}, Landroid/graphics/Path;->moveTo(FF)V
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
-
-    move-result v1
-
-    div-int/lit8 v1, v1, 0x2
-
-    int-to-float v1, v1
-
-    iget v2, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->j:F
-
-    add-float/2addr v1, v2
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getHeight()I
-
-    move-result v2
-
-    int-to-float v2, v2
-
-    iget v3, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
-
-    sub-float/2addr v2, v3
-
-    invoke-virtual {v0, v1, v2}, Landroid/graphics/Path;->lineTo(FF)V
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
-
-    move-result v1
-
-    div-int/lit8 v1, v1, 0x2
-
-    int-to-float v1, v1
-
-    iget v2, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->j:F
-
-    sub-float/2addr v1, v2
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getHeight()I
-
-    move-result v2
-
-    int-to-float v2, v2
-
-    iget v3, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
-
-    sub-float/2addr v2, v3
-
-    invoke-virtual {v0, v1, v2}, Landroid/graphics/Path;->lineTo(FF)V
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    invoke-virtual {v0}, Landroid/graphics/Path;->close()V
-
-    iget-object v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->g:Landroid/graphics/Path;
-
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->i:Landroid/graphics/Paint;
-
-    invoke-virtual {p1, v0, v1}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
-
+    .line 139
     return-void
+.end method
 
-    :cond_4
-    move v0, v1
+.method private measureHeight(I)I
+    .locals 7
+    .parameter "measureSpec"
 
-    goto/16 :goto_0
+    .prologue
+    .line 414
+    const/4 v1, 0x0
 
-    :cond_5
-    invoke-direct {p0, v2}, Lorg/taptwo/android/widget/TitleFlowIndicator;->c(I)Ljava/lang/String;
+    .line 415
+    .local v1, result:I
+    invoke-static {p1}, Landroid/view/View$MeasureSpec;->getMode(I)I
 
-    move-result-object v6
+    move-result v3
 
-    new-instance v7, Landroid/graphics/Rect;
+    .line 416
+    .local v3, specMode:I
+    invoke-static {p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
 
-    invoke-direct {v7}, Landroid/graphics/Rect;-><init>()V
+    move-result v4
 
-    invoke-virtual {v4, v6}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+    .line 419
+    .local v4, specSize:I
+    const/high16 v5, 0x4000
 
-    move-result v6
+    if-ne v3, v5, :cond_0
 
-    float-to-int v6, v6
+    .line 420
+    move v1, v4
 
-    iput v6, v7, Landroid/graphics/Rect;->right:I
-
-    invoke-virtual {v4}, Landroid/graphics/Paint;->descent()F
-
-    move-result v6
-
-    invoke-virtual {v4}, Landroid/graphics/Paint;->ascent()F
-
-    move-result v8
-
-    sub-float/2addr v6, v8
-
-    float-to-int v6, v6
-
-    iput v6, v7, Landroid/graphics/Rect;->bottom:I
-
-    iget v6, v7, Landroid/graphics/Rect;->right:I
-
-    iget v8, v7, Landroid/graphics/Rect;->left:I
-
-    sub-int/2addr v6, v8
-
-    iget v8, v7, Landroid/graphics/Rect;->bottom:I
-
-    iget v9, v7, Landroid/graphics/Rect;->top:I
-
-    sub-int/2addr v8, v9
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
-
-    move-result v9
-
-    div-int/lit8 v9, v9, 0x2
-
-    div-int/lit8 v10, v6, 0x2
-
-    sub-int/2addr v9, v10
-
-    iget v10, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->b:I
-
-    sub-int/2addr v9, v10
-
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
-
-    move-result v10
-
-    mul-int/2addr v10, v2
-
-    add-int/2addr v9, v10
-
-    iput v9, v7, Landroid/graphics/Rect;->left:I
-
-    iget v9, v7, Landroid/graphics/Rect;->left:I
-
-    add-int/2addr v6, v9
-
-    iput v6, v7, Landroid/graphics/Rect;->right:I
-
-    iput v3, v7, Landroid/graphics/Rect;->top:I
-
-    iput v8, v7, Landroid/graphics/Rect;->bottom:I
-
-    invoke-virtual {v5, v7}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    add-int/lit8 v2, v2, 0x1
-
-    goto/16 :goto_1
-
-    :cond_6
     move v2, v1
 
-    goto/16 :goto_2
+    .line 430
+    .end local v1           #result:I
+    .local v2, result:I
+    :goto_0
+    return v2
 
-    :cond_7
-    invoke-virtual {v5, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    .line 425
+    .end local v2           #result:I
+    .restart local v1       #result:I
+    :cond_0
+    new-instance v0, Landroid/graphics/Rect;
 
-    move-result-object v0
+    invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
-    move-object v1, v0
+    .line 426
+    .local v0, bounds:Landroid/graphics/Rect;
+    iget-object v5, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintText:Landroid/graphics/Paint;
 
-    check-cast v1, Landroid/graphics/Rect;
+    invoke-virtual {v5}, Landroid/graphics/Paint;->descent()F
 
-    iget v0, v1, Landroid/graphics/Rect;->right:I
+    move-result v5
 
-    iget v6, v1, Landroid/graphics/Rect;->left:I
+    iget-object v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintText:Landroid/graphics/Paint;
 
-    sub-int v6, v0, v6
+    invoke-virtual {v6}, Landroid/graphics/Paint;->ascent()F
 
-    iget v0, v1, Landroid/graphics/Rect;->left:I
+    move-result v6
 
-    if-gez v0, :cond_8
+    sub-float/2addr v5, v6
 
-    invoke-direct {p0, v1, v6}, Lorg/taptwo/android/widget/TitleFlowIndicator;->b(Landroid/graphics/Rect;I)V
+    float-to-int v5, v5
 
-    add-int/lit8 v0, v2, -0x1
+    iput v5, v0, Landroid/graphics/Rect;->bottom:I
 
-    if-ge v4, v0, :cond_8
+    .line 427
+    iget v5, v0, Landroid/graphics/Rect;->bottom:I
 
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
+    iget v6, v0, Landroid/graphics/Rect;->top:I
 
-    if-eq v0, v4, :cond_8
+    sub-int/2addr v5, v6
 
-    add-int/lit8 v0, v4, 0x1
+    iget v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerTriangleHeight:F
 
-    invoke-virtual {v5, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    float-to-int v6, v6
 
-    move-result-object v0
+    add-int/2addr v5, v6
 
-    check-cast v0, Landroid/graphics/Rect;
+    iget v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
 
-    iget v7, v1, Landroid/graphics/Rect;->right:I
+    float-to-int v6, v6
 
-    int-to-float v7, v7
+    add-int/2addr v5, v6
 
-    add-float/2addr v7, v13
+    add-int/lit8 v1, v5, 0xa
 
-    iget v8, v0, Landroid/graphics/Rect;->left:I
+    move v2, v1
 
-    int-to-float v8, v8
+    .line 428
+    .end local v1           #result:I
+    .restart local v2       #result:I
+    goto :goto_0
+.end method
 
-    cmpl-float v7, v7, v8
+.method private measureWidth(I)I
+    .locals 5
+    .parameter "measureSpec"
 
-    if-lez v7, :cond_8
+    .prologue
+    .line 395
+    const/4 v0, 0x0
 
-    iget v0, v0, Landroid/graphics/Rect;->left:I
+    .line 396
+    .local v0, result:I
+    invoke-static {p1}, Landroid/view/View$MeasureSpec;->getMode(I)I
 
-    iget v7, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->k:F
+    move-result v1
 
-    float-to-int v7, v7
+    .line 397
+    .local v1, specMode:I
+    invoke-static {p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
 
-    add-int/2addr v6, v7
+    move-result v2
 
-    sub-int/2addr v0, v6
+    .line 399
+    .local v2, specSize:I
+    const/high16 v3, 0x4000
 
-    iput v0, v1, Landroid/graphics/Rect;->left:I
+    if-eq v1, v3, :cond_0
 
-    :cond_8
-    add-int/lit8 v0, v4, -0x1
+    .line 400
+    new-instance v3, Ljava/lang/IllegalStateException;
 
-    move v4, v0
+    const-string v4, "ViewFlow can only be used in EXACTLY mode."
 
-    goto/16 :goto_3
+    invoke-direct {v3, v4}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
-    :cond_9
-    invoke-virtual {v5, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    throw v3
 
-    move-result-object v0
+    .line 402
+    :cond_0
+    move v0, v2
 
-    check-cast v0, Landroid/graphics/Rect;
+    .line 403
+    return v0
+.end method
 
-    iget v1, v0, Landroid/graphics/Rect;->right:I
 
-    iget v6, v0, Landroid/graphics/Rect;->left:I
+# virtual methods
+.method protected onDraw(Landroid/graphics/Canvas;)V
+    .locals 18
+    .parameter "canvas"
 
-    sub-int/2addr v1, v6
+    .prologue
+    .line 148
+    invoke-super/range {p0 .. p1}, Landroid/widget/TextView;->onDraw(Landroid/graphics/Canvas;)V
 
-    iget v6, v0, Landroid/graphics/Rect;->right:I
+    .line 151
+    move-object/from16 v0, p0
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintText:Landroid/graphics/Paint;
 
-    move-result v7
+    move-object/from16 v0, p0
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+    invoke-direct {v0, v14}, Lorg/taptwo/android/widget/TitleFlowIndicator;->calculateAllBounds(Landroid/graphics/Paint;)Ljava/util/ArrayList;
 
-    move-result v8
+    move-result-object v2
 
-    add-int/2addr v7, v8
+    .line 154
+    .local v2, bounds:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/graphics/Rect;>;"
+    move-object/from16 v0, p0
 
-    if-le v6, v7, :cond_a
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->viewFlow:Lorg/taptwo/android/widget/ViewFlow;
 
-    invoke-direct {p0, v0, v1}, Lorg/taptwo/android/widget/TitleFlowIndicator;->a(Landroid/graphics/Rect;I)V
+    if-eqz v14, :cond_3
 
-    if-lez v4, :cond_a
+    move-object/from16 v0, p0
 
-    iget v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->d:I
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->viewFlow:Lorg/taptwo/android/widget/ViewFlow;
 
-    if-eq v1, v4, :cond_a
+    invoke-virtual {v14}, Lorg/taptwo/android/widget/ViewFlow;->getAdapter()Landroid/widget/Adapter;
 
-    add-int/lit8 v1, v4, -0x1
+    move-result-object v14
 
-    invoke-virtual {v5, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    if-eqz v14, :cond_3
+
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->viewFlow:Lorg/taptwo/android/widget/ViewFlow;
+
+    invoke-virtual {v14}, Lorg/taptwo/android/widget/ViewFlow;->getAdapter()Landroid/widget/Adapter;
+
+    move-result-object v14
+
+    invoke-interface {v14}, Landroid/widget/Adapter;->getCount()I
+
+    move-result v4
+
+    .line 157
+    .local v4, count:I
+    :goto_0
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
+
+    invoke-virtual {v2, v14}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v5
+
+    check-cast v5, Landroid/graphics/Rect;
+
+    .line 158
+    .local v5, curViewBound:Landroid/graphics/Rect;
+    iget v14, v5, Landroid/graphics/Rect;->right:I
+
+    iget v15, v5, Landroid/graphics/Rect;->left:I
+
+    sub-int v6, v14, v15
+
+    .line 159
+    .local v6, curViewWidth:I
+    iget v14, v5, Landroid/graphics/Rect;->left:I
+
+    if-gez v14, :cond_0
+
+    .line 161
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v5, v6}, Lorg/taptwo/android/widget/TitleFlowIndicator;->clipViewOnTheLeft(Landroid/graphics/Rect;I)V
+
+    .line 163
+    :cond_0
+    iget v14, v5, Landroid/graphics/Rect;->right:I
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+
+    move-result v15
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v16
+
+    add-int v15, v15, v16
+
+    if-le v14, v15, :cond_1
+
+    .line 165
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v5, v6}, Lorg/taptwo/android/widget/TitleFlowIndicator;->clipViewOnTheRight(Landroid/graphics/Rect;I)V
+
+    .line 169
+    :cond_1
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
+
+    if-lez v14, :cond_4
+
+    .line 170
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
+
+    add-int/lit8 v7, v14, -0x1
+
+    .local v7, iLoop:I
+    :goto_1
+    if-ltz v7, :cond_4
+
+    .line 171
+    invoke-virtual {v2, v7}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, Landroid/graphics/Rect;
 
-    iget v6, v0, Landroid/graphics/Rect;->left:I
+    .line 172
+    .local v1, bound:Landroid/graphics/Rect;
+    iget v14, v1, Landroid/graphics/Rect;->right:I
 
-    int-to-float v6, v6
+    iget v15, v1, Landroid/graphics/Rect;->left:I
 
-    sub-float/2addr v6, v13
+    sub-int v13, v14, v15
 
-    iget v7, v1, Landroid/graphics/Rect;->right:I
+    .line 174
+    .local v13, w:I
+    iget v14, v1, Landroid/graphics/Rect;->left:I
 
-    int-to-float v7, v7
+    if-gez v14, :cond_2
 
-    cmpg-float v6, v6, v7
+    .line 176
+    move-object/from16 v0, p0
 
-    if-gez v6, :cond_a
+    invoke-direct {v0, v1, v13}, Lorg/taptwo/android/widget/TitleFlowIndicator;->clipViewOnTheLeft(Landroid/graphics/Rect;I)V
 
-    iget v1, v1, Landroid/graphics/Rect;->right:I
+    .line 178
+    add-int/lit8 v14, v4, -0x1
 
-    iget v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->k:F
+    if-ge v7, v14, :cond_2
 
-    float-to-int v6, v6
+    move-object/from16 v0, p0
 
-    add-int/2addr v1, v6
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
 
-    iput v1, v0, Landroid/graphics/Rect;->left:I
+    if-eq v14, v7, :cond_2
 
+    .line 179
+    add-int/lit8 v14, v7, 0x1
+
+    invoke-virtual {v2, v14}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v11
+
+    check-cast v11, Landroid/graphics/Rect;
+
+    .line 181
+    .local v11, rightBound:Landroid/graphics/Rect;
+    iget v14, v1, Landroid/graphics/Rect;->right:I
+
+    int-to-float v14, v14
+
+    const/high16 v15, 0x4120
+
+    add-float/2addr v14, v15
+
+    iget v15, v11, Landroid/graphics/Rect;->left:I
+
+    int-to-float v15, v15
+
+    cmpl-float v14, v14, v15
+
+    if-lez v14, :cond_2
+
+    .line 182
+    iget v14, v11, Landroid/graphics/Rect;->left:I
+
+    move-object/from16 v0, p0
+
+    iget v15, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->titlePadding:F
+
+    float-to-int v15, v15
+
+    add-int/2addr v15, v13
+
+    sub-int/2addr v14, v15
+
+    iput v14, v1, Landroid/graphics/Rect;->left:I
+
+    .line 170
+    .end local v11           #rightBound:Landroid/graphics/Rect;
+    :cond_2
+    add-int/lit8 v7, v7, -0x1
+
+    goto :goto_1
+
+    .line 154
+    .end local v1           #bound:Landroid/graphics/Rect;
+    .end local v4           #count:I
+    .end local v5           #curViewBound:Landroid/graphics/Rect;
+    .end local v6           #curViewWidth:I
+    .end local v7           #iLoop:I
+    .end local v13           #w:I
+    :cond_3
+    const/4 v4, 0x1
+
+    goto :goto_0
+
+    .line 189
+    .restart local v4       #count:I
+    .restart local v5       #curViewBound:Landroid/graphics/Rect;
+    .restart local v6       #curViewWidth:I
+    :cond_4
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
+
+    add-int/lit8 v15, v4, -0x1
+
+    if-ge v14, v15, :cond_6
+
+    .line 190
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
+
+    add-int/lit8 v7, v14, 0x1
+
+    .restart local v7       #iLoop:I
+    :goto_2
+    if-ge v7, v4, :cond_6
+
+    .line 191
+    invoke-virtual {v2, v7}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/graphics/Rect;
+
+    .line 192
+    .restart local v1       #bound:Landroid/graphics/Rect;
+    iget v14, v1, Landroid/graphics/Rect;->right:I
+
+    iget v15, v1, Landroid/graphics/Rect;->left:I
+
+    sub-int v13, v14, v15
+
+    .line 194
+    .restart local v13       #w:I
+    iget v14, v1, Landroid/graphics/Rect;->right:I
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+
+    move-result v15
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v16
+
+    add-int v15, v15, v16
+
+    if-le v14, v15, :cond_5
+
+    .line 196
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v1, v13}, Lorg/taptwo/android/widget/TitleFlowIndicator;->clipViewOnTheRight(Landroid/graphics/Rect;I)V
+
+    .line 198
+    if-lez v7, :cond_5
+
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
+
+    if-eq v14, v7, :cond_5
+
+    .line 199
+    add-int/lit8 v14, v7, -0x1
+
+    invoke-virtual {v2, v14}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v8
+
+    check-cast v8, Landroid/graphics/Rect;
+
+    .line 201
+    .local v8, leftBound:Landroid/graphics/Rect;
+    iget v14, v1, Landroid/graphics/Rect;->left:I
+
+    int-to-float v14, v14
+
+    const/high16 v15, 0x4120
+
+    sub-float/2addr v14, v15
+
+    iget v15, v8, Landroid/graphics/Rect;->right:I
+
+    int-to-float v15, v15
+
+    cmpg-float v14, v14, v15
+
+    if-gez v14, :cond_5
+
+    .line 202
+    iget v14, v8, Landroid/graphics/Rect;->right:I
+
+    move-object/from16 v0, p0
+
+    iget v15, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->titlePadding:F
+
+    float-to-int v15, v15
+
+    add-int/2addr v14, v15
+
+    iput v14, v1, Landroid/graphics/Rect;->left:I
+
+    .line 190
+    .end local v8           #leftBound:Landroid/graphics/Rect;
+    :cond_5
+    add-int/lit8 v7, v7, 0x1
+
+    goto :goto_2
+
+    .line 210
+    .end local v1           #bound:Landroid/graphics/Rect;
+    .end local v7           #iLoop:I
+    .end local v13           #w:I
+    :cond_6
+    const/4 v7, 0x0
+
+    .restart local v7       #iLoop:I
+    :goto_3
+    if-ge v7, v4, :cond_b
+
+    .line 212
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v7}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getTitle(I)Ljava/lang/String;
+
+    move-result-object v12
+
+    .line 213
+    .local v12, title:Ljava/lang/String;
+    invoke-virtual {v2, v7}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/graphics/Rect;
+
+    .line 215
+    .restart local v1       #bound:Landroid/graphics/Rect;
+    iget v14, v1, Landroid/graphics/Rect;->left:I
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+
+    move-result v15
+
+    if-le v14, v15, :cond_7
+
+    iget v14, v1, Landroid/graphics/Rect;->left:I
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+
+    move-result v15
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v16
+
+    add-int v15, v15, v16
+
+    if-lt v14, v15, :cond_8
+
+    :cond_7
+    iget v14, v1, Landroid/graphics/Rect;->right:I
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+
+    move-result v15
+
+    if-le v14, v15, :cond_a
+
+    iget v14, v1, Landroid/graphics/Rect;->right:I
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+
+    move-result v15
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v16
+
+    add-int v15, v15, v16
+
+    if-ge v14, v15, :cond_a
+
+    .line 216
+    :cond_8
+    move-object/from16 v0, p0
+
+    iget-object v10, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintText:Landroid/graphics/Paint;
+
+    .line 218
+    .local v10, paint:Landroid/graphics/Paint;
+    iget v14, v1, Landroid/graphics/Rect;->left:I
+
+    iget v15, v1, Landroid/graphics/Rect;->right:I
+
+    add-int/2addr v14, v15
+
+    div-int/lit8 v9, v14, 0x2
+
+    .line 219
+    .local v9, middle:I
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v14
+
+    div-int/lit8 v14, v14, 0x2
+
+    sub-int v14, v9, v14
+
+    invoke-static {v14}, Ljava/lang/Math;->abs(I)I
+
+    move-result v14
+
+    const/16 v15, 0x14
+
+    if-ge v14, v15, :cond_9
+
+    .line 220
+    move-object/from16 v0, p0
+
+    iget-object v10, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintSelected:Landroid/graphics/Paint;
+
+    .line 222
+    :cond_9
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->typeface:Landroid/graphics/Typeface;
+
+    invoke-virtual {v10, v14}, Landroid/graphics/Paint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
+
+    .line 223
+    iget v14, v1, Landroid/graphics/Rect;->left:I
+
+    int-to-float v14, v14
+
+    iget v15, v1, Landroid/graphics/Rect;->bottom:I
+
+    int-to-float v15, v15
+
+    move-object/from16 v0, p1
+
+    invoke-virtual {v0, v12, v14, v15, v10}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+
+    .line 210
+    .end local v9           #middle:I
+    .end local v10           #paint:Landroid/graphics/Paint;
     :cond_a
-    add-int/lit8 v0, v4, 0x1
+    add-int/lit8 v7, v7, 0x1
 
-    move v4, v0
+    goto :goto_3
 
-    goto/16 :goto_4
-
+    .line 228
+    .end local v1           #bound:Landroid/graphics/Rect;
+    .end local v12           #title:Ljava/lang/String;
     :cond_b
-    invoke-direct {p0, v3}, Lorg/taptwo/android/widget/TitleFlowIndicator;->c(I)Ljava/lang/String;
+    new-instance v14, Landroid/graphics/Path;
 
-    move-result-object v4
+    invoke-direct {v14}, Landroid/graphics/Path;-><init>()V
 
-    invoke-virtual {v5, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    move-object/from16 v0, p0
 
-    move-result-object v0
+    iput-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
 
-    check-cast v0, Landroid/graphics/Rect;
+    .line 229
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getHeight()I
 
-    iget v1, v0, Landroid/graphics/Rect;->left:I
+    move-result v14
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+    add-int/lit8 v3, v14, -0x1
 
-    move-result v6
+    .line 230
+    .local v3, coordY:I
+    int-to-float v15, v3
 
-    if-le v1, v6, :cond_c
+    move-object/from16 v0, p0
 
-    iget v1, v0, Landroid/graphics/Rect;->left:I
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+    const/high16 v16, 0x4000
 
-    move-result v6
+    rem-float v14, v14, v16
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+    const/high16 v16, 0x3f80
 
-    move-result v7
+    cmpl-float v14, v14, v16
 
-    add-int/2addr v6, v7
+    if-nez v14, :cond_c
 
-    if-lt v1, v6, :cond_d
+    move-object/from16 v0, p0
 
-    :cond_c
-    iget v1, v0, Landroid/graphics/Rect;->right:I
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+    const/high16 v16, 0x4000
 
-    move-result v6
+    div-float v14, v14, v16
 
-    if-le v1, v6, :cond_f
+    :goto_4
+    sub-float v14, v15, v14
 
-    iget v1, v0, Landroid/graphics/Rect;->right:I
+    float-to-int v3, v14
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getLeft()I
+    .line 231
+    move-object/from16 v0, p0
 
-    move-result v6
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+    const/4 v15, 0x0
 
-    move-result v7
+    int-to-float v0, v3
 
-    add-int/2addr v6, v7
+    move/from16 v16, v0
 
-    if-ge v1, v6, :cond_f
+    invoke-virtual/range {v14 .. v16}, Landroid/graphics/Path;->moveTo(FF)V
 
-    :cond_d
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->e:Landroid/graphics/Paint;
+    .line 232
+    move-object/from16 v0, p0
 
-    iget v6, v0, Landroid/graphics/Rect;->left:I
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
 
-    iget v7, v0, Landroid/graphics/Rect;->right:I
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
 
-    add-int/2addr v6, v7
+    move-result v15
 
-    div-int/lit8 v6, v6, 0x2
+    int-to-float v15, v15
 
-    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+    int-to-float v0, v3
 
-    move-result v7
+    move/from16 v16, v0
 
-    div-int/lit8 v7, v7, 0x2
+    invoke-virtual/range {v14 .. v16}, Landroid/graphics/Path;->lineTo(FF)V
 
-    sub-int/2addr v6, v7
+    .line 233
+    move-object/from16 v0, p0
 
-    invoke-static {v6}, Ljava/lang/Math;->abs(I)I
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
 
-    move-result v6
+    invoke-virtual {v14}, Landroid/graphics/Path;->close()V
 
-    const/16 v7, 0x14
+    .line 234
+    move-object/from16 v0, p0
 
-    if-ge v6, v7, :cond_e
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
 
-    iget-object v1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->f:Landroid/graphics/Paint;
+    move-object/from16 v0, p0
 
-    :cond_e
-    iget-object v6, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->n:Landroid/graphics/Typeface;
+    iget-object v15, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterLine:Landroid/graphics/Paint;
 
-    invoke-virtual {v1, v6}, Landroid/graphics/Paint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
+    move-object/from16 v0, p1
 
-    iget v6, v0, Landroid/graphics/Rect;->left:I
+    invoke-virtual {v0, v14, v15}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
 
-    int-to-float v6, v6
+    .line 236
+    new-instance v14, Landroid/graphics/Path;
 
-    iget v0, v0, Landroid/graphics/Rect;->bottom:I
+    invoke-direct {v14}, Landroid/graphics/Path;-><init>()V
+
+    move-object/from16 v0, p0
+
+    iput-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
+
+    .line 237
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v15
+
+    div-int/lit8 v15, v15, 0x2
+
+    int-to-float v15, v15
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getHeight()I
+
+    move-result v16
+
+    move/from16 v0, v16
 
     int-to-float v0, v0
 
-    invoke-virtual {p1, v4, v6, v0, v1}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    move/from16 v16, v0
 
-    :cond_f
-    add-int/lit8 v0, v3, 0x1
+    move-object/from16 v0, p0
 
-    move v3, v0
+    iget v0, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
 
-    goto/16 :goto_5
+    move/from16 v17, v0
 
-    :cond_10
-    iget v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
+    sub-float v16, v16, v17
 
-    div-float/2addr v0, v11
+    move-object/from16 v0, p0
 
-    sub-float/2addr v0, v12
+    iget v0, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerTriangleHeight:F
 
-    goto/16 :goto_6
+    move/from16 v17, v0
+
+    sub-float v16, v16, v17
+
+    invoke-virtual/range {v14 .. v16}, Landroid/graphics/Path;->moveTo(FF)V
+
+    .line 238
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v15
+
+    div-int/lit8 v15, v15, 0x2
+
+    int-to-float v15, v15
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerTriangleHeight:F
+
+    move/from16 v16, v0
+
+    add-float v15, v15, v16
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getHeight()I
+
+    move-result v16
+
+    move/from16 v0, v16
+
+    int-to-float v0, v0
+
+    move/from16 v16, v0
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
+
+    move/from16 v17, v0
+
+    sub-float v16, v16, v17
+
+    invoke-virtual/range {v14 .. v16}, Landroid/graphics/Path;->lineTo(FF)V
+
+    .line 239
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getWidth()I
+
+    move-result v15
+
+    div-int/lit8 v15, v15, 0x2
+
+    int-to-float v15, v15
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerTriangleHeight:F
+
+    move/from16 v16, v0
+
+    sub-float v15, v15, v16
+
+    invoke-virtual/range {p0 .. p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->getHeight()I
+
+    move-result v16
+
+    move/from16 v0, v16
+
+    int-to-float v0, v0
+
+    move/from16 v16, v0
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
+
+    move/from16 v17, v0
+
+    sub-float v16, v16, v17
+
+    invoke-virtual/range {v14 .. v16}, Landroid/graphics/Path;->lineTo(FF)V
+
+    .line 240
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
+
+    invoke-virtual {v14}, Landroid/graphics/Path;->close()V
+
+    .line 241
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->path:Landroid/graphics/Path;
+
+    move-object/from16 v0, p0
+
+    iget-object v15, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->paintFooterTriangle:Landroid/graphics/Paint;
+
+    move-object/from16 v0, p1
+
+    invoke-virtual {v0, v14, v15}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
+
+    .line 243
+    return-void
+
+    .line 230
+    :cond_c
+    move-object/from16 v0, p0
+
+    iget v14, v0, Lorg/taptwo/android/widget/TitleFlowIndicator;->footerLineHeight:F
+
+    const/high16 v16, 0x4000
+
+    div-float v14, v14, v16
+
+    const/high16 v16, 0x3f80
+
+    sub-float v14, v14, v16
+
+    goto/16 :goto_4
 .end method
 
 .method protected onMeasure(II)V
-    .locals 4
+    .locals 2
+    .parameter "widthMeasureSpec"
+    .parameter "heightMeasureSpec"
 
-    const/high16 v3, 0x4000
-
-    invoke-static {p1}, Landroid/view/View$MeasureSpec;->getMode(I)I
+    .prologue
+    .line 384
+    invoke-direct {p0, p1}, Lorg/taptwo/android/widget/TitleFlowIndicator;->measureWidth(I)I
 
     move-result v0
 
-    invoke-static {p1}, Landroid/view/View$MeasureSpec;->getSize(I)I
+    invoke-direct {p0, p2}, Lorg/taptwo/android/widget/TitleFlowIndicator;->measureHeight(I)I
 
     move-result v1
 
-    if-eq v0, v3, :cond_0
+    invoke-virtual {p0, v0, v1}, Lorg/taptwo/android/widget/TitleFlowIndicator;->setMeasuredDimension(II)V
 
-    new-instance v0, Ljava/lang/IllegalStateException;
+    .line 385
+    return-void
+.end method
 
-    const-string v1, "ViewFlow can only be used in EXACTLY mode."
+.method public onScrolled(IIII)V
+    .locals 0
+    .parameter "h"
+    .parameter "v"
+    .parameter "oldh"
+    .parameter "oldv"
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    .prologue
+    .line 337
+    iput p1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentScroll:I
 
-    throw v0
+    .line 338
+    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->invalidate()V
 
-    :cond_0
-    invoke-static {p2}, Landroid/view/View$MeasureSpec;->getMode(I)I
+    .line 339
+    return-void
+.end method
 
-    move-result v2
+.method public onSwitched(Landroid/view/View;I)V
+    .locals 0
+    .parameter "view"
+    .parameter "position"
 
-    invoke-static {p2}, Landroid/view/View$MeasureSpec;->getSize(I)I
+    .prologue
+    .line 350
+    iput p2, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
+
+    .line 351
+    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->invalidate()V
+
+    .line 352
+    return-void
+.end method
+
+.method public setTitleProvider(Lorg/taptwo/android/widget/TitleProvider;)V
+    .locals 0
+    .parameter "provider"
+
+    .prologue
+    .line 374
+    iput-object p1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->titleProvider:Lorg/taptwo/android/widget/TitleProvider;
+
+    .line 375
+    return-void
+.end method
+
+.method public setViewFlow(Lorg/taptwo/android/widget/ViewFlow;)V
+    .locals 1
+    .parameter "view"
+
+    .prologue
+    .line 363
+    iput-object p1, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->viewFlow:Lorg/taptwo/android/widget/ViewFlow;
+
+    .line 364
+    invoke-virtual {p1}, Lorg/taptwo/android/widget/ViewFlow;->getSelectedItemPosition()I
 
     move-result v0
 
-    if-ne v2, v3, :cond_1
+    iput v0, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->currentPosition:I
 
-    :goto_0
-    invoke-virtual {p0, v1, v0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->setMeasuredDimension(II)V
+    .line 365
+    invoke-virtual {p0}, Lorg/taptwo/android/widget/TitleFlowIndicator;->invalidate()V
 
+    .line 366
     return-void
-
-    :cond_1
-    new-instance v0, Landroid/graphics/Rect;
-
-    invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
-
-    iget-object v2, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->e:Landroid/graphics/Paint;
-
-    invoke-virtual {v2}, Landroid/graphics/Paint;->descent()F
-
-    move-result v2
-
-    iget-object v3, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->e:Landroid/graphics/Paint;
-
-    invoke-virtual {v3}, Landroid/graphics/Paint;->ascent()F
-
-    move-result v3
-
-    sub-float/2addr v2, v3
-
-    float-to-int v2, v2
-
-    iput v2, v0, Landroid/graphics/Rect;->bottom:I
-
-    iget v2, v0, Landroid/graphics/Rect;->bottom:I
-
-    iget v0, v0, Landroid/graphics/Rect;->top:I
-
-    sub-int v0, v2, v0
-
-    iget v2, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->j:F
-
-    float-to-int v2, v2
-
-    add-int/2addr v0, v2
-
-    iget v2, p0, Lorg/taptwo/android/widget/TitleFlowIndicator;->m:F
-
-    float-to-int v2, v2
-
-    add-int/2addr v0, v2
-
-    add-int/lit8 v0, v0, 0xa
-
-    goto :goto_0
 .end method

@@ -1,4 +1,4 @@
-.class public final Lsdk/c/a/b/a;
+.class public Lsdk/c/a/b/a;
 .super Ljava/io/OutputStream;
 
 
@@ -15,7 +15,7 @@
 
 
 # direct methods
-.method public constructor <init>(Ljava/io/OutputStream;)V
+.method public constructor <init>(Ljava/io/OutputStream;I)V
     .locals 2
 
     const/4 v1, 0x0
@@ -36,14 +36,14 @@
 
     iput-object p1, p0, Lsdk/c/a/b/a;->a:Ljava/io/OutputStream;
 
-    iput v1, p0, Lsdk/c/a/b/a;->e:I
+    iput p2, p0, Lsdk/c/a/b/a;->e:I
 
     return-void
 .end method
 
 
 # virtual methods
-.method protected final a()V
+.method protected a()V
     .locals 7
 
     const/16 v1, 0x3d
@@ -177,7 +177,7 @@
     goto :goto_1
 .end method
 
-.method public final close()V
+.method public close()V
     .locals 1
 
     invoke-virtual {p0}, Lsdk/c/a/b/a;->a()V
@@ -189,7 +189,7 @@
     return-void
 .end method
 
-.method public final write(I)V
+.method public write(I)V
     .locals 2
 
     and-int/lit16 v0, p1, 0xff

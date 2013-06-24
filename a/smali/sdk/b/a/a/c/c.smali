@@ -1,4 +1,4 @@
-.class final Lsdk/b/a/a/c/c;
+.class Lsdk/b/a/a/c/c;
 .super Lsdk/b/a/a/e/a/c;
 
 
@@ -19,7 +19,7 @@
 
 
 # virtual methods
-.method public final a()V
+.method public a()V
     .locals 3
 
     const/4 v2, 0x0

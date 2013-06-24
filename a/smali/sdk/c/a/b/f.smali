@@ -3,13 +3,13 @@
 
 
 # instance fields
-.field public s:Ljava/lang/String;
+.field public a:Ljava/lang/String;
 
-.field public t:Lsdk/c/a/b/c;
+.field public b:Lsdk/c/a/b/c;
 
-.field public u:Ljava/lang/Object;
+.field public c:Ljava/lang/Object;
 
-.field public v:Lsdk/c/a/b/e;
+.field public d:Lsdk/c/a/b/e;
 
 
 # direct methods
@@ -20,18 +20,14 @@
 
     if-eqz p2, :cond_0
 
-    invoke-static {p2}, Lsdk/c/a/b/g;->a(Ljava/lang/String;)[Ljava/lang/String;
+    invoke-direct {p0, p2}, Lsdk/c/a/b/f;->a(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    invoke-static {v0}, Lsdk/c/a/b/g;->a([Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lsdk/c/a/b/f;->s:Ljava/lang/String;
+    iput-object v0, p0, Lsdk/c/a/b/f;->a:Ljava/lang/String;
 
     :cond_0
-    iput-object p3, p0, Lsdk/c/a/b/f;->t:Lsdk/c/a/b/c;
+    iput-object p3, p0, Lsdk/c/a/b/f;->b:Lsdk/c/a/b/c;
 
     return-void
 .end method
@@ -46,31 +42,47 @@
     return-void
 .end method
 
+.method private final a(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
+
+    invoke-static {p1}, Lsdk/c/a/b/g;->a(Ljava/lang/String;)[Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lsdk/c/a/b/g;->a([Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
 
 # virtual methods
-.method public a_()V
-    .locals 2
+.method public f()V
+    .locals 3
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
-    iget-object v0, p0, Lsdk/c/a/b/f;->t:Lsdk/c/a/b/c;
+    iget-object v0, p0, Lsdk/c/a/b/f;->b:Lsdk/c/a/b/c;
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lsdk/c/a/b/f;->t:Lsdk/c/a/b/c;
+    iget-object v0, p0, Lsdk/c/a/b/f;->b:Lsdk/c/a/b/c;
 
-    invoke-virtual {v0}, Lsdk/c/a/b/c;->a()V
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Lsdk/c/a/b/c;->a(Z)V
 
     :cond_0
-    iput-object v1, p0, Lsdk/c/a/b/f;->t:Lsdk/c/a/b/c;
+    iput-object v2, p0, Lsdk/c/a/b/f;->b:Lsdk/c/a/b/c;
 
-    iput-object v1, p0, Lsdk/c/a/b/f;->v:Lsdk/c/a/b/e;
+    iput-object v2, p0, Lsdk/c/a/b/f;->d:Lsdk/c/a/b/e;
 
-    iput-object v1, p0, Lsdk/c/a/b/f;->u:Ljava/lang/Object;
+    iput-object v2, p0, Lsdk/c/a/b/f;->c:Ljava/lang/Object;
 
-    iput-object v1, p0, Lsdk/c/a/b/f;->s:Ljava/lang/String;
+    iput-object v2, p0, Lsdk/c/a/b/f;->a:Ljava/lang/String;
 
-    invoke-super {p0}, Lsdk/c/a/e/d;->a_()V
+    invoke-super {p0}, Lsdk/c/a/e/d;->f()V
 
     return-void
 .end method

@@ -323,9 +323,9 @@
 .end method
 
 .method protected drawCompass(Landroid/graphics/Canvas;F)V
-    .locals 4
+    .locals 5
 
-    const/high16 v3, 0x4120
+    const/16 v4, 0xa
 
     const/high16 v0, 0x43b4
 
@@ -346,9 +346,13 @@
     :cond_1
     iget-object v0, p0, Lcom/baidu/mapapi/MyLocationOverlay;->g:Landroid/graphics/Bitmap;
 
-    const/4 v1, 0x0
+    int-to-float v1, v4
 
-    invoke-virtual {p1, v0, v3, v3, v1}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+    int-to-float v2, v4
+
+    const/4 v3, 0x0
+
+    invoke-virtual {p1, v0, v1, v2, v3}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
     iget-object v0, p0, Lcom/baidu/mapapi/MyLocationOverlay;->h:Landroid/graphics/Bitmap;
 
@@ -358,7 +362,7 @@
 
     div-int/lit8 v0, v0, 0x2
 
-    add-int/lit8 v0, v0, 0xa
+    add-int/2addr v0, v4
 
     iget-object v1, p0, Lcom/baidu/mapapi/MyLocationOverlay;->h:Landroid/graphics/Bitmap;
 
@@ -368,13 +372,17 @@
 
     div-int/lit8 v1, v1, 0x2
 
-    add-int/lit8 v1, v1, 0xa
+    add-int/2addr v1, v4
 
     new-instance v2, Landroid/graphics/Matrix;
 
     invoke-direct {v2}, Landroid/graphics/Matrix;-><init>()V
 
-    invoke-virtual {v2, v3, v3}, Landroid/graphics/Matrix;->postTranslate(FF)Z
+    int-to-float v3, v4
+
+    int-to-float v4, v4
+
+    invoke-virtual {v2, v3, v4}, Landroid/graphics/Matrix;->postTranslate(FF)Z
 
     neg-float v3, p2
 

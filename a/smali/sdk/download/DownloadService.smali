@@ -45,7 +45,7 @@
     return-void
 .end method
 
-.method static synthetic a(Lsdk/download/DownloadService;IJ)J
+.method private a(IJ)J
     .locals 5
 
     const-wide/16 v1, 0x0
@@ -108,6 +108,24 @@
     sub-long v0, v3, p2
 
     goto :goto_0
+.end method
+
+.method static synthetic a(Lsdk/download/DownloadService;IJ)J
+    .locals 2
+
+    invoke-direct {p0, p1, p2, p3}, Lsdk/download/DownloadService;->a(IJ)J
+
+    move-result-wide v0
+
+    return-wide v0
+.end method
+
+.method static synthetic a(Lsdk/download/DownloadService;Landroid/database/CharArrayBuffer;)Landroid/database/CharArrayBuffer;
+    .locals 0
+
+    iput-object p1, p0, Lsdk/download/DownloadService;->i:Landroid/database/CharArrayBuffer;
+
+    return-object p1
 .end method
 
 .method static synthetic a(Lsdk/download/DownloadService;Ljava/lang/Object;)Ljava/lang/Object;
@@ -223,6 +241,14 @@
     goto :goto_1
 .end method
 
+.method static synthetic a(Lsdk/download/DownloadService;Lsdk/download/i;)Lsdk/download/i;
+    .locals 0
+
+    iput-object p1, p0, Lsdk/download/DownloadService;->d:Lsdk/download/i;
+
+    return-object p1
+.end method
+
 .method private a()V
     .locals 1
 
@@ -249,8 +275,6 @@
 
     :cond_0
     monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     return-void
 
@@ -258,19 +282,62 @@
     move-exception v0
 
     monitor-exit p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method
 
-.method static synthetic a(Lsdk/download/DownloadService;)V
-    .locals 0
+.method private a(I)V
+    .locals 3
 
-    invoke-direct {p0}, Lsdk/download/DownloadService;->a()V
+    iget-object v0, p0, Lsdk/download/DownloadService;->c:Ljava/util/ArrayList;
+
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lsdk/download/d;
+
+    iget v1, v0, Lsdk/download/d;->j:I
+
+    const/16 v2, 0xc0
+
+    if-ne v1, v2, :cond_1
+
+    const/16 v1, 0x1ea
+
+    iput v1, v0, Lsdk/download/d;->j:I
+
+    :cond_0
+    :goto_0
+    iget-object v0, p0, Lsdk/download/DownloadService;->c:Ljava/util/ArrayList;
+
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
 
     return-void
+
+    :cond_1
+    iget v1, v0, Lsdk/download/d;->g:I
+
+    if-eqz v1, :cond_0
+
+    iget-object v1, v0, Lsdk/download/d;->e:Ljava/lang/String;
+
+    if-eqz v1, :cond_0
+
+    new-instance v1, Ljava/io/File;
+
+    iget-object v0, v0, Lsdk/download/d;->e:Ljava/lang/String;
+
+    invoke-direct {v1, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v1}, Ljava/io/File;->delete()Z
+
+    goto :goto_0
 .end method
 
-.method static synthetic a(Lsdk/download/DownloadService;Landroid/database/Cursor;IZZJ)V
+.method private a(Landroid/database/Cursor;IZZJ)V
     .locals 41
 
     const-string v2, "status"
@@ -873,27 +940,39 @@
 
     if-eqz v3, :cond_4
 
-    new-instance v3, Ljava/lang/StringBuilder;
+    const-string v3, "GexinSdkDownloadService"
 
-    const-string v4, "Service spawning thread to handle new download "
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget v4, v2, Lsdk/download/d;->a:I
+    const-string v5, "Service spawning thread to handle new download "
 
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    move-result-object v4
 
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    iget v5, v2, Lsdk/download/d;->a:I
 
-    invoke-static {}, Lsdk/c/a/c/a;->a()V
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-static {v3, v4}, Lsdk/c/a/c/a;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-boolean v3, v2, Lsdk/download/d;->O:Z
 
     if-eqz v3, :cond_2
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v2, "GexinSdkDownloadService"
+
+    const-string v3, "Multiple threads on same download on insert"
+
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     new-instance v2, Ljava/lang/IllegalStateException;
 
@@ -979,39 +1058,291 @@
     return-void
 .end method
 
-.method static synthetic a(Lsdk/download/DownloadService;I)Z
-    .locals 2
+.method static synthetic a(Lsdk/download/DownloadService;)V
+    .locals 0
+
+    invoke-direct {p0}, Lsdk/download/DownloadService;->a()V
+
+    return-void
+.end method
+
+.method static synthetic a(Lsdk/download/DownloadService;Landroid/database/Cursor;IZZJ)V
+    .locals 0
+
+    invoke-direct/range {p0 .. p6}, Lsdk/download/DownloadService;->a(Landroid/database/Cursor;IZZJ)V
+
+    return-void
+.end method
+
+.method private a(Landroid/database/Cursor;I)Z
+    .locals 8
+
+    const/4 v2, 0x0
+
+    const/4 v1, 0x1
 
     iget-object v0, p0, Lsdk/download/DownloadService;->c:Ljava/util/ArrayList;
 
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual {v0, p2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Lsdk/download/d;
 
-    iget-boolean v1, v0, Lsdk/download/d;->z:Z
+    monitor-enter p0
 
-    if-nez v1, :cond_0
+    :try_start_0
+    iget-object v3, p0, Lsdk/download/DownloadService;->h:Ljava/lang/Object;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    iget v1, v0, Lsdk/download/d;->g:I
+    if-eqz v3, :cond_1
 
-    if-nez v1, :cond_0
+    :try_start_1
+    iget-object v3, p0, Lsdk/download/DownloadService;->h:Ljava/lang/Object;
 
-    iget v1, v0, Lsdk/download/d;->j:I
+    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    invoke-static {v1}, Lsdk/download/k;->a(I)Z
+    move-result-object v3
 
-    move-result v1
+    const-string v4, "scanFile"
 
-    if-eqz v1, :cond_0
+    const/4 v5, 0x2
 
-    iget-object v0, v0, Lsdk/download/d;->f:Ljava/lang/String;
+    new-array v5, v5, [Ljava/lang/Class;
+
+    const/4 v6, 0x0
+
+    const-class v7, Ljava/lang/String;
+
+    aput-object v7, v5, v6
+
+    const/4 v6, 0x1
+
+    const-class v7, Ljava/lang/String;
+
+    aput-object v7, v5, v6
+
+    invoke-virtual {v3, v4, v5}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+
+    move-result-object v3
+
+    iget-object v4, p0, Lsdk/download/DownloadService;->h:Ljava/lang/Object;
+
+    const/4 v5, 0x2
+
+    new-array v5, v5, [Ljava/lang/Object;
+
+    const/4 v6, 0x0
+
+    iget-object v7, v0, Lsdk/download/d;->e:Ljava/lang/String;
+
+    aput-object v7, v5, v6
+
+    const/4 v6, 0x1
+
+    iget-object v7, v0, Lsdk/download/d;->f:Ljava/lang/String;
+
+    aput-object v7, v5, v6
+
+    invoke-virtual {v3, v4, v5}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+
+    const/4 v3, 0x1
+
+    iput-boolean v3, v0, Lsdk/download/d;->z:Z
+
+    if-eqz p1, :cond_0
+
+    new-instance v3, Landroid/content/ContentValues;
+
+    invoke-direct {v3}, Landroid/content/ContentValues;-><init>()V
+
+    const-string v4, "scanned"
+
+    const/4 v5, 0x1
+
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    invoke-virtual {v3, v4, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+
+    invoke-virtual {p0}, Lsdk/download/DownloadService;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v4
+
+    sget-object v5, Lsdk/download/k;->a:Landroid/net/Uri;
+
+    const-string v6, "_id"
+
+    invoke-interface {p1, v6}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
+
+    move-result v6
+
+    invoke-interface {p1, v6}, Landroid/database/Cursor;->getLong(I)J
+
+    move-result-wide v6
+
+    invoke-static {v5, v6, v7}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+
+    move-result-object v5
+
+    const/4 v6, 0x0
+
+    const/4 v7, 0x0
+
+    invoke-virtual {v4, v5, v3, v6, v7}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    .catch Ljava/lang/SecurityException; {:try_start_1 .. :try_end_1} :catch_0
+    .catch Ljava/lang/NoSuchMethodException; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/lang/IllegalArgumentException; {:try_start_1 .. :try_end_1} :catch_2
+    .catch Ljava/lang/IllegalAccessException; {:try_start_1 .. :try_end_1} :catch_3
+    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_1 .. :try_end_1} :catch_4
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_5
 
     :cond_0
-    const/4 v0, 0x0
+    :try_start_2
+    monitor-exit p0
+
+    move v0, v1
+
+    :goto_0
+    return v0
+
+    :catch_0
+    move-exception v0
+
+    invoke-virtual {v0}, Ljava/lang/SecurityException;->printStackTrace()V
+
+    :cond_1
+    :goto_1
+    monitor-exit p0
+
+    move v0, v2
+
+    goto :goto_0
+
+    :catch_1
+    move-exception v0
+
+    invoke-virtual {v0}, Ljava/lang/NoSuchMethodException;->printStackTrace()V
+
+    goto :goto_1
+
+    :catchall_0
+    move-exception v0
+
+    monitor-exit p0
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    throw v0
+
+    :catch_2
+    move-exception v0
+
+    :try_start_3
+    invoke-virtual {v0}, Ljava/lang/IllegalArgumentException;->printStackTrace()V
+
+    goto :goto_1
+
+    :catch_3
+    move-exception v0
+
+    invoke-virtual {v0}, Ljava/lang/IllegalAccessException;->printStackTrace()V
+
+    goto :goto_1
+
+    :catch_4
+    move-exception v0
+
+    invoke-virtual {v0}, Ljava/lang/reflect/InvocationTargetException;->printStackTrace()V
+
+    goto :goto_1
+
+    :catch_5
+    move-exception v1
+
+    const-string v1, "GexinSdkDownloadService"
+
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v4, "Failed to scan file "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    iget-object v0, v0, Lsdk/download/d;->e:Ljava/lang/String;
+
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    goto :goto_1
+.end method
+
+.method private a(Ljava/lang/String;)Z
+    .locals 1
+
+    const/4 v0, 0x1
 
     return v0
+.end method
+
+.method static synthetic a(Lsdk/download/DownloadService;I)Z
+    .locals 1
+
+    invoke-direct {p0, p1}, Lsdk/download/DownloadService;->c(I)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic a(Lsdk/download/DownloadService;Landroid/database/Cursor;I)Z
+    .locals 1
+
+    invoke-direct {p0, p1, p2}, Lsdk/download/DownloadService;->a(Landroid/database/Cursor;I)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic a(Lsdk/download/DownloadService;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Lsdk/download/DownloadService;->g:Z
+
+    return p1
+.end method
+
+.method static synthetic b(Lsdk/download/DownloadService;Landroid/database/CharArrayBuffer;)Landroid/database/CharArrayBuffer;
+    .locals 0
+
+    iput-object p1, p0, Lsdk/download/DownloadService;->j:Landroid/database/CharArrayBuffer;
+
+    return-object p1
+.end method
+
+.method static synthetic b(Lsdk/download/DownloadService;)Ljava/lang/Object;
+    .locals 1
+
+    iget-object v0, p0, Lsdk/download/DownloadService;->h:Ljava/lang/Object;
+
+    return-object v0
 .end method
 
 .method private b()V
@@ -1042,7 +1373,7 @@
     :goto_0
     array-length v2, v1
 
-    if-ge v0, v2, :cond_3
+    if-ge v0, v2, :cond_4
 
     aget-object v2, v1, v0
 
@@ -1056,8 +1387,15 @@
 
     move-result v2
 
-    if-nez v2, :cond_2
+    if-eqz v2, :cond_3
 
+    :cond_2
+    :goto_1
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    :cond_3
     aget-object v2, v1, v0
 
     invoke-virtual {v2}, Ljava/io/File;->getName()Ljava/lang/String;
@@ -1080,12 +1418,9 @@
 
     invoke-virtual {v7, v2}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
 
-    :cond_2
-    add-int/lit8 v0, v0, 0x1
+    goto :goto_1
 
-    goto :goto_0
-
-    :cond_3
+    :cond_4
     :try_start_0
     invoke-virtual {p0}, Lsdk/download/DownloadService;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -1116,16 +1451,16 @@
 
     move-result-object v1
 
-    if-eqz v1, :cond_5
+    if-eqz v1, :cond_6
 
     :try_start_1
     invoke-interface {v1}, Landroid/database/Cursor;->moveToFirst()Z
 
     move-result v0
 
-    if-eqz v0, :cond_5
+    if-eqz v0, :cond_6
 
-    :cond_4
+    :cond_5
     const/4 v0, 0x0
 
     invoke-interface {v1, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -1141,20 +1476,20 @@
 
     move-result v0
 
-    if-nez v0, :cond_4
+    if-nez v0, :cond_5
 
-    :cond_5
-    if-eqz v1, :cond_6
+    :cond_6
+    if-eqz v1, :cond_7
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
-    :cond_6
-    :goto_1
+    :cond_7
+    :goto_2
     invoke-virtual {v7}, Ljava/util/HashSet;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
 
-    :goto_2
+    :goto_3
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v0
@@ -1173,34 +1508,34 @@
 
     invoke-virtual {v2}, Ljava/io/File;->delete()Z
 
-    goto :goto_2
+    goto :goto_3
 
     :catch_0
     move-exception v0
 
     move-object v1, v6
 
-    :goto_3
+    :goto_4
     :try_start_2
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    if-eqz v1, :cond_6
+    if-eqz v1, :cond_7
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
-    goto :goto_1
+    goto :goto_2
 
     :catchall_0
     move-exception v0
 
-    :goto_4
-    if-eqz v6, :cond_7
+    :goto_5
+    if-eqz v6, :cond_8
 
     invoke-interface {v6}, Landroid/database/Cursor;->close()V
 
-    :cond_7
+    :cond_8
     throw v0
 
     :catchall_1
@@ -1208,64 +1543,15 @@
 
     move-object v6, v1
 
-    goto :goto_4
+    goto :goto_5
 
     :catch_1
     move-exception v0
 
-    goto :goto_3
+    goto :goto_4
 .end method
 
-.method static synthetic b(Lsdk/download/DownloadService;I)V
-    .locals 3
-
-    iget-object v0, p0, Lsdk/download/DownloadService;->c:Ljava/util/ArrayList;
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lsdk/download/d;
-
-    iget v1, v0, Lsdk/download/d;->j:I
-
-    const/16 v2, 0xc0
-
-    if-ne v1, v2, :cond_1
-
-    const/16 v1, 0x1ea
-
-    iput v1, v0, Lsdk/download/d;->j:I
-
-    :cond_0
-    :goto_0
-    iget-object v0, p0, Lsdk/download/DownloadService;->c:Ljava/util/ArrayList;
-
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(I)Ljava/lang/Object;
-
-    return-void
-
-    :cond_1
-    iget v1, v0, Lsdk/download/d;->g:I
-
-    if-eqz v1, :cond_0
-
-    iget-object v1, v0, Lsdk/download/d;->e:Ljava/lang/String;
-
-    if-eqz v1, :cond_0
-
-    new-instance v1, Ljava/io/File;
-
-    iget-object v0, v0, Lsdk/download/d;->e:Ljava/lang/String;
-
-    invoke-direct {v1, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v1}, Ljava/io/File;->delete()Z
-
-    goto :goto_0
-.end method
-
-.method static synthetic b(Lsdk/download/DownloadService;Landroid/database/Cursor;IZZJ)V
+.method private b(Landroid/database/Cursor;IZZJ)V
     .locals 9
 
     const/4 v8, 0x0
@@ -1568,7 +1854,10 @@
     :catchall_0
     move-exception v1
 
+    :try_start_1
     monitor-exit v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     throw v1
 
@@ -1621,20 +1910,52 @@
     return-void
 .end method
 
-.method static synthetic b(Lsdk/download/DownloadService;)Z
+.method static synthetic b(Lsdk/download/DownloadService;I)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Lsdk/download/DownloadService;->a(I)V
+
+    return-void
+.end method
+
+.method static synthetic b(Lsdk/download/DownloadService;Landroid/database/Cursor;IZZJ)V
+    .locals 0
+
+    invoke-direct/range {p0 .. p6}, Lsdk/download/DownloadService;->b(Landroid/database/Cursor;IZZJ)V
+
+    return-void
+.end method
+
+.method private b(I)Z
     .locals 1
 
-    const/4 v0, 0x0
+    iget-object v0, p0, Lsdk/download/DownloadService;->c:Ljava/util/ArrayList;
 
-    iput-boolean v0, p0, Lsdk/download/DownloadService;->g:Z
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lsdk/download/d;
+
+    invoke-virtual {v0}, Lsdk/download/d;->c()Z
+
+    move-result v0
 
     return v0
 .end method
 
-.method static synthetic c(Lsdk/download/DownloadService;)Ljava/lang/Object;
+.method static synthetic b(Lsdk/download/DownloadService;Z)Z
+    .locals 0
+
+    iput-boolean p1, p0, Lsdk/download/DownloadService;->e:Z
+
+    return p1
+.end method
+
+.method static synthetic c(Lsdk/download/DownloadService;)Lsdk/download/i;
     .locals 1
 
-    iget-object v0, p0, Lsdk/download/DownloadService;->h:Ljava/lang/Object;
+    iget-object v0, p0, Lsdk/download/DownloadService;->d:Lsdk/download/i;
 
     return-object v0
 .end method
@@ -1656,9 +1977,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "downLoadTimeOut: time: "
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -1668,7 +1993,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :try_start_0
     invoke-virtual {p0}, Lsdk/download/DownloadService;->getContentResolver()Landroid/content/ContentResolver;
@@ -1695,9 +2020,13 @@
 
     new-instance v5, Ljava/lang/StringBuilder;
 
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v7, "data_10 < \'"
 
-    invoke-direct {v5, v7}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v5, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
 
     invoke-virtual {v5, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -1731,9 +2060,13 @@
 
     new-instance v2, Ljava/lang/StringBuilder;
 
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v3, "downLoadTimeOut DownloadService cursor.getCount(): "
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     invoke-interface {v1}, Landroid/database/Cursor;->getCount()I
 
@@ -1747,7 +2080,7 @@
 
     move-result-object v2
 
-    invoke-static {v0, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v2}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_0
     :goto_0
@@ -1787,9 +2120,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "downLoadTimeOut: columnId: "
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -1799,7 +2136,7 @@
 
     move-result-object v0
 
-    invoke-static {v2, v0}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v0}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     new-instance v0, Ljava/io/File;
 
@@ -1878,8 +2215,8 @@
     goto :goto_1
 .end method
 
-.method static synthetic c(Lsdk/download/DownloadService;I)Z
-    .locals 1
+.method private c(I)Z
+    .locals 2
 
     iget-object v0, p0, Lsdk/download/DownloadService;->c:Ljava/util/ArrayList;
 
@@ -1889,19 +2226,49 @@
 
     check-cast v0, Lsdk/download/d;
 
-    invoke-virtual {v0}, Lsdk/download/d;->c()Z
+    iget-boolean v1, v0, Lsdk/download/d;->z:Z
+
+    if-nez v1, :cond_0
+
+    iget v1, v0, Lsdk/download/d;->g:I
+
+    if-nez v1, :cond_0
+
+    iget v1, v0, Lsdk/download/d;->j:I
+
+    invoke-static {v1}, Lsdk/download/k;->a(I)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    iget-object v0, v0, Lsdk/download/d;->f:Ljava/lang/String;
+
+    invoke-direct {p0, v0}, Lsdk/download/DownloadService;->a(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method static synthetic c(Lsdk/download/DownloadService;I)Z
+    .locals 1
+
+    invoke-direct {p0, p1}, Lsdk/download/DownloadService;->b(I)Z
 
     move-result v0
 
     return v0
-.end method
-
-.method static synthetic d(Lsdk/download/DownloadService;)Lsdk/download/i;
-    .locals 1
-
-    iget-object v0, p0, Lsdk/download/DownloadService;->d:Lsdk/download/i;
-
-    return-object v0
 .end method
 
 .method private d()V
@@ -1946,7 +2313,7 @@
 
     const-string v2, "null cursor in trimDatabase"
 
-    invoke-static {v0, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v2}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
@@ -2009,11 +2376,7 @@
 
     move-result v3
 
-    if-eqz v3, :cond_2
-
-    add-int/lit8 v0, v0, -0x1
-
-    goto :goto_1
+    if-nez v3, :cond_3
 
     :cond_2
     if-eqz v1, :cond_0
@@ -2021,6 +2384,11 @@
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
     goto :goto_0
+
+    :cond_3
+    add-int/lit8 v0, v0, -0x1
+
+    goto :goto_1
 
     :catch_0
     move-exception v0
@@ -2045,11 +2413,11 @@
     move-object v1, v6
 
     :goto_3
-    if-eqz v1, :cond_3
+    if-eqz v1, :cond_4
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
-    :cond_3
+    :cond_4
     throw v0
 
     :catchall_1
@@ -2063,7 +2431,7 @@
     goto :goto_2
 .end method
 
-.method static synthetic e(Lsdk/download/DownloadService;)Z
+.method static synthetic d(Lsdk/download/DownloadService;)Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/download/DownloadService;->e:Z
@@ -2071,47 +2439,7 @@
     return v0
 .end method
 
-.method static synthetic f(Lsdk/download/DownloadService;)Lsdk/download/i;
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lsdk/download/DownloadService;->d:Lsdk/download/i;
-
-    return-object v0
-.end method
-
-.method static synthetic g(Lsdk/download/DownloadService;)Landroid/database/CharArrayBuffer;
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lsdk/download/DownloadService;->i:Landroid/database/CharArrayBuffer;
-
-    return-object v0
-.end method
-
-.method static synthetic h(Lsdk/download/DownloadService;)Landroid/database/CharArrayBuffer;
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lsdk/download/DownloadService;->j:Landroid/database/CharArrayBuffer;
-
-    return-object v0
-.end method
-
-.method static synthetic i(Lsdk/download/DownloadService;)Z
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput-boolean v0, p0, Lsdk/download/DownloadService;->e:Z
-
-    return v0
-.end method
-
-.method static synthetic j(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
+.method static synthetic e(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
     .locals 1
 
     iget-object v0, p0, Lsdk/download/DownloadService;->c:Ljava/util/ArrayList;
@@ -2119,7 +2447,43 @@
     return-object v0
 .end method
 
-.method static synthetic k(Lsdk/download/DownloadService;)Lsdk/download/h;
+.method private e()Z
+    .locals 1
+
+    iget-object v0, p0, Lsdk/download/DownloadService;->h:Ljava/lang/Object;
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method static synthetic f(Lsdk/download/DownloadService;)Z
+    .locals 1
+
+    invoke-direct {p0}, Lsdk/download/DownloadService;->e()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic g(Lsdk/download/DownloadService;)Z
+    .locals 1
+
+    iget-boolean v0, p0, Lsdk/download/DownloadService;->g:Z
+
+    return v0
+.end method
+
+.method static synthetic h(Lsdk/download/DownloadService;)Lsdk/download/h;
     .locals 1
 
     iget-object v0, p0, Lsdk/download/DownloadService;->f:Lsdk/download/h;
@@ -2199,9 +2563,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "sdk.download."
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -2213,7 +2581,7 @@
 
     invoke-static {v1}, Lsdk/download/k;->a(Ljava/lang/String;)V
 
-    invoke-static {v1}, Lsdk/download/DownloadProvider;->a(Ljava/lang/String;)V
+    invoke-static {v1}, Lsdk/download/DownloadProvider;->setUriMatcher(Ljava/lang/String;)V
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -2233,7 +2601,7 @@
 
     move-result-object v0
 
-    invoke-static {v0}, Lsdk/download/DownloadProvider;->b(Ljava/lang/String;)V
+    invoke-static {v0}, Lsdk/download/DownloadProvider;->setDbName(Ljava/lang/String;)V
 
     invoke-virtual {p0}, Lsdk/download/DownloadService;->getContentResolver()Landroid/content/ContentResolver;
 

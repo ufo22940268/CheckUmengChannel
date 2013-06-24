@@ -5,14 +5,58 @@
 .implements Ljava/util/Comparator;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/baidu/mapapi/ItemizedOverlay;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = "a"
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Ljava/util/Comparator",
+        "<",
+        "Ljava/lang/Integer;",
+        ">;"
+    }
+.end annotation
+
+
 # instance fields
 .field final synthetic a:Lcom/baidu/mapapi/ItemizedOverlay;
 
 .field private b:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<TItem;>;"
+        }
+    .end annotation
+.end field
 
 .field private c:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/Integer;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private d:Lcom/baidu/mapapi/ItemizedOverlay;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/baidu/mapapi/ItemizedOverlay",
+            "<TItem;>;"
+        }
+    .end annotation
+.end field
 
 
 # direct methods
@@ -122,10 +166,15 @@
 
 .method public final a(Lcom/baidu/mapapi/OverlayItem;)I
     .locals 3
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(TItem;)I"
+        }
+    .end annotation
 
     const/4 v1, -0x1
 
-    if-eqz p1, :cond_1
+    if-eqz p1, :cond_2
 
     const/4 v0, 0x0
 
@@ -136,8 +185,15 @@
 
     move-result v2
 
-    if-ge v0, v2, :cond_1
+    if-lt v0, v2, :cond_1
 
+    move v0, v1
+
+    :cond_0
+    :goto_1
+    return v0
+
+    :cond_1
     iget-object v2, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->b:Ljava/util/ArrayList;
 
     invoke-virtual {v2, v0}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
@@ -148,17 +204,13 @@
 
     move-result v2
 
-    if-eqz v2, :cond_0
+    if-nez v2, :cond_0
 
-    :goto_1
-    return v0
-
-    :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    :cond_1
+    :cond_2
     move v0, v1
 
     goto :goto_1
@@ -167,9 +219,9 @@
 .method public a(Ljava/lang/Integer;Ljava/lang/Integer;)I
     .locals 6
 
-    const/4 v2, 0x1
+    const/4 v1, 0x1
 
-    const/4 v1, -0x1
+    const/4 v2, -0x1
 
     iget-object v0, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->b:Ljava/util/ArrayList;
 
@@ -211,14 +263,15 @@
 
     move-result v5
 
-    if-le v4, v5, :cond_0
+    if-le v4, v5, :cond_1
 
-    move v0, v1
-
-    :goto_0
-    return v0
+    move v1, v2
 
     :cond_0
+    :goto_0
+    return v1
+
+    :cond_1
     invoke-virtual {v3}, Lcom/baidu/mapapi/GeoPoint;->getLatitudeE6()I
 
     move-result v4
@@ -227,13 +280,8 @@
 
     move-result v5
 
-    if-ge v4, v5, :cond_1
+    if-lt v4, v5, :cond_0
 
-    move v0, v2
-
-    goto :goto_0
-
-    :cond_1
     invoke-virtual {v3}, Lcom/baidu/mapapi/GeoPoint;->getLongitudeE6()I
 
     move-result v4
@@ -244,29 +292,32 @@
 
     if-ge v4, v5, :cond_2
 
-    move v0, v1
+    move v1, v2
 
     goto :goto_0
 
     :cond_2
     invoke-virtual {v3}, Lcom/baidu/mapapi/GeoPoint;->getLongitudeE6()I
 
-    move-result v1
+    move-result v2
 
     invoke-virtual {v0}, Lcom/baidu/mapapi/GeoPoint;->getLongitudeE6()I
 
     move-result v0
 
-    if-ne v1, v0, :cond_3
+    if-ne v2, v0, :cond_3
 
     const/4 v0, 0x0
+
+    :goto_1
+    move v1, v0
 
     goto :goto_0
 
     :cond_3
-    move v0, v2
+    move v0, v1
 
-    goto :goto_0
+    goto :goto_1
 .end method
 
 .method public final a(Z)I
@@ -305,8 +356,13 @@
 
     move-result v0
 
-    if-eqz v0, :cond_3
+    if-nez v0, :cond_1
 
+    sub-int v0, v2, v1
+
+    goto :goto_0
+
+    :cond_1
     invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     move-result-object v0
@@ -317,18 +373,18 @@
 
     move-result-object v0
 
-    if-eqz p1, :cond_2
+    if-eqz p1, :cond_3
 
     invoke-virtual {v0}, Lcom/baidu/mapapi/GeoPoint;->getLatitudeE6()I
 
     move-result v0
 
     :goto_2
-    if-le v0, v2, :cond_1
+    if-le v0, v2, :cond_2
 
     move v2, v0
 
-    :cond_1
+    :cond_2
     if-ge v0, v1, :cond_4
 
     :goto_3
@@ -336,17 +392,12 @@
 
     goto :goto_1
 
-    :cond_2
+    :cond_3
     invoke-virtual {v0}, Lcom/baidu/mapapi/GeoPoint;->getLongitudeE6()I
 
     move-result v0
 
     goto :goto_2
-
-    :cond_3
-    sub-int v0, v2, v1
-
-    goto :goto_0
 
     :cond_4
     move v0, v1
@@ -356,6 +407,11 @@
 
 .method public final a(I)Lcom/baidu/mapapi/OverlayItem;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)TItem;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->b:Ljava/util/ArrayList;
 
@@ -369,138 +425,158 @@
 .end method
 
 .method public final a(Lcom/baidu/mapapi/GeoPoint;Lcom/baidu/mapapi/MapView;)Z
-    .locals 14
-
-    const/4 v2, 0x0
-
-    invoke-virtual/range {p2 .. p2}, Lcom/baidu/mapapi/MapView;->getProjection()Lcom/baidu/mapapi/Projection;
-
-    move-result-object v7
-
-    const/4 v0, 0x0
-
-    invoke-interface {v7, p1, v0}, Lcom/baidu/mapapi/Projection;->toPixels(Lcom/baidu/mapapi/GeoPoint;Landroid/graphics/Point;)Landroid/graphics/Point;
-
-    move-result-object v8
-
-    const/4 v4, -0x1
-
-    iget-object v0, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->b:Ljava/util/ArrayList;
-
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
-    move-result v9
+    .locals 17
 
     const/4 v3, 0x0
 
+    invoke-virtual/range {p2 .. p2}, Lcom/baidu/mapapi/MapView;->getProjection()Lcom/baidu/mapapi/Projection;
+
+    move-result-object v8
+
+    const/4 v1, 0x0
+
+    move-object/from16 v0, p1
+
+    invoke-interface {v8, v0, v1}, Lcom/baidu/mapapi/Projection;->toPixels(Lcom/baidu/mapapi/GeoPoint;Landroid/graphics/Point;)Landroid/graphics/Point;
+
+    move-result-object v9
+
+    const/4 v5, -0x1
+
+    const-wide v10, 0x7fefffffffffffffL
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/baidu/mapapi/ItemizedOverlay$a;->b:Ljava/util/ArrayList;
+
+    invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
+
+    move-result v12
+
+    const/4 v4, 0x0
+
     :goto_0
-    if-ge v3, v9, :cond_4
+    if-ge v4, v12, :cond_4
 
-    iget-object v0, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->b:Ljava/util/ArrayList;
+    move-object/from16 v0, p0
 
-    invoke-virtual {v0, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    iget-object v1, v0, Lcom/baidu/mapapi/ItemizedOverlay$a;->b:Ljava/util/ArrayList;
 
-    move-result-object v0
-
-    check-cast v0, Lcom/baidu/mapapi/OverlayItem;
-
-    const-wide/high16 v5, -0x4010
-
-    invoke-direct {p0, v0, v7, v8}, Lcom/baidu/mapapi/ItemizedOverlay$a;->a(Lcom/baidu/mapapi/OverlayItem;Lcom/baidu/mapapi/Projection;Landroid/graphics/Point;)Landroid/graphics/Point;
-
-    move-result-object v10
-
-    iget-object v1, v0, Lcom/baidu/mapapi/OverlayItem;->mMarker:Landroid/graphics/drawable/Drawable;
-
-    if-nez v1, :cond_0
-
-    iget-object v1, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->d:Lcom/baidu/mapapi/ItemizedOverlay;
-
-    invoke-static {v1}, Lcom/baidu/mapapi/ItemizedOverlay;->a(Lcom/baidu/mapapi/ItemizedOverlay;)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v1, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     move-result-object v1
 
+    check-cast v1, Lcom/baidu/mapapi/OverlayItem;
+
+    const-wide/high16 v6, -0x4010
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v1, v8, v9}, Lcom/baidu/mapapi/ItemizedOverlay$a;->a(Lcom/baidu/mapapi/OverlayItem;Lcom/baidu/mapapi/Projection;Landroid/graphics/Point;)Landroid/graphics/Point;
+
+    move-result-object v13
+
+    iget-object v2, v1, Lcom/baidu/mapapi/OverlayItem;->mMarker:Landroid/graphics/drawable/Drawable;
+
+    if-nez v2, :cond_0
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/baidu/mapapi/ItemizedOverlay$a;->d:Lcom/baidu/mapapi/ItemizedOverlay;
+
+    invoke-static {v2}, Lcom/baidu/mapapi/ItemizedOverlay;->a(Lcom/baidu/mapapi/ItemizedOverlay;)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v2
+
     :cond_0
-    iget-object v11, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->d:Lcom/baidu/mapapi/ItemizedOverlay;
+    move-object/from16 v0, p0
 
-    iget v12, v10, Landroid/graphics/Point;->x:I
+    iget-object v14, v0, Lcom/baidu/mapapi/ItemizedOverlay$a;->d:Lcom/baidu/mapapi/ItemizedOverlay;
 
-    iget v13, v10, Landroid/graphics/Point;->y:I
+    iget v15, v13, Landroid/graphics/Point;->x:I
 
-    invoke-virtual {v11, v0, v1, v12, v13}, Lcom/baidu/mapapi/ItemizedOverlay;->hitTest(Lcom/baidu/mapapi/OverlayItem;Landroid/graphics/drawable/Drawable;II)Z
+    iget v0, v13, Landroid/graphics/Point;->y:I
 
-    move-result v0
+    move/from16 v16, v0
 
-    if-eqz v0, :cond_3
+    move/from16 v0, v16
 
-    iget v0, v10, Landroid/graphics/Point;->x:I
+    invoke-virtual {v14, v1, v2, v15, v0}, Lcom/baidu/mapapi/ItemizedOverlay;->hitTest(Lcom/baidu/mapapi/OverlayItem;Landroid/graphics/drawable/Drawable;II)Z
 
-    iget v1, v10, Landroid/graphics/Point;->x:I
+    move-result v1
 
-    mul-int/2addr v0, v1
+    if-eqz v1, :cond_3
 
-    iget v1, v10, Landroid/graphics/Point;->y:I
+    iget v1, v13, Landroid/graphics/Point;->x:I
 
-    iget v5, v10, Landroid/graphics/Point;->y:I
+    iget v2, v13, Landroid/graphics/Point;->x:I
 
-    mul-int/2addr v1, v5
+    mul-int/2addr v1, v2
 
-    add-int/2addr v0, v1
+    iget v2, v13, Landroid/graphics/Point;->y:I
 
-    int-to-double v0, v0
+    iget v6, v13, Landroid/graphics/Point;->y:I
+
+    mul-int/2addr v2, v6
+
+    add-int/2addr v1, v2
+
+    int-to-double v1, v1
 
     :goto_1
-    const-wide/16 v5, 0x0
+    const-wide/16 v6, 0x0
 
-    cmpl-double v5, v0, v5
+    cmpl-double v6, v1, v6
 
-    if-ltz v5, :cond_1
+    if-ltz v6, :cond_1
 
-    const-wide v5, 0x7fefffffffffffffL
+    cmpg-double v1, v1, v10
 
-    cmpg-double v0, v0, v5
+    if-gez v1, :cond_1
 
-    if-gez v0, :cond_1
-
-    move v0, v3
+    move v1, v4
 
     :goto_2
-    const/4 v1, -0x1
+    const/4 v2, -0x1
 
-    if-eq v1, v0, :cond_2
+    if-eq v2, v1, :cond_2
 
-    iget-object v1, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->d:Lcom/baidu/mapapi/ItemizedOverlay;
+    move-object/from16 v0, p0
 
-    invoke-virtual {v1, v0}, Lcom/baidu/mapapi/ItemizedOverlay;->onTap(I)Z
+    iget-object v2, v0, Lcom/baidu/mapapi/ItemizedOverlay$a;->d:Lcom/baidu/mapapi/ItemizedOverlay;
 
-    move-result v0
+    invoke-virtual {v2, v1}, Lcom/baidu/mapapi/ItemizedOverlay;->onTap(I)Z
+
+    move-result v1
 
     :goto_3
-    return v0
+    return v1
 
     :cond_1
-    add-int/lit8 v3, v3, 0x1
+    add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
     :cond_2
-    iget-object v0, p0, Lcom/baidu/mapapi/ItemizedOverlay$a;->d:Lcom/baidu/mapapi/ItemizedOverlay;
+    move-object/from16 v0, p0
 
-    const/4 v1, 0x0
+    iget-object v1, v0, Lcom/baidu/mapapi/ItemizedOverlay$a;->d:Lcom/baidu/mapapi/ItemizedOverlay;
 
-    invoke-virtual {v0, v1}, Lcom/baidu/mapapi/ItemizedOverlay;->setFocus(Lcom/baidu/mapapi/OverlayItem;)V
+    const/4 v2, 0x0
 
-    move v0, v2
+    invoke-virtual {v1, v2}, Lcom/baidu/mapapi/ItemizedOverlay;->setFocus(Lcom/baidu/mapapi/OverlayItem;)V
+
+    move v1, v3
 
     goto :goto_3
 
     :cond_3
-    move-wide v0, v5
+    move-wide v1, v6
 
     goto :goto_1
 
     :cond_4
-    move v0, v4
+    move v1, v5
 
     goto :goto_2
 .end method
@@ -523,7 +599,7 @@
     return v0
 .end method
 
-.method public synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
+.method public bridge synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
 
     check-cast p1, Ljava/lang/Integer;

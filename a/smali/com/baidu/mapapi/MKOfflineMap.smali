@@ -56,7 +56,13 @@
     :catch_0
     move-exception v0
 
+    const-string v1, "baidumap"
+
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     const/4 v0, 0x0
 
@@ -67,6 +73,15 @@
 # virtual methods
 .method public getAllUpdateInfo()Ljava/util/ArrayList;
     .locals 14
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKOLUpdateElement;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MKOfflineMap;->a:Landroid/os/Bundle;
 
@@ -246,6 +261,15 @@
 
 .method public getHotCityList()Ljava/util/ArrayList;
     .locals 7
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKOLSearchRecord;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MKOfflineMap;->a:Landroid/os/Bundle;
 
@@ -352,6 +376,15 @@
 
 .method public getOfflineCityList()Ljava/util/ArrayList;
     .locals 7
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKOLSearchRecord;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MKOfflineMap;->a:Landroid/os/Bundle;
 
@@ -807,6 +840,17 @@
 
 .method public searchCity(Ljava/lang/String;)Ljava/util/ArrayList;
     .locals 7
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            ")",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKOLSearchRecord;",
+            ">;"
+        }
+    .end annotation
 
     const/4 v0, 0x0
 

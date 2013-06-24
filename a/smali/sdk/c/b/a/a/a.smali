@@ -1,12 +1,14 @@
-.class public final Lsdk/c/b/a/a/a;
+.class public Lsdk/c/b/a/a/a;
 .super Lsdk/c/a/b/c;
 
 
 # direct methods
 .method constructor <init>(Ljava/lang/String;Lsdk/c/a/b/c;)V
-    .locals 0
+    .locals 1
 
-    invoke-direct {p0, p1}, Lsdk/c/a/b/c;-><init>(Ljava/lang/String;)V
+    const/4 v0, 0x1
+
+    invoke-direct {p0, p1, v0}, Lsdk/c/a/b/c;-><init>(Ljava/lang/String;Z)V
 
     invoke-virtual {p0, p2}, Lsdk/c/b/a/a/a;->a(Lsdk/c/a/b/c;)V
 
@@ -15,32 +17,32 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/Object;)Ljava/lang/Object;
+.method public b(Lsdk/c/a/b/f;Lsdk/c/a/b/e;Ljava/lang/Object;)Ljava/lang/Object;
     .locals 4
 
-    instance-of v0, p1, Lsdk/c/b/a/b/b;
+    instance-of v0, p3, Lsdk/c/b/a/b/b;
 
     if-eqz v0, :cond_0
 
-    check-cast p1, Lsdk/c/b/a/b/b;
+    check-cast p3, Lsdk/c/b/a/b/b;
 
     new-instance v0, Lsdk/c/b/a/b/a;
 
     invoke-direct {v0}, Lsdk/c/b/a/b/a;-><init>()V
 
-    iget v1, p1, Lsdk/c/b/a/b/b;->j:I
+    iget v1, p3, Lsdk/c/b/a/b/b;->j:I
 
     int-to-byte v1, v1
 
     iput-byte v1, v0, Lsdk/c/b/a/b/a;->b:B
 
-    invoke-virtual {p1}, Lsdk/c/b/a/b/b;->a()[B
+    invoke-virtual {p3}, Lsdk/c/b/a/b/b;->c()[B
 
     move-result-object v1
 
     invoke-virtual {v0, v1}, Lsdk/c/b/a/b/a;->a([B)V
 
-    iget-byte v1, p1, Lsdk/c/b/a/b/b;->k:B
+    iget-byte v1, p3, Lsdk/c/b/a/b/b;->k:B
 
     iput-byte v1, v0, Lsdk/c/b/a/b/a;->c:B
 
@@ -48,20 +50,22 @@
     return-object v0
 
     :cond_0
-    instance-of v0, p1, [Lsdk/c/b/a/b/b;
+    instance-of v0, p3, [Lsdk/c/b/a/b/b;
 
     if-eqz v0, :cond_2
 
-    check-cast p1, [Lsdk/c/b/a/b/b;
+    check-cast p3, [Lsdk/c/b/a/b/b;
 
-    array-length v0, p1
+    check-cast p3, [Lsdk/c/b/a/b/b;
+
+    array-length v0, p3
 
     new-array v1, v0, [Lsdk/c/b/a/b/a;
 
     const/4 v0, 0x0
 
     :goto_1
-    array-length v2, p1
+    array-length v2, p3
 
     if-ge v0, v2, :cond_1
 
@@ -73,7 +77,7 @@
 
     aget-object v2, v1, v0
 
-    aget-object v3, p1, v0
+    aget-object v3, p3, v0
 
     iget v3, v3, Lsdk/c/b/a/b/b;->j:I
 
@@ -83,9 +87,9 @@
 
     aget-object v2, v1, v0
 
-    aget-object v3, p1, v0
+    aget-object v3, p3, v0
 
-    invoke-virtual {v3}, Lsdk/c/b/a/b/b;->a()[B
+    invoke-virtual {v3}, Lsdk/c/b/a/b/b;->c()[B
 
     move-result-object v3
 
@@ -106,7 +110,17 @@
     goto :goto_0
 .end method
 
-.method public final synthetic b(Lsdk/c/a/b/f;Lsdk/c/a/b/e;Ljava/lang/Object;)Ljava/lang/Object;
+.method public synthetic c(Lsdk/c/a/b/f;Lsdk/c/a/b/e;Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+
+    invoke-virtual {p0, p1, p2, p3}, Lsdk/c/b/a/a/a;->d(Lsdk/c/a/b/f;Lsdk/c/a/b/e;Ljava/lang/Object;)Lsdk/c/a/e/a/f;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public d(Lsdk/c/a/b/f;Lsdk/c/a/b/e;Ljava/lang/Object;)Lsdk/c/a/e/a/f;
     .locals 2
 
     const/4 v0, 0x0

@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/a/a/a/a;
+.class public Lcom/igexin/a/a/a/a;
 .super Ljava/lang/Object;
 
 
@@ -21,7 +21,7 @@
     return-void
 .end method
 
-.method static a(Ljava/nio/ByteBuffer;Ljava/lang/String;Ljava/lang/String;Lcom/igexin/a/a/c/e;)Lcom/igexin/a/a/b/e;
+.method static a(Ljava/nio/ByteBuffer;Ljava/lang/String;Ljava/lang/String;Lcom/igexin/a/a/c/ad;)Lcom/igexin/a/a/b/e;
     .locals 6
 
     const/4 v0, 0x0
@@ -42,17 +42,17 @@
 
     move-result-object v2
 
-    invoke-virtual {p3, v2, p2}, Lcom/igexin/a/a/c/e;->a(Ljava/lang/String;Ljava/lang/String;)Lcom/igexin/a/a/b/e;
+    invoke-virtual {p3, v2, p2}, Lcom/igexin/a/a/c/ad;->a(Ljava/lang/String;Ljava/lang/String;)Lcom/igexin/a/a/b/e;
 
     move-result-object v1
 
     const-string v3, "meta[http-equiv=content-type], meta[charset]"
 
-    invoke-virtual {v1, v3}, Lcom/igexin/a/a/b/e;->a(Ljava/lang/String;)Lcom/igexin/a/a/d/u;
+    invoke-virtual {v1, v3}, Lcom/igexin/a/a/b/e;->a(Ljava/lang/String;)Lcom/igexin/a/a/d/f;
 
     move-result-object v3
 
-    invoke-virtual {v3}, Lcom/igexin/a/a/d/u;->a()Lcom/igexin/a/a/b/i;
+    invoke-virtual {v3}, Lcom/igexin/a/a/d/f;->c()Lcom/igexin/a/a/b/i;
 
     move-result-object v3
 
@@ -136,11 +136,11 @@
     move-result-object v0
 
     :cond_0
-    invoke-virtual {p3, v0, p2}, Lcom/igexin/a/a/c/e;->a(Ljava/lang/String;Ljava/lang/String;)Lcom/igexin/a/a/b/e;
+    invoke-virtual {p3, v0, p2}, Lcom/igexin/a/a/c/ad;->a(Ljava/lang/String;Ljava/lang/String;)Lcom/igexin/a/a/b/e;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/igexin/a/a/b/e;->c()Lcom/igexin/a/a/b/f;
+    invoke-virtual {v0}, Lcom/igexin/a/a/b/e;->d()Lcom/igexin/a/a/b/f;
 
     move-result-object v1
 
@@ -161,7 +161,7 @@
     :cond_2
     const-string v1, "Must set charset arg to character set of file to parse. Set to null to attempt to detect from HTML"
 
-    invoke-static {p1, v1}, Lcom/igexin/a/a/a/i;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {p1, v1}, Lcom/igexin/a/a/a/k;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-static {p1}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
 
@@ -255,15 +255,8 @@
 
     const/4 v3, -0x1
 
-    if-eq v2, v3, :cond_0
+    if-ne v2, v3, :cond_0
 
-    const/4 v3, 0x0
-
-    invoke-virtual {v1, v0, v3, v2}, Ljava/io/ByteArrayOutputStream;->write([BII)V
-
-    goto :goto_0
-
-    :cond_0
     invoke-virtual {v1}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
 
     move-result-object v0
@@ -273,4 +266,11 @@
     move-result-object v0
 
     return-object v0
+
+    :cond_0
+    const/4 v3, 0x0
+
+    invoke-virtual {v1, v0, v3, v2}, Ljava/io/ByteArrayOutputStream;->write([BII)V
+
+    goto :goto_0
 .end method

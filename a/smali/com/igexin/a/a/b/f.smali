@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/a/a/b/f;
+.class public Lcom/igexin/a/a/b/f;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -54,16 +54,24 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;)Lcom/igexin/a/a/b/f;
+.method public a(Ljava/lang/String;)Lcom/igexin/a/a/b/f;
     .locals 1
 
     invoke-static {p1}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
 
     move-result-object v0
 
-    iput-object v0, p0, Lcom/igexin/a/a/b/f;->b:Ljava/nio/charset/Charset;
+    invoke-virtual {p0, v0}, Lcom/igexin/a/a/b/f;->a(Ljava/nio/charset/Charset;)Lcom/igexin/a/a/b/f;
 
-    invoke-virtual {v0}, Ljava/nio/charset/Charset;->newEncoder()Ljava/nio/charset/CharsetEncoder;
+    return-object p0
+.end method
+
+.method public a(Ljava/nio/charset/Charset;)Lcom/igexin/a/a/b/f;
+    .locals 1
+
+    iput-object p1, p0, Lcom/igexin/a/a/b/f;->b:Ljava/nio/charset/Charset;
+
+    invoke-virtual {p1}, Ljava/nio/charset/Charset;->newEncoder()Ljava/nio/charset/CharsetEncoder;
 
     move-result-object v0
 
@@ -72,7 +80,7 @@
     return-object p0
 .end method
 
-.method public final a()Lcom/igexin/a/a/b/k;
+.method public a()Lcom/igexin/a/a/b/k;
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/a/a/b/f;->a:Lcom/igexin/a/a/b/k;
@@ -80,7 +88,7 @@
     return-object v0
 .end method
 
-.method public final b()Ljava/nio/charset/Charset;
+.method public b()Ljava/nio/charset/Charset;
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/a/a/b/f;->b:Ljava/nio/charset/Charset;
@@ -88,7 +96,7 @@
     return-object v0
 .end method
 
-.method final c()Ljava/nio/charset/CharsetEncoder;
+.method c()Ljava/nio/charset/CharsetEncoder;
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/a/a/b/f;->c:Ljava/nio/charset/CharsetEncoder;
@@ -96,7 +104,7 @@
     return-object v0
 .end method
 
-.method public final synthetic clone()Ljava/lang/Object;
+.method public synthetic clone()Ljava/lang/Object;
     .locals 1
 
     invoke-virtual {p0}, Lcom/igexin/a/a/b/f;->f()Lcom/igexin/a/a/b/f;
@@ -106,7 +114,7 @@
     return-object v0
 .end method
 
-.method public final d()Z
+.method public d()Z
     .locals 1
 
     iget-boolean v0, p0, Lcom/igexin/a/a/b/f;->d:Z
@@ -114,7 +122,7 @@
     return v0
 .end method
 
-.method public final e()I
+.method public e()I
     .locals 1
 
     iget v0, p0, Lcom/igexin/a/a/b/f;->e:I
@@ -122,7 +130,7 @@
     return v0
 .end method
 
-.method public final f()Lcom/igexin/a/a/b/f;
+.method public f()Lcom/igexin/a/a/b/f;
     .locals 2
 
     :try_start_0

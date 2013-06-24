@@ -1,4 +1,4 @@
-.class public final Lsdk/download/a;
+.class public Lsdk/download/a;
 .super Ljava/lang/Object;
 
 

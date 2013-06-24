@@ -1,5 +1,5 @@
 .class public Lcom/igexin/sdk/aidl/Tag;
-.super Lcom/igexin/sdk/c;
+.super Lcom/igexin/sdk/Tag;
 
 # interfaces
 .implements Landroid/os/Parcelable;
@@ -13,9 +13,9 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    new-instance v0, Lcom/igexin/sdk/aidl/j;
+    new-instance v0, Lcom/igexin/sdk/aidl/h;
 
-    invoke-direct {v0}, Lcom/igexin/sdk/aidl/j;-><init>()V
+    invoke-direct {v0}, Lcom/igexin/sdk/aidl/h;-><init>()V
 
     sput-object v0, Lcom/igexin/sdk/aidl/Tag;->CREATOR:Landroid/os/Parcelable$Creator;
 
@@ -25,7 +25,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    invoke-direct {p0}, Lcom/igexin/sdk/c;-><init>()V
+    invoke-direct {p0}, Lcom/igexin/sdk/Tag;-><init>()V
 
     return-void
 .end method

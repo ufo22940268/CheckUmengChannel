@@ -1,35 +1,59 @@
 .class public Lcom/zhangdan/preferential/widget/TodayDialogView;
 .super Landroid/widget/RelativeLayout;
+.source "TodayDialogView.java"
 
 # interfaces
 .implements Landroid/widget/AdapterView$OnItemClickListener;
 
 
-# instance fields
-.field private a:Landroid/widget/ListView;
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter;
+    }
+.end annotation
 
-.field private b:Lcom/zhangdan/preferential/widget/k;
+
+# instance fields
+.field private mAdapter:Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private mListView:Landroid/widget/ListView;
 
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 0
+    .parameter "context"
+    .parameter "attr"
 
+    .prologue
+    .line 30
     invoke-direct {p0, p1, p2}, Landroid/widget/RelativeLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
+    .line 31
     return-void
 .end method
 
 
 # virtual methods
 .method public onFinishInflate()V
-    .locals 6
+    .locals 10
 
-    const/4 v5, 0x0
-
+    .prologue
+    .line 35
     invoke-super {p0}, Landroid/widget/RelativeLayout;->onFinishInflate()V
 
-    const v0, 0x7f06017f
+    .line 36
+    const v0, 0x7f090187
 
     invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/widget/TodayDialogView;->findViewById(I)Landroid/view/View;
 
@@ -37,8 +61,9 @@
 
     check-cast v0, Landroid/widget/ListView;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->a:Landroid/widget/ListView;
+    iput-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->mListView:Landroid/widget/ListView;
 
+    .line 38
     invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/TodayDialogView;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -47,126 +72,184 @@
 
     move-result-object v0
 
-    const v1, 0x7f0d0005
+    const v1, 0x7f060006
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v9
 
-    const/4 v1, 0x7
+    .line 39
+    .local v9, weeks:[Ljava/lang/String;
+    const/4 v0, 0x7
 
-    new-array v1, v1, [Ljava/lang/String;
+    new-array v5, v0, [Ljava/lang/String;
 
-    invoke-static {}, Lcom/zhangdan/preferential/a/e;->a()I
+    .line 40
+    .local v5, newWeeks:[Ljava/lang/String;
+    const/4 v7, 0x0
 
-    move-result v2
+    .line 41
+    .local v7, toIndex:I
+    invoke-static {}, Lcom/zhangdan/preferential/utils/DateUtils;->getToday()I
 
-    rsub-int/lit8 v3, v2, 0x7
+    move-result v8
 
-    add-int/lit8 v3, v3, 0x1
+    .line 42
+    .local v8, today:I
+    rsub-int/lit8 v0, v8, 0x7
 
-    add-int/lit8 v4, v2, -0x1
+    add-int/lit8 v6, v0, 0x1
 
-    invoke-static {v0, v4, v1, v5, v3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .line 43
+    .local v6, len:I
+    add-int/lit8 v0, v8, -0x1
 
-    add-int/lit8 v3, v3, 0x0
+    invoke-static {v9, v0, v5, v7, v6}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
-    const/4 v4, 0x1
+    .line 44
+    add-int/2addr v7, v6
 
-    if-eq v2, v4, :cond_0
+    .line 45
+    const/4 v0, 0x1
 
-    add-int/lit8 v2, v2, -0x1
+    if-eq v8, v0, :cond_0
 
-    invoke-static {v0, v5, v1, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    .line 46
+    const/4 v0, 0x0
 
+    add-int/lit8 v1, v8, -0x1
+
+    invoke-static {v9, v0, v5, v7, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 48
     :cond_0
-    new-instance v0, Lcom/zhangdan/preferential/widget/k;
+    new-instance v0, Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter;
 
     invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/TodayDialogView;->getContext()Landroid/content/Context;
 
     move-result-object v2
 
-    invoke-direct {v0, p0, v2, v1}, Lcom/zhangdan/preferential/widget/k;-><init>(Lcom/zhangdan/preferential/widget/TodayDialogView;Landroid/content/Context;[Ljava/lang/Object;)V
+    const v3, 0x7f0300d9
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->b:Lcom/zhangdan/preferential/widget/k;
+    const v4, 0x7f0901d5
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->a:Landroid/widget/ListView;
+    move-object v1, p0
 
-    iget-object v1, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->b:Lcom/zhangdan/preferential/widget/k;
+    invoke-direct/range {v0 .. v5}, Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter;-><init>(Lcom/zhangdan/preferential/widget/TodayDialogView;Landroid/content/Context;II[Ljava/lang/Object;)V
+
+    iput-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->mAdapter:Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter;
+
+    .line 49
+    iget-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->mListView:Landroid/widget/ListView;
+
+    iget-object v1, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->mAdapter:Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->a:Landroid/widget/ListView;
+    .line 50
+    iget-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->mListView:Landroid/widget/ListView;
 
     invoke-virtual {v0, p0}, Landroid/widget/ListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
 
+    .line 51
     return-void
 .end method
 
 .method public onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
-    .locals 4
+    .locals 8
+    .parameter "parent"
+    .parameter "view"
+    .parameter "pos"
+    .parameter "id"
 
-    invoke-static {}, Lcom/zhangdan/preferential/a/e;->a()I
+    .prologue
+    .line 55
+    invoke-static {}, Lcom/zhangdan/preferential/utils/DateUtils;->getToday()I
 
-    move-result v0
+    move-result v4
 
-    add-int v1, p3, v0
+    .line 57
+    .local v4, today:I
+    add-int v6, p3, v4
 
-    const/4 v2, 0x7
+    const/4 v7, 0x7
 
-    if-gt v1, v2, :cond_0
+    if-gt v6, v7, :cond_0
 
-    add-int/2addr v0, p3
+    .line 58
+    add-int v0, p3, v4
 
+    .line 63
+    .local v0, date:I
     :goto_0
-    invoke-static {v0}, Lcom/zhangdan/preferential/data/b;->a(I)I
+    invoke-static {v0}, Lcom/zhangdan/preferential/data/TypeConstants;->toTypeConstants(I)I
 
-    move-result v1
+    move-result v5
 
+    .line 64
+    .local v5, typeId:I
     new-instance v2, Landroid/content/Intent;
 
-    const-string v0, "com.zhangdan.preferential.UPDATE_CATEGORY"
+    const-string v6, "com.zhangdan.preferential.UPDATE_CATEGORY"
 
-    invoke-direct {v2, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2, v6}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    new-instance v3, Lcom/zhangdan/preferential/data/model/g;
+    .line 65
+    .local v2, intent:Landroid/content/Intent;
+    new-instance v3, Lcom/zhangdan/preferential/data/model/MenuTag;
 
-    invoke-direct {v3}, Lcom/zhangdan/preferential/data/model/g;-><init>()V
+    invoke-direct {v3}, Lcom/zhangdan/preferential/data/model/MenuTag;-><init>()V
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->b:Lcom/zhangdan/preferential/widget/k;
+    .line 66
+    .local v3, tag:Lcom/zhangdan/preferential/data/model/MenuTag;
+    iget-object v6, p0, Lcom/zhangdan/preferential/widget/TodayDialogView;->mAdapter:Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter;
 
-    invoke-virtual {v0, p3}, Lcom/zhangdan/preferential/widget/k;->getItem(I)Ljava/lang/Object;
+    invoke-virtual {v6, p3}, Lcom/zhangdan/preferential/widget/TodayDialogView$TodayAdapter;->getItem(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v6
 
-    check-cast v0, Ljava/lang/String;
+    check-cast v6, Ljava/lang/String;
 
-    iput-object v0, v3, Lcom/zhangdan/preferential/data/model/g;->d:Ljava/lang/String;
+    iput-object v6, v3, Lcom/zhangdan/preferential/data/model/MenuTag;->name:Ljava/lang/String;
 
-    iput v1, v3, Lcom/zhangdan/preferential/data/model/g;->c:I
+    .line 67
+    iput v5, v3, Lcom/zhangdan/preferential/data/model/MenuTag;->typeId:I
 
-    new-instance v0, Landroid/os/Bundle;
+    .line 68
+    new-instance v1, Landroid/os/Bundle;
 
-    invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
+    invoke-direct {v1}, Landroid/os/Bundle;-><init>()V
 
-    const-string v1, "menu_tag"
+    .line 69
+    .local v1, extra:Landroid/os/Bundle;
+    const-string v6, "menu_tag"
 
-    invoke-virtual {v0, v1, v3}, Landroid/os/Bundle;->putSerializable(Ljava/lang/String;Ljava/io/Serializable;)V
+    invoke-virtual {v1, v6, v3}, Landroid/os/Bundle;->putSerializable(Ljava/lang/String;Ljava/io/Serializable;)V
 
-    invoke-virtual {v2, v0}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
+    .line 70
+    invoke-virtual {v2, v1}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
 
+    .line 71
     invoke-virtual {p0}, Lcom/zhangdan/preferential/widget/TodayDialogView;->getContext()Landroid/content/Context;
 
-    move-result-object v0
+    move-result-object v6
 
-    invoke-virtual {v0, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
+    invoke-virtual {v6, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
+    .line 72
     return-void
 
+    .line 60
+    .end local v0           #date:I
+    .end local v1           #extra:Landroid/os/Bundle;
+    .end local v2           #intent:Landroid/content/Intent;
+    .end local v3           #tag:Lcom/zhangdan/preferential/data/model/MenuTag;
+    .end local v5           #typeId:I
     :cond_0
-    add-int/2addr v0, p3
+    add-int v6, p3, v4
 
-    add-int/lit8 v0, v0, -0x7
+    add-int/lit8 v0, v6, -0x7
 
+    .restart local v0       #date:I
     goto :goto_0
 .end method

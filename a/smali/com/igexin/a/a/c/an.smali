@@ -1,101 +1,241 @@
-.class final enum Lcom/igexin/a/a/c/an;
-.super Lcom/igexin/a/a/c/r;
+.class abstract Lcom/igexin/a/a/c/an;
+.super Lcom/igexin/a/a/c/af;
+
+
+# instance fields
+.field protected b:Ljava/lang/String;
+
+.field c:Z
+
+.field d:Lcom/igexin/a/a/b/b;
+
+.field private e:Ljava/lang/String;
+
+.field private f:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method constructor <init>()V
+    .locals 1
 
-    const/16 v0, 0x1b
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    invoke-direct {p0, v0}, Lcom/igexin/a/a/c/af;-><init>(Lcom/igexin/a/a/c/ag;)V
 
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/r;-><init>(Ljava/lang/String;IB)V
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/igexin/a/a/c/an;->c:Z
+
+    new-instance v0, Lcom/igexin/a/a/b/b;
+
+    invoke-direct {v0}, Lcom/igexin/a/a/b/b;-><init>()V
+
+    iput-object v0, p0, Lcom/igexin/a/a/c/an;->d:Lcom/igexin/a/a/b/b;
 
     return-void
 .end method
 
 
 # virtual methods
-.method final a(Lcom/igexin/a/a/c/q;Lcom/igexin/a/a/c/a;)V
-    .locals 3
+.method a(Ljava/lang/String;)Lcom/igexin/a/a/c/an;
+    .locals 0
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->m()Z
+    iput-object p1, p0, Lcom/igexin/a/a/c/an;->b:Ljava/lang/String;
 
-    move-result v0
+    return-object p0
+.end method
 
-    if-eqz v0, :cond_0
+.method a(C)V
+    .locals 1
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->i()Ljava/lang/String;
+    invoke-static {p1}, Ljava/lang/String;->valueOf(C)Ljava/lang/String;
 
     move-result-object v0
 
-    iget-object v1, p1, Lcom/igexin/a/a/c/q;->a:Ljava/lang/StringBuilder;
+    invoke-virtual {p0, v0}, Lcom/igexin/a/a/c/an;->b(Ljava/lang/String;)V
 
-    invoke-virtual {v0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+    return-void
+.end method
 
-    move-result-object v2
+.method b(C)V
+    .locals 1
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {p1}, Ljava/lang/String;->valueOf(C)Ljava/lang/String;
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Ljava/lang/String;)V
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/igexin/a/a/c/an;->c(Ljava/lang/String;)V
+
+    return-void
+.end method
+
+.method b(Ljava/lang/String;)V
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->b:Ljava/lang/String;
+
+    if-nez v0, :cond_0
 
     :goto_0
+    iput-object p1, p0, Lcom/igexin/a/a/c/an;->b:Ljava/lang/String;
+
     return-void
 
     :cond_0
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->d()C
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->b:Ljava/lang/String;
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    goto :goto_0
+.end method
+
+.method c(C)V
+    .locals 1
+
+    invoke-static {p1}, Ljava/lang/String;->valueOf(C)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/igexin/a/a/c/an;->d(Ljava/lang/String;)V
+
+    return-void
+.end method
+
+.method c(Ljava/lang/String;)V
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->e:Ljava/lang/String;
+
+    if-nez v0, :cond_0
+
+    :goto_0
+    iput-object p1, p0, Lcom/igexin/a/a/c/an;->e:Ljava/lang/String;
+
+    return-void
+
+    :cond_0
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->e:Ljava/lang/String;
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    goto :goto_0
+.end method
+
+.method d(Ljava/lang/String;)V
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->f:Ljava/lang/String;
+
+    if-nez v0, :cond_0
+
+    :goto_0
+    iput-object p1, p0, Lcom/igexin/a/a/c/an;->f:Ljava/lang/String;
+
+    return-void
+
+    :cond_0
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->f:Ljava/lang/String;
+
+    invoke-virtual {v0, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    goto :goto_0
+.end method
+
+.method m()V
+    .locals 4
+
+    const/4 v3, 0x0
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->e:Ljava/lang/String;
+
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->f:Ljava/lang/String;
+
+    if-nez v0, :cond_0
+
+    const-string v0, ""
+
+    iput-object v0, p0, Lcom/igexin/a/a/c/an;->f:Ljava/lang/String;
+
+    :cond_0
+    new-instance v0, Lcom/igexin/a/a/b/a;
+
+    iget-object v1, p0, Lcom/igexin/a/a/c/an;->e:Ljava/lang/String;
+
+    iget-object v2, p0, Lcom/igexin/a/a/c/an;->f:Ljava/lang/String;
+
+    invoke-direct {v0, v1, v2}, Lcom/igexin/a/a/b/a;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/igexin/a/a/c/an;->d:Lcom/igexin/a/a/b/b;
+
+    invoke-virtual {v1, v0}, Lcom/igexin/a/a/b/b;->a(Lcom/igexin/a/a/b/a;)V
+
+    :cond_1
+    iput-object v3, p0, Lcom/igexin/a/a/c/an;->e:Ljava/lang/String;
+
+    iput-object v3, p0, Lcom/igexin/a/a/c/an;->f:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method n()V
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->e:Ljava/lang/String;
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p0}, Lcom/igexin/a/a/c/an;->m()V
+
+    :cond_0
+    return-void
+.end method
+
+.method o()Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->b:Ljava/lang/String;
+
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
 
     move-result v0
 
-    sparse-switch v0, :sswitch_data_0
+    if-nez v0, :cond_0
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->e()V
+    const/4 v0, 0x1
 
-    sget-object v0, Lcom/igexin/a/a/c/an;->v:Lcom/igexin/a/a/c/r;
+    :goto_0
+    invoke-static {v0}, Lcom/igexin/a/a/a/k;->b(Z)V
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->b:Ljava/lang/String;
 
-    goto :goto_0
+    return-object v0
 
-    :sswitch_0
-    iget-object v1, p1, Lcom/igexin/a/a/c/q;->a:Ljava/lang/StringBuilder;
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    const-string v2, "script"
-
-    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-eqz v1, :cond_1
-
-    sget-object v1, Lcom/igexin/a/a/c/an;->C:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v1}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
-
-    :goto_1
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(C)V
+    :cond_0
+    const/4 v0, 0x0
 
     goto :goto_0
+.end method
 
-    :cond_1
-    sget-object v1, Lcom/igexin/a/a/c/an;->v:Lcom/igexin/a/a/c/r;
+.method p()Z
+    .locals 1
 
-    invoke-virtual {p1, v1}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    iget-boolean v0, p0, Lcom/igexin/a/a/c/an;->c:Z
 
-    goto :goto_1
+    return v0
+.end method
 
-    :sswitch_data_0
-    .sparse-switch
-        0x9 -> :sswitch_0
-        0xa -> :sswitch_0
-        0xc -> :sswitch_0
-        0x20 -> :sswitch_0
-        0x2f -> :sswitch_0
-        0x3e -> :sswitch_0
-    .end sparse-switch
+.method q()Lcom/igexin/a/a/b/b;
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/an;->d:Lcom/igexin/a/a/b/b;
+
+    return-object v0
 .end method

@@ -1,4 +1,4 @@
-.class final Lcom/igexin/sdk/coordinator/f;
+.class Lcom/igexin/sdk/coordinator/f;
 .super Landroid/os/Handler;
 
 
@@ -19,24 +19,32 @@
 
 
 # virtual methods
-.method public final handleMessage(Landroid/os/Message;)V
-    .locals 10
+.method public handleMessage(Landroid/os/Message;)V
+    .locals 11
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "GexinMsgService"
 
-    const-string v1, "msg.what = "
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget v1, p1, Landroid/os/Message;->what:I
+    const-string v2, "msg.what = "
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    iget v2, p1, Landroid/os/Message;->what:I
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-virtual {p1}, Landroid/os/Message;->getData()Landroid/os/Bundle;
 
@@ -85,47 +93,71 @@
 
     move-result-wide v4
 
-    new-instance v8, Ljava/lang/StringBuilder;
+    const-string v8, "GexinMsgService"
 
-    const-string v9, "MSG_CA_CONNECTED accessToken = "
+    new-instance v9, Ljava/lang/StringBuilder;
 
-    invoke-direct {v8, v9}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v8, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v10, "MSG_CA_CONNECTED accessToken = "
 
-    move-result-object v8
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v9
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v9, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    new-instance v8, Ljava/lang/StringBuilder;
+    move-result-object v9
 
-    const-string v9, "MSG_CA_CONNECTED expireTime = "
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-direct {v8, v9}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    move-result-object v9
 
-    invoke-virtual {v8, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-static {v8, v9}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
-    move-result-object v8
+    const-string v8, "GexinMsgService"
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    new-instance v9, Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    new-instance v8, Ljava/lang/StringBuilder;
+    const-string v10, "MSG_CA_CONNECTED expireTime = "
 
-    const-string v9, "MSG_CA_CONNECTED currentTime = "
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-direct {v8, v9}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    move-result-object v9
 
-    invoke-virtual {v8, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    move-result-object v8
+    move-result-object v9
 
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v9
+
+    invoke-static {v8, v9}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v8, "GexinMsgService"
+
+    new-instance v9, Ljava/lang/StringBuilder;
+
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v10, "MSG_CA_CONNECTED currentTime = "
+
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v9, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v9
+
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v9
+
+    invoke-static {v8, v9}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     cmp-long v8, v1, v4
 
@@ -165,33 +197,49 @@
 
     invoke-virtual {v7, v4, v5}, Lcom/igexin/sdk/coordinator/c;->a(J)V
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v1, "GexinMsgService"
 
-    const-string v2, "new accessToken = "
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v8, "new accessToken = "
 
-    move-result-object v1
+    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    move-result-object v2
 
-    const-string v2, "new expireTime = "
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    move-result-object v2
 
-    invoke-virtual {v1, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
-    move-result-object v1
+    const-string v1, "GexinMsgService"
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v8, "new expireTime = "
+
+    invoke-virtual {v2, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_1
     invoke-static {}, Lsdk/b/a/a/c/a;->a()Lsdk/b/a/a/c/a;
@@ -201,13 +249,13 @@
     invoke-virtual {v1, v0, v7}, Lsdk/b/a/a/c/a;->a(Ljava/lang/String;Lcom/igexin/sdk/coordinator/c;)V
 
     :try_start_0
-    invoke-virtual {v6}, Lcom/igexin/sdk/coordinator/a;->b()Lcom/igexin/sdk/aidl/d;
+    invoke-virtual {v6}, Lcom/igexin/sdk/coordinator/a;->b()Lcom/igexin/sdk/aidl/b;
 
     move-result-object v0
 
     if-eqz v0, :cond_2
 
-    invoke-virtual {v6}, Lcom/igexin/sdk/coordinator/a;->b()Lcom/igexin/sdk/aidl/d;
+    invoke-virtual {v6}, Lcom/igexin/sdk/coordinator/a;->b()Lcom/igexin/sdk/aidl/b;
 
     move-result-object v0
 
@@ -223,14 +271,14 @@
 
     move-result-object v2
 
-    invoke-interface/range {v0 .. v5}, Lcom/igexin/sdk/aidl/d;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)Z
+    invoke-interface/range {v0 .. v5}, Lcom/igexin/sdk/aidl/b;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)Z
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_1
 
     :cond_2
     :goto_1
     :try_start_1
-    invoke-virtual {v6}, Lcom/igexin/sdk/coordinator/a;->b()Lcom/igexin/sdk/aidl/d;
+    invoke-virtual {v6}, Lcom/igexin/sdk/coordinator/a;->b()Lcom/igexin/sdk/aidl/b;
 
     move-result-object v0
 
@@ -264,7 +312,7 @@
 
     :pswitch_1
     :try_start_2
-    invoke-virtual {v6}, Lcom/igexin/sdk/coordinator/a;->b()Lcom/igexin/sdk/aidl/d;
+    invoke-virtual {v6}, Lcom/igexin/sdk/coordinator/a;->b()Lcom/igexin/sdk/aidl/b;
 
     move-result-object v0
 

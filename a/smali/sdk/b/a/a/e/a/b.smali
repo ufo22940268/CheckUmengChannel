@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/a/b;
+.class public Lsdk/b/a/a/e/a/b;
 .super Lsdk/c/a/e/a;
 
 
@@ -7,14 +7,12 @@
 
 
 # direct methods
-.method public constructor <init>()V
-    .locals 1
+.method public constructor <init>(I)V
+    .locals 0
 
     invoke-direct {p0}, Lsdk/c/a/e/a;-><init>()V
 
-    const v0, -0xef7d4
-
-    iput v0, p0, Lsdk/b/a/a/e/a/b;->a:I
+    iput p1, p0, Lsdk/b/a/a/e/a/b;->a:I
 
     return-void
 .end method

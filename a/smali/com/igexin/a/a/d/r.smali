@@ -1,34 +1,54 @@
-.class abstract Lcom/igexin/a/a/d/r;
-.super Lcom/igexin/a/a/d/v;
+.class public final Lcom/igexin/a/a/d/r;
+.super Lcom/igexin/a/a/d/g;
 
 
 # instance fields
-.field final a:Ljava/util/List;
+.field private a:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>()V
-    .locals 1
+.method public constructor <init>(Ljava/lang/String;)V
+    .locals 0
 
-    invoke-direct {p0}, Lcom/igexin/a/a/d/v;-><init>()V
+    invoke-direct {p0}, Lcom/igexin/a/a/d/g;-><init>()V
 
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Lcom/igexin/a/a/d/r;->a:Ljava/util/List;
+    iput-object p1, p0, Lcom/igexin/a/a/d/r;->a:Ljava/lang/String;
 
     return-void
 .end method
 
-.method constructor <init>(Ljava/util/Collection;)V
+
+# virtual methods
+.method public a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
     .locals 1
 
-    invoke-direct {p0}, Lcom/igexin/a/a/d/r;-><init>()V
+    iget-object v0, p0, Lcom/igexin/a/a/d/r;->a:Ljava/lang/String;
 
-    iget-object v0, p0, Lcom/igexin/a/a/d/r;->a:Ljava/util/List;
+    invoke-virtual {p2, v0}, Lcom/igexin/a/a/b/i;->c(Ljava/lang/String;)Z
 
-    invoke-interface {v0, p1}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
+    move-result v0
 
-    return-void
+    return v0
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 4
+
+    const-string v0, ".%s"
+
+    const/4 v1, 0x1
+
+    new-array v1, v1, [Ljava/lang/Object;
+
+    const/4 v2, 0x0
+
+    iget-object v3, p0, Lcom/igexin/a/a/d/r;->a:Ljava/lang/String;
+
+    aput-object v3, v1, v2
+
+    invoke-static {v0, v1}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
 .end method

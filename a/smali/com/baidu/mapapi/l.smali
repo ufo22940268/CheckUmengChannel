@@ -32,6 +32,15 @@
 .field n:Ljava/lang/String;
 
 .field o:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Lcom/baidu/mapapi/h;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # direct methods

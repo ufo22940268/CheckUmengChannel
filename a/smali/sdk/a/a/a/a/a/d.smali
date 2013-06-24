@@ -1,4 +1,4 @@
-.class public final Lsdk/a/a/a/a/a/d;
+.class public Lsdk/a/a/a/a/a/d;
 .super Lsdk/c/b/a/b/b;
 
 
@@ -50,13 +50,13 @@
 
 
 # virtual methods
-.method public final a([B)V
+.method public a([B)V
     .locals 0
 
     return-void
 .end method
 
-.method public final a()[B
+.method public c()[B
     .locals 7
 
     const/4 v6, 0x0
@@ -95,13 +95,13 @@
 
     array-length v4, v0
 
+    const/4 v5, 0x1
+
     invoke-static {v4, v3, v6}, Lsdk/c/a/b/g;->c(I[BI)I
 
-    const/4 v4, 0x1
+    array-length v4, v0
 
-    array-length v5, v0
-
-    invoke-static {v0, v6, v3, v4, v5}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+    invoke-static {v0, v6, v3, v5, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     array-length v0, v0
 
@@ -130,6 +130,10 @@
     array-length v0, v2
 
     invoke-static {v2, v6, v3, v4, v0}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    array-length v0, v2
+
+    add-int/2addr v0, v4
 
     return-object v3
 .end method

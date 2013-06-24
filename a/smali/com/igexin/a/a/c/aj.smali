@@ -1,96 +1,96 @@
-.class final enum Lcom/igexin/a/a/c/aj;
-.super Lcom/igexin/a/a/c/r;
+.class Lcom/igexin/a/a/c/aj;
+.super Lcom/igexin/a/a/c/af;
+
+
+# instance fields
+.field final b:Ljava/lang/StringBuilder;
+
+.field final c:Ljava/lang/StringBuilder;
+
+.field final d:Ljava/lang/StringBuilder;
+
+.field e:Z
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method constructor <init>()V
+    .locals 1
 
-    const/16 v0, 0x17
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
+    invoke-direct {p0, v0}, Lcom/igexin/a/a/c/af;-><init>(Lcom/igexin/a/a/c/ag;)V
 
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/r;-><init>(Ljava/lang/String;IB)V
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    iput-object v0, p0, Lcom/igexin/a/a/c/aj;->b:Ljava/lang/StringBuilder;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    iput-object v0, p0, Lcom/igexin/a/a/c/aj;->c:Ljava/lang/StringBuilder;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    iput-object v0, p0, Lcom/igexin/a/a/c/aj;->d:Ljava/lang/StringBuilder;
+
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/igexin/a/a/c/aj;->e:Z
+
+    sget-object v0, Lcom/igexin/a/a/c/ao;->a:Lcom/igexin/a/a/c/ao;
+
+    iput-object v0, p0, Lcom/igexin/a/a/c/aj;->a:Lcom/igexin/a/a/c/ao;
 
     return-void
 .end method
 
 
 # virtual methods
-.method final a(Lcom/igexin/a/a/c/q;Lcom/igexin/a/a/c/a;)V
+.method m()Ljava/lang/String;
     .locals 1
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->b()Z
+    iget-object v0, p0, Lcom/igexin/a/a/c/aj;->b:Ljava/lang/StringBuilder;
 
-    move-result v0
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    if-eqz v0, :cond_0
+    move-result-object v0
 
-    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/q;->d(Lcom/igexin/a/a/c/r;)V
+    return-object v0
+.end method
 
-    sget-object v0, Lcom/igexin/a/a/c/aj;->a:Lcom/igexin/a/a/c/r;
+.method n()Ljava/lang/String;
+    .locals 1
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    iget-object v0, p0, Lcom/igexin/a/a/c/aj;->c:Ljava/lang/StringBuilder;
 
-    :goto_0
-    return-void
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    :cond_0
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->d()C
+    move-result-object v0
 
-    move-result v0
+    return-object v0
+.end method
 
-    sparse-switch v0, :sswitch_data_0
+.method public o()Ljava/lang/String;
+    .locals 1
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(C)V
+    iget-object v0, p0, Lcom/igexin/a/a/c/aj;->d:Ljava/lang/StringBuilder;
 
-    sget-object v0, Lcom/igexin/a/a/c/aj;->v:Lcom/igexin/a/a/c/r;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    move-result-object v0
 
-    goto :goto_0
+    return-object v0
+.end method
 
-    :sswitch_0
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(C)V
+.method public p()Z
+    .locals 1
 
-    goto :goto_0
+    iget-boolean v0, p0, Lcom/igexin/a/a/c/aj;->e:Z
 
-    :sswitch_1
-    sget-object v0, Lcom/igexin/a/a/c/aj;->y:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
-
-    goto :goto_0
-
-    :sswitch_2
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(C)V
-
-    sget-object v0, Lcom/igexin/a/a/c/aj;->f:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
-
-    goto :goto_0
-
-    :sswitch_3
-    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/q;->c(Lcom/igexin/a/a/c/r;)V
-
-    const v0, 0xfffd
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(C)V
-
-    sget-object v0, Lcom/igexin/a/a/c/aj;->v:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
-
-    goto :goto_0
-
-    nop
-
-    :sswitch_data_0
-    .sparse-switch
-        0x0 -> :sswitch_3
-        0x2d -> :sswitch_0
-        0x3c -> :sswitch_1
-        0x3e -> :sswitch_2
-    .end sparse-switch
+    return v0
 .end method

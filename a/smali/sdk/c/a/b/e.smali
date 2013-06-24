@@ -1,4 +1,4 @@
-.class public final Lsdk/c/a/b/e;
+.class public Lsdk/c/a/b/e;
 .super Lsdk/c/a/e/a;
 
 
@@ -43,7 +43,7 @@
     return-void
 .end method
 
-.method public final b()I
+.method public b()I
     .locals 1
 
     const/16 v0, 0x801

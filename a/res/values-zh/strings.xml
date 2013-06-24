@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">51信用卡管家</string>
     <string name="pull_to_refresh_pull_label">下拉刷新…</string>
     <string name="pull_to_refresh_release_label">放开以刷新…</string>
     <string name="pull_to_refresh_refreshing_label">正在载入…</string>
-    <string name="app_name">51信用卡管家</string>
     <string name="umeng_common_action_info_exist">正在下载中.</string>
     <string name="umeng_common_info_interrupt">下载出错啦，请检查网络后继续。</string>
     <string name="umeng_common_action_pause">暂停</string>

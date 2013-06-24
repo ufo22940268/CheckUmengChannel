@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/c;
+.class public Lsdk/b/a/a/e/c;
 .super Lsdk/c/a/e/a;
 
 

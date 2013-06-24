@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/b/q;
+.class public Lsdk/b/a/a/b/q;
 .super Ljava/lang/Object;
 
 
@@ -31,7 +31,7 @@
 
 
 # virtual methods
-.method public final a()J
+.method public a()J
     .locals 2
 
     iget-wide v0, p0, Lsdk/b/a/a/b/q;->a:J
@@ -39,7 +39,7 @@
     return-wide v0
 .end method
 
-.method public final b()Ljava/lang/String;
+.method public b()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/q;->b:Ljava/lang/String;
@@ -47,7 +47,7 @@
     return-object v0
 .end method
 
-.method public final c()B
+.method public c()B
     .locals 1
 
     iget-byte v0, p0, Lsdk/b/a/a/b/q;->c:B
@@ -55,7 +55,7 @@
     return v0
 .end method
 
-.method public final d()J
+.method public d()J
     .locals 2
 
     iget-wide v0, p0, Lsdk/b/a/a/b/q;->d:J

@@ -36,9 +36,10 @@
     <item type="id" name="RelativeLayout_Ab_Title">false</item>
     <item type="id" name="ImageView_Dot1">false</item>
     <item type="id" name="ImageView_Dot2">false</item>
-    <item type="id" name="LinearLayout_Ab_Options">false</item>
     <item type="id" name="ab_left">false</item>
     <item type="id" name="ab_category_selector">false</item>
+    <item type="id" name="LinearLayout_Ab_Options">false</item>
+    <item type="id" name="LinearLayout_Help">false</item>
     <item type="id" name="RelativeLayout_ab_Account">false</item>
     <item type="id" name="ImageView_Ab_Avatar">false</item>
     <item type="id" name="LinearLayout_Ab_UserName">false</item>
@@ -46,14 +47,17 @@
     <item type="id" name="ImageView_Ab_Update">false</item>
     <item type="id" name="TextView_Ab_Account">false</item>
     <item type="id" name="LinearLayout_Ab_Main_Page">false</item>
-    <item type="id" name="LinearLayout_Ab_Main_Import">false</item>
-    <item type="id" name="ImageView_Ab_Main_Divider">false</item>
     <item type="id" name="LinearLayout_Ab_Main_Refresh">false</item>
     <item type="id" name="ImageView_Ab_Main_Refresh">false</item>
+    <item type="id" name="ImageView_Ab_Main_Divider1">false</item>
+    <item type="id" name="LinearLayout_Ab_Main_Sigma">false</item>
+    <item type="id" name="ImageView_Ab_Main_Divider2">false</item>
+    <item type="id" name="LinearLayout_Ab_Main_Free_Interest">false</item>
     <item type="id" name="ab_type">false</item>
     <item type="id" name="ab_selector_indicator">false</item>
     <item type="id" name="search_field">false</item>
     <item type="id" name="ab_map">false</item>
+    <item type="id" name="ImageView_Ab_Main_Divider">false</item>
     <item type="id" name="content_frame">false</item>
     <item type="id" name="list_content">false</item>
     <item type="id" name="abs__action_bar_title">false</item>
@@ -191,6 +195,10 @@
     <item type="id" name="Button_Login_Submit">false</item>
     <item type="id" name="ViewStub_Mail_Import_Auto">false</item>
     <item type="id" name="ViewStub_Mail_Import_Manual">false</item>
+    <item type="id" name="CustomWebView_Main">false</item>
+    <item type="id" name="ImageView_Bg">false</item>
+    <item type="id" name="ProgressBar_Main">false</item>
+    <item type="id" name="Button">false</item>
     <item type="id" name="TextView_Manual_51Account">false</item>
     <item type="id" name="RelativeLayout_Manual_Copy">false</item>
     <item type="id" name="TextView_Manual_MailName">false</item>
@@ -304,8 +312,10 @@
     <item type="id" name="top_part">false</item>
     <item type="id" name="name">false</item>
     <item type="id" name="discount">false</item>
+    <item type="id" name="do_card">false</item>
     <item type="id" name="bottom_part">false</item>
     <item type="id" name="description">false</item>
+    <item type="id" name="viewflow">false</item>
     <item type="id" name="clock_time">false</item>
     <item type="id" name="left_icon">false</item>
     <item type="id" name="right_part">false</item>
@@ -329,8 +339,6 @@
     <item type="id" name="ViewStub_Layout_Empty_Bill">false</item>
     <item type="id" name="EditText_CreditLimit">false</item>
     <item type="id" name="Button_EditCreditLimit_Confirm">false</item>
-    <item type="id" name="LinearLayout_Content">false</item>
-    <item type="id" name="TextView_Divider_Line">false</item>
     <item type="id" name="TextView_VerifyCode_Title">false</item>
     <item type="id" name="Button_VerifyCode_Confirm">false</item>
     <item type="id" name="EditText_VerifyCode">false</item>
@@ -398,12 +406,13 @@
     <item type="id" name="ListView_Sms_Bill">false</item>
     <item type="id" name="TextView_Sms_Hint">false</item>
     <item type="id" name="ImageView_Bank_Icon">false</item>
+    <item type="id" name="RelativeLayout_Bank_Content">false</item>
     <item type="id" name="TextView_Bank_Name">false</item>
     <item type="id" name="TextView_Card_NameAndNo">false</item>
     <item type="id" name="TextView_Credit_Limit">false</item>
     <item type="id" name="TextView_Card_Avail_Limit">false</item>
     <item type="id" name="TextView_Free_Interest_Days">false</item>
-    <item type="id" name="LinearLayout_Bank_Icon">false</item>
+    <item type="id" name="CustomProgressBar">false</item>
     <item type="id" name="TextView_Item_Activity_Card_Detail_Bill_Interval_Label">false</item>
     <item type="id" name="TextView_Item_Activity_Card_Detail_Bill_Interval">false</item>
     <item type="id" name="TextView_Item_Activity_Card_Detail_Bill_Last_Need_Pay_Label">false</item>
@@ -564,6 +573,8 @@
     <item type="id" name="ImageView_Card_Detail_Youhui">false</item>
     <item type="id" name="ImageView_Card_Detail_Expression">false</item>
     <item type="id" name="TextView_Card_Detail_ExpressLabel">false</item>
+    <item type="id" name="imageview">false</item>
+    <item type="id" name="banner">false</item>
     <item type="id" name="TextView_Card_Detail_Sms_Title">false</item>
     <item type="id" name="TextView_Card_Detail_Sms_Amount">false</item>
     <item type="id" name="TextView_Card_Detail_Sms_Time">false</item>
@@ -681,6 +692,7 @@
     <item type="id" name="RelativeLayout_Shopping_Category">false</item>
     <item type="id" name="ImageView_Shopping_Category_Icon">false</item>
     <item type="id" name="TextView_Shopping_Week">false</item>
+    <item type="id" name="LinearLayout_Content">false</item>
     <item type="id" name="TextView_Shopping_Title">false</item>
     <item type="id" name="TextView_Shopping_Title2">false</item>
     <item type="id" name="ImageView_Shopping_Weather">false</item>
@@ -744,6 +756,9 @@
     <item type="id" name="notification_title">false</item>
     <item type="id" name="notification_name">false</item>
     <item type="id" name="prompt">false</item>
+    <item type="id" name="viewpager">false</item>
+    <item type="id" name="circle_container">false</item>
+    <item type="id" name="des">false</item>
     <item type="id" name="time_part">false</item>
     <item type="id" name="des_part">false</item>
     <item type="id" name="des_label">false</item>
@@ -753,7 +768,6 @@
     <item type="id" name="rule_des">false</item>
     <item type="id" name="sms">false</item>
     <item type="id" name="tel">false</item>
-    <item type="id" name="des">false</item>
     <item type="id" name="setup_card">false</item>
     <item type="id" name="fl_inner">false</item>
     <item type="id" name="pull_to_refresh_image">false</item>
@@ -770,10 +784,6 @@
     <item type="id" name="history">false</item>
     <item type="id" name="history_view">false</item>
     <item type="id" name="gridview_item">false</item>
-    <item type="id" name="action_bar">false</item>
-    <item type="id" name="sign_out">false</item>
-    <item type="id" name="about_us">false</item>
-    <item type="id" name="rating">false</item>
     <item type="id" name="main_title">false</item>
     <item type="id" name="sub_title">false</item>
     <item type="id" name="simple_des">false</item>
@@ -784,6 +794,7 @@
     <item type="id" name="TextView_Content">false</item>
     <item type="id" name="slidingmenumain">false</item>
     <item type="id" name="TextView_Sms_Import_Detail">false</item>
+    <item type="id" name="action_bar">false</item>
     <item type="id" name="left_content">false</item>
     <item type="id" name="right_content">false</item>
     <item type="id" name="dingding">false</item>

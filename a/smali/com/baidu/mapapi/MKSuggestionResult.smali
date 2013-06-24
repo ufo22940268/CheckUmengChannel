@@ -6,6 +6,15 @@
 .field private a:I
 
 .field private b:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKSuggestionInfo;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # direct methods
@@ -25,6 +34,15 @@
 # virtual methods
 .method a(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKSuggestionInfo;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKSuggestionResult;->b:Ljava/util/ArrayList;
 
@@ -33,6 +51,15 @@
 
 .method public getAllSuggestions()Ljava/util/ArrayList;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKSuggestionInfo;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MKSuggestionResult;->b:Ljava/util/ArrayList;
 

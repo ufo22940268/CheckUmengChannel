@@ -1,696 +1,926 @@
 .class public Lcom/slidingmenu/lib/SlidingMenu;
 .super Landroid/widget/RelativeLayout;
+.source "SlidingMenu.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/slidingmenu/lib/SlidingMenu$SavedState;,
+        Lcom/slidingmenu/lib/SlidingMenu$CanvasTransformer;,
+        Lcom/slidingmenu/lib/SlidingMenu$OnClosedListener;,
+        Lcom/slidingmenu/lib/SlidingMenu$OnCloseListener;,
+        Lcom/slidingmenu/lib/SlidingMenu$OnOpenedListener;,
+        Lcom/slidingmenu/lib/SlidingMenu$OnOpenListener;
+    }
+.end annotation
+
+
+# static fields
+.field public static final LEFT:I = 0x0
+
+.field public static final LEFT_RIGHT:I = 0x2
+
+.field public static final RIGHT:I = 0x1
+
+.field public static final SLIDING_CONTENT:I = 0x1
+
+.field public static final SLIDING_WINDOW:I = 0x0
+
+.field private static final TAG:Ljava/lang/String; = "SlidingMenu"
+
+.field public static final TOUCHMODE_FULLSCREEN:I = 0x1
+
+.field public static final TOUCHMODE_MARGIN:I = 0x0
+
+.field public static final TOUCHMODE_NONE:I = 0x2
 
 
 # instance fields
-.field private a:Z
+.field private mActionbarOverlay:Z
 
-.field private b:Lcom/slidingmenu/lib/CustomViewAbove;
+.field private mCloseListener:Lcom/slidingmenu/lib/SlidingMenu$OnCloseListener;
 
-.field private c:Lcom/slidingmenu/lib/CustomViewBehind;
+.field private mHandler:Landroid/os/Handler;
 
-.field private d:Lcom/slidingmenu/lib/n;
+.field private mOpenListener:Lcom/slidingmenu/lib/SlidingMenu$OnOpenListener;
 
-.field private e:Lcom/slidingmenu/lib/l;
+.field private mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-.field private f:Landroid/os/Handler;
+.field private mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
 
 
 # direct methods
 .method public constructor <init>(Landroid/app/Activity;I)V
     .locals 1
+    .parameter "activity"
+    .parameter "slideStyle"
 
+    .prologue
+    .line 179
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/slidingmenu/lib/SlidingMenu;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    invoke-virtual {p0, p1, p2}, Lcom/slidingmenu/lib/SlidingMenu;->a(Landroid/app/Activity;I)V
+    .line 180
+    invoke-virtual {p0, p1, p2}, Lcom/slidingmenu/lib/SlidingMenu;->attachToActivity(Landroid/app/Activity;I)V
 
+    .line 181
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
+    .parameter "context"
 
+    .prologue
+    .line 169
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, v0}, Lcom/slidingmenu/lib/SlidingMenu;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
+    .line 170
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 1
+    .parameter "context"
+    .parameter "attrs"
 
+    .prologue
+    .line 190
     const/4 v0, 0x0
 
     invoke-direct {p0, p1, p2, v0}, Lcom/slidingmenu/lib/SlidingMenu;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
+    .line 191
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
-    .locals 10
+    .locals 22
+    .parameter "context"
+    .parameter "attrs"
+    .parameter "defStyle"
 
-    const/high16 v5, -0x4080
+    .prologue
+    .line 201
+    invoke-direct/range {p0 .. p3}, Landroid/widget/RelativeLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
-    const/4 v4, 0x2
+    .line 38
+    const/16 v20, 0x0
 
-    const/4 v9, 0x1
+    move/from16 v0, v20
 
-    const/4 v8, 0x0
+    move-object/from16 v1, p0
 
-    const/4 v7, -0x1
+    iput-boolean v0, v1, Lcom/slidingmenu/lib/SlidingMenu;->mActionbarOverlay:Z
 
-    invoke-direct {p0, p1, p2, p3}, Landroid/widget/RelativeLayout;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    .line 985
+    new-instance v20, Landroid/os/Handler;
 
-    iput-boolean v8, p0, Lcom/slidingmenu/lib/SlidingMenu;->a:Z
+    invoke-direct/range {v20 .. v20}, Landroid/os/Handler;-><init>()V
 
-    new-instance v0, Landroid/os/Handler;
+    move-object/from16 v0, v20
 
-    invoke-direct {v0}, Landroid/os/Handler;-><init>()V
+    move-object/from16 v1, p0
 
-    iput-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->f:Landroid/os/Handler;
+    iput-object v0, v1, Lcom/slidingmenu/lib/SlidingMenu;->mHandler:Landroid/os/Handler;
 
-    new-instance v0, Landroid/widget/RelativeLayout$LayoutParams;
+    .line 203
+    new-instance v4, Landroid/widget/RelativeLayout$LayoutParams;
 
-    invoke-direct {v0, v7, v7}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
+    const/16 v20, -0x1
 
-    new-instance v1, Lcom/slidingmenu/lib/CustomViewBehind;
+    const/16 v21, -0x1
 
-    invoke-direct {v1, p1}, Lcom/slidingmenu/lib/CustomViewBehind;-><init>(Landroid/content/Context;)V
+    move/from16 v0, v20
 
-    iput-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
+    move/from16 v1, v21
 
-    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
+    invoke-direct {v4, v0, v1}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
 
-    invoke-virtual {p0, v1, v0}, Lcom/slidingmenu/lib/SlidingMenu;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    .line 204
+    .local v4, behindParams:Landroid/widget/RelativeLayout$LayoutParams;
+    new-instance v20, Lcom/slidingmenu/lib/CustomViewBehind;
 
-    new-instance v0, Landroid/widget/RelativeLayout$LayoutParams;
+    move-object/from16 v0, v20
 
-    invoke-direct {v0, v7, v7}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
+    move-object/from16 v1, p1
 
-    new-instance v1, Lcom/slidingmenu/lib/CustomViewAbove;
+    invoke-direct {v0, v1}, Lcom/slidingmenu/lib/CustomViewBehind;-><init>(Landroid/content/Context;)V
 
-    invoke-direct {v1, p1}, Lcom/slidingmenu/lib/CustomViewAbove;-><init>(Landroid/content/Context;)V
+    move-object/from16 v0, v20
 
-    iput-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    move-object/from16 v1, p0
 
-    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    iput-object v0, v1, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
 
-    invoke-virtual {p0, v1, v0}, Lcom/slidingmenu/lib/SlidingMenu;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    .line 205
+    move-object/from16 v0, p0
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    iget-object v0, v0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
 
-    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
+    move-object/from16 v20, v0
 
-    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/CustomViewAbove;->a(Lcom/slidingmenu/lib/CustomViewBehind;)V
+    move-object/from16 v0, p0
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
+    move-object/from16 v1, v20
 
-    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    invoke-virtual {v0, v1, v4}, Lcom/slidingmenu/lib/SlidingMenu;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/CustomViewBehind;->a(Lcom/slidingmenu/lib/CustomViewAbove;)V
+    .line 206
+    new-instance v3, Landroid/widget/RelativeLayout$LayoutParams;
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    const/16 v20, -0x1
 
-    new-instance v1, Lcom/slidingmenu/lib/i;
+    const/16 v21, -0x1
 
-    invoke-direct {v1, p0}, Lcom/slidingmenu/lib/i;-><init>(Lcom/slidingmenu/lib/SlidingMenu;)V
+    move/from16 v0, v20
 
-    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/CustomViewAbove;->a(Lcom/slidingmenu/lib/c;)V
+    move/from16 v1, v21
 
-    sget-object v0, Lcom/slidingmenu/lib/h;->k:[I
+    invoke-direct {v3, v0, v1}, Landroid/widget/RelativeLayout$LayoutParams;-><init>(II)V
 
-    invoke-virtual {p1, p2, v0}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    .line 207
+    .local v3, aboveParams:Landroid/widget/RelativeLayout$LayoutParams;
+    new-instance v20, Lcom/slidingmenu/lib/CustomViewAbove;
 
-    move-result-object v1
+    move-object/from16 v0, v20
 
-    invoke-virtual {v1, v8, v8}, Landroid/content/res/TypedArray;->getInt(II)I
+    move-object/from16 v1, p1
 
-    move-result v0
+    invoke-direct {v0, v1}, Lcom/slidingmenu/lib/CustomViewAbove;-><init>(Landroid/content/Context;)V
 
-    if-eqz v0, :cond_0
+    move-object/from16 v0, v20
 
-    if-eq v0, v9, :cond_0
+    move-object/from16 v1, p0
 
-    if-eq v0, v4, :cond_0
+    iput-object v0, v1, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    new-instance v0, Ljava/lang/IllegalStateException;
+    .line 208
+    move-object/from16 v0, p0
 
-    const-string v1, "SlidingMenu mode must be LEFT, RIGHT, or LEFT_RIGHT"
+    iget-object v0, v0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    move-object/from16 v20, v0
 
-    throw v0
+    move-object/from16 v0, p0
 
-    :cond_0
-    iget-object v2, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
+    move-object/from16 v1, v20
 
-    invoke-virtual {v2, v0}, Lcom/slidingmenu/lib/CustomViewBehind;->b(I)V
+    invoke-virtual {v0, v1, v3}, Lcom/slidingmenu/lib/SlidingMenu;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    invoke-virtual {v1, v9, v7}, Landroid/content/res/TypedArray;->getResourceId(II)I
+    .line 210
+    move-object/from16 v0, p0
 
-    move-result v0
+    iget-object v0, v0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    if-eq v0, v7, :cond_1
+    move-object/from16 v20, v0
 
-    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+    move-object/from16 v0, p0
 
-    move-result-object v2
+    iget-object v0, v0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
 
-    invoke-static {v2}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    move-object/from16 v21, v0
 
-    move-result-object v2
+    invoke-virtual/range {v20 .. v21}, Lcom/slidingmenu/lib/CustomViewAbove;->setCustomViewBehind(Lcom/slidingmenu/lib/CustomViewBehind;)V
 
-    const/4 v3, 0x0
+    .line 211
+    move-object/from16 v0, p0
 
-    invoke-virtual {v2, v0, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+    iget-object v0, v0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
 
-    move-result-object v0
+    move-object/from16 v20, v0
 
-    invoke-direct {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->b(Landroid/view/View;)V
+    move-object/from16 v0, p0
 
+    iget-object v0, v0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    move-object/from16 v21, v0
+
+    invoke-virtual/range {v20 .. v21}, Lcom/slidingmenu/lib/CustomViewBehind;->setCustomViewAbove(Lcom/slidingmenu/lib/CustomViewAbove;)V
+
+    .line 212
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    move-object/from16 v20, v0
+
+    new-instance v21, Lcom/slidingmenu/lib/SlidingMenu$1;
+
+    invoke-direct/range {v21 .. v22}, Lcom/slidingmenu/lib/SlidingMenu$1;-><init>(Lcom/slidingmenu/lib/SlidingMenu;)V
+
+    invoke-virtual/range {v20 .. v21}, Lcom/slidingmenu/lib/CustomViewAbove;->setOnPageChangeListener(Lcom/slidingmenu/lib/CustomViewAbove$OnPageChangeListener;)V
+
+    .line 229
+    sget-object v20, Lcom/slidingmenu/lib/R$styleable;->SlidingMenu:[I
+
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, p2
+
+    move-object/from16 v2, v20
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+
+    move-result-object v14
+
+    .line 231
+    .local v14, ta:Landroid/content/res/TypedArray;
+    const/16 v20, 0x0
+
+    const/16 v21, 0x0
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getInt(II)I
+
+    move-result v7
+
+    .line 232
+    .local v7, mode:I
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v7}, Lcom/slidingmenu/lib/SlidingMenu;->setMode(I)V
+
+    .line 233
+    const/16 v20, 0x1
+
+    const/16 v21, -0x1
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v17
+
+    .line 234
+    .local v17, viewAbove:I
+    const/16 v20, -0x1
+
+    move/from16 v0, v17
+
+    move/from16 v1, v20
+
+    if-eq v0, v1, :cond_0
+
+    .line 235
+    move-object/from16 v0, p0
+
+    move/from16 v1, v17
+
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->setContent(I)V
+
+    .line 239
     :goto_0
-    invoke-virtual {v1, v4, v7}, Landroid/content/res/TypedArray;->getResourceId(II)I
+    const/16 v20, 0x2
 
-    move-result v0
+    const/16 v21, -0x1
 
-    if-eq v0, v7, :cond_2
+    move/from16 v0, v20
 
-    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+    move/from16 v1, v21
 
-    move-result-object v2
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
-    invoke-static {v2}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    move-result v18
 
-    move-result-object v2
+    .line 240
+    .local v18, viewBehind:I
+    const/16 v20, -0x1
 
-    const/4 v3, 0x0
+    move/from16 v0, v18
 
-    invoke-virtual {v2, v0, v3}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+    move/from16 v1, v20
 
-    move-result-object v0
+    if-eq v0, v1, :cond_1
 
-    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->a(Landroid/view/View;)V
+    .line 241
+    move-object/from16 v0, p0
 
+    move/from16 v1, v18
+
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->setMenu(I)V
+
+    .line 245
     :goto_1
-    const/4 v0, 0x6
+    const/16 v20, 0x6
 
-    invoke-virtual {v1, v0, v8}, Landroid/content/res/TypedArray;->getInt(II)I
+    const/16 v21, 0x0
 
-    move-result v0
+    move/from16 v0, v20
 
-    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->a(I)V
+    move/from16 v1, v21
 
-    const/4 v0, 0x7
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getInt(II)I
 
-    invoke-virtual {v1, v0, v8}, Landroid/content/res/TypedArray;->getInt(II)I
+    move-result v15
 
-    move-result v0
+    .line 246
+    .local v15, touchModeAbove:I
+    move-object/from16 v0, p0
 
-    if-eq v0, v9, :cond_3
+    invoke-virtual {v0, v15}, Lcom/slidingmenu/lib/SlidingMenu;->setTouchModeAbove(I)V
 
-    if-eqz v0, :cond_3
+    .line 247
+    const/16 v20, 0x7
 
-    if-eq v0, v4, :cond_3
+    const/16 v21, 0x0
 
-    new-instance v0, Ljava/lang/IllegalStateException;
+    move/from16 v0, v20
 
-    const-string v1, "TouchMode must be set to eitherTOUCHMODE_FULLSCREEN or TOUCHMODE_MARGIN or TOUCHMODE_NONE."
+    move/from16 v1, v21
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getInt(II)I
 
-    throw v0
+    move-result v16
 
+    .line 248
+    .local v16, touchModeBehind:I
+    move-object/from16 v0, p0
+
+    move/from16 v1, v16
+
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->setTouchModeBehind(I)V
+
+    .line 250
+    const/16 v20, 0x3
+
+    const/high16 v21, -0x4080
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getDimension(IF)F
+
+    move-result v20
+
+    move/from16 v0, v20
+
+    float-to-int v8, v0
+
+    .line 251
+    .local v8, offsetBehind:I
+    const/16 v20, 0x4
+
+    const/high16 v21, -0x4080
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getDimension(IF)F
+
+    move-result v20
+
+    move/from16 v0, v20
+
+    float-to-int v0, v0
+
+    move/from16 v19, v0
+
+    .line 252
+    .local v19, widthBehind:I
+    const/16 v20, -0x1
+
+    move/from16 v0, v20
+
+    if-eq v8, v0, :cond_2
+
+    const/16 v20, -0x1
+
+    move/from16 v0, v19
+
+    move/from16 v1, v20
+
+    if-eq v0, v1, :cond_2
+
+    .line 253
+    new-instance v20, Ljava/lang/IllegalStateException;
+
+    const-string v21, "Cannot set both behindOffset and behindWidth for a SlidingMenu"
+
+    invoke-direct/range {v20 .. v21}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v20
+
+    .line 237
+    .end local v8           #offsetBehind:I
+    .end local v15           #touchModeAbove:I
+    .end local v16           #touchModeBehind:I
+    .end local v18           #viewBehind:I
+    .end local v19           #widthBehind:I
+    :cond_0
+    new-instance v20, Landroid/widget/FrameLayout;
+
+    move-object/from16 v0, v20
+
+    move-object/from16 v1, p1
+
+    invoke-direct {v0, v1}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v20
+
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->setContent(Landroid/view/View;)V
+
+    goto/16 :goto_0
+
+    .line 243
+    .restart local v18       #viewBehind:I
     :cond_1
-    new-instance v0, Landroid/widget/FrameLayout;
+    new-instance v20, Landroid/widget/FrameLayout;
 
-    invoke-direct {v0, p1}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+    move-object/from16 v0, v20
 
-    invoke-direct {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->b(Landroid/view/View;)V
+    move-object/from16 v1, p1
 
-    goto :goto_0
+    invoke-direct {v0, v1}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
 
-    :cond_2
-    new-instance v0, Landroid/widget/FrameLayout;
+    move-object/from16 v0, p0
 
-    invoke-direct {v0, p1}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+    move-object/from16 v1, v20
 
-    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->a(Landroid/view/View;)V
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->setMenu(Landroid/view/View;)V
 
     goto :goto_1
 
-    :cond_3
-    iget-object v2, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
+    .line 254
+    .restart local v8       #offsetBehind:I
+    .restart local v15       #touchModeAbove:I
+    .restart local v16       #touchModeBehind:I
+    .restart local v19       #widthBehind:I
+    :cond_2
+    const/16 v20, -0x1
 
-    invoke-virtual {v2, v0}, Lcom/slidingmenu/lib/CustomViewBehind;->e(I)V
+    move/from16 v0, v20
 
-    const/4 v0, 0x3
+    if-eq v8, v0, :cond_5
 
-    invoke-virtual {v1, v0, v5}, Landroid/content/res/TypedArray;->getDimension(IF)F
+    .line 255
+    move-object/from16 v0, p0
 
-    move-result v0
+    invoke-virtual {v0, v8}, Lcom/slidingmenu/lib/SlidingMenu;->setBehindOffset(I)V
 
-    float-to-int v0, v0
-
-    const/4 v2, 0x4
-
-    invoke-virtual {v1, v2, v5}, Landroid/content/res/TypedArray;->getDimension(IF)F
-
-    move-result v2
-
-    float-to-int v2, v2
-
-    if-eq v0, v7, :cond_4
-
-    if-eq v2, v7, :cond_4
-
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "Cannot set both behindOffset and behindWidth for a SlidingMenu"
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    :cond_4
-    if-eq v0, v7, :cond_5
-
-    invoke-direct {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->c(I)V
-
+    .line 260
     :goto_2
-    const/4 v0, 0x5
+    const/16 v20, 0x5
 
-    const v2, 0x3ea8f5c3
+    const v21, 0x3ea8f5c3
 
-    invoke-virtual {v1, v0, v2}, Landroid/content/res/TypedArray;->getFloat(IF)F
+    move/from16 v0, v20
 
-    move-result v0
+    move/from16 v1, v21
 
-    const/4 v2, 0x0
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getFloat(IF)F
 
-    cmpg-float v2, v0, v2
+    move-result v9
 
-    if-gez v2, :cond_7
+    .line 261
+    .local v9, scrollOffsetBehind:F
+    move-object/from16 v0, p0
 
-    const/high16 v2, 0x3f80
+    invoke-virtual {v0, v9}, Lcom/slidingmenu/lib/SlidingMenu;->setBehindScrollScale(F)V
 
-    cmpl-float v2, v0, v2
+    .line 262
+    const/16 v20, 0x8
 
-    if-lez v2, :cond_7
+    const/16 v21, -0x1
 
-    new-instance v0, Ljava/lang/IllegalStateException;
+    move/from16 v0, v20
 
-    const-string v1, "ScrollScale must be between 0 and 1"
+    move/from16 v1, v21
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
-    throw v0
+    move-result v12
 
+    .line 263
+    .local v12, shadowRes:I
+    const/16 v20, -0x1
+
+    move/from16 v0, v20
+
+    if-eq v12, v0, :cond_3
+
+    .line 264
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v12}, Lcom/slidingmenu/lib/SlidingMenu;->setShadowDrawable(I)V
+
+    .line 266
+    :cond_3
+    const/16 v20, 0x9
+
+    const/16 v21, 0x0
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getDimension(IF)F
+
+    move-result v20
+
+    move/from16 v0, v20
+
+    float-to-int v13, v0
+
+    .line 267
+    .local v13, shadowWidth:I
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v13}, Lcom/slidingmenu/lib/SlidingMenu;->setShadowWidth(I)V
+
+    .line 268
+    const/16 v20, 0xa
+
+    const/16 v21, 0x1
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+
+    move-result v6
+
+    .line 269
+    .local v6, fadeEnabled:Z
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v6}, Lcom/slidingmenu/lib/SlidingMenu;->setFadeEnabled(Z)V
+
+    .line 270
+    const/16 v20, 0xb
+
+    const v21, 0x3ea8f5c3
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getFloat(IF)F
+
+    move-result v5
+
+    .line 271
+    .local v5, fadeDeg:F
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v5}, Lcom/slidingmenu/lib/SlidingMenu;->setFadeDegree(F)V
+
+    .line 272
+    const/16 v20, 0xc
+
+    const/16 v21, 0x0
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+
+    move-result v10
+
+    .line 273
+    .local v10, selectorEnabled:Z
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v10}, Lcom/slidingmenu/lib/SlidingMenu;->setSelectorEnabled(Z)V
+
+    .line 274
+    const/16 v20, 0xd
+
+    const/16 v21, -0x1
+
+    move/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v14, v0, v1}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    move-result v11
+
+    .line 275
+    .local v11, selectorRes:I
+    const/16 v20, -0x1
+
+    move/from16 v0, v20
+
+    if-eq v11, v0, :cond_4
+
+    .line 276
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v11}, Lcom/slidingmenu/lib/SlidingMenu;->setSelectorDrawable(I)V
+
+    .line 277
+    :cond_4
+    invoke-virtual {v14}, Landroid/content/res/TypedArray;->recycle()V
+
+    .line 278
+    return-void
+
+    .line 256
+    .end local v5           #fadeDeg:F
+    .end local v6           #fadeEnabled:Z
+    .end local v9           #scrollOffsetBehind:F
+    .end local v10           #selectorEnabled:Z
+    .end local v11           #selectorRes:I
+    .end local v12           #shadowRes:I
+    .end local v13           #shadowWidth:I
     :cond_5
-    if-eq v2, v7, :cond_6
+    const/16 v20, -0x1
 
-    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+    move/from16 v0, v19
 
-    move-result-object v0
+    move/from16 v1, v20
 
-    const-string v3, "window"
+    if-eq v0, v1, :cond_6
 
-    invoke-virtual {v0, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    .line 257
+    move-object/from16 v0, p0
 
-    move-result-object v0
+    move/from16 v1, v19
 
-    check-cast v0, Landroid/view/WindowManager;
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->setBehindWidth(I)V
 
-    invoke-interface {v0}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
+    goto/16 :goto_2
 
-    move-result-object v0
-
-    :try_start_0
-    const-class v3, Landroid/view/Display;
-
-    const/4 v4, 0x1
-
-    new-array v4, v4, [Ljava/lang/Class;
-
-    const/4 v5, 0x0
-
-    const-class v6, Landroid/graphics/Point;
-
-    aput-object v6, v4, v5
-
-    new-instance v5, Landroid/graphics/Point;
-
-    invoke-direct {v5}, Landroid/graphics/Point;-><init>()V
-
-    const-string v6, "getSize"
-
-    invoke-virtual {v3, v6, v4}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-
-    move-result-object v3
-
-    const/4 v4, 0x1
-
-    new-array v4, v4, [Ljava/lang/Object;
-
-    const/4 v6, 0x0
-
-    aput-object v5, v4, v6
-
-    invoke-virtual {v3, v0, v4}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-
-    iget v0, v5, Landroid/graphics/Point;->x:I
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    :goto_3
-    sub-int/2addr v0, v2
-
-    invoke-direct {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->c(I)V
-
-    goto :goto_2
-
-    :catch_0
-    move-exception v3
-
-    invoke-virtual {v0}, Landroid/view/Display;->getWidth()I
-
-    move-result v0
-
-    goto :goto_3
-
+    .line 259
     :cond_6
-    invoke-direct {p0, v8}, Lcom/slidingmenu/lib/SlidingMenu;->c(I)V
+    const/16 v20, 0x0
 
-    goto :goto_2
+    move-object/from16 v0, p0
 
-    :cond_7
-    iget-object v2, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
+    move/from16 v1, v20
 
-    invoke-virtual {v2, v0}, Lcom/slidingmenu/lib/CustomViewBehind;->a(F)V
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->setBehindOffset(I)V
 
-    const/16 v0, 0x8
-
-    invoke-virtual {v1, v0, v7}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v0
-
-    if-eq v0, v7, :cond_8
-
-    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->b(I)V
-
-    :cond_8
-    const/16 v0, 0x9
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v1, v0, v2}, Landroid/content/res/TypedArray;->getDimension(IF)F
-
-    move-result v0
-
-    float-to-int v0, v0
-
-    invoke-direct {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->d(I)V
-
-    const/16 v0, 0xa
-
-    invoke-virtual {v1, v0, v9}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
-
-    move-result v0
-
-    iget-object v2, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {v2, v0}, Lcom/slidingmenu/lib/CustomViewBehind;->b(Z)V
-
-    const/16 v0, 0xb
-
-    const v2, 0x3ea8f5c3
-
-    invoke-virtual {v1, v0, v2}, Landroid/content/res/TypedArray;->getFloat(IF)F
-
-    move-result v0
-
-    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->a(F)V
-
-    const/16 v0, 0xc
-
-    invoke-virtual {v1, v0, v8}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->d()V
-
-    const/16 v0, 0xd
-
-    invoke-virtual {v1, v0, v7}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v0
-
-    if-eq v0, v7, :cond_9
-
-    iget-object v2, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v3
-
-    invoke-static {v3, v0}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
-
-    move-result-object v0
-
-    invoke-virtual {v2, v0}, Lcom/slidingmenu/lib/CustomViewBehind;->a(Landroid/graphics/Bitmap;)V
-
-    :cond_9
-    invoke-virtual {v1}, Landroid/content/res/TypedArray;->recycle()V
-
-    return-void
+    goto/16 :goto_2
 .end method
 
-.method static synthetic a(Lcom/slidingmenu/lib/SlidingMenu;)Lcom/slidingmenu/lib/n;
+.method static synthetic access$000(Lcom/slidingmenu/lib/SlidingMenu;)Lcom/slidingmenu/lib/SlidingMenu$OnOpenListener;
     .locals 1
+    .parameter "x0"
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->d:Lcom/slidingmenu/lib/n;
+    .prologue
+    .line 32
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mOpenListener:Lcom/slidingmenu/lib/SlidingMenu$OnOpenListener;
 
     return-object v0
 .end method
 
-.method static synthetic b(Lcom/slidingmenu/lib/SlidingMenu;)Lcom/slidingmenu/lib/l;
+.method static synthetic access$100(Lcom/slidingmenu/lib/SlidingMenu;)Lcom/slidingmenu/lib/SlidingMenu$OnCloseListener;
     .locals 1
+    .parameter "x0"
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->e:Lcom/slidingmenu/lib/l;
+    .prologue
+    .line 32
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mCloseListener:Lcom/slidingmenu/lib/SlidingMenu$OnCloseListener;
 
     return-object v0
-.end method
-
-.method private b(Landroid/view/View;)V
-    .locals 1
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->a(Landroid/view/View;)V
-
-    const/4 v0, 0x1
-
-    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->b(Z)V
-
-    return-void
-.end method
-
-.method private c(I)V
-    .locals 1
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->a(I)V
-
-    return-void
-.end method
-
-.method private d(I)V
-    .locals 1
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->c(I)V
-
-    return-void
 .end method
 
 
 # virtual methods
-.method public final a()Landroid/view/View;
+.method public addIgnoredView(Landroid/view/View;)V
     .locals 1
+    .parameter "v"
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    .prologue
+    .line 852
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->b()Landroid/view/View;
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->addIgnoredView(Landroid/view/View;)V
 
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public final a(F)V
-    .locals 1
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->b(F)V
-
+    .line 853
     return-void
 .end method
 
-.method public final a(I)V
-    .locals 2
+.method public attachToActivity(Landroid/app/Activity;I)V
+    .locals 1
+    .parameter "activity"
+    .parameter "slideStyle"
 
-    const/4 v0, 0x1
+    .prologue
+    .line 287
+    const/4 v0, 0x0
 
-    if-eq p1, v0, :cond_0
+    invoke-virtual {p0, p1, p2, v0}, Lcom/slidingmenu/lib/SlidingMenu;->attachToActivity(Landroid/app/Activity;IZ)V
 
-    if-eqz p1, :cond_0
-
-    const/4 v0, 0x2
-
-    if-eq p1, v0, :cond_0
-
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    const-string v1, "TouchMode must be set to eitherTOUCHMODE_FULLSCREEN or TOUCHMODE_MARGIN or TOUCHMODE_NONE."
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    :cond_0
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->b(I)V
-
+    .line 288
     return-void
 .end method
 
-.method public final a(Landroid/app/Activity;I)V
-    .locals 4
+.method public attachToActivity(Landroid/app/Activity;IZ)V
+    .locals 10
+    .parameter "activity"
+    .parameter "slideStyle"
+    .parameter "actionbarOverlay"
 
-    const/4 v1, 0x1
+    .prologue
+    const/4 v7, 0x1
 
-    const/4 v3, 0x0
+    const/4 v9, 0x0
 
+    .line 298
     if-eqz p2, :cond_0
 
-    if-eq p2, v1, :cond_0
+    if-eq p2, v7, :cond_0
 
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    .line 299
+    new-instance v6, Ljava/lang/IllegalArgumentException;
 
-    const-string v1, "slideStyle must be either SLIDING_WINDOW or SLIDING_CONTENT"
+    const-string v7, "slideStyle must be either SLIDING_WINDOW or SLIDING_CONTENT"
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6, v7}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw v6
 
+    .line 301
     :cond_0
     invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getParent()Landroid/view/ViewParent;
 
-    move-result-object v0
+    move-result-object v6
 
-    if-eqz v0, :cond_1
+    if-eqz v6, :cond_1
 
-    new-instance v0, Ljava/lang/IllegalStateException;
+    .line 302
+    new-instance v6, Ljava/lang/IllegalStateException;
 
-    const-string v1, "This SlidingMenu appears to already be attached"
+    const-string v7, "This SlidingMenu appears to already be attached"
 
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6, v7}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
-    throw v0
+    throw v6
 
+    .line 305
     :cond_1
     invoke-virtual {p1}, Landroid/app/Activity;->getTheme()Landroid/content/res/Resources$Theme;
 
+    move-result-object v6
+
+    new-array v7, v7, [I
+
+    const v8, 0x1010054
+
+    aput v8, v7, v9
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources$Theme;->obtainStyledAttributes([I)Landroid/content/res/TypedArray;
+
     move-result-object v0
 
-    new-array v1, v1, [I
+    .line 306
+    .local v0, a:Landroid/content/res/TypedArray;
+    invoke-virtual {v0, v9, v9}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
-    const v2, 0x1010054
+    move-result v1
 
-    aput v2, v1, v3
-
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources$Theme;->obtainStyledAttributes([I)Landroid/content/res/TypedArray;
-
-    move-result-object v0
-
-    invoke-virtual {v0, v3, v3}, Landroid/content/res/TypedArray;->getResourceId(II)I
-
-    move-result v2
-
+    .line 307
+    .local v1, background:I
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
+    .line 309
     packed-switch p2, :pswitch_data_0
 
+    .line 333
     :cond_2
     :goto_0
     return-void
 
+    .line 311
     :pswitch_0
-    iput-boolean v3, p0, Lcom/slidingmenu/lib/SlidingMenu;->a:Z
+    iput-boolean v9, p0, Lcom/slidingmenu/lib/SlidingMenu;->mActionbarOverlay:Z
 
+    .line 312
     invoke-virtual {p1}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
-    move-result-object v0
+    move-result-object v6
 
-    invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+    invoke-virtual {v6}, Landroid/view/Window;->getDecorView()Landroid/view/View;
 
-    move-result-object v0
+    move-result-object v4
 
-    check-cast v0, Landroid/view/ViewGroup;
+    check-cast v4, Landroid/view/ViewGroup;
 
-    invoke-virtual {v0, v3}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+    .line 313
+    .local v4, decor:Landroid/view/ViewGroup;
+    invoke-virtual {v4, v9}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
-    move-result-object v1
+    move-result-object v5
 
-    check-cast v1, Landroid/view/ViewGroup;
+    check-cast v5, Landroid/view/ViewGroup;
 
-    invoke-virtual {v1, v2}, Landroid/view/ViewGroup;->setBackgroundResource(I)V
+    .line 315
+    .local v5, decorChild:Landroid/view/ViewGroup;
+    invoke-virtual {v5, v1}, Landroid/view/ViewGroup;->setBackgroundResource(I)V
 
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+    .line 316
+    invoke-virtual {v4, v5}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    invoke-virtual {v0, p0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+    .line 317
+    invoke-virtual {v4, p0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
-    invoke-direct {p0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->b(Landroid/view/View;)V
+    .line 318
+    invoke-virtual {p0, v5}, Lcom/slidingmenu/lib/SlidingMenu;->setContent(Landroid/view/View;)V
 
     goto :goto_0
 
+    .line 321
+    .end local v4           #decor:Landroid/view/ViewGroup;
+    .end local v5           #decorChild:Landroid/view/ViewGroup;
     :pswitch_1
-    iput-boolean v3, p0, Lcom/slidingmenu/lib/SlidingMenu;->a:Z
+    iput-boolean p3, p0, Lcom/slidingmenu/lib/SlidingMenu;->mActionbarOverlay:Z
 
-    const v0, 0x1020002
+    .line 323
+    const v6, 0x1020002
 
-    invoke-virtual {p1, v0}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p1, v6}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
 
-    move-result-object v0
+    move-result-object v3
 
-    check-cast v0, Landroid/view/ViewGroup;
+    check-cast v3, Landroid/view/ViewGroup;
 
-    invoke-virtual {v0, v3}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+    .line 324
+    .local v3, contentParent:Landroid/view/ViewGroup;
+    invoke-virtual {v3, v9}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+    .line 325
+    .local v2, content:Landroid/view/View;
+    invoke-virtual {v3, v2}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
-    invoke-virtual {v0, p0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+    .line 326
+    invoke-virtual {v3, p0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
-    invoke-direct {p0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->b(Landroid/view/View;)V
+    .line 327
+    invoke-virtual {p0, v2}, Lcom/slidingmenu/lib/SlidingMenu;->setContent(Landroid/view/View;)V
 
-    invoke-virtual {v1}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+    .line 329
+    invoke-virtual {v2}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
 
-    move-result-object v0
+    move-result-object v6
 
-    if-nez v0, :cond_2
+    if-nez v6, :cond_2
 
-    invoke-virtual {v1, v2}, Landroid/view/View;->setBackgroundResource(I)V
+    .line 330
+    invoke-virtual {v2, v1}, Landroid/view/View;->setBackgroundResource(I)V
 
     goto :goto_0
 
+    .line 309
     nop
 
     :pswitch_data_0
@@ -700,273 +930,226 @@
     .end packed-switch
 .end method
 
-.method public final a(Landroid/view/View;)V
+.method public clearIgnoredViews()V
     .locals 1
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
+    .prologue
+    .line 868
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->a(Landroid/view/View;)V
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->clearIgnoredViews()V
 
-    return-void
-.end method
-
-.method public final a(Lcom/slidingmenu/lib/m;)V
-    .locals 1
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->a(Lcom/slidingmenu/lib/m;)V
-
-    return-void
-.end method
-
-.method public final a(Lcom/slidingmenu/lib/o;)V
-    .locals 1
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->a(Lcom/slidingmenu/lib/o;)V
-
-    return-void
-.end method
-
-.method public final a(Z)V
-    .locals 2
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    const/4 v1, 0x0
-
-    invoke-virtual {v0, v1, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->a(IZ)V
-
-    return-void
-.end method
-
-.method public final b()Landroid/view/View;
-    .locals 1
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->b()Landroid/view/View;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public final b(F)V
-    .locals 3
-    .annotation build Landroid/annotation/TargetApi;
-        value = 0xb
-    .end annotation
-
-    const/4 v0, 0x0
-
-    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    const/16 v2, 0xb
-
-    if-ge v1, v2, :cond_1
-
-    :cond_0
-    :goto_0
-    return-void
-
-    :cond_1
-    const/4 v1, 0x0
-
-    cmpl-float v1, p1, v1
-
-    if-lez v1, :cond_3
-
-    const/high16 v1, 0x3f80
-
-    cmpg-float v1, p1, v1
-
-    if-gez v1, :cond_3
-
-    const/4 v1, 0x1
-
-    :goto_1
-    if-eqz v1, :cond_2
-
-    const/4 v0, 0x2
-
-    :cond_2
-    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    invoke-virtual {v1}, Lcom/slidingmenu/lib/CustomViewAbove;->b()Landroid/view/View;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Landroid/view/View;->getLayerType()I
-
-    move-result v1
-
-    if-eq v0, v1, :cond_0
-
-    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->f:Landroid/os/Handler;
-
-    new-instance v2, Lcom/slidingmenu/lib/j;
-
-    invoke-direct {v2, p0, v0}, Lcom/slidingmenu/lib/j;-><init>(Lcom/slidingmenu/lib/SlidingMenu;I)V
-
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    goto :goto_0
-
-    :cond_3
-    move v1, v0
-
-    goto :goto_1
-.end method
-
-.method public final b(I)V
-    .locals 2
-
-    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {v1, v0}, Lcom/slidingmenu/lib/CustomViewBehind;->a(Landroid/graphics/drawable/Drawable;)V
-
-    return-void
-.end method
-
-.method public final b(Z)V
-    .locals 2
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    const/4 v1, 0x1
-
-    invoke-virtual {v0, v1, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->a(IZ)V
-
-    return-void
-.end method
-
-.method public final c()Landroid/view/View;
-    .locals 1
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->c:Lcom/slidingmenu/lib/CustomViewBehind;
-
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->c()Landroid/view/View;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public final d()V
-    .locals 1
-
-    const/4 v0, 0x1
-
-    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->a(Z)V
-
-    return-void
-.end method
-
-.method public final e()V
-    .locals 3
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    const/4 v1, 0x2
-
-    const/4 v2, 0x0
-
-    invoke-virtual {v0, v1, v2}, Lcom/slidingmenu/lib/CustomViewAbove;->a(IZ)V
-
-    return-void
-.end method
-
-.method public final f()V
-    .locals 1
-
-    const/4 v0, 0x1
-
-    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->b(Z)V
-
+    .line 869
     return-void
 .end method
 
 .method protected fitSystemWindows(Landroid/graphics/Rect;)Z
-    .locals 5
+    .locals 6
+    .parameter "insets"
     .annotation build Landroid/annotation/SuppressLint;
         value = {
             "NewApi"
         }
     .end annotation
 
-    iget v0, p1, Landroid/graphics/Rect;->left:I
+    .prologue
+    .line 974
+    iget v1, p1, Landroid/graphics/Rect;->left:I
 
-    iget v1, p1, Landroid/graphics/Rect;->right:I
+    .line 975
+    .local v1, leftPadding:I
+    iget v2, p1, Landroid/graphics/Rect;->right:I
 
-    iget v2, p1, Landroid/graphics/Rect;->top:I
+    .line 976
+    .local v2, rightPadding:I
+    iget v3, p1, Landroid/graphics/Rect;->top:I
 
-    iget v3, p1, Landroid/graphics/Rect;->bottom:I
+    .line 977
+    .local v3, topPadding:I
+    iget v0, p1, Landroid/graphics/Rect;->bottom:I
 
-    iget-boolean v4, p0, Lcom/slidingmenu/lib/SlidingMenu;->a:Z
+    .line 978
+    .local v0, bottomPadding:I
+    iget-boolean v4, p0, Lcom/slidingmenu/lib/SlidingMenu;->mActionbarOverlay:Z
 
     if-nez v4, :cond_0
 
-    invoke-virtual {p0, v0, v2, v1, v3}, Lcom/slidingmenu/lib/SlidingMenu;->setPadding(IIII)V
+    .line 979
+    const-string v4, "SlidingMenu"
 
+    const-string v5, "setting padding!"
+
+    invoke-static {v4, v5}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 980
+    invoke-virtual {p0, v1, v3, v2, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setPadding(IIII)V
+
+    .line 982
     :cond_0
-    const/4 v0, 0x1
+    const/4 v4, 0x1
+
+    return v4
+.end method
+
+.method public getBehindOffset()I
+    .locals 1
+
+    .prologue
+    .line 569
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/RelativeLayout$LayoutParams;
+
+    iget v0, v0, Landroid/widget/RelativeLayout$LayoutParams;->rightMargin:I
 
     return v0
 .end method
 
-.method public final g()Z
+.method public getBehindScrollScale()F
+    .locals 1
+
+    .prologue
+    .line 656
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->getScrollScale()F
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getContent()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    .line 360
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->getContent()Landroid/view/View;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getMenu()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    .line 387
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->getContent()Landroid/view/View;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getMode()I
+    .locals 1
+
+    .prologue
+    .line 453
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->getMode()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getSecondaryMenu()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    .line 415
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->getSecondaryContent()Landroid/view/View;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getTouchModeAbove()I
+    .locals 1
+
+    .prologue
+    .line 702
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->getTouchMode()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getTouchmodeMarginThreshold()I
+    .locals 1
+
+    .prologue
+    .line 664
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewBehind;->getMarginThreshold()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public isMenuShowing()Z
     .locals 2
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    .prologue
+    .line 551
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->a()I
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->getCurrentItem()I
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->a()I
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->getCurrentItem()I
 
     move-result v0
 
     const/4 v1, 0x2
 
-    if-eq v0, v1, :cond_0
-
-    const/4 v0, 0x0
-
-    :goto_0
-    return v0
+    if-ne v0, v1, :cond_1
 
     :cond_0
     const/4 v0, 0x1
 
+    :goto_0
+    return v0
+
+    :cond_1
+    const/4 v0, 0x0
+
     goto :goto_0
 .end method
 
-.method public final h()Z
+.method public isSecondaryMenuShowing()Z
     .locals 2
 
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    .prologue
+    .line 560
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->a()I
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->getCurrentItem()I
 
     move-result v0
 
@@ -985,9 +1168,675 @@
     goto :goto_0
 .end method
 
-.method public final i()V
-    .locals 2
+.method public isSlidingEnabled()Z
+    .locals 1
 
+    .prologue
+    .line 434
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/CustomViewAbove;->isSlidingEnabled()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public manageLayers(F)V
+    .locals 4
+    .parameter "percentOpen"
+    .annotation build Landroid/annotation/TargetApi;
+        value = 0xb
+    .end annotation
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 989
+    sget v2, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v3, 0xb
+
+    if-ge v2, v3, :cond_1
+
+    .line 1006
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 991
+    :cond_1
+    const/4 v2, 0x0
+
+    cmpl-float v2, p1, v2
+
+    if-lez v2, :cond_3
+
+    const/high16 v2, 0x3f80
+
+    cmpg-float v2, p1, v2
+
+    if-gez v2, :cond_3
+
+    const/4 v0, 0x1
+
+    .line 992
+    .local v0, layer:Z
+    :goto_1
+    if-eqz v0, :cond_2
+
+    const/4 v1, 0x2
+
+    .line 994
+    .local v1, layerType:I
+    :cond_2
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContent()Landroid/view/View;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/view/View;->getLayerType()I
+
+    move-result v2
+
+    if-eq v1, v2, :cond_0
+
+    .line 995
+    iget-object v2, p0, Lcom/slidingmenu/lib/SlidingMenu;->mHandler:Landroid/os/Handler;
+
+    new-instance v3, Lcom/slidingmenu/lib/SlidingMenu$2;
+
+    invoke-direct {v3, p0, v1}, Lcom/slidingmenu/lib/SlidingMenu$2;-><init>(Lcom/slidingmenu/lib/SlidingMenu;I)V
+
+    invoke-virtual {v2, v3}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    goto :goto_0
+
+    .end local v0           #layer:Z
+    .end local v1           #layerType:I
+    :cond_3
+    move v0, v1
+
+    .line 991
+    goto :goto_1
+.end method
+
+.method protected onRestoreInstanceState(Landroid/os/Parcelable;)V
+    .locals 3
+    .parameter "state"
+
+    .prologue
+    .line 963
+    move-object v0, p1
+
+    check-cast v0, Lcom/slidingmenu/lib/SlidingMenu$SavedState;
+
+    .line 964
+    .local v0, ss:Lcom/slidingmenu/lib/SlidingMenu$SavedState;
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/SlidingMenu$SavedState;->getSuperState()Landroid/os/Parcelable;
+
+    move-result-object v1
+
+    invoke-super {p0, v1}, Landroid/widget/RelativeLayout;->onRestoreInstanceState(Landroid/os/Parcelable;)V
+
+    .line 965
+    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0}, Lcom/slidingmenu/lib/SlidingMenu$SavedState;->getItem()I
+
+    move-result v2
+
+    invoke-virtual {v1, v2}, Lcom/slidingmenu/lib/CustomViewAbove;->setCurrentItem(I)V
+
+    .line 966
+    return-void
+.end method
+
+.method protected onSaveInstanceState()Landroid/os/Parcelable;
+    .locals 3
+
+    .prologue
+    .line 953
+    invoke-super {p0}, Landroid/widget/RelativeLayout;->onSaveInstanceState()Landroid/os/Parcelable;
+
+    move-result-object v1
+
+    .line 954
+    .local v1, superState:Landroid/os/Parcelable;
+    new-instance v0, Lcom/slidingmenu/lib/SlidingMenu$SavedState;
+
+    iget-object v2, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v2}, Lcom/slidingmenu/lib/CustomViewAbove;->getCurrentItem()I
+
+    move-result v2
+
+    invoke-direct {v0, v1, v2}, Lcom/slidingmenu/lib/SlidingMenu$SavedState;-><init>(Landroid/os/Parcelable;I)V
+
+    .line 955
+    .local v0, ss:Lcom/slidingmenu/lib/SlidingMenu$SavedState;
+    return-object v0
+.end method
+
+.method public removeIgnoredView(Landroid/view/View;)V
+    .locals 1
+    .parameter "v"
+
+    .prologue
+    .line 861
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->removeIgnoredView(Landroid/view/View;)V
+
+    .line 862
+    return-void
+.end method
+
+.method public setAboveOffset(I)V
+    .locals 1
+    .parameter "i"
+
+    .prologue
+    .line 603
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setAboveOffset(I)V
+
+    .line 604
+    return-void
+.end method
+
+.method public setAboveOffsetRes(I)V
+    .locals 2
+    .parameter "resID"
+
+    .prologue
+    .line 612
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Landroid/content/res/Resources;->getDimension(I)F
+
+    move-result v1
+
+    float-to-int v0, v1
+
+    .line 613
+    .local v0, i:I
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setAboveOffset(I)V
+
+    .line 614
+    return-void
+.end method
+
+.method public setBehindCanvasTransformer(Lcom/slidingmenu/lib/SlidingMenu$CanvasTransformer;)V
+    .locals 1
+    .parameter "t"
+
+    .prologue
+    .line 693
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setCanvasTransformer(Lcom/slidingmenu/lib/SlidingMenu$CanvasTransformer;)V
+
+    .line 694
+    return-void
+.end method
+
+.method public setBehindOffset(I)V
+    .locals 1
+    .parameter "i"
+
+    .prologue
+    .line 583
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setWidthOffset(I)V
+
+    .line 584
+    return-void
+.end method
+
+.method public setBehindOffsetRes(I)V
+    .locals 2
+    .parameter "resID"
+
+    .prologue
+    .line 593
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Landroid/content/res/Resources;->getDimension(I)F
+
+    move-result v1
+
+    float-to-int v0, v1
+
+    .line 594
+    .local v0, i:I
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setBehindOffset(I)V
+
+    .line 595
+    return-void
+.end method
+
+.method public setBehindScrollScale(F)V
+    .locals 2
+    .parameter "f"
+
+    .prologue
+    .line 682
+    const/4 v0, 0x0
+
+    cmpg-float v0, p1, v0
+
+    if-gez v0, :cond_0
+
+    const/high16 v0, 0x3f80
+
+    cmpl-float v0, p1, v0
+
+    if-lez v0, :cond_0
+
+    .line 683
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "ScrollScale must be between 0 and 1"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 684
+    :cond_0
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setScrollScale(F)V
+
+    .line 685
+    return-void
+.end method
+
+.method public setBehindWidth(I)V
+    .locals 9
+    .parameter "i"
+
+    .prologue
+    .line 624
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+
+    move-result-object v7
+
+    const-string v8, "window"
+
+    invoke-virtual {v7, v8}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v7
+
+    check-cast v7, Landroid/view/WindowManager;
+
+    invoke-interface {v7}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
+
+    move-result-object v1
+
+    .line 627
+    .local v1, display:Landroid/view/Display;
+    :try_start_0
+    const-class v0, Landroid/view/Display;
+
+    .line 628
+    .local v0, cls:Ljava/lang/Class;,"Ljava/lang/Class<*>;"
+    const/4 v7, 0x1
+
+    new-array v5, v7, [Ljava/lang/Class;
+
+    const/4 v7, 0x0
+
+    const-class v8, Landroid/graphics/Point;
+
+    aput-object v8, v5, v7
+
+    .line 629
+    .local v5, parameterTypes:[Ljava/lang/Class;,"[Ljava/lang/Class<*>;"
+    new-instance v4, Landroid/graphics/Point;
+
+    invoke-direct {v4}, Landroid/graphics/Point;-><init>()V
+
+    .line 630
+    .local v4, parameter:Landroid/graphics/Point;
+    const-string v7, "getSize"
+
+    invoke-virtual {v0, v7, v5}, Ljava/lang/Class;->getMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+
+    move-result-object v3
+
+    .line 631
+    .local v3, method:Ljava/lang/reflect/Method;
+    const/4 v7, 0x1
+
+    new-array v7, v7, [Ljava/lang/Object;
+
+    const/4 v8, 0x0
+
+    aput-object v4, v7, v8
+
+    invoke-virtual {v3, v1, v7}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 632
+    iget v6, v4, Landroid/graphics/Point;->x:I
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 636
+    .end local v0           #cls:Ljava/lang/Class;,"Ljava/lang/Class<*>;"
+    .end local v3           #method:Ljava/lang/reflect/Method;
+    .end local v4           #parameter:Landroid/graphics/Point;
+    .end local v5           #parameterTypes:[Ljava/lang/Class;,"[Ljava/lang/Class<*>;"
+    .local v6, width:I
+    :goto_0
+    sub-int v7, v6, p1
+
+    invoke-virtual {p0, v7}, Lcom/slidingmenu/lib/SlidingMenu;->setBehindOffset(I)V
+
+    .line 637
+    return-void
+
+    .line 633
+    .end local v6           #width:I
+    :catch_0
+    move-exception v2
+
+    .line 634
+    .local v2, e:Ljava/lang/Exception;
+    invoke-virtual {v1}, Landroid/view/Display;->getWidth()I
+
+    move-result v6
+
+    .restart local v6       #width:I
+    goto :goto_0
+.end method
+
+.method public setBehindWidthRes(I)V
+    .locals 2
+    .parameter "res"
+
+    .prologue
+    .line 646
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Landroid/content/res/Resources;->getDimension(I)F
+
+    move-result v1
+
+    float-to-int v0, v1
+
+    .line 647
+    .local v0, i:I
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setBehindWidth(I)V
+
+    .line 648
+    return-void
+.end method
+
+.method public setContent(I)V
+    .locals 2
+    .parameter "res"
+
+    .prologue
+    .line 342
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setContent(Landroid/view/View;)V
+
+    .line 343
+    return-void
+.end method
+
+.method public setContent(Landroid/view/View;)V
+    .locals 1
+    .parameter "view"
+
+    .prologue
+    .line 351
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setContent(Landroid/view/View;)V
+
+    .line 352
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->showContent()V
+
+    .line 353
+    return-void
+.end method
+
+.method public setFadeDegree(F)V
+    .locals 1
+    .parameter "f"
+
+    .prologue
+    .line 807
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setFadeDegree(F)V
+
+    .line 808
+    return-void
+.end method
+
+.method public setFadeEnabled(Z)V
+    .locals 1
+    .parameter "b"
+
+    .prologue
+    .line 797
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setFadeEnabled(Z)V
+
+    .line 798
+    return-void
+.end method
+
+.method public setMenu(I)V
+    .locals 2
+    .parameter "res"
+
+    .prologue
+    .line 370
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setMenu(Landroid/view/View;)V
+
+    .line 371
+    return-void
+.end method
+
+.method public setMenu(Landroid/view/View;)V
+    .locals 1
+    .parameter "v"
+
+    .prologue
+    .line 379
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setContent(Landroid/view/View;)V
+
+    .line 380
+    return-void
+.end method
+
+.method public setMode(I)V
+    .locals 2
+    .parameter "mode"
+
+    .prologue
+    .line 442
+    if-eqz p1, :cond_0
+
+    const/4 v0, 0x1
+
+    if-eq p1, v0, :cond_0
+
+    const/4 v0, 0x2
+
+    if-eq p1, v0, :cond_0
+
+    .line 443
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "SlidingMenu mode must be LEFT, RIGHT, or LEFT_RIGHT"
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 445
+    :cond_0
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setMode(I)V
+
+    .line 446
+    return-void
+.end method
+
+.method public setOnCloseListener(Lcom/slidingmenu/lib/SlidingMenu$OnCloseListener;)V
+    .locals 0
+    .parameter "listener"
+
+    .prologue
+    .line 888
+    iput-object p1, p0, Lcom/slidingmenu/lib/SlidingMenu;->mCloseListener:Lcom/slidingmenu/lib/SlidingMenu$OnCloseListener;
+
+    .line 889
+    return-void
+.end method
+
+.method public setOnClosedListener(Lcom/slidingmenu/lib/SlidingMenu$OnClosedListener;)V
+    .locals 1
+    .parameter "listener"
+
+    .prologue
+    .line 906
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setOnClosedListener(Lcom/slidingmenu/lib/SlidingMenu$OnClosedListener;)V
+
+    .line 907
+    return-void
+.end method
+
+.method public setOnOpenListener(Lcom/slidingmenu/lib/SlidingMenu$OnOpenListener;)V
+    .locals 0
+    .parameter "listener"
+
+    .prologue
+    .line 878
+    iput-object p1, p0, Lcom/slidingmenu/lib/SlidingMenu;->mOpenListener:Lcom/slidingmenu/lib/SlidingMenu$OnOpenListener;
+
+    .line 879
+    return-void
+.end method
+
+.method public setOnOpenedListener(Lcom/slidingmenu/lib/SlidingMenu$OnOpenedListener;)V
+    .locals 1
+    .parameter "listener"
+
+    .prologue
+    .line 897
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setOnOpenedListener(Lcom/slidingmenu/lib/SlidingMenu$OnOpenedListener;)V
+
+    .line 898
+    return-void
+.end method
+
+.method public setSecondaryMenu(I)V
+    .locals 2
+    .parameter "res"
+
+    .prologue
+    .line 397
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-static {v0}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, p1, v1}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setSecondaryMenu(Landroid/view/View;)V
+
+    .line 398
+    return-void
+.end method
+
+.method public setSecondaryMenu(Landroid/view/View;)V
+    .locals 1
+    .parameter "v"
+
+    .prologue
+    .line 406
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setSecondaryContent(Landroid/view/View;)V
+
+    .line 408
+    return-void
+.end method
+
+.method public setSecondaryShadowDrawable(I)V
+    .locals 1
+    .parameter "resId"
+
+    .prologue
+    .line 761
     invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
 
     move-result-object v0
@@ -996,77 +1845,440 @@
 
     move-result-object v0
 
-    const v1, 0x7f07001f
+    invoke-virtual {v0, p1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimension(I)F
+    move-result-object v0
 
-    move-result v0
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setSecondaryShadowDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    float-to-int v0, v0
-
-    invoke-direct {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->c(I)V
-
+    .line 762
     return-void
 .end method
 
-.method public final j()V
-    .locals 2
+.method public setSecondaryShadowDrawable(Landroid/graphics/drawable/Drawable;)V
+    .locals 1
+    .parameter "d"
 
+    .prologue
+    .line 770
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setSecondaryShadowDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 771
+    return-void
+.end method
+
+.method public setSelectedView(Landroid/view/View;)V
+    .locals 1
+    .parameter "v"
+
+    .prologue
+    .line 825
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setSelectedView(Landroid/view/View;)V
+
+    .line 826
+    return-void
+.end method
+
+.method public setSelectorBitmap(Landroid/graphics/Bitmap;)V
+    .locals 1
+    .parameter "b"
+
+    .prologue
+    .line 843
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setSelectorBitmap(Landroid/graphics/Bitmap;)V
+
+    .line 844
+    return-void
+.end method
+
+.method public setSelectorDrawable(I)V
+    .locals 2
+    .parameter "res"
+
+    .prologue
+    .line 834
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v1
+
+    invoke-static {v1, p1}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/CustomViewBehind;->setSelectorBitmap(Landroid/graphics/Bitmap;)V
+
+    .line 835
+    return-void
+.end method
+
+.method public setSelectorEnabled(Z)V
+    .locals 2
+    .parameter "b"
+
+    .prologue
+    .line 816
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    const/4 v1, 0x1
+
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/CustomViewBehind;->setSelectorEnabled(Z)V
+
+    .line 817
+    return-void
+.end method
+
+.method public setShadowDrawable(I)V
+    .locals 1
+    .parameter "resId"
+
+    .prologue
+    .line 743
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setShadowDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 744
+    return-void
+.end method
+
+.method public setShadowDrawable(Landroid/graphics/drawable/Drawable;)V
+    .locals 1
+    .parameter "d"
+
+    .prologue
+    .line 752
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setShadowDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 753
+    return-void
+.end method
+
+.method public setShadowWidth(I)V
+    .locals 1
+    .parameter "pixels"
+
+    .prologue
+    .line 788
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setShadowWidth(I)V
+
+    .line 789
+    return-void
+.end method
+
+.method public setShadowWidthRes(I)V
+    .locals 1
+    .parameter "resId"
+
+    .prologue
+    .line 779
     invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    const v1, 0x7f070020
-
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimension(I)F
+    invoke-virtual {v0, p1}, Landroid/content/res/Resources;->getDimension(I)F
 
     move-result v0
 
     float-to-int v0, v0
 
-    invoke-direct {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->d(I)V
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setShadowWidth(I)V
 
+    .line 780
     return-void
 .end method
 
-.method protected onRestoreInstanceState(Landroid/os/Parcelable;)V
-    .locals 2
+.method public setSlidingEnabled(Z)V
+    .locals 1
+    .parameter "b"
 
-    check-cast p1, Lcom/slidingmenu/lib/SlidingMenu$SavedState;
+    .prologue
+    .line 425
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    invoke-virtual {p1}, Lcom/slidingmenu/lib/SlidingMenu$SavedState;->getSuperState()Landroid/os/Parcelable;
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setSlidingEnabled(Z)V
 
-    move-result-object v0
-
-    invoke-super {p0, v0}, Landroid/widget/RelativeLayout;->onRestoreInstanceState(Landroid/os/Parcelable;)V
-
-    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
-
-    invoke-virtual {p1}, Lcom/slidingmenu/lib/SlidingMenu$SavedState;->a()I
-
-    move-result v1
-
-    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/CustomViewAbove;->a(I)V
-
+    .line 426
     return-void
 .end method
 
-.method protected onSaveInstanceState()Landroid/os/Parcelable;
+.method public setStatic(Z)V
     .locals 3
+    .parameter "b"
 
-    invoke-super {p0}, Landroid/widget/RelativeLayout;->onSaveInstanceState()Landroid/os/Parcelable;
+    .prologue
+    const/4 v2, 0x1
 
-    move-result-object v0
+    .line 462
+    if-eqz p1, :cond_0
 
-    new-instance v1, Lcom/slidingmenu/lib/SlidingMenu$SavedState;
+    .line 463
+    const/4 v0, 0x0
 
-    iget-object v2, p0, Lcom/slidingmenu/lib/SlidingMenu;->b:Lcom/slidingmenu/lib/CustomViewAbove;
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->setSlidingEnabled(Z)V
 
-    invoke-virtual {v2}, Lcom/slidingmenu/lib/CustomViewAbove;->a()I
+    .line 464
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
 
-    move-result v2
+    const/4 v1, 0x0
 
-    invoke-direct {v1, v0, v2}, Lcom/slidingmenu/lib/SlidingMenu$SavedState;-><init>(Landroid/os/Parcelable;I)V
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/CustomViewAbove;->setCustomViewBehind(Lcom/slidingmenu/lib/CustomViewBehind;)V
 
-    return-object v1
+    .line 465
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0, v2}, Lcom/slidingmenu/lib/CustomViewAbove;->setCurrentItem(I)V
+
+    .line 473
+    :goto_0
+    return-void
+
+    .line 468
+    :cond_0
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0, v2}, Lcom/slidingmenu/lib/CustomViewAbove;->setCurrentItem(I)V
+
+    .line 470
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    iget-object v1, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/CustomViewAbove;->setCustomViewBehind(Lcom/slidingmenu/lib/CustomViewBehind;)V
+
+    .line 471
+    invoke-virtual {p0, v2}, Lcom/slidingmenu/lib/SlidingMenu;->setSlidingEnabled(Z)V
+
+    goto :goto_0
+.end method
+
+.method public setTouchModeAbove(I)V
+    .locals 2
+    .parameter "i"
+
+    .prologue
+    .line 713
+    const/4 v0, 0x1
+
+    if-eq p1, v0, :cond_0
+
+    if-eqz p1, :cond_0
+
+    const/4 v0, 0x2
+
+    if-eq p1, v0, :cond_0
+
+    .line 715
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "TouchMode must be set to eitherTOUCHMODE_FULLSCREEN or TOUCHMODE_MARGIN or TOUCHMODE_NONE."
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 718
+    :cond_0
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setTouchMode(I)V
+
+    .line 719
+    return-void
+.end method
+
+.method public setTouchModeBehind(I)V
+    .locals 2
+    .parameter "i"
+
+    .prologue
+    .line 729
+    const/4 v0, 0x1
+
+    if-eq p1, v0, :cond_0
+
+    if-eqz p1, :cond_0
+
+    const/4 v0, 0x2
+
+    if-eq p1, v0, :cond_0
+
+    .line 731
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    const-string v1, "TouchMode must be set to eitherTOUCHMODE_FULLSCREEN or TOUCHMODE_MARGIN or TOUCHMODE_NONE."
+
+    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    .line 734
+    :cond_0
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setTouchMode(I)V
+
+    .line 735
+    return-void
+.end method
+
+.method public setTouchmodeMarginThreshold(I)V
+    .locals 1
+    .parameter "touchmodeMarginThreshold"
+
+    .prologue
+    .line 672
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewBehind:Lcom/slidingmenu/lib/CustomViewBehind;
+
+    invoke-virtual {v0, p1}, Lcom/slidingmenu/lib/CustomViewBehind;->setMarginThreshold(I)V
+
+    .line 673
+    return-void
+.end method
+
+.method public showContent()V
+    .locals 1
+
+    .prologue
+    .line 513
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->showContent(Z)V
+
+    .line 514
+    return-void
+.end method
+
+.method public showContent(Z)V
+    .locals 2
+    .parameter "animate"
+
+    .prologue
+    .line 522
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    const/4 v1, 0x1
+
+    invoke-virtual {v0, v1, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setCurrentItem(IZ)V
+
+    .line 523
+    return-void
+.end method
+
+.method public showMenu()V
+    .locals 1
+
+    .prologue
+    .line 479
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->showMenu(Z)V
+
+    .line 480
+    return-void
+.end method
+
+.method public showMenu(Z)V
+    .locals 2
+    .parameter "animate"
+
+    .prologue
+    .line 488
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setCurrentItem(IZ)V
+
+    .line 489
+    return-void
+.end method
+
+.method public showSecondaryMenu()V
+    .locals 1
+
+    .prologue
+    .line 496
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->showSecondaryMenu(Z)V
+
+    .line 497
+    return-void
+.end method
+
+.method public showSecondaryMenu(Z)V
+    .locals 2
+    .parameter "animate"
+
+    .prologue
+    .line 506
+    iget-object v0, p0, Lcom/slidingmenu/lib/SlidingMenu;->mViewAbove:Lcom/slidingmenu/lib/CustomViewAbove;
+
+    const/4 v1, 0x2
+
+    invoke-virtual {v0, v1, p1}, Lcom/slidingmenu/lib/CustomViewAbove;->setCurrentItem(IZ)V
+
+    .line 507
+    return-void
+.end method
+
+.method public toggle()V
+    .locals 1
+
+    .prologue
+    .line 529
+    const/4 v0, 0x1
+
+    invoke-virtual {p0, v0}, Lcom/slidingmenu/lib/SlidingMenu;->toggle(Z)V
+
+    .line 530
+    return-void
+.end method
+
+.method public toggle(Z)V
+    .locals 1
+    .parameter "animate"
+
+    .prologue
+    .line 538
+    invoke-virtual {p0}, Lcom/slidingmenu/lib/SlidingMenu;->isMenuShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 539
+    invoke-virtual {p0, p1}, Lcom/slidingmenu/lib/SlidingMenu;->showContent(Z)V
+
+    .line 543
+    :goto_0
+    return-void
+
+    .line 541
+    :cond_0
+    invoke-virtual {p0, p1}, Lcom/slidingmenu/lib/SlidingMenu;->showMenu(Z)V
+
+    goto :goto_0
 .end method

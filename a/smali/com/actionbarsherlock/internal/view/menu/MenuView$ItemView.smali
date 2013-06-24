@@ -1,5 +1,17 @@
 .class public interface abstract Lcom/actionbarsherlock/internal/view/menu/MenuView$ItemView;
 .super Ljava/lang/Object;
+.source "MenuView.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/actionbarsherlock/internal/view/menu/MenuView;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "ItemView"
+.end annotation
 
 
 # virtual methods

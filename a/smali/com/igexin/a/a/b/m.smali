@@ -1,8 +1,8 @@
-.class final Lcom/igexin/a/a/b/m;
+.class Lcom/igexin/a/a/b/m;
 .super Ljava/lang/Object;
 
 # interfaces
-.implements Lcom/igexin/a/a/d/e;
+.implements Lcom/igexin/a/a/d/ad;
 
 
 # instance fields
@@ -26,7 +26,7 @@
 
 
 # virtual methods
-.method public final a(Lcom/igexin/a/a/b/l;I)V
+.method public a(Lcom/igexin/a/a/b/l;I)V
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/a/a/b/m;->a:Ljava/lang/String;
@@ -36,7 +36,7 @@
     return-void
 .end method
 
-.method public final b(Lcom/igexin/a/a/b/l;I)V
+.method public b(Lcom/igexin/a/a/b/l;I)V
     .locals 0
 
     return-void

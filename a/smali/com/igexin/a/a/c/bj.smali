@@ -1,93 +1,99 @@
 .class final enum Lcom/igexin/a/a/c/bj;
-.super Lcom/igexin/a/a/c/r;
+.super Lcom/igexin/a/a/c/ar;
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method constructor <init>(Ljava/lang/String;I)V
+    .locals 1
 
-    const/16 v0, 0x2e
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
-
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/r;-><init>(Ljava/lang/String;IB)V
+    invoke-direct {p0, p1, p2, v0}, Lcom/igexin/a/a/c/ar;-><init>(Ljava/lang/String;ILcom/igexin/a/a/c/as;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method final a(Lcom/igexin/a/a/c/q;Lcom/igexin/a/a/c/a;)V
+.method a(Lcom/igexin/a/a/c/aq;Lcom/igexin/a/a/c/a;)V
     .locals 2
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->c()C
+    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->n()Z
 
     move-result v0
 
-    sparse-switch v0, :sswitch_data_0
+    if-eqz v0, :cond_0
 
-    iget-object v0, p1, Lcom/igexin/a/a/c/q;->d:Lcom/igexin/a/a/c/i;
+    invoke-virtual {p1}, Lcom/igexin/a/a/c/aq;->h()V
 
-    iget-object v0, v0, Lcom/igexin/a/a/c/i;->b:Ljava/lang/StringBuilder;
+    iget-object v0, p1, Lcom/igexin/a/a/c/aq;->a:Ljava/lang/StringBuilder;
 
-    const/4 v1, 0x2
+    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->c()C
 
-    new-array v1, v1, [C
+    move-result v1
 
-    fill-array-data v1, :array_0
+    invoke-static {v1}, Ljava/lang/Character;->toLowerCase(C)C
 
-    invoke-virtual {p2, v1}, Lcom/igexin/a/a/c/a;->a([C)Ljava/lang/String;
+    move-result v1
 
-    move-result-object v1
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "<"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->c()C
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->a(Ljava/lang/String;)V
+
+    sget-object v0, Lcom/igexin/a/a/c/bj;->B:Lcom/igexin/a/a/c/ar;
+
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->b(Lcom/igexin/a/a/c/ar;)V
 
     :goto_0
     return-void
 
-    :sswitch_0
-    sget-object v0, Lcom/igexin/a/a/c/bj;->V:Lcom/igexin/a/a/c/r;
+    :cond_0
+    const/16 v0, 0x2f
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->b(Lcom/igexin/a/a/c/r;)V
+    invoke-virtual {p2, v0}, Lcom/igexin/a/a/c/a;->b(C)Z
 
-    goto :goto_0
+    move-result v0
 
-    :sswitch_1
-    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/q;->c(Lcom/igexin/a/a/c/r;)V
+    if-eqz v0, :cond_1
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->f()V
+    invoke-virtual {p1}, Lcom/igexin/a/a/c/aq;->h()V
 
-    iget-object v0, p1, Lcom/igexin/a/a/c/q;->d:Lcom/igexin/a/a/c/i;
+    sget-object v0, Lcom/igexin/a/a/c/bj;->z:Lcom/igexin/a/a/c/ar;
 
-    iget-object v0, v0, Lcom/igexin/a/a/c/i;->b:Ljava/lang/StringBuilder;
-
-    const v1, 0xfffd
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->b(Lcom/igexin/a/a/c/ar;)V
 
     goto :goto_0
 
-    :sswitch_2
-    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/q;->d(Lcom/igexin/a/a/c/r;)V
+    :cond_1
+    const/16 v0, 0x3c
 
-    invoke-virtual {p1}, Lcom/igexin/a/a/c/q;->d()V
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->a(C)V
 
-    sget-object v0, Lcom/igexin/a/a/c/bj;->a:Lcom/igexin/a/a/c/r;
+    sget-object v0, Lcom/igexin/a/a/c/bj;->v:Lcom/igexin/a/a/c/ar;
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->a(Lcom/igexin/a/a/c/ar;)V
 
     goto :goto_0
-
-    :sswitch_data_0
-    .sparse-switch
-        0x0 -> :sswitch_1
-        0x2d -> :sswitch_0
-        0xffff -> :sswitch_2
-    .end sparse-switch
-
-    :array_0
-    .array-data 0x2
-        0x2dt 0x0t
-        0x0t 0x0t
-    .end array-data
 .end method

@@ -52,9 +52,9 @@
 
 # virtual methods
 .method public destroy()V
-    .locals 2
+    .locals 3
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
     sget-boolean v0, Lcom/baidu/mapapi/BMapManager;->c:Z
 
@@ -92,7 +92,7 @@
 
     invoke-virtual {v0}, Lcom/baidu/mapapi/Mj;->UnInitMapApiEngine()I
 
-    iput-object v1, p0, Lcom/baidu/mapapi/BMapManager;->a:Lcom/baidu/mapapi/Mj;
+    iput-object v2, p0, Lcom/baidu/mapapi/BMapManager;->a:Lcom/baidu/mapapi/Mj;
 
     :cond_2
     return-void
@@ -100,9 +100,15 @@
     :catch_0
     move-exception v0
 
+    const-string v1, "baidumap"
+
     invoke-virtual {v0}, Ljava/io/IOException;->getMessage()Ljava/lang/String;
 
-    sput-object v1, Lcom/baidu/mapapi/Mj;->f:Ljava/net/ServerSocket;
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    sput-object v2, Lcom/baidu/mapapi/Mj;->f:Ljava/net/ServerSocket;
 
     goto :goto_0
 .end method

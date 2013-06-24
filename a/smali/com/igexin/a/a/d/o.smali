@@ -1,71 +1,98 @@
-.class final Lcom/igexin/a/a/d/o;
-.super Lcom/igexin/a/a/d/i;
+.class public final Lcom/igexin/a/a/d/o;
+.super Lcom/igexin/a/a/d/g;
+
+
+# instance fields
+.field a:Ljava/lang/String;
+
+.field b:Ljava/util/regex/Pattern;
 
 
 # direct methods
-.method public constructor <init>(Lcom/igexin/a/a/d/v;)V
-    .locals 0
+.method public constructor <init>(Ljava/lang/String;Ljava/util/regex/Pattern;)V
+    .locals 1
 
-    invoke-direct {p0}, Lcom/igexin/a/a/d/i;-><init>()V
+    invoke-direct {p0}, Lcom/igexin/a/a/d/g;-><init>()V
 
-    iput-object p1, p0, Lcom/igexin/a/a/d/o;->a:Lcom/igexin/a/a/d/v;
+    invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/igexin/a/a/d/o;->a:Ljava/lang/String;
+
+    iput-object p2, p0, Lcom/igexin/a/a/d/o;->b:Ljava/util/regex/Pattern;
 
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
-    .locals 3
+.method public a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
+    .locals 2
 
-    const/4 v0, 0x0
+    iget-object v0, p0, Lcom/igexin/a/a/d/o;->a:Ljava/lang/String;
 
-    if-ne p1, p2, :cond_1
+    invoke-virtual {p2, v0}, Lcom/igexin/a/a/b/i;->e(Ljava/lang/String;)Z
 
-    :cond_0
-    :goto_0
-    return v0
+    move-result v0
 
-    :cond_1
-    invoke-virtual {p2}, Lcom/igexin/a/a/b/i;->k()Lcom/igexin/a/a/b/i;
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/igexin/a/a/d/o;->b:Ljava/util/regex/Pattern;
+
+    iget-object v1, p0, Lcom/igexin/a/a/d/o;->a:Ljava/lang/String;
+
+    invoke-virtual {p2, v1}, Lcom/igexin/a/a/b/i;->d(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    :goto_1
-    if-eqz v1, :cond_0
+    invoke-virtual {v0, v1}, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
 
-    iget-object v2, p0, Lcom/igexin/a/a/d/o;->a:Lcom/igexin/a/a/d/v;
+    move-result-object v0
 
-    invoke-virtual {v2, p1, v1}, Lcom/igexin/a/a/d/v;->a(Lcom/igexin/a/a/b/i;Lcom/igexin/a/a/b/i;)Z
+    invoke-virtual {v0}, Ljava/util/regex/Matcher;->find()Z
 
-    move-result v2
+    move-result v0
 
-    if-eqz v2, :cond_2
+    if-eqz v0, :cond_0
 
     const/4 v0, 0x1
 
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
     goto :goto_0
-
-    :cond_2
-    invoke-virtual {v1}, Lcom/igexin/a/a/b/i;->k()Lcom/igexin/a/a/b/i;
-
-    move-result-object v1
-
-    goto :goto_1
 .end method
 
-.method public final toString()Ljava/lang/String;
+.method public toString()Ljava/lang/String;
     .locals 4
 
-    const-string v0, ":prev*%s"
+    const-string v0, "[%s~=%s]"
 
-    const/4 v1, 0x1
+    const/4 v1, 0x2
 
     new-array v1, v1, [Ljava/lang/Object;
 
     const/4 v2, 0x0
 
-    iget-object v3, p0, Lcom/igexin/a/a/d/o;->a:Lcom/igexin/a/a/d/v;
+    iget-object v3, p0, Lcom/igexin/a/a/d/o;->a:Ljava/lang/String;
+
+    aput-object v3, v1, v2
+
+    const/4 v2, 0x1
+
+    iget-object v3, p0, Lcom/igexin/a/a/d/o;->b:Ljava/util/regex/Pattern;
+
+    invoke-virtual {v3}, Ljava/util/regex/Pattern;->toString()Ljava/lang/String;
+
+    move-result-object v3
 
     aput-object v3, v1, v2
 

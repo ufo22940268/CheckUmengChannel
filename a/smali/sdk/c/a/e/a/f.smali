@@ -6,14 +6,14 @@
 
 
 # virtual methods
-.method public abstract a(Z)V
-.end method
-
 .method public abstract b()I
 .end method
 
-.method public abstract i()Z
+.method public abstract b(Z)V
 .end method
 
-.method public abstract j()J
+.method public abstract j()Z
+.end method
+
+.method public abstract k()J
 .end method

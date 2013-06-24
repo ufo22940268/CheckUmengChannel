@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/e/g;
+.class public Lsdk/b/a/a/e/e/g;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -16,7 +16,7 @@
 
 
 # direct methods
-.method private constructor <init>(Lsdk/c/a/b/d;)V
+.method public constructor <init>(Lsdk/c/a/b/d;)V
     .locals 1
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -71,14 +71,22 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;Ljava/lang/String;Lsdk/b/a/a/e/e/d;)Z
-    .locals 2
+.method public a(Ljava/lang/String;Ljava/lang/String;ILsdk/b/a/a/e/e/d;)Z
+    .locals 6
 
     new-instance v0, Lsdk/b/a/a/e/e/f;
 
-    iget-object v1, p0, Lsdk/b/a/a/e/e/g;->c:Lsdk/c/a/b/d;
+    iget-object v3, p0, Lsdk/b/a/a/e/e/g;->c:Lsdk/c/a/b/d;
 
-    invoke-direct {v0, p1, p2, v1, p3}, Lsdk/b/a/a/e/e/f;-><init>(Ljava/lang/String;Ljava/lang/String;Lsdk/c/a/b/d;Lsdk/b/a/a/e/e/d;)V
+    move-object v1, p1
+
+    move-object v2, p2
+
+    move v4, p3
+
+    move-object v5, p4
+
+    invoke-direct/range {v0 .. v5}, Lsdk/b/a/a/e/e/f;-><init>(Ljava/lang/String;Ljava/lang/String;Lsdk/c/a/b/d;ILsdk/b/a/a/e/e/d;)V
 
     invoke-virtual {v0}, Lsdk/b/a/a/e/e/f;->b()V
 
@@ -105,8 +113,8 @@
     goto :goto_0
 .end method
 
-.method public final a(Lsdk/c/a/e/a/f;)Z
-    .locals 2
+.method public a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/e;)Z
+    .locals 3
 
     const/4 v0, 0x0
 
@@ -116,26 +124,28 @@
 
     packed-switch v1, :pswitch_data_0
 
+    move-object v1, v0
+
     :goto_0
-    if-eqz v0, :cond_1
+    if-eqz v1, :cond_1
 
-    invoke-virtual {v0, p1}, Lsdk/b/a/a/e/e/f;->a(Lsdk/c/a/e/a/f;)Z
+    invoke-virtual {v1, p1, p2}, Lsdk/b/a/a/e/e/f;->a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/e;)Z
 
-    invoke-virtual {v0}, Lsdk/b/a/a/e/e/f;->a()Z
+    move-result v0
 
-    move-result v1
+    invoke-virtual {v1}, Lsdk/b/a/a/e/e/f;->a()Z
 
-    if-eqz v1, :cond_0
+    move-result v2
 
-    iget-object v1, p0, Lsdk/b/a/a/e/e/g;->b:Ljava/util/Map;
+    if-eqz v2, :cond_0
 
-    iget-object v0, v0, Lsdk/b/a/a/e/e/f;->c:Ljava/lang/String;
+    iget-object v2, p0, Lsdk/b/a/a/e/e/g;->b:Ljava/util/Map;
 
-    invoke-interface {v1, v0}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+    iget-object v1, v1, Lsdk/b/a/a/e/e/f;->c:Ljava/lang/String;
+
+    invoke-interface {v2, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
     :cond_0
-    const/4 v0, 0x1
-
     :goto_1
     return v0
 
@@ -154,6 +164,8 @@
 
     check-cast v0, Lsdk/b/a/a/e/e/f;
 
+    move-object v1, v0
+
     goto :goto_0
 
     :pswitch_1
@@ -171,12 +183,16 @@
 
     check-cast v0, Lsdk/b/a/a/e/e/f;
 
+    move-object v1, v0
+
     goto :goto_0
 
     :cond_1
     const/4 v0, 0x0
 
     goto :goto_1
+
+    nop
 
     :pswitch_data_0
     .packed-switch 0x88801
@@ -185,7 +201,7 @@
     .end packed-switch
 .end method
 
-.method public final a(Lsdk/c/a/e/d;)Z
+.method public a(Lsdk/c/a/e/d;Lsdk/c/a/e/e;)Z
     .locals 3
 
     const/4 v1, 0x0
@@ -198,29 +214,26 @@
 
     :cond_0
     :goto_0
-    move-object v0, v1
+    if-eqz v1, :cond_2
 
-    :goto_1
-    if-eqz v0, :cond_2
+    invoke-virtual {v1, p1, p2}, Lsdk/b/a/a/e/e/f;->a(Lsdk/c/a/e/d;Lsdk/c/a/e/e;)Z
 
-    invoke-virtual {v0, p1}, Lsdk/b/a/a/e/e/f;->a(Lsdk/c/a/e/d;)Z
+    move-result v0
 
-    invoke-virtual {v0}, Lsdk/b/a/a/e/e/f;->a()Z
+    invoke-virtual {v1}, Lsdk/b/a/a/e/e/f;->a()Z
 
-    move-result v1
+    move-result v2
 
-    if-eqz v1, :cond_1
+    if-eqz v2, :cond_1
 
-    iget-object v1, p0, Lsdk/b/a/a/e/e/g;->b:Ljava/util/Map;
+    iget-object v2, p0, Lsdk/b/a/a/e/e/g;->b:Ljava/util/Map;
 
-    iget-object v0, v0, Lsdk/b/a/a/e/e/f;->c:Ljava/lang/String;
+    iget-object v1, v1, Lsdk/b/a/a/e/e/f;->c:Ljava/lang/String;
 
-    invoke-interface {v1, v0}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v2, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
     :cond_1
-    const/4 v0, 0x1
-
-    :goto_2
+    :goto_1
     return v0
 
     :sswitch_0
@@ -238,7 +251,9 @@
 
     check-cast v0, Lsdk/b/a/a/e/e/f;
 
-    goto :goto_1
+    move-object v1, v0
+
+    goto :goto_0
 
     :sswitch_1
     move-object v0, p1
@@ -270,14 +285,14 @@
 
     check-cast v0, Lsdk/b/a/a/e/e/f;
 
-    goto :goto_1
+    move-object v1, v0
+
+    goto :goto_0
 
     :cond_2
     const/4 v0, 0x0
 
-    goto :goto_2
-
-    nop
+    goto :goto_1
 
     :sswitch_data_0
     .sparse-switch
@@ -291,7 +306,15 @@
     .end packed-switch
 .end method
 
-.method public final d()J
+.method public i()Z
+    .locals 1
+
+    const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method public j()J
     .locals 2
 
     const-wide/32 v0, 0x13579

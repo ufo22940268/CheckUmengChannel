@@ -1,49 +1,73 @@
-.class final Lcom/umeng/common/net/o;
-.super Ljava/lang/Object;
+.class public Lcom/umeng/common/net/o;
+.super Lcom/umeng/common/net/t;
+.source "ReportResponse.java"
 
-# interfaces
-.implements Ljava/lang/Runnable;
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/umeng/common/net/o$a;
+    }
+.end annotation
 
 
 # instance fields
-.field final synthetic a:Ljava/lang/String;
-
-.field final synthetic b:Lcom/umeng/common/net/DownloadingService;
+.field public a:Lcom/umeng/common/net/o$a;
 
 
 # direct methods
-.method constructor <init>(Lcom/umeng/common/net/DownloadingService;Ljava/lang/String;)V
-    .locals 0
+.method public constructor <init>(Lorg/json/JSONObject;)V
+    .locals 2
+    .parameter
 
-    iput-object p1, p0, Lcom/umeng/common/net/o;->b:Lcom/umeng/common/net/DownloadingService;
+    .prologue
+    .line 21
+    invoke-direct {p0, p1}, Lcom/umeng/common/net/t;-><init>(Lorg/json/JSONObject;)V
 
-    iput-object p2, p0, Lcom/umeng/common/net/o;->a:Ljava/lang/String;
+    .line 22
+    const-string v0, "ok"
 
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    const-string v1, "status"
 
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    const-string v0, "ok"
+
+    const-string v1, "success"
+
+    invoke-virtual {p1, v1}, Lorg/json/JSONObject;->optString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 24
+    :cond_0
+    sget-object v0, Lcom/umeng/common/net/o$a;->a:Lcom/umeng/common/net/o$a;
+
+    iput-object v0, p0, Lcom/umeng/common/net/o;->a:Lcom/umeng/common/net/o$a;
+
+    .line 28
+    :goto_0
     return-void
-.end method
 
+    .line 26
+    :cond_1
+    sget-object v0, Lcom/umeng/common/net/o$a;->b:Lcom/umeng/common/net/o$a;
 
-# virtual methods
-.method public final run()V
-    .locals 3
+    iput-object v0, p0, Lcom/umeng/common/net/o;->a:Lcom/umeng/common/net/o$a;
 
-    iget-object v0, p0, Lcom/umeng/common/net/o;->b:Lcom/umeng/common/net/DownloadingService;
-
-    invoke-static {v0}, Lcom/umeng/common/net/DownloadingService;->a(Lcom/umeng/common/net/DownloadingService;)Landroid/content/Context;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/umeng/common/net/o;->a:Ljava/lang/String;
-
-    const/4 v2, 0x0
-
-    invoke-static {v0, v1, v2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
-
-    return-void
+    goto :goto_0
 .end method

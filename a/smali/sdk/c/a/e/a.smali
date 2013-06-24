@@ -34,7 +34,7 @@
 
 
 # virtual methods
-.method public final a(Z)V
+.method public b(Z)V
     .locals 1
 
     if-nez p1, :cond_0
@@ -52,7 +52,7 @@
     goto :goto_0
 .end method
 
-.method public final i()Z
+.method public j()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/c/a/e/a;->a:Z
@@ -60,7 +60,7 @@
     return v0
 .end method
 
-.method public final j()J
+.method public k()J
     .locals 2
 
     iget-wide v0, p0, Lsdk/c/a/e/a;->b:J

@@ -1,4 +1,4 @@
-.class final Lsdk/download/f;
+.class Lsdk/download/f;
 .super Landroid/database/CursorWrapper;
 
 # interfaces
@@ -28,7 +28,7 @@
 
 
 # virtual methods
-.method public final fillWindow(ILandroid/database/CursorWindow;)V
+.method public fillWindow(ILandroid/database/CursorWindow;)V
     .locals 1
 
     iget-object v0, p0, Lsdk/download/f;->b:Landroid/database/CrossProcessCursor;
@@ -38,7 +38,7 @@
     return-void
 .end method
 
-.method public final getWindow()Landroid/database/CursorWindow;
+.method public getWindow()Landroid/database/CursorWindow;
     .locals 1
 
     iget-object v0, p0, Lsdk/download/f;->b:Landroid/database/CrossProcessCursor;
@@ -50,7 +50,7 @@
     return-object v0
 .end method
 
-.method public final onMove(II)Z
+.method public onMove(II)Z
     .locals 1
 
     iget-object v0, p0, Lsdk/download/f;->b:Landroid/database/CrossProcessCursor;

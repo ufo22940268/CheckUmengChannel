@@ -1,39 +1,31 @@
-.class final Lcom/igexin/sdk/m;
+.class Lcom/igexin/sdk/m;
 .super Ljava/lang/Object;
 
 # interfaces
-.implements Lsdk/b/a/a/e/e/d;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field final synthetic a:Ljava/util/concurrent/atomic/AtomicInteger;
+.field final synthetic a:Lsdk/b/a/a/b/s;
 
-.field final synthetic b:Lsdk/b/a/a/b/n;
+.field final synthetic b:Ljava/lang/String;
 
 .field final synthetic c:Ljava/lang/String;
 
-.field final synthetic d:Ljava/lang/String;
-
-.field final synthetic e:Ljava/lang/String;
-
-.field final synthetic f:Lcom/igexin/sdk/SdkMainService;
+.field final synthetic d:Lcom/igexin/sdk/SdkMainService;
 
 
 # direct methods
-.method constructor <init>(Lcom/igexin/sdk/SdkMainService;Ljava/util/concurrent/atomic/AtomicInteger;Lsdk/b/a/a/b/n;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+.method constructor <init>(Lcom/igexin/sdk/SdkMainService;Lsdk/b/a/a/b/s;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
 
-    iput-object p1, p0, Lcom/igexin/sdk/m;->f:Lcom/igexin/sdk/SdkMainService;
+    iput-object p1, p0, Lcom/igexin/sdk/m;->d:Lcom/igexin/sdk/SdkMainService;
 
-    iput-object p2, p0, Lcom/igexin/sdk/m;->a:Ljava/util/concurrent/atomic/AtomicInteger;
+    iput-object p2, p0, Lcom/igexin/sdk/m;->a:Lsdk/b/a/a/b/s;
 
-    iput-object p3, p0, Lcom/igexin/sdk/m;->b:Lsdk/b/a/a/b/n;
+    iput-object p3, p0, Lcom/igexin/sdk/m;->b:Ljava/lang/String;
 
     iput-object p4, p0, Lcom/igexin/sdk/m;->c:Ljava/lang/String;
-
-    iput-object p5, p0, Lcom/igexin/sdk/m;->d:Ljava/lang/String;
-
-    iput-object p6, p0, Lcom/igexin/sdk/m;->e:Ljava/lang/String;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -42,71 +34,92 @@
 
 
 # virtual methods
-.method public final a(Lsdk/b/a/a/e/e/e;Ljava/lang/String;)V
+.method public run()V
     .locals 5
 
-    iget-object v0, p0, Lcom/igexin/sdk/m;->a:Ljava/util/concurrent/atomic/AtomicInteger;
+    new-instance v0, Lsdk/b/a/a/b/j;
 
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->getAndDecrement()I
+    invoke-direct {v0}, Lsdk/b/a/a/b/j;-><init>()V
 
-    sget-object v0, Lsdk/b/a/a/e/e/e;->a:Lsdk/b/a/a/e/e/e;
+    iget-object v1, p0, Lcom/igexin/sdk/m;->a:Lsdk/b/a/a/b/s;
 
-    if-eq p1, v0, :cond_0
-
-    sget-object v0, Lsdk/b/a/a/e/e/e;->d:Lsdk/b/a/a/e/e/e;
-
-    if-ne p1, v0, :cond_1
-
-    :cond_0
-    iget-object v0, p0, Lcom/igexin/sdk/m;->b:Lsdk/b/a/a/b/n;
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    const-string v2, "file://"
-
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Lsdk/b/a/a/b/s;->b()Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->d(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/igexin/sdk/m;->a:Lsdk/b/a/a/b/s;
+
+    invoke-virtual {v1}, Lsdk/b/a/a/b/s;->c()J
+
+    move-result-wide v1
+
+    invoke-virtual {v0, v1, v2}, Lsdk/b/a/a/b/j;->a(J)V
+
+    iget-object v1, p0, Lcom/igexin/sdk/m;->a:Lsdk/b/a/a/b/s;
+
+    invoke-virtual {v1}, Lsdk/b/a/a/b/s;->a()Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/n;->a(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->b(Ljava/lang/String;)V
 
-    iget-object v0, p0, Lcom/igexin/sdk/m;->a:Ljava/util/concurrent/atomic/AtomicInteger;
+    const/4 v1, 0x3
 
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->get()I
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->b(I)V
+
+    iget-object v1, p0, Lcom/igexin/sdk/m;->a:Lsdk/b/a/a/b/s;
+
+    invoke-virtual {v1}, Lsdk/b/a/a/b/s;->d()I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->d(I)V
+
+    :try_start_0
+    iget-object v1, p0, Lcom/igexin/sdk/m;->d:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v1, v1, Lcom/igexin/sdk/SdkMainService;->h:Lsdk/b/a/a/c/m;
+
+    invoke-virtual {v1, v0}, Lsdk/b/a/a/c/m;->a(Lsdk/b/a/a/b/j;)I
 
     move-result v0
 
-    if-nez v0, :cond_1
+    iget-object v1, p0, Lcom/igexin/sdk/m;->d:Lcom/igexin/sdk/SdkMainService;
 
-    :try_start_0
-    iget-object v0, p0, Lcom/igexin/sdk/m;->f:Lcom/igexin/sdk/SdkMainService;
+    const/4 v2, 0x1
 
-    iget-object v1, p0, Lcom/igexin/sdk/m;->c:Ljava/lang/String;
+    iget-object v3, p0, Lcom/igexin/sdk/m;->b:Ljava/lang/String;
 
-    iget-object v2, p0, Lcom/igexin/sdk/m;->d:Ljava/lang/String;
+    iget-object v4, p0, Lcom/igexin/sdk/m;->c:Ljava/lang/String;
 
-    const-string v3, "1"
+    invoke-virtual {v1, v2, v0, v3, v4}, Lcom/igexin/sdk/SdkMainService;->a(IILjava/lang/String;Ljava/lang/String;)V
 
-    iget-object v4, p0, Lcom/igexin/sdk/m;->e:Ljava/lang/String;
+    iget-object v1, p0, Lcom/igexin/sdk/m;->a:Lsdk/b/a/a/b/s;
 
-    invoke-virtual {v0, v1, v2, v3, v4}, Lcom/igexin/sdk/SdkMainService;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v1}, Lsdk/b/a/a/b/s;->d()I
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    iget-object v1, p0, Lcom/igexin/sdk/m;->d:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v2, p0, Lcom/igexin/sdk/m;->a:Lsdk/b/a/a/b/s;
+
+    invoke-virtual {v1, v2, v0}, Lcom/igexin/sdk/SdkMainService;->a(Lsdk/b/a/a/b/s;I)V
     :try_end_0
-    .catch Ljava/io/UnsupportedEncodingException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
 
-    :cond_1
+    :cond_0
     :goto_0
     return-void
 
     :catch_0
     move-exception v0
 
-    invoke-virtual {v0}, Ljava/io/UnsupportedEncodingException;->printStackTrace()V
+    invoke-virtual {v0}, Ljava/lang/SecurityException;->printStackTrace()V
 
     goto :goto_0
 .end method

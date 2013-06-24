@@ -27,18 +27,18 @@
 
 
 # virtual methods
-.method public final onCreate(Landroid/database/sqlite/SQLiteDatabase;)V
+.method public onCreate(Landroid/database/sqlite/SQLiteDatabase;)V
     .locals 1
 
     iget-object v0, p0, Lsdk/download/e;->a:Lsdk/download/DownloadProvider;
 
-    invoke-static {p1}, Lsdk/download/DownloadProvider;->a(Landroid/database/sqlite/SQLiteDatabase;)V
+    invoke-static {v0, p1}, Lsdk/download/DownloadProvider;->a(Lsdk/download/DownloadProvider;Landroid/database/sqlite/SQLiteDatabase;)V
 
     return-void
 .end method
 
-.method public final onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
-    .locals 2
+.method public onUpgrade(Landroid/database/sqlite/SQLiteDatabase;II)V
+    .locals 3
 
     const/16 v0, 0x64
 
@@ -55,43 +55,51 @@
     move p2, v0
 
     :cond_1
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "GexinSdkDownloadService"
 
-    const-string v1, "Upgrading downloads database from version "
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v2, "Upgrading downloads database from version "
 
-    move-result-object v0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, " to "
+    move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v2, " to "
 
-    move-result-object v0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v1, ", which will destroy all old data"
+    move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string v2, ", which will destroy all old data"
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v0, p0, Lsdk/download/e;->a:Lsdk/download/DownloadProvider;
 
-    invoke-static {p1}, Lsdk/download/DownloadProvider;->b(Landroid/database/sqlite/SQLiteDatabase;)V
+    invoke-static {v0, p1}, Lsdk/download/DownloadProvider;->b(Lsdk/download/DownloadProvider;Landroid/database/sqlite/SQLiteDatabase;)V
 
     iget-object v0, p0, Lsdk/download/e;->a:Lsdk/download/DownloadProvider;
 
-    invoke-static {p1}, Lsdk/download/DownloadProvider;->a(Landroid/database/sqlite/SQLiteDatabase;)V
+    invoke-static {v0, p1}, Lsdk/download/DownloadProvider;->a(Lsdk/download/DownloadProvider;Landroid/database/sqlite/SQLiteDatabase;)V
 
     goto :goto_0
 .end method

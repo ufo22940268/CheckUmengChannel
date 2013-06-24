@@ -1,4 +1,4 @@
-.class public final Lsdk/a/a/a/a/a/j;
+.class public Lsdk/a/a/a/a/a/j;
 .super Lsdk/c/b/a/b/b;
 
 
@@ -25,8 +25,8 @@
 
 
 # virtual methods
-.method public final a([B)V
-    .locals 2
+.method public a([B)V
+    .locals 3
 
     const/4 v0, 0x0
 
@@ -38,6 +38,8 @@
 
     const/4 v0, 0x2
 
+    const/4 v1, 0x3
+
     aget-byte v0, p1, v0
 
     and-int/lit16 v0, v0, 0xc0
@@ -46,13 +48,11 @@
 
     iget v0, p0, Lsdk/a/a/a/a/a/j;->b:I
 
-    const/16 v1, 0x80
+    const/16 v2, 0x80
 
-    if-ne v0, v1, :cond_0
+    if-ne v0, v2, :cond_0
 
-    const/4 v0, 0x3
-
-    invoke-static {p1, v0}, Lsdk/c/a/b/g;->a([BI)I
+    invoke-static {p1, v1}, Lsdk/c/a/b/g;->a([BI)I
 
     move-result v0
 
@@ -62,41 +62,49 @@
     return-void
 .end method
 
-.method public final a()[B
-    .locals 5
+.method public c()[B
+    .locals 4
 
-    const/16 v4, 0x80
-
-    const/4 v1, 0x3
+    const/16 v3, 0x80
 
     iget v0, p0, Lsdk/a/a/a/a/a/j;->b:I
 
-    if-ne v0, v4, :cond_1
+    if-ne v0, v3, :cond_1
 
-    move v0, v1
+    const/4 v0, 0x3
 
     :goto_0
     new-array v0, v0, [B
 
+    const/4 v1, 0x0
+
     iget v2, p0, Lsdk/a/a/a/a/a/j;->a:I
 
-    const/4 v3, 0x0
+    invoke-static {v2, v0, v1}, Lsdk/c/a/b/g;->b(I[BI)I
 
-    invoke-static {v2, v0, v3}, Lsdk/c/a/b/g;->b(I[BI)I
+    move-result v2
 
-    iget v2, p0, Lsdk/a/a/a/a/a/j;->b:I
-
-    const/4 v3, 0x2
-
-    invoke-static {v2, v0, v3}, Lsdk/c/a/b/g;->c(I[BI)I
+    add-int/2addr v1, v2
 
     iget v2, p0, Lsdk/a/a/a/a/a/j;->b:I
 
-    if-ne v2, v4, :cond_0
+    invoke-static {v2, v0, v1}, Lsdk/c/a/b/g;->c(I[BI)I
+
+    move-result v2
+
+    add-int/2addr v1, v2
+
+    iget v2, p0, Lsdk/a/a/a/a/a/j;->b:I
+
+    if-ne v2, v3, :cond_0
 
     iget v2, p0, Lsdk/a/a/a/a/a/j;->c:I
 
     invoke-static {v2, v0, v1}, Lsdk/c/a/b/g;->b(I[BI)I
+
+    move-result v2
+
+    add-int/2addr v1, v2
 
     :cond_0
     return-object v0

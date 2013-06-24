@@ -1,8 +1,9 @@
-.class final Lcom/tencent/plus/i;
+.class Lcom/tencent/plus/i;
 .super Ljava/lang/Object;
+.source "ProGuard"
 
 # interfaces
-.implements Lcom/tencent/tauth/a;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
@@ -12,7 +13,10 @@
 # direct methods
 .method constructor <init>(Lcom/tencent/plus/ImageActivity;)V
     .locals 0
+    .parameter
 
+    .prologue
+    .line 435
     iput-object p1, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -20,161 +24,148 @@
     return-void
 .end method
 
-.method private f()V
-    .locals 2
-
-    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
-
-    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->m(Lcom/tencent/plus/ImageActivity;)I
-
-    move-result v0
-
-    const/4 v1, 0x2
-
-    if-ge v0, v1, :cond_0
-
-    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
-
-    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->n(Lcom/tencent/plus/ImageActivity;)V
-
-    :cond_0
-    return-void
-.end method
-
 
 # virtual methods
-.method public final a()V
-    .locals 0
+.method public onClick(Landroid/view/View;)V
+    .locals 6
+    .parameter
 
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
+    .prologue
+    const-wide/16 v4, 0x0
 
-    return-void
-.end method
+    const/16 v1, 0x15
 
-.method public final a(Ljava/io/IOException;)V
-    .locals 0
+    const/4 v2, 0x0
 
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
+    .line 438
+    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
 
-    return-void
-.end method
-
-.method public final a(Ljava/net/MalformedURLException;)V
-    .locals 0
-
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
-
-    return-void
-.end method
-
-.method public final a(Lorg/json/JSONException;)V
-    .locals 0
-
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
-
-    return-void
-.end method
-
-.method public final a(Lorg/json/JSONObject;)V
-    .locals 5
-
-    const/4 v1, -0x1
-
-    :try_start_0
-    const-string v0, "ret"
-
-    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->getInt(Ljava/lang/String;)I
-
-    move-result v1
-
-    if-nez v1, :cond_1
-
-    const-string v0, "nickname"
-
-    invoke-virtual {p1, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->d(Lcom/tencent/plus/ImageActivity;)Landroid/widget/ProgressBar;
 
     move-result-object v0
 
+    invoke-virtual {v0, v2}, Landroid/widget/ProgressBar;->setVisibility(I)V
+
+    .line 440
+    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
+
+    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->e(Lcom/tencent/plus/ImageActivity;)Landroid/widget/Button;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Landroid/widget/Button;->setEnabled(Z)V
+
+    .line 441
+    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
+
+    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->e(Lcom/tencent/plus/ImageActivity;)Landroid/widget/Button;
+
+    move-result-object v0
+
+    invoke-static {v1, v1, v1}, Landroid/graphics/Color;->rgb(III)I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Landroid/widget/Button;->setTextColor(I)V
+
+    .line 442
+    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
+
+    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->f(Lcom/tencent/plus/ImageActivity;)Landroid/widget/Button;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2}, Landroid/widget/Button;->setEnabled(Z)V
+
+    .line 443
+    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
+
+    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->f(Lcom/tencent/plus/ImageActivity;)Landroid/widget/Button;
+
+    move-result-object v0
+
+    const/16 v1, 0x24
+
+    const/16 v2, 0x5e
+
+    const/16 v3, 0x86
+
+    invoke-static {v1, v2, v3}, Landroid/graphics/Color;->rgb(III)I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Landroid/widget/Button;->setTextColor(I)V
+
+    .line 444
+    new-instance v0, Ljava/lang/Thread;
+
+    new-instance v1, Lcom/tencent/plus/k;
+
+    invoke-direct {v1, p0}, Lcom/tencent/plus/k;-><init>(Lcom/tencent/plus/i;)V
+
+    invoke-direct {v0, v1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
+
+    invoke-virtual {v0}, Ljava/lang/Thread;->start()V
+
+    .line 451
+    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
+
+    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->h(Lcom/tencent/plus/ImageActivity;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    .line 452
+    iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
+
+    const-string v1, "10657"
+
+    invoke-virtual {v0, v1, v4, v5}, Lcom/tencent/plus/ImageActivity;->a(Ljava/lang/String;J)V
+
+    .line 460
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 454
+    :cond_1
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v0
+
     iget-object v2, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
 
-    invoke-static {v2}, Lcom/tencent/plus/ImageActivity;->j(Lcom/tencent/plus/ImageActivity;)Landroid/os/Handler;
+    invoke-static {v2}, Lcom/tencent/plus/ImageActivity;->i(Lcom/tencent/plus/ImageActivity;)J
 
-    move-result-object v2
+    move-result-wide v2
 
-    new-instance v3, Lcom/tencent/plus/b;
+    sub-long/2addr v0, v2
 
-    invoke-direct {v3, p0, v0}, Lcom/tencent/plus/b;-><init>(Lcom/tencent/plus/i;Ljava/lang/String;)V
+    .line 455
+    iget-object v2, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
 
-    invoke-virtual {v2, v3}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+    const-string v3, "10655"
 
+    invoke-virtual {v2, v3, v0, v1}, Lcom/tencent/plus/ImageActivity;->a(Ljava/lang/String;J)V
+
+    .line 456
     iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
 
-    const-string v2, "10659"
+    invoke-static {v0}, Lcom/tencent/plus/ImageActivity;->c(Lcom/tencent/plus/ImageActivity;)Lcom/tencent/plus/TouchView;
 
-    const-wide/16 v3, 0x0
+    move-result-object v0
 
-    invoke-virtual {v0, v2, v3, v4}, Lcom/tencent/plus/ImageActivity;->a(Ljava/lang/String;J)V
-    :try_end_0
-    .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_0
+    iget-boolean v0, v0, Lcom/tencent/plus/TouchView;->b:Z
 
-    :goto_0
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_0
 
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
-
-    :cond_0
-    return-void
-
-    :cond_1
-    :try_start_1
+    .line 457
     iget-object v0, p0, Lcom/tencent/plus/i;->a:Lcom/tencent/plus/ImageActivity;
 
-    const-string v2, "10661"
+    const-string v1, "10654"
 
-    const-wide/16 v3, 0x0
-
-    invoke-virtual {v0, v2, v3, v4}, Lcom/tencent/plus/ImageActivity;->a(Ljava/lang/String;J)V
-    :try_end_1
-    .catch Lorg/json/JSONException; {:try_start_1 .. :try_end_1} :catch_0
+    invoke-virtual {v0, v1, v4, v5}, Lcom/tencent/plus/ImageActivity;->a(Ljava/lang/String;J)V
 
     goto :goto_0
-
-    :catch_0
-    move-exception v0
-
-    invoke-virtual {v0}, Lorg/json/JSONException;->printStackTrace()V
-
-    goto :goto_0
-.end method
-
-.method public final b()V
-    .locals 0
-
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
-
-    return-void
-.end method
-
-.method public final c()V
-    .locals 0
-
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
-
-    return-void
-.end method
-
-.method public final d()V
-    .locals 0
-
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
-
-    return-void
-.end method
-
-.method public final e()V
-    .locals 0
-
-    invoke-direct {p0}, Lcom/tencent/plus/i;->f()V
-
-    return-void
 .end method

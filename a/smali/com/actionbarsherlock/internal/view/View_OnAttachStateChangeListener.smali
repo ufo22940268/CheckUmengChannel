@@ -1,5 +1,6 @@
 .class public interface abstract Lcom/actionbarsherlock/internal/view/View_OnAttachStateChangeListener;
 .super Ljava/lang/Object;
+.source "View_OnAttachStateChangeListener.java"
 
 
 # virtual methods

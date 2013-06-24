@@ -1,8 +1,16 @@
-.class public final Lsdk/download/q;
+.class public Lsdk/download/q;
 .super Ljava/lang/Object;
 
 
 # direct methods
+.method public static a(I)I
+    .locals 1
+
+    shl-int/lit8 v0, p0, 0xb
+
+    return v0
+.end method
+
 .method private static a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)I
     .locals 2
 
@@ -322,9 +330,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "getDownloadImgCache Utils logoSrc = "
 
-    invoke-direct {v1, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, p5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -334,7 +346,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     if-nez p5, :cond_8
 
@@ -460,4 +472,76 @@
     move v0, v3
 
     goto/16 :goto_2
+.end method
+
+.method public static a(Landroid/content/Context;Ljava/lang/String;)Landroid/app/Notification;
+    .locals 3
+
+    const/4 v1, 0x0
+
+    new-instance v0, Landroid/content/Intent;
+
+    invoke-direct {v0}, Landroid/content/Intent;-><init>()V
+
+    invoke-static {p0, v1, v0, v1}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v0
+
+    new-instance v1, Landroid/app/Notification;
+
+    invoke-direct {v1}, Landroid/app/Notification;-><init>()V
+
+    iget v2, v1, Landroid/app/Notification;->flags:I
+
+    or-int/lit8 v2, v2, 0x10
+
+    iput v2, v1, Landroid/app/Notification;->flags:I
+
+    const v2, 0x108008a
+
+    iput v2, v1, Landroid/app/Notification;->icon:I
+
+    const-string v2, "\u4e0b\u8f7d\u5931\u8d25\uff01"
+
+    invoke-virtual {v1, p0, p1, v2, v0}, Landroid/app/Notification;->setLatestEventInfo(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
+
+    return-object v1
+.end method
+
+.method public static a(Landroid/content/Context;Lsdk/download/d;Landroid/content/Intent;)Landroid/app/Notification;
+    .locals 4
+
+    iget v0, p1, Lsdk/download/d;->a:I
+
+    const/4 v1, 0x0
+
+    invoke-static {p0, v0, p2, v1}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v0
+
+    new-instance v1, Landroid/app/Notification;
+
+    invoke-direct {v1}, Landroid/app/Notification;-><init>()V
+
+    iget v2, v1, Landroid/app/Notification;->flags:I
+
+    or-int/lit8 v2, v2, 0x10
+
+    iput v2, v1, Landroid/app/Notification;->flags:I
+
+    const v2, 0x1080082
+
+    iput v2, v1, Landroid/app/Notification;->icon:I
+
+    const-string v2, "\u4e0b\u8f7d\u6210\u529f"
+
+    iput-object v2, v1, Landroid/app/Notification;->tickerText:Ljava/lang/CharSequence;
+
+    iget-object v2, p1, Lsdk/download/d;->d:Ljava/lang/String;
+
+    const-string v3, "\u4e0b\u8f7d\u6210\u529f,\u70b9\u51fb\u5b89\u88c5\uff01"
+
+    invoke-virtual {v1, p0, v2, v3, v0}, Landroid/app/Notification;->setLatestEventInfo(Landroid/content/Context;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/app/PendingIntent;)V
+
+    return-object v1
 .end method

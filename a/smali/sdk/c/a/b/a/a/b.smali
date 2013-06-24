@@ -1,9 +1,9 @@
-.class public final Lsdk/c/a/b/a/a/b;
+.class public Lsdk/c/a/b/a/a/b;
 .super Lsdk/c/a/b/f;
 
 
 # instance fields
-.field a:Lsdk/c/a/b/a/a/d;
+.field e:Lsdk/c/a/b/a/a/d;
 
 
 # direct methods
@@ -14,7 +14,7 @@
 
     invoke-direct {p0, p1, v0}, Lsdk/c/a/b/f;-><init>(Ljava/lang/String;Lsdk/c/a/b/c;)V
 
-    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->s:Ljava/lang/String;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->a:Ljava/lang/String;
 
     const-string v1, "disConnect"
 
@@ -24,7 +24,7 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Lsdk/c/a/b/a/a/b;->s:Ljava/lang/String;
+    iput-object v0, p0, Lsdk/c/a/b/a/a/b;->a:Ljava/lang/String;
 
     const/4 v0, 0x1
 
@@ -43,16 +43,16 @@
     return v0
 .end method
 
-.method public final c()V
+.method public b_()V
     .locals 4
 
     const/4 v1, 0x0
 
-    invoke-super {p0}, Lsdk/c/a/b/f;->c()V
+    invoke-super {p0}, Lsdk/c/a/b/f;->b_()V
 
-    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->e:Lsdk/c/a/b/a/a/d;
 
-    iget-object v0, v0, Lsdk/c/a/b/a/a/d;->c:Ljava/util/concurrent/atomic/AtomicBoolean;
+    iget-object v0, v0, Lsdk/c/a/b/a/a/d;->g:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
 
@@ -63,9 +63,9 @@
     move v0, v1
 
     :goto_0
-    iget-object v2, p0, Lsdk/c/a/b/a/a/b;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v2, p0, Lsdk/c/a/b/a/a/b;->e:Lsdk/c/a/b/a/a/d;
 
-    iget-object v2, v2, Lsdk/c/a/b/a/a/d;->c:Ljava/util/concurrent/atomic/AtomicBoolean;
+    iget-object v2, v2, Lsdk/c/a/b/a/a/d;->g:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v3, 0x1
 
@@ -82,9 +82,9 @@
     if-le v0, v3, :cond_2
 
     :cond_0
-    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->e:Lsdk/c/a/b/a/a/d;
 
-    iget-object v0, v0, Lsdk/c/a/b/a/a/d;->c:Ljava/util/concurrent/atomic/AtomicBoolean;
+    iget-object v0, v0, Lsdk/c/a/b/a/a/d;->g:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
 
@@ -92,9 +92,9 @@
 
     if-eqz v0, :cond_1
 
-    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->e:Lsdk/c/a/b/a/a/d;
 
-    invoke-virtual {v0}, Lsdk/c/a/b/a/a/d;->h()V
+    invoke-virtual {v0}, Lsdk/c/a/b/a/a/d;->i()V
 
     :cond_1
     return-void
@@ -105,25 +105,25 @@
     goto :goto_0
 .end method
 
-.method public final e()V
+.method public d()V
     .locals 2
 
-    invoke-super {p0}, Lsdk/c/a/b/f;->e()V
+    invoke-super {p0}, Lsdk/c/a/b/f;->d()V
 
-    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->s:Ljava/lang/String;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/b;->a:Ljava/lang/String;
 
-    iget-object v1, p0, Lsdk/c/a/b/a/a/b;->t:Lsdk/c/a/b/c;
+    iget-object v1, p0, Lsdk/c/a/b/a/a/b;->b:Lsdk/c/a/b/c;
 
     invoke-static {v0, v1}, Lsdk/c/a/b/a/a/d;->a(Ljava/lang/String;Lsdk/c/a/b/c;)Lsdk/c/a/b/a/a/d;
 
     move-result-object v0
 
-    iput-object v0, p0, Lsdk/c/a/b/a/a/b;->a:Lsdk/c/a/b/a/a/d;
+    iput-object v0, p0, Lsdk/c/a/b/a/a/b;->e:Lsdk/c/a/b/a/a/d;
 
     return-void
 .end method
 
-.method protected final f()V
+.method protected e()V
     .locals 0
 
     return-void

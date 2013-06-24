@@ -1,9 +1,46 @@
-.class public final Lcom/tencent/mm/sdk/channel/MMessage;
+.class public Lcom/tencent/mm/sdk/channel/MMessage;
 .super Ljava/lang/Object;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/tencent/mm/sdk/channel/MMessage$Receiver;,
+        Lcom/tencent/mm/sdk/channel/MMessage$CallBack;
+    }
+.end annotation
+
+
 # direct methods
-.method public static a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static send(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+    .locals 1
+
+    const-string v0, "com.tencent.mm.sdk.channel.Intent.ACTION_MESSAGE"
+
+    invoke-static {p0, p1, v0, p2}, Lcom/tencent/mm/sdk/channel/MMessage;->send(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    return-void
+.end method
+
+.method public static send(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    invoke-static {p0, p1, p2, p3, v0}, Lcom/tencent/mm/sdk/channel/MMessage;->send(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Z
+
+    return-void
+.end method
+
+.method public static send(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)Z
     .locals 5
 
     new-instance v0, Ljava/lang/StringBuilder;
@@ -28,6 +65,11 @@
 
     invoke-direct {v1, p2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
+    if-eqz p4, :cond_0
+
+    invoke-virtual {v1, p4}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
+
+    :cond_0
     invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
     move-result-object v2
@@ -48,7 +90,7 @@
 
     const-string v3, "_mmessage_checksum"
 
-    invoke-static {p3, v2}, Lcom/tencent/mm/sdk/channel/c;->a(Ljava/lang/String;Ljava/lang/String;)[B
+    invoke-static {p3, v2}, Lcom/tencent/mm/sdk/channel/MMessageUtil;->a(Ljava/lang/String;Ljava/lang/String;)[B
 
     move-result-object v2
 
@@ -82,7 +124,9 @@
 
     move-result-object v0
 
-    invoke-static {v2, v0}, Lcom/tencent/mm/sdk/platformtools/c;->c(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v0}, Lcom/tencent/mm/sdk/platformtools/Log;->d(Ljava/lang/String;Ljava/lang/String;)V
 
-    return-void
+    const/4 v0, 0x1
+
+    return v0
 .end method

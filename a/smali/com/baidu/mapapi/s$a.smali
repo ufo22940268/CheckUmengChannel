@@ -2,6 +2,17 @@
 .super Ljava/lang/Thread;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/baidu/mapapi/s;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = "a"
+.end annotation
+
+
 # instance fields
 .field a:Ljava/io/File;
 
@@ -10,7 +21,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/baidu/mapapi/s;Ljava/io/File;)V
-    .locals 2
+    .locals 3
 
     iput-object p1, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 
@@ -18,23 +29,33 @@
 
     iput-object p2, p0, Lcom/baidu/mapapi/s$a;->a:Ljava/io/File;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "kal"
 
-    const-string v1, "upload file:"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-object v1, p0, Lcom/baidu/mapapi/s$a;->a:Ljava/io/File;
+    const-string v2, "upload file:"
 
-    invoke-virtual {v1}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v2, p0, Lcom/baidu/mapapi/s$a;->a:Ljava/io/File;
 
-    move-result-object v0
+    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     return-void
 .end method
@@ -76,6 +97,15 @@
     :try_start_0
     sget-boolean v0, Lcom/baidu/mapapi/s;->c:Z
 
+    if-eqz v0, :cond_0
+
+    const-string v0, "kal"
+
+    const-string v1, "UploadWorker:begin uploading."
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_0
     const-string v0, "http://ulog.imap.baidu.com/up"
 
     new-instance v1, Ljava/util/HashMap;
@@ -128,6 +158,15 @@
 
     sget-boolean v0, Lcom/baidu/mapapi/s;->c:Z
 
+    if-eqz v0, :cond_1
+
+    const-string v0, "kal"
+
+    const-string v8, "UploadWorker:begin get connection ok."
+
+    invoke-static {v0, v8}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_1
     const/16 v0, 0x1388
 
     invoke-virtual {v7, v0}, Ljava/net/HttpURLConnection;->setReadTimeout(I)V
@@ -203,7 +242,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_2
 
     invoke-interface {v8}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -217,11 +256,15 @@
 
     invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    new-instance v9, Ljava/lang/StringBuilder;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    const-string v1, "Content-Disposition: form-data; name=\""
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v9, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v9, "Content-Disposition: form-data; name=\""
+
+    invoke-virtual {v1, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v9
 
     invoke-interface {v0}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
@@ -251,9 +294,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v9, "Content-Type: text/plain; charset="
 
-    invoke-direct {v1, v9}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -271,9 +318,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v9, "Content-Transfer-Encoding: 8bit"
 
-    invoke-direct {v1, v9}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -312,7 +363,7 @@
     :goto_1
     return-void
 
-    :cond_0
+    :cond_2
     :try_start_1
     new-instance v0, Ljava/io/DataOutputStream;
 
@@ -334,9 +385,18 @@
 
     sget-boolean v1, Lcom/baidu/mapapi/s;->c:Z
 
+    if-eqz v1, :cond_3
+
+    const-string v1, "kal"
+
+    const-string v5, "UploadWorker:write header is ok."
+
+    invoke-static {v1, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_3
     iget-object v1, p0, Lcom/baidu/mapapi/s$a;->a:Ljava/io/File;
 
-    if-eqz v1, :cond_2
+    if-eqz v1, :cond_5
 
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -350,9 +410,13 @@
 
     new-instance v5, Ljava/lang/StringBuilder;
 
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v8, "Content-Disposition: form-data; name=\"datafile\"; filename=\""
 
-    invoke-direct {v5, v8}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v5, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
 
     iget-object v8, p0, Lcom/baidu/mapapi/s$a;->a:Ljava/io/File;
 
@@ -382,9 +446,13 @@
 
     new-instance v5, Ljava/lang/StringBuilder;
 
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v8, "Content-Type: application/octet-stream; charset="
 
-    invoke-direct {v5, v8}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v5, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
 
     invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -429,7 +497,7 @@
 
     const/4 v8, -0x1
 
-    if-eq v6, v8, :cond_1
+    if-eq v6, v8, :cond_4
 
     const/4 v8, 0x0
 
@@ -449,7 +517,7 @@
 
     goto/16 :goto_1
 
-    :cond_1
+    :cond_4
     :try_start_2
     invoke-virtual {v1}, Ljava/io/InputStream;->close()V
 
@@ -461,7 +529,15 @@
 
     sget-boolean v1, Lcom/baidu/mapapi/s;->c:Z
 
-    :cond_2
+    if-eqz v1, :cond_5
+
+    const-string v1, "kal"
+
+    const-string v5, "UploadWorker: write data is ok."
+
+    invoke-static {v1, v5}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_5
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -504,7 +580,7 @@
 
     const/16 v0, 0xc8
 
-    if-ne v1, v0, :cond_6
+    if-ne v1, v0, :cond_9
 
     iget-object v0, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 
@@ -524,27 +600,37 @@
 
     sget-boolean v0, Lcom/baidu/mapapi/s;->c:Z
 
-    if-eqz v0, :cond_3
+    if-eqz v0, :cond_6
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "kal"
 
-    const-string v2, "remove file:"
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-object v2, p0, Lcom/baidu/mapapi/s$a;->a:Ljava/io/File;
+    const-string v3, "remove file:"
 
-    invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v3, p0, Lcom/baidu/mapapi/s$a;->a:Ljava/io/File;
 
-    move-result-object v0
+    invoke-virtual {v3}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v3
 
-    :cond_3
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_6
     iget-object v0, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 
     iget-object v0, v0, Lcom/baidu/mapapi/s;->a:Ljava/util/ArrayList;
@@ -555,29 +641,39 @@
 
     sget-boolean v0, Lcom/baidu/mapapi/s;->c:Z
 
-    if-eqz v0, :cond_4
+    if-eqz v0, :cond_7
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "kal"
 
-    const-string v2, "updateList size: "
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-object v2, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
+    const-string v3, "updateList size: "
 
-    iget-object v2, v2, Lcom/baidu/mapapi/s;->a:Ljava/util/ArrayList;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+    move-result-object v2
 
-    move-result v2
+    iget-object v3, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    iget-object v3, v3, Lcom/baidu/mapapi/s;->a:Ljava/util/ArrayList;
 
-    move-result-object v0
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result v3
 
-    :cond_4
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_7
     iget-object v0, p0, Lcom/baidu/mapapi/s$a;->a:Ljava/io/File;
 
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
@@ -590,7 +686,7 @@
 
     move-result v0
 
-    if-lez v0, :cond_5
+    if-lez v0, :cond_8
 
     iget-object v0, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 
@@ -616,23 +712,23 @@
 
     :goto_3
     monitor-exit v1
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     goto/16 :goto_1
 
     :catchall_0
     move-exception v0
 
-    :try_start_4
     monitor-exit v1
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
+    :try_start_4
     throw v0
     :try_end_4
     .catch Ljava/net/MalformedURLException; {:try_start_4 .. :try_end_4} :catch_0
     .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1
 
-    :cond_5
+    :cond_8
     :try_start_5
     iget-object v0, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 
@@ -648,7 +744,7 @@
 
     goto :goto_3
 
-    :cond_6
+    :cond_9
     :try_start_6
     iget-object v0, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 
@@ -674,7 +770,7 @@
 
     move-result v0
 
-    if-lez v0, :cond_7
+    if-lez v0, :cond_a
 
     iget-object v0, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 
@@ -700,23 +796,23 @@
 
     :goto_4
     monitor-exit v1
-    :try_end_7
-    .catchall {:try_start_7 .. :try_end_7} :catchall_1
 
     goto/16 :goto_1
 
     :catchall_1
     move-exception v0
 
-    :try_start_8
     monitor-exit v1
+    :try_end_7
+    .catchall {:try_start_7 .. :try_end_7} :catchall_1
 
+    :try_start_8
     throw v0
     :try_end_8
     .catch Ljava/net/MalformedURLException; {:try_start_8 .. :try_end_8} :catch_0
     .catch Ljava/io/IOException; {:try_start_8 .. :try_end_8} :catch_1
 
-    :cond_7
+    :cond_a
     :try_start_9
     iget-object v0, p0, Lcom/baidu/mapapi/s$a;->b:Lcom/baidu/mapapi/s;
 

@@ -18,11 +18,11 @@
 
     const/high16 v3, 0x1000
 
-    new-instance v0, Lcom/igexin/sdk/d;
+    new-instance v0, Lcom/igexin/sdk/a;
 
-    invoke-direct {v0, p1}, Lcom/igexin/sdk/d;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p1}, Lcom/igexin/sdk/a;-><init>(Landroid/content/Context;)V
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/d;->a()Z
+    invoke-virtual {v0}, Lcom/igexin/sdk/a;->a()Z
 
     move-result v0
 
@@ -35,11 +35,11 @@
     return-void
 
     :cond_1
-    new-instance v0, Lcom/igexin/sdk/e;
+    new-instance v0, Lcom/igexin/sdk/b;
 
-    invoke-direct {v0, p1}, Lcom/igexin/sdk/e;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p1}, Lcom/igexin/sdk/b;-><init>(Landroid/content/Context;)V
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/e;->c()Z
+    invoke-virtual {v0}, Lcom/igexin/sdk/b;->c()Z
 
     move-result v0
 
@@ -75,7 +75,7 @@
 
     const-string v1, "GexinSdkReceiver received boot_completed"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_0
 
@@ -110,7 +110,7 @@
 
     const-string v1, "GexinSdkReceiver received CONNECTIVITY_CHANGE"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_0
 
@@ -145,7 +145,7 @@
 
     const-string v1, "GexinSdkReceiver received USER_PRESENT"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_0
 .end method

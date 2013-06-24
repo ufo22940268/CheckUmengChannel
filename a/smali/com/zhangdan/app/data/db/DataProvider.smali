@@ -1,46 +1,114 @@
 .class public Lcom/zhangdan/app/data/db/DataProvider;
 .super Landroid/content/ContentProvider;
+.source "DataProvider.java"
 
 
 # static fields
-.field public static a:Landroid/net/Uri;
+.field private static final ANNOUNCEMENT_LIST:I = 0x3
 
-.field public static b:Landroid/net/Uri;
+.field public static final AUTHORITY:Ljava/lang/String; = "com.zhangdan.app"
 
-.field private static final c:Landroid/content/UriMatcher;
+.field private static final BANK_LIST:I = 0x4
+
+.field private static final BANK_SERVICE_LIST:I = 0x11
+
+.field private static final BILL_LIST:I = 0x5
+
+.field private static final BILL_REGEX_ITEM:I = 0x15
+
+.field private static final BILL_REGEX_LIST:I = 0x16
+
+.field private static final BILL_RETURN_LIST:I = 0xb
+
+.field private static final BILL_SMS_ITEM:I = 0x19
+
+.field private static final BILL_SMS_LIST:I = 0x1a
+
+.field private static final BILL_SMS_NUM_ITEM:I = 0x17
+
+.field private static final BILL_SMS_NUM_LIST:I = 0x18
+
+.field private static final BILL_STAGE_LIST:I = 0x1c
+
+.field private static final CHART_LIST:I = 0xc
+
+.field public static CONTENT_RAW_INSERT_URI:Landroid/net/Uri; = null
+
+.field public static CONTENT_RAW_QUERY_URI:Landroid/net/Uri; = null
+
+.field private static final MAIL_ACCOUNT_LIST:I = 0xd
+
+.field private static final MAIL_BILL_LIST:I = 0xe
+
+.field private static final MAIL_BILL_RECORD:I = 0x13
+
+.field private static final RAW_INSERT:I = 0x2
+
+.field private static final RAW_QUERY:I = 0x1
+
+.field private static final SHOPPING_CATEGORY_LIST:I = 0x6
+
+.field private static final SHOPPING_SHEET_LIST:I = 0x7
+
+.field private static final SHOPPING_SHEET_REMARK_LIST:I = 0xf
+
+.field private static final SMS_USER_BANK_LIST:I = 0x1b
+
+.field private static final SYNC_TASK_LIST:I = 0x12
+
+.field private static final SYS_MASTER_LIST:I = 0x8
+
+.field private static final USER_BANK_LIST:I = 0x9
+
+.field private static final USER_CARD_LIST:I = 0xa
+
+.field private static final USER_HISTORY:I = 0x14
+
+.field private static final USER_INFO_EXT:I = 0x10
+
+.field private static final WEATHER_LIST:I = 0x1d
+
+.field private static final mUriMatcher:Landroid/content/UriMatcher;
 
 
 # instance fields
-.field private d:Lcom/zhangdan/app/data/db/b;
+.field private mDbHelper:Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;
 
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 4
 
+    .prologue
+    .line 54
     const-string v0, "content://com.zhangdan.app/raw_query"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
-    sput-object v0, Lcom/zhangdan/app/data/db/DataProvider;->a:Landroid/net/Uri;
+    sput-object v0, Lcom/zhangdan/app/data/db/DataProvider;->CONTENT_RAW_QUERY_URI:Landroid/net/Uri;
 
+    .line 56
     const-string v0, "content://com.zhangdan.app/raw_insert"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v0
 
-    sput-object v0, Lcom/zhangdan/app/data/db/DataProvider;->b:Landroid/net/Uri;
+    sput-object v0, Lcom/zhangdan/app/data/db/DataProvider;->CONTENT_RAW_INSERT_URI:Landroid/net/Uri;
 
+    .line 96
     new-instance v0, Landroid/content/UriMatcher;
 
     const/4 v1, -0x1
 
     invoke-direct {v0, v1}, Landroid/content/UriMatcher;-><init>(I)V
 
-    sput-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    sput-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
+
+    .line 97
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -50,7 +118,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 98
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -60,7 +129,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 99
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -70,7 +140,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 100
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -80,7 +151,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 101
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -90,7 +162,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 102
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -100,7 +173,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 103
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -110,7 +184,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 104
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -120,7 +195,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 105
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -130,7 +206,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 106
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -140,7 +217,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 107
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -150,7 +228,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 108
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -160,7 +239,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 109
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -170,7 +250,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 110
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -180,7 +261,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 111
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -190,7 +272,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 112
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -200,7 +283,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 113
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -210,7 +294,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 114
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -220,7 +305,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 115
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -230,7 +316,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 116
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -240,7 +327,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 117
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -250,7 +338,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 118
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -260,7 +349,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 119
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -270,7 +360,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 120
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -280,7 +371,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 122
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -290,7 +382,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 123
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -300,7 +393,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 125
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -310,7 +404,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 126
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -320,7 +415,8 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 128
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     const-string v1, "com.zhangdan.app"
 
@@ -330,12 +426,15 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/UriMatcher;->addURI(Ljava/lang/String;Ljava/lang/String;I)V
 
+    .line 129
     return-void
 .end method
 
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
+    .line 49
     invoke-direct {p0}, Landroid/content/ContentProvider;-><init>()V
 
     return-void
@@ -344,516 +443,649 @@
 
 # virtual methods
 .method public applyBatch(Ljava/util/ArrayList;)[Landroid/content/ContentProviderResult;
-    .locals 2
+    .locals 3
+    .parameter
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Landroid/content/ContentProviderOperation;",
+            ">;)[",
+            "Landroid/content/ContentProviderResult;"
+        }
+    .end annotation
 
-    iget-object v0, p0, Lcom/zhangdan/app/data/db/DataProvider;->d:Lcom/zhangdan/app/data/db/b;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/content/OperationApplicationException;
+        }
+    .end annotation
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/db/b;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+    .prologue
+    .line 797
+    .local p1, operations:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Landroid/content/ContentProviderOperation;>;"
+    iget-object v2, p0, Lcom/zhangdan/app/data/db/DataProvider;->mDbHelper:Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;
 
-    move-result-object v1
+    invoke-virtual {v2}, Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
-    invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
+    move-result-object v0
 
+    .line 798
+    .local v0, db:Landroid/database/sqlite/SQLiteDatabase;
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->beginTransaction()V
+
+    .line 800
     :try_start_0
     invoke-super {p0, p1}, Landroid/content/ContentProvider;->applyBatch(Ljava/util/ArrayList;)[Landroid/content/ContentProviderResult;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
+    .line 801
+    .local v1, results:[Landroid/content/ContentProviderResult;
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->setTransactionSuccessful()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+    .line 804
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
 
-    return-object v0
+    return-object v1
 
+    .end local v1           #results:[Landroid/content/ContentProviderResult;
     :catchall_0
-    move-exception v0
+    move-exception v2
 
-    invoke-virtual {v1}, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->endTransaction()V
 
-    throw v0
+    throw v2
 .end method
 
 .method public delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
-    .locals 6
+    .locals 8
+    .parameter "uri"
+    .parameter "selection"
+    .parameter "selectionArgs"
 
-    const/16 v5, 0x29
+    .prologue
+    const/16 v7, 0x29
 
-    const/4 v3, 0x1
+    const/4 v4, 0x1
 
-    iget-object v0, p0, Lcom/zhangdan/app/data/db/DataProvider;->d:Lcom/zhangdan/app/data/db/b;
+    .line 203
+    iget-object v3, p0, Lcom/zhangdan/app/data/db/DataProvider;->mDbHelper:Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/db/b;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+    invoke-virtual {v3}, Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
     move-result-object v1
 
+    .line 204
+    .local v1, db:Landroid/database/sqlite/SQLiteDatabase;
     const/4 v0, 0x0
 
-    sget-object v2, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 205
+    .local v0, count:I
+    sget-object v3, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
-    invoke-virtual {v2, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
+    invoke-virtual {v3, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
 
-    move-result v2
+    move-result v3
 
-    packed-switch v2, :pswitch_data_0
+    packed-switch v3, :pswitch_data_0
 
-    const-string v1, "DataProvider"
+    .line 329
+    const-string v3, "DataProvider"
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    const-string v3, "Unknown URI "
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "Unknown URI "
 
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 331
     :goto_0
     return v0
 
+    .line 207
     :pswitch_0
-    const-string v0, "Announcement"
+    const-string v3, "Announcement"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 209
     goto :goto_0
 
+    .line 211
     :pswitch_1
-    const-string v0, "Bank"
+    const-string v3, "Bank"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 212
     goto :goto_0
 
+    .line 214
     :pswitch_2
-    const-string v0, "Bill"
+    const-string v3, "Bill"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 215
     goto :goto_0
 
+    .line 217
     :pswitch_3
-    const-string v0, "ShoppingCategory"
+    const-string v3, "ShoppingCategory"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 219
     goto :goto_0
 
+    .line 221
     :pswitch_4
-    const-string v0, "ShoppingSheet"
+    const-string v3, "ShoppingSheet"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 223
     goto :goto_0
 
+    .line 225
     :pswitch_5
-    const-string v0, "SysMaster"
+    const-string v3, "SysMaster"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 227
     goto :goto_0
 
+    .line 229
     :pswitch_6
-    const-string v0, "UserBank"
+    const-string v3, "UserBank"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 231
     goto :goto_0
 
+    .line 233
     :pswitch_7
-    const-string v0, "UserCard"
+    const-string v3, "UserCard"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 235
     goto :goto_0
 
+    .line 237
     :pswitch_8
-    const-string v0, "BillReturn"
+    const-string v3, "BillReturn"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 239
     goto :goto_0
 
+    .line 241
     :pswitch_9
-    const-string v0, "Chart"
+    const-string v3, "Chart"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 242
     goto :goto_0
 
+    .line 244
     :pswitch_a
-    const-string v0, "MailAccount"
+    const-string v3, "MailAccount"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 246
     goto :goto_0
 
+    .line 248
     :pswitch_b
-    const-string v0, "MailBill"
+    const-string v3, "MailBill"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 250
     goto :goto_0
 
+    .line 252
     :pswitch_c
-    const-string v0, "ShoppingSheetRemark"
+    const-string v3, "ShoppingSheetRemark"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 254
     goto :goto_0
 
+    .line 256
     :pswitch_d
-    const-string v0, "UserInfoExt"
+    const-string v3, "UserInfoExt"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 258
     goto :goto_0
 
+    .line 260
     :pswitch_e
-    const-string v0, "BankServiceExt"
+    const-string v3, "BankServiceExt"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 262
     goto :goto_0
 
+    .line 264
     :pswitch_f
-    const-string v0, "SyncTask"
+    const-string v3, "SyncTask"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 266
     goto :goto_0
 
+    .line 268
     :pswitch_10
-    const-string v0, "MailBillRecord"
+    const-string v3, "MailBillRecord"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 270
     goto :goto_0
 
+    .line 272
     :pswitch_11
-    const-string v0, "user_history"
+    const-string v3, "user_history"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 274
     goto :goto_0
 
+    .line 276
     :pswitch_12
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-interface {v0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v2
 
-    check-cast v0, Ljava/lang/String;
+    check-cast v2, Ljava/lang/String;
 
-    const-string v2, "bill_regex"
+    .line 277
+    .local v2, id:Ljava/lang/String;
+    const-string v4, "bill_regex"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, "_id = \'"
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "_id = \'"
 
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v3, "\'"
-
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v5, "\'"
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
     invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v0
+    move-result v3
 
-    if-nez v0, :cond_0
+    if-nez v3, :cond_0
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, " AND ("
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v6, " AND ("
 
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v7}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
 
     :goto_1
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v1, v2, v0, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v4, v3, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 284
     goto/16 :goto_0
 
+    .line 277
     :cond_0
-    const-string v0, ""
+    const-string v3, ""
 
     goto :goto_1
 
+    .line 286
+    .end local v2           #id:Ljava/lang/String;
     :pswitch_13
-    const-string v0, "bill_regex"
+    const-string v3, "bill_regex"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 288
     goto/16 :goto_0
 
+    .line 291
     :pswitch_14
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-interface {v0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v2
 
-    check-cast v0, Ljava/lang/String;
+    check-cast v2, Ljava/lang/String;
 
-    const-string v2, "bill_sms_num"
+    .line 292
+    .restart local v2       #id:Ljava/lang/String;
+    const-string v4, "bill_sms_num"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, "_id = \'"
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "_id = \'"
 
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v3, "\'"
-
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v5, "\'"
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
     invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v0
+    move-result v3
 
-    if-nez v0, :cond_1
+    if-nez v3, :cond_1
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, " AND ("
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v6, " AND ("
 
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v7}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
 
     :goto_2
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v1, v2, v0, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v4, v3, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 299
     goto/16 :goto_0
 
+    .line 292
     :cond_1
-    const-string v0, ""
+    const-string v3, ""
 
     goto :goto_2
 
+    .line 301
+    .end local v2           #id:Ljava/lang/String;
     :pswitch_15
-    const-string v0, "bill_sms_num"
+    const-string v3, "bill_sms_num"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 302
     goto/16 :goto_0
 
+    .line 305
     :pswitch_16
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-interface {v0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v2
 
-    check-cast v0, Ljava/lang/String;
+    check-cast v2, Ljava/lang/String;
 
-    const-string v2, "bill_data"
+    .line 306
+    .restart local v2       #id:Ljava/lang/String;
+    const-string v4, "bill_data"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, "_id = \'"
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "_id = \'"
 
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v3, "\'"
-
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v5, "\'"
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
     invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v0
+    move-result v3
 
-    if-nez v0, :cond_2
+    if-nez v3, :cond_2
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, " AND ("
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v6, " AND ("
 
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v7}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
 
     :goto_3
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v1, v2, v0, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v4, v3, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 313
     goto/16 :goto_0
 
+    .line 306
     :cond_2
-    const-string v0, ""
+    const-string v3, ""
 
     goto :goto_3
 
+    .line 315
+    .end local v2           #id:Ljava/lang/String;
     :pswitch_17
-    const-string v0, "bill_data"
+    const-string v3, "bill_data"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 316
     goto/16 :goto_0
 
+    .line 319
     :pswitch_18
-    const-string v0, "SmsUserBank"
+    const-string v3, "SmsUserBank"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 320
     goto/16 :goto_0
 
+    .line 322
     :pswitch_19
-    const-string v0, "BillStage"
+    const-string v3, "BillStage"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 323
     goto/16 :goto_0
 
+    .line 325
     :pswitch_1a
-    const-string v0, "Weather"
+    const-string v3, "Weather"
 
-    invoke-virtual {v1, v0, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3}, Landroid/database/sqlite/SQLiteDatabase;->delete(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 326
     goto/16 :goto_0
 
+    .line 205
     nop
 
     :pswitch_data_0
@@ -890,8 +1122,11 @@
 
 .method public getType(Landroid/net/Uri;)Ljava/lang/String;
     .locals 1
+    .parameter "uri"
 
-    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .prologue
+    .line 142
+    sget-object v0, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
     invoke-virtual {v0, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
 
@@ -899,146 +1134,175 @@
 
     packed-switch v0, :pswitch_data_0
 
+    .line 198
     const/4 v0, 0x0
 
     :goto_0
     return-object v0
 
+    .line 144
     :pswitch_0
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.announcement"
 
     goto :goto_0
 
+    .line 146
     :pswitch_1
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.bank"
 
     goto :goto_0
 
+    .line 148
     :pswitch_2
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.bill"
 
     goto :goto_0
 
+    .line 150
     :pswitch_3
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.shopping_category"
 
     goto :goto_0
 
+    .line 152
     :pswitch_4
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.shopping_sheet"
 
     goto :goto_0
 
+    .line 154
     :pswitch_5
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.sysmaster"
 
     goto :goto_0
 
+    .line 156
     :pswitch_6
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.userbank"
 
     goto :goto_0
 
+    .line 158
     :pswitch_7
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.usercard"
 
     goto :goto_0
 
+    .line 160
     :pswitch_8
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.billreturn"
 
     goto :goto_0
 
+    .line 162
     :pswitch_9
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.chart"
 
     goto :goto_0
 
+    .line 164
     :pswitch_a
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.mailaccount"
 
     goto :goto_0
 
+    .line 166
     :pswitch_b
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.mailbill"
 
     goto :goto_0
 
+    .line 168
     :pswitch_c
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.shopping_sheet_remark"
 
     goto :goto_0
 
+    .line 170
     :pswitch_d
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.userinfoext"
 
     goto :goto_0
 
+    .line 172
     :pswitch_e
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.bank_service"
 
     goto :goto_0
 
+    .line 174
     :pswitch_f
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.sync_task"
 
     goto :goto_0
 
+    .line 176
     :pswitch_10
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.mailbill"
 
     goto :goto_0
 
+    .line 178
     :pswitch_11
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.user"
 
     goto :goto_0
 
+    .line 180
     :pswitch_12
     const-string v0, "vnd.android.cursor.item/vnd.zhangdan.app.billregex"
 
     goto :goto_0
 
+    .line 182
     :pswitch_13
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.billregex"
 
     goto :goto_0
 
+    .line 184
     :pswitch_14
     const-string v0, "vnd.android.cursor.item/vnd.zhangdan.app.billsmsnum"
 
     goto :goto_0
 
+    .line 186
     :pswitch_15
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.billsmsnum"
 
     goto :goto_0
 
+    .line 188
     :pswitch_16
     const-string v0, "vnd.android.cursor.item/vnd.zhangdan.app.billdata"
 
     goto :goto_0
 
+    .line 190
     :pswitch_17
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.billdata"
 
     goto :goto_0
 
+    .line 192
     :pswitch_18
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.sms_user_bank"
 
     goto :goto_0
 
+    .line 194
     :pswitch_19
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.bill_stage"
 
     goto :goto_0
 
+    .line 196
     :pswitch_1a
     const-string v0, "vnd.android.cursor.dir/vnd.zhangdan.app.weather"
 
     goto :goto_0
 
+    .line 142
     :pswitch_data_0
     .packed-switch 0x3
         :pswitch_0
@@ -1072,504 +1336,628 @@
 .end method
 
 .method public insert(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    .locals 5
+    .locals 11
+    .parameter "uri"
+    .parameter "values"
 
-    const-wide/16 v3, 0x0
+    .prologue
+    const-wide/16 v9, 0x0
 
-    const/4 v0, 0x0
+    const/4 v8, 0x0
 
-    iget-object v1, p0, Lcom/zhangdan/app/data/db/DataProvider;->d:Lcom/zhangdan/app/data/db/b;
+    .line 336
+    iget-object v7, p0, Lcom/zhangdan/app/data/db/DataProvider;->mDbHelper:Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;
 
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/db/b;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+    invoke-virtual {v7}, Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v1
+    move-result-object v0
 
-    sget-object v2, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 337
+    .local v0, db:Landroid/database/sqlite/SQLiteDatabase;
+    const/4 v3, 0x0
 
-    invoke-virtual {v2, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
+    .line 338
+    .local v3, itemUri:Landroid/net/Uri;
+    const-wide/16 v1, 0x0
 
-    move-result v2
+    .line 339
+    .local v1, id:J
+    sget-object v7, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
-    packed-switch v2, :pswitch_data_0
+    invoke-virtual {v7, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
 
-    const-string v1, "DataProvider"
+    move-result v7
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    packed-switch v7, :pswitch_data_0
 
-    const-string v3, "Unknown URI "
+    .line 517
+    const-string v7, "DataProvider"
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    new-instance v8, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-direct {v8}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v2
+    const-string v9, "Unknown URI "
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v8
 
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v8, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    move-result-object v8
+
+    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v8
+
+    invoke-static {v7, v8}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
     :cond_0
     :goto_0
-    return-object v0
+    move-object v6, v3
 
+    .line 519
+    :goto_1
+    return-object v6
+
+    .line 341
     :pswitch_0
-    const-string v2, "Announcement"
+    const-string v7, "Announcement"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 342
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/a;->a:Landroid/net/Uri;
+    .line 343
+    sget-object v7, Lcom/zhangdan/app/data/db/table/AnnouncementField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto :goto_0
 
+    .line 348
     :pswitch_1
-    const-string v2, "Bank"
+    const-string v7, "Bank"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 349
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/b;->a:Landroid/net/Uri;
+    .line 350
+    sget-object v7, Lcom/zhangdan/app/data/db/table/BankField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto :goto_0
 
+    .line 354
     :pswitch_2
-    const-string v2, "Bill"
+    const-string v7, "Bill"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 355
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/d;->a:Landroid/net/Uri;
+    .line 356
+    sget-object v7, Lcom/zhangdan/app/data/db/table/BillField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto :goto_0
 
+    .line 360
     :pswitch_3
-    const-string v2, "ShoppingCategory"
+    const-string v7, "ShoppingCategory"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 361
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/k;->a:Landroid/net/Uri;
+    .line 362
+    sget-object v7, Lcom/zhangdan/app/data/db/table/ShoppingCategoryField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto :goto_0
 
+    .line 367
     :pswitch_4
-    const-string v2, "ShoppingSheet"
+    const-string v7, "ShoppingSheet"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 368
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/l;->a:Landroid/net/Uri;
+    .line 369
+    sget-object v7, Lcom/zhangdan/app/data/db/table/ShoppingSheetField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto :goto_0
 
+    .line 374
     :pswitch_5
-    const-string v2, "SysMaster"
+    const-string v7, "SysMaster"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 375
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/p;->a:Landroid/net/Uri;
+    .line 376
+    sget-object v7, Lcom/zhangdan/app/data/db/table/SysMasterField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto :goto_0
 
+    .line 381
     :pswitch_6
-    const-string v2, "UserBank"
+    const-string v7, "UserBank"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 382
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/r;->a:Landroid/net/Uri;
+    .line 383
+    sget-object v7, Lcom/zhangdan/app/data/db/table/UserBankField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto :goto_0
 
+    .line 388
     :pswitch_7
-    const-string v2, "UserCard"
+    const-string v7, "UserCard"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 389
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/s;->a:Landroid/net/Uri;
+    .line 390
+    sget-object v7, Lcom/zhangdan/app/data/db/table/UserCardField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 395
     :pswitch_8
-    const-string v2, "BillReturn"
+    const-string v7, "BillReturn"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 396
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/e;->a:Landroid/net/Uri;
+    .line 397
+    sget-object v7, Lcom/zhangdan/app/data/db/table/BillReturnField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 402
     :pswitch_9
-    const-string v2, "Chart"
+    const-string v7, "Chart"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 403
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/g;->a:Landroid/net/Uri;
+    .line 404
+    sget-object v7, Lcom/zhangdan/app/data/db/table/ChartField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 409
     :pswitch_a
-    const-string v2, "MailAccount"
+    const-string v7, "MailAccount"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 410
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/h;->a:Landroid/net/Uri;
+    .line 411
+    sget-object v7, Lcom/zhangdan/app/data/db/table/MailAccountField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 416
     :pswitch_b
-    const-string v2, "MailBill"
+    const-string v7, "MailBill"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 417
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/i;->a:Landroid/net/Uri;
+    .line 418
+    sget-object v7, Lcom/zhangdan/app/data/db/table/MailBillField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 423
     :pswitch_c
-    const-string v2, "ShoppingSheetRemark"
+    const-string v7, "ShoppingSheetRemark"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 424
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/m;->a:Landroid/net/Uri;
+    .line 425
+    sget-object v7, Lcom/zhangdan/app/data/db/table/ShoppingSheetRemarkField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 430
     :pswitch_d
-    const-string v2, "UserInfoExt"
+    const-string v7, "UserInfoExt"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 431
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/u;->a:Landroid/net/Uri;
+    .line 432
+    sget-object v7, Lcom/zhangdan/app/data/db/table/UserInfoExtField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 437
     :pswitch_e
-    const-string v2, "BankServiceExt"
+    const-string v7, "BankServiceExt"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 438
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/c;->a:Landroid/net/Uri;
+    .line 439
+    sget-object v7, Lcom/zhangdan/app/data/db/table/BankServiceField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 444
     :pswitch_f
-    const-string v2, "SyncTask"
+    const-string v7, "SyncTask"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 445
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/o;->a:Landroid/net/Uri;
+    .line 446
+    sget-object v7, Lcom/zhangdan/app/data/db/table/SyncTaskField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 451
     :pswitch_10
-    const-string v2, "MailBillRecord"
+    const-string v7, "MailBillRecord"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 452
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/j;->a:Landroid/net/Uri;
+    .line 453
+    sget-object v7, Lcom/zhangdan/app/data/db/table/MailBillRecordeField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 458
     :pswitch_11
-    const-string v2, "user_history"
+    const-string v7, "user_history"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
     move-result-wide v1
 
-    cmp-long v3, v1, v3
+    .line 459
+    cmp-long v7, v1, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/t;->a:Landroid/net/Uri;
+    .line 460
+    sget-object v7, Lcom/zhangdan/app/data/db/table/UserField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v3
 
     goto/16 :goto_0
 
+    .line 466
     :pswitch_12
-    const-string v2, "bill_regex"
+    const-string v7, "bill_regex"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
-    move-result-wide v1
+    move-result-wide v4
 
-    cmp-long v3, v1, v3
+    .line 467
+    .local v4, rowId:J
+    cmp-long v7, v4, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/sms/e;->a:Landroid/net/Uri;
+    .line 468
+    sget-object v7, Lcom/zhangdan/app/sms/BillRegexField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v4, v5}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v6
 
-    goto/16 :goto_0
+    .line 469
+    .local v6, u:Landroid/net/Uri;
+    goto/16 :goto_1
 
+    .line 475
+    .end local v4           #rowId:J
+    .end local v6           #u:Landroid/net/Uri;
     :pswitch_13
-    const-string v2, "bill_sms_num"
+    const-string v7, "bill_sms_num"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
-    move-result-wide v1
+    move-result-wide v4
 
-    cmp-long v3, v1, v3
+    .line 476
+    .restart local v4       #rowId:J
+    cmp-long v7, v4, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/sms/g;->a:Landroid/net/Uri;
+    .line 477
+    sget-object v7, Lcom/zhangdan/app/sms/BillSmsNumField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v4, v5}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v6
 
-    goto/16 :goto_0
+    .line 478
+    .restart local v6       #u:Landroid/net/Uri;
+    goto/16 :goto_1
 
+    .line 484
+    .end local v4           #rowId:J
+    .end local v6           #u:Landroid/net/Uri;
     :pswitch_14
-    const-string v2, "bill_data"
+    const-string v7, "bill_data"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
-    move-result-wide v1
+    move-result-wide v4
 
-    cmp-long v3, v1, v3
+    .line 485
+    .restart local v4       #rowId:J
+    cmp-long v7, v4, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/sms/f;->a:Landroid/net/Uri;
+    .line 486
+    sget-object v7, Lcom/zhangdan/app/sms/BillSmsField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v4, v5}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v6
 
-    goto/16 :goto_0
+    .line 487
+    .restart local v6       #u:Landroid/net/Uri;
+    goto/16 :goto_1
 
+    .line 492
+    .end local v4           #rowId:J
+    .end local v6           #u:Landroid/net/Uri;
     :pswitch_15
-    const-string v2, "SmsUserBank"
+    const-string v7, "SmsUserBank"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
-    move-result-wide v1
+    move-result-wide v4
 
-    cmp-long v3, v1, v3
+    .line 493
+    .restart local v4       #rowId:J
+    cmp-long v7, v4, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/n;->a:Landroid/net/Uri;
+    .line 494
+    sget-object v7, Lcom/zhangdan/app/data/db/table/SmsUserBankField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v4, v5}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v6
 
-    goto/16 :goto_0
+    .line 495
+    .restart local v6       #u:Landroid/net/Uri;
+    goto/16 :goto_1
 
+    .line 500
+    .end local v4           #rowId:J
+    .end local v6           #u:Landroid/net/Uri;
     :pswitch_16
-    const-string v2, "BillStage"
+    const-string v7, "BillStage"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
-    move-result-wide v1
+    move-result-wide v4
 
-    cmp-long v3, v1, v3
+    .line 501
+    .restart local v4       #rowId:J
+    cmp-long v7, v4, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/f;->a:Landroid/net/Uri;
+    .line 502
+    sget-object v7, Lcom/zhangdan/app/data/db/table/BillStageField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v4, v5}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v6
 
-    goto/16 :goto_0
+    .line 503
+    .restart local v6       #u:Landroid/net/Uri;
+    goto/16 :goto_1
 
+    .line 508
+    .end local v4           #rowId:J
+    .end local v6           #u:Landroid/net/Uri;
     :pswitch_17
-    const-string v2, "Weather"
+    const-string v7, "Weather"
 
-    invoke-virtual {v1, v2, v0, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v0, v7, v8, p2}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
 
-    move-result-wide v1
+    move-result-wide v4
 
-    cmp-long v3, v1, v3
+    .line 509
+    .restart local v4       #rowId:J
+    cmp-long v7, v4, v9
 
-    if-lez v3, :cond_0
+    if-lez v7, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/data/db/a/v;->a:Landroid/net/Uri;
+    .line 510
+    sget-object v7, Lcom/zhangdan/app/data/db/table/WeatherField;->CONTENT_URI:Landroid/net/Uri;
 
-    invoke-static {v0, v1, v2}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
+    invoke-static {v7, v4, v5}, Landroid/content/ContentUris;->withAppendedId(Landroid/net/Uri;J)Landroid/net/Uri;
 
-    move-result-object v0
+    move-result-object v6
 
-    goto/16 :goto_0
+    .line 511
+    .restart local v6       #u:Landroid/net/Uri;
+    goto/16 :goto_1
 
+    .line 339
     :pswitch_data_0
     .packed-switch 0x3
         :pswitch_0
@@ -1605,865 +1993,982 @@
 .method public onCreate()Z
     .locals 2
 
-    new-instance v0, Lcom/zhangdan/app/data/db/b;
+    .prologue
+    .line 136
+    new-instance v0, Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;
 
     invoke-virtual {p0}, Lcom/zhangdan/app/data/db/DataProvider;->getContext()Landroid/content/Context;
 
     move-result-object v1
 
-    invoke-direct {v0, v1}, Lcom/zhangdan/app/data/db/b;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, v1}, Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;-><init>(Landroid/content/Context;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/data/db/DataProvider;->d:Lcom/zhangdan/app/data/db/b;
+    iput-object v0, p0, Lcom/zhangdan/app/data/db/DataProvider;->mDbHelper:Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;
 
+    .line 137
     const/4 v0, 0x0
 
     return v0
 .end method
 
 .method public query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    .locals 10
+    .locals 14
+    .parameter "uri"
+    .parameter "projection"
+    .parameter "selection"
+    .parameter "selectionArgs"
+    .parameter "sortOrder"
 
-    iget-object v0, p0, Lcom/zhangdan/app/data/db/DataProvider;->d:Lcom/zhangdan/app/data/db/b;
+    .prologue
+    .line 525
+    iget-object v3, p0, Lcom/zhangdan/app/data/db/DataProvider;->mDbHelper:Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/db/b;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+    invoke-virtual {v3}, Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
-    move-result-object v0
+    move-result-object v2
 
-    const/4 v1, 0x0
+    .line 526
+    .local v2, db:Landroid/database/sqlite/SQLiteDatabase;
+    const/4 v12, 0x0
 
-    sget-object v2, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 527
+    .local v12, c:Landroid/database/Cursor;
+    sget-object v3, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
-    invoke-virtual {v2, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
+    invoke-virtual {v3, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
 
-    move-result v2
+    move-result v3
 
-    packed-switch v2, :pswitch_data_0
+    packed-switch v3, :pswitch_data_0
 
+    .line 651
     :pswitch_0
-    const-string v0, "DataProvider"
+    const-string v3, "DataProvider"
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    const-string v3, "Unknown URI "
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "Unknown URI "
 
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-static {v0, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-object v0, v1
+    move-result-object v4
 
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 653
     :goto_0
-    return-object v0
+    return-object v12
 
+    .line 529
     :pswitch_1
-    invoke-virtual {v0, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    move-object/from16 v0, p3
 
-    move-result-object v0
+    move-object/from16 v1, p4
 
+    invoke-virtual {v2, v0, v1}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v12
+
+    .line 530
     goto :goto_0
 
+    .line 532
     :pswitch_2
-    const-string v1, "Announcement"
+    const-string v3, "Announcement"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 534
     goto :goto_0
 
+    .line 536
     :pswitch_3
-    const-string v1, "Bank"
+    const-string v3, "Bank"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 538
     goto :goto_0
 
+    .line 540
     :pswitch_4
-    const-string v1, "Bill"
+    const-string v3, "Bill"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 542
     goto :goto_0
 
+    .line 544
     :pswitch_5
-    const-string v1, "ShoppingCategory"
+    const-string v3, "ShoppingCategory"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 546
     goto :goto_0
 
+    .line 548
     :pswitch_6
-    const-string v1, "ShoppingSheet"
+    const-string v3, "ShoppingSheet"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 550
     goto :goto_0
 
+    .line 552
     :pswitch_7
-    const-string v1, "SysMaster"
+    const-string v3, "SysMaster"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 554
     goto :goto_0
 
+    .line 556
     :pswitch_8
-    const-string v1, "UserBank"
+    const-string v3, "UserBank"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 558
     goto :goto_0
 
+    .line 560
     :pswitch_9
-    const-string v1, "UserCard"
+    const-string v3, "UserCard"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
-    goto :goto_0
+    .line 562
+    goto/16 :goto_0
 
+    .line 564
     :pswitch_a
-    const-string v1, "BillReturn"
+    const-string v3, "BillReturn"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
-    goto :goto_0
+    .line 566
+    goto/16 :goto_0
 
+    .line 568
     :pswitch_b
-    const-string v1, "Chart"
+    const-string v3, "Chart"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 570
     goto/16 :goto_0
 
+    .line 572
     :pswitch_c
-    const-string v1, "MailAccount"
+    const-string v3, "MailAccount"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 574
     goto/16 :goto_0
 
+    .line 576
     :pswitch_d
-    const-string v1, "MailBill"
+    const-string v3, "MailBill"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 578
     goto/16 :goto_0
 
+    .line 580
     :pswitch_e
-    const-string v1, "ShoppingSheetRemark"
+    const-string v3, "ShoppingSheetRemark"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 582
     goto/16 :goto_0
 
+    .line 584
     :pswitch_f
-    const-string v1, "UserInfoExt"
+    const-string v3, "UserInfoExt"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 586
     goto/16 :goto_0
 
+    .line 588
     :pswitch_10
-    const-string v1, "BankServiceExt"
+    const-string v3, "BankServiceExt"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 590
     goto/16 :goto_0
 
+    .line 592
     :pswitch_11
-    const-string v1, "SyncTask"
+    const-string v3, "SyncTask"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 594
     goto/16 :goto_0
 
+    .line 596
     :pswitch_12
-    const-string v1, "MailBillRecord"
+    const-string v3, "MailBillRecord"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 598
     goto/16 :goto_0
 
+    .line 600
     :pswitch_13
-    const-string v1, "user_history"
+    const-string v3, "user_history"
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v3, p3
+    move-object/from16 v5, p3
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 602
     goto/16 :goto_0
 
+    .line 604
     :pswitch_14
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v1
-
-    const/4 v2, 0x1
-
-    invoke-interface {v1, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    move-object v2, v1
-
-    check-cast v2, Ljava/lang/String;
-
-    const-string v1, "bill_regex"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    const-string v4, "_id = \'"
-
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, "\'"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     move-result-object v3
 
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    const/4 v4, 0x1
 
-    move-result v2
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    if-nez v2, :cond_0
+    move-result-object v13
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    check-cast v13, Ljava/lang/String;
 
-    const-string v4, " AND ("
+    .line 605
+    .local v13, id:Ljava/lang/String;
+    const-string v3, "bill_regex"
 
-    invoke-direct {v2, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v2
+    const-string v5, "_id = \'"
 
-    const/16 v4, 0x29
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    move-result-object v4
 
-    move-result-object v2
+    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v4
 
-    move-result-object v2
+    const-string v5, "\'"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-static/range {p3 .. p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_0
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, " AND ("
+
+    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    move-object/from16 v0, p3
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const/16 v6, 0x29
+
+    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
 
     :goto_1
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 611
     goto/16 :goto_0
 
+    .line 605
     :cond_0
-    const-string v2, ""
+    const-string v4, ""
 
     goto :goto_1
 
+    .line 613
+    .end local v13           #id:Ljava/lang/String;
     :pswitch_15
-    const/4 v1, 0x1
+    const/4 v3, 0x1
 
-    const-string v2, "bill_regex"
+    const-string v4, "bill_regex"
 
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
+    const/4 v8, 0x0
 
     const/4 v9, 0x0
 
-    move-object v3, p2
+    const/4 v11, 0x0
 
-    move-object v4, p3
+    move-object/from16 v5, p2
 
-    move-object v5, p4
+    move-object/from16 v6, p3
 
-    move-object v8, p5
+    move-object/from16 v7, p4
 
-    invoke-virtual/range {v0 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    move-object/from16 v10, p5
 
-    move-result-object v0
+    invoke-virtual/range {v2 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
+    move-result-object v12
+
+    .line 614
     goto/16 :goto_0
 
+    .line 617
     :pswitch_16
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v1
-
-    const/4 v2, 0x1
-
-    invoke-interface {v1, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    move-object v2, v1
-
-    check-cast v2, Ljava/lang/String;
-
-    const-string v1, "bill_sms_num"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    const-string v4, "_id = \'"
-
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, "\'"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     move-result-object v3
 
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    const/4 v4, 0x1
 
-    move-result v2
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    if-nez v2, :cond_1
+    move-result-object v13
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    check-cast v13, Ljava/lang/String;
 
-    const-string v4, " AND ("
+    .line 618
+    .restart local v13       #id:Ljava/lang/String;
+    const-string v3, "bill_sms_num"
 
-    invoke-direct {v2, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v2
+    const-string v5, "_id = \'"
 
-    const/16 v4, 0x29
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    move-result-object v4
 
-    move-result-object v2
+    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v4
 
-    move-result-object v2
+    const-string v5, "\'"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-static/range {p3 .. p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_1
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, " AND ("
+
+    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    move-object/from16 v0, p3
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const/16 v6, 0x29
+
+    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
 
     :goto_2
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 624
     goto/16 :goto_0
 
+    .line 618
     :cond_1
-    const-string v2, ""
+    const-string v4, ""
 
     goto :goto_2
 
+    .line 626
+    .end local v13           #id:Ljava/lang/String;
     :pswitch_17
-    const/4 v1, 0x1
+    const/4 v3, 0x1
 
-    const-string v2, "bill_sms_num"
+    const-string v4, "bill_sms_num"
 
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
+    const/4 v8, 0x0
 
     const/4 v9, 0x0
 
-    move-object v3, p2
+    const/4 v11, 0x0
 
-    move-object v4, p3
+    move-object/from16 v5, p2
 
-    move-object v5, p4
+    move-object/from16 v6, p3
 
-    move-object v8, p5
+    move-object/from16 v7, p4
 
-    invoke-virtual/range {v0 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    move-object/from16 v10, p5
 
-    move-result-object v0
+    invoke-virtual/range {v2 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
+    move-result-object v12
+
+    .line 627
     goto/16 :goto_0
 
+    .line 629
     :pswitch_18
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v1
-
-    const/4 v2, 0x1
-
-    invoke-interface {v1, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v1
-
-    move-object v2, v1
-
-    check-cast v2, Ljava/lang/String;
-
-    const-string v1, "bill_data"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    const-string v4, "_id = \'"
-
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, "\'"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     move-result-object v3
 
-    invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    const/4 v4, 0x1
 
-    move-result v2
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    if-nez v2, :cond_2
+    move-result-object v13
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    check-cast v13, Ljava/lang/String;
 
-    const-string v4, " AND ("
+    .line 630
+    .restart local v13       #id:Ljava/lang/String;
+    const-string v3, "bill_data"
 
-    invoke-direct {v2, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v2
+    const-string v5, "_id = \'"
 
-    const/16 v4, 0x29
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    move-result-object v4
 
-    move-result-object v2
+    invoke-virtual {v4, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v4
 
-    move-result-object v2
+    const-string v5, "\'"
+
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-static/range {p3 .. p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_2
+
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, " AND ("
+
+    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    move-object/from16 v0, p3
+
+    invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    const/16 v6, 0x29
+
+    invoke-virtual {v4, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
 
     :goto_3
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
-    const/4 v6, 0x0
+    const/4 v8, 0x0
 
-    move-object v2, p2
+    move-object/from16 v4, p2
 
-    move-object v4, p4
+    move-object/from16 v6, p4
 
-    move-object v7, p5
+    move-object/from16 v9, p5
 
-    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v0
+    move-result-object v12
 
+    .line 636
     goto/16 :goto_0
 
+    .line 630
     :cond_2
-    const-string v2, ""
+    const-string v4, ""
 
     goto :goto_3
 
+    .line 638
+    .end local v13           #id:Ljava/lang/String;
     :pswitch_19
-    const/4 v1, 0x1
+    const/4 v3, 0x1
 
-    const-string v2, "bill_data"
+    const-string v4, "bill_data"
 
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
+    const/4 v8, 0x0
 
     const/4 v9, 0x0
 
-    move-object v3, p2
+    const/4 v11, 0x0
 
-    move-object v4, p3
+    move-object/from16 v5, p2
 
-    move-object v5, p4
+    move-object/from16 v6, p3
 
-    move-object v8, p5
+    move-object/from16 v7, p4
 
-    invoke-virtual/range {v0 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    move-object/from16 v10, p5
 
-    move-result-object v0
+    invoke-virtual/range {v2 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
+    move-result-object v12
+
+    .line 639
     goto/16 :goto_0
 
+    .line 642
     :pswitch_1a
-    const/4 v1, 0x1
+    const/4 v3, 0x1
 
-    const-string v2, "SmsUserBank"
+    const-string v4, "SmsUserBank"
 
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
+    const/4 v8, 0x0
 
     const/4 v9, 0x0
 
-    move-object v3, p2
+    const/4 v11, 0x0
 
-    move-object v4, p3
+    move-object/from16 v5, p2
 
-    move-object v5, p4
+    move-object/from16 v6, p3
 
-    move-object v8, p5
+    move-object/from16 v7, p4
 
-    invoke-virtual/range {v0 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    move-object/from16 v10, p5
 
-    move-result-object v0
+    invoke-virtual/range {v2 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
+    move-result-object v12
+
+    .line 643
     goto/16 :goto_0
 
+    .line 645
     :pswitch_1b
-    const/4 v1, 0x1
+    const/4 v3, 0x1
 
-    const-string v2, "BillStage"
+    const-string v4, "BillStage"
 
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
+    const/4 v8, 0x0
 
     const/4 v9, 0x0
 
-    move-object v3, p2
+    const/4 v11, 0x0
 
-    move-object v4, p3
+    move-object/from16 v5, p2
 
-    move-object v5, p4
+    move-object/from16 v6, p3
 
-    move-object v8, p5
+    move-object/from16 v7, p4
 
-    invoke-virtual/range {v0 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    move-object/from16 v10, p5
 
-    move-result-object v0
+    invoke-virtual/range {v2 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
+    move-result-object v12
+
+    .line 646
     goto/16 :goto_0
 
+    .line 648
     :pswitch_1c
-    const/4 v1, 0x1
+    const/4 v3, 0x1
 
-    const-string v2, "Weather"
+    const-string v4, "Weather"
 
-    const/4 v6, 0x0
-
-    const/4 v7, 0x0
+    const/4 v8, 0x0
 
     const/4 v9, 0x0
 
-    move-object v3, p2
+    const/4 v11, 0x0
 
-    move-object v4, p3
+    move-object/from16 v5, p2
 
-    move-object v5, p4
+    move-object/from16 v6, p3
 
-    move-object v8, p5
+    move-object/from16 v7, p4
 
-    invoke-virtual/range {v0 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    move-object/from16 v10, p5
 
-    move-result-object v0
+    invoke-virtual/range {v2 .. v11}, Landroid/database/sqlite/SQLiteDatabase;->query(ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
+    move-result-object v12
+
+    .line 649
     goto/16 :goto_0
+
+    .line 527
+    nop
 
     :pswitch_data_0
     .packed-switch 0x1
@@ -2500,484 +3005,591 @@
 .end method
 
 .method public update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    .locals 6
+    .locals 8
+    .parameter "uri"
+    .parameter "values"
+    .parameter "selection"
+    .parameter "selectionArgs"
 
-    const/16 v5, 0x29
+    .prologue
+    const/16 v7, 0x29
 
-    const/4 v3, 0x1
+    const/4 v4, 0x1
 
-    iget-object v0, p0, Lcom/zhangdan/app/data/db/DataProvider;->d:Lcom/zhangdan/app/data/db/b;
+    .line 659
+    iget-object v3, p0, Lcom/zhangdan/app/data/db/DataProvider;->mDbHelper:Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/db/b;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
+    invoke-virtual {v3}, Lcom/zhangdan/app/data/db/ZhangdanDatabaseHelper;->getWritableDatabase()Landroid/database/sqlite/SQLiteDatabase;
 
     move-result-object v1
 
+    .line 660
+    .local v1, db:Landroid/database/sqlite/SQLiteDatabase;
     const/4 v0, 0x0
 
-    sget-object v2, Lcom/zhangdan/app/data/db/DataProvider;->c:Landroid/content/UriMatcher;
+    .line 661
+    .local v0, count:I
+    sget-object v3, Lcom/zhangdan/app/data/db/DataProvider;->mUriMatcher:Landroid/content/UriMatcher;
 
-    invoke-virtual {v2, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
+    invoke-virtual {v3, p1}, Landroid/content/UriMatcher;->match(Landroid/net/Uri;)I
 
-    move-result v2
+    move-result v3
 
-    packed-switch v2, :pswitch_data_0
+    packed-switch v3, :pswitch_data_0
 
-    const-string v1, "DataProvider"
+    .line 783
+    const-string v3, "DataProvider"
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    new-instance v4, Ljava/lang/StringBuilder;
 
-    const-string v3, "Unknown URI "
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "Unknown URI "
 
-    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v4
 
-    invoke-static {v1, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    move-result-object v4
+
+    invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 785
     :goto_0
     return v0
 
+    .line 663
     :pswitch_0
-    const-string v0, "Announcement"
+    const-string v3, "Announcement"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 665
     goto :goto_0
 
+    .line 667
     :pswitch_1
-    const-string v0, "Bank"
+    const-string v3, "Bank"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 669
     goto :goto_0
 
+    .line 671
     :pswitch_2
-    const-string v0, "Bill"
+    const-string v3, "Bill"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 673
     goto :goto_0
 
+    .line 675
     :pswitch_3
-    const-string v0, "ShoppingCategory"
+    const-string v3, "ShoppingCategory"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 677
     goto :goto_0
 
+    .line 679
     :pswitch_4
-    const-string v0, "ShoppingSheet"
+    const-string v3, "ShoppingSheet"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 681
     goto :goto_0
 
+    .line 683
     :pswitch_5
-    const-string v0, "SysMaster"
+    const-string v3, "SysMaster"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 685
     goto :goto_0
 
+    .line 687
     :pswitch_6
-    const-string v0, "UserBank"
+    const-string v3, "UserBank"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 689
     goto :goto_0
 
+    .line 691
     :pswitch_7
-    const-string v0, "UserCard"
+    const-string v3, "UserCard"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 693
     goto :goto_0
 
+    .line 695
     :pswitch_8
-    const-string v0, "BillReturn"
+    const-string v3, "BillReturn"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 697
     goto :goto_0
 
+    .line 699
     :pswitch_9
-    const-string v0, "Chart"
+    const-string v3, "Chart"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 701
     goto :goto_0
 
+    .line 703
     :pswitch_a
-    const-string v0, "MailAccount"
+    const-string v3, "MailAccount"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 705
     goto :goto_0
 
+    .line 707
     :pswitch_b
-    const-string v0, "MailBill"
+    const-string v3, "MailBill"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 709
     goto :goto_0
 
+    .line 711
     :pswitch_c
-    const-string v0, "ShoppingSheetRemark"
+    const-string v3, "ShoppingSheetRemark"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 713
     goto :goto_0
 
+    .line 715
     :pswitch_d
-    const-string v0, "UserInfoExt"
+    const-string v3, "UserInfoExt"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 717
     goto :goto_0
 
+    .line 719
     :pswitch_e
-    const-string v0, "BankServiceExt"
+    const-string v3, "BankServiceExt"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 721
     goto :goto_0
 
+    .line 723
     :pswitch_f
-    const-string v0, "SyncTask"
+    const-string v3, "SyncTask"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 725
     goto :goto_0
 
+    .line 727
     :pswitch_10
-    const-string v0, "MailBillRecord"
+    const-string v3, "MailBillRecord"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 729
     goto :goto_0
 
+    .line 731
     :pswitch_11
-    const-string v0, "user_history"
+    const-string v3, "user_history"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 733
     goto :goto_0
 
+    .line 735
     :pswitch_12
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-interface {v0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v2
 
-    check-cast v0, Ljava/lang/String;
+    check-cast v2, Ljava/lang/String;
 
-    const-string v2, "bill_regex"
+    .line 736
+    .local v2, id:Ljava/lang/String;
+    const-string v4, "bill_regex"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, "_id = \'"
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "_id = \'"
 
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v3, "\'"
-
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v5, "\'"
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
     invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v0
+    move-result v3
 
-    if-nez v0, :cond_0
+    if-nez v3, :cond_0
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, " AND ("
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v6, " AND ("
 
-    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v7}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
 
     :goto_1
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v1, v2, p2, v0, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v4, p2, v3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 742
     goto/16 :goto_0
 
+    .line 736
     :cond_0
-    const-string v0, ""
+    const-string v3, ""
 
     goto :goto_1
 
+    .line 744
+    .end local v2           #id:Ljava/lang/String;
     :pswitch_13
-    const-string v0, "bill_regex"
+    const-string v3, "bill_regex"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 745
     goto/16 :goto_0
 
+    .line 748
     :pswitch_14
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-interface {v0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v2
 
-    check-cast v0, Ljava/lang/String;
+    check-cast v2, Ljava/lang/String;
 
-    const-string v2, "bill_sms_num"
+    .line 749
+    .restart local v2       #id:Ljava/lang/String;
+    const-string v4, "bill_sms_num"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, "_id = \'"
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "_id = \'"
 
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v3, "\'"
-
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v5, "\'"
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
     invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v0
+    move-result v3
 
-    if-nez v0, :cond_1
+    if-nez v3, :cond_1
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, " AND ("
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v6, " AND ("
 
-    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v7}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
 
     :goto_2
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v1, v2, p2, v0, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v4, p2, v3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 755
     goto/16 :goto_0
 
+    .line 749
     :cond_1
-    const-string v0, ""
+    const-string v3, ""
 
     goto :goto_2
 
+    .line 757
+    .end local v2           #id:Ljava/lang/String;
     :pswitch_15
-    const-string v0, "bill_sms_num"
+    const-string v3, "bill_sms_num"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 758
     goto/16 :goto_0
 
+    .line 761
     :pswitch_16
     invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-interface {v0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v3, v4}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
-    move-result-object v0
+    move-result-object v2
 
-    check-cast v0, Ljava/lang/String;
+    check-cast v2, Ljava/lang/String;
 
-    const-string v2, "bill_data"
+    .line 762
+    .restart local v2       #id:Ljava/lang/String;
+    const-string v4, "bill_data"
 
     new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, "_id = \'"
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "_id = \'"
 
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v3, "\'"
-
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v5, "\'"
+
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
     invoke-static {p3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    move-result v0
+    move-result v3
 
-    if-nez v0, :cond_2
+    if-nez v3, :cond_2
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v4, " AND ("
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v6, " AND ("
 
-    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v7}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
 
     :goto_3
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v3
 
-    invoke-virtual {v1, v2, p2, v0, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v4, p2, v3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 768
     goto/16 :goto_0
 
+    .line 762
     :cond_2
-    const-string v0, ""
+    const-string v3, ""
 
     goto :goto_3
 
+    .line 770
+    .end local v2           #id:Ljava/lang/String;
     :pswitch_17
-    const-string v0, "bill_data"
+    const-string v3, "bill_data"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 771
     goto/16 :goto_0
 
+    .line 774
     :pswitch_18
-    const-string v0, "SmsUserBank"
+    const-string v3, "SmsUserBank"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 775
     goto/16 :goto_0
 
+    .line 777
     :pswitch_19
-    const-string v0, "BillStage"
+    const-string v3, "BillStage"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 778
     goto/16 :goto_0
 
+    .line 780
     :pswitch_1a
-    const-string v0, "Weather"
+    const-string v3, "Weather"
 
-    invoke-virtual {v1, v0, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    invoke-virtual {v1, v3, p2, p3, p4}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
 
+    .line 781
     goto/16 :goto_0
 
+    .line 661
     nop
 
     :pswitch_data_0

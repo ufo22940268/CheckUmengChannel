@@ -1,188 +1,181 @@
-.class final Lcom/igexin/sdk/l;
-.super Lcom/igexin/sdk/aidl/g;
+.class Lcom/igexin/sdk/l;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field final synthetic a:Lcom/igexin/sdk/SdkMainService;
+.field final synthetic a:Lsdk/b/a/a/b/k;
+
+.field final synthetic b:Ljava/lang/String;
+
+.field final synthetic c:Ljava/lang/String;
+
+.field final synthetic d:Lcom/igexin/sdk/SdkMainService;
 
 
 # direct methods
-.method constructor <init>(Lcom/igexin/sdk/SdkMainService;)V
+.method constructor <init>(Lcom/igexin/sdk/SdkMainService;Lsdk/b/a/a/b/k;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
 
-    iput-object p1, p0, Lcom/igexin/sdk/l;->a:Lcom/igexin/sdk/SdkMainService;
+    iput-object p1, p0, Lcom/igexin/sdk/l;->d:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-direct {p0}, Lcom/igexin/sdk/aidl/g;-><init>()V
+    iput-object p2, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
+
+    iput-object p3, p0, Lcom/igexin/sdk/l;->b:Ljava/lang/String;
+
+    iput-object p4, p0, Lcom/igexin/sdk/l;->c:Ljava/lang/String;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public final a([Lcom/igexin/sdk/aidl/Tag;)I
-    .locals 1
+.method public run()V
+    .locals 5
 
-    invoke-static {p1}, Lcom/igexin/sdk/a;->a([Lcom/igexin/sdk/c;)I
+    new-instance v0, Lsdk/b/a/a/b/j;
 
-    move-result v0
+    invoke-direct {v0}, Lsdk/b/a/a/b/j;-><init>()V
 
-    return v0
-.end method
+    iget-object v1, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
 
-.method public final a()Ljava/lang/String;
-    .locals 1
+    invoke-virtual {v1}, Lsdk/b/a/a/b/k;->e()I
 
-    invoke-static {}, Lcom/igexin/sdk/a;->a()Ljava/lang/String;
+    move-result v1
 
-    move-result-object v0
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->a(I)V
 
-    return-object v0
-.end method
+    iget-object v1, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
 
-.method public final a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    .locals 0
+    invoke-virtual {v1}, Lsdk/b/a/a/b/k;->d()J
 
-    sput-object p3, Lsdk/b/a/a/c/d;->m:Ljava/lang/String;
+    move-result-wide v1
 
-    sput-object p2, Lsdk/b/a/a/c/d;->o:Ljava/lang/String;
+    invoke-virtual {v0, v1, v2}, Lsdk/b/a/a/b/j;->a(J)V
 
-    sput-object p1, Lsdk/b/a/a/c/d;->n:Ljava/lang/String;
+    iget-object v1, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
 
-    return-void
-.end method
-
-.method public final a(Z)V
-    .locals 0
-
-    invoke-static {}, Lcom/igexin/sdk/a;->b()V
-
-    return-void
-.end method
-
-.method public final a(I)Z
-    .locals 1
-
-    invoke-static {p1}, Lcom/igexin/sdk/a;->a(I)Z
-
-    move-result v0
-
-    return v0
-.end method
-
-.method public final a(II)Z
-    .locals 1
-
-    iget-object v0, p0, Lcom/igexin/sdk/l;->a:Lcom/igexin/sdk/SdkMainService;
-
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->getPackageName()Ljava/lang/String;
-
-    invoke-static {p1, p2}, Lcom/igexin/sdk/a;->a(II)Z
-
-    move-result v0
-
-    return v0
-.end method
-
-.method public final a(Ljava/lang/String;[B)Z
-    .locals 1
-
-    invoke-static {p1, p2}, Lcom/igexin/sdk/a;->a(Ljava/lang/String;[B)Z
-
-    move-result v0
-
-    return v0
-.end method
-
-.method public final b()V
-    .locals 2
-
-    invoke-static {}, Lsdk/c/a/b/d;->c()Lsdk/c/a/b/d;
-
-    move-result-object v0
-
-    iget-wide v0, v0, Lsdk/c/a/b/d;->b:J
-
-    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->a:J
-
-    invoke-static {}, Lsdk/c/a/b/d;->c()Lsdk/c/a/b/d;
-
-    move-result-object v0
-
-    iget-wide v0, v0, Lsdk/c/a/b/d;->c:J
-
-    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->b:J
-
-    return-void
-.end method
-
-.method public final c()Ljava/lang/String;
-    .locals 1
-
-    invoke-static {}, Lcom/igexin/sdk/a;->c()Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public final d()Z
-    .locals 1
-
-    invoke-static {}, Lcom/igexin/sdk/a;->d()Z
-
-    move-result v0
-
-    return v0
-.end method
-
-.method public final e()V
-    .locals 2
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    const-string v1, "instance = "
-
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->p()Lcom/igexin/sdk/SdkMainService;
+    invoke-virtual {v1}, Lsdk/b/a/a/b/k;->a()Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->d(Ljava/lang/String;)V
 
-    move-result-object v0
+    const/4 v1, 0x3
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->b(I)V
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    iget-object v1, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->p()Lcom/igexin/sdk/SdkMainService;
+    invoke-virtual {v1}, Lsdk/b/a/a/b/k;->p()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->c(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
+
+    invoke-virtual {v1}, Lsdk/b/a/a/b/k;->b()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->e(Ljava/lang/String;)V
+
+    iget-object v1, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
+
+    invoke-virtual {v1}, Lsdk/b/a/a/b/k;->i()Z
+
+    move-result v1
+
+    invoke-static {v1}, Ljava/lang/String;->valueOf(Z)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/b/j;->a(Ljava/lang/String;)V
+
+    new-instance v1, Lsdk/b/a/a/e/b/b/a;
+
+    iget-object v2, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
+
+    invoke-virtual {v2}, Lsdk/b/a/a/b/k;->c()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2, v0}, Lsdk/b/a/a/e/b/b/a;-><init>(Ljava/lang/String;Lsdk/b/a/a/b/j;)V
+
+    new-instance v0, Lsdk/b/a/a/e/b/d;
+
+    invoke-direct {v0, v1}, Lsdk/b/a/a/e/b/d;-><init>(Lsdk/b/a/a/e/b/c;)V
+
+    iget-object v2, p0, Lcom/igexin/sdk/l;->d:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v2, v2, Lcom/igexin/sdk/SdkMainService;->b:Lsdk/c/a/b/d;
+
+    const/4 v3, 0x1
+
+    const/4 v4, 0x0
+
+    invoke-virtual {v2, v0, v3, v4}, Lsdk/c/a/b/d;->a(Lsdk/c/a/e/d;ZZ)Z
+
+    move-result v0
 
     if-eqz v0, :cond_0
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->p()Lcom/igexin/sdk/SdkMainService;
+    iget-boolean v0, v1, Lsdk/b/a/a/e/b/b/a;->e:Z
+
+    if-eqz v0, :cond_0
+
+    invoke-static {}, Lsdk/b/a/a/c/l;->a()Lsdk/b/a/a/c/l;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->getApplicationContext()Landroid/content/Context;
+    iget-object v2, v1, Lsdk/b/a/a/e/b/b/a;->g:Ljava/util/List;
 
-    move-result-object v0
+    iget-object v3, v1, Lsdk/b/a/a/e/b/b/a;->f:Lsdk/b/a/a/b/j;
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->p()Lcom/igexin/sdk/SdkMainService;
+    iget-object v1, v1, Lsdk/b/a/a/e/b/b/a;->f:Lsdk/b/a/a/b/j;
 
-    move-result-object v1
-
-    invoke-virtual {v1}, Lcom/igexin/sdk/SdkMainService;->getApplicationContext()Landroid/content/Context;
+    invoke-virtual {v1}, Lsdk/b/a/a/b/j;->i()Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+    invoke-virtual {v0, v2, v3, v1}, Lsdk/b/a/a/c/l;->a(Ljava/util/List;Lsdk/b/a/a/b/j;Ljava/lang/String;)I
 
-    move-result-object v1
+    move-result v0
 
-    invoke-static {v0, v1}, Lcom/igexin/sdk/a;->a(Landroid/content/Context;Ljava/lang/String;)V
+    iget-object v1, p0, Lcom/igexin/sdk/l;->d:Lcom/igexin/sdk/SdkMainService;
+
+    const/4 v2, 0x2
+
+    iget-object v3, p0, Lcom/igexin/sdk/l;->b:Ljava/lang/String;
+
+    iget-object v4, p0, Lcom/igexin/sdk/l;->c:Ljava/lang/String;
+
+    invoke-virtual {v1, v2, v0, v3, v4}, Lcom/igexin/sdk/SdkMainService;->a(IILjava/lang/String;Ljava/lang/String;)V
+
+    iget-object v0, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
+
+    invoke-virtual {v0}, Lsdk/b/a/a/b/k;->e()I
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    const-string v0, "GexinMainService"
+
+    const-string v1, "\u5f39\u901a\u77e5\u680f"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    iget-object v0, p0, Lcom/igexin/sdk/l;->d:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v1, p0, Lcom/igexin/sdk/l;->a:Lsdk/b/a/a/b/k;
+
+    invoke-virtual {v0, v1}, Lcom/igexin/sdk/SdkMainService;->a(Lsdk/b/a/a/b/k;)V
 
     :cond_0
     return-void

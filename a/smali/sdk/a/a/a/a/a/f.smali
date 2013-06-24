@@ -1,4 +1,4 @@
-.class public final Lsdk/a/a/a/a/a/f;
+.class public Lsdk/a/a/a/a/a/f;
 .super Lsdk/c/b/a/b/b;
 
 
@@ -29,7 +29,7 @@
 
 
 # virtual methods
-.method public final a([B)V
+.method public a([B)V
     .locals 3
 
     const/16 v2, 0x8
@@ -59,7 +59,7 @@
     return-void
 .end method
 
-.method public final a()[B
+.method public c()[B
     .locals 4
 
     const/16 v0, 0xc
@@ -72,19 +72,23 @@
 
     invoke-static {v1, v2, v0, v3}, Lsdk/c/a/b/g;->a(J[BI)I
 
-    iget-byte v1, p0, Lsdk/a/a/a/a/a/f;->b:B
+    move-result v1
 
-    and-int/lit16 v1, v1, 0xff
+    iget-byte v2, p0, Lsdk/a/a/a/a/a/f;->b:B
 
-    shl-int/lit8 v1, v1, 0x18
+    and-int/lit16 v2, v2, 0xff
 
-    iget v2, p0, Lsdk/a/a/a/a/a/f;->c:I
+    shl-int/lit8 v2, v2, 0x18
 
-    or-int/2addr v1, v2
+    iget v3, p0, Lsdk/a/a/a/a/a/f;->c:I
 
-    const/16 v2, 0x8
+    or-int/2addr v2, v3
 
-    invoke-static {v1, v0, v2}, Lsdk/c/a/b/g;->a(I[BI)I
+    invoke-static {v2, v0, v1}, Lsdk/c/a/b/g;->a(I[BI)I
+
+    move-result v2
+
+    add-int/2addr v1, v2
 
     return-object v0
 .end method

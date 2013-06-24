@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/a/a;
+.class public Lsdk/b/a/a/e/a/a;
 .super Lsdk/c/a/e/d;
 
 
@@ -35,22 +35,20 @@
 
 
 # virtual methods
-.method public final a()V
-    .locals 1
-
-    const/4 v0, 0x1
-
-    iput-boolean v0, p0, Lsdk/b/a/a/e/a/a;->e:Z
-
-    return-void
-.end method
-
-.method public final a(Lsdk/b/a/a/c/f;)V
+.method public a(Lsdk/b/a/a/c/f;)V
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/e/a/a;->d:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    return-void
+.end method
+
+.method public a(Z)V
+    .locals 0
+
+    iput-boolean p1, p0, Lsdk/b/a/a/e/a/a;->e:Z
 
     return-void
 .end method
@@ -63,12 +61,12 @@
     return v0
 .end method
 
-.method public final c()V
+.method public b_()V
     .locals 4
 
     const/4 v3, 0x5
 
-    invoke-super {p0}, Lsdk/c/a/e/d;->c()V
+    invoke-super {p0}, Lsdk/c/a/e/d;->b_()V
 
     iget-object v0, p0, Lsdk/b/a/a/e/a/a;->c:Landroid/content/Context;
 
@@ -186,7 +184,11 @@
     goto :goto_1
 
     :cond_3
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
+
+    const-string v1, "db task chain ok!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-static {}, Lsdk/c/a/b/d;->c()Lsdk/c/a/b/d;
 
@@ -194,7 +196,9 @@
 
     new-instance v1, Lsdk/b/a/a/e/a/b;
 
-    invoke-direct {v1}, Lsdk/b/a/a/e/a/b;-><init>()V
+    const v2, -0xef7d4
+
+    invoke-direct {v1, v2}, Lsdk/b/a/a/e/a/b;-><init>(I)V
 
     invoke-virtual {v0, v1}, Lsdk/c/a/b/d;->a(Ljava/lang/Object;)Z
 
@@ -207,10 +211,10 @@
     return-void
 .end method
 
-.method public final d()V
+.method public c()V
     .locals 1
 
-    invoke-super {p0}, Lsdk/c/a/e/d;->d()V
+    invoke-super {p0}, Lsdk/c/a/e/d;->c()V
 
     iget-object v0, p0, Lsdk/b/a/a/e/a/a;->b:Landroid/database/Cursor;
 
@@ -233,12 +237,12 @@
     goto :goto_0
 .end method
 
-.method public final e()V
+.method public d()V
     .locals 1
 
     const/4 v0, 0x1
 
-    invoke-super {p0}, Lsdk/c/a/e/d;->e()V
+    invoke-super {p0}, Lsdk/c/a/e/d;->d()V
 
     iput-boolean v0, p0, Lsdk/b/a/a/e/a/a;->z:Z
 
@@ -247,7 +251,7 @@
     return-void
 .end method
 
-.method protected final f()V
+.method protected e()V
     .locals 0
 
     invoke-static {}, Lsdk/b/a/a/e/a/d;->a()V

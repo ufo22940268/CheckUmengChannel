@@ -1,4 +1,4 @@
-.class public final Lsdk/download/o;
+.class public Lsdk/download/o;
 .super Ljava/lang/Object;
 
 
@@ -101,130 +101,56 @@
     return-void
 .end method
 
-.method public static a(Landroid/content/Context;)Lsdk/download/o;
-    .locals 1
+.method private a(Landroid/content/ContentValues;)I
+    .locals 5
 
-    sget-object v0, Lsdk/download/o;->b:Lsdk/download/o;
-
-    if-nez v0, :cond_0
-
-    new-instance v0, Lsdk/download/o;
-
-    invoke-direct {v0, p0}, Lsdk/download/o;-><init>(Landroid/content/Context;)V
-
-    sput-object v0, Lsdk/download/o;->b:Lsdk/download/o;
-
-    :cond_0
-    sget-object v0, Lsdk/download/o;->b:Lsdk/download/o;
-
-    return-object v0
-.end method
-
-
-# virtual methods
-.method public final a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)I
-    .locals 6
-
-    new-instance v0, Landroid/content/ContentValues;
-
-    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
-
-    if-eqz p3, :cond_0
-
-    const-string v1, "data_6"
-
-    invoke-virtual {v0, v1, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
-    :cond_0
-    const-string v1, "iswebicon"
-
-    invoke-static {p4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v2
-
-    invoke-virtual {v0, v1, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
-
-    new-instance v1, Landroid/content/ContentValues;
-
-    invoke-direct {v1}, Landroid/content/ContentValues;-><init>()V
-
-    invoke-virtual {v1, v0}, Landroid/content/ContentValues;->putAll(Landroid/content/ContentValues;)V
-
-    const-string v0, "destination"
-
-    const/4 v2, 0x0
-
-    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v2
-
-    invoke-virtual {v1, v0, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
-
-    if-eqz p1, :cond_1
-
-    const-string v0, "uri"
-
-    invoke-virtual {v1, v0, p1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
-    :cond_1
-    if-eqz p2, :cond_2
-
-    const-string v0, "\\*"
-
-    const-string v2, ""
-
-    invoke-virtual {p2, v0, v2}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v2, "hint"
-
-    invoke-virtual {v1, v2, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
-    :cond_2
     iget-object v0, p0, Lsdk/download/o;->g:Landroid/content/Context;
 
     invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v0
 
-    const-string v2, "data_10"
+    const-string v1, "data_10"
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v2
+
+    invoke-static {v2, v3}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {p1, v1, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v1, "GexinSdk"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "downLoadTimeOut newTask : time: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v3
 
-    invoke-static {v3, v4}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+    invoke-virtual {v2, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    move-result-object v3
+    move-result-object v2
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    const-string v2, "GexinSdk"
+    move-result-object v2
 
-    new-instance v3, Ljava/lang/StringBuilder;
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    const-string v4, "downLoadTimeOut newTask : time: "
+    sget-object v1, Lsdk/download/k;->a:Landroid/net/Uri;
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v4
-
-    invoke-virtual {v3, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
-
-    sget-object v2, Lsdk/download/k;->a:Landroid/net/Uri;
-
-    invoke-virtual {v0, v2, v1}, Landroid/content/ContentResolver;->insert(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    invoke-virtual {v0, v1, p1}, Landroid/content/ContentResolver;->insert(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
 
     move-result-object v0
 
@@ -247,7 +173,117 @@
     return v0
 .end method
 
-.method public final a(Ljava/util/Collection;)V
+.method public static a(Landroid/content/Context;)Lsdk/download/o;
+    .locals 1
+
+    sget-object v0, Lsdk/download/o;->b:Lsdk/download/o;
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Lsdk/download/o;
+
+    invoke-direct {v0, p0}, Lsdk/download/o;-><init>(Landroid/content/Context;)V
+
+    sput-object v0, Lsdk/download/o;->b:Lsdk/download/o;
+
+    :cond_0
+    sget-object v0, Lsdk/download/o;->b:Lsdk/download/o;
+
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public a(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;)I
+    .locals 3
+
+    new-instance v0, Landroid/content/ContentValues;
+
+    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+
+    if-eqz p3, :cond_0
+
+    invoke-virtual {v0, p3}, Landroid/content/ContentValues;->putAll(Landroid/content/ContentValues;)V
+
+    :cond_0
+    const-string v1, "destination"
+
+    const/4 v2, 0x0
+
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+
+    if-eqz p1, :cond_1
+
+    const-string v1, "uri"
+
+    invoke-virtual {v0, v1, p1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    :cond_1
+    if-eqz p2, :cond_2
+
+    const-string v1, "\\*"
+
+    const-string v2, ""
+
+    invoke-virtual {p2, v1, v2}, Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v2, "hint"
+
+    invoke-virtual {v0, v2, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    :cond_2
+    if-eqz p4, :cond_3
+
+    const-string v1, "description"
+
+    invoke-virtual {v0, v1, p4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    :cond_3
+    invoke-direct {p0, v0}, Lsdk/download/o;->a(Landroid/content/ContentValues;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)I
+    .locals 3
+
+    new-instance v0, Landroid/content/ContentValues;
+
+    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+
+    if-eqz p3, :cond_0
+
+    const-string v1, "data_6"
+
+    invoke-virtual {v0, v1, p3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+
+    :cond_0
+    const-string v1, "iswebicon"
+
+    invoke-static {p4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, p1, p2, v0, v1}, Lsdk/download/o;->a(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public a(Ljava/util/Collection;)V
     .locals 1
 
     iget-object v0, p0, Lsdk/download/o;->e:Ljava/util/Collection;
@@ -260,7 +296,7 @@
     return-void
 .end method
 
-.method public final a(Lsdk/download/n;)V
+.method public a(Lsdk/download/n;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/download/o;->c:Lsdk/download/n;
@@ -268,7 +304,7 @@
     return-void
 .end method
 
-.method public final a(I)Z
+.method public a(I)Z
     .locals 5
 
     const/4 v4, 0x0

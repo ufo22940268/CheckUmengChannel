@@ -1,135 +1,200 @@
 .class public Lcom/zhangdan/app/activities/BaseSlidingActivity;
 .super Lcom/slidingmenu/lib/app/SlidingFragmentActivity;
+.source "BaseSlidingActivity.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;,
+        Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;
+    }
+.end annotation
+
+
+# static fields
+.field public static final ACTION_LOG_OFF:Ljava/lang/String; = "com.zhangdan.app.log_off"
 
 
 # instance fields
-.field protected a:Z
+.field protected mIsActive:Z
 
-.field protected b:Z
+.field protected mIsScreenOff:Z
 
-.field private c:Lcom/zhangdan/app/activities/c;
+.field private mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;
 
-.field private d:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+.field private mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
     const/4 v0, 0x0
 
+    .line 21
     invoke-direct {p0}, Lcom/slidingmenu/lib/app/SlidingFragmentActivity;-><init>()V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->c:Lcom/zhangdan/app/activities/c;
+    .line 25
+    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->d:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+    .line 26
+    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
 
+    .line 28
     const/4 v0, 0x1
 
-    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->a:Z
+    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mIsActive:Z
 
+    .line 29
     const/4 v0, 0x0
 
-    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->b:Z
+    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mIsScreenOff:Z
 
+    .line 132
     return-void
 .end method
 
 
 # virtual methods
 .method public onCreate(Landroid/os/Bundle;)V
-    .locals 3
+    .locals 6
+    .parameter "savedInstanceState"
 
+    .prologue
+    .line 33
     invoke-super {p0, p1}, Lcom/slidingmenu/lib/app/SlidingFragmentActivity;->onCreate(Landroid/os/Bundle;)V
 
+    .line 34
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->getApplication()Landroid/app/Application;
 
-    move-result-object v0
+    move-result-object v1
 
-    check-cast v0, Lcom/zhangdan/app/ZhangdanApplication;
+    check-cast v1, Lcom/zhangdan/app/ZhangdanApplication;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/ZhangdanApplication;->d()V
+    .line 35
+    .local v1, app:Lcom/zhangdan/app/ZhangdanApplication;
+    invoke-virtual {v1}, Lcom/zhangdan/app/ZhangdanApplication;->reloadDataOnRestore()V
 
-    new-instance v0, Lcom/zhangdan/app/activities/c;
+    .line 37
+    new-instance v4, Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/c;-><init>(Lcom/zhangdan/app/activities/BaseSlidingActivity;)V
+    invoke-direct {v4, p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;-><init>(Lcom/zhangdan/app/activities/BaseSlidingActivity;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->c:Lcom/zhangdan/app/activities/c;
+    iput-object v4, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;
 
-    new-instance v0, Landroid/content/IntentFilter;
+    .line 38
+    new-instance v2, Landroid/content/IntentFilter;
 
-    invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
+    invoke-direct {v2}, Landroid/content/IntentFilter;-><init>()V
 
-    const-string v1, "com.zhangdan.app.log_off"
+    .line 39
+    .local v2, filter:Landroid/content/IntentFilter;
+    const-string v4, "com.zhangdan.app.log_off"
 
-    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+    invoke-virtual {v2, v4}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->c:Lcom/zhangdan/app/activities/c;
+    .line 40
+    invoke-static {p0}, Landroid/support/v4/content/LocalBroadcastManager;->getInstance(Landroid/content/Context;)Landroid/support/v4/content/LocalBroadcastManager;
 
-    invoke-virtual {p0, v1, v0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    move-result-object v4
 
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->c()Lcom/slidingmenu/lib/SlidingMenu;
+    iget-object v5, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;
 
-    move-result-object v0
+    invoke-virtual {v4, v5, v2}, Landroid/support/v4/content/LocalBroadcastManager;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)V
 
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/SlidingMenu;->j()V
+    .line 42
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->getSlidingMenu()Lcom/slidingmenu/lib/SlidingMenu;
 
-    const v1, 0x7f020345
+    move-result-object v3
 
-    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->b(I)V
+    .line 43
+    .local v3, slidingMenu:Lcom/slidingmenu/lib/SlidingMenu;
+    const v4, 0x7f0a0020
 
-    invoke-virtual {v0}, Lcom/slidingmenu/lib/SlidingMenu;->i()V
+    invoke-virtual {v3, v4}, Lcom/slidingmenu/lib/SlidingMenu;->setShadowWidthRes(I)V
 
-    const v1, 0x3eb33333
+    .line 44
+    const v4, 0x7f020349
 
-    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->a(F)V
+    invoke-virtual {v3, v4}, Lcom/slidingmenu/lib/SlidingMenu;->setShadowDrawable(I)V
 
-    const/4 v1, 0x1
+    .line 45
+    const v4, 0x7f0a001f
 
-    invoke-virtual {v0, v1}, Lcom/slidingmenu/lib/SlidingMenu;->a(I)V
+    invoke-virtual {v3, v4}, Lcom/slidingmenu/lib/SlidingMenu;->setBehindOffsetRes(I)V
 
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->f()V
+    .line 46
+    const v4, 0x3eb33333
 
+    invoke-virtual {v3, v4}, Lcom/slidingmenu/lib/SlidingMenu;->setFadeDegree(F)V
+
+    .line 47
+    const/4 v4, 0x1
+
+    invoke-virtual {v3, v4}, Lcom/slidingmenu/lib/SlidingMenu;->setTouchModeAbove(I)V
+
+    .line 49
+    const/4 v4, 0x0
+
+    invoke-virtual {p0, v4}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->setSlidingActionBarEnabled(Z)V
+
+    .line 50
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->getSupportActionBar()Lcom/actionbarsherlock/app/ActionBar;
 
     move-result-object v0
 
-    const/16 v1, 0x10
+    .line 51
+    .local v0, actionBar:Lcom/actionbarsherlock/app/ActionBar;
+    const/16 v4, 0x10
 
-    invoke-virtual {v0, v1}, Lcom/actionbarsherlock/app/ActionBar;->setDisplayOptions(I)V
+    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/app/ActionBar;->setDisplayOptions(I)V
 
+    .line 52
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v1
+    move-result-object v4
 
-    const v2, 0x7f02038b
+    const v5, 0x7f02038f
 
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v1
+    move-result-object v4
 
-    invoke-virtual {v0, v1}, Lcom/actionbarsherlock/app/ActionBar;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/app/ActionBar;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    const v1, 0x7f030055
+    .line 53
+    const v4, 0x7f03005a
 
-    invoke-virtual {v0, v1}, Lcom/actionbarsherlock/app/ActionBar;->setCustomView(I)V
+    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/app/ActionBar;->setCustomView(I)V
 
+    .line 54
     return-void
 .end method
 
 .method protected onDestroy()V
-    .locals 1
+    .locals 2
 
+    .prologue
+    .line 119
     invoke-super {p0}, Lcom/slidingmenu/lib/app/SlidingFragmentActivity;->onDestroy()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->c:Lcom/zhangdan/app/activities/c;
+    .line 120
+    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->c:Lcom/zhangdan/app/activities/c;
+    .line 121
+    invoke-static {p0}, Landroid/support/v4/content/LocalBroadcastManager;->getInstance(Landroid/content/Context;)Landroid/support/v4/content/LocalBroadcastManager;
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+    move-result-object v0
 
+    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mLogoffBoradcastReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$LogoffBroadcastReceiver;
+
+    invoke-virtual {v0, v1}, Landroid/support/v4/content/LocalBroadcastManager;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+
+    .line 123
     :cond_0
     return-void
 .end method
@@ -137,145 +202,215 @@
 .method protected onPause()V
     .locals 0
 
+    .prologue
+    .line 95
     invoke-super {p0}, Lcom/slidingmenu/lib/app/SlidingFragmentActivity;->onPause()V
 
-    invoke-static {p0}, Lcom/umeng/a/a;->a(Landroid/content/Context;)V
+    .line 96
+    invoke-static {p0}, Lcom/umeng/analytics/MobclickAgent;->onPause(Landroid/content/Context;)V
 
+    .line 97
     return-void
 .end method
 
 .method protected onRestart()V
-    .locals 5
+    .locals 0
 
-    const/4 v4, 0x1
-
+    .prologue
+    .line 71
     invoke-super {p0}, Lcom/slidingmenu/lib/app/SlidingFragmentActivity;->onRestart()V
 
-    iget-boolean v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->a:Z
+    .line 72
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->onRestartFromBackground()V
 
-    if-nez v0, :cond_0
+    .line 73
+    return-void
+.end method
 
-    iput-boolean v4, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->a:Z
+.method protected onRestartFromBackground()V
+    .locals 9
 
+    .prologue
+    const/4 v8, 0x1
+
+    .line 76
+    iget-boolean v4, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mIsActive:Z
+
+    if-nez v4, :cond_0
+
+    .line 78
+    iput-boolean v8, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mIsActive:Z
+
+    .line 79
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v0
+    move-result-wide v1
 
-    sget-wide v2, Lcom/zhangdan/app/ZhangdanApplication;->a:J
+    .line 80
+    .local v1, now:J
+    sget-wide v4, Lcom/zhangdan/app/ZhangdanApplication;->RUN_TO_BACKGROUND_TIME:J
 
-    sub-long/2addr v0, v2
+    sub-long v4, v1, v4
 
-    const-wide/16 v2, 0x3a98
+    const-wide/16 v6, 0x3a98
 
-    cmp-long v0, v0, v2
+    cmp-long v4, v4, v6
 
-    if-ltz v0, :cond_0
+    if-gez v4, :cond_1
 
-    invoke-static {p0}, Lcom/zhangdan/app/data/a/b;->e(Landroid/content/Context;)Ljava/lang/String;
+    .line 91
+    .end local v1           #now:J
+    :cond_0
+    :goto_0
+    return-void
 
-    move-result-object v0
+    .line 82
+    .restart local v1       #now:J
+    :cond_1
+    invoke-static {p0}, Lcom/zhangdan/app/data/sharedprefs/SharedPreferMgr;->getLocalPwd(Landroid/content/Context;)Ljava/lang/String;
 
-    invoke-static {v0}, Lcom/zhangdan/app/h/d;->a(Ljava/lang/String;)Z
+    move-result-object v3
 
-    move-result v0
+    .line 83
+    .local v3, pwd:Ljava/lang/String;
+    invoke-static {v3}, Lcom/zhangdan/app/util/CommonMethod;->isEmpty(Ljava/lang/String;)Z
 
-    if-nez v0, :cond_0
+    move-result v4
 
+    if-nez v4, :cond_0
+
+    .line 84
     new-instance v0, Landroid/content/Intent;
 
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    const-class v1, Lcom/zhangdan/app/activities/setting/LockActivity;
+    .line 85
+    .local v0, intent:Landroid/content/Intent;
+    const-class v4, Lcom/zhangdan/app/activities/setting/LockActivity;
 
-    invoke-virtual {v0, p0, v1}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
+    invoke-virtual {v0, p0, v4}, Landroid/content/Intent;->setClass(Landroid/content/Context;Ljava/lang/Class;)Landroid/content/Intent;
 
-    const-string v1, "set_pwd"
+    .line 86
+    const-string v4, "set_pwd"
 
-    invoke-virtual {v0, v1, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
+    invoke-virtual {v0, v4, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
+    .line 87
     invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->startActivity(Landroid/content/Intent;)V
 
-    const v0, 0x7f040003
+    .line 88
+    const v4, 0x7f040003
 
-    const v1, 0x7f040005
+    const v5, 0x7f040005
 
-    invoke-virtual {p0, v0, v1}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->overridePendingTransition(II)V
+    invoke-virtual {p0, v4, v5}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->overridePendingTransition(II)V
 
-    :cond_0
-    return-void
+    goto :goto_0
 .end method
 
 .method protected onResume()V
     .locals 2
 
+    .prologue
+    .line 58
     invoke-super {p0}, Lcom/slidingmenu/lib/app/SlidingFragmentActivity;->onResume()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->d:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+    .line 59
+    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
 
-    if-nez v0, :cond_0
+    if-nez v1, :cond_0
 
-    new-instance v0, Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+    .line 60
+    new-instance v1, Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;-><init>(Lcom/zhangdan/app/activities/BaseSlidingActivity;)V
+    invoke-direct {v1, p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;-><init>(Lcom/zhangdan/app/activities/BaseSlidingActivity;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->d:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+    iput-object v1, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
 
+    .line 61
     new-instance v0, Landroid/content/IntentFilter;
 
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
+    .line 62
+    .local v0, screenfilter:Landroid/content/IntentFilter;
     const-string v1, "android.intent.action.SCREEN_OFF"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
+    .line 63
     const-string v1, "android.intent.action.SCREEN_ON"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->d:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+    .line 64
+    iget-object v1, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
 
     invoke-virtual {p0, v1, v0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
+    .line 66
+    .end local v0           #screenfilter:Landroid/content/IntentFilter;
     :cond_0
-    invoke-static {p0}, Lcom/umeng/a/a;->b(Landroid/content/Context;)V
+    invoke-static {p0}, Lcom/umeng/analytics/MobclickAgent;->onResume(Landroid/content/Context;)V
 
+    .line 67
     return-void
 .end method
 
-.method protected onStop()V
+.method protected onRunToBackground()V
     .locals 2
 
-    invoke-super {p0}, Lcom/slidingmenu/lib/app/SlidingFragmentActivity;->onStop()V
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->d:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->d:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
-
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->d:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
-
-    :cond_0
-    invoke-static {p0}, Lcom/zhangdan/app/h/d;->f(Landroid/content/Context;)Z
+    .prologue
+    .line 110
+    invoke-static {p0}, Lcom/zhangdan/app/util/CommonMethod;->isAppOnForeground(Landroid/content/Context;)Z
 
     move-result v0
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_0
 
+    .line 112
     const/4 v0, 0x0
 
-    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->a:Z
+    iput-boolean v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mIsActive:Z
 
+    .line 113
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
 
-    sput-wide v0, Lcom/zhangdan/app/ZhangdanApplication;->a:J
+    sput-wide v0, Lcom/zhangdan/app/ZhangdanApplication;->RUN_TO_BACKGROUND_TIME:J
 
-    :cond_1
+    .line 115
+    :cond_0
+    return-void
+.end method
+
+.method protected onStop()V
+    .locals 1
+
+    .prologue
+    .line 101
+    invoke-super {p0}, Lcom/slidingmenu/lib/app/SlidingFragmentActivity;->onStop()V
+
+    .line 102
+    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+
+    if-eqz v0, :cond_0
+
+    .line 103
+    iget-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+
+    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+
+    .line 104
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/zhangdan/app/activities/BaseSlidingActivity;->mScreenActionReceiver:Lcom/zhangdan/app/activities/BaseSlidingActivity$ScreenActionReceiver;
+
+    .line 106
+    :cond_0
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/BaseSlidingActivity;->onRunToBackground()V
+
+    .line 107
     return-void
 .end method

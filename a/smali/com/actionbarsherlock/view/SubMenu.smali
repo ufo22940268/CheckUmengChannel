@@ -1,5 +1,6 @@
 .class public interface abstract Lcom/actionbarsherlock/view/SubMenu;
 .super Ljava/lang/Object;
+.source "SubMenu.java"
 
 # interfaces
 .implements Lcom/actionbarsherlock/view/Menu;

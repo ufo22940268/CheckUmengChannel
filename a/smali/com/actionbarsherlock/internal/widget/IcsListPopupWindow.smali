@@ -1,5 +1,19 @@
 .class public Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;
 .super Ljava/lang/Object;
+.source "IcsListPopupWindow.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;,
+        Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;,
+        Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;,
+        Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;,
+        Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupDataSetObserver;,
+        Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    }
+.end annotation
 
 
 # static fields
@@ -65,227 +79,249 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 2
+    .parameter "context"
 
+    .prologue
+    .line 79
     const/4 v0, 0x0
 
     sget v1, Lcom/actionbarsherlock/R$attr;->listPopupWindowStyle:I
 
     invoke-direct {p0, p1, v0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
+    .line 80
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
     .locals 2
+    .parameter "context"
+    .parameter "attrs"
+    .parameter "defStyleAttr"
 
+    .prologue
     const/4 v0, -0x2
 
     const/4 v1, 0x0
 
+    .line 82
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 43
     iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
+    .line 44
     iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
+    .line 49
     const v0, 0x7fffffff
 
     iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mListItemExpandMaximum:I
 
+    .line 52
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptPosition:I
 
+    .line 64
     new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;)V
+    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mResizePopupRunnable:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
 
+    .line 65
     new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;)V
+    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTouchInterceptor:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;
 
+    .line 66
     new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;)V
+    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mScrollListener:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;
 
+    .line 67
     new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;)V
+    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHideSelector:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;
 
+    .line 69
     new-instance v0, Landroid/os/Handler;
 
     invoke-direct {v0}, Landroid/os/Handler;-><init>()V
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHandler:Landroid/os/Handler;
 
+    .line 71
     new-instance v0, Landroid/graphics/Rect;
 
     invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
 
+    .line 83
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mContext:Landroid/content/Context;
 
+    .line 84
     new-instance v0, Landroid/widget/PopupWindow;
 
     invoke-direct {v0, p1, p2, p3}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
+    .line 85
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     const/4 v1, 0x1
 
     invoke-virtual {v0, v1}, Landroid/widget/PopupWindow;->setInputMethodMode(I)V
 
+    .line 86
     return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
-    .locals 2
+    .locals 3
+    .parameter "context"
+    .parameter "attrs"
+    .parameter "defStyleAttr"
+    .parameter "defStyleRes"
 
-    const/4 v0, -0x2
+    .prologue
+    const/4 v1, -0x2
 
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
+    .line 88
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
+    .line 43
+    iput v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
-    iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
+    .line 44
+    iput v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
-    const v0, 0x7fffffff
+    .line 49
+    const v1, 0x7fffffff
 
-    iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mListItemExpandMaximum:I
+    iput v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mListItemExpandMaximum:I
 
-    const/4 v0, 0x0
+    .line 52
+    const/4 v1, 0x0
 
-    iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptPosition:I
+    iput v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptPosition:I
 
-    new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
+    .line 64
+    new-instance v1, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;)V
+    invoke-direct {v1, p0, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
-    iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mResizePopupRunnable:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
+    iput-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mResizePopupRunnable:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
 
-    new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;
+    .line 65
+    new-instance v1, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;)V
+    invoke-direct {v1, p0, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
-    iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTouchInterceptor:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;
+    iput-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTouchInterceptor:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;
 
-    new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;
+    .line 66
+    new-instance v1, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;)V
+    invoke-direct {v1, p0, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
-    iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mScrollListener:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;
+    iput-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mScrollListener:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;
 
-    new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;
+    .line 67
+    new-instance v1, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;)V
+    invoke-direct {v1, p0, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
-    iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHideSelector:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;
+    iput-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHideSelector:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;
 
-    new-instance v0, Landroid/os/Handler;
+    .line 69
+    new-instance v1, Landroid/os/Handler;
 
-    invoke-direct {v0}, Landroid/os/Handler;-><init>()V
+    invoke-direct {v1}, Landroid/os/Handler;-><init>()V
 
-    iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHandler:Landroid/os/Handler;
+    iput-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHandler:Landroid/os/Handler;
 
-    new-instance v0, Landroid/graphics/Rect;
+    .line 71
+    new-instance v1, Landroid/graphics/Rect;
 
-    invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
+    invoke-direct {v1}, Landroid/graphics/Rect;-><init>()V
 
-    iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
+    iput-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
 
+    .line 89
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mContext:Landroid/content/Context;
 
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+    .line 90
+    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    const/16 v1, 0xb
+    const/16 v2, 0xb
 
-    if-ge v0, v1, :cond_0
+    if-ge v1, v2, :cond_0
 
+    .line 91
     new-instance v0, Landroid/view/ContextThemeWrapper;
 
     invoke-direct {v0, p1, p4}, Landroid/view/ContextThemeWrapper;-><init>(Landroid/content/Context;I)V
 
+    .line 92
+    .local v0, wrapped:Landroid/content/Context;
     new-instance v1, Landroid/widget/PopupWindow;
 
     invoke-direct {v1, v0, p2, p3}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     iput-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
+    .line 96
+    .end local v0           #wrapped:Landroid/content/Context;
     :goto_0
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    const/4 v1, 0x1
+    const/4 v2, 0x1
 
-    invoke-virtual {v0, v1}, Landroid/widget/PopupWindow;->setInputMethodMode(I)V
+    invoke-virtual {v1, v2}, Landroid/widget/PopupWindow;->setInputMethodMode(I)V
 
+    .line 97
     return-void
 
+    .line 94
     :cond_0
-    new-instance v0, Landroid/widget/PopupWindow;
+    new-instance v1, Landroid/widget/PopupWindow;
 
-    invoke-direct {v0, p1, p2, p3, p4}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+    invoke-direct {v1, p1, p2, p3, p4}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;II)V
 
-    iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    iput-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     goto :goto_0
 .end method
 
-.method static synthetic access$0(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+.method static synthetic access$1000(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Landroid/os/Handler;
     .locals 1
+    .parameter "x0"
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)I
-    .locals 1
-
-    iget v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mListItemExpandMaximum:I
-
-    return v0
-.end method
-
-.method static synthetic access$2(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Landroid/widget/PopupWindow;
-    .locals 1
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
-
-    return-object v0
-.end method
-
-.method static synthetic access$3(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Landroid/os/Handler;
-    .locals 1
-
+    .prologue
+    .line 30
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHandler:Landroid/os/Handler;
 
     return-object v0
 .end method
 
-.method static synthetic access$4(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
+.method static synthetic access$1100(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Z
     .locals 1
+    .parameter "x0"
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mResizePopupRunnable:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
-
-    return-object v0
-.end method
-
-.method static synthetic access$5(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Z
-    .locals 1
-
+    .prologue
+    .line 30
     invoke-direct {p0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->isInputMethodNotNeeded()Z
 
     move-result v0
@@ -293,315 +329,548 @@
     return v0
 .end method
 
-.method private buildDropDown()I
-    .locals 8
+.method static synthetic access$600(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    .locals 1
+    .parameter "x0"
 
-    const/4 v3, -0x1
+    .prologue
+    .line 30
+    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    return-object v0
+.end method
+
+.method static synthetic access$700(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)I
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 30
+    iget v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mListItemExpandMaximum:I
+
+    return v0
+.end method
+
+.method static synthetic access$800(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Landroid/widget/PopupWindow;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 30
+    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+
+    return-object v0
+.end method
+
+.method static synthetic access$900(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 30
+    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mResizePopupRunnable:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
+
+    return-object v0
+.end method
+
+.method private buildDropDown()I
+    .locals 21
+
+    .prologue
+    .line 294
+    const/16 v17, 0x0
+
+    .line 296
+    .local v17, otherHeights:I
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    if-nez v1, :cond_6
+
+    .line 297
+    move-object/from16 v0, p0
+
+    iget-object v8, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mContext:Landroid/content/Context;
+
+    .line 299
+    .local v8, context:Landroid/content/Context;
+    new-instance v2, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    move-object/from16 v0, p0
+
+    iget-boolean v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mModal:Z
+
+    if-nez v1, :cond_5
+
+    const/4 v1, 0x1
+
+    :goto_0
+    invoke-direct {v2, v8, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;-><init>(Landroid/content/Context;Z)V
+
+    move-object/from16 v0, p0
+
+    iput-object v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    .line 300
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownListHighlight:Landroid/graphics/drawable/Drawable;
+
+    if-eqz v1, :cond_0
+
+    .line 301
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownListHighlight:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setSelector(Landroid/graphics/drawable/Drawable;)V
+
+    .line 303
+    :cond_0
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
+
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setAdapter(Landroid/widget/ListAdapter;)V
+
+    .line 304
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemClickListener:Landroid/widget/AdapterView$OnItemClickListener;
+
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
+
+    .line 305
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemLongClickListener:Landroid/widget/AdapterView$OnItemLongClickListener;
+
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnItemLongClickListener(Landroid/widget/AdapterView$OnItemLongClickListener;)V
+
+    .line 306
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
     const/4 v2, 0x1
 
-    const/4 v1, 0x0
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setFocusable(Z)V
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    .line 307
+    move-object/from16 v0, p0
 
-    if-nez v0, :cond_4
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mContext:Landroid/content/Context;
+    const/4 v2, 0x1
 
-    new-instance v4, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setFocusableInTouchMode(Z)V
 
-    iget-boolean v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mModal:Z
+    .line 308
+    move-object/from16 v0, p0
 
-    if-eqz v0, :cond_3
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    move v0, v1
+    new-instance v2, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;
 
-    :goto_0
-    invoke-direct {v4, v5, v0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;-><init>(Landroid/content/Context;Z)V
+    move-object/from16 v0, p0
 
-    iput-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    invoke-direct {v2, v0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)V
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownListHighlight:Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnItemSelectedListener(Landroid/widget/AdapterView$OnItemSelectedListener;)V
 
-    if-eqz v0, :cond_0
+    .line 324
+    move-object/from16 v0, p0
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownListHighlight:Landroid/graphics/drawable/Drawable;
+    move-object/from16 v0, p0
 
-    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setSelector(Landroid/graphics/drawable/Drawable;)V
+    iget-object v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mScrollListener:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;
 
-    :cond_0
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnScrollListener(Landroid/widget/AbsListView$OnScrollListener;)V
 
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
+    .line 326
+    move-object/from16 v0, p0
 
-    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setAdapter(Landroid/widget/ListAdapter;)V
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemSelectedListener:Landroid/widget/AdapterView$OnItemSelectedListener;
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    if-eqz v1, :cond_1
 
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemClickListener:Landroid/widget/AdapterView$OnItemClickListener;
+    .line 327
+    move-object/from16 v0, p0
 
-    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    move-object/from16 v0, p0
 
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemLongClickListener:Landroid/widget/AdapterView$OnItemLongClickListener;
+    iget-object v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemSelectedListener:Landroid/widget/AdapterView$OnItemSelectedListener;
 
-    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnItemLongClickListener(Landroid/widget/AdapterView$OnItemLongClickListener;)V
+    invoke-virtual {v1, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnItemSelectedListener(Landroid/widget/AdapterView$OnItemSelectedListener;)V
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    invoke-virtual {v0, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setFocusable(Z)V
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    invoke-virtual {v0, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setFocusableInTouchMode(Z)V
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    new-instance v4, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;
-
-    invoke-direct {v4, p0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;)V
-
-    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnItemSelectedListener(Landroid/widget/AdapterView$OnItemSelectedListener;)V
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mScrollListener:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupScrollListener;
-
-    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnScrollListener(Landroid/widget/AbsListView$OnScrollListener;)V
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemSelectedListener:Landroid/widget/AdapterView$OnItemSelectedListener;
-
-    if-eqz v0, :cond_1
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemSelectedListener:Landroid/widget/AdapterView$OnItemSelectedListener;
-
-    invoke-virtual {v0, v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setOnItemSelectedListener(Landroid/widget/AdapterView$OnItemSelectedListener;)V
-
+    .line 330
     :cond_1
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    move-object/from16 v0, p0
 
-    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
+    iget-object v9, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    if-eqz v6, :cond_a
+    .line 332
+    .local v9, dropDownView:Landroid/view/ViewGroup;
+    move-object/from16 v0, p0
 
-    new-instance v4, Landroid/widget/LinearLayout;
+    iget-object v13, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
 
-    invoke-direct {v4, v5}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
+    .line 333
+    .local v13, hintView:Landroid/view/View;
+    if-eqz v13, :cond_2
 
-    invoke-virtual {v4, v2}, Landroid/widget/LinearLayout;->setOrientation(I)V
+    .line 336
+    new-instance v11, Landroid/widget/LinearLayout;
 
-    new-instance v5, Landroid/widget/LinearLayout$LayoutParams;
+    invoke-direct {v11, v8}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    const/high16 v7, 0x3f80
+    .line 337
+    .local v11, hintContainer:Landroid/widget/LinearLayout;
+    const/4 v1, 0x1
 
-    invoke-direct {v5, v3, v1, v7}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
+    invoke-virtual {v11, v1}, Landroid/widget/LinearLayout;->setOrientation(I)V
 
-    iget v7, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptPosition:I
+    .line 339
+    new-instance v12, Landroid/widget/LinearLayout$LayoutParams;
 
-    packed-switch v7, :pswitch_data_0
+    const/4 v1, -0x1
 
+    const/4 v2, 0x0
+
+    const/high16 v3, 0x3f80
+
+    invoke-direct {v12, v1, v2, v3}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
+
+    .line 343
+    .local v12, hintParams:Landroid/widget/LinearLayout$LayoutParams;
+    move-object/from16 v0, p0
+
+    iget v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptPosition:I
+
+    packed-switch v1, :pswitch_data_0
+
+    .line 360
     :goto_1
-    iget v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
+    move-object/from16 v0, p0
 
-    const/high16 v5, -0x8000
+    iget v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
-    invoke-static {v0, v5}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    const/high16 v2, -0x8000
 
-    move-result v0
+    invoke-static {v1, v2}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
-    invoke-virtual {v6, v0, v1}, Landroid/view/View;->measure(II)V
+    move-result v20
 
-    invoke-virtual {v6}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+    .line 361
+    .local v20, widthSpec:I
+    const/4 v10, 0x0
 
-    move-result-object v0
+    .line 362
+    .local v10, heightSpec:I
+    move/from16 v0, v20
 
-    check-cast v0, Landroid/widget/LinearLayout$LayoutParams;
+    invoke-virtual {v13, v0, v10}, Landroid/view/View;->measure(II)V
 
-    invoke-virtual {v6}, Landroid/view/View;->getMeasuredHeight()I
+    .line 364
+    invoke-virtual {v13}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
-    move-result v5
+    move-result-object v12
 
-    iget v6, v0, Landroid/widget/LinearLayout$LayoutParams;->topMargin:I
+    .end local v12           #hintParams:Landroid/widget/LinearLayout$LayoutParams;
+    check-cast v12, Landroid/widget/LinearLayout$LayoutParams;
 
-    add-int/2addr v5, v6
+    .line 365
+    .restart local v12       #hintParams:Landroid/widget/LinearLayout$LayoutParams;
+    invoke-virtual {v13}, Landroid/view/View;->getMeasuredHeight()I
 
-    iget v0, v0, Landroid/widget/LinearLayout$LayoutParams;->bottomMargin:I
+    move-result v1
 
-    add-int/2addr v0, v5
+    iget v2, v12, Landroid/widget/LinearLayout$LayoutParams;->topMargin:I
 
-    :goto_2
-    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    add-int/2addr v1, v2
 
-    invoke-virtual {v5, v4}, Landroid/widget/PopupWindow;->setContentView(Landroid/view/View;)V
+    iget v2, v12, Landroid/widget/LinearLayout$LayoutParams;->bottomMargin:I
 
-    move v6, v0
+    add-int v17, v1, v2
 
-    :goto_3
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    .line 368
+    move-object v9, v11
 
-    invoke-virtual {v0}, Landroid/widget/PopupWindow;->getBackground()Landroid/graphics/drawable/Drawable;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_8
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
-
-    invoke-virtual {v0, v4}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
-
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
-
-    iget v0, v0, Landroid/graphics/Rect;->top:I
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
-
-    iget v4, v4, Landroid/graphics/Rect;->bottom:I
-
-    add-int/2addr v0, v4
-
-    iget-boolean v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffsetSet:Z
-
-    if-nez v4, :cond_2
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
-
-    iget v4, v4, Landroid/graphics/Rect;->top:I
-
-    neg-int v4, v4
-
-    iput v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffset:I
-
+    .line 371
+    .end local v10           #heightSpec:I
+    .end local v11           #hintContainer:Landroid/widget/LinearLayout;
+    .end local v12           #hintParams:Landroid/widget/LinearLayout$LayoutParams;
+    .end local v20           #widthSpec:I
     :cond_2
-    move v7, v0
+    move-object/from16 v0, p0
 
-    :goto_4
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v0}, Landroid/widget/PopupWindow;->getInputMethodMode()I
+    invoke-virtual {v1, v9}, Landroid/widget/PopupWindow;->setContentView(Landroid/view/View;)V
 
-    move-result v0
-
-    const/4 v4, 0x2
-
-    if-ne v0, v4, :cond_5
-
-    :goto_5
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
-
-    iget v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffset:I
-
-    invoke-direct {p0, v0, v4, v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->getMaxAvailableHeight(Landroid/view/View;IZ)I
-
-    move-result v0
-
-    iget v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
-
-    if-ne v2, v3, :cond_6
-
-    add-int/2addr v0, v7
-
-    :goto_6
-    return v0
-
+    .line 385
+    .end local v8           #context:Landroid/content/Context;
+    .end local v13           #hintView:Landroid/view/View;
     :cond_3
-    move v0, v2
+    :goto_2
+    const/16 v18, 0x0
+
+    .line 386
+    .local v18, padding:I
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+
+    invoke-virtual {v1}, Landroid/widget/PopupWindow;->getBackground()Landroid/graphics/drawable/Drawable;
+
+    move-result-object v7
+
+    .line 387
+    .local v7, background:Landroid/graphics/drawable/Drawable;
+    if-eqz v7, :cond_4
+
+    .line 388
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
+
+    invoke-virtual {v7, v1}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
+
+    .line 389
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
+
+    iget v1, v1, Landroid/graphics/Rect;->top:I
+
+    move-object/from16 v0, p0
+
+    iget-object v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
+
+    iget v2, v2, Landroid/graphics/Rect;->bottom:I
+
+    add-int v18, v1, v2
+
+    .line 393
+    move-object/from16 v0, p0
+
+    iget-boolean v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffsetSet:Z
+
+    if-nez v1, :cond_4
+
+    .line 394
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
+
+    iget v1, v1, Landroid/graphics/Rect;->top:I
+
+    neg-int v1, v1
+
+    move-object/from16 v0, p0
+
+    iput v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffset:I
+
+    .line 399
+    :cond_4
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+
+    invoke-virtual {v1}, Landroid/widget/PopupWindow;->getInputMethodMode()I
+
+    move-result v1
+
+    const/4 v2, 0x2
+
+    if-ne v1, v2, :cond_7
+
+    const/4 v14, 0x1
+
+    .line 401
+    .local v14, ignoreBottomDecorations:Z
+    :goto_3
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
+
+    move-object/from16 v0, p0
+
+    iget v2, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffset:I
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v0, v1, v2, v14}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->getMaxAvailableHeight(Landroid/view/View;IZ)I
+
+    move-result v16
+
+    .line 404
+    .local v16, maxHeight:I
+    move-object/from16 v0, p0
+
+    iget v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
+
+    const/4 v2, -0x1
+
+    if-ne v1, v2, :cond_8
+
+    .line 405
+    add-int v1, v16, v18
+
+    .line 414
+    :goto_4
+    return v1
+
+    .line 299
+    .end local v7           #background:Landroid/graphics/drawable/Drawable;
+    .end local v9           #dropDownView:Landroid/view/ViewGroup;
+    .end local v14           #ignoreBottomDecorations:Z
+    .end local v16           #maxHeight:I
+    .end local v18           #padding:I
+    .restart local v8       #context:Landroid/content/Context;
+    :cond_5
+    const/4 v1, 0x0
 
     goto/16 :goto_0
 
+    .line 345
+    .restart local v9       #dropDownView:Landroid/view/ViewGroup;
+    .restart local v11       #hintContainer:Landroid/widget/LinearLayout;
+    .restart local v12       #hintParams:Landroid/widget/LinearLayout$LayoutParams;
+    .restart local v13       #hintView:Landroid/view/View;
     :pswitch_0
-    invoke-virtual {v4, v0, v5}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    invoke-virtual {v11, v9, v12}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    invoke-virtual {v4, v6}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
+    .line 346
+    invoke-virtual {v11, v13}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    goto :goto_1
+    goto/16 :goto_1
 
+    .line 350
     :pswitch_1
-    invoke-virtual {v4, v6}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
+    invoke-virtual {v11, v13}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;)V
 
-    invoke-virtual {v4, v0, v5}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    .line 351
+    invoke-virtual {v11, v9, v12}, Landroid/widget/LinearLayout;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    goto :goto_1
+    goto/16 :goto_1
 
-    :cond_4
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
-
-    invoke-virtual {v0}, Landroid/widget/PopupWindow;->getContentView()Landroid/view/View;
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
-
-    if-eqz v4, :cond_9
-
-    invoke-virtual {v4}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/LinearLayout$LayoutParams;
-
-    invoke-virtual {v4}, Landroid/view/View;->getMeasuredHeight()I
-
-    move-result v4
-
-    iget v5, v0, Landroid/widget/LinearLayout$LayoutParams;->topMargin:I
-
-    add-int/2addr v4, v5
-
-    iget v0, v0, Landroid/widget/LinearLayout$LayoutParams;->bottomMargin:I
-
-    add-int/2addr v0, v4
-
-    move v6, v0
-
-    goto :goto_3
-
-    :cond_5
-    move v2, v1
-
-    goto :goto_5
-
+    .line 373
+    .end local v8           #context:Landroid/content/Context;
+    .end local v9           #dropDownView:Landroid/view/ViewGroup;
+    .end local v11           #hintContainer:Landroid/widget/LinearLayout;
+    .end local v12           #hintParams:Landroid/widget/LinearLayout$LayoutParams;
+    .end local v13           #hintView:Landroid/view/View;
     :cond_6
-    sub-int v4, v0, v6
+    move-object/from16 v0, p0
 
-    move-object v0, p0
+    iget-object v1, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    move v2, v1
+    invoke-virtual {v1}, Landroid/widget/PopupWindow;->getContentView()Landroid/view/View;
 
-    move v5, v3
+    move-result-object v9
 
-    invoke-direct/range {v0 .. v5}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->measureHeightOfChildren(IIIII)I
+    check-cast v9, Landroid/view/ViewGroup;
 
-    move-result v0
+    .line 374
+    .restart local v9       #dropDownView:Landroid/view/ViewGroup;
+    move-object/from16 v0, p0
 
-    if-lez v0, :cond_7
+    iget-object v0, v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
 
-    add-int/2addr v6, v7
+    move-object/from16 v19, v0
 
-    :cond_7
-    add-int/2addr v0, v6
+    .line 375
+    .local v19, view:Landroid/view/View;
+    if-eqz v19, :cond_3
 
-    goto :goto_6
+    .line 376
+    invoke-virtual/range {v19 .. v19}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
-    :cond_8
-    move v7, v1
+    move-result-object v12
 
-    goto :goto_4
+    check-cast v12, Landroid/widget/LinearLayout$LayoutParams;
 
-    :cond_9
-    move v6, v1
+    .line 378
+    .restart local v12       #hintParams:Landroid/widget/LinearLayout$LayoutParams;
+    invoke-virtual/range {v19 .. v19}, Landroid/view/View;->getMeasuredHeight()I
 
-    goto :goto_3
+    move-result v1
 
-    :cond_a
-    move-object v4, v0
+    iget v2, v12, Landroid/widget/LinearLayout$LayoutParams;->topMargin:I
 
-    move v0, v1
+    add-int/2addr v1, v2
+
+    iget v2, v12, Landroid/widget/LinearLayout$LayoutParams;->bottomMargin:I
+
+    add-int v17, v1, v2
 
     goto/16 :goto_2
 
+    .line 399
+    .end local v12           #hintParams:Landroid/widget/LinearLayout$LayoutParams;
+    .end local v19           #view:Landroid/view/View;
+    .restart local v7       #background:Landroid/graphics/drawable/Drawable;
+    .restart local v18       #padding:I
+    :cond_7
+    const/4 v14, 0x0
+
+    goto :goto_3
+
+    .line 408
+    .restart local v14       #ignoreBottomDecorations:Z
+    .restart local v16       #maxHeight:I
+    :cond_8
+    const/4 v2, 0x0
+
+    const/4 v3, 0x0
+
+    const/4 v4, -0x1
+
+    sub-int v5, v16, v17
+
+    const/4 v6, -0x1
+
+    move-object/from16 v1, p0
+
+    invoke-direct/range {v1 .. v6}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->measureHeightOfChildren(IIIII)I
+
+    move-result v15
+
+    .line 412
+    .local v15, listContent:I
+    if-lez v15, :cond_9
+
+    add-int v17, v17, v18
+
+    .line 414
+    :cond_9
+    add-int v1, v15, v17
+
+    goto :goto_4
+
+    .line 343
     nop
 
     :pswitch_data_0
@@ -612,102 +881,131 @@
 .end method
 
 .method private getMaxAvailableHeight(Landroid/view/View;IZ)I
-    .locals 6
+    .locals 10
+    .parameter "anchor"
+    .parameter "yOffset"
+    .parameter "ignoreBottomDecorations"
 
-    const/4 v5, 0x1
+    .prologue
+    const/4 v9, 0x1
 
-    new-instance v1, Landroid/graphics/Rect;
+    .line 418
+    new-instance v2, Landroid/graphics/Rect;
 
-    invoke-direct {v1}, Landroid/graphics/Rect;-><init>()V
+    invoke-direct {v2}, Landroid/graphics/Rect;-><init>()V
 
-    invoke-virtual {p1, v1}, Landroid/view/View;->getWindowVisibleDisplayFrame(Landroid/graphics/Rect;)V
+    .line 419
+    .local v2, displayFrame:Landroid/graphics/Rect;
+    invoke-virtual {p1, v2}, Landroid/view/View;->getWindowVisibleDisplayFrame(Landroid/graphics/Rect;)V
 
-    const/4 v0, 0x2
+    .line 421
+    const/4 v7, 0x2
 
-    new-array v2, v0, [I
+    new-array v0, v7, [I
 
-    invoke-virtual {p1, v2}, Landroid/view/View;->getLocationOnScreen([I)V
+    .line 422
+    .local v0, anchorPos:[I
+    invoke-virtual {p1, v0}, Landroid/view/View;->getLocationOnScreen([I)V
 
-    iget v0, v1, Landroid/graphics/Rect;->bottom:I
+    .line 424
+    iget v1, v2, Landroid/graphics/Rect;->bottom:I
 
+    .line 425
+    .local v1, bottomEdge:I
     if-eqz p3, :cond_0
 
+    .line 426
     invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
 
-    move-result-object v0
+    move-result-object v7
 
-    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v7}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v0
+    move-result-object v5
 
-    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    .line 427
+    .local v5, res:Landroid/content/res/Resources;
+    invoke-virtual {v5}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
 
-    move-result-object v0
+    move-result-object v7
 
-    iget v0, v0, Landroid/util/DisplayMetrics;->heightPixels:I
+    iget v1, v7, Landroid/util/DisplayMetrics;->heightPixels:I
 
+    .line 429
+    .end local v5           #res:Landroid/content/res/Resources;
     :cond_0
-    aget v3, v2, v5
+    aget v7, v0, v9
 
     invoke-virtual {p1}, Landroid/view/View;->getHeight()I
 
-    move-result v4
+    move-result v8
 
-    add-int/2addr v3, v4
+    add-int/2addr v7, v8
 
-    sub-int/2addr v0, v3
+    sub-int v7, v1, v7
 
-    sub-int/2addr v0, p2
+    sub-int v3, v7, p2
 
-    aget v2, v2, v5
+    .line 430
+    .local v3, distanceToBottom:I
+    aget v7, v0, v9
 
-    iget v1, v1, Landroid/graphics/Rect;->top:I
+    iget v8, v2, Landroid/graphics/Rect;->top:I
 
-    sub-int v1, v2, v1
+    sub-int/2addr v7, v8
 
-    add-int/2addr v1, p2
+    add-int v4, v7, p2
 
-    invoke-static {v0, v1}, Ljava/lang/Math;->max(II)I
+    .line 433
+    .local v4, distanceToTop:I
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
 
-    move-result v0
+    move-result v6
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    .line 434
+    .local v6, returnedHeight:I
+    iget-object v7, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v1}, Landroid/widget/PopupWindow;->getBackground()Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v7}, Landroid/widget/PopupWindow;->getBackground()Landroid/graphics/drawable/Drawable;
 
-    move-result-object v1
+    move-result-object v7
 
-    if-eqz v1, :cond_1
+    if-eqz v7, :cond_1
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    .line 435
+    iget-object v7, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v1}, Landroid/widget/PopupWindow;->getBackground()Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v7}, Landroid/widget/PopupWindow;->getBackground()Landroid/graphics/drawable/Drawable;
 
-    move-result-object v1
+    move-result-object v7
 
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
 
-    invoke-virtual {v1, v2}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
+    invoke-virtual {v7, v8}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
+    .line 436
+    iget-object v7, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
 
-    iget v1, v1, Landroid/graphics/Rect;->top:I
+    iget v7, v7, Landroid/graphics/Rect;->top:I
 
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
 
-    iget v2, v2, Landroid/graphics/Rect;->bottom:I
+    iget v8, v8, Landroid/graphics/Rect;->bottom:I
 
-    add-int/2addr v1, v2
+    add-int/2addr v7, v8
 
-    sub-int/2addr v0, v1
+    sub-int/2addr v6, v7
 
+    .line 439
     :cond_1
-    return v0
+    return v6
 .end method
 
 .method private isInputMethodNotNeeded()Z
     .locals 2
 
+    .prologue
+    .line 285
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     invoke-virtual {v0}, Landroid/widget/PopupWindow;->getInputMethodMode()I
@@ -730,237 +1028,295 @@
 .end method
 
 .method private measureHeightOfChildren(IIIII)I
-    .locals 6
+    .locals 9
+    .parameter "widthMeasureSpec"
+    .parameter "startPosition"
+    .parameter "endPosition"
+    .parameter "maxHeight"
+    .parameter "disallowPartialChildPosition"
 
-    const/4 v2, 0x0
+    .prologue
+    .line 445
+    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
 
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
+    .line 446
+    .local v0, adapter:Landroid/widget/ListAdapter;
+    if-nez v0, :cond_1
 
-    if-nez v4, :cond_1
+    .line 447
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    invoke-virtual {v6}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getListPaddingTop()I
 
-    invoke-virtual {v0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getListPaddingTop()I
+    move-result v6
 
-    move-result v0
+    iget-object v7, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    invoke-virtual {v7}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getListPaddingBottom()I
 
-    invoke-virtual {v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getListPaddingBottom()I
+    move-result v7
 
-    move-result v1
+    add-int v4, v6, v7
 
-    add-int v2, v0, v1
-
+    .line 495
     :cond_0
     :goto_0
-    return v2
+    return v4
 
+    .line 451
     :cond_1
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    invoke-virtual {v0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getListPaddingTop()I
+    invoke-virtual {v6}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getListPaddingTop()I
 
-    move-result v0
+    move-result v6
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    iget-object v7, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    invoke-virtual {v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getListPaddingBottom()I
+    invoke-virtual {v7}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getListPaddingBottom()I
 
-    move-result v1
+    move-result v7
 
-    add-int/2addr v0, v1
+    add-int v5, v6, v7
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    .line 452
+    .local v5, returnedHeight:I
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    invoke-virtual {v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getDividerHeight()I
+    invoke-virtual {v6}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getDividerHeight()I
 
-    move-result v1
+    move-result v6
 
-    if-lez v1, :cond_3
+    if-lez v6, :cond_6
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    invoke-virtual {v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getDivider()Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v6}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getDivider()Landroid/graphics/drawable/Drawable;
 
-    move-result-object v1
+    move-result-object v6
 
-    if-eqz v1, :cond_3
+    if-eqz v6, :cond_6
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    invoke-virtual {v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getDividerHeight()I
-
-    move-result v1
-
-    move v3, v1
-
-    :goto_1
-    const/4 v1, -0x1
-
-    if-ne p3, v1, :cond_2
-
-    invoke-interface {v4}, Landroid/widget/ListAdapter;->getCount()I
-
-    move-result v1
-
-    add-int/lit8 p3, v1, -0x1
-
-    :cond_2
-    :goto_2
-    if-le p2, p3, :cond_4
-
-    move v2, v0
-
-    goto :goto_0
-
-    :cond_3
-    move v3, v2
-
-    goto :goto_1
-
-    :cond_4
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
-
-    const/4 v4, 0x0
-
-    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    invoke-interface {v1, p2, v4, v5}, Landroid/widget/ListAdapter;->getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-
-    move-result-object v1
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    invoke-virtual {v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getCacheColorHint()I
-
-    move-result v4
-
-    if-eqz v4, :cond_5
-
-    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    invoke-virtual {v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getCacheColorHint()I
-
-    move-result v4
-
-    invoke-virtual {v1, v4}, Landroid/view/View;->setDrawingCacheBackgroundColor(I)V
-
-    :cond_5
-    invoke-direct {p0, v1, p2, p1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->measureScrapChild(Landroid/view/View;II)V
-
-    if-lez p2, :cond_6
-
-    add-int/2addr v0, v3
-
-    :cond_6
-    invoke-virtual {v1}, Landroid/view/View;->getMeasuredHeight()I
-
-    move-result v1
-
-    add-int/2addr v1, v0
-
-    if-lt v1, p4, :cond_8
-
-    if-ltz p5, :cond_7
-
-    if-le p2, p5, :cond_7
-
-    if-lez v2, :cond_7
-
-    if-ne v1, p4, :cond_0
-
-    :cond_7
-    move v2, p4
-
-    goto :goto_0
-
-    :cond_8
-    if-ltz p5, :cond_9
-
-    if-lt p2, p5, :cond_9
-
-    move v0, v1
-
-    :goto_3
-    add-int/lit8 p2, p2, 0x1
-
-    move v2, v0
-
-    move v0, v1
-
-    goto :goto_2
-
-    :cond_9
-    move v0, v2
-
-    goto :goto_3
-.end method
-
-.method private measureScrapChild(Landroid/view/View;II)V
-    .locals 4
-
-    const/4 v3, 0x0
-
-    invoke-virtual {p1}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/AbsListView$LayoutParams;
-
-    if-nez v0, :cond_0
-
-    new-instance v0, Landroid/widget/AbsListView$LayoutParams;
-
-    const/4 v1, -0x1
-
-    const/4 v2, -0x2
-
-    invoke-direct {v0, v1, v2, v3}, Landroid/widget/AbsListView$LayoutParams;-><init>(III)V
-
-    invoke-virtual {p1, v0}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
-
-    :cond_0
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    invoke-virtual {v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getPaddingLeft()I
-
-    move-result v1
-
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
-
-    invoke-virtual {v2}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getPaddingRight()I
+    invoke-virtual {v6}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getDividerHeight()I
 
     move-result v2
 
-    add-int/2addr v1, v2
+    .line 455
+    .local v2, dividerHeight:I
+    :goto_1
+    const/4 v4, 0x0
 
-    iget v2, v0, Landroid/widget/AbsListView$LayoutParams;->width:I
+    .line 460
+    .local v4, prevHeightWithoutPartialChild:I
+    const/4 v6, -0x1
 
-    invoke-static {p3, v1, v2}, Landroid/view/ViewGroup;->getChildMeasureSpec(III)I
+    if-ne p3, v6, :cond_2
+
+    invoke-interface {v0}, Landroid/widget/ListAdapter;->getCount()I
+
+    move-result v6
+
+    add-int/lit8 p3, v6, -0x1
+
+    .line 462
+    :cond_2
+    move v3, p2
+
+    .local v3, i:I
+    :goto_2
+    if-gt v3, p3, :cond_9
+
+    .line 463
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
+
+    const/4 v7, 0x0
+
+    iget-object v8, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    invoke-interface {v6, v3, v7, v8}, Landroid/widget/ListAdapter;->getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
+
+    move-result-object v1
+
+    .line 464
+    .local v1, child:Landroid/view/View;
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    invoke-virtual {v6}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getCacheColorHint()I
+
+    move-result v6
+
+    if-eqz v6, :cond_3
+
+    .line 465
+    iget-object v6, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    invoke-virtual {v6}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getCacheColorHint()I
+
+    move-result v6
+
+    invoke-virtual {v1, v6}, Landroid/view/View;->setDrawingCacheBackgroundColor(I)V
+
+    .line 468
+    :cond_3
+    invoke-direct {p0, v1, v3, p1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->measureScrapChild(Landroid/view/View;II)V
+
+    .line 470
+    if-lez v3, :cond_4
+
+    .line 472
+    add-int/2addr v5, v2
+
+    .line 475
+    :cond_4
+    invoke-virtual {v1}, Landroid/view/View;->getMeasuredHeight()I
+
+    move-result v6
+
+    add-int/2addr v5, v6
+
+    .line 477
+    if-lt v5, p4, :cond_7
+
+    .line 480
+    if-ltz p5, :cond_5
+
+    if-le v3, p5, :cond_5
+
+    if-lez v4, :cond_5
+
+    if-ne v5, p4, :cond_0
+
+    :cond_5
+    move v4, p4
+
+    goto :goto_0
+
+    .line 452
+    .end local v1           #child:Landroid/view/View;
+    .end local v2           #dividerHeight:I
+    .end local v3           #i:I
+    .end local v4           #prevHeightWithoutPartialChild:I
+    :cond_6
+    const/4 v2, 0x0
+
+    goto :goto_1
+
+    .line 488
+    .restart local v1       #child:Landroid/view/View;
+    .restart local v2       #dividerHeight:I
+    .restart local v3       #i:I
+    .restart local v4       #prevHeightWithoutPartialChild:I
+    :cond_7
+    if-ltz p5, :cond_8
+
+    if-lt v3, p5, :cond_8
+
+    .line 489
+    move v4, v5
+
+    .line 462
+    :cond_8
+    add-int/lit8 v3, v3, 0x1
+
+    goto :goto_2
+
+    .end local v1           #child:Landroid/view/View;
+    :cond_9
+    move v4, v5
+
+    .line 495
+    goto :goto_0
+.end method
+
+.method private measureScrapChild(Landroid/view/View;II)V
+    .locals 7
+    .parameter "child"
+    .parameter "position"
+    .parameter "widthMeasureSpec"
+
+    .prologue
+    const/4 v6, 0x0
+
+    .line 498
+    invoke-virtual {p1}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/widget/AbsListView$LayoutParams;
+
+    .line 499
+    .local v3, p:Landroid/widget/AbsListView$LayoutParams;
+    if-nez v3, :cond_0
+
+    .line 500
+    new-instance v3, Landroid/widget/AbsListView$LayoutParams;
+
+    .end local v3           #p:Landroid/widget/AbsListView$LayoutParams;
+    const/4 v4, -0x1
+
+    const/4 v5, -0x2
+
+    invoke-direct {v3, v4, v5, v6}, Landroid/widget/AbsListView$LayoutParams;-><init>(III)V
+
+    .line 502
+    .restart local v3       #p:Landroid/widget/AbsListView$LayoutParams;
+    invoke-virtual {p1, v3}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 507
+    :cond_0
+    iget-object v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    invoke-virtual {v4}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getPaddingLeft()I
+
+    move-result v4
+
+    iget-object v5, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+
+    invoke-virtual {v5}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->getPaddingRight()I
+
+    move-result v5
+
+    add-int/2addr v4, v5
+
+    iget v5, v3, Landroid/widget/AbsListView$LayoutParams;->width:I
+
+    invoke-static {p3, v4, v5}, Landroid/view/ViewGroup;->getChildMeasureSpec(III)I
 
     move-result v1
 
-    iget v0, v0, Landroid/widget/AbsListView$LayoutParams;->height:I
+    .line 509
+    .local v1, childWidthSpec:I
+    iget v2, v3, Landroid/widget/AbsListView$LayoutParams;->height:I
 
-    if-lez v0, :cond_1
+    .line 511
+    .local v2, lpHeight:I
+    if-lez v2, :cond_1
 
-    const/high16 v2, 0x4000
+    .line 512
+    const/high16 v4, 0x4000
 
-    invoke-static {v0, v2}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    invoke-static {v2, v4}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
     move-result v0
 
+    .line 516
+    .local v0, childHeightSpec:I
     :goto_0
     invoke-virtual {p1, v1, v0}, Landroid/view/View;->measure(II)V
 
+    .line 517
     return-void
 
+    .line 514
+    .end local v0           #childHeightSpec:I
     :cond_1
-    invoke-static {v3, v3}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
+    invoke-static {v6, v6}, Landroid/view/View$MeasureSpec;->makeMeasureSpec(II)I
 
     move-result v0
 
+    .restart local v0       #childHeightSpec:I
     goto :goto_0
 .end method
 
@@ -969,69 +1325,95 @@
 .method public clearListSelection()V
     .locals 2
 
+    .prologue
+    .line 271
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
+    .line 272
+    .local v0, list:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
     if-eqz v0, :cond_0
 
+    .line 274
     const/4 v1, 0x1
 
     #setter for: Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->mListSelectionHidden:Z
-    invoke-static {v0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->access$0(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;Z)V
+    invoke-static {v0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->access$502(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;Z)Z
 
+    .line 276
     invoke-virtual {v0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->requestLayout()V
 
+    .line 278
     :cond_0
     return-void
 .end method
 
 .method public dismiss()V
-    .locals 3
+    .locals 4
 
-    const/4 v2, 0x0
+    .prologue
+    const/4 v3, 0x0
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    .line 249
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v0}, Landroid/widget/PopupWindow;->dismiss()V
+    invoke-virtual {v2}, Landroid/widget/PopupWindow;->dismiss()V
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
+    .line 250
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
 
-    if-eqz v0, :cond_0
+    if-eqz v2, :cond_0
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
+    .line 251
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
 
-    invoke-virtual {v0}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+    invoke-virtual {v2}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
 
-    move-result-object v0
+    move-result-object v1
 
-    instance-of v1, v0, Landroid/view/ViewGroup;
+    .line 252
+    .local v1, parent:Landroid/view/ViewParent;
+    instance-of v2, v1, Landroid/view/ViewGroup;
 
-    if-eqz v1, :cond_0
+    if-eqz v2, :cond_0
 
+    move-object v0, v1
+
+    .line 253
     check-cast v0, Landroid/view/ViewGroup;
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
+    .line 254
+    .local v0, group:Landroid/view/ViewGroup;
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptView:Landroid/view/View;
 
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+    invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
+    .line 257
+    .end local v0           #group:Landroid/view/ViewGroup;
+    .end local v1           #parent:Landroid/view/ViewParent;
     :cond_0
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v0, v2}, Landroid/widget/PopupWindow;->setContentView(Landroid/view/View;)V
+    invoke-virtual {v2, v3}, Landroid/widget/PopupWindow;->setContentView(Landroid/view/View;)V
 
-    iput-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
+    .line 258
+    iput-object v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHandler:Landroid/os/Handler;
+    .line 259
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHandler:Landroid/os/Handler;
 
-    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mResizePopupRunnable:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
+    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mResizePopupRunnable:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ResizePopupRunnable;
 
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    invoke-virtual {v2, v3}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
+    .line 260
     return-void
 .end method
 
 .method public getListView()Landroid/widget/ListView;
     .locals 1
 
+    .prologue
+    .line 289
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
     return-object v0
@@ -1040,6 +1422,8 @@
 .method public isShowing()Z
     .locals 1
 
+    .prologue
+    .line 281
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     invoke-virtual {v0}, Landroid/widget/PopupWindow;->isShowing()Z
@@ -1051,50 +1435,62 @@
 
 .method public setAdapter(Landroid/widget/ListAdapter;)V
     .locals 2
+    .parameter "adapter"
 
+    .prologue
+    .line 100
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mObserver:Landroid/database/DataSetObserver;
 
     if-nez v0, :cond_3
 
+    .line 101
     new-instance v0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupDataSetObserver;
 
     const/4 v1, 0x0
 
-    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupDataSetObserver;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupDataSetObserver;)V
+    invoke-direct {v0, p0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupDataSetObserver;-><init>(Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$1;)V
 
     iput-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mObserver:Landroid/database/DataSetObserver;
 
+    .line 105
     :cond_0
     :goto_0
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
 
+    .line 106
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
 
     if-eqz v0, :cond_1
 
+    .line 107
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mObserver:Landroid/database/DataSetObserver;
 
     invoke-interface {p1, v0}, Landroid/widget/ListAdapter;->registerDataSetObserver(Landroid/database/DataSetObserver;)V
 
+    .line 110
     :cond_1
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
     if-eqz v0, :cond_2
 
+    .line 111
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
 
     invoke-virtual {v0, v1}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setAdapter(Landroid/widget/ListAdapter;)V
 
+    .line 113
     :cond_2
     return-void
 
+    .line 102
     :cond_3
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
 
     if-eqz v0, :cond_0
 
+    .line 103
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mAdapter:Landroid/widget/ListAdapter;
 
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mObserver:Landroid/database/DataSetObserver;
@@ -1106,62 +1502,83 @@
 
 .method public setAnchorView(Landroid/view/View;)V
     .locals 0
+    .parameter "anchor"
 
+    .prologue
+    .line 129
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
 
+    .line 130
     return-void
 .end method
 
 .method public setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
     .locals 1
+    .parameter "d"
 
+    .prologue
+    .line 125
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     invoke-virtual {v0, p1}, Landroid/widget/PopupWindow;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
+    .line 126
     return-void
 .end method
 
 .method public setContentHeight(I)V
     .locals 0
+    .parameter "height"
 
+    .prologue
+    .line 152
     iput p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
+    .line 153
     return-void
 .end method
 
 .method public setContentWidth(I)V
-    .locals 2
+    .locals 3
+    .parameter "width"
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    .prologue
+    .line 142
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v0}, Landroid/widget/PopupWindow;->getBackground()Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v1}, Landroid/widget/PopupWindow;->getBackground()Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
+    .line 143
+    .local v0, popupBackground:Landroid/graphics/drawable/Drawable;
     if-eqz v0, :cond_0
 
+    .line 144
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
 
     invoke-virtual {v0, v1}, Landroid/graphics/drawable/Drawable;->getPadding(Landroid/graphics/Rect;)Z
 
-    iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
-
-    iget v0, v0, Landroid/graphics/Rect;->left:I
-
+    .line 145
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
 
-    iget v1, v1, Landroid/graphics/Rect;->right:I
+    iget v1, v1, Landroid/graphics/Rect;->left:I
 
-    add-int/2addr v0, v1
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTempRect:Landroid/graphics/Rect;
 
-    add-int/2addr v0, p1
+    iget v2, v2, Landroid/graphics/Rect;->right:I
 
-    iput v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
+    add-int/2addr v1, v2
 
+    add-int/2addr v1, p1
+
+    iput v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
+
+    .line 149
     :goto_0
     return-void
 
+    .line 147
     :cond_0
     iput p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
@@ -1170,140 +1587,197 @@
 
 .method public setHorizontalOffset(I)V
     .locals 0
+    .parameter "offset"
 
+    .prologue
+    .line 133
     iput p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHorizontalOffset:I
 
+    .line 134
     return-void
 .end method
 
 .method public setInputMethodMode(I)V
     .locals 1
+    .parameter "mode"
 
+    .prologue
+    .line 267
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     invoke-virtual {v0, p1}, Landroid/widget/PopupWindow;->setInputMethodMode(I)V
 
+    .line 268
     return-void
 .end method
 
 .method public setModal(Z)V
     .locals 1
+    .parameter "modal"
 
+    .prologue
+    .line 120
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mModal:Z
 
+    .line 121
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     invoke-virtual {v0, p1}, Landroid/widget/PopupWindow;->setFocusable(Z)V
 
+    .line 122
     return-void
 .end method
 
 .method public setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V
     .locals 1
+    .parameter "listener"
 
+    .prologue
+    .line 263
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     invoke-virtual {v0, p1}, Landroid/widget/PopupWindow;->setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V
 
+    .line 264
     return-void
 .end method
 
 .method public setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
     .locals 0
+    .parameter "clickListener"
 
+    .prologue
+    .line 156
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemClickListener:Landroid/widget/AdapterView$OnItemClickListener;
 
+    .line 157
     return-void
 .end method
 
 .method public setOnItemLongClickListener(Landroid/widget/AdapterView$OnItemLongClickListener;)V
     .locals 0
+    .parameter "clickListener"
 
+    .prologue
+    .line 160
     iput-object p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mItemLongClickListener:Landroid/widget/AdapterView$OnItemLongClickListener;
 
+    .line 161
     return-void
 .end method
 
 .method public setPromptPosition(I)V
     .locals 0
+    .parameter "position"
 
+    .prologue
+    .line 116
     iput p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPromptPosition:I
 
+    .line 117
     return-void
 .end method
 
 .method public setVerticalOffset(I)V
     .locals 1
+    .parameter "offset"
 
+    .prologue
+    .line 137
     iput p1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffset:I
 
+    .line 138
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffsetSet:Z
 
+    .line 139
     return-void
 .end method
 
 .method public show()V
-    .locals 8
+    .locals 9
 
-    const/4 v7, 0x1
-
-    const/4 v6, -0x2
+    .prologue
+    const/4 v8, 0x1
 
     const/4 v1, 0x0
 
+    const/4 v3, -0x2
+
     const/4 v0, -0x1
 
+    .line 164
     invoke-direct {p0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->buildDropDown()I
 
-    move-result v5
+    move-result v6
 
+    .line 166
+    .local v6, height:I
+    const/4 v4, 0x0
+
+    .line 167
+    .local v4, widthSpec:I
+    const/4 v5, 0x0
+
+    .line 169
+    .local v5, heightSpec:I
     invoke-direct {p0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->isInputMethodNotNeeded()Z
+
+    move-result v7
+
+    .line 172
+    .local v7, noInputMethod:Z
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+
+    invoke-virtual {v2}, Landroid/widget/PopupWindow;->isShowing()Z
 
     move-result v2
 
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    if-eqz v2, :cond_9
 
-    invoke-virtual {v3}, Landroid/widget/PopupWindow;->isShowing()Z
+    .line 173
+    iget v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
-    move-result v3
+    if-ne v2, v0, :cond_1
 
-    if-eqz v3, :cond_9
+    .line 176
+    const/4 v4, -0x1
 
-    iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
-
-    if-ne v3, v0, :cond_2
-
-    move v4, v0
-
+    .line 183
     :goto_0
-    iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
+    iget v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
-    if-ne v3, v0, :cond_8
+    if-ne v2, v0, :cond_7
 
-    if-eqz v2, :cond_4
+    .line 186
+    if-eqz v7, :cond_3
 
+    move v5, v6
+
+    .line 187
     :goto_1
-    if-eqz v2, :cond_6
+    if-eqz v7, :cond_5
 
+    .line 188
     iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
-    if-ne v3, v0, :cond_5
+    if-ne v3, v0, :cond_4
 
     :goto_2
     invoke-virtual {v2, v0, v1}, Landroid/widget/PopupWindow;->setWindowLayoutMode(II)V
 
-    :cond_0
+    .line 203
     :goto_3
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v0, v7}, Landroid/widget/PopupWindow;->setOutsideTouchable(Z)V
+    invoke-virtual {v0, v8}, Landroid/widget/PopupWindow;->setOutsideTouchable(Z)V
 
+    .line 205
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
@@ -1314,104 +1788,129 @@
 
     invoke-virtual/range {v0 .. v5}, Landroid/widget/PopupWindow;->update(Landroid/view/View;IIII)V
 
-    :cond_1
+    .line 246
+    :cond_0
     :goto_4
     return-void
 
-    :cond_2
-    iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
+    .line 177
+    :cond_1
+    iget v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
-    if-ne v3, v6, :cond_3
+    if-ne v2, v3, :cond_2
 
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
+    .line 178
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
 
-    invoke-virtual {v3}, Landroid/view/View;->getWidth()I
+    invoke-virtual {v2}, Landroid/view/View;->getWidth()I
 
     move-result v4
 
     goto :goto_0
 
-    :cond_3
+    .line 180
+    :cond_2
     iget v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
     goto :goto_0
 
-    :cond_4
+    :cond_3
     move v5, v0
 
+    .line 186
     goto :goto_1
 
-    :cond_5
+    :cond_4
     move v0, v1
 
+    .line 188
     goto :goto_2
 
-    :cond_6
+    .line 192
+    :cond_5
     iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
-    if-ne v3, v0, :cond_7
+    if-ne v3, v0, :cond_6
 
     move v1, v0
 
-    :cond_7
+    :cond_6
     invoke-virtual {v2, v1, v0}, Landroid/widget/PopupWindow;->setWindowLayoutMode(II)V
 
     goto :goto_3
 
-    :cond_8
+    .line 197
+    :cond_7
     iget v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
-    if-eq v0, v6, :cond_0
+    if-ne v0, v3, :cond_8
 
+    .line 198
+    move v5, v6
+
+    goto :goto_3
+
+    .line 200
+    :cond_8
     iget v5, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
     goto :goto_3
 
+    .line 208
     :cond_9
-    iget v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
+    iget v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
-    if-ne v2, v0, :cond_c
+    if-ne v1, v0, :cond_c
 
-    move v2, v0
+    .line 209
+    const/4 v4, -0x1
 
+    .line 218
     :goto_5
-    iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
+    iget v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
-    if-ne v3, v0, :cond_e
+    if-ne v1, v0, :cond_e
 
-    move v1, v0
+    .line 219
+    const/4 v5, -0x1
 
+    .line 228
     :goto_6
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
-
-    invoke-virtual {v3, v2, v1}, Landroid/widget/PopupWindow;->setWindowLayoutMode(II)V
-
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v1, v7}, Landroid/widget/PopupWindow;->setOutsideTouchable(Z)V
+    invoke-virtual {v1, v4, v5}, Landroid/widget/PopupWindow;->setWindowLayoutMode(II)V
 
+    .line 233
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+
+    invoke-virtual {v1, v8}, Landroid/widget/PopupWindow;->setOutsideTouchable(Z)V
+
+    .line 234
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mTouchInterceptor:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$PopupTouchInterceptor;
 
     invoke-virtual {v1, v2}, Landroid/widget/PopupWindow;->setTouchInterceptor(Landroid/view/View$OnTouchListener;)V
 
+    .line 235
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
     iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
 
     iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHorizontalOffset:I
 
-    iget v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffset:I
+    iget v8, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownVerticalOffset:I
 
-    invoke-virtual {v1, v2, v3, v4}, Landroid/widget/PopupWindow;->showAsDropDown(Landroid/view/View;II)V
+    invoke-virtual {v1, v2, v3, v8}, Landroid/widget/PopupWindow;->showAsDropDown(Landroid/view/View;II)V
 
+    .line 237
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownList:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;
 
     invoke-virtual {v1, v0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$DropDownListView;->setSelection(I)V
 
+    .line 239
     iget-boolean v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mModal:Z
 
     if-eqz v0, :cond_a
@@ -1424,14 +1923,17 @@
 
     if-eqz v0, :cond_b
 
+    .line 240
     :cond_a
     invoke-virtual {p0}, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->clearListSelection()V
 
+    .line 242
     :cond_b
     iget-boolean v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mModal:Z
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_0
 
+    .line 243
     iget-object v0, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHandler:Landroid/os/Handler;
 
     iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mHideSelector:Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow$ListSelectorHider;
@@ -1440,53 +1942,55 @@
 
     goto :goto_4
 
+    .line 211
     :cond_c
+    iget v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
+
+    if-ne v1, v3, :cond_d
+
+    .line 212
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+
+    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
+
+    invoke-virtual {v2}, Landroid/view/View;->getWidth()I
+
+    move-result v2
+
+    invoke-virtual {v1, v2}, Landroid/widget/PopupWindow;->setWidth(I)V
+
+    goto :goto_5
+
+    .line 214
+    :cond_d
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+
     iget v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
 
-    if-ne v2, v6, :cond_d
-
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
-
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownAnchorView:Landroid/view/View;
-
-    invoke-virtual {v3}, Landroid/view/View;->getWidth()I
-
-    move-result v3
-
-    invoke-virtual {v2, v3}, Landroid/widget/PopupWindow;->setWidth(I)V
-
-    move v2, v1
+    invoke-virtual {v1, v2}, Landroid/widget/PopupWindow;->setWidth(I)V
 
     goto :goto_5
 
-    :cond_d
-    iget-object v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
-
-    iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownWidth:I
-
-    invoke-virtual {v2, v3}, Landroid/widget/PopupWindow;->setWidth(I)V
-
-    move v2, v1
-
-    goto :goto_5
-
+    .line 221
     :cond_e
-    iget v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
+    iget v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
-    if-ne v3, v6, :cond_f
+    if-ne v1, v3, :cond_f
 
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    .line 222
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    invoke-virtual {v3, v5}, Landroid/widget/PopupWindow;->setHeight(I)V
+    invoke-virtual {v1, v6}, Landroid/widget/PopupWindow;->setHeight(I)V
 
     goto :goto_6
 
+    .line 224
     :cond_f
-    iget-object v3, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
+    iget-object v1, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mPopup:Landroid/widget/PopupWindow;
 
-    iget v4, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
+    iget v2, p0, Lcom/actionbarsherlock/internal/widget/IcsListPopupWindow;->mDropDownHeight:I
 
-    invoke-virtual {v3, v4}, Landroid/widget/PopupWindow;->setHeight(I)V
+    invoke-virtual {v1, v2}, Landroid/widget/PopupWindow;->setHeight(I)V
 
     goto :goto_6
 .end method

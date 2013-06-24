@@ -3,9 +3,9 @@
 
 
 # instance fields
-.field a:Lsdk/c/a/b/a/a/d;
+.field e:Lsdk/c/a/b/a/a/d;
 
-.field b:Ljava/nio/ByteBuffer;
+.field f:Ljava/nio/ByteBuffer;
 
 
 # direct methods
@@ -23,18 +23,6 @@
 
 
 # virtual methods
-.method public final a_()V
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lsdk/c/a/b/a/a/f;->a:Lsdk/c/a/b/a/a/d;
-
-    invoke-super {p0}, Lsdk/c/a/b/f;->a_()V
-
-    return-void
-.end method
-
 .method public final b()I
     .locals 1
 
@@ -43,20 +31,20 @@
     return v0
 .end method
 
-.method public final c()V
+.method public b_()V
     .locals 3
 
-    invoke-super {p0}, Lsdk/c/a/b/f;->c()V
+    invoke-super {p0}, Lsdk/c/a/b/f;->b_()V
 
-    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->e:Lsdk/c/a/b/a/a/d;
 
-    iget-object v0, v0, Lsdk/c/a/b/a/a/d;->l:Ljava/util/concurrent/ConcurrentLinkedQueue;
+    iget-object v0, v0, Lsdk/c/a/b/a/a/d;->p:Ljava/util/concurrent/ConcurrentLinkedQueue;
 
     invoke-virtual {v0, p0}, Ljava/util/concurrent/ConcurrentLinkedQueue;->offer(Ljava/lang/Object;)Z
 
-    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->e:Lsdk/c/a/b/a/a/d;
 
-    invoke-virtual {v0}, Lsdk/c/a/b/a/a/d;->o()Z
+    invoke-virtual {v0}, Lsdk/c/a/b/a/a/d;->q()Z
 
     move-result v0
 
@@ -66,7 +54,7 @@
 
     move-result-object v0
 
-    iget-object v1, p0, Lsdk/c/a/b/a/a/f;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v1, p0, Lsdk/c/a/b/a/a/f;->e:Lsdk/c/a/b/a/a/d;
 
     const/4 v2, 0x1
 
@@ -85,40 +73,52 @@
     throw v0
 
     :cond_0
-    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->e:Lsdk/c/a/b/a/a/d;
 
-    iget-boolean v0, v0, Lsdk/c/a/b/a/a/d;->e:Z
+    iget-boolean v0, v0, Lsdk/c/a/b/a/a/d;->i:Z
 
     if-eqz v0, :cond_1
 
-    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->a:Lsdk/c/a/b/a/a/d;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->e:Lsdk/c/a/b/a/a/d;
 
-    invoke-virtual {v0}, Lsdk/c/a/b/a/a/d;->h()V
+    invoke-virtual {v0}, Lsdk/c/a/b/a/a/d;->i()V
 
     :cond_1
     return-void
 .end method
 
-.method public final e()V
+.method public final d()V
     .locals 2
 
-    invoke-super {p0}, Lsdk/c/a/b/f;->e()V
+    invoke-super {p0}, Lsdk/c/a/b/f;->d()V
 
-    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->s:Ljava/lang/String;
+    iget-object v0, p0, Lsdk/c/a/b/a/a/f;->a:Ljava/lang/String;
 
-    iget-object v1, p0, Lsdk/c/a/b/a/a/f;->t:Lsdk/c/a/b/c;
+    iget-object v1, p0, Lsdk/c/a/b/a/a/f;->b:Lsdk/c/a/b/c;
 
     invoke-static {v0, v1}, Lsdk/c/a/b/a/a/d;->a(Ljava/lang/String;Lsdk/c/a/b/c;)Lsdk/c/a/b/a/a/d;
 
     move-result-object v0
 
-    iput-object v0, p0, Lsdk/c/a/b/a/a/f;->a:Lsdk/c/a/b/a/a/d;
+    iput-object v0, p0, Lsdk/c/a/b/a/a/f;->e:Lsdk/c/a/b/a/a/d;
 
     return-void
 .end method
 
-.method protected final f()V
+.method protected e()V
     .locals 0
+
+    return-void
+.end method
+
+.method public f()V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lsdk/c/a/b/a/a/f;->e:Lsdk/c/a/b/a/a/d;
+
+    invoke-super {p0}, Lsdk/c/a/b/f;->f()V
 
     return-void
 .end method

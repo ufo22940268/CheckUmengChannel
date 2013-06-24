@@ -14,6 +14,15 @@
 .field public geoPt:Lcom/baidu/mapapi/GeoPoint;
 
 .field public poiList:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiInfo;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field public strAddr:Ljava/lang/String;
 

@@ -8,6 +8,15 @@
 .field private b:Lcom/baidu/mapapi/MKPlanNode;
 
 .field private c:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKRoutePlan;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private d:Lcom/baidu/mapapi/MKRouteAddrResult;
 
@@ -41,6 +50,15 @@
 
 .method a(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKRoutePlan;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKDrivingRouteResult;->c:Ljava/util/ArrayList;
 

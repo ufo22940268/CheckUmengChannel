@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/a/d;
+.class public Lsdk/b/a/a/e/a/d;
 .super Ljava/lang/Object;
 
 
@@ -35,23 +35,35 @@
     if-nez v0, :cond_1
 
     :cond_0
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v1, "_______________________ db open."
 
-    const-string v1, "_______________________ "
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v0, "GexinSdk"
 
-    sget-object v1, Lsdk/b/a/a/e/a/d;->a:Ljava/lang/String;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v0
+    const-string v2, "_______________________ "
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    move-result-object v1
+
+    sget-object v2, Lsdk/b/a/a/e/a/d;->a:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/e/a/d;->a:Ljava/lang/String;
 
@@ -72,29 +84,41 @@
 .end method
 
 .method public static a()V
-    .locals 2
+    .locals 3
 
     sget-object v0, Lsdk/b/a/a/e/a/d;->b:Landroid/database/sqlite/SQLiteDatabase;
 
     if-eqz v0, :cond_0
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v1, "_______________________ db close."
 
-    const-string v1, "_______________________ "
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v0, "GexinSdk"
 
-    sget-object v1, Lsdk/b/a/a/e/a/d;->a:Ljava/lang/String;
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    move-result-object v0
+    const-string v2, "_______________________ "
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    move-result-object v1
+
+    sget-object v2, Lsdk/b/a/a/e/a/d;->a:Ljava/lang/String;
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/e/a/d;->b:Landroid/database/sqlite/SQLiteDatabase;
 

@@ -1,314 +1,65 @@
-.class public final Lcom/umeng/common/a;
+.class public Lcom/umeng/common/a;
 .super Ljava/lang/Object;
+.source "Constants.java"
 
 
 # static fields
-.field public static a:Z
+.field public static final a:Ljava/lang/String; = "/download/.um"
+
+.field public static final b:Ljava/lang/String; = "type"
+
+.field public static final c:Ljava/lang/String; = "package"
+
+.field public static final d:Ljava/lang/String; = "channel"
+
+.field public static final e:Ljava/lang/String; = "idmd5"
+
+.field public static final f:Ljava/lang/String; = "version_code"
+
+.field public static final g:Ljava/lang/String; = "appkey"
+
+.field public static final h:Ljava/lang/String; = "sdk_version"
+
+.field public static final i:Ljava/lang/String; = "proto_ver"
+
+.field public static final j:Ljava/lang/String; = "old_md5"
+
+.field public static final k:Ljava/lang/String; = "delta"
+
+.field public static final l:Ljava/lang/String; = " \u4e0b\u8f7d\u5931\u8d25\u3002"
+
+.field public static final m:Ljava/lang/String; = "\u6b63\u5728\u4e0b\u8f7d\u5e94\u7528"
+
+.field public static final n:Ljava/lang/String; = "\u6b63\u5728\u4e0b\u8f7d\u4e2d\uff0c\u8bf7\u7a0d\u7b49 ..."
+
+.field public static final o:Ljava/lang/String; = "\u4e0b\u8f7d\u5b8c\u6210\uff0c\u8bf7\u70b9\u51fb\u5b89\u88c5"
+
+.field public static final p:Ljava/lang/String; = "\u66f4\u65b0\u5b8c\u6210\uff0c\u8bf7\u70b9\u51fb\u5b89\u88c5"
+
+.field public static final q:Ljava/lang/String; = "\u6b63\u5728\u66f4\u65b0\u5b89\u88c5\u5305"
+
+.field public static r:Ljava/lang/String;
 
 
 # direct methods
 .method static constructor <clinit>()V
     .locals 1
 
+    .prologue
+    .line 24
     const/4 v0, 0x0
 
-    sput-boolean v0, Lcom/umeng/common/a;->a:Z
+    sput-object v0, Lcom/umeng/common/a;->r:Ljava/lang/String;
 
     return-void
 .end method
 
-.method public static a()V
-    .locals 1
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
-
-    return-void
-.end method
-
-.method public static a(Ljava/lang/String;Ljava/lang/Exception;)V
-    .locals 2
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
-
-    if-eqz v0, :cond_0
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p1}, Ljava/lang/Exception;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, ":  ["
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, "]"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    :cond_0
-    return-void
-.end method
-
-.method public static a(Ljava/lang/String;Ljava/lang/String;)V
-    .locals 1
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
-
-    if-eqz v0, :cond_0
-
-    invoke-static {p0, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    :cond_0
-    return-void
-.end method
-
-.method public static a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Exception;)V
-    .locals 6
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
-
-    if-eqz v0, :cond_0
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p2}, Ljava/lang/Exception;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, ":  ["
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, "]"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-static {p0, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    invoke-virtual {p2}, Ljava/lang/Exception;->getStackTrace()[Ljava/lang/StackTraceElement;
-
-    move-result-object v1
-
-    array-length v2, v1
-
-    const/4 v0, 0x0
-
-    :goto_0
-    if-ge v0, v2, :cond_0
-
-    aget-object v3, v1, v0
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    const-string v5, "        at\t "
-
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v3}, Ljava/lang/StackTraceElement;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {p0, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    return-void
-.end method
-
-.method public static b()V
-    .locals 1
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
-
-    return-void
-.end method
-
-.method public static b(Ljava/lang/String;Ljava/lang/Exception;)V
-    .locals 2
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
-
-    if-eqz v0, :cond_0
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p1}, Ljava/lang/Exception;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, ":  ["
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, "]"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    :cond_0
-    return-void
-.end method
-
-.method public static b(Ljava/lang/String;Ljava/lang/String;)V
-    .locals 1
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
-
-    if-eqz v0, :cond_0
-
-    invoke-static {p0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    :cond_0
-    return-void
-.end method
-
-.method public static b(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Exception;)V
-    .locals 6
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
-
-    if-eqz v0, :cond_0
-
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    invoke-virtual {p2}, Ljava/lang/Exception;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, ":  ["
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    const-string v1, "]"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-static {p0, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    invoke-virtual {p2}, Ljava/lang/Exception;->getStackTrace()[Ljava/lang/StackTraceElement;
-
-    move-result-object v1
-
-    array-length v2, v1
-
-    const/4 v0, 0x0
-
-    :goto_0
-    if-ge v0, v2, :cond_0
-
-    aget-object v3, v1, v0
-
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    const-string v5, "        at\t "
-
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v3}, Ljava/lang/StackTraceElement;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {p0, v3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    :cond_0
-    return-void
-.end method
-
-.method public static c()V
-    .locals 1
-
-    sget-boolean v0, Lcom/umeng/common/a;->a:Z
+.method public constructor <init>()V
+    .locals 0
+
+    .prologue
+    .line 3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method

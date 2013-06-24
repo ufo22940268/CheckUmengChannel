@@ -2,6 +2,17 @@
 .super Landroid/os/Handler;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/baidu/mapapi/Mj;->a(Ljava/lang/String;Lcom/baidu/mapapi/MKGeneralListener;)Z
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
 # instance fields
 .field final synthetic a:Lcom/baidu/mapapi/Mj;
 

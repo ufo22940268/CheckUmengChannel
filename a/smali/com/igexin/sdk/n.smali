@@ -1,5 +1,8 @@
-.class final Lcom/igexin/sdk/n;
-.super Lsdk/b/a/a/e/d/f;
+.class Lcom/igexin/sdk/n;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Ljava/util/Comparator;
 
 
 # instance fields
@@ -8,75 +11,61 @@
 
 # direct methods
 .method constructor <init>(Lcom/igexin/sdk/SdkMainService;)V
-    .locals 3
+    .locals 0
 
     iput-object p1, p0, Lcom/igexin/sdk/n;->a:Lcom/igexin/sdk/SdkMainService;
 
-    const-wide/16 v0, 0xc8
-
-    const/4 v2, 0x0
-
-    invoke-direct {p0, v0, v1, v2}, Lsdk/b/a/a/e/d/f;-><init>(JB)V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method protected final a()V
-    .locals 3
+.method public a(Lsdk/b/a/a/b/x;Lsdk/b/a/a/b/x;)I
+    .locals 2
 
-    new-instance v0, Ljava/util/ArrayList;
+    invoke-virtual {p1}, Lsdk/b/a/a/b/x;->c()Ljava/lang/String;
 
-    iget-object v1, p0, Lcom/igexin/sdk/n;->a:Lcom/igexin/sdk/SdkMainService;
+    move-result-object v0
 
-    invoke-static {v1}, Lcom/igexin/sdk/SdkMainService;->a(Lcom/igexin/sdk/SdkMainService;)Ljava/util/Queue;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
-
-    iget-object v1, p0, Lcom/igexin/sdk/n;->a:Lcom/igexin/sdk/SdkMainService;
-
-    invoke-static {v1}, Lcom/igexin/sdk/SdkMainService;->a(Lcom/igexin/sdk/SdkMainService;)Ljava/util/Queue;
+    invoke-virtual {p2}, Lsdk/b/a/a/b/x;->c()Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-interface {v1, v0}, Ljava/util/Queue;->removeAll(Ljava/util/Collection;)Z
+    if-eq v0, v1, :cond_0
 
-    new-instance v1, Landroid/content/Intent;
+    invoke-virtual {p1}, Lsdk/b/a/a/b/x;->c()Ljava/lang/String;
 
-    const-string v2, "im.gexin.action.updateui"
+    move-result-object v0
 
-    invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    invoke-virtual {p2}, Lsdk/b/a/a/b/x;->c()Ljava/lang/String;
 
-    const-string v2, "bundle"
+    move-result-object v1
 
-    invoke-virtual {v1, v2, v0}, Landroid/content/Intent;->putParcelableArrayListExtra(Ljava/lang/String;Ljava/util/ArrayList;)Landroid/content/Intent;
+    invoke-virtual {v0, v1}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
 
-    iget-object v0, p0, Lcom/igexin/sdk/n;->a:Lcom/igexin/sdk/SdkMainService;
+    move-result v0
 
-    invoke-virtual {v0, v1}, Lcom/igexin/sdk/SdkMainService;->sendBroadcast(Landroid/content/Intent;)V
+    :goto_0
+    return v0
 
-    iget-object v0, p0, Lcom/igexin/sdk/n;->a:Lcom/igexin/sdk/SdkMainService;
+    :cond_0
+    const/4 v0, 0x0
 
-    invoke-static {v0}, Lcom/igexin/sdk/SdkMainService;->b(Lcom/igexin/sdk/SdkMainService;)Z
-
-    iget-object v0, p0, Lcom/igexin/sdk/n;->a:Lcom/igexin/sdk/SdkMainService;
-
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v1
-
-    invoke-static {v0, v1, v2}, Lcom/igexin/sdk/SdkMainService;->a(Lcom/igexin/sdk/SdkMainService;J)J
-
-    return-void
+    goto :goto_0
 .end method
 
-.method public final b()I
+.method public synthetic compare(Ljava/lang/Object;Ljava/lang/Object;)I
     .locals 1
 
-    const/high16 v0, -0x8000
+    check-cast p1, Lsdk/b/a/a/b/x;
+
+    check-cast p2, Lsdk/b/a/a/b/x;
+
+    invoke-virtual {p0, p1, p2}, Lcom/igexin/sdk/n;->a(Lsdk/b/a/a/b/x;Lsdk/b/a/a/b/x;)I
+
+    move-result v0
 
     return v0
 .end method

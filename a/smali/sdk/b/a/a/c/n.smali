@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/c/n;
+.class public Lsdk/b/a/a/c/n;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -53,19 +53,19 @@
 
 
 # virtual methods
-.method public final a(Landroid/database/sqlite/SQLiteDatabase;)V
+.method public a(Landroid/database/sqlite/SQLiteDatabase;)V
     .locals 0
 
     return-void
 .end method
 
-.method public final a(Landroid/database/sqlite/SQLiteDatabase;Landroid/database/Cursor;)V
+.method public a(Landroid/database/sqlite/SQLiteDatabase;Landroid/database/Cursor;)V
     .locals 0
 
     return-void
 .end method
 
-.method public final b(Landroid/database/sqlite/SQLiteDatabase;)V
+.method public b(Landroid/database/sqlite/SQLiteDatabase;)V
     .locals 0
 
     return-void

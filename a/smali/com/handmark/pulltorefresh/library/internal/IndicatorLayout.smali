@@ -1,5 +1,6 @@
 .class public Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;
 .super Landroid/widget/FrameLayout;
+.source "IndicatorLayout.java"
 
 # interfaces
 .implements Landroid/view/animation/Animation$AnimationListener;
@@ -12,466 +13,384 @@
     }
 .end annotation
 
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout$1;
+    }
+.end annotation
+
 
 # static fields
-.field private static synthetic f:[I
+.field static final DEFAULT_ROTATION_ANIMATION_DURATION:I = 0x96
 
 
 # instance fields
-.field private a:Landroid/view/animation/Animation;
+.field private mArrowImageView:Landroid/widget/ImageView;
 
-.field private b:Landroid/view/animation/Animation;
+.field private mInAnim:Landroid/view/animation/Animation;
 
-.field private c:Landroid/widget/ImageView;
+.field private mOutAnim:Landroid/view/animation/Animation;
 
-.field private final d:Landroid/view/animation/Animation;
+.field private final mResetRotateAnimation:Landroid/view/animation/Animation;
 
-.field private final e:Landroid/view/animation/Animation;
+.field private final mRotateAnimation:Landroid/view/animation/Animation;
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Lcom/handmark/pulltorefresh/library/f;)V
+.method public constructor <init>(Landroid/content/Context;Lcom/handmark/pulltorefresh/library/PullToRefreshBase$Mode;)V
     .locals 13
+    .parameter "context"
+    .parameter "mode"
 
-    const/high16 v10, 0x4000
+    .prologue
+    .line 47
+    invoke-direct {p0, p1}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+
+    .line 48
+    new-instance v0, Landroid/widget/ImageView;
+
+    invoke-direct {v0, p1}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;)V
+
+    iput-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
+
+    .line 50
+    invoke-virtual {p0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    sget v1, Lcom/handmark/pulltorefresh/library/R$drawable;->indicator_arrow:I
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v7
+
+    .line 51
+    .local v7, arrowD:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, v7}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 53
+    invoke-virtual {p0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    sget v1, Lcom/handmark/pulltorefresh/library/R$dimen;->indicator_internal_padding:I
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v12
+
+    .line 54
+    .local v12, padding:I
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
+
+    invoke-virtual {v0, v12, v12, v12, v12}, Landroid/widget/ImageView;->setPadding(IIII)V
+
+    .line 55
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
+
+    invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->addView(Landroid/view/View;)V
+
+    .line 58
+    sget-object v0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout$1;->$SwitchMap$com$handmark$pulltorefresh$library$PullToRefreshBase$Mode:[I
+
+    invoke-virtual {p2}, Lcom/handmark/pulltorefresh/library/PullToRefreshBase$Mode;->ordinal()I
+
+    move-result v1
+
+    aget v0, v0, v1
+
+    packed-switch v0, :pswitch_data_0
+
+    .line 72
+    sget v8, Lcom/handmark/pulltorefresh/library/R$anim;->slide_in_from_top:I
+
+    .line 73
+    .local v8, inAnimResId:I
+    sget v11, Lcom/handmark/pulltorefresh/library/R$anim;->slide_out_to_top:I
+
+    .line 74
+    .local v11, outAnimResId:I
+    sget v0, Lcom/handmark/pulltorefresh/library/R$drawable;->indicator_bg_top:I
+
+    invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->setBackgroundResource(I)V
+
+    .line 78
+    :goto_0
+    invoke-static {p1, v8}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mInAnim:Landroid/view/animation/Animation;
+
+    .line 79
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mInAnim:Landroid/view/animation/Animation;
+
+    invoke-virtual {v0, p0}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
+
+    .line 81
+    invoke-static {p1, v11}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mOutAnim:Landroid/view/animation/Animation;
+
+    .line 82
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mOutAnim:Landroid/view/animation/Animation;
+
+    invoke-virtual {v0, p0}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
+
+    .line 84
+    new-instance v9, Landroid/view/animation/LinearInterpolator;
+
+    invoke-direct {v9}, Landroid/view/animation/LinearInterpolator;-><init>()V
+
+    .line 85
+    .local v9, interpolator:Landroid/view/animation/Interpolator;
+    new-instance v0, Landroid/view/animation/RotateAnimation;
 
     const/4 v1, 0x0
 
     const/high16 v2, -0x3ccc
 
-    const/high16 v4, 0x3f00
-
     const/4 v3, 0x1
 
-    invoke-direct {p0, p1}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+    const/high16 v4, 0x3f00
 
-    new-instance v0, Landroid/widget/ImageView;
+    const/4 v5, 0x1
 
-    invoke-direct {v0, p1}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;)V
-
-    iput-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
-
-    invoke-virtual {p0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v0
-
-    sget v5, Lcom/handmark/pulltorefresh/library/ab;->c:I
-
-    invoke-virtual {v0, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v6
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
-
-    invoke-virtual {v0, v6}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
-
-    invoke-virtual {p0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v0
-
-    sget v5, Lcom/handmark/pulltorefresh/library/aa;->b:I
-
-    invoke-virtual {v0, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
-
-    move-result v0
-
-    iget-object v5, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
-
-    invoke-virtual {v5, v0, v0, v0, v0}, Landroid/widget/ImageView;->setPadding(IIII)V
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
-
-    invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->addView(Landroid/view/View;)V
-
-    invoke-static {}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->f()[I
-
-    move-result-object v0
-
-    invoke-virtual {p2}, Lcom/handmark/pulltorefresh/library/f;->ordinal()I
-
-    move-result v5
-
-    aget v0, v0, v5
-
-    packed-switch v0, :pswitch_data_0
-
-    sget v5, Lcom/handmark/pulltorefresh/library/z;->d:I
-
-    sget v0, Lcom/handmark/pulltorefresh/library/z;->b:I
-
-    sget v6, Lcom/handmark/pulltorefresh/library/ab;->a:I
-
-    invoke-virtual {p0, v6}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->setBackgroundResource(I)V
-
-    :goto_0
-    invoke-static {p1, v5}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v5
-
-    iput-object v5, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->a:Landroid/view/animation/Animation;
-
-    iget-object v5, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->a:Landroid/view/animation/Animation;
-
-    invoke-virtual {v5, p0}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
-
-    invoke-static {p1, v0}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->b:Landroid/view/animation/Animation;
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->b:Landroid/view/animation/Animation;
-
-    invoke-virtual {v0, p0}, Landroid/view/animation/Animation;->setAnimationListener(Landroid/view/animation/Animation$AnimationListener;)V
-
-    new-instance v12, Landroid/view/animation/LinearInterpolator;
-
-    invoke-direct {v12}, Landroid/view/animation/LinearInterpolator;-><init>()V
-
-    new-instance v0, Landroid/view/animation/RotateAnimation;
-
-    move v5, v3
-
-    move v6, v4
+    const/high16 v6, 0x3f00
 
     invoke-direct/range {v0 .. v6}, Landroid/view/animation/RotateAnimation;-><init>(FFIFIF)V
 
-    iput-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->d:Landroid/view/animation/Animation;
+    iput-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mRotateAnimation:Landroid/view/animation/Animation;
 
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->d:Landroid/view/animation/Animation;
+    .line 87
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mRotateAnimation:Landroid/view/animation/Animation;
 
-    invoke-virtual {v0, v12}, Landroid/view/animation/Animation;->setInterpolator(Landroid/view/animation/Interpolator;)V
+    invoke-virtual {v0, v9}, Landroid/view/animation/Animation;->setInterpolator(Landroid/view/animation/Interpolator;)V
 
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->d:Landroid/view/animation/Animation;
-
-    const-wide/16 v5, 0x96
-
-    invoke-virtual {v0, v5, v6}, Landroid/view/animation/Animation;->setDuration(J)V
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->d:Landroid/view/animation/Animation;
-
-    invoke-virtual {v0, v3}, Landroid/view/animation/Animation;->setFillAfter(Z)V
-
-    new-instance v5, Landroid/view/animation/RotateAnimation;
-
-    move v6, v2
-
-    move v7, v1
-
-    move v8, v3
-
-    move v9, v4
-
-    move v10, v3
-
-    move v11, v4
-
-    invoke-direct/range {v5 .. v11}, Landroid/view/animation/RotateAnimation;-><init>(FFIFIF)V
-
-    iput-object v5, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->e:Landroid/view/animation/Animation;
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->e:Landroid/view/animation/Animation;
-
-    invoke-virtual {v0, v12}, Landroid/view/animation/Animation;->setInterpolator(Landroid/view/animation/Interpolator;)V
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->e:Landroid/view/animation/Animation;
+    .line 88
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mRotateAnimation:Landroid/view/animation/Animation;
 
     const-wide/16 v1, 0x96
 
     invoke-virtual {v0, v1, v2}, Landroid/view/animation/Animation;->setDuration(J)V
 
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->e:Landroid/view/animation/Animation;
+    .line 89
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mRotateAnimation:Landroid/view/animation/Animation;
 
-    invoke-virtual {v0, v3}, Landroid/view/animation/Animation;->setFillAfter(Z)V
+    const/4 v1, 0x1
 
+    invoke-virtual {v0, v1}, Landroid/view/animation/Animation;->setFillAfter(Z)V
+
+    .line 91
+    new-instance v0, Landroid/view/animation/RotateAnimation;
+
+    const/high16 v1, -0x3ccc
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x1
+
+    const/high16 v4, 0x3f00
+
+    const/4 v5, 0x1
+
+    const/high16 v6, 0x3f00
+
+    invoke-direct/range {v0 .. v6}, Landroid/view/animation/RotateAnimation;-><init>(FFIFIF)V
+
+    iput-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mResetRotateAnimation:Landroid/view/animation/Animation;
+
+    .line 93
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mResetRotateAnimation:Landroid/view/animation/Animation;
+
+    invoke-virtual {v0, v9}, Landroid/view/animation/Animation;->setInterpolator(Landroid/view/animation/Interpolator;)V
+
+    .line 94
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mResetRotateAnimation:Landroid/view/animation/Animation;
+
+    const-wide/16 v1, 0x96
+
+    invoke-virtual {v0, v1, v2}, Landroid/view/animation/Animation;->setDuration(J)V
+
+    .line 95
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mResetRotateAnimation:Landroid/view/animation/Animation;
+
+    const/4 v1, 0x1
+
+    invoke-virtual {v0, v1}, Landroid/view/animation/Animation;->setFillAfter(Z)V
+
+    .line 97
     return-void
 
+    .line 60
+    .end local v8           #inAnimResId:I
+    .end local v9           #interpolator:Landroid/view/animation/Interpolator;
+    .end local v11           #outAnimResId:I
     :pswitch_0
-    sget v5, Lcom/handmark/pulltorefresh/library/z;->c:I
+    sget v8, Lcom/handmark/pulltorefresh/library/R$anim;->slide_in_from_bottom:I
 
-    sget v0, Lcom/handmark/pulltorefresh/library/z;->a:I
+    .line 61
+    .restart local v8       #inAnimResId:I
+    sget v11, Lcom/handmark/pulltorefresh/library/R$anim;->slide_out_to_bottom:I
 
-    sget v7, Lcom/handmark/pulltorefresh/library/ab;->d:I
+    .line 62
+    .restart local v11       #outAnimResId:I
+    sget v0, Lcom/handmark/pulltorefresh/library/R$drawable;->indicator_bg_bottom:I
 
-    invoke-virtual {p0, v7}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->setBackgroundResource(I)V
+    invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->setBackgroundResource(I)V
 
-    iget-object v7, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
+    .line 65
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
 
-    sget-object v8, Landroid/widget/ImageView$ScaleType;->MATRIX:Landroid/widget/ImageView$ScaleType;
+    sget-object v1, Landroid/widget/ImageView$ScaleType;->MATRIX:Landroid/widget/ImageView$ScaleType;
 
-    invoke-virtual {v7, v8}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
 
-    new-instance v7, Landroid/graphics/Matrix;
+    .line 66
+    new-instance v10, Landroid/graphics/Matrix;
 
-    invoke-direct {v7}, Landroid/graphics/Matrix;-><init>()V
+    invoke-direct {v10}, Landroid/graphics/Matrix;-><init>()V
 
-    const/high16 v8, 0x4334
+    .line 67
+    .local v10, matrix:Landroid/graphics/Matrix;
+    const/high16 v0, 0x4334
 
-    invoke-virtual {v6}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+    invoke-virtual {v7}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
-    move-result v9
+    move-result v1
 
-    int-to-float v9, v9
+    int-to-float v1, v1
 
-    div-float/2addr v9, v10
+    const/high16 v2, 0x4000
 
-    invoke-virtual {v6}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+    div-float/2addr v1, v2
 
-    move-result v6
+    invoke-virtual {v7}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
-    int-to-float v6, v6
+    move-result v2
 
-    div-float/2addr v6, v10
+    int-to-float v2, v2
 
-    invoke-virtual {v7, v8, v9, v6}, Landroid/graphics/Matrix;->setRotate(FFF)V
+    const/high16 v3, 0x4000
 
-    iget-object v6, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
+    div-float/2addr v2, v3
 
-    invoke-virtual {v6, v7}, Landroid/widget/ImageView;->setImageMatrix(Landroid/graphics/Matrix;)V
+    invoke-virtual {v10, v0, v1, v2}, Landroid/graphics/Matrix;->setRotate(FFF)V
 
-    goto :goto_0
+    .line 68
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
 
-    nop
+    invoke-virtual {v0, v10}, Landroid/widget/ImageView;->setImageMatrix(Landroid/graphics/Matrix;)V
 
+    goto/16 :goto_0
+
+    .line 58
     :pswitch_data_0
-    .packed-switch 0x3
+    .packed-switch 0x1
         :pswitch_0
     .end packed-switch
 .end method
 
-.method private static synthetic f()[I
-    .locals 3
 
-    sget-object v0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->f:[I
+# virtual methods
+.method public hide()V
+    .locals 1
 
-    if-eqz v0, :cond_0
+    .prologue
+    .line 109
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mOutAnim:Landroid/view/animation/Animation;
 
-    :goto_0
-    return-object v0
+    invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->startAnimation(Landroid/view/animation/Animation;)V
 
-    :cond_0
-    invoke-static {}, Lcom/handmark/pulltorefresh/library/f;->values()[Lcom/handmark/pulltorefresh/library/f;
+    .line 110
+    return-void
+.end method
+
+.method public final isVisible()Z
+    .locals 4
+
+    .prologue
+    const/4 v1, 0x1
+
+    const/4 v2, 0x0
+
+    .line 100
+    invoke-virtual {p0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->getAnimation()Landroid/view/animation/Animation;
 
     move-result-object v0
 
-    array-length v0, v0
+    .line 101
+    .local v0, currentAnim:Landroid/view/animation/Animation;
+    if-eqz v0, :cond_2
 
-    new-array v0, v0, [I
+    .line 102
+    iget-object v3, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mInAnim:Landroid/view/animation/Animation;
 
-    :try_start_0
-    sget-object v1, Lcom/handmark/pulltorefresh/library/f;->d:Lcom/handmark/pulltorefresh/library/f;
+    if-ne v3, v0, :cond_1
 
-    invoke-virtual {v1}, Lcom/handmark/pulltorefresh/library/f;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x4
-
-    aput v2, v0, v1
-    :try_end_0
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_4
-
-    :goto_1
-    :try_start_1
-    sget-object v1, Lcom/handmark/pulltorefresh/library/f;->a:Lcom/handmark/pulltorefresh/library/f;
-
-    invoke-virtual {v1}, Lcom/handmark/pulltorefresh/library/f;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x1
-
-    aput v2, v0, v1
-    :try_end_1
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_3
-
-    :goto_2
-    :try_start_2
-    sget-object v1, Lcom/handmark/pulltorefresh/library/f;->e:Lcom/handmark/pulltorefresh/library/f;
-
-    invoke-virtual {v1}, Lcom/handmark/pulltorefresh/library/f;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x5
-
-    aput v2, v0, v1
-    :try_end_2
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_2
-
-    :goto_3
-    :try_start_3
-    sget-object v1, Lcom/handmark/pulltorefresh/library/f;->c:Lcom/handmark/pulltorefresh/library/f;
-
-    invoke-virtual {v1}, Lcom/handmark/pulltorefresh/library/f;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x3
-
-    aput v2, v0, v1
-    :try_end_3
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_1
-
-    :goto_4
-    :try_start_4
-    sget-object v1, Lcom/handmark/pulltorefresh/library/f;->b:Lcom/handmark/pulltorefresh/library/f;
-
-    invoke-virtual {v1}, Lcom/handmark/pulltorefresh/library/f;->ordinal()I
-
-    move-result v1
-
-    const/4 v2, 0x2
-
-    aput v2, v0, v1
-    :try_end_4
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_0
-
-    :goto_5
-    sput-object v0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->f:[I
-
-    goto :goto_0
-
-    :catch_0
-    move-exception v1
-
-    goto :goto_5
-
-    :catch_1
-    move-exception v1
-
-    goto :goto_4
-
-    :catch_2
-    move-exception v1
-
-    goto :goto_3
-
-    :catch_3
-    move-exception v1
-
-    goto :goto_2
-
-    :catch_4
-    move-exception v1
-
-    goto :goto_1
-.end method
-
-
-# virtual methods
-.method public final a()Z
-    .locals 4
-
-    const/4 v0, 0x1
-
-    const/4 v1, 0x0
-
-    invoke-virtual {p0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->getAnimation()Landroid/view/animation/Animation;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_2
-
-    iget-object v3, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->a:Landroid/view/animation/Animation;
-
-    if-ne v3, v2, :cond_1
-
+    .line 105
     :cond_0
     :goto_0
-    return v0
+    return v1
 
     :cond_1
-    move v0, v1
+    move v1, v2
 
+    .line 102
     goto :goto_0
 
+    .line 105
     :cond_2
     invoke-virtual {p0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->getVisibility()I
 
-    move-result v2
+    move-result v3
 
-    if-eqz v2, :cond_0
+    if-eqz v3, :cond_0
 
-    move v0, v1
+    move v1, v2
 
     goto :goto_0
-.end method
-
-.method public final b()V
-    .locals 1
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->b:Landroid/view/animation/Animation;
-
-    invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->startAnimation(Landroid/view/animation/Animation;)V
-
-    return-void
-.end method
-
-.method public final c()V
-    .locals 1
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
-
-    invoke-virtual {v0}, Landroid/widget/ImageView;->clearAnimation()V
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->a:Landroid/view/animation/Animation;
-
-    invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->startAnimation(Landroid/view/animation/Animation;)V
-
-    return-void
-.end method
-
-.method public final d()V
-    .locals 2
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
-
-    iget-object v1, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->d:Landroid/view/animation/Animation;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->startAnimation(Landroid/view/animation/Animation;)V
-
-    return-void
-.end method
-
-.method public final e()V
-    .locals 2
-
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
-
-    iget-object v1, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->e:Landroid/view/animation/Animation;
-
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->startAnimation(Landroid/view/animation/Animation;)V
-
-    return-void
 .end method
 
 .method public onAnimationEnd(Landroid/view/animation/Animation;)V
     .locals 1
+    .parameter "animation"
 
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->b:Landroid/view/animation/Animation;
+    .prologue
+    .line 119
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mOutAnim:Landroid/view/animation/Animation;
 
     if-ne p1, v0, :cond_1
 
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->c:Landroid/widget/ImageView;
+    .line 120
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
 
     invoke-virtual {v0}, Landroid/widget/ImageView;->clearAnimation()V
 
+    .line 121
     const/16 v0, 0x8
 
     invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->setVisibility(I)V
 
+    .line 126
     :cond_0
     :goto_0
     invoke-virtual {p0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->clearAnimation()V
 
+    .line 127
     return-void
 
+    .line 122
     :cond_1
-    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->a:Landroid/view/animation/Animation;
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mInAnim:Landroid/view/animation/Animation;
 
     if-ne p1, v0, :cond_0
 
+    .line 123
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->setVisibility(I)V
@@ -481,16 +400,71 @@
 
 .method public onAnimationRepeat(Landroid/view/animation/Animation;)V
     .locals 0
+    .parameter "animation"
 
+    .prologue
+    .line 132
     return-void
 .end method
 
 .method public onAnimationStart(Landroid/view/animation/Animation;)V
     .locals 1
+    .parameter "animation"
 
+    .prologue
+    .line 136
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->setVisibility(I)V
 
+    .line 137
+    return-void
+.end method
+
+.method public pullToRefresh()V
+    .locals 2
+
+    .prologue
+    .line 144
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
+
+    iget-object v1, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mResetRotateAnimation:Landroid/view/animation/Animation;
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->startAnimation(Landroid/view/animation/Animation;)V
+
+    .line 145
+    return-void
+.end method
+
+.method public releaseToRefresh()V
+    .locals 2
+
+    .prologue
+    .line 140
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
+
+    iget-object v1, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mRotateAnimation:Landroid/view/animation/Animation;
+
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->startAnimation(Landroid/view/animation/Animation;)V
+
+    .line 141
+    return-void
+.end method
+
+.method public show()V
+    .locals 1
+
+    .prologue
+    .line 113
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mArrowImageView:Landroid/widget/ImageView;
+
+    invoke-virtual {v0}, Landroid/widget/ImageView;->clearAnimation()V
+
+    .line 114
+    iget-object v0, p0, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->mInAnim:Landroid/view/animation/Animation;
+
+    invoke-virtual {p0, v0}, Lcom/handmark/pulltorefresh/library/internal/IndicatorLayout;->startAnimation(Landroid/view/animation/Animation;)V
+
+    .line 115
     return-void
 .end method

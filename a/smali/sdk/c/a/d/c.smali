@@ -1,4 +1,4 @@
-.class public final Lsdk/c/a/d/c;
+.class public Lsdk/c/a/d/c;
 .super Lsdk/c/a/e/d;
 
 
@@ -45,7 +45,7 @@
     return-void
 .end method
 
-.method public static a(Landroid/content/Context;Landroid/os/Handler;Ljava/lang/String;Ljava/lang/String;)Lsdk/c/a/d/c;
+.method public static a(Landroid/content/Context;Landroid/os/Handler;ILjava/lang/String;Ljava/lang/String;I)Lsdk/c/a/d/c;
     .locals 7
 
     const-wide/16 v5, 0x4e20
@@ -53,16 +53,6 @@
     new-instance v0, Lsdk/c/a/d/c;
 
     invoke-direct {v0, p0, p1}, Lsdk/c/a/d/c;-><init>(Landroid/content/Context;Landroid/os/Handler;)V
-
-    if-eqz p2, :cond_0
-
-    const-string v1, ""
-
-    invoke-virtual {p2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
 
     if-eqz p3, :cond_0
 
@@ -72,10 +62,20 @@
 
     move-result v1
 
+    if-nez v1, :cond_0
+
+    if-eqz p4, :cond_0
+
+    const-string v1, ""
+
+    invoke-virtual {p4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
     if-eqz v1, :cond_1
 
     :cond_0
-    invoke-virtual {v0}, Lsdk/c/a/d/c;->q()V
+    invoke-virtual {v0}, Lsdk/c/a/d/c;->s()V
 
     :goto_0
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
@@ -108,17 +108,13 @@
     return-object v0
 
     :cond_1
-    const/4 v1, 0x1
+    iput p2, v0, Lsdk/c/a/d/c;->e:I
 
-    iput v1, v0, Lsdk/c/a/d/c;->e:I
+    iput-object p4, v0, Lsdk/c/a/d/c;->f:Ljava/lang/String;
 
-    iput-object p3, v0, Lsdk/c/a/d/c;->f:Ljava/lang/String;
+    iput p5, v0, Lsdk/c/a/d/c;->g:I
 
-    const/4 v1, -0x1
-
-    iput v1, v0, Lsdk/c/a/d/c;->g:I
-
-    iput-object p2, v0, Lsdk/c/a/d/c;->h:Ljava/lang/String;
+    iput-object p3, v0, Lsdk/c/a/d/c;->h:Ljava/lang/String;
 
     goto :goto_0
 
@@ -130,20 +126,6 @@
 
 
 # virtual methods
-.method public final a_()V
-    .locals 1
-
-    const/4 v0, 0x0
-
-    invoke-super {p0}, Lsdk/c/a/e/d;->a_()V
-
-    iput-object v0, p0, Lsdk/c/a/d/c;->f:Ljava/lang/String;
-
-    iput-object v0, p0, Lsdk/c/a/d/c;->h:Ljava/lang/String;
-
-    return-void
-.end method
-
 .method public final b()I
     .locals 1
 
@@ -152,10 +134,10 @@
     return v0
 .end method
 
-.method public final c()V
+.method public b_()V
     .locals 3
 
-    invoke-super {p0}, Lsdk/c/a/e/d;->c()V
+    invoke-super {p0}, Lsdk/c/a/e/d;->b_()V
 
     iget-object v0, p0, Lsdk/c/a/d/c;->b:Landroid/os/Handler;
 
@@ -231,8 +213,22 @@
     return-void
 .end method
 
-.method protected final f()V
+.method protected e()V
     .locals 0
+
+    return-void
+.end method
+
+.method public f()V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    invoke-super {p0}, Lsdk/c/a/e/d;->f()V
+
+    iput-object v0, p0, Lsdk/c/a/d/c;->f:Ljava/lang/String;
+
+    iput-object v0, p0, Lsdk/c/a/d/c;->h:Ljava/lang/String;
 
     return-void
 .end method

@@ -6,6 +6,9 @@
 
 
 # virtual methods
+.method public abstract a(I)Lcom/igexin/a/a/e;
+.end method
+
 .method public abstract e()I
 .end method
 
@@ -21,8 +24,5 @@
 .method public abstract i()Ljava/util/Collection;
 .end method
 
-.method public abstract j()Lcom/igexin/a/a/c/e;
-.end method
-
-.method public abstract k()Lcom/igexin/a/a/e;
+.method public abstract j()Lcom/igexin/a/a/c/ad;
 .end method

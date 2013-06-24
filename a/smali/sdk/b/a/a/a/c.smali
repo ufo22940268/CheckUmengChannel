@@ -1,4 +1,4 @@
-.class final Lsdk/b/a/a/a/c;
+.class Lsdk/b/a/a/a/c;
 .super Lsdk/b/a/a/e/d/f;
 
 
@@ -8,20 +8,18 @@
 
 # direct methods
 .method constructor <init>(Lsdk/b/a/a/a/b;J)V
-    .locals 1
+    .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/a/c;->a:Lsdk/b/a/a/a/b;
 
-    const/4 v0, 0x0
-
-    invoke-direct {p0, p2, p3, v0}, Lsdk/b/a/a/e/d/f;-><init>(JB)V
+    invoke-direct {p0, p2, p3}, Lsdk/b/a/a/e/d/f;-><init>(J)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method protected final a()V
+.method protected a()V
     .locals 2
 
     sget-boolean v0, Lsdk/b/a/a/c/h;->y:Z
@@ -32,7 +30,7 @@
 
     iget-object v0, v0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->c()I
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->g()I
 
     move-result v0
 
@@ -74,7 +72,7 @@
     goto :goto_0
 .end method
 
-.method public final b()I
+.method public b()I
     .locals 1
 
     const/high16 v0, -0x8000

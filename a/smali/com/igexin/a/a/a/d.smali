@@ -1,99 +1,73 @@
-.class public final Lcom/igexin/a/a/a/d;
+.class Lcom/igexin/a/a/a/d;
 .super Ljava/lang/Object;
 
 # interfaces
-.implements Lcom/igexin/a/a/a;
+.implements Ljava/util/Iterator;
 
 
 # instance fields
-.field private a:Lcom/igexin/a/a/e;
+.field final synthetic a:Lcom/igexin/a/a/a/b;
 
-.field private b:Lcom/igexin/a/a/f;
+.field private final b:Ljava/util/ListIterator;
 
 
 # direct methods
-.method private constructor <init>()V
-    .locals 2
+.method private constructor <init>(Lcom/igexin/a/a/a/b;I)V
+    .locals 1
+
+    iput-object p1, p0, Lcom/igexin/a/a/a/d;->a:Lcom/igexin/a/a/a/b;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    new-instance v0, Lcom/igexin/a/a/a/f;
+    invoke-virtual {p1, p2}, Lcom/igexin/a/a/a/b;->listIterator(I)Ljava/util/ListIterator;
 
-    const/4 v1, 0x0
+    move-result-object v0
 
-    invoke-direct {v0, v1}, Lcom/igexin/a/a/a/f;-><init>(B)V
-
-    iput-object v0, p0, Lcom/igexin/a/a/a/d;->a:Lcom/igexin/a/a/e;
-
-    new-instance v0, Lcom/igexin/a/a/a/g;
-
-    invoke-direct {v0}, Lcom/igexin/a/a/a/g;-><init>()V
-
-    iput-object v0, p0, Lcom/igexin/a/a/a/d;->b:Lcom/igexin/a/a/f;
+    iput-object v0, p0, Lcom/igexin/a/a/a/d;->b:Ljava/util/ListIterator;
 
     return-void
 .end method
 
-.method public static b(Ljava/net/URL;)Lcom/igexin/a/a/a;
-    .locals 1
+.method synthetic constructor <init>(Lcom/igexin/a/a/a/b;ILcom/igexin/a/a/a/c;)V
+    .locals 0
 
-    new-instance v0, Lcom/igexin/a/a/a/d;
+    invoke-direct {p0, p1, p2}, Lcom/igexin/a/a/a/d;-><init>(Lcom/igexin/a/a/a/b;I)V
 
-    invoke-direct {v0}, Lcom/igexin/a/a/a/d;-><init>()V
-
-    invoke-interface {v0, p0}, Lcom/igexin/a/a/a;->a(Ljava/net/URL;)Lcom/igexin/a/a/a;
-
-    return-object v0
+    return-void
 .end method
 
 
 # virtual methods
-.method public final a()Lcom/igexin/a/a/a;
+.method public hasNext()Z
     .locals 1
 
-    iget-object v0, p0, Lcom/igexin/a/a/a/d;->a:Lcom/igexin/a/a/e;
+    iget-object v0, p0, Lcom/igexin/a/a/a/d;->b:Ljava/util/ListIterator;
 
-    invoke-interface {v0}, Lcom/igexin/a/a/e;->k()Lcom/igexin/a/a/e;
+    invoke-interface {v0}, Ljava/util/ListIterator;->hasPrevious()Z
 
-    return-object p0
+    move-result v0
+
+    return v0
 .end method
 
-.method public final a(Ljava/net/URL;)Lcom/igexin/a/a/a;
+.method public next()Ljava/lang/Object;
     .locals 1
 
-    iget-object v0, p0, Lcom/igexin/a/a/a/d;->a:Lcom/igexin/a/a/e;
+    iget-object v0, p0, Lcom/igexin/a/a/a/d;->b:Ljava/util/ListIterator;
 
-    invoke-interface {v0, p1}, Lcom/igexin/a/a/e;->a(Ljava/net/URL;)Lcom/igexin/a/a/b;
-
-    return-object p0
-.end method
-
-.method public final b()Lcom/igexin/a/a/b/e;
-    .locals 2
-
-    iget-object v0, p0, Lcom/igexin/a/a/a/d;->a:Lcom/igexin/a/a/e;
-
-    sget-object v1, Lcom/igexin/a/a/d;->a:Lcom/igexin/a/a/d;
-
-    invoke-interface {v0, v1}, Lcom/igexin/a/a/e;->a(Lcom/igexin/a/a/d;)Lcom/igexin/a/a/b;
-
-    iget-object v0, p0, Lcom/igexin/a/a/a/d;->a:Lcom/igexin/a/a/e;
-
-    const/4 v1, 0x0
-
-    invoke-static {v0, v1}, Lcom/igexin/a/a/a/g;->a(Lcom/igexin/a/a/e;Lcom/igexin/a/a/a/g;)Lcom/igexin/a/a/a/g;
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/igexin/a/a/a/d;->b:Lcom/igexin/a/a/f;
-
-    iget-object v0, p0, Lcom/igexin/a/a/a/d;->b:Lcom/igexin/a/a/f;
-
-    iget-object v0, p0, Lcom/igexin/a/a/a/d;->b:Lcom/igexin/a/a/f;
-
-    invoke-interface {v0}, Lcom/igexin/a/a/f;->e()Lcom/igexin/a/a/b/e;
+    invoke-interface {v0}, Ljava/util/ListIterator;->previous()Ljava/lang/Object;
 
     move-result-object v0
 
     return-object v0
+.end method
+
+.method public remove()V
+    .locals 1
+
+    iget-object v0, p0, Lcom/igexin/a/a/a/d;->b:Ljava/util/ListIterator;
+
+    invoke-interface {v0}, Ljava/util/ListIterator;->remove()V
+
+    return-void
 .end method

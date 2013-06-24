@@ -2,10 +2,30 @@
 .super Ljava/lang/Object;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/baidu/mapapi/RouteOverlay;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = "a"
+.end annotation
+
+
 # instance fields
 .field public a:Lcom/baidu/mapapi/GeoPoint;
 
 .field public b:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Landroid/graphics/Point;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field final synthetic c:Lcom/baidu/mapapi/RouteOverlay;
 

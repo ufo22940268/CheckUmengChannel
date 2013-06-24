@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/c/d;
+.class public Lsdk/b/a/a/c/d;
 .super Lcom/igexin/b/b;
 
 
@@ -89,6 +89,8 @@
     aput-object v1, v0, v2
 
     sput-object v0, Lsdk/b/a/a/c/d;->c:[Ljava/lang/String;
+
+    sget-object v0, Lsdk/b/a/a/c/d;->c:[Ljava/lang/String;
 
     aget-object v0, v0, v2
 

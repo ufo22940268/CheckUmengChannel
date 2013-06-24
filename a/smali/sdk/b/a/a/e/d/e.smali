@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/d/e;
+.class public Lsdk/b/a/a/e/d/e;
 .super Lsdk/b/a/a/e/d/f;
 
 
@@ -8,7 +8,7 @@
 
 # direct methods
 .method public constructor <init>(Lcom/igexin/sdk/SdkMainService;)V
-    .locals 3
+    .locals 2
 
     invoke-static {}, Lsdk/b/a/a/e/d/a;->a()Lsdk/b/a/a/e/d/a;
 
@@ -18,9 +18,7 @@
 
     move-result-wide v0
 
-    const/4 v2, 0x0
-
-    invoke-direct {p0, v0, v1, v2}, Lsdk/b/a/a/e/d/f;-><init>(JB)V
+    invoke-direct {p0, v0, v1}, Lsdk/b/a/a/e/d/f;-><init>(J)V
 
     iput-object p1, p0, Lsdk/b/a/a/e/d/e;->a:Lcom/igexin/sdk/SdkMainService;
 
@@ -33,8 +31,8 @@
 
 
 # virtual methods
-.method protected final a()V
-    .locals 7
+.method protected a()V
+    .locals 9
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
@@ -46,9 +44,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "doTaskMethod heartBeatTime="
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     sget-wide v2, Lsdk/b/a/a/a/b;->d:J
 
@@ -60,7 +62,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-boolean v0, Lsdk/b/a/a/c/h;->y:Z
 
@@ -76,27 +78,31 @@
 
     sget-object v1, Lsdk/b/a/a/c/d;->d:Ljava/lang/String;
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->b()Lsdk/c/a/b/c;
+    const/4 v2, 0x3
 
-    move-result-object v2
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->e()Lsdk/c/a/b/c;
 
-    new-instance v3, Lsdk/a/a/a/a/a/e;
+    move-result-object v3
 
-    invoke-direct {v3}, Lsdk/a/a/a/a/a/e;-><init>()V
+    new-instance v4, Lsdk/a/a/a/a/a/e;
 
-    const/4 v4, 0x0
+    invoke-direct {v4}, Lsdk/a/a/a/a/a/e;-><init>()V
 
-    new-instance v5, Lsdk/b/a/a/e/b;
+    const/4 v5, 0x0
 
-    iget-object v6, p0, Lsdk/b/a/a/e/d/e;->a:Lcom/igexin/sdk/SdkMainService;
+    const/16 v6, 0xf
 
-    invoke-direct {v5, v6}, Lsdk/b/a/a/e/b;-><init>(Lcom/igexin/sdk/SdkMainService;)V
+    new-instance v7, Lsdk/b/a/a/e/b;
 
-    invoke-virtual/range {v0 .. v5}, Lsdk/c/a/b/d;->a(Ljava/lang/String;Lsdk/c/a/b/c;Ljava/lang/Object;ZLsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
+    iget-object v8, p0, Lsdk/b/a/a/e/d/e;->a:Lcom/igexin/sdk/SdkMainService;
+
+    invoke-direct {v7, v8}, Lsdk/b/a/a/e/b;-><init>(Lcom/igexin/sdk/SdkMainService;)V
+
+    invoke-virtual/range {v0 .. v7}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
 
     iget-object v0, p0, Lsdk/b/a/a/e/d/e;->a:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->n()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->u()V
 
     :cond_0
     :goto_0
@@ -129,7 +135,7 @@
 
     const-string v1, "doTaskMethod offline ReconnectNotifyType"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_0
 .end method
@@ -142,10 +148,10 @@
     return v0
 .end method
 
-.method public final d()V
+.method public c()V
     .locals 1
 
-    invoke-super {p0}, Lsdk/b/a/a/e/d/f;->d()V
+    invoke-super {p0}, Lsdk/b/a/a/e/d/f;->c()V
 
     iget-boolean v0, p0, Lsdk/b/a/a/e/d/e;->x:Z
 
@@ -157,30 +163,38 @@
     return-void
 .end method
 
-.method public final g()V
-    .locals 3
+.method public g()V
+    .locals 4
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "GexinSdk"
 
-    const-string v1, "--\u5fc3\u8df3 \u5ef6\u65f6:"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-static {}, Lsdk/b/a/a/e/d/a;->a()Lsdk/b/a/a/e/d/a;
+    const-string v2, "--\u5fc3\u8df3 \u5ef6\u65f6:"
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
-    invoke-virtual {v1}, Lsdk/b/a/a/e/d/a;->b()J
+    invoke-static {}, Lsdk/b/a/a/e/d/a;->a()Lsdk/b/a/a/e/d/a;
 
-    move-result-wide v1
+    move-result-object v2
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v2}, Lsdk/b/a/a/e/d/a;->b()J
 
-    move-result-object v0
+    move-result-wide v2
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-static {}, Lsdk/b/a/a/e/d/a;->a()Lsdk/b/a/a/e/d/a;
 
@@ -193,6 +207,12 @@
     sget-object v2, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
 
     invoke-virtual {p0, v0, v1, v2}, Lsdk/b/a/a/e/d/e;->a(JLjava/util/concurrent/TimeUnit;)I
+
+    return-void
+.end method
+
+.method public h()V
+    .locals 0
 
     return-void
 .end method

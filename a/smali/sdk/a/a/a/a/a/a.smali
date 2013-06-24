@@ -1,4 +1,4 @@
-.class public final Lsdk/a/a/a/a/a/a;
+.class public Lsdk/a/a/a/a/a/a;
 .super Lsdk/c/b/a/b/b;
 
 
@@ -41,10 +41,18 @@
 
 
 # virtual methods
-.method public final a([B)V
-    .locals 5
+.method public final a()V
+    .locals 1
 
-    const/4 v2, 0x2
+    const/16 v0, 0x80
+
+    iput v0, p0, Lsdk/a/a/a/a/a/a;->b:I
+
+    return-void
+.end method
+
+.method public a([B)V
+    .locals 5
 
     const/4 v1, 0x0
 
@@ -54,15 +62,17 @@
 
     iput v0, p0, Lsdk/a/a/a/a/a/a;->a:I
 
-    aget-byte v0, p1, v2
+    const/4 v0, 0x2
 
-    and-int/lit16 v0, v0, 0xc0
+    aget-byte v2, p1, v0
 
-    iput v0, p0, Lsdk/a/a/a/a/a/a;->b:I
+    and-int/lit16 v2, v2, 0xc0
 
-    aget-byte v0, p1, v2
+    iput v2, p0, Lsdk/a/a/a/a/a/a;->b:I
 
-    invoke-static {v0}, Lsdk/a/a/a/a/a/a;->a(B)Ljava/lang/String;
+    aget-byte v0, p1, v0
+
+    invoke-virtual {p0, v0}, Lsdk/a/a/a/a/a/a;->a(B)Ljava/lang/String;
 
     move-result-object v0
 
@@ -78,20 +88,20 @@
 
     const/16 v0, 0xb
 
+    const/16 v2, 0xc
+
     aget-byte v0, p1, v0
 
     and-int/lit16 v0, v0, 0xff
 
     :try_start_0
-    new-instance v2, Ljava/lang/String;
-
-    const/16 v3, 0xc
+    new-instance v3, Ljava/lang/String;
 
     iget-object v4, p0, Lsdk/a/a/a/a/a/a;->g:Ljava/lang/String;
 
-    invoke-direct {v2, p1, v3, v0, v4}, Ljava/lang/String;-><init>([BIILjava/lang/String;)V
+    invoke-direct {v3, p1, v2, v0, v4}, Ljava/lang/String;-><init>([BIILjava/lang/String;)V
 
-    iput-object v2, p0, Lsdk/a/a/a/a/a/a;->d:Ljava/lang/String;
+    iput-object v3, p0, Lsdk/a/a/a/a/a/a;->d:Ljava/lang/String;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
@@ -208,8 +218,8 @@
     goto :goto_0
 .end method
 
-.method public final a()[B
-    .locals 11
+.method public c()[B
+    .locals 12
 
     const/4 v1, 0x0
 
@@ -244,6 +254,8 @@
 
     check-cast v0, [B
 
+    check-cast v0, [B
+
     move-object v5, v0
 
     :goto_0
@@ -255,9 +267,13 @@
 
     check-cast v0, [B
 
+    check-cast v0, [B
+
     move-object v4, v0
 
     :goto_1
+    const/16 v7, 0xc
+
     if-nez v5, :cond_6
 
     move v3, v2
@@ -268,25 +284,25 @@
     :goto_3
     invoke-static {v3}, Lsdk/c/a/b/g;->a(I)[B
 
-    move-result-object v7
+    move-result-object v8
 
     invoke-static {v2}, Lsdk/c/a/b/g;->a(I)[B
 
-    move-result-object v8
+    move-result-object v9
 
     array-length v0, v6
 
-    add-int/lit8 v0, v0, 0xc
+    add-int/2addr v0, v7
 
-    array-length v9, v7
+    array-length v7, v8
 
-    add-int/2addr v0, v9
+    add-int/2addr v0, v7
 
     add-int/2addr v0, v3
 
-    array-length v9, v8
+    array-length v7, v9
 
-    add-int/2addr v0, v9
+    add-int/2addr v0, v7
 
     add-int/2addr v0, v2
 
@@ -297,53 +313,59 @@
     :try_start_1
     iget v1, p0, Lsdk/a/a/a/a/a/a;->a:I
 
-    const/4 v9, 0x0
+    const/4 v7, 0x0
 
-    invoke-static {v1, v0, v9}, Lsdk/c/a/b/g;->b(I[BI)I
-
-    iget v1, p0, Lsdk/a/a/a/a/a/a;->b:I
-
-    iget-object v9, p0, Lsdk/a/a/a/a/a/a;->g:Ljava/lang/String;
-
-    invoke-static {v9}, Lsdk/a/a/a/a/a/a;->a(Ljava/lang/String;)I
-
-    move-result v9
-
-    or-int/2addr v1, v9
-
-    const/4 v9, 0x2
-
-    invoke-static {v1, v0, v9}, Lsdk/c/a/b/g;->c(I[BI)I
-
-    iget-wide v9, p0, Lsdk/a/a/a/a/a/a;->c:J
-
-    const/4 v1, 0x3
-
-    invoke-static {v9, v10, v0, v1}, Lsdk/c/a/b/g;->a(J[BI)I
-
-    array-length v1, v6
-
-    const/16 v9, 0xb
-
-    invoke-static {v1, v0, v9}, Lsdk/c/a/b/g;->c(I[BI)I
-
-    const/4 v1, 0x0
-
-    const/16 v9, 0xc
-
-    array-length v10, v6
-
-    invoke-static {v6, v1, v0, v9, v10}, Lsdk/c/a/b/g;->a([BI[BII)I
+    invoke-static {v1, v0, v7}, Lsdk/c/a/b/g;->b(I[BI)I
 
     move-result v1
 
-    add-int/lit8 v1, v1, 0xc
+    iget v7, p0, Lsdk/a/a/a/a/a/a;->b:I
+
+    iget-object v10, p0, Lsdk/a/a/a/a/a/a;->g:Ljava/lang/String;
+
+    invoke-virtual {p0, v10}, Lsdk/a/a/a/a/a/a;->a(Ljava/lang/String;)I
+
+    move-result v10
+
+    or-int/2addr v7, v10
+
+    invoke-static {v7, v0, v1}, Lsdk/c/a/b/g;->c(I[BI)I
+
+    move-result v7
+
+    add-int/2addr v1, v7
+
+    iget-wide v10, p0, Lsdk/a/a/a/a/a/a;->c:J
+
+    invoke-static {v10, v11, v0, v1}, Lsdk/c/a/b/g;->a(J[BI)I
+
+    move-result v7
+
+    add-int/2addr v1, v7
+
+    array-length v7, v6
+
+    invoke-static {v7, v0, v1}, Lsdk/c/a/b/g;->c(I[BI)I
+
+    move-result v7
+
+    add-int/2addr v1, v7
+
+    const/4 v7, 0x0
+
+    array-length v10, v6
+
+    invoke-static {v6, v7, v0, v1, v10}, Lsdk/c/a/b/g;->a([BI[BII)I
+
+    move-result v6
+
+    add-int/2addr v1, v6
 
     const/4 v6, 0x0
 
-    array-length v9, v7
+    array-length v7, v8
 
-    invoke-static {v7, v6, v0, v1, v9}, Lsdk/c/a/b/g;->a([BI[BII)I
+    invoke-static {v8, v6, v0, v1, v7}, Lsdk/c/a/b/g;->a([BI[BII)I
 
     move-result v6
 
@@ -362,9 +384,9 @@
     :cond_0
     const/4 v3, 0x0
 
-    array-length v5, v8
+    array-length v5, v9
 
-    invoke-static {v8, v3, v0, v1, v5}, Lsdk/c/a/b/g;->a([BI[BII)I
+    invoke-static {v9, v3, v0, v1, v5}, Lsdk/c/a/b/g;->a([BI[BII)I
 
     move-result v3
 
@@ -377,6 +399,10 @@
     invoke-static {v4, v3, v0, v1, v2}, Lsdk/c/a/b/g;->a([BI[BII)I
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
+
+    move-result v2
+
+    add-int/2addr v1, v2
 
     :cond_1
     :goto_4
@@ -413,7 +439,7 @@
 
     move-object v5, v0
 
-    goto :goto_0
+    goto/16 :goto_0
 
     :cond_4
     move-object v5, v1

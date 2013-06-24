@@ -1,4 +1,4 @@
-.class final Lsdk/download/c;
+.class Lsdk/download/c;
 .super Ljava/util/TimerTask;
 
 
@@ -23,7 +23,7 @@
 
 
 # virtual methods
-.method public final run()V
+.method public run()V
     .locals 7
 
     iget-object v0, p0, Lsdk/download/c;->b:Lsdk/download/b;
@@ -48,7 +48,9 @@
 
     iget-object v0, p0, Lsdk/download/c;->b:Lsdk/download/b;
 
-    invoke-static {v0}, Lsdk/download/b;->c(Lsdk/download/b;)Ljava/util/Timer;
+    const/4 v1, 0x0
+
+    invoke-static {v0, v1}, Lsdk/download/b;->a(Lsdk/download/b;Ljava/util/Timer;)Ljava/util/Timer;
 
     :cond_0
     :goto_0
@@ -111,7 +113,7 @@
 
     iget-object v0, p0, Lsdk/download/c;->b:Lsdk/download/b;
 
-    invoke-static {v0}, Lsdk/download/b;->d(Lsdk/download/b;)J
+    invoke-static {v0}, Lsdk/download/b;->c(Lsdk/download/b;)J
 
     move-result-wide v5
 
@@ -121,7 +123,7 @@
 
     iget-object v0, p0, Lsdk/download/c;->b:Lsdk/download/b;
 
-    invoke-static {v0}, Lsdk/download/b;->e(Lsdk/download/b;)Ljava/util/List;
+    invoke-static {v0}, Lsdk/download/b;->d(Lsdk/download/b;)Ljava/util/List;
 
     move-result-object v0
 
@@ -136,7 +138,7 @@
     :cond_3
     iget-object v0, p0, Lsdk/download/c;->b:Lsdk/download/b;
 
-    invoke-static {v0}, Lsdk/download/b;->e(Lsdk/download/b;)Ljava/util/List;
+    invoke-static {v0}, Lsdk/download/b;->d(Lsdk/download/b;)Ljava/util/List;
 
     move-result-object v0
 
@@ -148,7 +150,7 @@
 
     iget-object v0, p0, Lsdk/download/c;->b:Lsdk/download/b;
 
-    invoke-static {v0}, Lsdk/download/b;->e(Lsdk/download/b;)Ljava/util/List;
+    invoke-static {v0}, Lsdk/download/b;->d(Lsdk/download/b;)Ljava/util/List;
 
     move-result-object v0
 
@@ -204,7 +206,9 @@
 
     move-result v0
 
-    shl-int/lit8 v0, v0, 0xb
+    invoke-static {v0}, Lsdk/download/q;->a(I)I
+
+    move-result v0
 
     invoke-virtual {v3, v0, v2}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
 
@@ -213,7 +217,7 @@
     :cond_5
     iget-object v0, p0, Lsdk/download/c;->b:Lsdk/download/b;
 
-    invoke-static {v0}, Lsdk/download/b;->e(Lsdk/download/b;)Ljava/util/List;
+    invoke-static {v0}, Lsdk/download/b;->d(Lsdk/download/b;)Ljava/util/List;
 
     move-result-object v0
 

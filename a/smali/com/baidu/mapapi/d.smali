@@ -2,10 +2,30 @@
 .super Ljava/lang/Object;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/d$a;
+    }
+.end annotation
+
+
 # static fields
 .field static a:Landroid/content/Context;
 
 .field static b:Ljava/util/HashMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/HashMap",
+            "<",
+            "Ljava/lang/String;",
+            "Ljava/lang/ref/SoftReference",
+            "<",
+            "Lcom/baidu/mapapi/u;",
+            ">;>;"
+        }
+    .end annotation
+.end field
 
 .field public static c:Z
 
@@ -63,8 +83,11 @@
 
 .method public static a(Ljava/lang/String;)Ljava/net/HttpURLConnection;
     .locals 5
-
-    const/4 v1, 0x7
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
 
     sget-boolean v0, Lcom/baidu/mapapi/d;->c:Z
 
@@ -86,15 +109,17 @@
 
     if-eqz v0, :cond_3
 
-    const/16 v0, 0x2f
+    const/4 v0, 0x7
 
-    invoke-virtual {p0, v0, v1}, Ljava/lang/String;->indexOf(II)I
+    const/16 v1, 0x2f
 
-    move-result v0
+    invoke-virtual {p0, v1, v0}, Ljava/lang/String;->indexOf(II)I
 
-    if-gez v0, :cond_1
+    move-result v2
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+    if-gez v2, :cond_1
+
+    invoke-virtual {p0, v0}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v1
 
@@ -134,11 +159,11 @@
     goto :goto_0
 
     :cond_1
-    invoke-virtual {p0, v1, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    invoke-virtual {p0, v0, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v1
 
-    invoke-virtual {p0, v0}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+    invoke-virtual {p0, v2}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v0
 
@@ -149,9 +174,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "http://"
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     sget-object v4, Lcom/baidu/mapapi/d;->g:Ljava/lang/String;
 

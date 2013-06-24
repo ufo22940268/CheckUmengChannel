@@ -1,5 +1,14 @@
 .class public abstract Lcom/actionbarsherlock/view/ActionMode;
 .super Ljava/lang/Object;
+.source "ActionMode.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/actionbarsherlock/view/ActionMode$Callback;
+    }
+.end annotation
 
 
 # instance fields
@@ -10,8 +19,11 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
+    .line 27
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 186
     return-void
 .end method
 
@@ -35,6 +47,8 @@
 .method public getTag()Ljava/lang/Object;
     .locals 1
 
+    .prologue
+    .line 55
     iget-object v0, p0, Lcom/actionbarsherlock/view/ActionMode;->mTag:Ljava/lang/Object;
 
     return-object v0
@@ -49,6 +63,8 @@
 .method public isUiFocusable()Z
     .locals 1
 
+    .prologue
+    .line 166
     const/4 v0, 0x1
 
     return v0
@@ -65,9 +81,13 @@
 
 .method public setTag(Ljava/lang/Object;)V
     .locals 0
+    .parameter "tag"
 
+    .prologue
+    .line 41
     iput-object p1, p0, Lcom/actionbarsherlock/view/ActionMode;->mTag:Ljava/lang/Object;
 
+    .line 42
     return-void
 .end method
 

@@ -1,46 +1,200 @@
-.class final enum Lcom/igexin/a/a/c/af;
-.super Lcom/igexin/a/a/c/r;
+.class abstract Lcom/igexin/a/a/c/af;
+.super Ljava/lang/Object;
+
+
+# instance fields
+.field a:Lcom/igexin/a/a/c/ao;
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method private constructor <init>()V
+    .locals 0
 
-    const/16 v0, 0x13
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    const/4 v1, 0x0
+    return-void
+.end method
 
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/r;-><init>(Ljava/lang/String;IB)V
+.method synthetic constructor <init>(Lcom/igexin/a/a/c/ag;)V
+    .locals 0
+
+    invoke-direct {p0}, Lcom/igexin/a/a/c/af;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method final a(Lcom/igexin/a/a/c/q;Lcom/igexin/a/a/c/a;)V
+.method a()Ljava/lang/String;
+    .locals 1
+
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method b()Z
     .locals 2
 
-    const/16 v1, 0x2d
+    iget-object v0, p0, Lcom/igexin/a/a/c/af;->a:Lcom/igexin/a/a/c/ao;
 
-    invoke-virtual {p2, v1}, Lcom/igexin/a/a/c/a;->b(C)Z
+    sget-object v1, Lcom/igexin/a/a/c/ao;->a:Lcom/igexin/a/a/c/ao;
 
-    move-result v0
+    if-ne v0, v1, :cond_0
 
-    if-eqz v0, :cond_0
-
-    invoke-virtual {p1, v1}, Lcom/igexin/a/a/c/q;->a(C)V
-
-    sget-object v0, Lcom/igexin/a/a/c/af;->u:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->b(Lcom/igexin/a/a/c/r;)V
+    const/4 v0, 0x1
 
     :goto_0
-    return-void
+    return v0
 
     :cond_0
-    sget-object v0, Lcom/igexin/a/a/c/af;->f:Lcom/igexin/a/a/c/r;
+    const/4 v0, 0x0
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    goto :goto_0
+.end method
+
+.method c()Lcom/igexin/a/a/c/aj;
+    .locals 0
+
+    check-cast p0, Lcom/igexin/a/a/c/aj;
+
+    return-object p0
+.end method
+
+.method d()Z
+    .locals 2
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/af;->a:Lcom/igexin/a/a/c/ao;
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->b:Lcom/igexin/a/a/c/ao;
+
+    if-ne v0, v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method e()Lcom/igexin/a/a/c/am;
+    .locals 0
+
+    check-cast p0, Lcom/igexin/a/a/c/am;
+
+    return-object p0
+.end method
+
+.method f()Z
+    .locals 2
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/af;->a:Lcom/igexin/a/a/c/ao;
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->c:Lcom/igexin/a/a/c/ao;
+
+    if-ne v0, v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method g()Lcom/igexin/a/a/c/al;
+    .locals 0
+
+    check-cast p0, Lcom/igexin/a/a/c/al;
+
+    return-object p0
+.end method
+
+.method h()Z
+    .locals 2
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/af;->a:Lcom/igexin/a/a/c/ao;
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->d:Lcom/igexin/a/a/c/ao;
+
+    if-ne v0, v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method i()Lcom/igexin/a/a/c/ai;
+    .locals 0
+
+    check-cast p0, Lcom/igexin/a/a/c/ai;
+
+    return-object p0
+.end method
+
+.method j()Z
+    .locals 2
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/af;->a:Lcom/igexin/a/a/c/ao;
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->e:Lcom/igexin/a/a/c/ao;
+
+    if-ne v0, v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method k()Lcom/igexin/a/a/c/ah;
+    .locals 0
+
+    check-cast p0, Lcom/igexin/a/a/c/ah;
+
+    return-object p0
+.end method
+
+.method l()Z
+    .locals 2
+
+    iget-object v0, p0, Lcom/igexin/a/a/c/af;->a:Lcom/igexin/a/a/c/ao;
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->f:Lcom/igexin/a/a/c/ao;
+
+    if-ne v0, v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method

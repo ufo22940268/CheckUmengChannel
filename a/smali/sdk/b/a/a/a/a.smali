@@ -24,7 +24,7 @@
 .method public abstract a()V
 .end method
 
-.method public a(Ljava/lang/Object;)Z
+.method public a(Ljava/lang/Object;Lsdk/c/a/e/e;)Z
     .locals 1
 
     const/4 v0, 0x1
@@ -32,7 +32,7 @@
     return v0
 .end method
 
-.method public a(Lsdk/c/a/e/d;)Z
+.method public a(Lsdk/c/a/e/d;Lsdk/c/a/e/e;)Z
     .locals 1
 
     const/4 v0, 0x1

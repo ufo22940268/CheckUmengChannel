@@ -34,7 +34,7 @@
     return-void
 .end method
 
-.method public final a(JLsdk/c/a/e/d;)Z
+.method public a(JLsdk/c/a/e/d;)Z
     .locals 4
 
     sget-object v0, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
@@ -66,7 +66,7 @@
     goto :goto_0
 .end method
 
-.method public final b(JLsdk/c/a/e/d;)J
+.method public b(JLsdk/c/a/e/d;)J
     .locals 4
 
     sget-object v0, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
@@ -88,7 +88,7 @@
     return-wide v0
 .end method
 
-.method public final c()Z
+.method public b()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/c/a/e/b;->b:Z

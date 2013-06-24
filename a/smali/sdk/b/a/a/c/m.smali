@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/c/m;
+.class public Lsdk/b/a/a/c/m;
 .super Ljava/lang/Object;
 
 
@@ -37,7 +37,7 @@
 
 
 # virtual methods
-.method final a(I)I
+.method a(I)I
     .locals 8
 
     const/4 v7, 0x0
@@ -180,7 +180,7 @@
     goto :goto_1
 .end method
 
-.method public final a(Ljava/lang/String;)I
+.method public a(Ljava/lang/String;)I
     .locals 6
 
     const/4 v1, 0x5
@@ -296,7 +296,7 @@
     goto :goto_1
 .end method
 
-.method public final a(Lsdk/b/a/a/b/j;)I
+.method public a(Lsdk/b/a/a/b/j;)I
     .locals 6
 
     const/4 v0, -0x1
@@ -309,7 +309,7 @@
 
     const-string v2, "address"
 
-    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->i()Ljava/lang/String;
+    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->h()Ljava/lang/String;
 
     move-result-object v4
 
@@ -317,7 +317,7 @@
 
     const-string v2, "date"
 
-    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->e()J
+    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->d()J
 
     move-result-wide v4
 
@@ -329,7 +329,7 @@
 
     const-string v2, "read"
 
-    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->l()I
+    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->k()I
 
     move-result v4
 
@@ -347,7 +347,7 @@
 
     invoke-virtual {v3, v2, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
-    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->g()I
+    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->f()I
 
     move-result v2
 
@@ -367,7 +367,7 @@
     :goto_0
     const-string v2, "body"
 
-    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->f()Ljava/lang/String;
+    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->e()Ljava/lang/String;
 
     move-result-object v4
 
@@ -377,7 +377,7 @@
 
     const v4, 0xf4240
 
-    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->h()B
+    invoke-virtual {p1}, Lsdk/b/a/a/b/j;->g()B
 
     move-result v5
 
@@ -505,7 +505,7 @@
     .end packed-switch
 .end method
 
-.method final b(I)I
+.method b(I)I
     .locals 4
 
     iget-object v0, p0, Lsdk/b/a/a/c/m;->b:Lcom/igexin/sdk/SdkMainService;
@@ -538,34 +538,42 @@
 
     move-result v0
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v1, "GexinSdk"
 
-    const-string v2, "delete db sms(_id="
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v3, "delete db sms(_id="
 
-    move-result-object v1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const-string v2, ") result : "
+    move-result-object v2
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v3, ") result : "
 
-    move-result-object v1
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     return v0
 .end method
 
-.method final b(Ljava/lang/String;)I
+.method b(Ljava/lang/String;)I
     .locals 9
 
     const/4 v7, 0x0

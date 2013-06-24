@@ -2,6 +2,15 @@
 .super Landroid/view/ViewGroup;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/MapView$LayoutParams;,
+        Lcom/baidu/mapapi/MapView$a;
+    }
+.end annotation
+
+
 # static fields
 .field public static final DRAG_MODE_NONE:I = 0x1
 
@@ -421,17 +430,23 @@
 
     sub-int/2addr v2, v4
 
-    :sswitch_5
     div-int/lit8 v4, v0, 0x2
 
     sub-int/2addr v1, v4
 
     goto :goto_2
 
-    :sswitch_6
+    :sswitch_5
     div-int/lit8 v4, v3, 0x2
 
     sub-int/2addr v2, v4
+
+    goto :goto_2
+
+    :sswitch_6
+    div-int/lit8 v4, v0, 0x2
+
+    sub-int/2addr v1, v4
 
     goto :goto_2
 
@@ -447,10 +462,10 @@
 
     :sswitch_data_0
     .sparse-switch
-        0x1 -> :sswitch_6
+        0x1 -> :sswitch_5
         0x3 -> :sswitch_0
         0x5 -> :sswitch_2
-        0x10 -> :sswitch_5
+        0x10 -> :sswitch_6
         0x11 -> :sswitch_4
         0x30 -> :sswitch_0
         0x33 -> :sswitch_0
@@ -713,9 +728,13 @@
     :goto_0
     new-instance v4, Ljava/lang/StringBuilder;
 
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v5, "baidumap_logo_"
 
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
 
     aget-char v0, v1, v0
 
@@ -837,7 +856,19 @@
     :catch_1
     move-exception v0
 
+    const-string v1, "MapView()"
+
+    const-string v2, "initMapView() error!"
+
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    const-string v1, "MapView()"
+
     invoke-virtual {v0}, Ljava/lang/Exception;->getMessage()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_2
 
@@ -863,6 +894,8 @@
     move-exception v0
 
     goto :goto_3
+
+    nop
 
     :array_0
     .array-data 0x2
@@ -963,6 +996,8 @@
     add-int/lit8 v0, v0, -0x1
 
     sput v0, Lcom/baidu/mapapi/MapView;->g:I
+
+    sget v0, Lcom/baidu/mapapi/MapView;->g:I
 
     if-nez v0, :cond_0
 
@@ -1234,7 +1269,7 @@
     move v2, v0
 
     :goto_0
-    if-ge v2, v3, :cond_1
+    if-ge v2, v3, :cond_2
 
     invoke-super {p0, v2}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
@@ -1250,8 +1285,17 @@
 
     iget-object v0, p0, Lcom/baidu/mapapi/MapView;->b:Lcom/baidu/mapapi/a;
 
-    if-eq v4, v0, :cond_0
+    if-ne v4, v0, :cond_1
 
+    :cond_0
+    :goto_1
+    add-int/lit8 v0, v2, 0x1
+
+    move v2, v0
+
+    goto :goto_0
+
+    :cond_1
     invoke-virtual {v4}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
 
     move-result-object v1
@@ -1270,14 +1314,9 @@
 
     invoke-direct {p0, v4, v1}, Lcom/baidu/mapapi/MapView;->a(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    :cond_0
-    add-int/lit8 v0, v2, 0x1
+    goto :goto_1
 
-    move v2, v0
-
-    goto :goto_0
-
-    :cond_1
+    :cond_2
     return-void
 .end method
 
@@ -1528,6 +1567,15 @@
 
 .method public final getOverlays()Ljava/util/List;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Lcom/baidu/mapapi/Overlay;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MapView;->b:Lcom/baidu/mapapi/a;
 
@@ -1911,7 +1959,7 @@
     move v0, v2
 
     :goto_1
-    if-ge v0, v1, :cond_2
+    if-ge v0, v1, :cond_3
 
     invoke-super {p0, v0}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
@@ -1927,15 +1975,10 @@
 
     iget-object v3, p0, Lcom/baidu/mapapi/MapView;->b:Lcom/baidu/mapapi/a;
 
-    if-eq v2, v3, :cond_0
-
-    invoke-virtual {v2}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
-
-    move-result-object v3
-
-    invoke-direct {p0, v2, v3}, Lcom/baidu/mapapi/MapView;->a(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    if-ne v2, v3, :cond_2
 
     :cond_0
+    :goto_2
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_1
@@ -1946,6 +1989,15 @@
     goto :goto_0
 
     :cond_2
+    invoke-virtual {v2}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    move-result-object v3
+
+    invoke-direct {p0, v2, v3}, Lcom/baidu/mapapi/MapView;->a(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    goto :goto_2
+
+    :cond_3
     return-void
 .end method
 

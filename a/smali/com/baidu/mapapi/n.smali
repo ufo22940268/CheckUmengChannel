@@ -2,8 +2,24 @@
 .super Ljava/lang/Object;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/n$1;,
+        Lcom/baidu/mapapi/n$a;
+    }
+.end annotation
+
+
 # static fields
 .field private static a:Ljava/lang/reflect/Constructor;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/lang/reflect/Constructor",
+            "<*>;"
+        }
+    .end annotation
+.end field
 
 .field private static final b:I
 
@@ -118,6 +134,23 @@
 
 .method static a(Ljava/util/ArrayList;Ljava/util/ArrayList;ILjava/util/ArrayList;)I
     .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;I",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;)I"
+        }
+    .end annotation
 
     if-eqz p0, :cond_0
 
@@ -151,6 +184,23 @@
 
 .method static a(Ljava/util/ArrayList;Ljava/util/ArrayList;Ljava/util/ArrayList;D)I
     .locals 7
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;D)I"
+        }
+    .end annotation
 
     const/4 v2, 0x0
 
@@ -217,6 +267,15 @@
 
 .method static a(Ljava/util/ArrayList;[IIID)I
     .locals 10
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;[IIID)I"
+        }
+    .end annotation
 
     const-wide/high16 v2, 0x4059
 
@@ -329,7 +388,7 @@
 .end method
 
 .method static a(Lcom/baidu/mapapi/GeoPoint;Lcom/baidu/mapapi/GeoPoint;Lcom/baidu/mapapi/GeoPoint;)J
-    .locals 24
+    .locals 22
 
     invoke-virtual/range {p0 .. p0}, Lcom/baidu/mapapi/GeoPoint;->getLongitudeE6()I
 
@@ -371,17 +430,17 @@
 
     sub-long v16, v8, v12
 
-    mul-long v18, v14, v14
+    mul-long/2addr v14, v14
 
-    mul-long v20, v16, v16
+    mul-long v16, v16, v16
 
-    add-long v18, v18, v20
+    add-long v14, v14, v16
 
-    const-wide/16 v20, 0x0
+    const-wide/16 v16, 0x0
 
-    cmp-long v20, v18, v20
+    cmp-long v16, v14, v16
 
-    if-nez v20, :cond_1
+    if-nez v16, :cond_1
 
     sub-long/2addr v2, v6
 
@@ -398,17 +457,19 @@
     return-wide v2
 
     :cond_1
-    sub-long v20, v8, v4
+    sub-long v16, v8, v4
 
-    mul-long v16, v16, v20
+    sub-long v18, v8, v12
 
-    sub-long v20, v6, v2
+    mul-long v16, v16, v18
 
-    sub-long v22, v10, v6
+    sub-long v18, v6, v2
 
-    mul-long v20, v20, v22
+    sub-long v20, v10, v6
 
-    sub-long v16, v16, v20
+    mul-long v18, v18, v20
+
+    sub-long v16, v16, v18
 
     move-wide/from16 v0, v16
 
@@ -416,23 +477,21 @@
 
     move-wide/from16 v16, v0
 
-    move-wide/from16 v0, v18
+    long-to-double v0, v14
 
-    long-to-double v0, v0
+    move-wide/from16 v18, v0
 
-    move-wide/from16 v20, v0
+    div-double v16, v16, v18
 
-    div-double v16, v16, v20
+    const-wide/high16 v18, 0x3ff0
 
-    const-wide/high16 v20, 0x3ff0
+    cmpl-double v18, v16, v18
 
-    cmpl-double v20, v16, v20
+    if-gtz v18, :cond_2
 
-    if-gtz v20, :cond_2
+    const-wide/16 v18, 0x0
 
-    const-wide/16 v20, 0x0
-
-    cmpg-double v16, v16, v20
+    cmpg-double v16, v16, v18
 
     if-gez v16, :cond_3
 
@@ -466,25 +525,25 @@
     goto :goto_0
 
     :cond_3
-    sub-long v10, v12, v8
+    sub-long/2addr v12, v8
+
+    sub-long v10, v6, v10
 
     sub-long v4, v8, v4
 
-    neg-long v8, v14
+    neg-long v8, v10
 
     mul-long/2addr v4, v8
 
     sub-long v2, v6, v2
 
-    mul-long/2addr v2, v10
+    mul-long/2addr v2, v12
 
     sub-long v2, v4, v2
 
     long-to-double v4, v2
 
-    move-wide/from16 v0, v18
-
-    long-to-double v6, v0
+    long-to-double v6, v14
 
     div-double/2addr v4, v6
 

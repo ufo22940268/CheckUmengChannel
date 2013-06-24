@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="banka_select_photo">
+        <item>拍照</item>
+        <item>相册中选择</item>
+    </string-array>
     <string-array name="tel_item">
         <item>24小时客服热线</item>
         <item>紧急挂失</item>
@@ -25,13 +29,13 @@
         <item>星期六</item>
     </string-array>
     <string-array name="sliding_drawer_menu_arr">
-        <item>导入账单</item>
-        <item>账单漫游</item>
-        <item>图表分析</item>
-        <item>银行服务</item>
-        <item>附近优惠</item>
         <item>银行活动</item>
-        <item>店铺搜索</item>
+        <item>附近优惠</item>
+        <item>图表分析</item>
+        <item>51办卡</item>
+        <item>消费明细</item>
+        <item>导入账单</item>
+        <item>银行服务</item>
         <item>我的收藏</item>
     </string-array>
     <string-array name="all_weeks">
@@ -51,6 +55,7 @@
     <string-array name="detail_share_labels">
         <item>发送短信</item>
         <item>发送微信</item>
+        <item>发送到朋友圈</item>
     </string-array>
     <string-array name="pick_error">
         <item>图片不好看，有误</item>

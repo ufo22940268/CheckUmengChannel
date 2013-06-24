@@ -10,6 +10,15 @@
 
 # instance fields
 .field a:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private b:I
 
@@ -28,6 +37,15 @@
 .field private i:Lcom/baidu/mapapi/MKPoiInfo;
 
 .field private j:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # direct methods
@@ -75,6 +93,15 @@
 
 .method a(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKLine;->j:Ljava/util/ArrayList;
 
@@ -155,6 +182,15 @@
 
 .method public getPoints()Ljava/util/ArrayList;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MKLine;->j:Ljava/util/ArrayList;
 

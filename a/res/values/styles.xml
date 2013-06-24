@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="AppTheme" parent="@*android:style/Theme.Light.NoTitleBar" />
     <style name="Widget" />
     <style name="Sherlock.__Widget.ActionBar" parent="@style/Widget">
         <item name="android:paddingLeft">0.0dip</item>
@@ -20,7 +21,7 @@
         <item name="progressBarStyle">@style/Widget.Sherlock.ProgressBar.Horizontal</item>
         <item name="indeterminateProgressStyle">@style/Widget.Sherlock.ProgressBar</item>
         <item name="progressBarPadding">32.0dip</item>
-        <item name="itemPadding">0.0dip</item>
+        <item name="itemPadding">8.0dip</item>
     </style>
     <style name="Widget.Sherlock.ActionBar.Solid" parent="@style/Sherlock.__Widget.ActionBar">
         <item name="titleTextStyle">@style/TextAppearance.Sherlock.Widget.ActionBar.Title</item>
@@ -195,7 +196,7 @@
         <item name="android:dropDownSelector">@drawable/abs__list_selector_holo_light</item>
         <item name="android:popupBackground">@drawable/abs__menu_dropdown_panel_holo_light</item>
     </style>
-    <style name="Sherlock.__Widget.Holo.ListView" parent="@android:style/Widget.ListView">
+    <style name="Sherlock.__Widget.Holo.ListView" parent="@*android:style/Widget.ListView">
         <item name="android:listSelector">@drawable/abs__list_selector_holo_dark</item>
         <item name="android:divider">@drawable/abs__list_divider_holo_dark</item>
     </style>
@@ -214,14 +215,14 @@
     <style name="Widget.Sherlock.Light.DropDownItem.Spinner" parent="@style/Sherlock.__Widget.Holo.DropDownItem" />
     <style name="Widget.Sherlock.PopupWindow.ActionMode" parent="@style/Widget" />
     <style name="Widget.Sherlock.Light.PopupWindow.ActionMode" parent="@style/Widget">
-        <item name="android:popupBackground">@android:color/white</item>
+        <item name="android:popupBackground">@*android:color/white</item>
     </style>
-    <style name="Widget.Sherlock.ProgressBar" parent="@android:style/Widget.ProgressBar">
+    <style name="Widget.Sherlock.ProgressBar" parent="@*android:style/Widget.ProgressBar">
         <item name="android:indeterminateDrawable">@drawable/abs__progress_medium_holo</item>
         <item name="android:animationResolution">33</item>
     </style>
     <style name="Widget.Sherlock.Light.ProgressBar" parent="@style/Widget.Sherlock.ProgressBar" />
-    <style name="Widget.Sherlock.ProgressBar.Horizontal" parent="@android:style/Widget.ProgressBar.Horizontal">
+    <style name="Widget.Sherlock.ProgressBar.Horizontal" parent="@*android:style/Widget.ProgressBar.Horizontal">
         <item name="android:maxHeight">16.0dip</item>
         <item name="android:progressDrawable">@drawable/abs__progress_horizontal_holo_dark</item>
         <item name="android:minHeight">16.0dip</item>
@@ -346,14 +347,14 @@
         <item name="android:textSize">14.0sp</item>
         <item name="android:textColor">?textColorPrimary</item>
     </style>
-    <style name="Sherlock.__Theme" parent="@android:style/Theme.NoTitleBar">
+    <style name="Sherlock.__Theme" parent="@*android:style/Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
     </style>
-    <style name="Sherlock.__Theme.Light" parent="@android:style/Theme.Light.NoTitleBar">
+    <style name="Sherlock.__Theme.Light" parent="@*android:style/Theme.Light.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
     </style>
     <style name="Sherlock.__Theme.DarkActionBar" parent="@style/Theme.Sherlock.Light" />
-    <style name="Sherlock.__Theme.Dialog" parent="@android:style/Theme.Dialog" />
+    <style name="Sherlock.__Theme.Dialog" parent="@*android:style/Theme.Dialog" />
     <style name="Theme.Sherlock" parent="@style/Sherlock.__Theme">
         <item name="android:dropDownHintAppearance">@style/TextAppearance.Sherlock.Widget.DropDownHint</item>
         <item name="actionBarTabStyle">@style/Widget.Sherlock.ActionBar.TabView</item>
@@ -490,7 +491,7 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
-    <style name="Theme.Sherlock.Dialog" parent="@android:style/Theme">
+    <style name="Theme.Sherlock.Dialog" parent="@*android:style/Theme">
         <item name="android:backgroundDimAmount">0.6</item>
         <item name="android:textColorPrimary">@color/abs__primary_text_holo_dark</item>
         <item name="android:textColorPrimaryInverse">@color/abs__primary_text_holo_light</item>
@@ -500,7 +501,7 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTitleStyle">@style/DialogWindowTitle.Sherlock</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowAnimationStyle">@*android:style/Animation.Dialog</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowActionBar">false</item>
@@ -511,7 +512,7 @@
         <item name="windowMinWidthMinor">@dimen/abs__dialog_min_width_minor</item>
         <item name="windowActionBar">false</item>
     </style>
-    <style name="Theme.Sherlock.Light.Dialog" parent="@android:style/Theme.Light">
+    <style name="Theme.Sherlock.Light.Dialog" parent="@*android:style/Theme.Light">
         <item name="android:backgroundDimAmount">0.6</item>
         <item name="android:textColorPrimary">@color/abs__primary_text_holo_light</item>
         <item name="android:textColorPrimaryInverse">@color/abs__primary_text_holo_dark</item>
@@ -521,7 +522,7 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowTitleStyle">@style/DialogWindowTitle.Sherlock.Light</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowAnimationStyle">@*android:style/Animation.Dialog</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowActionBar">false</item>
@@ -532,17 +533,16 @@
         <item name="windowMinWidthMinor">@dimen/abs__dialog_min_width_minor</item>
         <item name="windowActionBar">false</item>
     </style>
-    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar" />
-    <style name="Custom.Dialog" parent="@android:style/Theme.Dialog">
-        <item name="android:windowBackground">@android:color/transparent</item>
+    <style name="Custom.Dialog" parent="@*android:style/Theme.Dialog">
+        <item name="android:windowBackground">@*android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">false</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">@*android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
     </style>
-    <style name="DetailDialogWindowAnim" parent="@android:style/Animation">
+    <style name="DetailDialogWindowAnim" parent="@*android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/in_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/out_to_bottom</item>
     </style>
@@ -575,26 +575,26 @@
         <item name="android:paddingLeft">6.0dip</item>
         <item name="android:paddingRight">6.0dip</item>
     </style>
-    <style name="TextLarge" parent="@android:style/TextAppearance.Large">
+    <style name="TextLarge" parent="@*android:style/TextAppearance.Large">
         <item name="android:textColor">@color/bg_orange</item>
     </style>
-    <style name="CustomText" parent="@android:style/TextAppearance" />
-    <style name="CustomText.White" parent="@android:style/TextAppearance">
+    <style name="CustomText" parent="@*android:style/TextAppearance" />
+    <style name="CustomText.White" parent="@*android:style/TextAppearance">
         <item name="android:textColor">@color/white</item>
     </style>
-    <style name="CustomTextMedium" parent="@android:style/TextAppearance.Medium" />
-    <style name="CustomTextLarge" parent="@android:style/TextAppearance.Large" />
+    <style name="CustomTextMedium" parent="@*android:style/TextAppearance.Medium" />
+    <style name="CustomTextLarge" parent="@*android:style/TextAppearance.Large" />
     <style name="CustomText.Black" parent="@style/CustomText">
-        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColor">@*android:color/black</item>
     </style>
     <style name="CustomTextSmall.Black" parent="@style/CustomTextSmall">
-        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColor">@*android:color/black</item>
     </style>
     <style name="PromDescriptionLabel" parent="@style/CustomTextSmall.Black">
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="CustomTextSmall" parent="@android:style/TextAppearance.Small" />
-    <style name="CustomTextExSmall" parent="@android:style/TextAppearance.Small">
+    <style name="CustomTextSmall" parent="@*android:style/TextAppearance.Small" />
+    <style name="CustomTextExSmall" parent="@*android:style/TextAppearance.Small">
         <item name="android:textSize">12.0sp</item>
     </style>
     <style name="CustomTextSmall.White" parent="@style/CustomTextSmall">
@@ -618,7 +618,7 @@
     <style name="CustomTextExSmall.Orange" parent="@style/CustomTextExSmall">
         <item name="android:textColor">@color/bg_orange</item>
     </style>
-    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
+    <style name="CustomRatingBar" parent="@*android:style/Widget.RatingBar">
         <item name="android:maxHeight">14.0dip</item>
         <item name="android:progressDrawable">@drawable/mod_rating</item>
         <item name="android:minHeight">14.0dip</item>
@@ -635,11 +635,11 @@
         <item name="android:maxWidth">@dimen/shop_tag_width</item>
         <item name="android:singleLine">true</item>
     </style>
-    <style name="DetailDialog" parent="@android:style/Theme.Dialog">
+    <style name="DetailDialog" parent="@*android:style/Theme.Dialog">
         <item name="android:windowAnimationStyle">@style/FadeAnimation</item>
     </style>
-    <style name="CustomListStyle" parent="@android:style/Widget.ListView">
-        <item name="android:cacheColorHint">@android:color/transparent</item>
+    <style name="CustomListStyle" parent="@*android:style/Widget.ListView">
+        <item name="android:cacheColorHint">@*android:color/transparent</item>
         <item name="android:requiresFadingEdge">none</item>
     </style>
     <style name="DetailDialog.Transparent" parent="@style/DetailDialog">

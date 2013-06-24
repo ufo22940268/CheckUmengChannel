@@ -1,13 +1,15 @@
 import os
 import re
 
+APKTOOL_DIRECTORY = "/home/ccheng/program/apktool1.5.2/"
+
 def parseChannel():
-    if os.system("apktool d -f a.apk") != 0:
+    if os.system("java -jar %s/apktool.jar d -f a.apk" % APKTOOL_DIRECTORY) != 0:
         print "error";
         return "";
 
     for line in open("a/AndroidManifest.xml").readlines():
-        m = re.match(r".*UMENG_CHANNEL\"\sandroid:value=\"(\w+)\".*", line);
+        m = re.match(r".*UMENG_CHANNEL\"\sandroid:value=\"(.*)\".*", line);
         if m != None:
             return m.group(1);
 

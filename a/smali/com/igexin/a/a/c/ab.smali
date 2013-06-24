@@ -1,69 +1,72 @@
-.class final enum Lcom/igexin/a/a/c/ab;
-.super Lcom/igexin/a/a/c/r;
+.class public Lcom/igexin/a/a/c/ab;
+.super Ljava/lang/Object;
+
+
+# instance fields
+.field private a:I
+
+.field private b:Ljava/lang/String;
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method constructor <init>(ILjava/lang/String;)V
+    .locals 0
 
-    const/16 v0, 0x10
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    const/4 v1, 0x0
+    iput p1, p0, Lcom/igexin/a/a/c/ab;->a:I
 
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/r;-><init>(Ljava/lang/String;IB)V
+    iput-object p2, p0, Lcom/igexin/a/a/c/ab;->b:Ljava/lang/String;
+
+    return-void
+.end method
+
+.method varargs constructor <init>(ILjava/lang/String;[Ljava/lang/Object;)V
+    .locals 1
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    invoke-static {p2, p3}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/igexin/a/a/c/ab;->b:Ljava/lang/String;
+
+    iput p1, p0, Lcom/igexin/a/a/c/ab;->a:I
 
     return-void
 .end method
 
 
 # virtual methods
-.method final a(Lcom/igexin/a/a/c/q;Lcom/igexin/a/a/c/a;)V
-    .locals 1
+.method public toString()Ljava/lang/String;
+    .locals 2
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->d()C
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    move-result v0
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    sparse-switch v0, :sswitch_data_0
+    iget v1, p0, Lcom/igexin/a/a/c/ab;->a:I
 
-    const-string v0, "<"
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Ljava/lang/String;)V
+    move-result-object v0
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->e()V
+    const-string v1, ": "
 
-    sget-object v0, Lcom/igexin/a/a/c/ab;->f:Lcom/igexin/a/a/c/r;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    move-result-object v0
 
-    :goto_0
-    return-void
+    iget-object v1, p0, Lcom/igexin/a/a/c/ab;->b:Ljava/lang/String;
 
-    :sswitch_0
-    invoke-virtual {p1}, Lcom/igexin/a/a/c/q;->g()V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    sget-object v0, Lcom/igexin/a/a/c/ab;->r:Lcom/igexin/a/a/c/r;
+    move-result-object v0
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    goto :goto_0
+    move-result-object v0
 
-    :sswitch_1
-    const-string v0, "<!"
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Ljava/lang/String;)V
-
-    sget-object v0, Lcom/igexin/a/a/c/ab;->t:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
-
-    goto :goto_0
-
-    nop
-
-    :sswitch_data_0
-    .sparse-switch
-        0x21 -> :sswitch_1
-        0x2f -> :sswitch_0
-    .end sparse-switch
+    return-object v0
 .end method

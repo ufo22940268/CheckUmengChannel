@@ -1,98 +1,140 @@
 .class final enum Lcom/igexin/a/a/c/ao;
-.super Lcom/igexin/a/a/c/r;
+.super Ljava/lang/Enum;
+
+
+# static fields
+.field public static final enum a:Lcom/igexin/a/a/c/ao;
+
+.field public static final enum b:Lcom/igexin/a/a/c/ao;
+
+.field public static final enum c:Lcom/igexin/a/a/c/ao;
+
+.field public static final enum d:Lcom/igexin/a/a/c/ao;
+
+.field public static final enum e:Lcom/igexin/a/a/c/ao;
+
+.field public static final enum f:Lcom/igexin/a/a/c/ao;
+
+.field private static final synthetic g:[Lcom/igexin/a/a/c/ao;
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method static constructor <clinit>()V
+    .locals 8
 
-    const/16 v0, 0x1c
+    const/4 v7, 0x4
 
-    const/4 v1, 0x0
+    const/4 v6, 0x3
 
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/r;-><init>(Ljava/lang/String;IB)V
+    const/4 v5, 0x2
+
+    const/4 v4, 0x1
+
+    const/4 v3, 0x0
+
+    new-instance v0, Lcom/igexin/a/a/c/ao;
+
+    const-string v1, "Doctype"
+
+    invoke-direct {v0, v1, v3}, Lcom/igexin/a/a/c/ao;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/igexin/a/a/c/ao;->a:Lcom/igexin/a/a/c/ao;
+
+    new-instance v0, Lcom/igexin/a/a/c/ao;
+
+    const-string v1, "StartTag"
+
+    invoke-direct {v0, v1, v4}, Lcom/igexin/a/a/c/ao;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/igexin/a/a/c/ao;->b:Lcom/igexin/a/a/c/ao;
+
+    new-instance v0, Lcom/igexin/a/a/c/ao;
+
+    const-string v1, "EndTag"
+
+    invoke-direct {v0, v1, v5}, Lcom/igexin/a/a/c/ao;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/igexin/a/a/c/ao;->c:Lcom/igexin/a/a/c/ao;
+
+    new-instance v0, Lcom/igexin/a/a/c/ao;
+
+    const-string v1, "Comment"
+
+    invoke-direct {v0, v1, v6}, Lcom/igexin/a/a/c/ao;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/igexin/a/a/c/ao;->d:Lcom/igexin/a/a/c/ao;
+
+    new-instance v0, Lcom/igexin/a/a/c/ao;
+
+    const-string v1, "Character"
+
+    invoke-direct {v0, v1, v7}, Lcom/igexin/a/a/c/ao;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/igexin/a/a/c/ao;->e:Lcom/igexin/a/a/c/ao;
+
+    new-instance v0, Lcom/igexin/a/a/c/ao;
+
+    const-string v1, "EOF"
+
+    const/4 v2, 0x5
+
+    invoke-direct {v0, v1, v2}, Lcom/igexin/a/a/c/ao;-><init>(Ljava/lang/String;I)V
+
+    sput-object v0, Lcom/igexin/a/a/c/ao;->f:Lcom/igexin/a/a/c/ao;
+
+    const/4 v0, 0x6
+
+    new-array v0, v0, [Lcom/igexin/a/a/c/ao;
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->a:Lcom/igexin/a/a/c/ao;
+
+    aput-object v1, v0, v3
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->b:Lcom/igexin/a/a/c/ao;
+
+    aput-object v1, v0, v4
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->c:Lcom/igexin/a/a/c/ao;
+
+    aput-object v1, v0, v5
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->d:Lcom/igexin/a/a/c/ao;
+
+    aput-object v1, v0, v6
+
+    sget-object v1, Lcom/igexin/a/a/c/ao;->e:Lcom/igexin/a/a/c/ao;
+
+    aput-object v1, v0, v7
+
+    const/4 v1, 0x5
+
+    sget-object v2, Lcom/igexin/a/a/c/ao;->f:Lcom/igexin/a/a/c/ao;
+
+    aput-object v2, v0, v1
+
+    sput-object v0, Lcom/igexin/a/a/c/ao;->g:[Lcom/igexin/a/a/c/ao;
 
     return-void
 .end method
 
+.method private constructor <init>(Ljava/lang/String;I)V
+    .locals 0
 
-# virtual methods
-.method final a(Lcom/igexin/a/a/c/q;Lcom/igexin/a/a/c/a;)V
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    return-void
+.end method
+
+.method public static a()[Lcom/igexin/a/a/c/ao;
     .locals 1
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->c()C
+    sget-object v0, Lcom/igexin/a/a/c/ao;->g:[Lcom/igexin/a/a/c/ao;
 
-    move-result v0
-
-    sparse-switch v0, :sswitch_data_0
-
-    const/4 v0, 0x3
-
-    new-array v0, v0, [C
-
-    fill-array-data v0, :array_0
-
-    invoke-virtual {p2, v0}, Lcom/igexin/a/a/c/a;->a([C)Ljava/lang/String;
+    invoke-virtual {v0}, [Lcom/igexin/a/a/c/ao;->clone()Ljava/lang/Object;
 
     move-result-object v0
 
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Ljava/lang/String;)V
+    check-cast v0, [Lcom/igexin/a/a/c/ao;
 
-    :goto_0
-    return-void
-
-    :sswitch_0
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(C)V
-
-    sget-object v0, Lcom/igexin/a/a/c/ao;->D:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->b(Lcom/igexin/a/a/c/r;)V
-
-    goto :goto_0
-
-    :sswitch_1
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(C)V
-
-    sget-object v0, Lcom/igexin/a/a/c/ao;->F:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->b(Lcom/igexin/a/a/c/r;)V
-
-    goto :goto_0
-
-    :sswitch_2
-    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/q;->c(Lcom/igexin/a/a/c/r;)V
-
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->f()V
-
-    const v0, 0xfffd
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(C)V
-
-    goto :goto_0
-
-    :sswitch_3
-    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/q;->d(Lcom/igexin/a/a/c/r;)V
-
-    sget-object v0, Lcom/igexin/a/a/c/ao;->a:Lcom/igexin/a/a/c/r;
-
-    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/q;->a(Lcom/igexin/a/a/c/r;)V
-
-    goto :goto_0
-
-    nop
-
-    :sswitch_data_0
-    .sparse-switch
-        0x0 -> :sswitch_2
-        0x2d -> :sswitch_0
-        0x3c -> :sswitch_1
-        0xffff -> :sswitch_3
-    .end sparse-switch
-
-    :array_0
-    .array-data 0x2
-        0x2dt 0x0t
-        0x3ct 0x0t
-        0x0t 0x0t
-    .end array-data
+    return-object v0
 .end method

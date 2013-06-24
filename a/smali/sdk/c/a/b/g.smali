@@ -383,6 +383,20 @@
     return-void
 .end method
 
+.method public static a(Ljava/io/InputStream;Ljava/io/OutputStream;I)V
+    .locals 1
+
+    new-instance v0, Lsdk/c/a/b/a;
+
+    invoke-direct {v0, p1, p2}, Lsdk/c/a/b/a;-><init>(Ljava/io/OutputStream;I)V
+
+    invoke-static {p0, v0}, Lsdk/c/a/b/g;->a(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+
+    invoke-virtual {v0}, Lsdk/c/a/b/a;->a()V
+
+    return-void
+.end method
+
 .method public static final a(I)[B
     .locals 6
 
@@ -1284,7 +1298,7 @@
     return-wide v0
 .end method
 
-.method public static c([B)[B
+.method public static d([BI)[B
     .locals 5
 
     new-instance v1, Ljava/io/ByteArrayInputStream;
@@ -1296,13 +1310,7 @@
     invoke-direct {v2}, Ljava/io/ByteArrayOutputStream;-><init>()V
 
     :try_start_0
-    new-instance v0, Lsdk/c/a/b/a;
-
-    invoke-direct {v0, v2}, Lsdk/c/a/b/a;-><init>(Ljava/io/OutputStream;)V
-
-    invoke-static {v1, v0}, Lsdk/c/a/b/g;->a(Ljava/io/InputStream;Ljava/io/OutputStream;)V
-
-    invoke-virtual {v0}, Lsdk/c/a/b/a;->a()V
+    invoke-static {v1, v2, p1}, Lsdk/c/a/b/g;->a(Ljava/io/InputStream;Ljava/io/OutputStream;I)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0

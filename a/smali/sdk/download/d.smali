@@ -1,4 +1,4 @@
-.class public final Lsdk/download/d;
+.class public Lsdk/download/d;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -232,7 +232,7 @@
 
 
 # virtual methods
-.method public final a()V
+.method public a()V
     .locals 6
 
     const-wide/16 v4, 0x0
@@ -346,7 +346,7 @@
     goto :goto_1
 .end method
 
-.method public final a(J)Z
+.method public a(J)Z
     .locals 4
 
     const/4 v0, 0x0
@@ -421,14 +421,16 @@
     goto :goto_0
 .end method
 
-.method public final a(ZZ)Z
+.method public a(ZZ)Z
     .locals 4
 
-    const/4 v1, 0x1
+    const/4 v0, 0x1
 
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
     if-nez p1, :cond_1
+
+    move v0, v1
 
     :cond_0
     :goto_0
@@ -439,21 +441,16 @@
 
     const/4 v3, 0x3
 
-    if-ne v2, v3, :cond_2
+    if-ne v2, v3, :cond_0
 
-    if-nez p2, :cond_0
+    if-eqz p2, :cond_0
 
-    move v0, v1
-
-    goto :goto_0
-
-    :cond_2
     move v0, v1
 
     goto :goto_0
 .end method
 
-.method public final b()J
+.method public b()J
     .locals 5
 
     iget v0, p0, Lsdk/download/d;->l:I
@@ -497,7 +494,7 @@
     goto :goto_0
 .end method
 
-.method public final b(J)Z
+.method public b(J)Z
     .locals 4
 
     const/4 v0, 0x0
@@ -570,7 +567,7 @@
     goto :goto_0
 .end method
 
-.method public final c()Z
+.method public c()Z
     .locals 3
 
     const/4 v1, 0x1

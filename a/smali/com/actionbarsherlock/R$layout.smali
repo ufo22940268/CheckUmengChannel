@@ -1,5 +1,17 @@
 .class public final Lcom/actionbarsherlock/R$layout;
 .super Ljava/lang/Object;
+.source "R.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/actionbarsherlock/R;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "layout"
+.end annotation
 
 
 # static fields
@@ -49,15 +61,17 @@
 
 .field public static final abs__simple_dropdown_hint:I = 0x7f030021
 
-.field public static final sherlock_spinner_dropdown_item:I = 0x7f0300f7
+.field public static final sherlock_spinner_dropdown_item:I = 0x7f0300fc
 
-.field public static final sherlock_spinner_item:I = 0x7f0300f8
+.field public static final sherlock_spinner_item:I = 0x7f0300fd
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
+    .line 320
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/b/i;
+.class public Lsdk/b/a/a/b/i;
 .super Lsdk/b/a/a/b/d;
 
 
@@ -17,7 +17,7 @@
 
 
 # virtual methods
-.method public final i(Ljava/lang/String;)V
+.method public i(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/i;->a:Ljava/lang/String;
@@ -25,7 +25,7 @@
     return-void
 .end method
 
-.method public final j()Ljava/lang/String;
+.method public j()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/i;->a:Ljava/lang/String;

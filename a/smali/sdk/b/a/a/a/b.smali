@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/a/b;
+.class public Lsdk/b/a/a/a/b;
 .super Lsdk/b/a/a/a/a;
 
 
@@ -72,7 +72,7 @@
 .end method
 
 .method public constructor <init>(Lcom/igexin/sdk/SdkMainService;)V
-    .locals 1
+    .locals 2
 
     invoke-direct {p0, p1}, Lsdk/b/a/a/a/a;-><init>(Lcom/igexin/sdk/SdkMainService;)V
 
@@ -80,9 +80,43 @@
 
     iput-object v0, p0, Lsdk/b/a/a/a/b;->n:Lsdk/b/a/a/e/d/f;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
+
+    const-string v1, "create default notify action."
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     return-void
+.end method
+
+.method private a(J)J
+    .locals 6
+
+    const-wide/16 v0, 0xa
+
+    div-long v0, p1, v0
+
+    invoke-static {}, Ljava/lang/Math;->random()D
+
+    move-result-wide v2
+
+    long-to-double v4, v0
+
+    mul-double/2addr v2, v4
+
+    const-wide/high16 v4, 0x4000
+
+    mul-double/2addr v2, v4
+
+    long-to-double v0, v0
+
+    sub-double v0, v2, v0
+
+    double-to-long v0, v0
+
+    add-long/2addr v0, p1
+
+    return-wide v0
 .end method
 
 .method private a(Ljava/io/File;)V
@@ -141,10 +175,160 @@
     return-void
 .end method
 
+.method private a(Ljava/lang/String;)V
+    .locals 6
+
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v1, "{\"action\":\"received\",\"id\":\""
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    const-string v1, "\"}"
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    new-instance v4, Lsdk/a/a/a/a/a/a;
+
+    invoke-direct {v4}, Lsdk/a/a/a/a/a/a;-><init>()V
+
+    invoke-virtual {v4}, Lsdk/a/a/a/a/a/a;->a()V
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v1
+
+    long-to-int v1, v1
+
+    iput v1, v4, Lsdk/a/a/a/a/a/a;->a:I
+
+    const-string v1, "17258000"
+
+    iput-object v1, v4, Lsdk/a/a/a/a/a/a;->d:Ljava/lang/String;
+
+    iput-object v0, v4, Lsdk/a/a/a/a/a/a;->e:Ljava/lang/Object;
+
+    iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v0, v0, Lcom/igexin/sdk/SdkMainService;->b:Lsdk/c/a/b/d;
+
+    sget-object v1, Lsdk/b/a/a/c/d;->d:Ljava/lang/String;
+
+    const/4 v2, 0x3
+
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->e()Lsdk/c/a/b/c;
+
+    move-result-object v3
+
+    const/4 v5, 0x0
+
+    invoke-virtual/range {v0 .. v5}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;Z)Lsdk/c/a/b/f;
+
+    return-void
+.end method
+
+.method private a(Ljava/lang/String;Ljava/lang/String;)V
+    .locals 6
+
+    const/4 v2, 0x1
+
+    const-string v0, "+"
+
+    invoke-virtual {p1, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p1, v2}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    :goto_0
+    iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v1, v1, Lcom/igexin/sdk/SdkMainService;->w:Landroid/os/Handler;
+
+    const/4 v5, -0x1
+
+    move-object v4, p2
+
+    invoke-static/range {v0 .. v5}, Lsdk/c/a/d/c;->a(Landroid/content/Context;Landroid/os/Handler;ILjava/lang/String;Ljava/lang/String;I)Lsdk/c/a/d/c;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v1, v1, Lcom/igexin/sdk/SdkMainService;->b:Lsdk/c/a/b/d;
+
+    const/4 v4, 0x0
+
+    invoke-virtual {v1, v0, v4, v2}, Lsdk/c/a/b/d;->a(Lsdk/c/a/e/d;ZZ)Z
+
+    const-string v0, "DefaultNotifyAction"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "gw_cell ==  "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    const-string v2, "  send sms to "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    return-void
+
+    :cond_0
+    move-object v3, p1
+
+    goto :goto_0
+.end method
+
 .method public static a(Lorg/json/JSONObject;Lsdk/b/a/a/b/o;)Z
     .locals 15
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v1, "DefaultNotifyAction"
+
+    const-string v2, "------pase pushMessage json  begin-------"
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     const/4 v1, 0x0
 
@@ -282,11 +466,11 @@
     if-eqz v3, :cond_2
 
     :cond_1
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v3
 
-    invoke-virtual {v3}, Lcom/igexin/sdk/SdkMainService;->e()Z
+    invoke-virtual {v3}, Lcom/igexin/sdk/SdkMainService;->k()Z
     :try_end_2
     .catch Lorg/json/JSONException; {:try_start_2 .. :try_end_2} :catch_2
 
@@ -557,7 +741,11 @@
 
     if-nez v1, :cond_7
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v1, "DefaultNotifyAction"
+
+    const-string v2, "Action cannot be supported!"
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     const/4 v1, 0x0
 
@@ -772,9 +960,13 @@
 
     new-instance v7, Ljava/lang/StringBuilder;
 
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v11, "getDownloadImgCache notification logo_url = "
 
-    invoke-direct {v7, v11}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v7, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
 
     const-string v11, "logo_url"
 
@@ -790,9 +982,9 @@
 
     move-result-object v7
 
-    invoke-static {v2, v7}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v7}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v2
 
@@ -802,7 +994,7 @@
 
     move-result-object v7
 
-    invoke-virtual {v2, v7}, Lcom/igexin/sdk/SdkMainService;->d(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v2, v7}, Lcom/igexin/sdk/SdkMainService;->e(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v7
 
@@ -830,9 +1022,13 @@
 
     new-instance v12, Ljava/lang/StringBuilder;
 
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v13, "xx:"
 
-    invoke-direct {v12, v13}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v12
 
     sget-object v13, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
 
@@ -904,9 +1100,13 @@
 
     new-instance v7, Ljava/lang/StringBuilder;
 
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v11, "getDownloadImgCache notification logo_url = "
 
-    invoke-direct {v7, v11}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v7, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
 
     const-string v11, "logo_url"
 
@@ -922,9 +1122,9 @@
 
     move-result-object v7
 
-    invoke-static {v2, v7}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v7}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v2
 
@@ -934,7 +1134,7 @@
 
     move-result-object v7
 
-    invoke-virtual {v2, v7}, Lcom/igexin/sdk/SdkMainService;->d(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v2, v7}, Lcom/igexin/sdk/SdkMainService;->e(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v7
 
@@ -962,9 +1162,13 @@
 
     new-instance v12, Ljava/lang/StringBuilder;
 
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v13, "xx:"
 
-    invoke-direct {v12, v13}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v12
 
     sget-object v13, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
 
@@ -1129,26 +1333,34 @@
 
     move-result-object v2
 
-    invoke-static {v3, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v2}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :goto_a
     move-object/from16 v0, p1
 
     invoke-virtual {v0, v9}, Lsdk/b/a/a/b/o;->a(Ljava/util/List;)V
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    const-string v2, "DefaultNotifyAction"
 
-    const-string v3, "------pase pushMessage json  end------- result="
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    const-string v4, "------pase pushMessage json  end------- result="
 
-    move-result-object v2
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v3
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     goto/16 :goto_3
 
@@ -1250,7 +1462,11 @@
 
     add-int/lit8 v5, v5, 0x1
 
-    invoke-virtual/range {p1 .. p1}, Lsdk/b/a/a/b/o;->h()V
+    const/4 v2, 0x1
+
+    move-object/from16 v0, p1
+
+    invoke-virtual {v0, v2}, Lsdk/b/a/a/b/o;->a(Z)V
 
     :cond_15
     move-object v0, v3
@@ -1644,11 +1860,11 @@
 
     if-eqz v7, :cond_57
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v7
 
-    invoke-virtual {v7}, Lcom/igexin/sdk/SdkMainService;->o()Ljava/lang/String;
+    invoke-virtual {v7}, Lcom/igexin/sdk/SdkMainService;->v()Ljava/lang/String;
 
     move-result-object v7
 
@@ -2167,9 +2383,13 @@
 
     new-instance v7, Ljava/lang/StringBuilder;
 
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v11, "getDownloadImgCache appdownload logo = "
 
-    invoke-direct {v7, v11}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v7, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
 
     const-string v11, "logo"
 
@@ -2185,9 +2405,9 @@
 
     move-result-object v7
 
-    invoke-static {v2, v7}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v7}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v2
 
@@ -2197,7 +2417,7 @@
 
     move-result-object v7
 
-    invoke-virtual {v2, v7}, Lcom/igexin/sdk/SdkMainService;->d(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v2, v7}, Lcom/igexin/sdk/SdkMainService;->e(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v7
 
@@ -2225,9 +2445,13 @@
 
     new-instance v12, Ljava/lang/StringBuilder;
 
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v13, "xx:"
 
-    invoke-direct {v12, v13}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v12
 
     sget-object v13, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
 
@@ -3212,11 +3436,11 @@
 
     if-eqz v7, :cond_56
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v7
 
-    invoke-virtual {v7}, Lcom/igexin/sdk/SdkMainService;->o()Ljava/lang/String;
+    invoke-virtual {v7}, Lcom/igexin/sdk/SdkMainService;->v()Ljava/lang/String;
 
     move-result-object v7
 
@@ -3304,9 +3528,13 @@
 
     new-instance v7, Ljava/lang/StringBuilder;
 
+    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v11, "file://"
 
-    invoke-direct {v7, v11}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v7, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v7
 
     invoke-virtual {v2}, Ljava/io/File;->getPath()Ljava/lang/String;
 
@@ -3759,17 +3987,17 @@
 .end method
 
 .method private e()V
-    .locals 12
+    .locals 13
 
-    const-wide/32 v6, 0x1b7740
+    const-wide/32 v11, 0x1b7740
 
-    const-wide/32 v4, 0xea60
+    const-wide/32 v9, 0xea60
 
-    const-wide/16 v10, 0x0
+    const-wide/16 v7, 0x0
 
-    const-wide/16 v8, 0x3e8
+    const-wide/16 v5, 0x3e8
 
-    new-instance v0, Lcom/igexin/sdk/e;
+    new-instance v0, Lcom/igexin/sdk/b;
 
     iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
@@ -3777,15 +4005,19 @@
 
     move-result-object v1
 
-    invoke-direct {v0, v1}, Lcom/igexin/sdk/e;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, v1}, Lcom/igexin/sdk/b;-><init>(Landroid/content/Context;)V
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/e;->c()Z
+    invoke-virtual {v0}, Lcom/igexin/sdk/b;->c()Z
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v0, "DefaultNotifyAction"
+
+    const-string v1, "autoReconnect service is stop"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_0
     :goto_0
@@ -3796,13 +4028,17 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "autoReconnect reConnectDelayTime="
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     sget-wide v2, Lsdk/b/a/a/a/b;->c:J
 
-    div-long/2addr v2, v8
+    div-long/2addr v2, v5
 
     invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -3812,11 +4048,11 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-wide v0, Lsdk/b/a/a/a/b;->c:J
 
-    cmp-long v0, v0, v10
+    cmp-long v0, v0, v7
 
     if-gtz v0, :cond_3
 
@@ -3827,38 +4063,18 @@
     :goto_1
     sget-wide v0, Lsdk/b/a/a/a/b;->c:J
 
-    cmp-long v0, v0, v6
+    cmp-long v0, v0, v11
 
     if-lez v0, :cond_2
 
-    sput-wide v6, Lsdk/b/a/a/a/b;->c:J
+    sput-wide v11, Lsdk/b/a/a/a/b;->c:J
 
     :cond_2
     sget-wide v0, Lsdk/b/a/a/a/b;->c:J
 
-    const-wide/16 v2, 0xa
+    invoke-direct {p0, v0, v1}, Lsdk/b/a/a/a/b;->a(J)J
 
-    div-long v2, v0, v2
-
-    invoke-static {}, Ljava/lang/Math;->random()D
-
-    move-result-wide v4
-
-    long-to-double v6, v2
-
-    mul-double/2addr v4, v6
-
-    const-wide/high16 v6, 0x4000
-
-    mul-double/2addr v4, v6
-
-    long-to-double v2, v2
-
-    sub-double v2, v4, v2
-
-    double-to-long v2, v2
-
-    add-long/2addr v0, v2
+    move-result-wide v0
 
     sput-wide v0, Lsdk/b/a/a/a/b;->c:J
 
@@ -3866,13 +4082,17 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "autoReconnect reConnectDelayTime \u52a0\u968f\u673a\u503c="
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     sget-wide v2, Lsdk/b/a/a/a/b;->c:J
 
-    div-long/2addr v2, v8
+    div-long/2addr v2, v5
 
     invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -3882,7 +4102,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-wide v0, Lsdk/b/a/a/a/b;->c:J
 
@@ -3890,27 +4110,35 @@
 
     move-result-wide v0
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    const-string v2, "GexinSdk"
 
-    const-string v3, "Auto relogin after "
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    div-long v3, v0, v8
+    const-string v4, "Auto relogin after "
 
-    invoke-virtual {v2, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v3
 
-    const-string v3, " s."
+    div-long v4, v0, v5
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string v4, " s."
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     const-wide/16 v2, -0x1
 
@@ -3922,16 +4150,16 @@
 
     const-string v1, "autoReconnect stop"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    sput-wide v10, Lsdk/b/a/a/a/b;->c:J
+    sput-wide v7, Lsdk/b/a/a/a/b;->c:J
 
     goto/16 :goto_0
 
     :cond_3
     sget-wide v0, Lsdk/b/a/a/a/b;->c:J
 
-    cmp-long v0, v0, v4
+    cmp-long v0, v0, v9
 
     if-gtz v0, :cond_4
 
@@ -3948,7 +4176,7 @@
     :cond_4
     sget-wide v0, Lsdk/b/a/a/a/b;->c:J
 
-    add-long/2addr v0, v4
+    add-long/2addr v0, v9
 
     sput-wide v0, Lsdk/b/a/a/a/b;->c:J
 
@@ -3963,11 +4191,11 @@
 
     const-string v3, "cancle before myTimerTask"
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v2, p0, Lsdk/b/a/a/a/b;->n:Lsdk/b/a/a/e/d/f;
 
-    invoke-virtual {v2}, Lsdk/b/a/a/e/d/f;->q()V
+    invoke-virtual {v2}, Lsdk/b/a/a/e/d/f;->s()V
 
     const/4 v2, 0x0
 
@@ -3990,7 +4218,11 @@
 
     if-nez v0, :cond_0
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
+
+    const-string v1, "<!!!!!!!!!!!!!!!!!!!!!!!!!!!!> submit timertask failed."
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     goto/16 :goto_0
 .end method
@@ -4046,7 +4278,11 @@
 .end method
 
 .method private g()V
-    .locals 8
+    .locals 9
+
+    const/4 v8, 0x0
+
+    const-string v0, ""
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
@@ -4054,17 +4290,21 @@
 
     const-wide/32 v2, 0x240c8400
 
-    sub-long v2, v0, v2
+    sub-long v3, v0, v2
 
     const-string v0, "DefaultNotifyAction"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
-    const-string v4, "rmDownloadImgCache time = "
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v1, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v2, "rmDownloadImgCache time = "
 
-    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -4072,64 +4312,80 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
-
-    const/4 v1, 0x0
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :try_start_0
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v0
 
     iget-object v0, v0, Lcom/igexin/sdk/SdkMainService;->y:Lsdk/b/a/a/c/e;
 
-    const-string v4, "table_image"
+    const-string v1, "table_image"
 
-    const/4 v5, 0x1
+    const/4 v2, 0x1
 
-    new-array v5, v5, [Ljava/lang/String;
+    new-array v2, v2, [Ljava/lang/String;
+
+    const/4 v5, 0x0
+
+    const-string v6, "taskid"
+
+    aput-object v6, v2, v5
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v6, "createtime < \'"
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, "\'"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    const/4 v4, 0x0
+
+    const-string v5, "taskid"
 
     const/4 v6, 0x0
 
-    const-string v7, "taskid"
+    const/4 v7, 0x0
 
-    aput-object v7, v5, v6
-
-    new-instance v6, Ljava/lang/StringBuilder;
-
-    const-string v7, "createtime < \'"
-
-    invoke-direct {v6, v7}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v6, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    const-string v3, "\'"
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    const-string v3, "taskid"
-
-    invoke-virtual {v0, v4, v5, v2, v3}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual/range {v0 .. v7}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
     move-result-object v1
 
     if-eqz v1, :cond_2
 
+    :try_start_1
     const-string v0, "DefaultNotifyAction"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v3, "rmDownloadImgCache cursor.getCount() = "
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     invoke-interface {v1}, Landroid/database/Cursor;->getCount()I
 
@@ -4143,7 +4399,7 @@
 
     move-result-object v2
 
-    invoke-static {v0, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v2}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_0
     :goto_0
@@ -4167,9 +4423,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "rmDownloadImgCache taskid = "
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -4179,9 +4439,9 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v2
 
@@ -4235,9 +4495,13 @@
 
     new-instance v4, Ljava/lang/StringBuilder;
 
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v5, "rmDownloadImgCache fileName = "
 
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
 
     invoke-virtual {v4, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -4247,7 +4511,7 @@
 
     move-result-object v0
 
-    invoke-static {v3, v0}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v0}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-virtual {v2}, Ljava/io/File;->exists()Z
 
@@ -4261,27 +4525,28 @@
 
     const-string v2, "rmDownloadImgCache file.delete()"
 
-    invoke-static {v0, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-static {v0, v2}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    goto :goto_0
+    goto/16 :goto_0
 
     :catch_0
     move-exception v0
 
-    :try_start_1
+    :goto_1
+    :try_start_2
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
     if-eqz v1, :cond_1
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
     :cond_1
-    :goto_1
+    :goto_2
     return-void
 
     :cond_2
@@ -4289,35 +4554,54 @@
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
-    goto :goto_1
+    goto :goto_2
 
     :catchall_0
     move-exception v0
 
+    move-object v1, v8
+
+    :goto_3
     if-eqz v1, :cond_3
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
     :cond_3
     throw v0
+
+    :catchall_1
+    move-exception v0
+
+    goto :goto_3
+
+    :catch_1
+    move-exception v0
+
+    move-object v1, v8
+
+    goto :goto_1
 .end method
 
 
 # virtual methods
-.method public final a()V
+.method public a()V
     .locals 0
 
     return-void
 .end method
 
-.method public final a(Ljava/lang/Object;)Z
+.method public a(Ljava/lang/Object;Lsdk/c/a/e/e;)Z
     .locals 12
 
     instance-of v0, p1, Lsdk/a/a/a/a/a/e;
 
     if-eqz v0, :cond_0
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
+
+    const-string v1, "received heartbeat."
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     const-string v0, "heartbeatRsp"
 
@@ -4345,25 +4629,26 @@
     sput v0, Lsdk/b/a/a/a/b;->e:I
 
     :cond_1
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "DefaultNotifyAction"
+
+    const-string v1, "------sdk Command"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     instance-of v0, p1, Lsdk/a/a/a/a/a/h;
 
-    if-eqz v0, :cond_23
+    if-eqz v0, :cond_22
 
     check-cast p1, Lsdk/a/a/a/a/a/h;
 
     sput-object p1, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
 
-    iget v0, p1, Lsdk/a/a/a/a/a/h;->b:I
+    sget-object v0, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
 
-    const/16 v1, 0x80
+    invoke-virtual {v0}, Lsdk/a/a/a/a/a/h;->a()Z
 
-    if-ne v0, v1, :cond_3
+    move-result v0
 
-    const/4 v0, 0x1
-
-    :goto_0
     if-eqz v0, :cond_5
 
     sget-object v0, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
@@ -4372,11 +4657,17 @@
 
     if-eqz v0, :cond_5
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v1, "DefaultNotifyAction"
 
-    const-string v0, "------sdk receieve message msgcontent: "
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "------sdk receieve message msgcontent: "
+
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     sget-object v0, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
 
@@ -4384,16 +4675,18 @@
 
     check-cast v0, Ljava/lang/String;
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v0
+
+    invoke-static {v1, v0}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     :try_start_0
-    new-instance v5, Lorg/json/JSONObject;
+    new-instance v7, Lorg/json/JSONObject;
 
     sget-object v0, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
 
@@ -4401,15 +4694,17 @@
 
     check-cast v0, Ljava/lang/String;
 
-    invoke-direct {v5, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+    invoke-direct {v7, v0}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
 
     const-string v0, "id"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     sput-object v0, Lsdk/b/a/a/a/b;->f:Ljava/lang/String;
+
+    sget-object v0, Lsdk/b/a/a/a/b;->f:Ljava/lang/String;
 
     if-eqz v0, :cond_2
 
@@ -4428,22 +4723,18 @@
 
     const-string v1, "receieve error formated msg"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     const/4 v0, 0x1
 
-    :goto_1
-    return v0
-
     :cond_3
-    const/4 v0, 0x0
-
-    goto :goto_0
+    :goto_0
+    return v0
 
     :cond_4
     const-string v0, "action"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -4459,9 +4750,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "server received, cmdID : "
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     sget-object v2, Lsdk/b/a/a/a/b;->f:Ljava/lang/String;
 
@@ -4473,7 +4768,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_0
     .catch Lorg/json/JSONException; {:try_start_0 .. :try_end_0} :catch_1
 
@@ -4496,16 +4791,16 @@
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->n()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->u()V
     :try_end_1
     .catch Ljava/lang/NumberFormatException; {:try_start_1 .. :try_end_1} :catch_0
     .catch Lorg/json/JSONException; {:try_start_1 .. :try_end_1} :catch_1
 
     :cond_5
-    :goto_2
+    :goto_1
     const/4 v0, 0x0
 
-    goto :goto_1
+    goto :goto_0
 
     :catch_0
     move-exception v0
@@ -4515,11 +4810,11 @@
 
     const-string v1, "cmdId can not parse to Long !!"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_2
     .catch Lorg/json/JSONException; {:try_start_2 .. :try_end_2} :catch_1
 
-    goto :goto_2
+    goto :goto_1
 
     :catch_1
     move-exception v0
@@ -4528,9 +4823,13 @@
 
     new-instance v2, Ljava/lang/StringBuilder;
 
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v3, "Generate JSONException "
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
 
     invoke-virtual {v0}, Lorg/json/JSONException;->getMessage()Ljava/lang/String;
 
@@ -4544,9 +4843,9 @@
 
     move-result-object v0
 
-    invoke-static {v1, v0}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v1, v0}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto :goto_2
+    goto :goto_1
 
     :cond_6
     if-eqz v0, :cond_7
@@ -4584,70 +4883,26 @@
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Lsdk/c/a/b/d;->a(Ljava/lang/String;)Lsdk/c/a/b/f;
+    const/4 v2, 0x0
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const/4 v3, 0x0
+
+    invoke-virtual {v0, v1, v2, v3}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;)Lsdk/c/a/b/f;
+
+    const-string v0, "DefaultNotifyAction"
+
+    const-string v1, "\u9759\u9ed8\u65f6\u95f4\uff0c\u4e0d\u5904\u7406\u6d88\u606f\uff0c\u5e76\u65ad\u5f00\u8fde\u63a5"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     const/4 v0, 0x0
 
-    goto/16 :goto_1
+    goto/16 :goto_0
 
     :cond_7
     sget-object v1, Lsdk/b/a/a/a/b;->f:Ljava/lang/String;
 
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    const-string v3, "{\"action\":\"received\",\"id\":\""
-
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, "\"}"
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    new-instance v2, Lsdk/a/a/a/a/a/a;
-
-    invoke-direct {v2}, Lsdk/a/a/a/a/a/a;-><init>()V
-
-    const/16 v3, 0x80
-
-    iput v3, v2, Lsdk/a/a/a/a/a/a;->b:I
-
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    move-result-wide v3
-
-    long-to-int v3, v3
-
-    iput v3, v2, Lsdk/a/a/a/a/a/a;->a:I
-
-    const-string v3, "17258000"
-
-    iput-object v3, v2, Lsdk/a/a/a/a/a/a;->d:Ljava/lang/String;
-
-    iput-object v1, v2, Lsdk/a/a/a/a/a/a;->e:Ljava/lang/Object;
-
-    iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
-
-    iget-object v1, v1, Lcom/igexin/sdk/SdkMainService;->b:Lsdk/c/a/b/d;
-
-    sget-object v3, Lsdk/b/a/a/c/d;->d:Ljava/lang/String;
-
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->b()Lsdk/c/a/b/c;
-
-    move-result-object v4
-
-    invoke-virtual {v1, v3, v4, v2}, Lsdk/c/a/b/d;->a(Ljava/lang/String;Lsdk/c/a/b/c;Ljava/lang/Object;)Lsdk/c/a/b/f;
+    invoke-direct {p0, v1}, Lsdk/b/a/a/a/b;->a(Ljava/lang/String;)V
 
     if-eqz v0, :cond_5
 
@@ -4657,15 +4912,15 @@
 
     move-result v1
 
-    if-eqz v1, :cond_d
+    if-eqz v1, :cond_e
 
     const-string v0, "type"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    if-eqz v0, :cond_a
+    if-eqz v0, :cond_b
 
     const-string v1, "bind"
 
@@ -4673,23 +4928,23 @@
 
     move-result v1
 
-    if-eqz v1, :cond_a
+    if-eqz v1, :cond_b
 
     const-string v0, "result"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
     const-string v0, "appid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
     const-string v0, "cid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -4703,7 +4958,7 @@
 
     check-cast v0, Lsdk/b/a/a/b/c;
 
-    if-eqz v1, :cond_9
+    if-eqz v1, :cond_a
 
     const-string v3, "ok"
 
@@ -4711,11 +4966,11 @@
 
     move-result v1
 
-    if-eqz v1, :cond_9
+    if-eqz v1, :cond_a
 
     const-string v1, "id"
 
-    invoke-virtual {v5, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
@@ -4723,9 +4978,13 @@
 
     new-instance v4, Ljava/lang/StringBuilder;
 
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v5, "server received, cmdID : "
 
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
 
     invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -4735,13 +4994,17 @@
 
     move-result-object v4
 
-    invoke-static {v3, v4}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v4}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "bindappRsp|"
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -4775,8 +5038,13 @@
     .catch Ljava/lang/NumberFormatException; {:try_start_4 .. :try_end_4} :catch_2
     .catch Lorg/json/JSONException; {:try_start_4 .. :try_end_4} :catch_1
 
-    :goto_3
-    if-eqz v0, :cond_8
+    move-result v1
+
+    if-eqz v1, :cond_8
+
+    :cond_8
+    :goto_2
+    if-eqz v0, :cond_9
 
     :try_start_5
     new-instance v1, Landroid/content/ContentValues;
@@ -4815,30 +5083,38 @@
 
     invoke-virtual {v3, v4, v1, v5, v6}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Landroid/content/ContentValues;[Ljava/lang/String;[Ljava/lang/String;)V
 
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_9
 
     const-string v1, "1"
 
     iput-object v1, v0, Lsdk/b/a/a/b/c;->f:Ljava/lang/String;
 
-    :cond_8
-    new-instance v1, Ljava/lang/StringBuilder;
+    :cond_9
+    const-string v1, "DefaultNotifyAction"
 
-    const-string v3, "bind appid success  appid="
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v4, "bind appid success  appid="
 
-    move-result-object v1
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v3
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v1, v3}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     const-string v1, "1"
 
-    :goto_4
+    :goto_3
     new-instance v3, Landroid/content/Intent;
 
     invoke-direct {v3}, Landroid/content/Intent;-><init>()V
@@ -4871,7 +5147,7 @@
 
     invoke-virtual {v0, v3}, Lcom/igexin/sdk/SdkMainService;->sendBroadcast(Landroid/content/Intent;)V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :catch_2
     move-exception v1
@@ -4880,20 +5156,24 @@
 
     const-string v3, "cmdId can not parse to Long !!"
 
-    invoke-static {v1, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v1, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto :goto_3
+    goto :goto_2
 
-    :cond_9
+    :cond_a
     const-string v1, "0"
 
     const-string v3, "DefaultNotifyAction"
 
     new-instance v4, Ljava/lang/StringBuilder;
 
+    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v5, "bind failed  appid="
 
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v4
 
     invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -4903,13 +5183,17 @@
 
     move-result-object v4
 
-    invoke-static {v3, v4}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v4}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "bindappRsp|"
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -4927,10 +5211,10 @@
 
     invoke-static {v3}, Lsdk/c/a/c/a;->a(Ljava/lang/String;)V
 
-    goto :goto_4
+    goto :goto_3
 
-    :cond_a
-    if-eqz v0, :cond_c
+    :cond_b
+    if-eqz v0, :cond_d
 
     const-string v1, "unbind"
 
@@ -4938,21 +5222,21 @@
 
     move-result v0
 
-    if-eqz v0, :cond_c
+    if-eqz v0, :cond_d
 
     const-string v0, "result"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     const-string v1, "appid"
 
-    invoke-virtual {v5, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
-    if-eqz v0, :cond_b
+    if-eqz v0, :cond_c
 
     const-string v2, "ok"
 
@@ -4960,7 +5244,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_b
+    if-eqz v0, :cond_c
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
@@ -4992,49 +5276,65 @@
 
     invoke-virtual {v0, v1}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "DefaultNotifyAction"
 
-    const-string v2, "unbind success appid="
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v3, "unbind success appid="
 
-    move-result-object v0
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v2
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    goto/16 :goto_2
+    move-result-object v1
 
-    :cond_b
-    new-instance v0, Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    const-string v2, "unbind failed appid="
+    move-result-object v1
 
-    invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
-
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :cond_c
     const-string v0, "DefaultNotifyAction"
 
-    const-string v1, "bind_result gen error!"
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    goto/16 :goto_2
+    const-string v3, "unbind failed appid="
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto/16 :goto_1
 
     :cond_d
+    const-string v0, "DefaultNotifyAction"
+
+    const-string v1, "bind_result gen error!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto/16 :goto_1
+
+    :cond_e
     const-string v1, "pushmessage"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -5045,7 +5345,7 @@
 
     const-string v0, "appid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -5053,7 +5353,7 @@
 
     const-string v0, "messageid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -5061,7 +5361,7 @@
 
     const-string v0, "taskid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -5069,13 +5369,13 @@
 
     const-string v0, "appkey"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
     const-string v0, "action_chains"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v2
 
@@ -5091,9 +5391,13 @@
 
     new-instance v3, Ljava/lang/StringBuilder;
 
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "pushmessage|"
 
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     sget-object v4, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
 
@@ -5151,37 +5455,37 @@
 
     if-eqz v0, :cond_14
 
-    new-instance v3, Lsdk/b/a/a/b/o;
+    new-instance v8, Lsdk/b/a/a/b/o;
 
-    invoke-direct {v3}, Lsdk/b/a/a/b/o;-><init>()V
+    invoke-direct {v8}, Lsdk/b/a/a/b/o;-><init>()V
 
     sget-object v0, Lsdk/b/a/a/a/b;->k:Ljava/lang/String;
 
-    invoke-virtual {v3, v0}, Lsdk/b/a/a/b/o;->a(Ljava/lang/String;)V
+    invoke-virtual {v8, v0}, Lsdk/b/a/a/b/o;->a(Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->j:Ljava/lang/String;
 
-    invoke-virtual {v3, v0}, Lsdk/b/a/a/b/o;->c(Ljava/lang/String;)V
+    invoke-virtual {v8, v0}, Lsdk/b/a/a/b/o;->c(Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
 
-    invoke-virtual {v3, v0}, Lsdk/b/a/a/b/o;->d(Ljava/lang/String;)V
+    invoke-virtual {v8, v0}, Lsdk/b/a/a/b/o;->d(Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->f:Ljava/lang/String;
 
-    invoke-virtual {v3, v0}, Lsdk/b/a/a/b/o;->b(Ljava/lang/String;)V
+    invoke-virtual {v8, v0}, Lsdk/b/a/a/b/o;->b(Ljava/lang/String;)V
 
-    invoke-virtual {v3, v1}, Lsdk/b/a/a/b/o;->f(Ljava/lang/String;)V
+    invoke-virtual {v8, v1}, Lsdk/b/a/a/b/o;->f(Ljava/lang/String;)V
 
     const/4 v0, 0x1
 
-    invoke-virtual {v3, v0}, Lsdk/b/a/a/b/o;->a(I)V
+    invoke-virtual {v8, v0}, Lsdk/b/a/a/b/o;->a(I)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
 
     iget-object v0, v0, Lsdk/a/a/a/a/a/h;->d:Ljava/lang/String;
 
-    invoke-virtual {v3, v0}, Lsdk/b/a/a/b/o;->e(Ljava/lang/String;)V
+    invoke-virtual {v8, v0}, Lsdk/b/a/a/b/o;->e(Ljava/lang/String;)V
 
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -5213,9 +5517,9 @@
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    const-string v0, "0"
+    const-string v1, "0"
 
-    invoke-static {v3, v0}, Lcom/igexin/sdk/SdkMainService;->a(Lsdk/b/a/a/b/o;Ljava/lang/String;)V
+    invoke-virtual {v0, v8, v1}, Lcom/igexin/sdk/SdkMainService;->a(Lsdk/b/a/a/b/o;Ljava/lang/String;)V
 
     new-instance v0, Landroid/content/ContentValues;
 
@@ -5223,45 +5527,47 @@
 
     sput-object v0, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
 
+    sget-object v0, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
+
     const-string v1, "messageid"
 
-    sget-object v4, Lsdk/b/a/a/a/b;->j:Ljava/lang/String;
+    sget-object v3, Lsdk/b/a/a/a/b;->j:Ljava/lang/String;
 
-    invoke-virtual {v0, v1, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
 
     const-string v1, "taskid"
 
-    sget-object v4, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
+    sget-object v3, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
 
-    invoke-virtual {v0, v1, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
 
     const-string v1, "appid"
 
-    sget-object v4, Lsdk/b/a/a/a/b;->k:Ljava/lang/String;
+    sget-object v3, Lsdk/b/a/a/a/b;->k:Ljava/lang/String;
 
-    invoke-virtual {v0, v1, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
 
     const-string v1, "key"
 
-    sget-object v4, Lsdk/b/a/a/a/b;->l:Ljava/lang/String;
+    sget-object v3, Lsdk/b/a/a/a/b;->l:Ljava/lang/String;
 
-    invoke-virtual {v0, v1, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
 
     const-string v1, "info"
 
-    invoke-virtual {v5}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+    invoke-virtual {v7}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-virtual {v0, v1, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v0, v1, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     new-instance v0, Landroid/text/format/Time;
 
@@ -5271,27 +5577,27 @@
 
     sget-object v1, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
 
-    const-string v4, "createtime"
+    const-string v3, "createtime"
 
     invoke-virtual {v0}, Landroid/text/format/Time;->format2445()Ljava/lang/String;
 
     move-result-object v0
 
-    const/4 v6, 0x0
+    const/4 v4, 0x0
 
-    const/16 v7, 0x8
+    const/16 v5, 0x8
 
-    invoke-virtual {v0, v6, v7}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    invoke-virtual {v0, v4, v5}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v0
 
-    invoke-virtual {v1, v4, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v1, v3, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     sget-object v0, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
 
     iget-object v0, v0, Lsdk/a/a/a/a/a/h;->e:Ljava/lang/Object;
 
-    if-eqz v0, :cond_e
+    if-eqz v0, :cond_f
 
     sget-object v0, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
 
@@ -5299,11 +5605,11 @@
 
     instance-of v0, v0, [B
 
-    if-eqz v0, :cond_e
+    if-eqz v0, :cond_f
 
     sget-object v1, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
 
-    const-string v4, "msgextra"
+    const-string v3, "msgextra"
 
     sget-object v0, Lsdk/b/a/a/a/b;->m:Lsdk/a/a/a/a/a/h;
 
@@ -5311,16 +5617,24 @@
 
     check-cast v0, [B
 
-    invoke-virtual {v1, v4, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;[B)V
+    check-cast v0, [B
+
+    invoke-virtual {v1, v3, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;[B)V
     :try_end_5
     .catch Lorg/json/JSONException; {:try_start_5 .. :try_end_5} :catch_1
 
     :try_start_6
-    new-instance v1, Ljava/lang/StringBuilder;
+    const-string v1, "DefaultNotifyAction"
 
-    const-string v0, "-------- msgExtra:  "
+    new-instance v0, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "-------- msgExtra:  "
+
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     new-instance v4, Ljava/lang/String;
 
@@ -5330,39 +5644,43 @@
 
     check-cast v0, [B
 
-    const-string v6, "UTF-8"
+    check-cast v0, [B
 
-    invoke-direct {v4, v0, v6}, Ljava/lang/String;-><init>([BLjava/lang/String;)V
+    const-string v5, "UTF-8"
 
-    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v4, v0, v5}, Ljava/lang/String;-><init>([BLjava/lang/String;)V
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v0
 
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v0
+
+    invoke-static {v1, v0}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_6
     .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_3
     .catch Lorg/json/JSONException; {:try_start_6 .. :try_end_6} :catch_1
 
-    :cond_e
-    :goto_5
+    :cond_f
+    :goto_4
     :try_start_7
     invoke-virtual {v2}, Lorg/json/JSONArray;->length()I
 
     move-result v0
 
-    if-lez v0, :cond_f
+    if-lez v0, :cond_10
 
-    invoke-static {v5, v3}, Lsdk/b/a/a/a/b;->a(Lorg/json/JSONObject;Lsdk/b/a/a/b/o;)Z
+    invoke-static {v7, v8}, Lsdk/b/a/a/a/b;->a(Lorg/json/JSONObject;Lsdk/b/a/a/b/o;)Z
 
     move-result v0
 
-    if-nez v0, :cond_f
+    if-nez v0, :cond_10
 
     const/4 v0, 0x1
 
-    goto/16 :goto_1
+    goto/16 :goto_0
 
     :catch_3
     move-exception v0
@@ -5373,83 +5691,93 @@
 
     move-result-object v0
 
-    invoke-static {v1, v0}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v1, v0}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_7
     .catch Lorg/json/JSONException; {:try_start_7 .. :try_end_7} :catch_1
 
-    goto :goto_5
+    goto :goto_4
 
-    :cond_f
-    const/4 v1, 0x0
+    :cond_10
+    const/4 v6, 0x0
 
     :try_start_8
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
     iget-object v0, v0, Lcom/igexin/sdk/SdkMainService;->y:Lsdk/b/a/a/c/e;
 
-    const-string v2, "table_message2"
+    const-string v1, "table_message2"
 
-    const/4 v4, 0x1
+    const/4 v2, 0x1
 
-    new-array v4, v4, [Ljava/lang/String;
+    new-array v2, v2, [Ljava/lang/String;
 
-    const/4 v6, 0x0
+    const/4 v3, 0x0
 
-    const-string v7, "taskid"
+    const-string v4, "taskid"
 
-    aput-object v7, v4, v6
+    aput-object v4, v2, v3
 
-    const/4 v6, 0x1
+    const/4 v3, 0x1
 
-    new-array v6, v6, [Ljava/lang/String;
+    new-array v3, v3, [Ljava/lang/String;
 
-    const/4 v7, 0x0
+    const/4 v4, 0x0
 
-    sget-object v8, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
+    sget-object v5, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
 
-    aput-object v8, v6, v7
+    aput-object v5, v3, v4
 
-    const/4 v7, 0x0
+    const/4 v4, 0x0
 
-    invoke-virtual {v0, v2, v4, v6, v7}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    const/4 v5, 0x0
+
+    invoke-virtual/range {v0 .. v5}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    :try_end_8
+    .catchall {:try_start_8 .. :try_end_8} :catchall_0
+    .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_4
 
     move-result-object v1
 
-    if-eqz v1, :cond_10
+    if-eqz v1, :cond_11
 
+    :try_start_9
     const-string v0, "GexinSdk"
 
     new-instance v2, Ljava/lang/StringBuilder;
 
-    const-string v4, "TASKID:"
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v2, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v3, "TASKID:"
 
-    sget-object v4, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
-
-    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    const-string v4, "---"
+    sget-object v3, Lsdk/b/a/a/a/b;->h:Ljava/lang/String;
 
-    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    const-string v3, "---"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
     invoke-interface {v1}, Landroid/database/Cursor;->getCount()I
 
-    move-result v4
+    move-result v3
 
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-virtual {v4}, Ljava/lang/Integer;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/Integer;->toString()Ljava/lang/String;
 
-    move-result-object v4
+    move-result-object v3
 
-    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
@@ -5457,13 +5785,13 @@
 
     move-result-object v2
 
-    invoke-static {v0, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v2}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-interface {v1}, Landroid/database/Cursor;->getCount()I
 
     move-result v0
 
-    if-nez v0, :cond_11
+    if-nez v0, :cond_12
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
@@ -5471,35 +5799,43 @@
 
     const-string v2, "table_message2"
 
-    sget-object v4, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
+    sget-object v3, Lsdk/b/a/a/a/b;->i:Landroid/content/ContentValues;
 
-    invoke-virtual {v0, v2, v4}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Landroid/content/ContentValues;)V
+    invoke-virtual {v0, v2, v3}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Landroid/content/ContentValues;)V
 
     sget-object v0, Lcom/igexin/sdk/SdkMainService;->B:Ljava/util/HashMap;
 
     sget-object v2, Lsdk/b/a/a/a/b;->l:Ljava/lang/String;
 
-    invoke-virtual {v0, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0, v2, v8}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "DefaultNotifyAction"
 
-    const-string v2, "pushMessageMap size="
+    new-instance v2, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    sget-object v2, Lcom/igexin/sdk/SdkMainService;->B:Ljava/util/HashMap;
+    const-string v3, "pushMessageMap size="
 
-    invoke-virtual {v2}, Ljava/util/HashMap;->size()I
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result v2
+    move-result-object v2
 
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    sget-object v3, Lcom/igexin/sdk/SdkMainService;->B:Ljava/util/HashMap;
 
-    move-result-object v0
+    invoke-virtual {v3}, Ljava/util/HashMap;->size()I
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result v3
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v0, v2}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     const-string v0, "package:"
 
@@ -5533,7 +5869,7 @@
 
     const-string v0, "pkgname"
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v3
 
@@ -5545,59 +5881,64 @@
 
     const-string v0, "jsonobjstr"
 
-    invoke-virtual {v5}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
+    invoke-virtual {v7}, Lorg/json/JSONObject;->toString()Ljava/lang/String;
 
     move-result-object v3
 
     invoke-virtual {v2, v0, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v0
 
     invoke-virtual {v0, v2}, Lcom/igexin/sdk/SdkMainService;->sendBroadcast(Landroid/content/Intent;)V
-    :try_end_8
-    .catchall {:try_start_8 .. :try_end_8} :catchall_0
-    .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_4
-
-    :cond_10
-    if-eqz v1, :cond_5
-
-    :try_start_9
-    invoke-interface {v1}, Landroid/database/Cursor;->close()V
-
-    goto/16 :goto_2
+    :try_end_9
+    .catchall {:try_start_9 .. :try_end_9} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_9
 
     :cond_11
-    if-eqz v1, :cond_12
+    if-eqz v1, :cond_5
 
+    :try_start_a
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
-    :try_end_9
-    .catch Lorg/json/JSONException; {:try_start_9 .. :try_end_9} :catch_1
+
+    goto/16 :goto_1
 
     :cond_12
     const/4 v0, 0x1
 
-    goto/16 :goto_1
+    if-eqz v1, :cond_3
+
+    invoke-interface {v1}, Landroid/database/Cursor;->close()V
+    :try_end_a
+    .catch Lorg/json/JSONException; {:try_start_a .. :try_end_a} :catch_1
+
+    goto/16 :goto_0
 
     :catch_4
     move-exception v0
 
-    :try_start_a
+    move-object v1, v6
+
+    :goto_5
+    :try_start_b
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
-    :try_end_a
-    .catchall {:try_start_a .. :try_end_a} :catchall_0
+    :try_end_b
+    .catchall {:try_start_b .. :try_end_b} :catchall_1
 
     if-eqz v1, :cond_5
 
-    :try_start_b
+    :try_start_c
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :catchall_0
     move-exception v0
 
+    move-object v1, v6
+
+    :goto_6
     if-eqz v1, :cond_13
 
     invoke-interface {v1}, Landroid/database/Cursor;->close()V
@@ -5610,9 +5951,9 @@
 
     const-string v1, "receieve error  pushmessage"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :cond_15
     const-string v1, "response_smsgateway_info"
@@ -5621,17 +5962,17 @@
 
     move-result v1
 
-    if-eqz v1, :cond_17
+    if-eqz v1, :cond_16
 
     const-string v0, "gw_cell"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
     const-string v1, "template"
 
-    invoke-virtual {v5, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v1}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
@@ -5661,81 +6002,26 @@
 
     move-result-object v1
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    const-string v2, "DefaultNotifyAction"
 
-    const-string v2, "+"
+    invoke-static {v2, v1}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-virtual {v0, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+    invoke-direct {p0, v0, v1}, Lsdk/b/a/a/a/b;->a(Ljava/lang/String;Ljava/lang/String;)V
 
-    move-result v2
-
-    if-eqz v2, :cond_16
-
-    const/4 v2, 0x1
-
-    invoke-virtual {v0, v2}, Ljava/lang/String;->substring(I)Ljava/lang/String;
-
-    move-result-object v0
+    goto/16 :goto_1
 
     :cond_16
-    iget-object v2, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
-
-    iget-object v3, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
-
-    iget-object v3, v3, Lcom/igexin/sdk/SdkMainService;->w:Landroid/os/Handler;
-
-    invoke-static {v2, v3, v0, v1}, Lsdk/c/a/d/c;->a(Landroid/content/Context;Landroid/os/Handler;Ljava/lang/String;Ljava/lang/String;)Lsdk/c/a/d/c;
-
-    move-result-object v2
-
-    iget-object v3, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
-
-    iget-object v3, v3, Lcom/igexin/sdk/SdkMainService;->b:Lsdk/c/a/b/d;
-
-    const/4 v4, 0x0
-
-    const/4 v5, 0x1
-
-    invoke-virtual {v3, v2, v4, v5}, Lsdk/c/a/b/d;->a(Lsdk/c/a/e/d;ZZ)Z
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    const-string v3, "gw_cell ==  "
-
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    const-string v2, "  send sms to "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
-
-    goto/16 :goto_2
-
-    :cond_17
     const-string v1, "response_cellbind_status"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_1a
+    if-eqz v1, :cond_19
 
     const-string v0, "status"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -5745,7 +6031,7 @@
 
     move-result v1
 
-    if-eqz v1, :cond_19
+    if-eqz v1, :cond_18
 
     sget-object v0, Lsdk/b/a/a/c/h;->J:Ljava/lang/String;
 
@@ -5753,7 +6039,7 @@
 
     const-string v0, "cell"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -5769,7 +6055,7 @@
 
     const-string v2, "cell"
 
-    invoke-virtual {v5, v2}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v2}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -5783,28 +6069,28 @@
 
     sget-object v0, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
 
-    if-eqz v0, :cond_18
+    if-eqz v0, :cond_17
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->j()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->q()V
 
-    :cond_18
+    :cond_17
     const-string v0, "DefaultNotifyAction"
 
     const-string v1, "response_cellbind_status == binded"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
     sget-object v1, Lsdk/b/a/a/c/h;->G:Ljava/lang/String;
 
-    invoke-virtual {v0, v1}, Lcom/igexin/sdk/SdkMainService;->c(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Lcom/igexin/sdk/SdkMainService;->d(Ljava/lang/String;)V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
-    :cond_19
+    :cond_18
     const-string v1, "unbinded"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -5817,22 +6103,22 @@
 
     const-string v1, "response_cellbind_status ==  unbinded"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
-    :cond_1a
+    :cond_19
     const-string v1, "response_deviceid"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_1c
+    if-eqz v1, :cond_1b
 
     const-string v0, "deviceid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -5846,20 +6132,24 @@
 
     sget-object v0, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
 
-    if-eqz v0, :cond_1b
+    if-eqz v0, :cond_1a
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->j()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->q()V
 
-    :cond_1b
+    :cond_1a
     const-string v0, "DefaultNotifyAction"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v2, "deviceid is "
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     sget-object v2, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
 
@@ -5883,22 +6173,22 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
-    :cond_1c
+    :cond_1b
     const-string v1, "redirect_server"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_20
+    if-eqz v1, :cond_1f
 
     const-string v0, "delay"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
@@ -5908,15 +6198,19 @@
 
     const-string v0, "address_list"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v3
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v4, "redirect|"
 
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -5944,12 +6238,12 @@
 
     const/4 v0, 0x0
 
-    :goto_6
+    :goto_7
     invoke-virtual {v3}, Lorg/json/JSONArray;->length()I
 
     move-result v4
 
-    if-ge v0, v4, :cond_1e
+    if-ge v0, v4, :cond_1d
 
     invoke-virtual {v3, v0}, Lorg/json/JSONArray;->getString(I)Ljava/lang/String;
 
@@ -5961,7 +6255,7 @@
 
     move-result v5
 
-    if-lez v5, :cond_1d
+    if-lez v5, :cond_1c
 
     const/4 v6, 0x0
 
@@ -5976,14 +6270,14 @@
     move-result-object v4
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-    :try_end_b
-    .catch Lorg/json/JSONException; {:try_start_b .. :try_end_b} :catch_1
+    :try_end_c
+    .catch Lorg/json/JSONException; {:try_start_c .. :try_end_c} :catch_1
 
     move-result-wide v7
 
-    if-eqz v4, :cond_1d
+    if-eqz v4, :cond_1c
 
-    :try_start_c
+    :try_start_d
     invoke-static {v4}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
 
     move-result-wide v4
@@ -5994,9 +6288,13 @@
 
     new-instance v10, Ljava/lang/StringBuilder;
 
+    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v11, "socket://"
 
-    invoke-direct {v10, v11}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v10
 
     invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6017,22 +6315,22 @@
     iput-wide v4, v9, Lsdk/b/a/a/c/u;->b:J
 
     invoke-interface {v2, v9}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-    :try_end_c
-    .catch Ljava/lang/NumberFormatException; {:try_start_c .. :try_end_c} :catch_8
-    .catch Lorg/json/JSONException; {:try_start_c .. :try_end_c} :catch_1
+    :try_end_d
+    .catch Ljava/lang/NumberFormatException; {:try_start_d .. :try_end_d} :catch_8
+    .catch Lorg/json/JSONException; {:try_start_d .. :try_end_d} :catch_1
 
-    :cond_1d
-    :goto_7
+    :cond_1c
+    :goto_8
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_6
+    goto :goto_7
 
-    :cond_1e
-    :try_start_d
+    :cond_1d
+    :try_start_e
     invoke-static {v1}, Ljava/lang/Long;->parseLong(Ljava/lang/String;)J
-    :try_end_d
-    .catch Ljava/lang/NumberFormatException; {:try_start_d .. :try_end_d} :catch_5
-    .catch Lorg/json/JSONException; {:try_start_d .. :try_end_d} :catch_1
+    :try_end_e
+    .catch Ljava/lang/NumberFormatException; {:try_start_e .. :try_end_e} :catch_5
+    .catch Lorg/json/JSONException; {:try_start_e .. :try_end_e} :catch_1
 
     move-result-wide v0
 
@@ -6040,17 +6338,17 @@
 
     mul-long/2addr v0, v3
 
-    :goto_8
+    :goto_9
     const-wide/16 v3, 0x0
 
     cmp-long v3, v0, v3
 
-    if-lez v3, :cond_1f
+    if-lez v3, :cond_1e
 
-    :try_start_e
+    :try_start_f
     sput-wide v0, Lsdk/b/a/a/a/b;->c:J
 
-    :cond_1f
+    :cond_1e
     invoke-static {v2}, Lsdk/b/a/a/c/r;->a(Ljava/util/List;)V
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
@@ -6067,29 +6365,33 @@
 
     move-result-object v1
 
-    invoke-virtual {v0, v1}, Lsdk/c/a/b/d;->a(Ljava/lang/String;)Lsdk/c/a/b/f;
+    const/4 v2, 0x0
 
-    goto/16 :goto_2
+    const/4 v3, 0x0
+
+    invoke-virtual {v0, v1, v2, v3}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;)Lsdk/c/a/b/f;
+
+    goto/16 :goto_1
 
     :catch_5
     move-exception v0
 
     const-wide/16 v0, 0x0
 
-    goto :goto_8
+    goto :goto_9
 
-    :cond_20
+    :cond_1f
     const-string v1, "response_ca_list"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
-    if-eqz v1, :cond_22
+    if-eqz v1, :cond_21
 
     const-string v0, "ca_list"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getJSONArray(Ljava/lang/String;)Lorg/json/JSONArray;
 
     move-result-object v1
 
@@ -6097,32 +6399,40 @@
 
     invoke-direct {v2}, Ljava/util/HashMap;-><init>()V
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "DefaultNotifyAction"
 
-    const-string v3, "receive CAPerimissionList"
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1}, Lorg/json/JSONArray;->toString()Ljava/lang/String;
+    const-string v4, "receive CAPerimissionList"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1}, Lorg/json/JSONArray;->toString()Ljava/lang/String;
 
-    move-result-object v0
+    move-result-object v4
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lsdk/c/a/c/a;->c()V
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v0, v3}, Lsdk/c/a/c/a;->c(Ljava/lang/String;Ljava/lang/String;)V
 
     const/4 v0, 0x0
 
-    :goto_9
+    :goto_a
     invoke-virtual {v1}, Lorg/json/JSONArray;->length()I
 
     move-result v3
 
-    if-ge v0, v3, :cond_21
+    if-ge v0, v3, :cond_20
 
     invoke-virtual {v1, v0}, Lorg/json/JSONArray;->getJSONObject(I)Lorg/json/JSONObject;
 
@@ -6150,13 +6460,15 @@
 
     invoke-static {}, Lsdk/b/a/a/c/a;->a()Lsdk/b/a/a/c/a;
 
-    const-string v5, "permissions"
+    move-result-object v5
 
-    invoke-virtual {v3, v5}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    const-string v6, "permissions"
+
+    invoke-virtual {v3, v6}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    invoke-static {v3}, Lsdk/b/a/a/c/a;->c(Ljava/lang/String;)Ljava/util/List;
+    invoke-virtual {v5, v3}, Lsdk/b/a/a/c/a;->c(Ljava/lang/String;)Ljava/util/List;
 
     move-result-object v3
 
@@ -6170,9 +6482,9 @@
 
     add-int/lit8 v0, v0, 0x1
 
-    goto :goto_9
+    goto :goto_a
 
-    :cond_21
+    :cond_20
     invoke-interface {v2}, Ljava/util/Map;->size()I
 
     move-result v0
@@ -6191,9 +6503,9 @@
 
     invoke-virtual {v0, v2}, Lsdk/b/a/a/c/a;->a(Ljava/util/Map;)V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
-    :cond_22
+    :cond_21
     const-string v1, "sendmessage_feedback"
 
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -6204,46 +6516,46 @@
 
     const-string v0, "appid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v1
 
     const-string v0, "taskid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
     const-string v0, "actionid"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
     const-string v0, "result"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getString(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v4
 
     const-string v0, "timestamp"
 
-    invoke-virtual {v5, v0}, Lorg/json/JSONObject;->getLong(Ljava/lang/String;)J
+    invoke-virtual {v7, v0}, Lorg/json/JSONObject;->getLong(Ljava/lang/String;)J
 
     move-result-wide v5
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
     invoke-virtual/range {v0 .. v6}, Lcom/igexin/sdk/SdkMainService;->a(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V
-    :try_end_e
-    .catch Lorg/json/JSONException; {:try_start_e .. :try_end_e} :catch_1
+    :try_end_f
+    .catch Lorg/json/JSONException; {:try_start_f .. :try_end_f} :catch_1
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
-    :cond_23
+    :cond_22
     instance-of v0, p1, Lsdk/a/a/a/a/a/g;
 
-    if-eqz v0, :cond_2d
+    if-eqz v0, :cond_2c
 
     sget-boolean v0, Lsdk/b/a/a/c/h;->y:Z
 
@@ -6253,31 +6565,43 @@
 
     check-cast p1, Lsdk/a/a/a/a/a/g;
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "GexinSdk"
 
-    const-string v1, "LoginResult : "
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-boolean v1, p1, Lsdk/a/a/a/a/a/g;->a:Z
+    const-string v2, "LoginResult : "
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    iget-boolean v2, p1, Lsdk/a/a/a/a/a/g;->a:Z
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-boolean v0, p1, Lsdk/a/a/a/a/a/g;->a:Z
 
-    if-eqz v0, :cond_2b
+    if-eqz v0, :cond_2a
 
     new-instance v0, Ljava/lang/StringBuilder;
 
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v1, "loginRsp|"
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-static {}, Lsdk/b/a/a/c/h;->f()Ljava/lang/String;
 
@@ -6301,7 +6625,7 @@
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->n()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->u()V
 
     sget-object v0, Lsdk/b/a/a/c/h;->J:Ljava/lang/String;
 
@@ -6313,14 +6637,14 @@
 
     sget-object v0, Lsdk/b/a/a/c/h;->g:Ljava/lang/String;
 
-    if-nez v0, :cond_24
+    if-nez v0, :cond_23
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->g()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->n()V
 
-    :cond_24
-    :try_start_f
+    :cond_23
+    :try_start_10
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
@@ -6339,7 +6663,19 @@
 
     move-result-object v3
 
-    const-string v4, ":259200000: "
+    const-string v4, ":"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-wide/32 v4, 0xf731400
+
+    invoke-virtual {v3, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, ": "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6355,7 +6691,7 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     const-wide/32 v2, 0xf731400
 
@@ -6365,7 +6701,7 @@
 
     cmp-long v0, v0, v2
 
-    if-lez v0, :cond_26
+    if-lez v0, :cond_25
 
     invoke-static {}, Lsdk/b/a/a/c/h;->h()Ljava/lang/String;
 
@@ -6373,7 +6709,7 @@
 
     iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v1}, Lcom/igexin/sdk/SdkMainService;->l()Ljava/lang/String;
+    invoke-virtual {v1}, Lcom/igexin/sdk/SdkMainService;->s()Ljava/lang/String;
 
     move-result-object v1
 
@@ -6385,7 +6721,7 @@
 
     move-result v0
 
-    if-eqz v0, :cond_25
+    if-eqz v0, :cond_24
 
     sget-wide v0, Lsdk/b/a/a/c/h;->h:J
 
@@ -6393,9 +6729,9 @@
 
     cmp-long v0, v0, v2
 
-    if-nez v0, :cond_26
+    if-nez v0, :cond_25
 
-    :cond_25
+    :cond_24
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
@@ -6404,21 +6740,21 @@
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->k()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->r()V
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->l()Ljava/lang/String;
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->s()Ljava/lang/String;
 
     move-result-object v0
 
     invoke-static {v0}, Lsdk/b/a/a/c/h;->b(Ljava/lang/String;)V
-    :try_end_f
-    .catch Ljava/lang/Exception; {:try_start_f .. :try_end_f} :catch_7
+    :try_end_10
+    .catch Ljava/lang/Exception; {:try_start_10 .. :try_end_10} :catch_7
 
-    :cond_26
-    :goto_a
-    :try_start_10
+    :cond_25
+    :goto_b
+    :try_start_11
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
@@ -6437,7 +6773,19 @@
 
     move-result-object v3
 
-    const-string v4, ":86400000: "
+    const-string v4, ":"
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-wide/32 v4, 0x5265c00
+
+    invoke-virtual {v3, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    const-string v4, ": "
 
     invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -6453,7 +6801,7 @@
 
     move-result-object v3
 
-    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     const-wide/32 v2, 0x5265c00
 
@@ -6463,18 +6811,18 @@
 
     cmp-long v0, v0, v2
 
-    if-lez v0, :cond_27
+    if-lez v0, :cond_26
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->f()V
-    :try_end_10
-    .catch Ljava/lang/Exception; {:try_start_10 .. :try_end_10} :catch_6
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->m()V
+    :try_end_11
+    .catch Ljava/lang/Exception; {:try_start_11 .. :try_end_11} :catch_6
 
-    :cond_27
-    :goto_b
+    :cond_26
+    :goto_c
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0
@@ -6491,7 +6839,7 @@
 
     cmp-long v0, v0, v2
 
-    if-lez v0, :cond_29
+    if-lez v0, :cond_28
 
     invoke-direct {p0}, Lsdk/b/a/a/a/b;->f()V
 
@@ -6507,12 +6855,12 @@
 
     move-result-object v1
 
-    :goto_c
+    :goto_d
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
     move-result v0
 
-    if-eqz v0, :cond_28
+    if-eqz v0, :cond_27
 
     sget-object v0, Lsdk/b/a/a/c/h;->C:Ljava/util/HashMap;
 
@@ -6532,12 +6880,12 @@
 
     invoke-virtual {v2, v0}, Lcom/igexin/sdk/SdkMainService;->a(Ljava/lang/String;)V
 
-    goto :goto_c
+    goto :goto_d
 
-    :cond_28
+    :cond_27
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->j()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->q()V
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
@@ -6545,16 +6893,16 @@
 
     sput-wide v0, Lsdk/b/a/a/c/h;->l:J
 
-    :cond_29
+    :cond_28
     sget-boolean v0, Lsdk/b/a/a/c/h;->N:Z
 
-    if-nez v0, :cond_2a
+    if-nez v0, :cond_29
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->h()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->o()V
 
-    :cond_2a
+    :cond_29
     const/4 v0, 0x1
 
     sput-boolean v0, Lsdk/b/a/a/c/h;->N:Z
@@ -6573,14 +6921,18 @@
 
     sput-wide v0, Lsdk/b/a/a/a/b;->c:J
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
-    :cond_2b
+    :cond_2a
     new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v1, "loginRsp|"
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-static {}, Lsdk/b/a/a/c/h;->f()Ljava/lang/String;
 
@@ -6612,21 +6964,21 @@
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->c()I
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->g()I
 
     move-result v0
 
     const/4 v1, 0x1
 
-    if-ne v0, v1, :cond_2c
+    if-ne v0, v1, :cond_2b
 
     const/4 v0, 0x0
 
     sput v0, Lsdk/b/a/a/a/b;->e:I
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
-    :cond_2c
+    :cond_2b
     if-nez v0, :cond_5
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
@@ -6645,30 +6997,30 @@
 
     invoke-virtual {v0}, Lsdk/c/a/b/d;->d()V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
-    :cond_2d
+    :cond_2c
     instance-of v0, p1, Lsdk/a/a/a/a/a/t;
 
     if-eqz v0, :cond_30
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->p:Lsdk/b/a/a/e/d/f;
 
-    if-eqz v0, :cond_2e
+    if-eqz v0, :cond_2d
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->p:Lsdk/b/a/a/e/d/f;
 
-    invoke-virtual {v0}, Lsdk/b/a/a/e/d/f;->n()Z
+    invoke-virtual {v0}, Lsdk/b/a/a/e/d/f;->p()Z
 
     move-result v0
 
-    if-nez v0, :cond_2e
+    if-nez v0, :cond_2d
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->p:Lsdk/b/a/a/e/d/f;
 
-    invoke-virtual {v0}, Lsdk/b/a/a/e/d/f;->q()V
+    invoke-virtual {v0}, Lsdk/b/a/a/e/d/f;->s()V
 
-    :cond_2e
+    :cond_2d
     check-cast p1, Lsdk/a/a/a/a/a/t;
 
     const/4 v0, 0x0
@@ -6685,39 +7037,47 @@
 
     sput-boolean v0, Lsdk/b/a/a/c/h;->N:Z
 
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "GexinSdk"
 
-    const-string v1, "change session : from ["
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    sget-wide v1, Lsdk/b/a/a/c/h;->a:J
+    const-string v2, "change session : from ["
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string v1, "] to ["
+    sget-wide v2, Lsdk/b/a/a/c/h;->a:J
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    iget-wide v1, p1, Lsdk/a/a/a/a/a/t;->a:J
+    const-string v2, "] to ["
 
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    const-string v1, "]"
+    iget-wide v2, p1, Lsdk/a/a/a/a/a/t;->a:J
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string v2, "]"
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-wide v0, p1, Lsdk/a/a/a/a/a/t;->a:J
 
@@ -6725,7 +7085,7 @@
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->i()V
+    invoke-virtual {v0}, Lcom/igexin/sdk/SdkMainService;->p()V
 
     invoke-static {}, Lsdk/b/a/a/c/h;->c()V
 
@@ -6739,65 +7099,37 @@
 
     check-cast v0, Lsdk/b/a/a/b/c;
 
-    if-eqz v0, :cond_2f
+    if-eqz v0, :cond_2e
 
     const-string v1, "0"
 
     iput-object v1, v0, Lsdk/b/a/a/b/c;->f:Ljava/lang/String;
 
-    :cond_2f
+    :cond_2e
     const-wide/16 v0, 0x0
 
     sput-wide v0, Lsdk/b/a/a/c/h;->l:J
 
     const/4 v0, 0x1
 
-    move v6, v0
+    move v8, v0
 
-    :goto_d
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    const-string v1, "new session:"
-
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    sget-wide v1, Lsdk/b/a/a/c/h;->a:J
-
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
-
-    new-instance v3, Lsdk/a/a/a/a/a/f;
-
-    invoke-direct {v3}, Lsdk/a/a/a/a/a/f;-><init>()V
-
-    sget-wide v0, Lsdk/b/a/a/c/h;->a:J
-
-    iput-wide v0, v3, Lsdk/a/a/a/a/a/f;->a:J
-
-    const/4 v0, 0x0
-
-    iput-byte v0, v3, Lsdk/a/a/a/a/a/f;->b:B
-
-    const v0, 0xff00
-
-    iput v0, v3, Lsdk/a/a/a/a/a/f;->c:I
-
-    const-string v0, "DefaultNotifyAction"
+    :goto_e
+    const-string v0, "GexinSdk"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
-    const-string v2, "loginCommand.session = "
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v2, "new session:"
 
-    iget-wide v4, v3, Lsdk/a/a/a/a/a/f;->a:J
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    move-result-object v1
+
+    sget-wide v2, Lsdk/b/a/a/c/h;->a:J
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
@@ -6807,11 +7139,55 @@
 
     invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
+    new-instance v4, Lsdk/a/a/a/a/a/f;
+
+    invoke-direct {v4}, Lsdk/a/a/a/a/a/f;-><init>()V
+
+    sget-wide v0, Lsdk/b/a/a/c/h;->a:J
+
+    iput-wide v0, v4, Lsdk/a/a/a/a/a/f;->a:J
+
+    const/4 v0, 0x0
+
+    iput-byte v0, v4, Lsdk/a/a/a/a/a/f;->b:B
+
+    const v0, 0xff00
+
+    iput v0, v4, Lsdk/a/a/a/a/a/f;->c:I
+
+    const-string v0, "DefaultNotifyAction"
+
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "loginCommand.session = "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    iget-wide v2, v4, Lsdk/a/a/a/a/a/f;->a:J
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
+
     new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v1, "newtoken|"
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v0
 
     invoke-static {}, Lsdk/b/a/a/c/h;->f()Ljava/lang/String;
 
@@ -6833,21 +7209,30 @@
 
     sget-object v1, Lsdk/b/a/a/c/d;->d:Ljava/lang/String;
 
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->b()Lsdk/c/a/b/c;
+    const/4 v2, 0x3
 
-    move-result-object v2
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->e()Lsdk/c/a/b/c;
 
-    const/4 v4, 0x1
+    move-result-object v3
 
-    new-instance v5, Lsdk/b/a/a/e/b;
+    const/4 v5, 0x1
 
-    iget-object v7, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+    const/16 v6, 0xf
 
-    invoke-direct {v5, v7}, Lsdk/b/a/a/e/b;-><init>(Lcom/igexin/sdk/SdkMainService;)V
+    new-instance v7, Lsdk/b/a/a/e/b;
 
-    invoke-virtual/range {v0 .. v5}, Lsdk/c/a/b/d;->a(Ljava/lang/String;Lsdk/c/a/b/c;Ljava/lang/Object;ZLsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
+    iget-object v9, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    if-eqz v6, :cond_5
+    invoke-direct {v7, v9}, Lsdk/b/a/a/e/b;-><init>(Lcom/igexin/sdk/SdkMainService;)V
+
+    invoke-virtual/range {v0 .. v7}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
+
+    move-result-object v0
+
+    if-nez v0, :cond_2f
+
+    :cond_2f
+    if-eqz v8, :cond_5
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
@@ -6855,7 +7240,7 @@
 
     invoke-virtual {v0}, Lsdk/b/a/a/c/h;->d()V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :cond_30
     instance-of v0, p1, Lsdk/c/a/b/a/a/a;
@@ -6868,19 +7253,25 @@
 
     if-eqz v0, :cond_5
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
+
+    const-string v1, "######### disconect by user!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
     const/4 v1, 0x4
 
-    invoke-virtual {v0, v1}, Lcom/igexin/sdk/SdkMainService;->a(I)V
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Lcom/igexin/sdk/SdkMainService;->a(ILandroid/os/Bundle;)V
 
     const/4 v0, 0x0
 
     sput-boolean v0, Lsdk/b/a/a/c/h;->y:Z
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :cond_31
     instance-of v0, p1, Lsdk/b/a/a/e/c;
@@ -6893,6 +7284,8 @@
 
     sput v0, Lsdk/b/a/a/a/b;->e:I
 
+    sget v0, Lsdk/b/a/a/a/b;->e:I
+
     const/4 v1, 0x3
 
     if-lt v0, v1, :cond_32
@@ -6901,12 +7294,14 @@
 
     const/4 v1, 0x6
 
-    invoke-virtual {v0, v1}, Lcom/igexin/sdk/SdkMainService;->a(I)V
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Lcom/igexin/sdk/SdkMainService;->a(ILandroid/os/Bundle;)V
 
     :cond_32
     invoke-direct {p0}, Lsdk/b/a/a/a/b;->e()V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :cond_33
     instance-of v0, p1, Lsdk/b/a/a/e/d;
@@ -6917,7 +7312,7 @@
 
     const-string v1, "doHandleFilter ReconnectNotifyType"
 
-    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     const-wide/16 v0, 0x0
 
@@ -6925,130 +7320,207 @@
 
     invoke-direct {p0}, Lsdk/b/a/a/a/b;->e()V
 
-    goto/16 :goto_2
+    goto/16 :goto_1
 
     :cond_34
     const/4 v0, 0x1
 
-    goto/16 :goto_1
+    goto/16 :goto_0
 
     :catch_6
     move-exception v0
 
-    goto/16 :goto_b
+    goto/16 :goto_c
 
     :catch_7
     move-exception v0
 
-    goto/16 :goto_a
+    goto/16 :goto_b
 
     :catch_8
     move-exception v4
 
-    goto/16 :goto_7
+    goto/16 :goto_8
+
+    :catchall_1
+    move-exception v0
+
+    goto/16 :goto_6
+
+    :catch_9
+    move-exception v0
+
+    goto/16 :goto_5
 
     :cond_35
-    move v6, v0
+    move v8, v0
 
-    goto/16 :goto_d
+    goto/16 :goto_e
 .end method
 
-.method public final a(Lsdk/c/a/e/d;)Z
-    .locals 8
+.method public a(Lsdk/c/a/e/d;Lsdk/c/a/e/e;)Z
+    .locals 9
 
-    const/4 v7, 0x4
+    const/4 v8, 0x4
 
-    const/4 v0, 0x0
+    const/4 v6, 0x0
 
-    const/4 v2, 0x0
+    const/4 v7, 0x0
+
+    const-string v0, "GexinSdk"
 
     new-instance v1, Ljava/lang/StringBuilder;
 
-    const-string v3, "doExceptionCaughtFilter task.getSerialNum() = "
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-direct {v1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v2, "doExceptionCaughtFilter task.getSerialNum() = "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {p1}, Lsdk/c/a/e/d;->b()I
 
-    move-result v3
+    move-result v2
 
-    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-virtual {p1}, Lsdk/c/a/e/d;->b()I
 
-    move-result v1
+    move-result v0
 
-    packed-switch v1, :pswitch_data_0
+    packed-switch v0, :pswitch_data_0
 
     :pswitch_0
     const/4 v0, 0x1
 
-    :cond_0
     :goto_0
     return v0
 
     :pswitch_1
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
 
-    const-string v1, "disconnected|network"
+    const-string v1, "########### disconnect!"
 
-    invoke-static {v1}, Lsdk/c/a/c/a;->a(Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    const-string v0, "disconnected|network"
+
+    invoke-static {v0}, Lsdk/c/a/c/a;->a(Ljava/lang/String;)V
 
     invoke-static {}, Lsdk/b/a/a/e/d/a;->a()Lsdk/b/a/a/e/d/a;
 
-    move-result-object v1
+    move-result-object v0
 
-    sget-object v3, Lsdk/b/a/a/e/d/c;->c:Lsdk/b/a/a/e/d/c;
+    sget-object v1, Lsdk/b/a/a/e/d/c;->c:Lsdk/b/a/a/e/d/c;
 
-    invoke-virtual {v1, v3}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/c;)V
+    invoke-virtual {v0, v1}, Lsdk/b/a/a/e/d/a;->a(Lsdk/b/a/a/e/d/c;)V
 
     invoke-static {}, Lsdk/b/a/a/c/r;->d()V
 
-    iget-object v1, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
+    iget-object v0, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
 
-    instance-of v1, v1, Ljava/nio/channels/ClosedChannelException;
+    instance-of v0, v0, Ljava/nio/channels/ClosedChannelException;
 
-    if-nez v1, :cond_1
+    if-nez v0, :cond_0
 
-    iget-object v1, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
+    iget-object v0, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
 
-    instance-of v1, v1, Ljava/net/SocketTimeoutException;
+    instance-of v0, v0, Ljava/net/SocketTimeoutException;
 
-    if-nez v1, :cond_1
+    if-nez v0, :cond_0
 
-    iget-object v1, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
+    iget-object v0, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
 
-    instance-of v1, v1, Ljava/net/UnknownHostException;
+    instance-of v0, v0, Ljava/net/UnknownHostException;
 
-    if-nez v1, :cond_1
+    if-nez v0, :cond_0
 
-    iget-object v1, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
+    iget-object v0, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
 
-    instance-of v1, v1, Ljava/nio/channels/UnresolvedAddressException;
+    instance-of v0, v0, Ljava/nio/channels/UnresolvedAddressException;
 
-    if-nez v1, :cond_1
+    if-nez v0, :cond_0
 
-    iget-object v1, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
+    iget-object v0, p1, Lsdk/c/a/e/d;->O:Ljava/lang/Exception;
 
-    instance-of v1, v1, Ljava/net/UnknownServiceException;
+    instance-of v0, v0, Ljava/net/UnknownServiceException;
 
-    if-eqz v1, :cond_3
+    if-eqz v0, :cond_2
 
-    :cond_1
+    :cond_0
     invoke-static {}, Lsdk/b/a/a/c/r;->a()V
 
     :try_start_0
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
+
+    move-result-object v0
+
+    iget-object v0, v0, Lcom/igexin/sdk/SdkMainService;->y:Lsdk/b/a/a/c/e;
+
+    const-string v1, "table_biinfo"
+
+    const/4 v2, 0x0
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x0
+
+    invoke-virtual/range {v0 .. v5}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     move-result-object v1
 
-    iget-object v1, v1, Lcom/igexin/sdk/SdkMainService;->y:Lsdk/b/a/a/c/e;
+    if-eqz v1, :cond_1
+
+    :try_start_1
+    invoke-interface {v1}, Landroid/database/Cursor;->moveToFirst()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    const-string v0, "logine_er_connecter_count"
+
+    invoke-interface {v1, v0}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
+
+    move-result v0
+
+    invoke-interface {v1, v0}, Landroid/database/Cursor;->getInt(I)I
+
+    move-result v0
+
+    new-instance v2, Landroid/content/ContentValues;
+
+    invoke-direct {v2}, Landroid/content/ContentValues;-><init>()V
+
+    const-string v3, "logine_er_connecter_count"
+
+    add-int/lit8 v0, v0, 0x1
+
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    invoke-virtual {v2, v3, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+
+    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->t()Lcom/igexin/sdk/SdkMainService;
+
+    move-result-object v0
+
+    iget-object v0, v0, Lcom/igexin/sdk/SdkMainService;->y:Lsdk/b/a/a/c/e;
 
     const-string v3, "table_biinfo"
 
@@ -7056,143 +7528,123 @@
 
     const/4 v5, 0x0
 
-    const/4 v6, 0x0
+    invoke-virtual {v0, v3, v2, v4, v5}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Landroid/content/ContentValues;[Ljava/lang/String;[Ljava/lang/String;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
 
-    invoke-virtual {v1, v3, v4, v5, v6}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-
-    move-result-object v2
-
-    if-eqz v2, :cond_2
-
-    invoke-interface {v2}, Landroid/database/Cursor;->moveToFirst()Z
-
-    move-result v1
-
+    :cond_1
     if-eqz v1, :cond_2
 
-    const-string v1, "logine_er_connecter_count"
-
-    invoke-interface {v2, v1}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
-
-    move-result v1
-
-    invoke-interface {v2, v1}, Landroid/database/Cursor;->getInt(I)I
-
-    move-result v1
-
-    new-instance v3, Landroid/content/ContentValues;
-
-    invoke-direct {v3}, Landroid/content/ContentValues;-><init>()V
-
-    const-string v4, "logine_er_connecter_count"
-
-    add-int/lit8 v1, v1, 0x1
-
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    move-result-object v1
-
-    invoke-virtual {v3, v4, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
-
-    invoke-static {}, Lcom/igexin/sdk/SdkMainService;->m()Lcom/igexin/sdk/SdkMainService;
-
-    move-result-object v1
-
-    iget-object v1, v1, Lcom/igexin/sdk/SdkMainService;->y:Lsdk/b/a/a/c/e;
-
-    const-string v4, "table_biinfo"
-
-    const/4 v5, 0x0
-
-    const/4 v6, 0x0
-
-    invoke-virtual {v1, v4, v3, v5, v6}, Lsdk/b/a/a/c/e;->a(Ljava/lang/String;Landroid/content/ContentValues;[Ljava/lang/String;[Ljava/lang/String;)V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
     :cond_2
-    if-eqz v2, :cond_3
+    :goto_1
+    iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+    iget-boolean v0, v0, Lcom/igexin/sdk/SdkMainService;->c:Z
+
+    if-eqz v0, :cond_5
+
+    const-string v0, "GexinSdk"
+
+    const-string v1, "######### disconect by user!"
+
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
+    iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+
+    invoke-virtual {v0, v8, v7}, Lcom/igexin/sdk/SdkMainService;->a(ILandroid/os/Bundle;)V
+
+    sput-boolean v6, Lsdk/b/a/a/c/h;->y:Z
 
     :cond_3
-    :goto_1
-    iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
-
-    iget-boolean v1, v1, Lcom/igexin/sdk/SdkMainService;->c:Z
-
-    if-eqz v1, :cond_5
-
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
-
-    iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
-
-    invoke-virtual {v1, v7}, Lcom/igexin/sdk/SdkMainService;->a(I)V
-
-    sput-boolean v0, Lsdk/b/a/a/c/h;->y:Z
+    :goto_2
+    move v0, v6
 
     goto/16 :goto_0
 
     :catch_0
-    move-exception v1
+    move-exception v0
 
-    :try_start_1
-    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    move-object v1, v7
 
-    if-eqz v2, :cond_3
+    :goto_3
+    :try_start_2
+    invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+    if-eqz v1, :cond_2
+
+    invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
     goto :goto_1
 
     :catchall_0
     move-exception v0
 
-    if-eqz v2, :cond_4
+    move-object v1, v7
 
-    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+    :goto_4
+    if-eqz v1, :cond_4
+
+    invoke-interface {v1}, Landroid/database/Cursor;->close()V
 
     :cond_4
     throw v0
 
     :cond_5
-    sput v0, Lsdk/b/a/a/a/b;->e:I
+    sput v6, Lsdk/b/a/a/a/b;->e:I
 
     invoke-direct {p0}, Lsdk/b/a/a/a/b;->e()V
 
-    iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+    iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-virtual {v1, v7}, Lcom/igexin/sdk/SdkMainService;->a(I)V
+    invoke-virtual {v0, v8, v7}, Lcom/igexin/sdk/SdkMainService;->a(ILandroid/os/Bundle;)V
 
-    sput-boolean v0, Lsdk/b/a/a/c/h;->y:Z
+    sput-boolean v6, Lsdk/b/a/a/c/h;->y:Z
 
-    goto/16 :goto_0
+    goto :goto_2
 
     :pswitch_2
-    const-string v1, "disconnected|user"
+    const-string v0, "disconnected|user"
 
-    invoke-static {v1}, Lsdk/c/a/c/a;->a(Ljava/lang/String;)V
+    invoke-static {v0}, Lsdk/c/a/c/a;->a(Ljava/lang/String;)V
 
-    iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+    iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    iget-boolean v1, v1, Lcom/igexin/sdk/SdkMainService;->c:Z
+    iget-boolean v0, v0, Lcom/igexin/sdk/SdkMainService;->c:Z
 
-    if-eqz v1, :cond_0
+    if-eqz v0, :cond_3
 
     invoke-static {}, Lsdk/b/a/a/c/r;->d()V
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v0, "GexinSdk"
 
-    iget-object v1, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
+    const-string v1, "######### disconect by user! --- DisSocketTask failed"
 
-    invoke-virtual {v1, v7}, Lcom/igexin/sdk/SdkMainService;->a(I)V
+    invoke-static {v0, v1}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
-    sput-boolean v0, Lsdk/b/a/a/c/h;->y:Z
+    iget-object v0, p0, Lsdk/b/a/a/a/b;->b:Lcom/igexin/sdk/SdkMainService;
 
-    goto/16 :goto_0
+    invoke-virtual {v0, v8, v7}, Lcom/igexin/sdk/SdkMainService;->a(ILandroid/os/Bundle;)V
+
+    sput-boolean v6, Lsdk/b/a/a/c/h;->y:Z
+
+    goto :goto_2
+
+    :catchall_1
+    move-exception v0
+
+    goto :goto_4
+
+    :catch_1
+    move-exception v0
+
+    goto :goto_3
+
+    nop
 
     :pswitch_data_0
     .packed-switch -0x7ff
@@ -7202,7 +7654,7 @@
     .end packed-switch
 .end method
 
-.method public final b()V
+.method public b()V
     .locals 0
 
     return-void

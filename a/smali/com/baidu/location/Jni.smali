@@ -5,21 +5,21 @@
 # static fields
 .field private static a:I
 
-.field private static b:I
+.field private static byte:I
 
-.field private static c:I
+.field private static case:I
 
-.field private static d:I
+.field private static do:I
 
-.field private static e:I
+.field private static for:I
 
-.field private static f:I
+.field private static if:I
 
-.field private static g:I
+.field private static int:I
 
-.field private static h:I
+.field private static new:Z
 
-.field private static i:Z
+.field private static try:I
 
 
 # direct methods
@@ -30,35 +30,35 @@
 
     const/4 v1, 0x0
 
-    sput v1, Lcom/baidu/location/Jni;->a:I
+    sput v1, Lcom/baidu/location/Jni;->case:I
 
-    sput v2, Lcom/baidu/location/Jni;->b:I
+    sput v2, Lcom/baidu/location/Jni;->try:I
 
     const/4 v0, 0x2
 
-    sput v0, Lcom/baidu/location/Jni;->c:I
+    sput v0, Lcom/baidu/location/Jni;->byte:I
 
     const/16 v0, 0xb
 
-    sput v0, Lcom/baidu/location/Jni;->d:I
+    sput v0, Lcom/baidu/location/Jni;->for:I
 
     const/16 v0, 0xc
 
-    sput v0, Lcom/baidu/location/Jni;->e:I
+    sput v0, Lcom/baidu/location/Jni;->int:I
 
     const/16 v0, 0xd
 
-    sput v0, Lcom/baidu/location/Jni;->f:I
+    sput v0, Lcom/baidu/location/Jni;->if:I
 
     const/16 v0, 0xe
 
-    sput v0, Lcom/baidu/location/Jni;->g:I
+    sput v0, Lcom/baidu/location/Jni;->a:I
 
     const/16 v0, 0x400
 
-    sput v0, Lcom/baidu/location/Jni;->h:I
+    sput v0, Lcom/baidu/location/Jni;->do:I
 
-    sput-boolean v1, Lcom/baidu/location/Jni;->i:Z
+    sput-boolean v1, Lcom/baidu/location/Jni;->new:Z
 
     :try_start_0
     const-string v0, "locSDK3"
@@ -75,19 +75,33 @@
 
     invoke-virtual {v0}, Ljava/lang/UnsatisfiedLinkError;->printStackTrace()V
 
-    sput-boolean v2, Lcom/baidu/location/Jni;->i:Z
+    sput-boolean v2, Lcom/baidu/location/Jni;->new:Z
 
     goto :goto_0
 .end method
 
-.method public static a(Ljava/lang/String;)Ljava/lang/String;
-    .locals 6
+.method constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method private static native a([BI)Ljava/lang/String;
+.end method
+
+.method private static native b(DDII)Ljava/lang/String;
+.end method
+
+.method public static if(Ljava/lang/String;)Ljava/lang/String;
+    .locals 7
 
     const/16 v0, 0x2e4
 
     const/4 v2, 0x0
 
-    sget-boolean v1, Lcom/baidu/location/Jni;->i:Z
+    sget-boolean v1, Lcom/baidu/location/Jni;->new:Z
 
     if-eqz v1, :cond_0
 
@@ -101,7 +115,7 @@
 
     move-result-object v3
 
-    sget v1, Lcom/baidu/location/Jni;->h:I
+    sget v1, Lcom/baidu/location/Jni;->do:I
 
     new-array v4, v1, [B
 
@@ -131,26 +145,38 @@
     goto :goto_2
 
     :cond_1
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    const-string v5, "baidu_location_service"
+
+    const-string v6, "\\0 found in string"
+
+    invoke-static {v5, v6}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
     goto :goto_3
 
     :cond_2
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "baidu_location_service"
 
-    const-string v1, "number:"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    array-length v1, v3
+    const-string v2, "number:"
 
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v0
+    move-result-object v1
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    array-length v2, v3
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
     new-instance v0, Ljava/lang/StringBuilder;
 
@@ -184,10 +210,7 @@
     goto :goto_1
 .end method
 
-.method private static native a([BI)Ljava/lang/String;
-.end method
-
-.method public static a(DDLjava/lang/String;)[D
+.method public static if(DDLjava/lang/String;)[D
     .locals 7
 
     const/4 v0, 0x2
@@ -196,7 +219,7 @@
 
     fill-array-data v6, :array_0
 
-    sget-boolean v0, Lcom/baidu/location/Jni;->i:Z
+    sget-boolean v0, Lcom/baidu/location/Jni;->new:Z
 
     if-eqz v0, :cond_0
 
@@ -216,23 +239,31 @@
 
     if-eqz v0, :cond_2
 
-    sget v4, Lcom/baidu/location/Jni;->a:I
+    sget v4, Lcom/baidu/location/Jni;->case:I
 
     :cond_1
     :goto_1
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "baidu_location_service"
 
-    const-string v1, "type:"
+    new-instance v1, Ljava/lang/StringBuilder;
 
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v2, "type:"
 
-    move-result-object v0
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v1
 
-    invoke-static {}, Lcom/baidu/location/ak;->e()V
+    invoke-virtual {v1, v4}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-static {v0, v1}, Lcom/baidu/location/j;->if(Ljava/lang/String;Ljava/lang/String;)V
 
     const v5, 0x20568
 
@@ -291,7 +322,7 @@
 
     if-eqz v0, :cond_3
 
-    sget v4, Lcom/baidu/location/Jni;->b:I
+    sget v4, Lcom/baidu/location/Jni;->try:I
 
     goto :goto_1
 
@@ -304,7 +335,7 @@
 
     if-eqz v0, :cond_4
 
-    sget v4, Lcom/baidu/location/Jni;->c:I
+    sget v4, Lcom/baidu/location/Jni;->byte:I
 
     goto :goto_1
 
@@ -317,7 +348,7 @@
 
     if-eqz v0, :cond_5
 
-    sget v4, Lcom/baidu/location/Jni;->d:I
+    sget v4, Lcom/baidu/location/Jni;->for:I
 
     goto :goto_1
 
@@ -330,7 +361,7 @@
 
     if-eqz v0, :cond_6
 
-    sget v4, Lcom/baidu/location/Jni;->e:I
+    sget v4, Lcom/baidu/location/Jni;->int:I
 
     goto :goto_1
 
@@ -343,7 +374,7 @@
 
     if-eqz v0, :cond_1
 
-    sget v4, Lcom/baidu/location/Jni;->f:I
+    sget v4, Lcom/baidu/location/Jni;->if:I
 
     goto :goto_1
 
@@ -354,14 +385,9 @@
 
     goto :goto_2
 
-    nop
-
     :array_0
     .array-data 0x8
         0x0t 0x0t 0x0t 0x0t 0x0t 0x0t 0x0t 0x0t
         0x0t 0x0t 0x0t 0x0t 0x0t 0x0t 0x0t 0x0t
     .end array-data
-.end method
-
-.method private static native b(DDII)Ljava/lang/String;
 .end method

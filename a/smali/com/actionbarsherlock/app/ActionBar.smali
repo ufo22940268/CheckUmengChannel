@@ -1,5 +1,18 @@
 .class public abstract Lcom/actionbarsherlock/app/ActionBar;
 .super Ljava/lang/Object;
+.source "ActionBar.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/actionbarsherlock/app/ActionBar$LayoutParams;,
+        Lcom/actionbarsherlock/app/ActionBar$TabListener;,
+        Lcom/actionbarsherlock/app/ActionBar$Tab;,
+        Lcom/actionbarsherlock/app/ActionBar$OnMenuVisibilityListener;,
+        Lcom/actionbarsherlock/app/ActionBar$OnNavigationListener;
+    }
+.end annotation
 
 
 # static fields
@@ -24,8 +37,11 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
+    .line 59
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 898
     return-void
 .end method
 
@@ -79,6 +95,8 @@
 .method public getThemedContext()Landroid/content/Context;
     .locals 1
 
+    .prologue
+    .line 670
     const/4 v0, 0x0
 
     return-object v0
@@ -146,7 +164,10 @@
 
 .method public setHomeButtonEnabled(Z)V
     .locals 0
+    .parameter "enabled"
 
+    .prologue
+    .line 659
     return-void
 .end method
 
@@ -173,13 +194,19 @@
 
 .method public setSplitBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
     .locals 0
+    .parameter "d"
 
+    .prologue
+    .line 446
     return-void
 .end method
 
 .method public setStackedBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
     .locals 0
+    .parameter "d"
 
+    .prologue
+    .line 436
     return-void
 .end method
 

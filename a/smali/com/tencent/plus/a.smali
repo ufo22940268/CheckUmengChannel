@@ -1,28 +1,49 @@
-.class public final Lcom/tencent/plus/a;
+.class Lcom/tencent/plus/a;
 .super Ljava/lang/Object;
+.source "ProGuard"
+
+# interfaces
+.implements Ljava/lang/Runnable;
+
+
+# instance fields
+.field final synthetic a:Ljava/lang/String;
+
+.field final synthetic b:Lcom/tencent/plus/g;
 
 
 # direct methods
-.method public static a(Landroid/content/Context;F)I
+.method constructor <init>(Lcom/tencent/plus/g;Ljava/lang/String;)V
+    .locals 0
+    .parameter
+    .parameter
+
+    .prologue
+    .line 759
+    iput-object p1, p0, Lcom/tencent/plus/a;->b:Lcom/tencent/plus/g;
+
+    iput-object p2, p0, Lcom/tencent/plus/a;->a:Ljava/lang/String;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public run()V
     .locals 2
 
-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    .prologue
+    .line 762
+    iget-object v0, p0, Lcom/tencent/plus/a;->b:Lcom/tencent/plus/g;
 
-    move-result-object v0
+    iget-object v0, v0, Lcom/tencent/plus/g;->a:Lcom/tencent/plus/ImageActivity;
 
-    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    iget-object v1, p0, Lcom/tencent/plus/a;->a:Ljava/lang/String;
 
-    move-result-object v0
+    invoke-static {v0, v1}, Lcom/tencent/plus/ImageActivity;->b(Lcom/tencent/plus/ImageActivity;Ljava/lang/String;)V
 
-    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
-
-    mul-float/2addr v0, p1
-
-    const/high16 v1, 0x3f00
-
-    add-float/2addr v0, v1
-
-    float-to-int v0, v0
-
-    return v0
+    .line 763
+    return-void
 .end method

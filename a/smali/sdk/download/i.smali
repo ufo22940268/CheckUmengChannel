@@ -1,4 +1,4 @@
-.class final Lsdk/download/i;
+.class Lsdk/download/i;
 .super Ljava/lang/Thread;
 
 
@@ -21,7 +21,7 @@
 
 
 # virtual methods
-.method public final run()V
+.method public run()V
     .locals 18
 
     const/16 v1, 0xa
@@ -48,7 +48,7 @@
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->d(Lsdk/download/DownloadService;)Lsdk/download/i;
+    invoke-static {v1}, Lsdk/download/DownloadService;->c(Lsdk/download/DownloadService;)Lsdk/download/i;
 
     move-result-object v1
 
@@ -63,13 +63,13 @@
     invoke-direct {v1, v3}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     throw v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     :catchall_0
     move-exception v1
 
     monitor-exit v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v1
 
@@ -79,7 +79,7 @@
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->e(Lsdk/download/DownloadService;)Z
+    invoke-static {v1}, Lsdk/download/DownloadService;->d(Lsdk/download/DownloadService;)Z
 
     move-result v1
 
@@ -89,7 +89,9 @@
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->f(Lsdk/download/DownloadService;)Lsdk/download/i;
+    const/4 v3, 0x0
+
+    invoke-static {v1, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Lsdk/download/i;)Lsdk/download/i;
 
     if-nez v9, :cond_1
 
@@ -124,7 +126,7 @@
 
     const-string v3, "couldn\'t get alarm manager"
 
-    invoke-static {v1, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v1, v3}, Lsdk/c/a/c/a;->e(Ljava/lang/String;Ljava/lang/String;)V
 
     :cond_2
     :goto_1
@@ -132,13 +134,17 @@
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->g(Lsdk/download/DownloadService;)Landroid/database/CharArrayBuffer;
+    const/4 v3, 0x0
+
+    invoke-static {v1, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Landroid/database/CharArrayBuffer;)Landroid/database/CharArrayBuffer;
 
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->h(Lsdk/download/DownloadService;)Landroid/database/CharArrayBuffer;
+    const/4 v3, 0x0
+
+    invoke-static {v1, v3}, Lsdk/download/DownloadService;->b(Lsdk/download/DownloadService;Landroid/database/CharArrayBuffer;)Landroid/database/CharArrayBuffer;
 
     monitor-exit v2
 
@@ -198,7 +204,9 @@
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->i(Lsdk/download/DownloadService;)Z
+    const/4 v3, 0x0
+
+    invoke-static {v1, v3}, Lsdk/download/DownloadService;->b(Lsdk/download/DownloadService;Z)Z
 
     monitor-exit v2
     :try_end_1
@@ -208,21 +216,21 @@
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/l;->b(Landroid/content/Context;)Z
+    invoke-static {v1}, Lsdk/download/l;->a(Landroid/content/Context;)Z
 
-    move-result v11
+    move-result v12
 
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/l;->c(Landroid/content/Context;)Z
+    invoke-static {v1}, Lsdk/download/l;->b(Landroid/content/Context;)Z
 
-    move-result v12
+    move-result v13
 
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v13
+    move-result-wide v14
 
     const/4 v10, 0x0
 
@@ -269,22 +277,22 @@
 
     const/4 v3, 0x0
 
-    const/4 v10, 0x0
+    const/4 v8, 0x0
 
-    const-wide v8, 0x7fffffffffffffffL
+    const/4 v11, 0x0
+
+    const-wide v9, 0x7fffffffffffffffL
 
     :try_start_4
     invoke-interface {v2}, Landroid/database/Cursor;->isAfterLast()Z
 
-    move-result v1
+    move-result v4
 
-    const-string v4, "_id"
+    const-string v1, "_id"
 
-    invoke-interface {v2, v4}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
+    invoke-interface {v2, v1}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
 
-    move-result v15
-
-    move v4, v1
+    move-result v16
 
     :goto_3
     if-eqz v4, :cond_7
@@ -293,7 +301,7 @@
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->j(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
+    invoke-static {v1}, Lsdk/download/DownloadService;->e(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
 
     move-result-object v1
 
@@ -301,10 +309,10 @@
 
     move-result v1
 
-    if-ge v3, v1, :cond_16
+    if-ge v3, v1, :cond_17
 
     :cond_7
-    if-eqz v4, :cond_8
+    if-eqz v4, :cond_9
 
     move-object/from16 v0, p0
 
@@ -312,6 +320,29 @@
 
     invoke-static {v1, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;I)Z
 
+    move-result v1
+
+    if-eqz v1, :cond_8
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1}, Lsdk/download/DownloadService;->f(Lsdk/download/DownloadService;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_8
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    const/4 v5, 0x0
+
+    invoke-static {v1, v5, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Landroid/database/Cursor;I)Z
+
+    :cond_8
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
@@ -326,33 +357,32 @@
     :catch_0
     move-exception v1
 
-    move-object v4, v1
-
-    move-object v5, v2
-
-    move v3, v10
-
-    move-wide v1, v8
-
     :goto_4
     :try_start_5
-    invoke-virtual {v4}, Ljava/lang/Exception;->printStackTrace()V
+    invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
     :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_3
+    .catchall {:try_start_5 .. :try_end_5} :catchall_1
 
-    if-eqz v5, :cond_19
+    if-eqz v2, :cond_1c
 
-    invoke-interface {v5}, Landroid/database/Cursor;->close()V
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
 
+    move-wide v1, v9
+
+    move v3, v11
+
+    :goto_5
     move-wide v7, v1
 
     move v9, v3
 
     goto/16 :goto_0
 
-    :cond_8
+    :cond_9
     :try_start_6
-    invoke-interface {v2, v15}, Landroid/database/Cursor;->getInt(I)I
+    move/from16 v0, v16
+
+    invoke-interface {v2, v0}, Landroid/database/Cursor;->getInt(I)I
 
     move-result v5
 
@@ -360,7 +390,7 @@
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->j(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
+    invoke-static {v1}, Lsdk/download/DownloadService;->e(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
 
     move-result-object v1
 
@@ -368,17 +398,17 @@
 
     move-result v1
 
-    if-ne v3, v1, :cond_c
+    if-ne v3, v1, :cond_d
 
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    move v4, v11
+    move v4, v12
 
-    move v5, v12
+    move v5, v13
 
-    move-wide v6, v13
+    move-wide v6, v14
 
     invoke-static/range {v1 .. v7}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Landroid/database/Cursor;IZZJ)V
 
@@ -388,6 +418,38 @@
 
     invoke-static {v1, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;I)Z
 
+    move-result v1
+
+    if-eqz v1, :cond_22
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1}, Lsdk/download/DownloadService;->f(Lsdk/download/DownloadService;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_a
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1, v2, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Landroid/database/Cursor;I)Z
+
+    move-result v1
+
+    if-nez v1, :cond_22
+
+    :cond_a
+    const/4 v8, 0x1
+
+    const/4 v11, 0x1
+
+    move v4, v8
+
+    :goto_6
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
@@ -396,62 +458,88 @@
 
     move-result v1
 
-    if-eqz v1, :cond_9
+    if-eqz v1, :cond_b
 
-    const/4 v10, 0x1
+    const/4 v11, 0x1
 
-    :cond_9
+    :cond_b
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1, v3, v13, v14}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;IJ)J
+    invoke-static {v1, v3, v14, v15}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;IJ)J
+    :try_end_6
+    .catchall {:try_start_6 .. :try_end_6} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_0
 
-    move-result-wide v4
+    move-result-wide v5
 
-    const-wide/16 v6, 0x0
+    const-wide/16 v7, 0x0
 
-    cmp-long v1, v4, v6
+    cmp-long v1, v5, v7
 
-    if-nez v1, :cond_b
+    if-nez v1, :cond_c
 
-    const/4 v10, 0x1
+    const/4 v11, 0x1
 
-    :cond_a
-    :goto_5
+    move-wide v5, v9
+
+    move v7, v11
+
+    :goto_7
     add-int/lit8 v3, v3, 0x1
 
+    :try_start_7
     invoke-interface {v2}, Landroid/database/Cursor;->moveToNext()Z
 
     invoke-interface {v2}, Landroid/database/Cursor;->isAfterLast()Z
+    :try_end_7
+    .catchall {:try_start_7 .. :try_end_7} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_3
 
     move-result v1
 
+    move/from16 v17, v4
+
+    move v4, v3
+
+    move/from16 v3, v17
+
+    :goto_8
+    move v8, v3
+
+    move-wide v9, v5
+
+    move v11, v7
+
+    move v3, v4
+
     move v4, v1
 
-    goto :goto_3
-
-    :cond_b
-    const-wide/16 v6, 0x0
-
-    cmp-long v1, v4, v6
-
-    if-lez v1, :cond_a
-
-    cmp-long v1, v4, v8
-
-    if-gez v1, :cond_a
-
-    move-wide v8, v4
-
-    goto :goto_5
+    goto/16 :goto_3
 
     :cond_c
+    const-wide/16 v7, 0x0
+
+    cmp-long v1, v5, v7
+
+    if-lez v1, :cond_21
+
+    cmp-long v1, v5, v9
+
+    if-gez v1, :cond_21
+
+    move v7, v11
+
+    goto :goto_7
+
+    :cond_d
+    :try_start_8
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->j(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
+    invoke-static {v1}, Lsdk/download/DownloadService;->e(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
 
     move-result-object v1
 
@@ -463,7 +551,7 @@
 
     iget v1, v1, Lsdk/download/d;->a:I
 
-    if-ge v1, v5, :cond_e
+    if-ge v1, v5, :cond_f
 
     move-object/from16 v0, p0
 
@@ -471,41 +559,59 @@
 
     invoke-static {v1, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;I)Z
 
+    move-result v1
+
+    if-eqz v1, :cond_e
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1}, Lsdk/download/DownloadService;->f(Lsdk/download/DownloadService;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_e
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    const/4 v5, 0x0
+
+    invoke-static {v1, v5, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Landroid/database/Cursor;I)Z
+
+    :cond_e
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
     invoke-static {v1, v3}, Lsdk/download/DownloadService;->b(Lsdk/download/DownloadService;I)V
-    :try_end_6
-    .catchall {:try_start_6 .. :try_end_6} :catchall_1
-    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_0
 
-    goto/16 :goto_3
+    move v1, v4
 
-    :catchall_1
-    move-exception v1
+    move-wide v5, v9
 
-    :goto_6
-    if-eqz v2, :cond_d
+    move v7, v11
 
-    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+    move v4, v3
 
-    :cond_d
-    throw v1
+    move v3, v8
 
-    :cond_e
-    if-ne v1, v5, :cond_12
+    goto :goto_8
 
-    :try_start_7
+    :cond_f
+    if-ne v1, v5, :cond_13
+
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    move v4, v11
+    move v4, v12
 
-    move v5, v12
+    move v5, v13
 
-    move-wide v6, v13
+    move-wide v6, v14
 
     invoke-static/range {v1 .. v7}, Lsdk/download/DownloadService;->b(Lsdk/download/DownloadService;Landroid/database/Cursor;IZZJ)V
 
@@ -515,6 +621,38 @@
 
     invoke-static {v1, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;I)Z
 
+    move-result v1
+
+    if-eqz v1, :cond_20
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1}, Lsdk/download/DownloadService;->f(Lsdk/download/DownloadService;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_10
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1, v2, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Landroid/database/Cursor;I)Z
+
+    move-result v1
+
+    if-nez v1, :cond_20
+
+    :cond_10
+    const/4 v8, 0x1
+
+    const/4 v11, 0x1
+
+    move v4, v8
+
+    :goto_9
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
@@ -523,66 +661,81 @@
 
     move-result v1
 
-    if-eqz v1, :cond_f
+    if-eqz v1, :cond_11
 
-    const/4 v10, 0x1
+    const/4 v11, 0x1
 
-    :cond_f
+    :cond_11
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1, v3, v13, v14}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;IJ)J
+    invoke-static {v1, v3, v14, v15}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;IJ)J
+    :try_end_8
+    .catchall {:try_start_8 .. :try_end_8} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_0
 
-    move-result-wide v4
+    move-result-wide v5
 
-    const-wide/16 v6, 0x0
+    const-wide/16 v7, 0x0
 
-    cmp-long v1, v4, v6
+    cmp-long v1, v5, v7
 
-    if-nez v1, :cond_11
+    if-nez v1, :cond_12
 
-    const/4 v10, 0x1
+    const/4 v11, 0x1
 
-    :cond_10
-    :goto_7
+    move-wide v5, v9
+
+    move v7, v11
+
+    :goto_a
     add-int/lit8 v3, v3, 0x1
 
+    :try_start_9
     invoke-interface {v2}, Landroid/database/Cursor;->moveToNext()Z
 
     invoke-interface {v2}, Landroid/database/Cursor;->isAfterLast()Z
+    :try_end_9
+    .catchall {:try_start_9 .. :try_end_9} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_3
 
     move-result v1
 
-    move v4, v1
+    move/from16 v17, v4
 
-    goto/16 :goto_3
+    move v4, v3
 
-    :cond_11
-    const-wide/16 v6, 0x0
+    move/from16 v3, v17
 
-    cmp-long v1, v4, v6
-
-    if-lez v1, :cond_10
-
-    cmp-long v1, v4, v8
-
-    if-gez v1, :cond_10
-
-    move-wide v8, v4
-
-    goto :goto_7
+    goto/16 :goto_8
 
     :cond_12
+    const-wide/16 v7, 0x0
+
+    cmp-long v1, v5, v7
+
+    if-lez v1, :cond_1f
+
+    cmp-long v1, v5, v9
+
+    if-gez v1, :cond_1f
+
+    move v7, v11
+
+    goto :goto_a
+
+    :cond_13
+    :try_start_a
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    move v4, v11
+    move v4, v12
 
-    move v5, v12
+    move v5, v13
 
-    move-wide v6, v13
+    move-wide v6, v14
 
     invoke-static/range {v1 .. v7}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Landroid/database/Cursor;IZZJ)V
 
@@ -592,6 +745,38 @@
 
     invoke-static {v1, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;I)Z
 
+    move-result v1
+
+    if-eqz v1, :cond_1e
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1}, Lsdk/download/DownloadService;->f(Lsdk/download/DownloadService;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_14
+
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1, v2, v3}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Landroid/database/Cursor;I)Z
+
+    move-result v1
+
+    if-nez v1, :cond_1e
+
+    :cond_14
+    const/4 v8, 0x1
+
+    const/4 v11, 0x1
+
+    move v4, v8
+
+    :goto_b
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
@@ -600,60 +785,75 @@
 
     move-result v1
 
-    if-eqz v1, :cond_13
+    if-eqz v1, :cond_15
 
-    const/4 v10, 0x1
+    const/4 v11, 0x1
 
-    :cond_13
+    :cond_15
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1, v3, v13, v14}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;IJ)J
+    invoke-static {v1, v3, v14, v15}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;IJ)J
+    :try_end_a
+    .catchall {:try_start_a .. :try_end_a} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_0
 
-    move-result-wide v4
+    move-result-wide v5
 
-    const-wide/16 v6, 0x0
+    const-wide/16 v7, 0x0
 
-    cmp-long v1, v4, v6
+    cmp-long v1, v5, v7
 
-    if-nez v1, :cond_15
+    if-nez v1, :cond_16
 
-    const/4 v10, 0x1
+    const/4 v11, 0x1
 
-    :cond_14
-    :goto_8
+    move-wide v5, v9
+
+    move v7, v11
+
+    :goto_c
     add-int/lit8 v3, v3, 0x1
 
+    :try_start_b
     invoke-interface {v2}, Landroid/database/Cursor;->moveToNext()Z
 
     invoke-interface {v2}, Landroid/database/Cursor;->isAfterLast()Z
+    :try_end_b
+    .catchall {:try_start_b .. :try_end_b} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_b .. :try_end_b} :catch_3
 
     move-result v1
 
-    move v4, v1
+    move/from16 v17, v4
 
-    goto/16 :goto_3
+    move v4, v3
 
-    :cond_15
-    const-wide/16 v6, 0x0
+    move/from16 v3, v17
 
-    cmp-long v1, v4, v6
-
-    if-lez v1, :cond_14
-
-    cmp-long v1, v4, v8
-
-    if-gez v1, :cond_14
-
-    move-wide v8, v4
-
-    goto :goto_8
+    goto/16 :goto_8
 
     :cond_16
+    const-wide/16 v7, 0x0
+
+    cmp-long v1, v5, v7
+
+    if-lez v1, :cond_1d
+
+    cmp-long v1, v5, v9
+
+    if-gez v1, :cond_1d
+
+    move v7, v11
+
+    goto :goto_c
+
+    :cond_17
+    :try_start_c
     sget-object v1, Lsdk/download/o;->b:Lsdk/download/o;
 
-    if-eqz v1, :cond_17
+    if-eqz v1, :cond_18
 
     sget-object v1, Lsdk/download/o;->b:Lsdk/download/o;
 
@@ -661,7 +861,7 @@
 
     iget-object v3, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v3}, Lsdk/download/DownloadService;->j(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
+    invoke-static {v3}, Lsdk/download/DownloadService;->e(Lsdk/download/DownloadService;)Ljava/util/ArrayList;
 
     move-result-object v3
 
@@ -681,81 +881,172 @@
 
     invoke-virtual {v3, v1}, Landroid/os/Handler;->sendMessage(Landroid/os/Message;)Z
 
-    :cond_17
+    :cond_18
+    if-eqz v8, :cond_1a
+
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
 
-    invoke-static {v1}, Lsdk/download/DownloadService;->k(Lsdk/download/DownloadService;)Lsdk/download/h;
+    invoke-static {v1}, Lsdk/download/DownloadService;->g(Lsdk/download/DownloadService;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_19
+
+    new-instance v1, Landroid/content/Intent;
+
+    invoke-direct {v1}, Landroid/content/Intent;-><init>()V
+
+    const-string v3, "com.android.providers.media"
+
+    const-string v4, "com.android.providers.media.MediaScannerService"
+
+    invoke-virtual {v1, v3, v4}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    const/4 v4, 0x1
+
+    invoke-static {v3, v4}, Lsdk/download/DownloadService;->a(Lsdk/download/DownloadService;Z)Z
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v4}, Lsdk/download/DownloadService;->h(Lsdk/download/DownloadService;)Lsdk/download/h;
+
+    move-result-object v4
+
+    const/4 v5, 0x1
+
+    invoke-virtual {v3, v1, v4, v5}, Lsdk/download/DownloadService;->bindService(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    :try_end_c
+    .catchall {:try_start_c .. :try_end_c} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_c .. :try_end_c} :catch_0
+
+    :cond_19
+    :goto_d
+    if-eqz v2, :cond_1c
+
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+
+    move-wide v1, v9
+
+    move v3, v11
+
+    goto/16 :goto_5
+
+    :cond_1a
+    :try_start_d
+    move-object/from16 v0, p0
+
+    iget-object v1, v0, Lsdk/download/i;->a:Lsdk/download/DownloadService;
+
+    invoke-static {v1}, Lsdk/download/DownloadService;->h(Lsdk/download/DownloadService;)Lsdk/download/h;
 
     move-result-object v1
 
     invoke-virtual {v1}, Lsdk/download/h;->a()V
-    :try_end_7
-    .catchall {:try_start_7 .. :try_end_7} :catchall_1
-    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_0
+    :try_end_d
+    .catchall {:try_start_d .. :try_end_d} :catchall_1
+    .catch Ljava/lang/Exception; {:try_start_d .. :try_end_d} :catch_0
 
-    if-eqz v2, :cond_18
+    goto :goto_d
+
+    :catchall_1
+    move-exception v1
+
+    :goto_e
+    if-eqz v2, :cond_1b
 
     invoke-interface {v2}, Landroid/database/Cursor;->close()V
 
-    move-wide/from16 v16, v8
-
-    move-wide/from16 v7, v16
-
-    move v9, v10
-
-    goto/16 :goto_0
-
-    :cond_18
-    move-wide v1, v8
-
-    move v3, v10
-
-    :cond_19
-    move-wide v7, v1
-
-    move v9, v3
-
-    goto/16 :goto_0
+    :cond_1b
+    throw v1
 
     :catchall_2
     move-exception v1
 
     move-object v2, v10
 
-    goto/16 :goto_6
-
-    :catchall_3
-    move-exception v1
-
-    move-object v2, v5
-
-    goto/16 :goto_6
+    goto :goto_e
 
     :catch_1
     move-exception v1
 
-    move-object v4, v1
+    move-object v2, v10
 
-    move-object v5, v10
+    move v11, v9
 
-    move v3, v9
-
-    move-wide v1, v7
+    move-wide v9, v7
 
     goto/16 :goto_4
 
     :catch_2
     move-exception v1
 
-    move-object v4, v1
+    move v11, v9
 
-    move-object v5, v2
-
-    move v3, v9
-
-    move-wide v1, v7
+    move-wide v9, v7
 
     goto/16 :goto_4
+
+    :catch_3
+    move-exception v1
+
+    move-wide v9, v5
+
+    move v11, v7
+
+    goto/16 :goto_4
+
+    :cond_1c
+    move-wide v1, v9
+
+    move v3, v11
+
+    goto/16 :goto_5
+
+    :cond_1d
+    move-wide v5, v9
+
+    move v7, v11
+
+    goto/16 :goto_c
+
+    :cond_1e
+    move v4, v8
+
+    goto/16 :goto_b
+
+    :cond_1f
+    move-wide v5, v9
+
+    move v7, v11
+
+    goto/16 :goto_a
+
+    :cond_20
+    move v4, v8
+
+    goto/16 :goto_9
+
+    :cond_21
+    move-wide v5, v9
+
+    move v7, v11
+
+    goto/16 :goto_7
+
+    :cond_22
+    move v4, v8
+
+    goto/16 :goto_6
 .end method

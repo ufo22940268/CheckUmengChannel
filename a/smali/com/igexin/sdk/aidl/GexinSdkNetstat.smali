@@ -8,9 +8,9 @@
 # static fields
 .field public static final CREATOR:Landroid/os/Parcelable$Creator;
 
-.field public static a:J
+.field public static inboundBytes:J
 
-.field public static b:J
+.field public static outboundBytes:J
 
 
 # direct methods
@@ -19,13 +19,13 @@
 
     const-wide/16 v0, 0x0
 
-    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->a:J
+    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->inboundBytes:J
 
-    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->b:J
+    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->outboundBytes:J
 
-    new-instance v0, Lcom/igexin/sdk/aidl/c;
+    new-instance v0, Lcom/igexin/sdk/aidl/a;
 
-    invoke-direct {v0}, Lcom/igexin/sdk/aidl/c;-><init>()V
+    invoke-direct {v0}, Lcom/igexin/sdk/aidl/a;-><init>()V
 
     sput-object v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->CREATOR:Landroid/os/Parcelable$Creator;
 
@@ -40,24 +40,6 @@
     return-void
 .end method
 
-.method public static a(Landroid/os/Parcel;)V
-    .locals 2
-
-    invoke-virtual {p0}, Landroid/os/Parcel;->readLong()J
-
-    move-result-wide v0
-
-    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->a:J
-
-    invoke-virtual {p0}, Landroid/os/Parcel;->readLong()J
-
-    move-result-wide v0
-
-    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->b:J
-
-    return-void
-.end method
-
 
 # virtual methods
 .method public describeContents()I
@@ -68,14 +50,32 @@
     return v0
 .end method
 
+.method public readFromParcel(Landroid/os/Parcel;)V
+    .locals 2
+
+    invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
+
+    move-result-wide v0
+
+    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->inboundBytes:J
+
+    invoke-virtual {p1}, Landroid/os/Parcel;->readLong()J
+
+    move-result-wide v0
+
+    sput-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->outboundBytes:J
+
+    return-void
+.end method
+
 .method public writeToParcel(Landroid/os/Parcel;I)V
     .locals 2
 
-    sget-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->a:J
+    sget-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->inboundBytes:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 
-    sget-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->b:J
+    sget-wide v0, Lcom/igexin/sdk/aidl/GexinSdkNetstat;->outboundBytes:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
 

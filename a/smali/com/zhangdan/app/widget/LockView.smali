@@ -1,293 +1,344 @@
 .class public Lcom/zhangdan/app/widget/LockView;
 .super Landroid/view/View;
+.source "LockView.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/zhangdan/app/widget/LockView$Cell;,
+        Lcom/zhangdan/app/widget/LockView$OnInputPwdListener;
+    }
+.end annotation
 
 
 # instance fields
-.field private a:Landroid/graphics/drawable/Drawable;
+.field private mBlockWidth:I
 
-.field private b:Landroid/graphics/drawable/Drawable;
+.field private mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-.field private c:[Lcom/zhangdan/app/widget/h;
+.field private mMotionX:F
 
-.field private d:Ljava/util/List;
+.field private mMotionY:F
 
-.field private e:I
+.field private mOnInputPwdListener:Lcom/zhangdan/app/widget/LockView$OnInputPwdListener;
 
-.field private f:Landroid/graphics/Paint;
+.field private mPaint:Landroid/graphics/Paint;
 
-.field private g:F
+.field private mSelDrawable:Landroid/graphics/drawable/Drawable;
 
-.field private h:F
+.field private mSelIndex:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/Integer;",
+            ">;"
+        }
+    .end annotation
+.end field
 
-.field private i:Lcom/zhangdan/app/widget/i;
+.field private mUnSelDrawable:Landroid/graphics/drawable/Drawable;
 
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 6
+    .locals 7
+    .parameter "context"
+    .parameter "attrs"
 
+    .prologue
     const/16 v5, 0x9
 
-    const/4 v4, 0x1
+    const/4 v6, 0x1
 
-    const/4 v1, 0x0
-
+    .line 46
     invoke-direct {p0, p1, p2}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    new-array v0, v5, [Lcom/zhangdan/app/widget/h;
+    .line 34
+    new-array v4, v5, [Lcom/zhangdan/app/widget/LockView$Cell;
 
-    iput-object v0, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    iput-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    new-instance v0, Ljava/util/ArrayList;
+    .line 35
+    new-instance v4, Ljava/util/ArrayList;
 
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v4}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    iput-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
-    new-instance v0, Landroid/graphics/Paint;
+    .line 39
+    new-instance v4, Landroid/graphics/Paint;
 
-    invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
+    invoke-direct {v4}, Landroid/graphics/Paint;-><init>()V
 
-    iput-object v0, p0, Lcom/zhangdan/app/widget/LockView;->f:Landroid/graphics/Paint;
+    iput-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mPaint:Landroid/graphics/Paint;
 
-    move v0, v1
+    .line 47
+    const/4 v2, 0x0
 
+    .local v2, i:I
     :goto_0
-    if-lt v0, v5, :cond_0
+    if-ge v2, v5, :cond_0
 
-    sget-object v0, Lcom/zhangdan/app/R$styleable;->h:[I
+    .line 48
+    new-instance v0, Lcom/zhangdan/app/widget/LockView$Cell;
 
-    invoke-virtual {p1, p2, v0}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    invoke-direct {v0, p0, v2}, Lcom/zhangdan/app/widget/LockView$Cell;-><init>(Lcom/zhangdan/app/widget/LockView;I)V
 
-    move-result-object v0
+    .line 49
+    .local v0, cell:Lcom/zhangdan/app/widget/LockView$Cell;
+    iget-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    invoke-virtual {v0, v1}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    aput-object v0, v4, v2
 
-    move-result-object v1
+    .line 47
+    add-int/lit8 v2, v2, 0x1
 
-    iput-object v1, p0, Lcom/zhangdan/app/widget/LockView;->a:Landroid/graphics/drawable/Drawable;
+    goto :goto_0
 
-    invoke-virtual {v0, v4}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    .line 51
+    .end local v0           #cell:Lcom/zhangdan/app/widget/LockView$Cell;
+    :cond_0
+    sget-object v4, Lcom/zhangdan/app/R$styleable;->PasswordLock:[I
 
-    move-result-object v1
+    invoke-virtual {p1, p2, v4}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
-    iput-object v1, p0, Lcom/zhangdan/app/widget/LockView;->b:Landroid/graphics/drawable/Drawable;
+    move-result-object v3
 
-    invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
+    .line 52
+    .local v3, ta:Landroid/content/res/TypedArray;
+    const/4 v4, 0x0
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->f:Landroid/graphics/Paint;
+    invoke-virtual {v3, v4}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    const v1, -0x4a0021d7
+    move-result-object v4
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
+    iput-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mSelDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->f:Landroid/graphics/Paint;
+    .line 53
+    invoke-virtual {v3, v6}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    sget-object v1, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
+    move-result-object v4
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+    iput-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mUnSelDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->f:Landroid/graphics/Paint;
+    .line 54
+    invoke-virtual {v3}, Landroid/content/res/TypedArray;->recycle()V
 
-    invoke-virtual {v0, v4}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+    .line 56
+    iget-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mPaint:Landroid/graphics/Paint;
 
+    const v5, -0x4a0021d7
+
+    invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setColor(I)V
+
+    .line 57
+    iget-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mPaint:Landroid/graphics/Paint;
+
+    sget-object v5, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
+
+    invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+
+    .line 58
+    iget-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mPaint:Landroid/graphics/Paint;
+
+    invoke-virtual {v4, v6}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+
+    .line 59
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v0
+    move-result-object v4
 
-    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    invoke-virtual {v4}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
 
-    move-result-object v0
+    move-result-object v1
 
-    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->f:Landroid/graphics/Paint;
+    .line 60
+    .local v1, dm:Landroid/util/DisplayMetrics;
+    iget-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mPaint:Landroid/graphics/Paint;
 
-    const/high16 v2, 0x4170
+    const/high16 v5, 0x4170
 
-    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
+    iget v6, v1, Landroid/util/DisplayMetrics;->density:F
 
-    mul-float/2addr v0, v2
+    mul-float/2addr v5, v6
 
-    invoke-virtual {v1, v0}, Landroid/graphics/Paint;->setStrokeWidth(F)V
+    invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
+    .line 61
     return-void
-
-    :cond_0
-    new-instance v2, Lcom/zhangdan/app/widget/h;
-
-    invoke-direct {v2, p0, v0}, Lcom/zhangdan/app/widget/h;-><init>(Lcom/zhangdan/app/widget/LockView;I)V
-
-    iget-object v3, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
-
-    aput-object v2, v3, v0
-
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
 .end method
 
-.method private a(FF)I
-    .locals 5
+.method static synthetic access$000(Lcom/zhangdan/app/widget/LockView;)Landroid/graphics/drawable/Drawable;
+    .locals 1
+    .parameter "x0"
 
-    const/4 v4, 0x3
+    .prologue
+    .line 25
+    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->mSelDrawable:Landroid/graphics/drawable/Drawable;
 
+    return-object v0
+.end method
+
+.method static synthetic access$100(Lcom/zhangdan/app/widget/LockView;)Landroid/graphics/drawable/Drawable;
+    .locals 1
+    .parameter "x0"
+
+    .prologue
+    .line 25
+    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->mUnSelDrawable:Landroid/graphics/drawable/Drawable;
+
+    return-object v0
+.end method
+
+.method private calcPosition(FF)I
+    .locals 7
+    .parameter "x"
+    .parameter "y"
+
+    .prologue
+    const/4 v5, 0x3
+
+    const/4 v3, -0x1
+
+    .line 191
+    iget v4, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
+
+    int-to-float v4, v4
+
+    div-float v4, p1, v4
+
+    float-to-int v0, v4
+
+    .line 192
+    .local v0, i:I
+    iget v4, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
+
+    int-to-float v4, v4
+
+    div-float v4, p2, v4
+
+    float-to-int v2, v4
+
+    .line 193
+    .local v2, j:I
+    if-lt v0, v5, :cond_0
+
+    .line 194
     const/4 v0, 0x2
 
-    const/4 v1, -0x1
-
-    iget v2, p0, Lcom/zhangdan/app/widget/LockView;->e:I
-
-    int-to-float v2, v2
-
-    div-float v2, p1, v2
-
-    float-to-int v3, v2
-
-    iget v2, p0, Lcom/zhangdan/app/widget/LockView;->e:I
-
-    int-to-float v2, v2
-
-    div-float v2, p2, v2
-
-    float-to-int v2, v2
-
-    if-lt v3, v4, :cond_0
-
-    move v3, v0
-
+    .line 195
     :cond_0
-    if-lt v2, v4, :cond_4
+    if-lt v2, v5, :cond_1
 
-    :goto_0
-    mul-int/lit8 v0, v0, 0x3
+    .line 196
+    const/4 v2, 0x2
 
-    add-int/2addr v0, v3
-
-    if-ltz v0, :cond_1
-
-    const/16 v2, 0x9
-
-    if-lt v0, v2, :cond_3
-
+    .line 197
     :cond_1
-    move v0, v1
+    mul-int/lit8 v4, v2, 0x3
+
+    add-int v1, v0, v4
+
+    .line 198
+    .local v1, index:I
+    if-ltz v1, :cond_2
+
+    const/16 v4, 0x9
+
+    if-lt v1, v4, :cond_4
 
     :cond_2
-    :goto_1
-    return v0
+    move v1, v3
 
+    .line 202
+    .end local v1           #index:I
     :cond_3
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    :goto_0
+    return v1
 
-    aget-object v2, v2, v0
-
-    float-to-int v3, p1
-
-    float-to-int v4, p2
-
-    invoke-virtual {v2, v3, v4}, Lcom/zhangdan/app/widget/h;->a(II)Z
-
-    move-result v2
-
-    if-nez v2, :cond_2
-
-    move v0, v1
-
-    goto :goto_1
-
+    .line 200
+    .restart local v1       #index:I
     :cond_4
-    move v0, v2
+    iget-object v4, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
+    aget-object v4, v4, v1
+
+    float-to-int v5, p1
+
+    float-to-int v6, p2
+
+    invoke-virtual {v4, v5, v6}, Lcom/zhangdan/app/widget/LockView$Cell;->contains(II)Z
+
+    move-result v4
+
+    if-nez v4, :cond_3
+
+    move v1, v3
+
+    .line 202
     goto :goto_0
 .end method
 
-.method static synthetic a(Lcom/zhangdan/app/widget/LockView;)Landroid/graphics/drawable/Drawable;
-    .locals 1
+.method private drawCell(Landroid/graphics/Canvas;)V
+    .locals 2
+    .parameter "canvas"
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->a:Landroid/graphics/drawable/Drawable;
+    .prologue
+    .line 75
+    const/4 v0, 0x0
 
-    return-object v0
-.end method
-
-.method private a()V
-    .locals 3
-
-    const/4 v1, 0x0
-
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->clear()V
-
-    move v0, v1
-
+    .local v0, i:I
     :goto_0
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    array-length v2, v2
+    array-length v1, v1
 
-    if-lt v0, v2, :cond_0
+    if-ge v0, v1, :cond_0
 
-    invoke-virtual {p0}, Lcom/zhangdan/app/widget/LockView;->invalidate()V
+    .line 76
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    return-void
+    aget-object v1, v1, v0
 
-    :cond_0
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    invoke-virtual {v1, p1}, Lcom/zhangdan/app/widget/LockView$Cell;->draw(Landroid/graphics/Canvas;)V
 
-    aget-object v2, v2, v0
-
-    invoke-virtual {v2, v1}, Lcom/zhangdan/app/widget/h;->a(Z)V
-
+    .line 75
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
-.end method
 
-.method static synthetic b(Lcom/zhangdan/app/widget/LockView;)Landroid/graphics/drawable/Drawable;
-    .locals 1
-
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->b:Landroid/graphics/drawable/Drawable;
-
-    return-object v0
-.end method
-
-
-# virtual methods
-.method public final a(Lcom/zhangdan/app/widget/i;)V
-    .locals 0
-
-    iput-object p1, p0, Lcom/zhangdan/app/widget/LockView;->i:Lcom/zhangdan/app/widget/i;
-
+    .line 78
+    :cond_0
     return-void
 .end method
 
-.method protected onDraw(Landroid/graphics/Canvas;)V
-    .locals 7
+.method private drawConnectedLine(Landroid/graphics/Canvas;)V
+    .locals 10
+    .parameter "canvas"
 
-    const/4 v1, 0x0
-
-    invoke-super {p0, p1}, Landroid/view/View;->onDraw(Landroid/graphics/Canvas;)V
-
-    move v0, v1
-
-    :goto_0
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
-
-    array-length v2, v2
-
-    if-lt v0, v2, :cond_1
-
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    .prologue
+    .line 81
+    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
 
     move-result v0
 
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
-    move v6, v1
+    .line 90
+    :goto_0
+    return-void
 
+    .line 83
+    :cond_0
+    const/4 v8, 0x0
+
+    .local v8, i:I
     :goto_1
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I
 
@@ -295,13 +346,91 @@
 
     add-int/lit8 v0, v0, -0x1
 
-    if-lt v6, v0, :cond_2
+    if-ge v8, v0, :cond_1
 
-    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    .line 84
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    invoke-interface {v0, v8}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/Integer;
+
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+
+    move-result v0
+
+    aget-object v6, v1, v0
+
+    .line 85
+    .local v6, cell1:Lcom/zhangdan/app/widget/LockView$Cell;
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
+
+    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
+
+    add-int/lit8 v2, v8, 0x1
+
+    invoke-interface {v0, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Ljava/lang/Integer;
+
+    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+
+    move-result v0
+
+    aget-object v7, v1, v0
+
+    .line 86
+    .local v7, cell2:Lcom/zhangdan/app/widget/LockView$Cell;
+    invoke-virtual {v6}, Lcom/zhangdan/app/widget/LockView$Cell;->getCenterX()I
+
+    move-result v0
+
+    int-to-float v1, v0
+
+    invoke-virtual {v6}, Lcom/zhangdan/app/widget/LockView$Cell;->getCenterY()I
+
+    move-result v0
+
+    int-to-float v2, v0
+
+    invoke-virtual {v7}, Lcom/zhangdan/app/widget/LockView$Cell;->getCenterX()I
+
+    move-result v0
+
+    int-to-float v3, v0
+
+    invoke-virtual {v7}, Lcom/zhangdan/app/widget/LockView$Cell;->getCenterY()I
+
+    move-result v0
+
+    int-to-float v4, v0
+
+    iget-object v5, p0, Lcom/zhangdan/app/widget/LockView;->mPaint:Landroid/graphics/Paint;
+
+    move-object v0, p1
+
+    invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
+
+    .line 83
+    add-int/lit8 v8, v8, 0x1
+
+    goto :goto_1
+
+    .line 88
+    .end local v6           #cell1:Lcom/zhangdan/app/widget/LockView$Cell;
+    .end local v7           #cell2:Lcom/zhangdan/app/widget/LockView$Cell;
+    :cond_1
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
+
+    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
+
+    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->size()I
 
@@ -319,528 +448,617 @@
 
     move-result v0
 
-    aget-object v0, v1, v0
+    aget-object v9, v1, v0
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/widget/h;->c()I
+    .line 89
+    .local v9, lastCell:Lcom/zhangdan/app/widget/LockView$Cell;
+    invoke-virtual {v9}, Lcom/zhangdan/app/widget/LockView$Cell;->getCenterX()I
 
-    move-result v1
+    move-result v0
 
-    int-to-float v1, v1
+    int-to-float v1, v0
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/widget/h;->d()I
+    invoke-virtual {v9}, Lcom/zhangdan/app/widget/LockView$Cell;->getCenterY()I
 
     move-result v0
 
     int-to-float v2, v0
 
-    iget v3, p0, Lcom/zhangdan/app/widget/LockView;->g:F
+    iget v3, p0, Lcom/zhangdan/app/widget/LockView;->mMotionX:F
 
-    iget v4, p0, Lcom/zhangdan/app/widget/LockView;->h:F
+    iget v4, p0, Lcom/zhangdan/app/widget/LockView;->mMotionY:F
 
-    iget-object v5, p0, Lcom/zhangdan/app/widget/LockView;->f:Landroid/graphics/Paint;
+    iget-object v5, p0, Lcom/zhangdan/app/widget/LockView;->mPaint:Landroid/graphics/Paint;
 
     move-object v0, p1
 
     invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
 
-    :cond_0
-    return-void
+    goto :goto_0
+.end method
 
-    :cond_1
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
 
-    aget-object v2, v2, v0
+# virtual methods
+.method public clearLock()V
+    .locals 3
 
-    invoke-virtual {v2, p1}, Lcom/zhangdan/app/widget/h;->a(Landroid/graphics/Canvas;)V
+    .prologue
+    .line 210
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
+    invoke-interface {v1}, Ljava/util/List;->clear()V
+
+    .line 211
+    const/4 v0, 0x0
+
+    .local v0, i:I
+    :goto_0
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
+
+    array-length v1, v1
+
+    if-ge v0, v1, :cond_0
+
+    .line 212
+    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
+
+    aget-object v1, v1, v0
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v1, v2}, Lcom/zhangdan/app/widget/LockView$Cell;->setSelected(Z)V
+
+    .line 211
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    :cond_2
-    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    .line 214
+    :cond_0
+    invoke-virtual {p0}, Lcom/zhangdan/app/widget/LockView;->invalidate()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    .line 215
+    return-void
+.end method
 
-    invoke-interface {v0, v6}, Ljava/util/List;->get(I)Ljava/lang/Object;
+.method protected onDraw(Landroid/graphics/Canvas;)V
+    .locals 0
+    .parameter "canvas"
 
-    move-result-object v0
+    .prologue
+    .line 69
+    invoke-super {p0, p1}, Landroid/view/View;->onDraw(Landroid/graphics/Canvas;)V
 
-    check-cast v0, Ljava/lang/Integer;
+    .line 70
+    invoke-direct {p0, p1}, Lcom/zhangdan/app/widget/LockView;->drawCell(Landroid/graphics/Canvas;)V
 
-    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
+    .line 71
+    invoke-direct {p0, p1}, Lcom/zhangdan/app/widget/LockView;->drawConnectedLine(Landroid/graphics/Canvas;)V
 
-    move-result v0
-
-    aget-object v2, v1, v0
-
-    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
-
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
-
-    add-int/lit8 v3, v6, 0x1
-
-    invoke-interface {v0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/lang/Integer;
-
-    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
-
-    move-result v0
-
-    aget-object v0, v1, v0
-
-    invoke-virtual {v2}, Lcom/zhangdan/app/widget/h;->c()I
-
-    move-result v1
-
-    int-to-float v1, v1
-
-    invoke-virtual {v2}, Lcom/zhangdan/app/widget/h;->d()I
-
-    move-result v2
-
-    int-to-float v2, v2
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/widget/h;->c()I
-
-    move-result v3
-
-    int-to-float v3, v3
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/widget/h;->d()I
-
-    move-result v0
-
-    int-to-float v4, v0
-
-    iget-object v5, p0, Lcom/zhangdan/app/widget/LockView;->f:Landroid/graphics/Paint;
-
-    move-object v0, p1
-
-    invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
-
-    add-int/lit8 v1, v6, 0x1
-
-    move v6, v1
-
-    goto :goto_1
+    .line 72
+    return-void
 .end method
 
 .method protected onMeasure(II)V
-    .locals 9
+    .locals 12
+    .parameter "widthMeasureSpec"
+    .parameter "heightMeasureSpec"
 
+    .prologue
+    .line 94
     invoke-super {p0, p1, p2}, Landroid/view/View;->onMeasure(II)V
 
+    .line 95
     invoke-virtual {p0}, Lcom/zhangdan/app/widget/LockView;->getMeasuredWidth()I
 
-    move-result v0
+    move-result v8
 
-    invoke-virtual {p0, v0, v0}, Lcom/zhangdan/app/widget/LockView;->setMeasuredDimension(II)V
+    .line 97
+    .local v8, width:I
+    invoke-virtual {p0, v8, v8}, Lcom/zhangdan/app/widget/LockView;->setMeasuredDimension(II)V
 
-    new-instance v1, Ljava/lang/StringBuilder;
+    .line 98
+    const-string v9, "LockView"
 
-    const-string v2, "width:"
+    new-instance v10, Ljava/lang/StringBuilder;
 
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v11, "width:"
 
-    move-result-object v1
+    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v10
 
-    div-int/lit8 v0, v0, 0x3
+    invoke-virtual {v10, v8}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    iput v0, p0, Lcom/zhangdan/app/widget/LockView;->e:I
+    move-result-object v10
 
-    iget v0, p0, Lcom/zhangdan/app/widget/LockView;->e:I
+    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    int-to-float v0, v0
+    move-result-object v10
 
-    const v1, 0x3f19999a
+    invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    mul-float/2addr v0, v1
+    .line 101
+    div-int/lit8 v9, v8, 0x3
 
-    float-to-int v0, v0
+    iput v9, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
 
-    iget v1, p0, Lcom/zhangdan/app/widget/LockView;->e:I
+    .line 102
+    iget v9, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
 
-    int-to-float v1, v1
+    int-to-float v9, v9
 
-    const v2, 0x3e4ccccd
+    const v10, 0x3f19999a
 
-    mul-float/2addr v1, v2
+    mul-float/2addr v9, v10
 
-    float-to-int v1, v1
+    float-to-int v1, v9
 
-    iget v2, p0, Lcom/zhangdan/app/widget/LockView;->e:I
+    .line 103
+    .local v1, cellWidth:I
+    iget v9, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
 
-    add-int/2addr v2, v1
+    int-to-float v9, v9
 
-    iget v3, p0, Lcom/zhangdan/app/widget/LockView;->e:I
+    const v10, 0x3e4ccccd
 
-    mul-int/lit8 v3, v3, 0x2
+    mul-float/2addr v9, v10
 
-    add-int/2addr v3, v1
+    float-to-int v0, v9
 
-    iget v4, p0, Lcom/zhangdan/app/widget/LockView;->e:I
+    .line 105
+    .local v0, cellPad:I
+    move v2, v0
 
-    add-int/2addr v4, v1
+    .line 106
+    .local v2, left0:I
+    iget v9, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
 
-    iget v5, p0, Lcom/zhangdan/app/widget/LockView;->e:I
+    add-int v3, v0, v9
 
-    mul-int/lit8 v5, v5, 0x2
+    .line 107
+    .local v3, left1:I
+    iget v9, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
 
-    add-int/2addr v5, v1
+    mul-int/lit8 v9, v9, 0x2
 
-    iget-object v6, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    add-int v4, v0, v9
 
-    const/4 v7, 0x0
+    .line 109
+    .local v4, left2:I
+    move v5, v0
 
-    aget-object v6, v6, v7
+    .line 110
+    .local v5, top0:I
+    iget v9, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
 
-    add-int v7, v1, v0
+    add-int v6, v0, v9
 
-    add-int v8, v1, v0
+    .line 111
+    .local v6, top1:I
+    iget v9, p0, Lcom/zhangdan/app/widget/LockView;->mBlockWidth:I
 
-    invoke-virtual {v6, v1, v1, v7, v8}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    mul-int/lit8 v9, v9, 0x2
 
-    iget-object v6, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    add-int v7, v0, v9
 
-    const/4 v7, 0x1
+    .line 113
+    .local v7, top2:I
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v6, v6, v7
+    const/4 v10, 0x0
 
-    add-int v7, v2, v0
+    aget-object v9, v9, v10
 
-    add-int v8, v1, v0
+    add-int v10, v2, v1
 
-    invoke-virtual {v6, v2, v1, v7, v8}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    add-int v11, v5, v1
 
-    iget-object v6, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    invoke-virtual {v9, v2, v5, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
 
-    const/4 v7, 0x2
+    .line 114
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v6, v6, v7
+    const/4 v10, 0x1
 
-    add-int v7, v3, v0
+    aget-object v9, v9, v10
 
-    add-int v8, v1, v0
+    add-int v10, v3, v1
 
-    invoke-virtual {v6, v3, v1, v7, v8}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    add-int v11, v5, v1
 
-    iget-object v6, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    invoke-virtual {v9, v3, v5, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
 
-    const/4 v7, 0x3
+    .line 115
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v6, v6, v7
+    const/4 v10, 0x2
 
-    add-int v7, v1, v0
+    aget-object v9, v9, v10
 
-    add-int v8, v4, v0
+    add-int v10, v4, v1
 
-    invoke-virtual {v6, v1, v4, v7, v8}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    add-int v11, v5, v1
 
-    iget-object v6, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    invoke-virtual {v9, v4, v5, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
 
-    const/4 v7, 0x4
+    .line 117
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v6, v6, v7
+    const/4 v10, 0x3
 
-    add-int v7, v2, v0
+    aget-object v9, v9, v10
 
-    add-int v8, v4, v0
+    add-int v10, v2, v1
 
-    invoke-virtual {v6, v2, v4, v7, v8}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    add-int v11, v6, v1
 
-    iget-object v6, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    invoke-virtual {v9, v2, v6, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
 
-    const/4 v7, 0x5
+    .line 118
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v6, v6, v7
+    const/4 v10, 0x4
 
-    add-int v7, v3, v0
+    aget-object v9, v9, v10
 
-    add-int v8, v4, v0
+    add-int v10, v3, v1
 
-    invoke-virtual {v6, v3, v4, v7, v8}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    add-int v11, v6, v1
 
-    iget-object v4, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    invoke-virtual {v9, v3, v6, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
 
-    const/4 v6, 0x6
+    .line 119
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v4, v4, v6
+    const/4 v10, 0x5
 
-    add-int v6, v1, v0
+    aget-object v9, v9, v10
 
-    add-int v7, v5, v0
+    add-int v10, v4, v1
 
-    invoke-virtual {v4, v1, v5, v6, v7}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    add-int v11, v6, v1
 
-    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    invoke-virtual {v9, v4, v6, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
 
-    const/4 v4, 0x7
+    .line 121
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v1, v1, v4
+    const/4 v10, 0x6
 
-    add-int v4, v2, v0
+    aget-object v9, v9, v10
 
-    add-int v6, v5, v0
+    add-int v10, v2, v1
 
-    invoke-virtual {v1, v2, v5, v4, v6}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    add-int v11, v7, v1
 
-    iget-object v1, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    invoke-virtual {v9, v2, v7, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
 
-    const/16 v2, 0x8
+    .line 122
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v1, v1, v2
+    const/4 v10, 0x7
 
-    add-int v2, v3, v0
+    aget-object v9, v9, v10
 
-    add-int/2addr v0, v5
+    add-int v10, v3, v1
 
-    invoke-virtual {v1, v3, v5, v2, v0}, Lcom/zhangdan/app/widget/h;->a(IIII)V
+    add-int v11, v7, v1
 
+    invoke-virtual {v9, v3, v7, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
+
+    .line 123
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
+
+    const/16 v10, 0x8
+
+    aget-object v9, v9, v10
+
+    add-int v10, v4, v1
+
+    add-int v11, v7, v1
+
+    invoke-virtual {v9, v4, v7, v10, v11}, Lcom/zhangdan/app/widget/LockView$Cell;->setRect(IIII)V
+
+    .line 124
     return-void
 .end method
 
 .method public onTouchEvent(Landroid/view/MotionEvent;)Z
-    .locals 8
+    .locals 13
+    .parameter "event"
 
-    const/4 v5, -0x1
+    .prologue
+    const/4 v10, -0x1
 
-    const/4 v1, 0x1
+    const/4 v12, 0x1
 
+    .line 128
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
-    move-result v2
+    move-result v7
 
+    .line 129
+    .local v7, x:F
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
+
+    move-result v8
+
+    .line 130
+    .local v8, y:F
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
+
+    move-result v9
+
+    packed-switch v9, :pswitch_data_0
+
+    .line 180
+    :goto_0
+    return v12
+
+    .line 132
+    :pswitch_0
+    invoke-virtual {p0}, Lcom/zhangdan/app/widget/LockView;->clearLock()V
+
+    .line 133
+    invoke-direct {p0, v7, v8}, Lcom/zhangdan/app/widget/LockView;->calcPosition(FF)I
 
     move-result v3
 
-    invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
+    .line 134
+    .local v3, index:I
+    if-eq v3, v10, :cond_0
 
-    move-result v0
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    packed-switch v0, :pswitch_data_0
+    aget-object v9, v9, v3
 
-    :goto_0
-    return v1
+    invoke-virtual {v9}, Lcom/zhangdan/app/widget/LockView$Cell;->isSelected()Z
 
-    :pswitch_0
-    invoke-direct {p0}, Lcom/zhangdan/app/widget/LockView;->a()V
+    move-result v9
 
-    invoke-direct {p0, v2, v3}, Lcom/zhangdan/app/widget/LockView;->a(FF)I
+    if-nez v9, :cond_0
 
-    move-result v0
+    .line 135
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
-    if-eq v0, v5, :cond_0
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    move-result-object v10
 
-    aget-object v2, v2, v0
+    invoke-interface {v9, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    invoke-virtual {v2}, Lcom/zhangdan/app/widget/h;->b()Z
+    .line 136
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    move-result v2
+    aget-object v9, v9, v3
 
-    if-nez v2, :cond_0
+    invoke-virtual {v9, v12}, Lcom/zhangdan/app/widget/LockView$Cell;->setSelected(Z)V
 
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    .line 137
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    aget-object v9, v9, v3
 
-    move-result-object v3
+    invoke-virtual {v9}, Lcom/zhangdan/app/widget/LockView$Cell;->getCenterX()I
 
-    invoke-interface {v2, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    move-result v9
 
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    int-to-float v9, v9
 
-    aget-object v2, v2, v0
+    iput v9, p0, Lcom/zhangdan/app/widget/LockView;->mMotionX:F
 
-    invoke-virtual {v2, v1}, Lcom/zhangdan/app/widget/h;->a(Z)V
+    .line 138
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    aget-object v9, v9, v3
 
-    aget-object v2, v2, v0
+    invoke-virtual {v9}, Lcom/zhangdan/app/widget/LockView$Cell;->getCenterY()I
 
-    invoke-virtual {v2}, Lcom/zhangdan/app/widget/h;->c()I
+    move-result v9
 
-    move-result v2
+    int-to-float v9, v9
 
-    int-to-float v2, v2
+    iput v9, p0, Lcom/zhangdan/app/widget/LockView;->mMotionY:F
 
-    iput v2, p0, Lcom/zhangdan/app/widget/LockView;->g:F
-
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
-
-    aget-object v0, v2, v0
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/widget/h;->d()I
-
-    move-result v0
-
-    int-to-float v0, v0
-
-    iput v0, p0, Lcom/zhangdan/app/widget/LockView;->h:F
-
+    .line 140
     :cond_0
     invoke-virtual {p0}, Lcom/zhangdan/app/widget/LockView;->invalidate()V
 
     goto :goto_0
 
+    .line 144
+    .end local v3           #index:I
     :pswitch_1
-    invoke-direct {p0, v2, v3}, Lcom/zhangdan/app/widget/LockView;->a(FF)I
+    invoke-direct {p0, v7, v8}, Lcom/zhangdan/app/widget/LockView;->calcPosition(FF)I
+
+    move-result v3
+
+    .line 145
+    .restart local v3       #index:I
+    if-eq v3, v10, :cond_4
+
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
+
+    aget-object v9, v9, v3
+
+    invoke-virtual {v9}, Lcom/zhangdan/app/widget/LockView$Cell;->isSelected()Z
+
+    move-result v9
+
+    if-nez v9, :cond_4
+
+    .line 146
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
+
+    invoke-interface {v9}, Ljava/util/List;->isEmpty()Z
+
+    move-result v9
+
+    if-nez v9, :cond_3
+
+    .line 147
+    iget-object v10, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
+
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
+
+    iget-object v11, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
+
+    invoke-interface {v11}, Ljava/util/List;->size()I
+
+    move-result v11
+
+    add-int/lit8 v11, v11, -0x1
+
+    invoke-interface {v9, v11}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v9
+
+    check-cast v9, Ljava/lang/Integer;
+
+    invoke-virtual {v9}, Ljava/lang/Integer;->intValue()I
+
+    move-result v9
+
+    aget-object v0, v10, v9
+
+    .line 148
+    .local v0, cell:Lcom/zhangdan/app/widget/LockView$Cell;
+    invoke-virtual {v0}, Lcom/zhangdan/app/widget/LockView$Cell;->getIndex()I
 
     move-result v4
 
-    if-eq v4, v5, :cond_4
+    .line 150
+    .local v4, lastIndex:I
+    const/4 v2, 0x0
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    .line 151
+    .local v2, flag:Z
+    div-int/lit8 v5, v4, 0x3
 
-    aget-object v0, v0, v4
+    .line 152
+    .local v5, r1:I
+    div-int/lit8 v6, v3, 0x3
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/widget/h;->b()Z
+    .line 153
+    .local v6, r2:I
+    if-eq v5, v6, :cond_1
 
-    move-result v0
+    sub-int v9, v5, v6
 
-    if-nez v0, :cond_4
+    invoke-static {v9}, Ljava/lang/Math;->abs(I)I
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    move-result v9
 
-    invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
+    if-le v9, v12, :cond_2
 
-    move-result v0
-
-    if-nez v0, :cond_3
-
-    iget-object v5, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
-
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
-
-    iget-object v6, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
-
-    invoke-interface {v6}, Ljava/util/List;->size()I
-
-    move-result v6
-
-    add-int/lit8 v6, v6, -0x1
-
-    invoke-interface {v0, v6}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Ljava/lang/Integer;
-
-    invoke-virtual {v0}, Ljava/lang/Integer;->intValue()I
-
-    move-result v0
-
-    aget-object v0, v5, v0
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/widget/h;->a()I
-
-    move-result v5
-
-    const/4 v0, 0x0
-
-    div-int/lit8 v6, v5, 0x3
-
-    div-int/lit8 v7, v4, 0x3
-
-    if-eq v6, v7, :cond_1
-
-    sub-int/2addr v6, v7
-
-    invoke-static {v6}, Ljava/lang/Math;->abs(I)I
-
-    move-result v6
-
-    if-le v6, v1, :cond_2
-
+    .line 154
     :cond_1
-    move v0, v1
+    const/4 v2, 0x1
 
+    .line 155
     :cond_2
-    if-eqz v0, :cond_3
+    if-eqz v2, :cond_3
 
-    add-int v0, v5, v4
+    .line 156
+    add-int v9, v4, v3
 
-    div-int/lit8 v0, v0, 0x2
+    div-int/lit8 v1, v9, 0x2
 
-    if-eq v0, v4, :cond_3
+    .line 157
+    .local v1, centerIndex:I
+    if-eq v1, v3, :cond_3
 
-    if-eq v0, v5, :cond_3
+    if-eq v1, v4, :cond_3
 
-    iget-object v5, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v5, v5, v0
+    aget-object v9, v9, v1
 
-    invoke-virtual {v5}, Lcom/zhangdan/app/widget/h;->b()Z
+    invoke-virtual {v9}, Lcom/zhangdan/app/widget/LockView$Cell;->isSelected()Z
 
-    move-result v5
+    move-result v9
 
-    if-nez v5, :cond_3
+    if-nez v9, :cond_3
 
-    iget-object v5, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    .line 158
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v6
+    move-result-object v10
 
-    invoke-interface {v5, v6}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    invoke-interface {v9, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    iget-object v5, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    .line 159
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v0, v5, v0
+    aget-object v9, v9, v1
 
-    invoke-virtual {v0, v1}, Lcom/zhangdan/app/widget/h;->a(Z)V
+    invoke-virtual {v9, v12}, Lcom/zhangdan/app/widget/LockView$Cell;->setSelected(Z)V
 
+    .line 164
+    .end local v0           #cell:Lcom/zhangdan/app/widget/LockView$Cell;
+    .end local v1           #centerIndex:I
+    .end local v2           #flag:Z
+    .end local v4           #lastIndex:I
+    .end local v5           #r1:I
+    .end local v6           #r2:I
     :cond_3
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
-    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v5
+    move-result-object v10
 
-    invoke-interface {v0, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+    invoke-interface {v9, v10}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->c:[Lcom/zhangdan/app/widget/h;
+    .line 165
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mCell:[Lcom/zhangdan/app/widget/LockView$Cell;
 
-    aget-object v0, v0, v4
+    aget-object v9, v9, v3
 
-    invoke-virtual {v0, v1}, Lcom/zhangdan/app/widget/h;->a(Z)V
+    invoke-virtual {v9, v12}, Lcom/zhangdan/app/widget/LockView$Cell;->setSelected(Z)V
 
+    .line 167
     :cond_4
-    iput v2, p0, Lcom/zhangdan/app/widget/LockView;->g:F
+    iput v7, p0, Lcom/zhangdan/app/widget/LockView;->mMotionX:F
 
-    iput v3, p0, Lcom/zhangdan/app/widget/LockView;->h:F
+    .line 168
+    iput v8, p0, Lcom/zhangdan/app/widget/LockView;->mMotionY:F
 
+    .line 169
     invoke-virtual {p0}, Lcom/zhangdan/app/widget/LockView;->invalidate()V
 
     goto/16 :goto_0
 
+    .line 173
+    .end local v3           #index:I
     :pswitch_2
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->i:Lcom/zhangdan/app/widget/i;
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mOnInputPwdListener:Lcom/zhangdan/app/widget/LockView$OnInputPwdListener;
 
-    if-eqz v0, :cond_5
+    if-eqz v9, :cond_5
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/LockView;->i:Lcom/zhangdan/app/widget/i;
+    .line 174
+    iget-object v9, p0, Lcom/zhangdan/app/widget/LockView;->mOnInputPwdListener:Lcom/zhangdan/app/widget/LockView$OnInputPwdListener;
 
-    iget-object v2, p0, Lcom/zhangdan/app/widget/LockView;->d:Ljava/util/List;
+    iget-object v10, p0, Lcom/zhangdan/app/widget/LockView;->mSelIndex:Ljava/util/List;
 
-    invoke-interface {v0, v2}, Lcom/zhangdan/app/widget/i;->a(Ljava/util/List;)V
+    invoke-interface {v9, v10}, Lcom/zhangdan/app/widget/LockView$OnInputPwdListener;->onInputPwd(Ljava/util/List;)V
 
+    .line 175
     :cond_5
-    invoke-direct {p0}, Lcom/zhangdan/app/widget/LockView;->a()V
+    invoke-virtual {p0}, Lcom/zhangdan/app/widget/LockView;->clearLock()V
 
+    .line 176
     invoke-virtual {p0}, Lcom/zhangdan/app/widget/LockView;->invalidate()V
 
     goto/16 :goto_0
+
+    .line 130
+    nop
 
     :pswitch_data_0
     .packed-switch 0x0
@@ -848,4 +1066,16 @@
         :pswitch_2
         :pswitch_1
     .end packed-switch
+.end method
+
+.method public setOnInputPwdListener(Lcom/zhangdan/app/widget/LockView$OnInputPwdListener;)V
+    .locals 0
+    .parameter "onInputPwdListener"
+
+    .prologue
+    .line 64
+    iput-object p1, p0, Lcom/zhangdan/app/widget/LockView;->mOnInputPwdListener:Lcom/zhangdan/app/widget/LockView$OnInputPwdListener;
+
+    .line 65
+    return-void
 .end method

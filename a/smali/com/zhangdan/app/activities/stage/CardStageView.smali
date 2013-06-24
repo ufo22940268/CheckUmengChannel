@@ -1,375 +1,638 @@
 .class public Lcom/zhangdan/app/activities/stage/CardStageView;
 .super Landroid/view/View;
+.source "CardStageView.java"
 
 
 # instance fields
-.field private a:Lcom/zhangdan/app/data/model/e;
+.field private barDrawable1:Landroid/graphics/drawable/Drawable;
 
-.field private b:Ljava/util/List;
+.field private barDrawableArr:[Landroid/graphics/drawable/Drawable;
 
-.field private c:F
+.field private barWidth:I
 
-.field private d:I
+.field private bgHeight:I
 
-.field private e:Landroid/graphics/drawable/Drawable;
+.field private bgPatDrawable:Landroid/graphics/drawable/Drawable;
 
-.field private f:Landroid/graphics/drawable/Drawable;
+.field private billStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-.field private g:Landroid/graphics/drawable/Drawable;
+.field private bmp:Landroid/graphics/Bitmap;
 
-.field private h:[Landroid/graphics/drawable/Drawable;
+.field private decimalFormat:Ljava/text/DecimalFormat;
 
-.field private i:I
+.field private density:F
 
-.field private j:I
+.field private dividerDrawable:Landroid/graphics/drawable/Drawable;
 
-.field private k:I
+.field private groupList:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Lcom/zhangdan/app/data/model/BillStageGroup;",
+            ">;"
+        }
+    .end annotation
+.end field
 
-.field private l:I
+.field private horizontalSpace:I
 
-.field private m:I
+.field private mPaintDate:Landroid/graphics/Paint;
 
-.field private n:I
+.field private mPaintMoney:Landroid/graphics/Paint;
 
-.field private o:I
+.field private maxBarHeight:I
 
-.field private p:I
+.field private paddingBottom:I
 
-.field private q:I
+.field private paddingLeft:I
 
-.field private r:Landroid/graphics/Paint;
+.field private paddingTop:I
 
-.field private s:Landroid/graphics/Paint;
+.field private screenWidth:I
 
-.field private t:Ljava/text/DecimalFormat;
+.field private verticalLineMargin:I
 
-.field private u:Landroid/graphics/Bitmap;
+.field private verticalSpace:I
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Lcom/zhangdan/app/data/model/e;)V
-    .locals 6
+.method public constructor <init>(Landroid/content/Context;Lcom/zhangdan/app/data/model/BillStageInfo;)V
+    .locals 8
+    .parameter "context"
+    .parameter "billStageInfo"
 
-    const/high16 v5, 0x4140
+    .prologue
+    const/high16 v7, 0x4140
 
-    const/4 v4, 0x1
+    const/4 v6, 0x1
 
+    .line 58
     invoke-direct {p0, p1}, Landroid/view/View;-><init>(Landroid/content/Context;)V
 
-    new-instance v0, Landroid/graphics/Paint;
+    .line 51
+    new-instance v3, Landroid/graphics/Paint;
 
-    invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
+    invoke-direct {v3}, Landroid/graphics/Paint;-><init>()V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    iput-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
 
-    new-instance v0, Landroid/graphics/Paint;
+    .line 52
+    new-instance v3, Landroid/graphics/Paint;
 
-    invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
+    invoke-direct {v3}, Landroid/graphics/Paint;-><init>()V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->s:Landroid/graphics/Paint;
+    iput-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintDate:Landroid/graphics/Paint;
 
-    new-instance v0, Ljava/text/DecimalFormat;
+    .line 53
+    new-instance v3, Ljava/text/DecimalFormat;
 
-    const-string v1, "#0.00"
+    const-string v4, "#0.00"
 
-    invoke-direct {v0, v1}, Ljava/text/DecimalFormat;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3, v4}, Ljava/text/DecimalFormat;-><init>(Ljava/lang/String;)V
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->t:Ljava/text/DecimalFormat;
+    iput-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->decimalFormat:Ljava/text/DecimalFormat;
 
-    iput-object p2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->a:Lcom/zhangdan/app/data/model/e;
+    .line 59
+    iput-object p2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->billStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    invoke-virtual {p2}, Lcom/zhangdan/app/data/model/e;->b()Ljava/util/List;
+    .line 60
+    invoke-virtual {p2}, Lcom/zhangdan/app/data/model/BillStageInfo;->getStageList()Ljava/util/List;
 
-    move-result-object v0
+    move-result-object v3
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->b:Ljava/util/List;
+    iput-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->groupList:Ljava/util/List;
 
+    .line 62
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    move-result-object v1
-
-    iget v2, v1, Landroid/util/DisplayMetrics;->density:F
-
-    iput v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
-
-    iget v1, v1, Landroid/util/DisplayMetrics;->widthPixels:I
-
-    iput v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->d:I
-
-    const v1, 0x7f0200f0
-
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->e:Landroid/graphics/drawable/Drawable;
-
-    const v1, 0x7f0200ea
-
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->g:Landroid/graphics/drawable/Drawable;
-
-    const v1, 0x7f0200f3
-
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->f:Landroid/graphics/drawable/Drawable;
-
-    const/4 v1, 0x5
-
-    new-array v1, v1, [Landroid/graphics/drawable/Drawable;
-
-    iput-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->h:[Landroid/graphics/drawable/Drawable;
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->h:[Landroid/graphics/drawable/Drawable;
-
-    const/4 v2, 0x0
-
-    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->g:Landroid/graphics/drawable/Drawable;
-
-    aput-object v3, v1, v2
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->h:[Landroid/graphics/drawable/Drawable;
-
-    const v2, 0x7f0200eb
-
-    invoke-virtual {v0, v2}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v2
 
-    aput-object v2, v1, v4
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->h:[Landroid/graphics/drawable/Drawable;
-
-    const/4 v2, 0x2
-
-    const v3, 0x7f0200ec
-
-    invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    aput-object v3, v1, v2
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->h:[Landroid/graphics/drawable/Drawable;
-
-    const/4 v2, 0x3
-
-    const v3, 0x7f0200ed
-
-    invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    aput-object v3, v1, v2
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->h:[Landroid/graphics/drawable/Drawable;
-
-    const/4 v2, 0x4
-
-    const v3, 0x7f0200ee
-
-    invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v3
-
-    aput-object v3, v1, v2
-
-    const/high16 v1, 0x4220
-
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
-
-    mul-float/2addr v1, v2
-
-    float-to-int v1, v1
-
-    iput v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->i:I
-
-    const/high16 v1, 0x42a0
-
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
-
-    mul-float/2addr v1, v2
-
-    float-to-int v1, v1
-
-    iput v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
-
-    const/high16 v1, 0x4248
-
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
-
-    mul-float/2addr v1, v2
-
-    float-to-int v1, v1
-
-    iput v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->k:I
-
-    const/high16 v1, 0x40a0
-
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
-
-    mul-float/2addr v1, v2
-
-    float-to-int v1, v1
-
-    iput v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->n:I
-
-    const/high16 v1, 0x41a0
-
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
-
-    mul-float/2addr v1, v2
-
-    float-to-int v1, v1
-
-    iput v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->m:I
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->g:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v1}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
-
-    move-result v1
-
-    iput v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->o:I
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->g:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v1}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
-
-    move-result v1
-
-    iput v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->p:I
-
-    const v1, 0x7f0200ef
-
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    .line 63
+    .local v2, res:Landroid/content/res/Resources;
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+    .line 64
+    .local v0, dm:Landroid/util/DisplayMetrics;
+    iget v3, v0, Landroid/util/DisplayMetrics;->density:F
 
-    move-result v0
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
 
-    iput v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
+    .line 65
+    iget v3, v0, Landroid/util/DisplayMetrics;->widthPixels:I
 
-    invoke-virtual {p2}, Lcom/zhangdan/app/data/model/e;->h()I
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->screenWidth:I
 
-    move-result v0
+    .line 67
+    const v3, 0x7f0200f3
 
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->i:I
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    add-int/lit8 v2, v0, -0x1
+    move-result-object v3
 
-    iget v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->n:I
+    iput-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgPatDrawable:Landroid/graphics/drawable/Drawable;
 
-    mul-int/2addr v2, v3
+    .line 68
+    const v3, 0x7f0200ed
 
-    add-int/2addr v1, v2
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
+    move-result-object v3
 
-    mul-int/2addr v0, v2
+    iput-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawable1:Landroid/graphics/drawable/Drawable;
 
-    add-int/2addr v0, v1
+    .line 69
+    const v3, 0x7f0200f6
 
-    iput v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    move-result-object v3
 
-    const/4 v1, -0x1
+    iput-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->dividerDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
+    .line 70
+    const/4 v3, 0x5
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    new-array v3, v3, [Landroid/graphics/drawable/Drawable;
 
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
+    iput-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawableArr:[Landroid/graphics/drawable/Drawable;
 
-    mul-float/2addr v1, v5
+    .line 71
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawableArr:[Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setTextSize(F)V
+    const/4 v4, 0x0
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    iget-object v5, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawable1:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0, v4}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+    aput-object v5, v3, v4
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->s:Landroid/graphics/Paint;
+    .line 72
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawableArr:[Landroid/graphics/drawable/Drawable;
 
-    const/high16 v1, -0x100
+    const v4, 0x7f0200ee
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
+    invoke-virtual {v2, v4}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->s:Landroid/graphics/Paint;
+    move-result-object v4
 
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
+    aput-object v4, v3, v6
 
-    mul-float/2addr v1, v5
+    .line 73
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawableArr:[Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setTextSize(F)V
+    const/4 v4, 0x2
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->s:Landroid/graphics/Paint;
+    const v5, 0x7f0200ef
 
-    invoke-virtual {v0, v4}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+    invoke-virtual {v2, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    return-void
-.end method
+    move-result-object v5
 
-.method private a(Landroid/graphics/Canvas;)V
-    .locals 10
+    aput-object v5, v3, v4
 
-    const/4 v1, 0x0
+    .line 74
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawableArr:[Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
+    const/4 v4, 0x3
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->e:Landroid/graphics/drawable/Drawable;
+    const v5, 0x7f0200f0
 
-    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+    invoke-virtual {v2, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v5
+
+    aput-object v5, v3, v4
+
+    .line 75
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawableArr:[Landroid/graphics/drawable/Drawable;
+
+    const/4 v4, 0x4
+
+    const v5, 0x7f0200f1
+
+    invoke-virtual {v2, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v5
+
+    aput-object v5, v3, v4
+
+    .line 77
+    const/high16 v3, 0x4220
+
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    mul-float/2addr v3, v4
+
+    float-to-int v3, v3
+
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingTop:I
+
+    .line 78
+    const/high16 v3, 0x42a0
+
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    mul-float/2addr v3, v4
+
+    float-to-int v3, v3
+
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
+
+    .line 79
+    const/high16 v3, 0x4248
+
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    mul-float/2addr v3, v4
+
+    float-to-int v3, v3
+
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingBottom:I
+
+    .line 80
+    const/high16 v3, 0x40a0
+
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    mul-float/2addr v3, v4
+
+    float-to-int v3, v3
+
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalSpace:I
+
+    .line 81
+    const/high16 v3, 0x41a0
+
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    mul-float/2addr v3, v4
+
+    float-to-int v3, v3
+
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalLineMargin:I
+
+    .line 82
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawable1:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
     move-result v3
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->e:Landroid/graphics/drawable/Drawable;
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->horizontalSpace:I
+
+    .line 84
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawable1:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+
+    move-result v3
+
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barWidth:I
+
+    .line 85
+    const v3, 0x7f0200f2
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+
+    move-result v3
+
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
+
+    .line 87
+    invoke-virtual {p2}, Lcom/zhangdan/app/data/model/BillStageInfo;->getGroupCount()I
+
+    move-result v1
+
+    .line 88
+    .local v1, groupCount:I
+    iget v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingTop:I
+
+    add-int/lit8 v4, v1, -0x1
+
+    iget v5, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalSpace:I
+
+    mul-int/2addr v4, v5
+
+    add-int/2addr v3, v4
+
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
+
+    mul-int/2addr v4, v1
+
+    add-int/2addr v3, v4
+
+    iput v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
+
+    .line 90
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
+
+    const/4 v4, -0x1
+
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setColor(I)V
+
+    .line 91
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
+
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    mul-float/2addr v4, v7
+
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setTextSize(F)V
+
+    .line 92
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
+
+    invoke-virtual {v3, v6}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+
+    .line 94
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintDate:Landroid/graphics/Paint;
+
+    const/high16 v4, -0x100
+
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setColor(I)V
+
+    .line 95
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintDate:Landroid/graphics/Paint;
+
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    mul-float/2addr v4, v7
+
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setTextSize(F)V
+
+    .line 96
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintDate:Landroid/graphics/Paint;
+
+    invoke-virtual {v3, v6}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+
+    .line 97
+    return-void
+.end method
+
+.method private drawBars(Landroid/graphics/Canvas;)V
+    .locals 14
+    .parameter "canvas"
+
+    .prologue
+    .line 211
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
+
+    iget v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalLineMargin:I
+
+    add-int v6, v11, v12
+
+    .line 212
+    .local v6, l:I
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->billStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
+
+    invoke-virtual {v11}, Lcom/zhangdan/app/data/model/BillStageInfo;->getMaxPeriodCount()I
+
+    move-result v8
+
+    .line 213
+    .local v8, maxPeriod:I
+    const/4 v4, 0x0
+
+    .local v4, i:I
+    :goto_0
+    if-ge v4, v8, :cond_2
+
+    .line 215
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barWidth:I
+
+    iget v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->horizontalSpace:I
+
+    add-int/2addr v11, v12
+
+    mul-int/2addr v11, v4
+
+    add-int v7, v6, v11
+
+    .line 216
+    .local v7, left:I
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barWidth:I
+
+    add-int v9, v7, v11
+
+    .line 217
+    .local v9, right:I
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->groupList:Ljava/util/List;
+
+    invoke-interface {v11}, Ljava/util/List;->size()I
+
+    move-result v3
+
+    .line 218
+    .local v3, groupSize:I
+    add-int/lit8 v5, v3, -0x1
+
+    .local v5, j:I
+    :goto_1
+    if-ltz v5, :cond_1
+
+    .line 219
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->groupList:Ljava/util/List;
+
+    invoke-interface {v11, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/zhangdan/app/data/model/BillStageGroup;
+
+    .line 220
+    .local v2, group:Lcom/zhangdan/app/data/model/BillStageGroup;
+    invoke-virtual {v2}, Lcom/zhangdan/app/data/model/BillStageGroup;->getItemCount()I
+
+    move-result v11
+
+    if-lt v4, v11, :cond_0
+
+    .line 218
+    :goto_2
+    add-int/lit8 v5, v5, -0x1
+
+    goto :goto_1
+
+    .line 223
+    :cond_0
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barDrawableArr:[Landroid/graphics/drawable/Drawable;
+
+    rem-int/lit8 v12, v5, 0x5
+
+    aget-object v1, v11, v12
+
+    .line 224
+    .local v1, drawable:Landroid/graphics/drawable/Drawable;
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
+
+    iget v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
+
+    iget v13, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalSpace:I
+
+    add-int/2addr v12, v13
+
+    sub-int v13, v3, v5
+
+    add-int/lit8 v13, v13, -0x1
+
+    mul-int/2addr v12, v13
+
+    sub-int v0, v11, v12
+
+    .line 225
+    .local v0, bottom:I
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
+
+    sub-int v10, v0, v11
+
+    .line 226
+    .local v10, top:I
+    invoke-virtual {v1, v7, v10, v9, v0}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+
+    .line 227
+    invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+
+    goto :goto_2
+
+    .line 213
+    .end local v0           #bottom:I
+    .end local v1           #drawable:Landroid/graphics/drawable/Drawable;
+    .end local v2           #group:Lcom/zhangdan/app/data/model/BillStageGroup;
+    .end local v10           #top:I
+    :cond_1
+    add-int/lit8 v4, v4, 0x1
+
+    goto :goto_0
+
+    .line 230
+    .end local v3           #groupSize:I
+    .end local v5           #j:I
+    .end local v7           #left:I
+    .end local v9           #right:I
+    :cond_2
+    return-void
+.end method
+
+.method private drawBg(Landroid/graphics/Canvas;)V
+    .locals 14
+    .parameter "canvas"
+
+    .prologue
+    const/4 v2, 0x0
+
+    .line 143
+    invoke-virtual {p1}, Landroid/graphics/Canvas;->save()I
+
+    .line 144
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgPatDrawable:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+
+    move-result v11
+
+    .line 145
+    .local v11, w:I
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgPatDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
-    move-result v4
+    move-result v7
 
+    .line 146
+    .local v7, h:I
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageView;->getMeasuredWidth()I
 
     move-result v0
 
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
+    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
 
-    invoke-virtual {p1, v1, v1, v0, v2}, Landroid/graphics/Canvas;->clipRect(IIII)Z
+    invoke-virtual {p1, v2, v2, v0, v1}, Landroid/graphics/Canvas;->clipRect(IIII)Z
 
-    move v0, v1
+    .line 147
+    const/4 v12, 0x0
 
+    .local v12, x:I
     :goto_0
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageView;->getWidth()I
 
-    move-result v2
+    move-result v0
 
-    div-int/2addr v2, v3
+    div-int/2addr v0, v11
 
-    add-int/lit8 v2, v2, 0x1
+    add-int/lit8 v0, v0, 0x1
 
-    if-lt v0, v2, :cond_0
+    if-ge v12, v0, :cond_1
 
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
+    .line 148
+    const/4 v13, 0x0
+
+    .local v13, y:I
+    :goto_1
+    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
+
+    div-int/2addr v0, v7
+
+    add-int/lit8 v0, v0, 0x1
+
+    if-ge v13, v0, :cond_0
+
+    .line 149
+    mul-int v8, v12, v11
+
+    .line 150
+    .local v8, left:I
+    mul-int v10, v13, v7
+
+    .line 151
+    .local v10, top:I
+    add-int v9, v8, v11
+
+    .line 152
+    .local v9, right:I
+    add-int v6, v10, v7
+
+    .line 153
+    .local v6, bottom:I
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgPatDrawable:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v0, v8, v10, v9, v6}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+
+    .line 154
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgPatDrawable:Landroid/graphics/drawable/Drawable;
+
+    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+
+    .line 148
+    add-int/lit8 v13, v13, 0x1
+
+    goto :goto_1
+
+    .line 147
+    .end local v6           #bottom:I
+    .end local v8           #left:I
+    .end local v9           #right:I
+    .end local v10           #top:I
+    :cond_0
+    add-int/lit8 v12, v12, 0x1
+
+    goto :goto_0
+
+    .line 157
+    .end local v13           #y:I
+    :cond_1
+    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
 
     int-to-float v1, v0
 
     const/4 v2, 0x0
 
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
+    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
 
     int-to-float v3, v0
 
@@ -379,816 +642,897 @@
 
     int-to-float v4, v0
 
-    iget-object v5, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    iget-object v5, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
 
     move-object v0, p1
 
     invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
 
+    .line 158
     invoke-virtual {p1}, Landroid/graphics/Canvas;->restore()V
 
+    .line 159
     return-void
-
-    :cond_0
-    move v2, v1
-
-    :goto_1
-    iget v5, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
-
-    div-int/2addr v5, v4
-
-    add-int/lit8 v5, v5, 0x1
-
-    if-lt v2, v5, :cond_1
-
-    add-int/lit8 v0, v0, 0x1
-
-    goto :goto_0
-
-    :cond_1
-    mul-int v5, v0, v3
-
-    mul-int v6, v2, v4
-
-    add-int v7, v5, v3
-
-    add-int v8, v6, v4
-
-    iget-object v9, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->e:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v9, v5, v6, v7, v8}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
-
-    iget-object v5, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->e:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v5, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    add-int/lit8 v2, v2, 0x1
-
-    goto :goto_1
 .end method
 
-.method private b(Landroid/graphics/Canvas;)V
-    .locals 13
+.method private drawDate(Landroid/graphics/Canvas;)V
+    .locals 30
+    .parameter "canvas"
 
-    const/high16 v10, 0x4040
+    .prologue
+    .line 233
+    const/16 v20, 0x0
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    .line 234
+    .local v20, yearAndMonth:[I
+    move-object/from16 v0, p0
 
-    const/4 v1, -0x1
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->groupList:Ljava/util/List;
 
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
+    move-object/from16 v23, v0
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->b:Ljava/util/List;
+    invoke-interface/range {v23 .. v23}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
-    invoke-interface {v0}, Ljava/util/List;->size()I
+    move-result-object v12
 
-    move-result v2
+    .local v12, i$:Ljava/util/Iterator;
+    :cond_0
+    invoke-interface {v12}, Ljava/util/Iterator;->hasNext()Z
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    move-result v23
 
-    invoke-virtual {v0}, Landroid/graphics/Paint;->getFontMetrics()Landroid/graphics/Paint$FontMetrics;
+    if-eqz v23, :cond_1
 
-    move-result-object v4
+    invoke-interface {v12}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    iget v0, v4, Landroid/graphics/Paint$FontMetrics;->bottom:F
+    move-result-object v10
 
-    iget v1, v4, Landroid/graphics/Paint$FontMetrics;->top:F
+    check-cast v10, Lcom/zhangdan/app/data/model/BillStageGroup;
 
-    sub-float v5, v0, v1
+    .line 235
+    .local v10, group:Lcom/zhangdan/app/data/model/BillStageGroup;
+    invoke-virtual {v10}, Lcom/zhangdan/app/data/model/BillStageGroup;->getFirstYearAndMonth()[I
 
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
+    move-result-object v20
+
+    .line 236
+    if-eqz v20, :cond_0
+
+    .line 239
+    .end local v10           #group:Lcom/zhangdan/app/data/model/BillStageGroup;
+    :cond_1
+    if-nez v20, :cond_3
+
+    .line 272
+    :cond_2
+    return-void
+
+    .line 241
+    :cond_3
+    const/16 v23, 0x0
+
+    aget v19, v20, v23
+
+    .line 242
+    .local v19, year:I
+    const/16 v23, 0x1
+
+    aget v16, v20, v23
+
+    .line 243
+    .local v16, month:I
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintDate:Landroid/graphics/Paint;
+
+    move-object/from16 v23, v0
+
+    invoke-virtual/range {v23 .. v23}, Landroid/graphics/Paint;->getFontMetrics()Landroid/graphics/Paint$FontMetrics;
+
+    move-result-object v9
+
+    .line 244
+    .local v9, fontMetrics:Landroid/graphics/Paint$FontMetrics;
+    iget v0, v9, Landroid/graphics/Paint$FontMetrics;->bottom:F
+
+    move/from16 v23, v0
+
+    iget v0, v9, Landroid/graphics/Paint$FontMetrics;->top:F
+
+    move/from16 v24, v0
+
+    sub-float v8, v23, v24
+
+    .line 245
+    .local v8, fontHeight:F
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
+
+    move/from16 v23, v0
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalLineMargin:I
+
+    move/from16 v24, v0
+
+    add-int v13, v23, v24
+
+    .line 246
+    .local v13, l:I
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
+
+    move/from16 v23, v0
+
+    move/from16 v0, v23
 
     int-to-float v0, v0
 
-    iget-object v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    move/from16 v23, v0
 
-    const-string v3, "\uffe50"
+    add-float v5, v23, v8
 
-    invoke-virtual {v1, v3}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+    .line 247
+    .local v5, baselineY:F
+    move-object/from16 v0, p0
 
-    move-result v1
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->billStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    sub-float/2addr v0, v1
+    move-object/from16 v23, v0
 
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
+    invoke-virtual/range {v23 .. v23}, Lcom/zhangdan/app/data/model/BillStageInfo;->getMaxPeriodCount()I
 
-    mul-float/2addr v1, v10
+    move-result v15
 
-    sub-float/2addr v0, v1
+    .line 248
+    .local v15, maxPeriod:I
+    const/4 v11, 0x0
 
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
-
-    int-to-float v1, v1
-
-    iget v3, v4, Landroid/graphics/Paint$FontMetrics;->bottom:F
-
-    sub-float/2addr v1, v3
-
-    const-string v3, "\uffe50"
-
-    iget-object v6, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
-
-    invoke-virtual {p1, v3, v0, v1, v6}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-
-    const-wide/16 v0, 0x0
-
-    add-int/lit8 v2, v2, -0x1
-
-    move v3, v2
-
-    move-wide v11, v0
-
-    move-wide v1, v11
-
+    .local v11, i:I
     :goto_0
-    if-gez v3, :cond_0
+    if-ge v11, v15, :cond_2
 
-    return-void
+    .line 249
+    new-instance v23, Ljava/lang/StringBuilder;
 
-    :cond_0
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->b:Ljava/util/List;
+    invoke-direct/range {v23 .. v23}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-interface {v0, v3}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    move-object/from16 v0, v23
 
-    move-result-object v0
+    move/from16 v1, v16
 
-    check-cast v0, Lcom/zhangdan/app/data/model/d;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/model/d;->e()D
+    move-result-object v23
 
-    move-result-wide v6
+    const-string v24, "\u6708"
 
-    add-double v0, v1, v6
+    invoke-virtual/range {v23 .. v24}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    move-result-object v23
 
-    const-string v6, "\uffe5"
-
-    invoke-direct {v2, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    iget-object v6, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->t:Ljava/text/DecimalFormat;
-
-    invoke-virtual {v6, v0, v1}, Ljava/text/DecimalFormat;->format(D)Ljava/lang/String;
+    invoke-virtual/range {v23 .. v23}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v6
 
-    invoke-virtual {v2, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 250
+    .local v6, dateStr:Ljava/lang/String;
+    move-object/from16 v0, p0
 
-    move-result-object v2
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintDate:Landroid/graphics/Paint;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-object/from16 v23, v0
 
-    move-result-object v2
+    move-object/from16 v0, v23
 
-    iget v6, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->i:I
+    invoke-virtual {v0, v6}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
 
-    iget v7, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
+    move-result v17
 
-    iget v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->n:I
+    .line 252
+    .local v17, txtLen:F
+    move-object/from16 v0, p0
 
-    add-int/2addr v7, v8
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->barWidth:I
 
-    mul-int/2addr v7, v3
+    move/from16 v23, v0
 
-    add-int/2addr v6, v7
+    move-object/from16 v0, p0
 
-    int-to-float v6, v6
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->horizontalSpace:I
 
-    iget-object v7, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    move/from16 v24, v0
 
-    invoke-virtual {v7, v2}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+    add-int v23, v23, v24
+
+    mul-int v23, v23, v11
+
+    add-int v14, v13, v23
+
+    .line 253
+    .local v14, left:I
+    int-to-float v0, v14
+
+    move/from16 v23, v0
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->barWidth:I
+
+    move/from16 v24, v0
+
+    move/from16 v0, v24
+
+    int-to-float v0, v0
+
+    move/from16 v24, v0
+
+    sub-float v24, v24, v17
+
+    const/high16 v25, 0x4000
+
+    div-float v24, v24, v25
+
+    add-float v18, v23, v24
+
+    .line 254
+    .local v18, x:F
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintDate:Landroid/graphics/Paint;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, p1
+
+    move/from16 v1, v18
+
+    move-object/from16 v2, v23
+
+    invoke-virtual {v0, v6, v1, v5, v2}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+
+    .line 256
+    if-eqz v11, :cond_4
+
+    const/16 v23, 0x1
+
+    move/from16 v0, v16
+
+    move/from16 v1, v23
+
+    if-ne v0, v1, :cond_4
+
+    .line 257
+    new-instance v23, Ljava/lang/StringBuilder;
+
+    invoke-direct/range {v23 .. v23}, Ljava/lang/StringBuilder;-><init>()V
+
+    move-object/from16 v0, v23
+
+    move/from16 v1, v19
+
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v23
+
+    const-string v24, "\u5e74->"
+
+    invoke-virtual/range {v23 .. v24}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v23
+
+    invoke-virtual/range {v23 .. v23}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v22
+
+    .line 258
+    .local v22, yearStr:Ljava/lang/String;
+    add-float v21, v5, v8
+
+    .line 259
+    .local v21, yearBaseLineY:F
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintDate:Landroid/graphics/Paint;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, v22
+
+    move/from16 v2, v18
+
+    move/from16 v3, v21
+
+    move-object/from16 v4, v23
+
+    invoke-virtual {v0, v1, v2, v3, v4}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+
+    .line 261
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->horizontalSpace:I
+
+    move/from16 v23, v0
+
+    div-int/lit8 v23, v23, 0x2
+
+    sub-int v7, v14, v23
+
+    .line 262
+    .local v7, dividerLeft:I
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->dividerDrawable:Landroid/graphics/drawable/Drawable;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
+
+    move/from16 v24, v0
+
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->dividerDrawable:Landroid/graphics/drawable/Drawable;
+
+    move-object/from16 v25, v0
+
+    invoke-virtual/range {v25 .. v25}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+
+    move-result v25
+
+    add-int v25, v25, v7
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
+
+    move/from16 v26, v0
+
+    const/high16 v27, 0x4000
+
+    mul-float v27, v27, v8
+
+    const/high16 v28, 0x40a0
+
+    move-object/from16 v0, p0
+
+    iget v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    move/from16 v29, v0
+
+    mul-float v28, v28, v29
+
+    add-float v27, v27, v28
+
+    move/from16 v0, v27
+
+    float-to-int v0, v0
+
+    move/from16 v27, v0
+
+    add-int v26, v26, v27
+
+    move-object/from16 v0, v23
+
+    move/from16 v1, v24
+
+    move/from16 v2, v25
+
+    move/from16 v3, v26
+
+    invoke-virtual {v0, v7, v1, v2, v3}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+
+    .line 263
+    move-object/from16 v0, p0
+
+    iget-object v0, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->dividerDrawable:Landroid/graphics/drawable/Drawable;
+
+    move-object/from16 v23, v0
+
+    move-object/from16 v0, v23
+
+    move-object/from16 v1, p1
+
+    invoke-virtual {v0, v1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+
+    .line 266
+    .end local v7           #dividerLeft:I
+    .end local v21           #yearBaseLineY:F
+    .end local v22           #yearStr:Ljava/lang/String;
+    :cond_4
+    add-int/lit8 v16, v16, 0x1
+
+    .line 267
+    const/16 v23, 0xc
+
+    move/from16 v0, v16
+
+    move/from16 v1, v23
+
+    if-le v0, v1, :cond_5
+
+    .line 268
+    const/16 v16, 0x1
+
+    .line 269
+    add-int/lit8 v19, v19, 0x1
+
+    .line 248
+    :cond_5
+    add-int/lit8 v11, v11, 0x1
+
+    goto/16 :goto_0
+.end method
+
+.method private drawMoney(Landroid/graphics/Canvas;)V
+    .locals 14
+    .parameter "canvas"
+
+    .prologue
+    .line 167
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
+
+    const/4 v12, -0x1
+
+    invoke-virtual {v11, v12}, Landroid/graphics/Paint;->setColor(I)V
+
+    .line 168
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->groupList:Ljava/util/List;
+
+    invoke-interface {v11}, Ljava/util/List;->size()I
 
     move-result v7
 
-    iget v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
+    .line 169
+    .local v7, len:I
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
 
-    int-to-float v8, v8
+    invoke-virtual {v11}, Landroid/graphics/Paint;->getFontMetrics()Landroid/graphics/Paint$FontMetrics;
 
-    sub-float v7, v8, v7
+    move-result-object v5
 
-    iget v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
+    .line 170
+    .local v5, fontMetrics:Landroid/graphics/Paint$FontMetrics;
+    iget v11, v5, Landroid/graphics/Paint$FontMetrics;->bottom:F
 
-    mul-float/2addr v8, v10
+    iget v12, v5, Landroid/graphics/Paint$FontMetrics;->top:F
 
-    sub-float/2addr v7, v8
+    sub-float v4, v11, v12
 
-    iget v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
+    .line 171
+    .local v4, fontHeight:F
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
 
-    int-to-float v8, v8
+    int-to-float v11, v11
 
-    add-float/2addr v6, v8
+    iget-object v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
 
-    iget v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
+    const-string v13, "\uffe50"
 
-    int-to-float v8, v8
+    invoke-virtual {v12, v13}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
 
-    sub-float/2addr v8, v5
+    move-result v12
 
-    const/high16 v9, 0x4000
+    sub-float/2addr v11, v12
 
-    div-float/2addr v8, v9
+    const/high16 v12, 0x4040
 
-    sub-float/2addr v6, v8
+    iget v13, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
 
-    iget v8, v4, Landroid/graphics/Paint$FontMetrics;->bottom:F
+    mul-float/2addr v12, v13
 
-    sub-float/2addr v6, v8
+    sub-float v9, v11, v12
 
-    iget v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
+    .line 172
+    .local v9, x:F
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
 
-    div-int/lit8 v8, v8, 0x2
+    int-to-float v11, v11
 
-    int-to-float v8, v8
+    iget v12, v5, Landroid/graphics/Paint$FontMetrics;->bottom:F
 
-    sub-float/2addr v6, v8
+    sub-float v3, v11, v12
 
-    iget-object v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    .line 174
+    .local v3, baseLineY:F
+    const-string v11, "\uffe50"
 
-    invoke-virtual {p1, v2, v7, v6, v8}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+    iget-object v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
 
-    add-int/lit8 v2, v3, -0x1
+    invoke-virtual {p1, v11, v9, v3, v12}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
 
-    move v3, v2
+    .line 176
+    const-wide/16 v0, 0x0
 
-    move-wide v11, v0
+    .line 177
+    .local v0, amount:D
+    add-int/lit8 v6, v7, -0x1
 
-    move-wide v1, v11
+    .local v6, i:I
+    :goto_0
+    if-ltz v6, :cond_0
+
+    .line 178
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->groupList:Ljava/util/List;
+
+    invoke-interface {v11, v6}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v11
+
+    check-cast v11, Lcom/zhangdan/app/data/model/BillStageGroup;
+
+    invoke-virtual {v11}, Lcom/zhangdan/app/data/model/BillStageGroup;->getFirstPeriodAmount()D
+
+    move-result-wide v11
+
+    add-double/2addr v0, v11
+
+    .line 179
+    new-instance v11, Ljava/lang/StringBuilder;
+
+    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v12, "\uffe5"
+
+    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v11
+
+    iget-object v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->decimalFormat:Ljava/text/DecimalFormat;
+
+    invoke-virtual {v12, v0, v1}, Ljava/text/DecimalFormat;->format(D)Ljava/lang/String;
+
+    move-result-object v12
+
+    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v11
+
+    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 180
+    .local v2, amountStr:Ljava/lang/String;
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingTop:I
+
+    iget v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
+
+    iget v13, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalSpace:I
+
+    add-int/2addr v12, v13
+
+    mul-int/2addr v12, v6
+
+    add-int/2addr v11, v12
+
+    int-to-float v10, v11
+
+    .line 181
+    .local v10, y:F
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
+
+    invoke-virtual {v11, v2}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
+
+    move-result v8
+
+    .line 182
+    .local v8, textLen:F
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
+
+    int-to-float v11, v11
+
+    sub-float/2addr v11, v8
+
+    const/high16 v12, 0x4040
+
+    iget v13, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->density:F
+
+    mul-float/2addr v12, v13
+
+    sub-float v9, v11, v12
+
+    .line 183
+    iget v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
+
+    int-to-float v11, v11
+
+    add-float/2addr v11, v10
+
+    iget v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
+
+    int-to-float v12, v12
+
+    sub-float/2addr v12, v4
+
+    const/high16 v13, 0x4000
+
+    div-float/2addr v12, v13
+
+    sub-float/2addr v11, v12
+
+    iget v12, v5, Landroid/graphics/Paint$FontMetrics;->bottom:F
+
+    sub-float/2addr v11, v12
+
+    iget v12, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
+
+    div-int/lit8 v12, v12, 0x2
+
+    int-to-float v12, v12
+
+    sub-float v3, v11, v12
+
+    .line 184
+    iget-object v11, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
+
+    invoke-virtual {p1, v2, v9, v3, v11}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+
+    .line 177
+    add-int/lit8 v6, v6, -0x1
 
     goto :goto_0
+
+    .line 186
+    .end local v2           #amountStr:Ljava/lang/String;
+    .end local v8           #textLen:F
+    .end local v10           #y:F
+    :cond_0
+    return-void
 .end method
 
-.method private c(Landroid/graphics/Canvas;)V
-    .locals 10
+.method private generateBmp()Landroid/graphics/Bitmap;
+    .locals 5
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    .prologue
+    .line 127
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageView;->getWidth()I
+
+    move-result v2
+
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageView;->getHeight()I
+
+    move-result v3
+
+    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v2, v3, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    .line 128
+    .local v0, bmp:Landroid/graphics/Bitmap;
+    new-instance v1, Landroid/graphics/Canvas;
+
+    invoke-direct {v1, v0}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+
+    .line 129
+    .local v1, canvas:Landroid/graphics/Canvas;
+    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->drawBg(Landroid/graphics/Canvas;)V
+
+    .line 130
+    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->drawMoney(Landroid/graphics/Canvas;)V
+
+    .line 131
+    invoke-virtual {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->drawHorizontalLines(Landroid/graphics/Canvas;)V
+
+    .line 132
+    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->drawBars(Landroid/graphics/Canvas;)V
+
+    .line 133
+    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->drawDate(Landroid/graphics/Canvas;)V
+
+    .line 134
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public destroy()V
+    .locals 1
+
+    .prologue
+    .line 100
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bmp:Landroid/graphics/Bitmap;
+
+    if-eqz v0, :cond_0
+
+    .line 101
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bmp:Landroid/graphics/Bitmap;
+
+    invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
+
+    .line 102
+    const/4 v0, 0x0
+
+    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bmp:Landroid/graphics/Bitmap;
+
+    .line 104
+    :cond_0
+    return-void
+.end method
+
+.method public drawHorizontalLines(Landroid/graphics/Canvas;)V
+    .locals 11
+    .parameter "canvas"
+
+    .prologue
+    .line 194
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
 
     const v1, 0x40ffffff
 
     invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
 
-    iget v7, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
+    .line 195
+    iget v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
 
+    .line 196
+    .local v8, l:I
     invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageView;->getWidth()I
-
-    move-result v8
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->b:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->size()I
 
     move-result v9
 
-    const/4 v0, 0x0
+    .line 197
+    .local v9, r:I
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->groupList:Ljava/util/List;
 
-    move v6, v0
+    invoke-interface {v0}, Ljava/util/List;->size()I
 
+    move-result v6
+
+    .line 198
+    .local v6, groupSize:I
+    const/4 v7, 0x0
+
+    .local v7, i:I
     :goto_0
-    if-lt v6, v9, :cond_0
+    if-ge v7, v6, :cond_0
 
-    return-void
+    .line 199
+    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingTop:I
 
-    :cond_0
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->i:I
+    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->maxBarHeight:I
 
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
-
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->n:I
+    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalSpace:I
 
     add-int/2addr v1, v2
 
-    mul-int/2addr v1, v6
+    mul-int/2addr v1, v7
 
     add-int/2addr v0, v1
 
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->n:I
+    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalSpace:I
 
     div-int/lit8 v1, v1, 0x2
 
-    sub-int/2addr v0, v1
+    sub-int v10, v0, v1
 
-    int-to-float v1, v7
+    .line 200
+    .local v10, top:I
+    int-to-float v1, v8
 
-    int-to-float v2, v0
+    int-to-float v2, v10
 
-    int-to-float v3, v8
+    int-to-float v3, v9
 
-    int-to-float v4, v0
+    int-to-float v4, v10
 
-    iget-object v5, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->r:Landroid/graphics/Paint;
+    iget-object v5, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->mPaintMoney:Landroid/graphics/Paint;
 
     move-object v0, p1
 
     invoke-virtual/range {v0 .. v5}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
 
-    add-int/lit8 v0, v6, 0x1
-
-    move v6, v0
-
-    goto :goto_0
-.end method
-
-.method private d(Landroid/graphics/Canvas;)V
-    .locals 11
-
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
-
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->m:I
-
-    add-int v3, v0, v1
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->a:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/model/e;->f()I
-
-    move-result v4
-
-    const/4 v0, 0x0
-
-    move v2, v0
-
-    :goto_0
-    if-lt v2, v4, :cond_0
-
-    return-void
-
-    :cond_0
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->p:I
-
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->o:I
-
-    add-int/2addr v0, v1
-
-    mul-int/2addr v0, v2
-
-    add-int v5, v3, v0
-
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->p:I
-
-    add-int v6, v5, v0
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->b:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->size()I
-
-    move-result v7
-
-    add-int/lit8 v0, v7, -0x1
-
-    move v1, v0
-
-    :goto_1
-    if-gez v1, :cond_1
-
-    add-int/lit8 v0, v2, 0x1
-
-    move v2, v0
+    .line 198
+    add-int/lit8 v7, v7, 0x1
 
     goto :goto_0
 
-    :cond_1
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->b:Ljava/util/List;
-
-    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lcom/zhangdan/app/data/model/d;
-
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/model/d;->c()I
-
-    move-result v0
-
-    if-ge v2, v0, :cond_2
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->h:[Landroid/graphics/drawable/Drawable;
-
-    rem-int/lit8 v8, v1, 0x5
-
-    aget-object v0, v0, v8
-
-    iget v8, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
-
-    iget v9, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
-
-    iget v10, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->n:I
-
-    add-int/2addr v9, v10
-
-    sub-int v10, v7, v1
-
-    add-int/lit8 v10, v10, -0x1
-
-    mul-int/2addr v9, v10
-
-    sub-int/2addr v8, v9
-
-    iget v9, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->q:I
-
-    sub-int v9, v8, v9
-
-    invoke-virtual {v0, v5, v9, v6, v8}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
-
-    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    :cond_2
-    add-int/lit8 v0, v1, -0x1
-
-    move v1, v0
-
-    goto :goto_1
-.end method
-
-.method private e(Landroid/graphics/Canvas;)V
-    .locals 17
-
-    const/4 v1, 0x0
-
-    move-object/from16 v0, p0
-
-    iget-object v2, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->b:Ljava/util/List;
-
-    invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v2
-
-    :goto_0
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v3
-
-    if-nez v3, :cond_2
-
-    :cond_0
-    if-nez v1, :cond_3
-
-    :cond_1
-    return-void
-
-    :cond_2
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Lcom/zhangdan/app/data/model/d;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/d;->f()[I
-
-    move-result-object v1
-
-    if-nez v1, :cond_0
-
-    goto :goto_0
-
-    :cond_3
-    const/4 v2, 0x0
-
-    aget v3, v1, v2
-
-    const/4 v2, 0x1
-
-    aget v2, v1, v2
-
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->s:Landroid/graphics/Paint;
-
-    invoke-virtual {v1}, Landroid/graphics/Paint;->getFontMetrics()Landroid/graphics/Paint$FontMetrics;
-
-    move-result-object v1
-
-    iget v4, v1, Landroid/graphics/Paint$FontMetrics;->bottom:F
-
-    iget v1, v1, Landroid/graphics/Paint$FontMetrics;->top:F
-
-    sub-float/2addr v4, v1
-
-    move-object/from16 v0, p0
-
-    iget v1, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
-
-    move-object/from16 v0, p0
-
-    iget v5, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->m:I
-
-    add-int/2addr v5, v1
-
-    move-object/from16 v0, p0
-
-    iget v1, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
-
-    int-to-float v1, v1
-
-    add-float v6, v1, v4
-
-    move-object/from16 v0, p0
-
-    iget-object v1, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->a:Lcom/zhangdan/app/data/model/e;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/e;->f()I
-
-    move-result v7
-
-    const/4 v1, 0x0
-
-    move/from16 v16, v1
-
-    move v1, v2
-
-    move v2, v3
-
-    move/from16 v3, v16
-
-    :goto_1
-    if-ge v3, v7, :cond_1
-
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
-
-    move-result-object v9
-
-    invoke-direct {v8, v9}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    const-string v9, "\u6708"
-
-    invoke-virtual {v8, v9}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    move-object/from16 v0, p0
-
-    iget-object v9, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->s:Landroid/graphics/Paint;
-
-    invoke-virtual {v9, v8}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
-
-    move-result v9
-
-    move-object/from16 v0, p0
-
-    iget v10, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->p:I
-
-    move-object/from16 v0, p0
-
-    iget v11, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->o:I
-
-    add-int/2addr v10, v11
-
-    mul-int/2addr v10, v3
-
-    add-int/2addr v10, v5
-
-    int-to-float v11, v10
-
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->p:I
-
-    int-to-float v12, v12
-
-    sub-float v9, v12, v9
-
-    const/high16 v12, 0x4000
-
-    div-float/2addr v9, v12
-
-    add-float/2addr v9, v11
-
-    move-object/from16 v0, p0
-
-    iget-object v11, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->s:Landroid/graphics/Paint;
-
-    move-object/from16 v0, p1
-
-    invoke-virtual {v0, v8, v9, v6, v11}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-
-    if-eqz v3, :cond_4
-
-    const/4 v8, 0x1
-
-    if-ne v1, v8, :cond_4
-
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    invoke-static {v2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
-
-    move-result-object v11
-
-    invoke-direct {v8, v11}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    const-string v11, "\u5e74->"
-
-    invoke-virtual {v8, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v8
-
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v8
-
-    add-float v11, v6, v4
-
-    move-object/from16 v0, p0
-
-    iget-object v12, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->s:Landroid/graphics/Paint;
-
-    move-object/from16 v0, p1
-
-    invoke-virtual {v0, v8, v9, v11, v12}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-
-    move-object/from16 v0, p0
-
-    iget v8, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->o:I
-
-    div-int/lit8 v8, v8, 0x2
-
-    sub-int v8, v10, v8
-
-    move-object/from16 v0, p0
-
-    iget-object v9, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->f:Landroid/graphics/drawable/Drawable;
-
-    move-object/from16 v0, p0
-
-    iget v10, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
-
-    move-object/from16 v0, p0
-
-    iget-object v11, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->f:Landroid/graphics/drawable/Drawable;
-
-    invoke-virtual {v11}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
-
-    move-result v11
-
-    add-int/2addr v11, v8
-
-    move-object/from16 v0, p0
-
-    iget v12, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
-
-    const/high16 v13, 0x4000
-
-    mul-float/2addr v13, v4
-
-    const/high16 v14, 0x40a0
-
-    move-object/from16 v0, p0
-
-    iget v15, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->c:F
-
-    mul-float/2addr v14, v15
-
-    add-float/2addr v13, v14
-
-    float-to-int v13, v13
-
-    add-int/2addr v12, v13
-
-    invoke-virtual {v9, v8, v10, v11, v12}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
-
-    move-object/from16 v0, p0
-
-    iget-object v8, v0, Lcom/zhangdan/app/activities/stage/CardStageView;->f:Landroid/graphics/drawable/Drawable;
-
-    move-object/from16 v0, p1
-
-    invoke-virtual {v8, v0}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
-
-    :cond_4
-    add-int/lit8 v1, v1, 0x1
-
-    const/16 v8, 0xc
-
-    if-le v1, v8, :cond_5
-
-    const/4 v1, 0x1
-
-    add-int/lit8 v2, v2, 0x1
-
-    :cond_5
-    add-int/lit8 v3, v3, 0x1
-
-    goto/16 :goto_1
-.end method
-
-
-# virtual methods
-.method public final a()V
-    .locals 1
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->u:Landroid/graphics/Bitmap;
-
-    if-eqz v0, :cond_0
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->u:Landroid/graphics/Bitmap;
-
-    invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
-
-    const/4 v0, 0x0
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->u:Landroid/graphics/Bitmap;
-
+    .line 202
+    .end local v10           #top:I
     :cond_0
     return-void
 .end method
 
 .method protected onDraw(Landroid/graphics/Canvas;)V
-    .locals 4
+    .locals 3
+    .parameter "canvas"
 
-    const/4 v3, 0x0
+    .prologue
+    const/4 v2, 0x0
 
+    .line 119
     invoke-super {p0, p1}, Landroid/view/View;->onDraw(Landroid/graphics/Canvas;)V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->u:Landroid/graphics/Bitmap;
+    .line 120
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bmp:Landroid/graphics/Bitmap;
 
     if-nez v0, :cond_0
 
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageView;->getWidth()I
-
-    move-result v0
-
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/stage/CardStageView;->getHeight()I
-
-    move-result v1
-
-    sget-object v2, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    invoke-static {v0, v1, v2}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    .line 121
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/stage/CardStageView;->generateBmp()Landroid/graphics/Bitmap;
 
     move-result-object v0
 
-    new-instance v1, Landroid/graphics/Canvas;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bmp:Landroid/graphics/Bitmap;
 
-    invoke-direct {v1, v0}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
-
-    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->a(Landroid/graphics/Canvas;)V
-
-    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->b(Landroid/graphics/Canvas;)V
-
-    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->c(Landroid/graphics/Canvas;)V
-
-    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->d(Landroid/graphics/Canvas;)V
-
-    invoke-direct {p0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->e(Landroid/graphics/Canvas;)V
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->u:Landroid/graphics/Bitmap;
-
+    .line 123
     :cond_0
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->u:Landroid/graphics/Bitmap;
+    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bmp:Landroid/graphics/Bitmap;
 
     const/4 v1, 0x0
 
-    invoke-virtual {p1, v0, v3, v3, v1}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
+    invoke-virtual {p1, v0, v2, v2, v1}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;FFLandroid/graphics/Paint;)V
 
+    .line 124
     return-void
 .end method
 
 .method protected onMeasure(II)V
-    .locals 4
+    .locals 5
+    .parameter "widthMeasureSpec"
+    .parameter "heightMeasureSpec"
 
+    .prologue
+    .line 108
     invoke-super {p0, p1, p2}, Landroid/view/View;->onMeasure(II)V
 
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->l:I
+    .line 109
+    iget v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->bgHeight:I
 
-    iget v1, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->k:I
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingBottom:I
 
-    add-int/2addr v1, v0
+    add-int v0, v3, v4
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->a:Lcom/zhangdan/app/data/model/e;
+    .line 110
+    .local v0, height:I
+    iget-object v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->billStageInfo:Lcom/zhangdan/app/data/model/BillStageInfo;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/data/model/e;->f()I
+    invoke-virtual {v3}, Lcom/zhangdan/app/data/model/BillStageInfo;->getMaxPeriodCount()I
 
-    move-result v0
+    move-result v1
 
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->j:I
+    .line 111
+    .local v1, maxPeriod:I
+    iget v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->paddingLeft:I
 
-    iget v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->m:I
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->verticalLineMargin:I
 
-    add-int/2addr v2, v3
+    add-int/2addr v3, v4
 
-    iget v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->p:I
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->barWidth:I
 
-    mul-int/2addr v3, v0
+    mul-int/2addr v4, v1
 
-    add-int/2addr v2, v3
+    add-int/2addr v3, v4
 
-    iget v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->o:I
+    iget v4, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->horizontalSpace:I
 
-    mul-int/2addr v0, v3
+    mul-int/2addr v4, v1
 
-    add-int/2addr v0, v2
+    add-int v2, v3, v4
 
-    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->d:I
+    .line 112
+    .local v2, width:I
+    iget v3, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->screenWidth:I
 
-    if-ge v0, v2, :cond_0
+    if-ge v2, v3, :cond_0
 
-    iget v0, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->d:I
+    .line 113
+    iget v2, p0, Lcom/zhangdan/app/activities/stage/CardStageView;->screenWidth:I
 
+    .line 114
     :cond_0
-    invoke-virtual {p0, v0, v1}, Lcom/zhangdan/app/activities/stage/CardStageView;->setMeasuredDimension(II)V
+    invoke-virtual {p0, v2, v0}, Lcom/zhangdan/app/activities/stage/CardStageView;->setMeasuredDimension(II)V
 
+    .line 115
     return-void
 .end method

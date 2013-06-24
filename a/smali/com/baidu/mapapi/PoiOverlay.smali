@@ -2,6 +2,17 @@
 .super Lcom/baidu/mapapi/ItemizedOverlay;
 
 
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/baidu/mapapi/ItemizedOverlay",
+        "<",
+        "Lcom/baidu/mapapi/OverlayItem;",
+        ">;"
+    }
+.end annotation
+
+
 # instance fields
 .field private a:Lcom/baidu/mapapi/MapView;
 
@@ -12,6 +23,15 @@
 .field private d:Lcom/baidu/mapapi/MKSearch;
 
 .field public mList:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiInfo;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field public mUseToast:Z
 
@@ -310,6 +330,15 @@
 
 .method public setData(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKPoiInfo;",
+            ">;)V"
+        }
+    .end annotation
 
     if-eqz p1, :cond_0
 

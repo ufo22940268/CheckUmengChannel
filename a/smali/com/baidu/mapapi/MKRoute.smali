@@ -14,6 +14,17 @@
 
 # instance fields
 .field a:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;>;"
+        }
+    .end annotation
+.end field
 
 .field private b:I
 
@@ -26,8 +37,28 @@
 .field private f:Lcom/baidu/mapapi/GeoPoint;
 
 .field private g:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;>;"
+        }
+    .end annotation
+.end field
 
 .field private h:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKStep;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private i:Ljava/lang/String;
 
@@ -77,6 +108,15 @@
 
 .method a(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKStep;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKRoute;->h:Ljava/util/ArrayList;
 
@@ -101,6 +141,17 @@
 
 .method b(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;>;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKRoute;->g:Ljava/util/ArrayList;
 
@@ -109,6 +160,17 @@
 
 .method public getArrayPoints()Ljava/util/ArrayList;
     .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/GeoPoint;",
+            ">;>;"
+        }
+    .end annotation
 
     iget-object v0, p0, Lcom/baidu/mapapi/MKRoute;->g:Ljava/util/ArrayList;
 

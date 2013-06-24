@@ -6,13 +6,13 @@
 .method public abstract a(Lcom/igexin/a/a/d;)Lcom/igexin/a/a/b;
 .end method
 
+.method public abstract a(Ljava/lang/String;Ljava/lang/String;)Lcom/igexin/a/a/b;
+.end method
+
 .method public abstract a(Ljava/net/URL;)Lcom/igexin/a/a/b;
 .end method
 
 .method public abstract a()Ljava/net/URL;
-.end method
-
-.method public abstract b(Ljava/lang/String;Ljava/lang/String;)Lcom/igexin/a/a/b;
 .end method
 
 .method public abstract b()Lcom/igexin/a/a/d;

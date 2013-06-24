@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/sdk/coordinator/b;
+.class public Lcom/igexin/sdk/coordinator/b;
 .super Ljava/lang/Object;
 
 
@@ -46,7 +46,7 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;)Lcom/igexin/sdk/coordinator/a;
+.method public a(Ljava/lang/String;)Lcom/igexin/sdk/coordinator/a;
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/sdk/coordinator/b;->b:Ljava/util/Map;
@@ -60,7 +60,7 @@
     return-object v0
 .end method
 
-.method public final a(Ljava/lang/String;Lcom/igexin/sdk/coordinator/a;)V
+.method public a(Ljava/lang/String;Lcom/igexin/sdk/coordinator/a;)V
     .locals 1
 
     iget-object v0, p0, Lcom/igexin/sdk/coordinator/b;->b:Ljava/util/Map;

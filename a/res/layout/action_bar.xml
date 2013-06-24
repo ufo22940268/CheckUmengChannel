@@ -7,7 +7,7 @@
         <TextView android:layout_gravity="center_horizontal" android:id="@id/ab_city" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/CustomText.White" />
         <TextView android:layout_gravity="center_horizontal" android:id="@id/ab_street" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/CustomTextExSmall.White" />
     </LinearLayout>
-    <TextView android:id="@id/ab_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="@android:color/black" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_centerInParent="true" style="@style/CustomText.White" />
+    <TextView android:id="@id/ab_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="@*android:color/black" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_centerInParent="true" style="@style/CustomText.White" />
     <ImageView android:id="@id/ab_right" android:layout_width="@dimen/ab_icon_size" android:layout_height="@dimen/ab_icon_size" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     <ImageView android:id="@id/map" android:visibility="invisible" android:layout_width="@dimen/ab_icon_size" android:layout_height="@dimen/ab_icon_size" android:layout_marginRight="6.0dip" android:src="@drawable/map_icon" android:layout_toLeftOf="@id/ab_right" android:layout_centerVertical="true" />
 </RelativeLayout>

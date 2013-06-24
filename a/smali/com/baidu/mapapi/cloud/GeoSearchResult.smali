@@ -6,6 +6,15 @@
 .field public message:Ljava/lang/String;
 
 .field public poiList:Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/List",
+            "<",
+            "Lcom/baidu/mapapi/cloud/CustomPoiInfo;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field public size:I
 

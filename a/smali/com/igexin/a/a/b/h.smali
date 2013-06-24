@@ -1,4 +1,4 @@
-.class public final Lcom/igexin/a/a/b/h;
+.class public Lcom/igexin/a/a/b/h;
 .super Lcom/igexin/a/a/b/l;
 
 
@@ -8,7 +8,7 @@
 
     invoke-direct {p0, p4}, Lcom/igexin/a/a/b/l;-><init>(Ljava/lang/String;)V
 
-    invoke-static {p1}, Lcom/igexin/a/a/a/i;->a(Ljava/lang/String;)V
+    invoke-static {p1}, Lcom/igexin/a/a/a/k;->a(Ljava/lang/String;)V
 
     const-string v0, "name"
 
@@ -27,7 +27,7 @@
 
 
 # virtual methods
-.method public final a()Ljava/lang/String;
+.method public a()Ljava/lang/String;
     .locals 1
 
     const-string v0, "#doctype"
@@ -35,7 +35,7 @@
     return-object v0
 .end method
 
-.method final a(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
+.method a(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
     .locals 2
 
     const-string v0, "<!DOCTYPE "
@@ -58,7 +58,7 @@
 
     move-result-object v0
 
-    invoke-static {v0}, Lcom/igexin/a/a/a/h;->a(Ljava/lang/String;)Z
+    invoke-static {v0}, Lcom/igexin/a/a/a/j;->a(Ljava/lang/String;)Z
 
     move-result v0
 
@@ -91,7 +91,7 @@
 
     move-result-object v0
 
-    invoke-static {v0}, Lcom/igexin/a/a/a/h;->a(Ljava/lang/String;)Z
+    invoke-static {v0}, Lcom/igexin/a/a/a/j;->a(Ljava/lang/String;)Z
 
     move-result v0
 
@@ -125,7 +125,7 @@
     return-void
 .end method
 
-.method final b(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
+.method b(Ljava/lang/StringBuilder;ILcom/igexin/a/a/b/f;)V
     .locals 0
 
     return-void

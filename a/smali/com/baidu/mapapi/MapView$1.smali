@@ -5,6 +5,17 @@
 .implements Landroid/view/View$OnClickListener;
 
 
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/baidu/mapapi/MapView;->a()Z
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+
 # instance fields
 .field final synthetic a:Lcom/baidu/mapapi/MapView;
 

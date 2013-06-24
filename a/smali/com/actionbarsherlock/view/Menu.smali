@@ -1,5 +1,6 @@
 .class public interface abstract Lcom/actionbarsherlock/view/Menu;
 .super Ljava/lang/Object;
+.source "Menu.java"
 
 
 # static fields

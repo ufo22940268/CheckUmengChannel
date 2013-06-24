@@ -1,4 +1,4 @@
-.class public final Lsdk/c/b/a/b/c;
+.class public Lsdk/c/b/a/b/c;
 .super Ljava/lang/Object;
 
 
@@ -45,44 +45,8 @@
 
 
 # virtual methods
-.method public final a()I
-    .locals 2
-
-    iget v0, p0, Lsdk/c/b/a/b/c;->e:I
-
-    iget-byte v1, p0, Lsdk/c/b/a/b/c;->g:B
-
-    or-int/2addr v0, v1
-
-    iput v0, p0, Lsdk/c/b/a/b/c;->e:I
-
-    iget v0, p0, Lsdk/c/b/a/b/c;->e:I
-
-    iget-byte v1, p0, Lsdk/c/b/a/b/c;->h:B
-
-    or-int/2addr v0, v1
-
-    iput v0, p0, Lsdk/c/b/a/b/c;->e:I
-
-    iget v0, p0, Lsdk/c/b/a/b/c;->e:I
-
-    iget-byte v1, p0, Lsdk/c/b/a/b/c;->i:B
-
-    or-int/2addr v0, v1
-
-    iput v0, p0, Lsdk/c/b/a/b/c;->e:I
-
-    iget v0, p0, Lsdk/c/b/a/b/c;->e:I
-
-    return v0
-.end method
-
-.method public final a(B)V
+.method public a()V
     .locals 1
-
-    and-int/lit16 v0, p1, 0xff
-
-    iput v0, p0, Lsdk/c/b/a/b/c;->e:I
 
     iget v0, p0, Lsdk/c/b/a/b/c;->e:I
 
@@ -109,4 +73,56 @@
     iput-byte v0, p0, Lsdk/c/b/a/b/c;->i:B
 
     return-void
+.end method
+
+.method public a(B)V
+    .locals 1
+
+    and-int/lit16 v0, p1, 0xff
+
+    iput v0, p0, Lsdk/c/b/a/b/c;->e:I
+
+    invoke-virtual {p0}, Lsdk/c/b/a/b/c;->a()V
+
+    return-void
+.end method
+
+.method public b()V
+    .locals 2
+
+    iget v0, p0, Lsdk/c/b/a/b/c;->e:I
+
+    iget-byte v1, p0, Lsdk/c/b/a/b/c;->g:B
+
+    or-int/2addr v0, v1
+
+    iput v0, p0, Lsdk/c/b/a/b/c;->e:I
+
+    iget v0, p0, Lsdk/c/b/a/b/c;->e:I
+
+    iget-byte v1, p0, Lsdk/c/b/a/b/c;->h:B
+
+    or-int/2addr v0, v1
+
+    iput v0, p0, Lsdk/c/b/a/b/c;->e:I
+
+    iget v0, p0, Lsdk/c/b/a/b/c;->e:I
+
+    iget-byte v1, p0, Lsdk/c/b/a/b/c;->i:B
+
+    or-int/2addr v0, v1
+
+    iput v0, p0, Lsdk/c/b/a/b/c;->e:I
+
+    return-void
+.end method
+
+.method public c()I
+    .locals 1
+
+    invoke-virtual {p0}, Lsdk/c/b/a/b/c;->b()V
+
+    iget v0, p0, Lsdk/c/b/a/b/c;->e:I
+
+    return v0
 .end method

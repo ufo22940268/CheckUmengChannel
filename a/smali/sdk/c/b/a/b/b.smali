@@ -17,14 +17,16 @@
     return-void
 .end method
 
-.method protected static a(Ljava/lang/String;)I
+
+# virtual methods
+.method protected a(Ljava/lang/String;)I
     .locals 2
 
     const/4 v0, 0x1
 
     const-string v1, "UTF-8"
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -37,7 +39,7 @@
     :cond_1
     const-string v1, "UTF-16"
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -50,7 +52,7 @@
     :cond_2
     const-string v1, "UTF-16BE"
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -63,7 +65,7 @@
     :cond_3
     const-string v1, "UTF-16LE"
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -76,7 +78,7 @@
     :cond_4
     const-string v1, "GBK"
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -89,7 +91,7 @@
     :cond_5
     const-string v1, "GB2312"
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -102,7 +104,7 @@
     :cond_6
     const-string v1, "GB18030"
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -115,7 +117,7 @@
     :cond_7
     const-string v1, "ISO-8859-1"
 
-    invoke-virtual {p0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -126,10 +128,10 @@
     goto :goto_0
 .end method
 
-.method protected static a(B)Ljava/lang/String;
+.method protected a(B)Ljava/lang/String;
     .locals 1
 
-    and-int/lit8 v0, p0, 0x3f
+    and-int/lit8 v0, p1, 0x3f
 
     sparse-switch v0, :sswitch_data_0
 
@@ -191,18 +193,16 @@
     .end sparse-switch
 .end method
 
-
-# virtual methods
 .method public abstract a([B)V
 .end method
 
-.method public abstract a()[B
-.end method
-
-.method public final b()I
+.method public b()I
     .locals 1
 
     iget v0, p0, Lsdk/c/b/a/b/b;->j:I
 
     return v0
+.end method
+
+.method public abstract c()[B
 .end method

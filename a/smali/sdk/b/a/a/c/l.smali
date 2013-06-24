@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/c/l;
+.class public Lsdk/b/a/a/c/l;
 .super Ljava/lang/Object;
 
 
@@ -66,7 +66,7 @@
 
 
 # virtual methods
-.method public final a(Ljava/util/List;Lsdk/b/a/a/b/j;Ljava/lang/String;)I
+.method public a(Ljava/util/List;Lsdk/b/a/a/b/j;Ljava/lang/String;)I
     .locals 16
 
     if-eqz p3, :cond_0
@@ -96,7 +96,7 @@
 
     iget-object v1, v1, Lcom/igexin/sdk/SdkMainService;->h:Lsdk/b/a/a/c/m;
 
-    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->i()Ljava/lang/String;
+    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->h()Ljava/lang/String;
 
     move-result-object v2
 
@@ -104,11 +104,11 @@
 
     move-result v3
 
-    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->i()Ljava/lang/String;
+    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->h()Ljava/lang/String;
 
     move-result-object v4
 
-    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->e()J
+    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->d()J
 
     move-result-wide v1
 
@@ -116,13 +116,13 @@
 
     div-long v6, v1, v5
 
-    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->d()I
+    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->c()I
 
     move-result v1
 
     int-to-long v8, v1
 
-    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->g()I
+    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->f()I
 
     move-result v1
 
@@ -133,7 +133,11 @@
     const/4 v1, 0x1
 
     :goto_1
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v2, "GexinSdk"
+
+    const-string v5, "begin."
+
+    invoke-static {v2, v5}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     const/4 v2, -0x1
 
@@ -289,7 +293,7 @@
 
     const-string v3, "m_size"
 
-    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->k()I
+    invoke-virtual/range {p2 .. p2}, Lsdk/b/a/a/b/j;->j()I
 
     move-result v5
 
@@ -345,23 +349,31 @@
     goto :goto_3
 
     :cond_4
-    new-instance v5, Ljava/lang/StringBuilder;
+    const-string v5, "GexinSdk"
 
-    const-string v6, "pdu uri : "
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v3}, Landroid/net/Uri;->toString()Ljava/lang/String;
+    const-string v7, "pdu uri : "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v6
 
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3}, Landroid/net/Uri;->toString()Ljava/lang/String;
 
-    move-result-object v5
+    move-result-object v7
 
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-static {v5, v6}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-virtual {v3}, Landroid/net/Uri;->toString()Ljava/lang/String;
 
@@ -387,25 +399,37 @@
 
     move-result v5
 
+    const-string v3, "GexinSdk"
+
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v7, "pduID : "
+
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-static {v3, v6}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
     new-instance v3, Ljava/lang/StringBuilder;
 
-    const-string v6, "pduID : "
-
-    invoke-direct {v3, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
-
-    new-instance v3, Ljava/lang/StringBuilder;
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v6, "content://mms/"
 
-    invoke-direct {v3, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v3, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
 
     invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -529,9 +553,13 @@
 
     new-instance v1, Ljava/lang/StringBuilder;
 
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v3, "content://mms/"
 
-    invoke-direct {v1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
 
     invoke-virtual {v1, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
@@ -755,9 +783,13 @@
 
     new-instance v11, Ljava/lang/StringBuilder;
 
+    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+
     const-string v12, "<"
 
-    invoke-direct {v11, v12}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v11, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v11
 
     const/4 v12, 0x0
 
@@ -806,23 +838,35 @@
 
     move-result-object v12
 
-    new-instance v13, Ljava/lang/StringBuilder;
+    const-string v13, "GexinSdk"
 
-    const-string v14, "part uri : "
+    new-instance v14, Ljava/lang/StringBuilder;
 
-    invoke-direct {v13, v14}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v14}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v13, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v15, "part uri : "
 
-    move-result-object v13
+    invoke-virtual {v14, v15}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    invoke-virtual {v13}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result-object v14
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v14, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v14
+
+    invoke-virtual {v14}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v14
+
+    invoke-static {v13, v14}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     if-eqz v3, :cond_b
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v1, "GexinSdk"
+
+    const-string v3, "text is not null, continue."
+
+    invoke-static {v1, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     goto/16 :goto_6
 
@@ -850,25 +894,37 @@
 
     move-result v3
 
+    const-string v12, "GexinSdk"
+
+    new-instance v13, Ljava/lang/StringBuilder;
+
+    invoke-direct {v13}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v14, "partID : "
+
+    invoke-virtual {v13, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v13
+
+    invoke-virtual {v13, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v13
+
+    invoke-virtual {v13}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v13
+
+    invoke-static {v12, v13}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
+
     new-instance v12, Ljava/lang/StringBuilder;
 
-    const-string v13, "partID : "
-
-    invoke-direct {v12, v13}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v12, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v12
-
-    invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
-
-    new-instance v12, Ljava/lang/StringBuilder;
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
 
     const-string v13, "/data/data/com.android.providers.telephony/app_parts/PART_"
 
-    invoke-direct {v12, v13}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v12
 
     invoke-virtual {v12, v8, v9}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
@@ -918,19 +974,27 @@
 
     move-result v3
 
-    new-instance v7, Ljava/lang/StringBuilder;
+    const-string v7, "GexinSdk"
 
-    const-string v12, "part update : "
+    new-instance v12, Ljava/lang/StringBuilder;
 
-    invoke-direct {v7, v12}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v12}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-virtual {v7, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string v13, "part update : "
+
+    invoke-virtual {v12, v13}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v12
+
+    invoke-virtual {v12, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     move-result-object v3
 
     invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    move-result-object v3
+
+    invoke-static {v7, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     move-object/from16 v0, p0
 
@@ -952,7 +1016,11 @@
 
     if-nez v1, :cond_6
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v1, "GexinSdk"
+
+    const-string v3, "save into sys db failed."
+
+    invoke-static {v1, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     goto/16 :goto_6
 
@@ -970,7 +1038,11 @@
     invoke-virtual {v1, v2}, Lsdk/b/a/a/c/m;->b(I)I
 
     :cond_d
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v1, "GexinSdk"
+
+    const-string v2, "end."
+
+    invoke-static {v1, v2}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     move v1, v5
 

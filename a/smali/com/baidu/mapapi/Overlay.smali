@@ -2,6 +2,14 @@
 .super Ljava/lang/Object;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/Overlay$Snappable;
+    }
+.end annotation
+
+
 # static fields
 .field protected static final SHADOW_X_SKEW:F = -0.9f
 

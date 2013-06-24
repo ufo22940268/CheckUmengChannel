@@ -1,5 +1,14 @@
 .class public interface abstract Lcom/actionbarsherlock/internal/view/menu/MenuPresenter;
 .super Ljava/lang/Object;
+.source "MenuPresenter.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/actionbarsherlock/internal/view/menu/MenuPresenter$Callback;
+    }
+.end annotation
 
 
 # virtual methods

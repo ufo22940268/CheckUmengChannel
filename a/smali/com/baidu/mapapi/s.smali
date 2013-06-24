@@ -2,6 +2,14 @@
 .super Ljava/lang/Object;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/s$a;
+    }
+.end annotation
+
+
 # static fields
 .field static b:Lcom/baidu/mapapi/s;
 
@@ -10,6 +18,15 @@
 
 # instance fields
 .field a:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/io/File;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private d:Z
 
@@ -97,10 +114,19 @@
 
     move-result v0
 
-    if-lez v0, :cond_0
+    if-lez v0, :cond_1
 
     sget-boolean v0, Lcom/baidu/mapapi/s;->c:Z
 
+    if-eqz v0, :cond_0
+
+    const-string v0, "kal"
+
+    const-string v1, "started."
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_0
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lcom/baidu/mapapi/s;->d:Z
@@ -121,7 +147,7 @@
 
     invoke-virtual {v1}, Lcom/baidu/mapapi/s$a;->start()V
 
-    :cond_0
+    :cond_1
     return-void
 .end method
 
@@ -200,13 +226,22 @@
 
     sget-boolean v0, Lcom/baidu/mapapi/s;->c:Z
 
+    if-eqz v0, :cond_0
+
+    const-string v0, "kal"
+
+    const-string v1, "stoped."
+
+    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    :cond_0
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/baidu/mapapi/s;->d:Z
 
     iget-object v0, p0, Lcom/baidu/mapapi/s;->e:Ljava/lang/String;
 
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
     new-instance v0, Ljava/io/File;
 
@@ -216,7 +251,7 @@
 
     invoke-direct {p0, v0}, Lcom/baidu/mapapi/s;->b(Ljava/io/File;)V
 
-    :cond_0
+    :cond_1
     return-void
 .end method
 
@@ -309,8 +344,6 @@
 
     :cond_0
     monitor-exit v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     return-void
 
@@ -318,6 +351,8 @@
     move-exception v0
 
     monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
 .end method

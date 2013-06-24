@@ -1,5 +1,6 @@
 .class Landroid/support/v4/app/NotificationCompatJellybean;
 .super Ljava/lang/Object;
+.source "NotificationCompatJellybean.java"
 
 
 # instance fields
@@ -9,9 +10,28 @@
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/app/Notification;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/widget/RemoteViews;ILandroid/app/PendingIntent;Landroid/app/PendingIntent;Landroid/graphics/Bitmap;IIZZILjava/lang/CharSequence;)V
     .locals 7
+    .parameter "context"
+    .parameter "n"
+    .parameter "contentTitle"
+    .parameter "contentText"
+    .parameter "contentInfo"
+    .parameter "tickerView"
+    .parameter "number"
+    .parameter "contentIntent"
+    .parameter "fullScreenIntent"
+    .parameter "largeIcon"
+    .parameter "mProgressMax"
+    .parameter "mProgress"
+    .parameter "mProgressIndeterminate"
+    .parameter "useChronometer"
+    .parameter "priority"
+    .parameter "subText"
 
+    .prologue
+    .line 33
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 34
     new-instance v3, Landroid/app/Notification$Builder;
 
     invoke-direct {v3, p1}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;)V
@@ -188,8 +208,10 @@
 
     iput-object v3, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
 
+    .line 59
     return-void
 
+    .line 34
     :cond_0
     const/4 v3, 0x0
 
@@ -215,103 +237,157 @@
 # virtual methods
 .method public addAction(ILjava/lang/CharSequence;Landroid/app/PendingIntent;)V
     .locals 1
+    .parameter "icon"
+    .parameter "title"
+    .parameter "intent"
 
+    .prologue
+    .line 62
     iget-object v0, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
 
     invoke-virtual {v0, p1, p2, p3}, Landroid/app/Notification$Builder;->addAction(ILjava/lang/CharSequence;Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
 
+    .line 63
     return-void
 .end method
 
 .method public addBigPictureStyle(Ljava/lang/CharSequence;ZLjava/lang/CharSequence;Landroid/graphics/Bitmap;)V
-    .locals 2
+    .locals 3
+    .parameter "bigContentTitle"
+    .parameter "useSummary"
+    .parameter "summaryText"
+    .parameter "bigPicture"
 
-    new-instance v0, Landroid/app/Notification$BigPictureStyle;
+    .prologue
+    .line 77
+    new-instance v1, Landroid/app/Notification$BigPictureStyle;
 
-    iget-object v1, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
+    iget-object v2, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
 
-    invoke-direct {v0, v1}, Landroid/app/Notification$BigPictureStyle;-><init>(Landroid/app/Notification$Builder;)V
+    invoke-direct {v1, v2}, Landroid/app/Notification$BigPictureStyle;-><init>(Landroid/app/Notification$Builder;)V
 
-    invoke-virtual {v0, p1}, Landroid/app/Notification$BigPictureStyle;->setBigContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$BigPictureStyle;
+    invoke-virtual {v1, p1}, Landroid/app/Notification$BigPictureStyle;->setBigContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$BigPictureStyle;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p4}, Landroid/app/Notification$BigPictureStyle;->bigPicture(Landroid/graphics/Bitmap;)Landroid/app/Notification$BigPictureStyle;
 
     move-result-object v0
 
-    invoke-virtual {v0, p4}, Landroid/app/Notification$BigPictureStyle;->bigPicture(Landroid/graphics/Bitmap;)Landroid/app/Notification$BigPictureStyle;
-
-    move-result-object v0
-
+    .line 80
+    .local v0, style:Landroid/app/Notification$BigPictureStyle;
     if-eqz p2, :cond_0
 
+    .line 81
     invoke-virtual {v0, p3}, Landroid/app/Notification$BigPictureStyle;->setSummaryText(Ljava/lang/CharSequence;)Landroid/app/Notification$BigPictureStyle;
 
+    .line 83
     :cond_0
     return-void
 .end method
 
 .method public addBigTextStyle(Ljava/lang/CharSequence;ZLjava/lang/CharSequence;Ljava/lang/CharSequence;)V
-    .locals 2
+    .locals 3
+    .parameter "bigContentTitle"
+    .parameter "useSummary"
+    .parameter "summaryText"
+    .parameter "bigText"
 
-    new-instance v0, Landroid/app/Notification$BigTextStyle;
+    .prologue
+    .line 67
+    new-instance v1, Landroid/app/Notification$BigTextStyle;
 
-    iget-object v1, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
+    iget-object v2, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
 
-    invoke-direct {v0, v1}, Landroid/app/Notification$BigTextStyle;-><init>(Landroid/app/Notification$Builder;)V
+    invoke-direct {v1, v2}, Landroid/app/Notification$BigTextStyle;-><init>(Landroid/app/Notification$Builder;)V
 
-    invoke-virtual {v0, p1}, Landroid/app/Notification$BigTextStyle;->setBigContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$BigTextStyle;
+    invoke-virtual {v1, p1}, Landroid/app/Notification$BigTextStyle;->setBigContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$BigTextStyle;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p4}, Landroid/app/Notification$BigTextStyle;->bigText(Ljava/lang/CharSequence;)Landroid/app/Notification$BigTextStyle;
 
     move-result-object v0
 
-    invoke-virtual {v0, p4}, Landroid/app/Notification$BigTextStyle;->bigText(Ljava/lang/CharSequence;)Landroid/app/Notification$BigTextStyle;
-
-    move-result-object v0
-
+    .line 70
+    .local v0, style:Landroid/app/Notification$BigTextStyle;
     if-eqz p2, :cond_0
 
+    .line 71
     invoke-virtual {v0, p3}, Landroid/app/Notification$BigTextStyle;->setSummaryText(Ljava/lang/CharSequence;)Landroid/app/Notification$BigTextStyle;
 
+    .line 73
     :cond_0
     return-void
 .end method
 
 .method public addInboxStyle(Ljava/lang/CharSequence;ZLjava/lang/CharSequence;Ljava/util/ArrayList;)V
-    .locals 3
+    .locals 5
+    .parameter "bigContentTitle"
+    .parameter "useSummary"
+    .parameter "summaryText"
+    .parameter
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/CharSequence;",
+            "Z",
+            "Ljava/lang/CharSequence;",
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/CharSequence;",
+            ">;)V"
+        }
+    .end annotation
 
-    new-instance v0, Landroid/app/Notification$InboxStyle;
+    .prologue
+    .line 87
+    .local p4, texts:Ljava/util/ArrayList;,"Ljava/util/ArrayList<Ljava/lang/CharSequence;>;"
+    new-instance v3, Landroid/app/Notification$InboxStyle;
 
-    iget-object v1, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
+    iget-object v4, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
 
-    invoke-direct {v0, v1}, Landroid/app/Notification$InboxStyle;-><init>(Landroid/app/Notification$Builder;)V
+    invoke-direct {v3, v4}, Landroid/app/Notification$InboxStyle;-><init>(Landroid/app/Notification$Builder;)V
 
-    invoke-virtual {v0, p1}, Landroid/app/Notification$InboxStyle;->setBigContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$InboxStyle;
+    invoke-virtual {v3, p1}, Landroid/app/Notification$InboxStyle;->setBigContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$InboxStyle;
 
     move-result-object v1
 
+    .line 89
+    .local v1, style:Landroid/app/Notification$InboxStyle;
     if-eqz p2, :cond_0
 
+    .line 90
     invoke-virtual {v1, p3}, Landroid/app/Notification$InboxStyle;->setSummaryText(Ljava/lang/CharSequence;)Landroid/app/Notification$InboxStyle;
 
+    .line 92
     :cond_0
     invoke-virtual {p4}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
 
-    move-result-object v2
-
-    :goto_0
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
     move-result-object v0
 
-    check-cast v0, Ljava/lang/CharSequence;
+    .local v0, i$:Ljava/util/Iterator;
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
-    invoke-virtual {v1, v0}, Landroid/app/Notification$InboxStyle;->addLine(Ljava/lang/CharSequence;)Landroid/app/Notification$InboxStyle;
+    move-result v3
+
+    if-eqz v3, :cond_1
+
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/CharSequence;
+
+    .line 93
+    .local v2, text:Ljava/lang/CharSequence;
+    invoke-virtual {v1, v2}, Landroid/app/Notification$InboxStyle;->addLine(Ljava/lang/CharSequence;)Landroid/app/Notification$InboxStyle;
 
     goto :goto_0
 
+    .line 95
+    .end local v2           #text:Ljava/lang/CharSequence;
     :cond_1
     return-void
 .end method
@@ -319,6 +395,8 @@
 .method public build()Landroid/app/Notification;
     .locals 1
 
+    .prologue
+    .line 98
     iget-object v0, p0, Landroid/support/v4/app/NotificationCompatJellybean;->b:Landroid/app/Notification$Builder;
 
     invoke-virtual {v0}, Landroid/app/Notification$Builder;->build()Landroid/app/Notification;

@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/c/o;
+.class public Lsdk/b/a/a/c/o;
 .super Ljava/lang/Object;
 
 # interfaces
@@ -80,34 +80,7 @@
     goto :goto_1
 .end method
 
-.method public static a()Lsdk/b/a/a/c/o;
-    .locals 1
-
-    sget-object v0, Lsdk/b/a/a/c/o;->a:Lsdk/b/a/a/c/o;
-
-    return-object v0
-.end method
-
-.method public static a(Lcom/igexin/sdk/SdkMainService;)Lsdk/b/a/a/c/o;
-    .locals 1
-
-    sget-object v0, Lsdk/b/a/a/c/o;->a:Lsdk/b/a/a/c/o;
-
-    if-nez v0, :cond_0
-
-    new-instance v0, Lsdk/b/a/a/c/o;
-
-    invoke-direct {v0, p0}, Lsdk/b/a/a/c/o;-><init>(Lcom/igexin/sdk/SdkMainService;)V
-
-    sput-object v0, Lsdk/b/a/a/c/o;->a:Lsdk/b/a/a/c/o;
-
-    :cond_0
-    sget-object v0, Lsdk/b/a/a/c/o;->a:Lsdk/b/a/a/c/o;
-
-    return-object v0
-.end method
-
-.method private static b(Lsdk/b/a/a/b/q;)Landroid/content/ContentValues;
+.method public static a(Lsdk/b/a/a/b/q;)Landroid/content/ContentValues;
     .locals 4
 
     new-instance v0, Landroid/content/ContentValues;
@@ -161,9 +134,75 @@
     return-object v0
 .end method
 
+.method public static a()Lsdk/b/a/a/c/o;
+    .locals 1
+
+    sget-object v0, Lsdk/b/a/a/c/o;->a:Lsdk/b/a/a/c/o;
+
+    return-object v0
+.end method
+
+.method public static a(Lcom/igexin/sdk/SdkMainService;)Lsdk/b/a/a/c/o;
+    .locals 1
+
+    sget-object v0, Lsdk/b/a/a/c/o;->a:Lsdk/b/a/a/c/o;
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Lsdk/b/a/a/c/o;
+
+    invoke-direct {v0, p0}, Lsdk/b/a/a/c/o;-><init>(Lcom/igexin/sdk/SdkMainService;)V
+
+    sput-object v0, Lsdk/b/a/a/c/o;->a:Lsdk/b/a/a/c/o;
+
+    :cond_0
+    sget-object v0, Lsdk/b/a/a/c/o;->a:Lsdk/b/a/a/c/o;
+
+    return-object v0
+.end method
+
+.method private b(J)Lsdk/b/a/a/b/q;
+    .locals 4
+
+    iget-object v0, p0, Lsdk/b/a/a/c/o;->c:Ljava/util/List;
+
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :cond_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lsdk/b/a/a/b/q;
+
+    invoke-virtual {v0}, Lsdk/b/a/a/b/q;->a()J
+
+    move-result-wide v2
+
+    cmp-long v2, v2, p1
+
+    if-nez v2, :cond_0
+
+    :goto_0
+    return-object v0
+
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
 
 # virtual methods
-.method public final a(Landroid/database/sqlite/SQLiteDatabase;)V
+.method public a(Landroid/database/sqlite/SQLiteDatabase;)V
     .locals 1
 
     const-string v0, "create table if not exists unSendData (id integer primary key,data text,type integer,time integer)"
@@ -173,7 +212,7 @@
     return-void
 .end method
 
-.method public final a(Landroid/database/sqlite/SQLiteDatabase;Landroid/database/Cursor;)V
+.method public a(Landroid/database/sqlite/SQLiteDatabase;Landroid/database/Cursor;)V
     .locals 10
 
     :try_start_0
@@ -282,14 +321,76 @@
     throw v0
 .end method
 
-.method public final a(Lsdk/b/a/a/b/q;)V
+.method public a(J)Z
+    .locals 9
+
+    const/4 v6, 0x1
+
+    const/4 v7, 0x0
+
+    invoke-direct {p0, p1, p2}, Lsdk/b/a/a/c/o;->b(J)Lsdk/b/a/a/b/q;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_0
+
+    iget-object v0, p0, Lsdk/b/a/a/c/o;->c:Ljava/util/List;
+
+    invoke-interface {v0, v1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
+
+    iget-object v0, p0, Lsdk/b/a/a/c/o;->b:Lcom/igexin/sdk/SdkMainService;
+
+    iget-object v8, v0, Lcom/igexin/sdk/SdkMainService;->b:Lsdk/c/a/b/d;
+
+    new-instance v0, Lsdk/b/a/a/c/q;
+
+    iget-object v2, p0, Lsdk/b/a/a/c/o;->b:Lcom/igexin/sdk/SdkMainService;
+
+    invoke-static {v1}, Lsdk/b/a/a/c/o;->a(Lsdk/b/a/a/b/q;)Landroid/content/ContentValues;
+
+    move-result-object v3
+
+    move-object v1, p0
+
+    move-wide v4, p1
+
+    invoke-direct/range {v0 .. v5}, Lsdk/b/a/a/c/q;-><init>(Lsdk/b/a/a/c/o;Landroid/content/Context;Landroid/content/ContentValues;J)V
+
+    invoke-virtual {v8, v0, v6, v7}, Lsdk/c/a/b/d;->a(Lsdk/c/a/e/d;ZZ)Z
+
+    move v0, v6
+
+    :goto_0
+    return v0
+
+    :cond_0
+    move v0, v7
+
+    goto :goto_0
+.end method
+
+.method public b()Ljava/util/List;
+    .locals 1
+
+    iget-object v0, p0, Lsdk/b/a/a/c/o;->c:Ljava/util/List;
+
+    return-object v0
+.end method
+
+.method public b(Landroid/database/sqlite/SQLiteDatabase;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public b(Lsdk/b/a/a/b/q;)V
     .locals 5
 
     const/16 v2, 0xf
 
-    const/4 v4, 0x1
-
     const/4 v1, 0x3
+
+    const/4 v4, 0x1
 
     if-eqz p1, :cond_0
 
@@ -326,7 +427,7 @@
 
     iget-object v2, p0, Lsdk/b/a/a/c/o;->b:Lcom/igexin/sdk/SdkMainService;
 
-    invoke-static {p1}, Lsdk/b/a/a/c/o;->b(Lsdk/b/a/a/b/q;)Landroid/content/ContentValues;
+    invoke-static {p1}, Lsdk/b/a/a/c/o;->a(Lsdk/b/a/a/b/q;)Landroid/content/ContentValues;
 
     move-result-object v3
 
@@ -343,7 +444,7 @@
 
     move-result v0
 
-    if-lez v0, :cond_2
+    if-lt v0, v4, :cond_2
 
     goto :goto_0
 
@@ -402,99 +503,4 @@
         :pswitch_4
         :pswitch_5
     .end packed-switch
-.end method
-
-.method public final a(J)Z
-    .locals 9
-
-    const/4 v6, 0x1
-
-    const/4 v7, 0x0
-
-    iget-object v0, p0, Lsdk/b/a/a/c/o;->c:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    move-result-object v1
-
-    :cond_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    move-result-object v0
-
-    check-cast v0, Lsdk/b/a/a/b/q;
-
-    invoke-virtual {v0}, Lsdk/b/a/a/b/q;->a()J
-
-    move-result-wide v2
-
-    cmp-long v2, v2, p1
-
-    if-nez v2, :cond_0
-
-    move-object v1, v0
-
-    :goto_0
-    if-eqz v1, :cond_2
-
-    iget-object v0, p0, Lsdk/b/a/a/c/o;->c:Ljava/util/List;
-
-    invoke-interface {v0, v1}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
-
-    iget-object v0, p0, Lsdk/b/a/a/c/o;->b:Lcom/igexin/sdk/SdkMainService;
-
-    iget-object v8, v0, Lcom/igexin/sdk/SdkMainService;->b:Lsdk/c/a/b/d;
-
-    new-instance v0, Lsdk/b/a/a/c/q;
-
-    iget-object v2, p0, Lsdk/b/a/a/c/o;->b:Lcom/igexin/sdk/SdkMainService;
-
-    invoke-static {v1}, Lsdk/b/a/a/c/o;->b(Lsdk/b/a/a/b/q;)Landroid/content/ContentValues;
-
-    move-result-object v3
-
-    move-object v1, p0
-
-    move-wide v4, p1
-
-    invoke-direct/range {v0 .. v5}, Lsdk/b/a/a/c/q;-><init>(Lsdk/b/a/a/c/o;Landroid/content/Context;Landroid/content/ContentValues;J)V
-
-    invoke-virtual {v8, v0, v6, v7}, Lsdk/c/a/b/d;->a(Lsdk/c/a/e/d;ZZ)Z
-
-    move v0, v6
-
-    :goto_1
-    return v0
-
-    :cond_1
-    const/4 v0, 0x0
-
-    move-object v1, v0
-
-    goto :goto_0
-
-    :cond_2
-    move v0, v7
-
-    goto :goto_1
-.end method
-
-.method public final b()Ljava/util/List;
-    .locals 1
-
-    iget-object v0, p0, Lsdk/b/a/a/c/o;->c:Ljava/util/List;
-
-    return-object v0
-.end method
-
-.method public final b(Landroid/database/sqlite/SQLiteDatabase;)V
-    .locals 0
-
-    return-void
 .end method

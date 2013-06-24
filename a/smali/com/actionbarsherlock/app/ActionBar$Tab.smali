@@ -1,5 +1,17 @@
 .class public abstract Lcom/actionbarsherlock/app/ActionBar$Tab;
 .super Ljava/lang/Object;
+.source "ActionBar.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/actionbarsherlock/app/ActionBar;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x409
+    name = "Tab"
+.end annotation
 
 
 # static fields
@@ -10,6 +22,8 @@
 .method public constructor <init>()V
     .locals 0
 
+    .prologue
+    .line 707
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

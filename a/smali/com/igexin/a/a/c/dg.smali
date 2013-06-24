@@ -1,79 +1,82 @@
 .class final enum Lcom/igexin/a/a/c/dg;
-.super Lcom/igexin/a/a/c/bb;
+.super Lcom/igexin/a/a/c/ar;
 
 
 # direct methods
-.method constructor <init>(Ljava/lang/String;)V
-    .locals 2
+.method constructor <init>(Ljava/lang/String;I)V
+    .locals 1
 
-    const/4 v0, 0x7
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
-
-    invoke-direct {p0, p1, v0, v1}, Lcom/igexin/a/a/c/bb;-><init>(Ljava/lang/String;IB)V
+    invoke-direct {p0, p1, p2, v0}, Lcom/igexin/a/a/c/ar;-><init>(Ljava/lang/String;ILcom/igexin/a/a/c/as;)V
 
     return-void
 .end method
 
 
 # virtual methods
-.method final a(Lcom/igexin/a/a/c/g;Lcom/igexin/a/a/c/aa;)Z
+.method a(Lcom/igexin/a/a/c/aq;Lcom/igexin/a/a/c/a;)V
     .locals 1
 
-    invoke-virtual {p1}, Lcom/igexin/a/a/c/g;->e()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_1
-
-    check-cast p1, Lcom/igexin/a/a/c/h;
-
-    invoke-virtual {p2, p1}, Lcom/igexin/a/a/c/aa;->a(Lcom/igexin/a/a/c/h;)V
-
-    :cond_0
-    :goto_0
-    const/4 v0, 0x1
-
-    :goto_1
-    return v0
-
-    :cond_1
-    invoke-virtual {p1}, Lcom/igexin/a/a/c/g;->f()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_2
-
-    invoke-virtual {p2, p0}, Lcom/igexin/a/a/c/aa;->b(Lcom/igexin/a/a/c/bb;)V
-
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/aa;->h()Lcom/igexin/a/a/b/i;
-
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/aa;->c()Lcom/igexin/a/a/c/bb;
-
-    move-result-object v0
-
-    invoke-virtual {p2, v0}, Lcom/igexin/a/a/c/aa;->a(Lcom/igexin/a/a/c/bb;)V
-
-    invoke-virtual {p2, p1}, Lcom/igexin/a/a/c/aa;->a(Lcom/igexin/a/a/c/g;)Z
-
-    move-result v0
-
-    goto :goto_1
-
-    :cond_2
-    invoke-virtual {p1}, Lcom/igexin/a/a/c/g;->c()Z
+    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->b()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/aa;->h()Lcom/igexin/a/a/b/i;
+    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/aq;->d(Lcom/igexin/a/a/c/ar;)V
 
-    invoke-virtual {p2}, Lcom/igexin/a/a/c/aa;->c()Lcom/igexin/a/a/c/bb;
+    const-string v0, "</"
 
-    move-result-object v0
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->a(Ljava/lang/String;)V
 
-    invoke-virtual {p2, v0}, Lcom/igexin/a/a/c/aa;->a(Lcom/igexin/a/a/c/bb;)V
+    sget-object v0, Lcom/igexin/a/a/c/dg;->a:Lcom/igexin/a/a/c/ar;
+
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->a(Lcom/igexin/a/a/c/ar;)V
+
+    :goto_0
+    return-void
+
+    :cond_0
+    invoke-virtual {p2}, Lcom/igexin/a/a/c/a;->n()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
+
+    const/4 v0, 0x0
+
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->a(Z)Lcom/igexin/a/a/c/an;
+
+    sget-object v0, Lcom/igexin/a/a/c/dg;->j:Lcom/igexin/a/a/c/ar;
+
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->a(Lcom/igexin/a/a/c/ar;)V
+
+    goto :goto_0
+
+    :cond_1
+    const/16 v0, 0x3e
+
+    invoke-virtual {p2, v0}, Lcom/igexin/a/a/c/a;->b(C)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/aq;->c(Lcom/igexin/a/a/c/ar;)V
+
+    sget-object v0, Lcom/igexin/a/a/c/dg;->a:Lcom/igexin/a/a/c/ar;
+
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->b(Lcom/igexin/a/a/c/ar;)V
+
+    goto :goto_0
+
+    :cond_2
+    invoke-virtual {p1, p0}, Lcom/igexin/a/a/c/aq;->c(Lcom/igexin/a/a/c/ar;)V
+
+    sget-object v0, Lcom/igexin/a/a/c/dg;->Q:Lcom/igexin/a/a/c/ar;
+
+    invoke-virtual {p1, v0}, Lcom/igexin/a/a/c/aq;->b(Lcom/igexin/a/a/c/ar;)V
 
     goto :goto_0
 .end method

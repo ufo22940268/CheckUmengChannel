@@ -5,6 +5,7 @@
     <item type="integer" name="req_code_51login" />
     <item type="integer" name="req_code_tencent_weibo" />
     <item type="integer" name="req_code_sel_relevant_account" />
+    <item type="integer" name="req_code_input_email_pwd" />
     <integer name="weight_of_left_part">15</integer>
     <integer name="weight_of_right_part">85</integer>
 </resources>

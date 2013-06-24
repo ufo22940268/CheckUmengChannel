@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/b/s;
+.class public Lsdk/b/a/a/b/s;
 .super Lsdk/b/a/a/b/d;
 
 
@@ -43,7 +43,7 @@
 
 
 # virtual methods
-.method public final a()Ljava/lang/String;
+.method public a()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/s;->c:Ljava/lang/String;
@@ -51,7 +51,7 @@
     return-object v0
 .end method
 
-.method public final a(J)V
+.method public a(J)V
     .locals 0
 
     iput-wide p1, p0, Lsdk/b/a/a/b/s;->d:J
@@ -59,7 +59,7 @@
     return-void
 .end method
 
-.method public final a(Ljava/lang/String;)V
+.method public a(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/s;->c:Ljava/lang/String;
@@ -67,7 +67,7 @@
     return-void
 .end method
 
-.method public final a(Z)V
+.method public a(Z)V
     .locals 0
 
     iput-boolean p1, p0, Lsdk/b/a/a/b/s;->f:Z
@@ -75,7 +75,7 @@
     return-void
 .end method
 
-.method public final b()Ljava/lang/String;
+.method public b()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/s;->a:Ljava/lang/String;
@@ -83,7 +83,7 @@
     return-object v0
 .end method
 
-.method public final b(Ljava/lang/String;)V
+.method public b(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/s;->a:Ljava/lang/String;
@@ -91,7 +91,7 @@
     return-void
 .end method
 
-.method public final b(Z)V
+.method public b(Z)V
     .locals 0
 
     iput-boolean p1, p0, Lsdk/b/a/a/b/s;->g:Z
@@ -99,7 +99,7 @@
     return-void
 .end method
 
-.method public final c()J
+.method public c()J
     .locals 4
 
     iget-wide v0, p0, Lsdk/b/a/a/b/s;->d:J
@@ -122,7 +122,7 @@
     return-wide v0
 .end method
 
-.method public final c(Ljava/lang/String;)V
+.method public c(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/s;->b:Ljava/lang/String;
@@ -130,7 +130,7 @@
     return-void
 .end method
 
-.method public final c(Z)V
+.method public c(Z)V
     .locals 0
 
     iput-boolean p1, p0, Lsdk/b/a/a/b/s;->h:Z
@@ -138,7 +138,7 @@
     return-void
 .end method
 
-.method public final d()I
+.method public d()I
     .locals 2
 
     const-string v0, "read"
@@ -162,7 +162,7 @@
     goto :goto_0
 .end method
 
-.method public final d(Ljava/lang/String;)V
+.method public d(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/s;->e:Ljava/lang/String;
@@ -170,7 +170,7 @@
     return-void
 .end method
 
-.method public final d(Z)V
+.method public d(Z)V
     .locals 0
 
     iput-boolean p1, p0, Lsdk/b/a/a/b/s;->i:Z
@@ -178,7 +178,7 @@
     return-void
 .end method
 
-.method public final e(Ljava/lang/String;)V
+.method public e(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/s;->j:Ljava/lang/String;
@@ -186,7 +186,7 @@
     return-void
 .end method
 
-.method public final e()Z
+.method public e()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/b/a/a/b/s;->f:Z
@@ -194,7 +194,7 @@
     return v0
 .end method
 
-.method public final f(Ljava/lang/String;)V
+.method public f(Ljava/lang/String;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/b/a/a/b/s;->k:Ljava/lang/String;
@@ -202,7 +202,7 @@
     return-void
 .end method
 
-.method public final f()Z
+.method public f()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/b/a/a/b/s;->g:Z
@@ -210,7 +210,7 @@
     return v0
 .end method
 
-.method public final g(Ljava/lang/String;)V
+.method public g(Ljava/lang/String;)V
     .locals 2
 
     if-eqz p1, :cond_0
@@ -250,7 +250,7 @@
     goto :goto_0
 .end method
 
-.method public final g()Z
+.method public g()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/b/a/a/b/s;->h:Z
@@ -258,7 +258,7 @@
     return v0
 .end method
 
-.method public final h()Z
+.method public h()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/b/a/a/b/s;->i:Z
@@ -266,7 +266,7 @@
     return v0
 .end method
 
-.method public final i()Ljava/lang/String;
+.method public i()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/s;->k:Ljava/lang/String;
@@ -274,7 +274,7 @@
     return-object v0
 .end method
 
-.method public final o()Ljava/lang/String;
+.method public o()Ljava/lang/String;
     .locals 1
 
     iget-object v0, p0, Lsdk/b/a/a/b/s;->l:Ljava/lang/String;
@@ -282,7 +282,7 @@
     return-object v0
 .end method
 
-.method public final p()Ljava/lang/String;
+.method public p()Ljava/lang/String;
     .locals 2
 
     iget-object v0, p0, Lsdk/b/a/a/b/s;->j:Ljava/lang/String;
@@ -348,7 +348,7 @@
     goto :goto_0
 .end method
 
-.method public final q()Ljava/lang/String;
+.method public q()Ljava/lang/String;
     .locals 2
 
     iget-object v0, p0, Lsdk/b/a/a/b/s;->k:Ljava/lang/String;

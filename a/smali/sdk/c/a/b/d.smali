@@ -33,111 +33,6 @@
     return-void
 .end method
 
-.method private a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;)Lsdk/c/a/b/f;
-    .locals 8
-
-    const/4 v5, 0x0
-
-    const/4 v7, 0x0
-
-    move-object v0, p0
-
-    move-object v1, p1
-
-    move v2, p2
-
-    move-object v3, p3
-
-    move-object v4, p4
-
-    move v6, v5
-
-    invoke-direct/range {v0 .. v7}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method private a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
-    .locals 5
-
-    const/4 v1, 0x0
-
-    iget-object v0, p0, Lsdk/c/a/b/d;->g:Lsdk/c/a/e/a/b;
-
-    if-nez v0, :cond_0
-
-    move-object v0, v1
-
-    :goto_0
-    return-object v0
-
-    :cond_0
-    iget-object v0, p0, Lsdk/c/a/b/d;->g:Lsdk/c/a/e/a/b;
-
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    invoke-interface {v0, p1, p3}, Lsdk/c/a/e/a/b;->a(Ljava/lang/Object;Ljava/lang/Object;)Lsdk/c/a/e/d;
-
-    move-result-object v0
-
-    check-cast v0, Lsdk/c/a/b/f;
-
-    if-eqz v0, :cond_3
-
-    invoke-virtual {v0}, Lsdk/c/a/b/f;->n()Z
-
-    move-result v2
-
-    if-nez v2, :cond_3
-
-    if-eqz p7, :cond_2
-
-    if-gez p6, :cond_1
-
-    new-instance v0, Ljava/lang/IllegalArgumentException;
-
-    const-string v1, "second must > 0"
-
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    throw v0
-
-    :cond_1
-    iput p6, v0, Lsdk/c/a/e/d;->L:I
-
-    iput-object p7, v0, Lsdk/c/a/e/d;->Q:Lsdk/c/a/e/a/g;
-
-    :cond_2
-    iput-object p4, v0, Lsdk/c/a/b/f;->u:Ljava/lang/Object;
-
-    const-wide/16 v2, -0x1
-
-    sget-object v4, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
-
-    invoke-virtual {v0, v2, v3, v4}, Lsdk/c/a/b/f;->a(JLjava/util/concurrent/TimeUnit;)I
-
-    const/4 v2, -0x1
-
-    iput v2, v0, Lsdk/c/a/b/f;->K:I
-
-    invoke-virtual {v0}, Lsdk/c/a/b/f;->p()V
-
-    iput-object v1, v0, Lsdk/c/a/b/f;->P:Ljava/lang/Object;
-
-    invoke-virtual {v0}, Lsdk/c/a/b/f;->t()V
-
-    invoke-virtual {p0, v0, p5}, Lsdk/c/a/b/d;->a(Lsdk/c/a/e/d;Z)Z
-
-    goto :goto_0
-
-    :cond_3
-    move-object v0, v1
-
-    goto :goto_0
-.end method
-
 .method public static c()Lsdk/c/a/b/d;
     .locals 1
 
@@ -193,59 +88,211 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;)Lsdk/c/a/b/f;
-    .locals 2
+.method public a(Ljava/lang/String;ILsdk/c/a/b/c;)Lsdk/c/a/b/f;
+    .locals 12
 
-    const/4 v1, 0x0
+    const/4 v5, 0x0
 
-    const/4 v0, 0x0
+    const/4 v4, 0x0
 
-    invoke-direct {p0, p1, v0, v1, v1}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;)Lsdk/c/a/b/f;
+    const/4 v6, -0x1
 
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public final a(Ljava/lang/String;Lsdk/c/a/b/c;Ljava/lang/Object;)Lsdk/c/a/b/f;
-    .locals 1
-
-    const/4 v0, 0x3
-
-    invoke-direct {p0, p1, v0, p2, p3}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;)Lsdk/c/a/b/f;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method public final a(Ljava/lang/String;Lsdk/c/a/b/c;Ljava/lang/Object;ZLsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
-    .locals 8
-
-    const/4 v2, 0x3
-
-    const/16 v6, 0xf
+    const-wide/16 v7, -0x1
 
     move-object v0, p0
 
     move-object v1, p1
 
-    move-object v3, p2
+    move v2, p2
 
-    move-object v4, p3
+    move-object v3, p3
 
-    move v5, p4
+    move v9, v5
 
-    move-object v7, p5
+    move-object v10, v4
 
-    invoke-direct/range {v0 .. v7}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
+    move-object v11, v4
+
+    invoke-virtual/range {v0 .. v11}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZIJBLjava/lang/Object;Lsdk/c/a/e/a/d;)Lsdk/c/a/b/f;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public final a(Lsdk/c/a/e/a/b;)V
+.method public a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;Z)Lsdk/c/a/b/f;
+    .locals 12
+
+    const/4 v6, -0x1
+
+    const-wide/16 v7, -0x1
+
+    const/4 v9, 0x0
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    move-object v0, p0
+
+    move-object v1, p1
+
+    move v2, p2
+
+    move-object v3, p3
+
+    move-object/from16 v4, p4
+
+    move/from16 v5, p5
+
+    invoke-virtual/range {v0 .. v11}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZIJBLjava/lang/Object;Lsdk/c/a/e/a/d;)Lsdk/c/a/b/f;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZIJBLjava/lang/Object;Lsdk/c/a/e/a/d;)Lsdk/c/a/b/f;
+    .locals 14
+
+    const/4 v12, 0x0
+
+    const/4 v13, 0x0
+
+    move-object v0, p0
+
+    move-object v1, p1
+
+    move/from16 v2, p2
+
+    move-object/from16 v3, p3
+
+    move-object/from16 v4, p4
+
+    move/from16 v5, p5
+
+    move/from16 v6, p6
+
+    move-wide/from16 v7, p7
+
+    move/from16 v9, p9
+
+    move-object/from16 v10, p10
+
+    move-object/from16 v11, p11
+
+    invoke-virtual/range {v0 .. v13}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZIJBLjava/lang/Object;Lsdk/c/a/e/a/d;ILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZIJBLjava/lang/Object;Lsdk/c/a/e/a/d;ILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
+    .locals 12
+
+    iget-object v2, p0, Lsdk/c/a/b/d;->g:Lsdk/c/a/e/a/b;
+
+    if-nez v2, :cond_0
+
+    const/4 v3, 0x0
+
+    :goto_0
+    return-object v3
+
+    :cond_0
+    iget-object v2, p0, Lsdk/c/a/b/d;->g:Lsdk/c/a/e/a/b;
+
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v3
+
+    invoke-interface {v2, p1, v3, p3}, Lsdk/c/a/e/a/b;->a(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lsdk/c/a/e/d;
+
+    move-result-object v3
+
+    check-cast v3, Lsdk/c/a/b/f;
+
+    if-eqz v3, :cond_2
+
+    invoke-virtual {v3}, Lsdk/c/a/b/f;->p()Z
+
+    move-result v2
+
+    if-nez v2, :cond_2
+
+    if-eqz p13, :cond_1
+
+    move/from16 v0, p12
+
+    move-object/from16 v1, p13
+
+    invoke-virtual {v3, v0, v1}, Lsdk/c/a/b/f;->a(ILsdk/c/a/e/a/g;)V
+
+    :cond_1
+    move-object v2, p0
+
+    move-object/from16 v4, p4
+
+    move/from16 v5, p5
+
+    move/from16 v6, p6
+
+    move-wide/from16 v7, p7
+
+    move/from16 v9, p9
+
+    move-object/from16 v10, p10
+
+    move-object/from16 v11, p11
+
+    invoke-virtual/range {v2 .. v11}, Lsdk/c/a/b/d;->a(Lsdk/c/a/b/f;Ljava/lang/Object;ZIJBLjava/lang/Object;Lsdk/c/a/e/a/d;)Z
+
+    goto :goto_0
+
+    :cond_2
+    const/4 v3, 0x0
+
+    goto :goto_0
+.end method
+
+.method public a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
+    .locals 14
+
+    const/4 v6, -0x1
+
+    const-wide/16 v7, -0x1
+
+    const/4 v9, 0x0
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    move-object v0, p0
+
+    move-object v1, p1
+
+    move/from16 v2, p2
+
+    move-object/from16 v3, p3
+
+    move-object/from16 v4, p4
+
+    move/from16 v5, p5
+
+    move/from16 v12, p6
+
+    move-object/from16 v13, p7
+
+    invoke-virtual/range {v0 .. v13}, Lsdk/c/a/b/d;->a(Ljava/lang/String;ILsdk/c/a/b/c;Ljava/lang/Object;ZIJBLjava/lang/Object;Lsdk/c/a/e/a/d;ILsdk/c/a/e/a/g;)Lsdk/c/a/b/f;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public a(Lsdk/c/a/e/a/b;)V
     .locals 0
 
     iput-object p1, p0, Lsdk/c/a/b/d;->g:Lsdk/c/a/e/a/b;
@@ -253,7 +300,7 @@
     return-void
 .end method
 
-.method public final a([B)V
+.method public a([B)V
     .locals 1
 
     iput-object p1, p0, Lsdk/c/a/b/d;->B:[B
@@ -267,7 +314,31 @@
     return-void
 .end method
 
-.method public final a()[B
+.method a(Lsdk/c/a/b/f;Ljava/lang/Object;ZIJBLjava/lang/Object;Lsdk/c/a/e/a/d;)Z
+    .locals 1
+
+    iput-object p2, p1, Lsdk/c/a/b/f;->c:Ljava/lang/Object;
+
+    sget-object v0, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+
+    invoke-virtual {p1, p5, p6, v0}, Lsdk/c/a/b/f;->a(JLjava/util/concurrent/TimeUnit;)I
+
+    iput p4, p1, Lsdk/c/a/b/f;->K:I
+
+    invoke-virtual {p1, p7}, Lsdk/c/a/b/f;->a(I)V
+
+    iput-object p8, p1, Lsdk/c/a/b/f;->P:Ljava/lang/Object;
+
+    invoke-virtual {p1, p9}, Lsdk/c/a/b/f;->a(Lsdk/c/a/e/a/d;)V
+
+    invoke-virtual {p0, p1, p3}, Lsdk/c/a/b/d;->a(Lsdk/c/a/e/d;Z)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public a()[B
     .locals 1
 
     iget-object v0, p0, Lsdk/c/a/b/d;->B:[B
@@ -275,7 +346,7 @@
     return-object v0
 .end method
 
-.method public final b()[B
+.method public b()[B
     .locals 1
 
     iget-object v0, p0, Lsdk/c/a/b/d;->C:[B
@@ -286,7 +357,7 @@
 .method public final d()V
     .locals 0
 
-    invoke-virtual {p0}, Lsdk/c/a/b/d;->h()V
+    invoke-virtual {p0}, Lsdk/c/a/b/d;->j()V
 
     return-void
 .end method

@@ -1,4 +1,4 @@
-.class public final Lsdk/b/a/a/e/b/c/a;
+.class public Lsdk/b/a/a/e/b/c/a;
 .super Lsdk/b/a/a/e/b/c;
 
 
@@ -8,7 +8,7 @@
 
     invoke-direct {p0, p1}, Lsdk/b/a/a/e/b/c;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {p0, p2}, Lsdk/b/a/a/e/b/c/a;->b([B)V
+    invoke-virtual {p0, p2}, Lsdk/b/a/a/e/b/c/a;->a([B)V
 
     return-void
 .end method

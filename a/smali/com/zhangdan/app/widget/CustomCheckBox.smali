@@ -1,176 +1,197 @@
 .class public Lcom/zhangdan/app/widget/CustomCheckBox;
 .super Landroid/view/View;
+.source "CustomCheckBox.java"
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/zhangdan/app/widget/CustomCheckBox$OnCheckedChangeListener;
+    }
+.end annotation
+
+
 # instance fields
-.field private a:Landroid/graphics/drawable/Drawable;
+.field private mChecked:Z
 
-.field private b:Landroid/graphics/drawable/Drawable;
+.field private mCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
-.field private c:Z
+.field private mHeight:I
 
-.field private d:I
+.field private mOnCheckedChangeListener:Lcom/zhangdan/app/widget/CustomCheckBox$OnCheckedChangeListener;
 
-.field private e:I
+.field private mUnCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
-.field private f:Lcom/zhangdan/app/widget/b;
+.field private mWidth:I
 
 
 # direct methods
 .method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
-    .locals 4
+    .locals 5
+    .parameter "context"
+    .parameter "attrs"
 
+    .prologue
     const/4 v2, 0x1
 
-    const/4 v3, 0x0
+    const/4 v4, 0x0
 
+    .line 35
     invoke-direct {p0, p1, p2}, Landroid/view/View;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
-    iput-boolean v2, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->c:Z
+    .line 27
+    iput-boolean v2, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mChecked:Z
 
-    const/4 v0, 0x0
+    .line 32
+    const/4 v1, 0x0
 
-    iput-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->f:Lcom/zhangdan/app/widget/b;
+    iput-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mOnCheckedChangeListener:Lcom/zhangdan/app/widget/CustomCheckBox$OnCheckedChangeListener;
 
-    sget-object v0, Lcom/zhangdan/app/R$styleable;->c:[I
+    .line 36
+    sget-object v1, Lcom/zhangdan/app/R$styleable;->CustomCheckBox:[I
 
-    invoke-virtual {p1, p2, v0}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    invoke-virtual {p1, p2, v1}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object v0
 
-    invoke-virtual {v0, v3}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+    .line 37
+    .local v0, arr:Landroid/content/res/TypedArray;
+    invoke-virtual {v0, v4}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
-    iput-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->a:Landroid/graphics/drawable/Drawable;
+    iput-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
+    .line 38
     invoke-virtual {v0, v2}, Landroid/content/res/TypedArray;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v1
 
-    iput-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->b:Landroid/graphics/drawable/Drawable;
+    iput-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mUnCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
+    .line 39
     const/4 v1, 0x2
 
     invoke-virtual {v0, v1, v2}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     move-result v1
 
-    iput-boolean v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->c:Z
+    iput-boolean v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mChecked:Z
 
+    .line 40
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->a:Landroid/graphics/drawable/Drawable;
+    .line 42
+    iget-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+    invoke-virtual {v1}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
 
-    move-result v0
+    move-result v1
 
-    iput v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->d:I
+    iput v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mWidth:I
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->a:Landroid/graphics/drawable/Drawable;
+    .line 43
+    iget-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
-    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
+    invoke-virtual {v1}, Landroid/graphics/drawable/Drawable;->getIntrinsicHeight()I
 
-    move-result v0
+    move-result v1
 
-    iput v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->e:I
+    iput v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mHeight:I
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->a:Landroid/graphics/drawable/Drawable;
+    .line 44
+    iget-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->d:I
+    iget v2, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mWidth:I
 
-    iget v2, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->e:I
+    iget v3, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mHeight:I
 
-    invoke-virtual {v0, v3, v3, v1, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    invoke-virtual {v1, v4, v4, v2, v3}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->b:Landroid/graphics/drawable/Drawable;
+    .line 45
+    iget-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mUnCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
-    iget v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->d:I
+    iget v2, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mWidth:I
 
-    iget v2, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->e:I
+    iget v3, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mHeight:I
 
-    invoke-virtual {v0, v3, v3, v1, v2}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+    invoke-virtual {v1, v4, v4, v2, v3}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
+    .line 47
     invoke-virtual {p0, p0}, Lcom/zhangdan/app/widget/CustomCheckBox;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
+    .line 48
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Lcom/zhangdan/app/widget/b;)V
-    .locals 0
-
-    iput-object p1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->f:Lcom/zhangdan/app/widget/b;
-
-    return-void
-.end method
-
 .method public onClick(Landroid/view/View;)V
-    .locals 2
+    .locals 1
+    .parameter "v"
 
-    iget-boolean v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->c:Z
+    .prologue
+    .line 81
+    iget-boolean v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mChecked:Z
 
-    if-eqz v0, :cond_1
+    if-nez v0, :cond_0
 
-    const/4 v0, 0x0
+    const/4 v0, 0x1
 
     :goto_0
-    iput-boolean v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->c:Z
+    invoke-virtual {p0, v0}, Lcom/zhangdan/app/widget/CustomCheckBox;->setCheckedState(Z)V
 
-    invoke-virtual {p0}, Lcom/zhangdan/app/widget/CustomCheckBox;->invalidate()V
-
-    iget-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->f:Lcom/zhangdan/app/widget/b;
-
-    if-eqz v1, :cond_0
-
-    iget-object v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->f:Lcom/zhangdan/app/widget/b;
-
-    invoke-interface {v1, p0, v0}, Lcom/zhangdan/app/widget/b;->a(Lcom/zhangdan/app/widget/CustomCheckBox;Z)V
-
-    :cond_0
+    .line 82
     return-void
 
-    :cond_1
-    const/4 v0, 0x1
+    .line 81
+    :cond_0
+    const/4 v0, 0x0
 
     goto :goto_0
 .end method
 
 .method protected onDraw(Landroid/graphics/Canvas;)V
     .locals 1
+    .parameter "canvas"
 
+    .prologue
+    .line 58
     invoke-super {p0, p1}, Landroid/view/View;->onDraw(Landroid/graphics/Canvas;)V
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->a:Landroid/graphics/drawable/Drawable;
+    .line 59
+    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->b:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mUnCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
     if-nez v0, :cond_1
 
+    .line 65
     :cond_0
     :goto_0
     return-void
 
+    .line 61
     :cond_1
-    iget-boolean v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->c:Z
+    iget-boolean v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mChecked:Z
 
     if-eqz v0, :cond_2
 
-    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->a:Landroid/graphics/drawable/Drawable;
+    .line 62
+    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
     goto :goto_0
 
+    .line 64
     :cond_2
-    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->b:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mUnCheckedDrawable:Landroid/graphics/drawable/Drawable;
 
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
@@ -179,14 +200,58 @@
 
 .method protected onMeasure(II)V
     .locals 2
+    .parameter "widthMeasureSpec"
+    .parameter "heightMeasureSpec"
 
+    .prologue
+    .line 52
     invoke-super {p0, p1, p2}, Landroid/view/View;->onMeasure(II)V
 
-    iget v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->d:I
+    .line 53
+    iget v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mWidth:I
 
-    iget v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->e:I
+    iget v1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mHeight:I
 
     invoke-virtual {p0, v0, v1}, Lcom/zhangdan/app/widget/CustomCheckBox;->setMeasuredDimension(II)V
 
+    .line 54
+    return-void
+.end method
+
+.method public setCheckedState(Z)V
+    .locals 1
+    .parameter "checked"
+
+    .prologue
+    .line 68
+    iput-boolean p1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mChecked:Z
+
+    .line 69
+    invoke-virtual {p0}, Lcom/zhangdan/app/widget/CustomCheckBox;->invalidate()V
+
+    .line 70
+    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mOnCheckedChangeListener:Lcom/zhangdan/app/widget/CustomCheckBox$OnCheckedChangeListener;
+
+    if-eqz v0, :cond_0
+
+    .line 71
+    iget-object v0, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mOnCheckedChangeListener:Lcom/zhangdan/app/widget/CustomCheckBox$OnCheckedChangeListener;
+
+    invoke-interface {v0, p0, p1}, Lcom/zhangdan/app/widget/CustomCheckBox$OnCheckedChangeListener;->onCheckedChanged(Lcom/zhangdan/app/widget/CustomCheckBox;Z)V
+
+    .line 73
+    :cond_0
+    return-void
+.end method
+
+.method public setOnCheckedChangeListener(Lcom/zhangdan/app/widget/CustomCheckBox$OnCheckedChangeListener;)V
+    .locals 0
+    .parameter "onCheckedChangeListener"
+
+    .prologue
+    .line 76
+    iput-object p1, p0, Lcom/zhangdan/app/widget/CustomCheckBox;->mOnCheckedChangeListener:Lcom/zhangdan/app/widget/CustomCheckBox$OnCheckedChangeListener;
+
+    .line 77
     return-void
 .end method

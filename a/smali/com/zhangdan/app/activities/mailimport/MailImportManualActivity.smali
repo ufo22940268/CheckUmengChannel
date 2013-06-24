@@ -1,204 +1,258 @@
 .class public Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;
 .super Lcom/zhangdan/app/activities/WrappedActivity;
+.source "MailImportManualActivity.java"
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field private c:Landroid/view/View;
+.field private mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-.field private d:Lcom/zhangdan/app/activities/mailimport/e;
+.field private mLayoutManualImport:Landroid/view/View;
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 1
 
+    .prologue
+    .line 20
     invoke-direct {p0}, Lcom/zhangdan/app/activities/WrappedActivity;-><init>()V
 
+    .line 23
     const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->c:Landroid/view/View;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mLayoutManualImport:Landroid/view/View;
 
     return-void
 .end method
 
+.method private initManualImportViews()V
+    .locals 9
 
-# virtual methods
-.method public onClick(Landroid/view/View;)V
-    .locals 2
+    .prologue
+    const/4 v8, 0x1
 
-    invoke-virtual {p1}, Landroid/view/View;->getId()I
+    const/4 v7, 0x0
 
-    move-result v0
+    .line 47
+    new-instance v4, Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-    const v1, 0x7f0601f5
+    const v5, 0x7f09003c
 
-    if-ne v0, v1, :cond_0
+    invoke-virtual {p0, v5}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->findViewById(I)Landroid/view/View;
 
-    const-string v0, "yuan_import_send_sms_msg"
+    move-result-object v5
 
-    invoke-static {p0, v0}, Lcom/umeng/a/a;->a(Landroid/content/Context;Ljava/lang/String;)V
+    const/4 v6, 0x2
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->c:Landroid/view/View;
+    invoke-direct {v4, p0, v5, v6}, Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;-><init>(Landroid/app/Activity;Landroid/view/View;I)V
 
-    if-eqz v0, :cond_0
+    iput-object v4, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->c:Landroid/view/View;
+    .line 49
+    invoke-virtual {p0}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->getCurrUserInfo()Lcom/zhangdan/app/data/model/UserInfo;
 
-    const v1, 0x7f0601f4
+    move-result-object v3
 
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    .line 50
+    .local v3, userInfo:Lcom/zhangdan/app/data/model/UserInfo;
+    if-nez v3, :cond_0
 
-    move-result-object v0
+    .line 60
+    :goto_0
+    return-void
 
-    check-cast v0, Landroid/widget/TextView;
-
-    invoke-virtual {v0}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
-
-    move-result-object v0
-
-    invoke-interface {v0}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v1, ""
-
-    invoke-static {p0, v1, v0}, Lcom/zhangdan/app/h/d;->a(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
-
+    .line 52
     :cond_0
-    return-void
-.end method
+    const v4, 0x7f0900dd
 
-.method protected onCreate(Landroid/os/Bundle;)V
-    .locals 6
+    invoke-virtual {p0, v4}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->findViewById(I)Landroid/view/View;
 
-    const/4 v5, 0x1
+    move-result-object v4
 
-    const/4 v4, 0x0
+    check-cast v4, Landroid/view/ViewStub;
 
-    invoke-super {p0, p1}, Lcom/zhangdan/app/activities/WrappedActivity;->onCreate(Landroid/os/Bundle;)V
+    invoke-virtual {v4}, Landroid/view/ViewStub;->inflate()Landroid/view/View;
 
-    const v0, 0x7f030036
+    move-result-object v4
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->setContentView(I)V
+    iput-object v4, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mLayoutManualImport:Landroid/view/View;
 
-    new-instance v0, Lcom/zhangdan/app/activities/mailimport/e;
+    .line 53
+    iget-object v4, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mLayoutManualImport:Landroid/view/View;
 
-    const v1, 0x7f06003c
+    invoke-virtual {v4, v7}, Landroid/view/View;->setVisibility(I)V
 
-    invoke-virtual {p0, v1}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->findViewById(I)Landroid/view/View;
+    .line 54
+    const v4, 0x7f070176
 
-    move-result-object v1
+    new-array v5, v8, [Ljava/lang/Object;
 
-    const/4 v2, 0x2
+    invoke-virtual {v3}, Lcom/zhangdan/app/data/model/UserInfo;->getUserId()Ljava/lang/String;
 
-    invoke-direct {v0, p0, v1, v2}, Lcom/zhangdan/app/activities/mailimport/e;-><init>(Landroid/app/Activity;Landroid/view/View;I)V
+    move-result-object v6
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->d:Lcom/zhangdan/app/activities/mailimport/e;
+    aput-object v6, v5, v7
 
-    invoke-virtual {p0}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->a()Lcom/zhangdan/app/data/model/l;
-
-    move-result-object v1
-
-    if-eqz v1, :cond_0
-
-    const v0, 0x7f0600d9
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v4, v5}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v0
 
-    check-cast v0, Landroid/view/ViewStub;
+    .line 55
+    .local v0, mail51:Ljava/lang/String;
+    iget-object v4, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mLayoutManualImport:Landroid/view/View;
 
-    invoke-virtual {v0}, Landroid/view/ViewStub;->inflate()Landroid/view/View;
+    const v5, 0x7f0901fc
 
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->c:Landroid/view/View;
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->c:Landroid/view/View;
-
-    invoke-virtual {v0, v4}, Landroid/view/View;->setVisibility(I)V
-
-    const v0, 0x7f08016f
-
-    new-array v2, v5, [Ljava/lang/Object;
-
-    invoke-virtual {v1}, Lcom/zhangdan/app/data/model/l;->a()Ljava/lang/String;
-
-    move-result-object v1
-
-    aput-object v1, v2, v4
-
-    invoke-virtual {p0, v0, v2}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
-    move-result-object v2
-
-    iget-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->c:Landroid/view/View;
-
-    const v1, 0x7f0601f3
-
-    invoke-virtual {v0, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/TextView;
-
-    iget-object v1, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->c:Landroid/view/View;
-
-    const v3, 0x7f0601f4
-
-    invoke-virtual {v1, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v1
 
     check-cast v1, Landroid/widget/TextView;
 
-    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    .line 56
+    .local v1, tvMailAccont:Landroid/widget/TextView;
+    iget-object v4, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mLayoutManualImport:Landroid/view/View;
 
-    const v0, 0x7f0800e4
+    const v5, 0x7f0901fd
 
-    new-array v3, v5, [Ljava/lang/Object;
+    invoke-virtual {v4, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
-    aput-object v2, v3, v4
+    move-result-object v2
 
-    invoke-virtual {p0, v0, v3}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+    check-cast v2, Landroid/widget/TextView;
 
-    move-result-object v0
-
+    .line 57
+    .local v2, tvSmsMsg:Landroid/widget/TextView;
     invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    const v0, 0x7f0601f5
+    .line 58
+    const v4, 0x7f0700e9
 
-    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->findViewById(I)Landroid/view/View;
+    new-array v5, v8, [Ljava/lang/Object;
+
+    aput-object v0, v5, v7
+
+    invoke-virtual {p0, v4, v5}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v2, v4}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 59
+    const v4, 0x7f0901fe
+
+    invoke-virtual {p0, v4}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->findViewById(I)Landroid/view/View;
+
+    move-result-object v4
+
+    invoke-virtual {v4, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    goto :goto_0
+.end method
+
+
+# virtual methods
+.method public onClick(Landroid/view/View;)V
+    .locals 3
+    .parameter "v"
+
+    .prologue
+    .line 64
+    invoke-virtual {p1}, Landroid/view/View;->getId()I
+
+    move-result v1
+
+    const v2, 0x7f0901fe
+
+    if-ne v1, v2, :cond_0
+
+    .line 65
+    const-string v1, "yuan_import_send_sms_msg"
+
+    invoke-static {p0, v1}, Lcom/umeng/analytics/MobclickAgent;->onEvent(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 66
+    iget-object v1, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mLayoutManualImport:Landroid/view/View;
+
+    if-eqz v1, :cond_0
+
+    .line 67
+    iget-object v1, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mLayoutManualImport:Landroid/view/View;
+
+    const v2, 0x7f0901fd
+
+    invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/widget/TextView;
+
+    invoke-virtual {v1}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
 
     move-result-object v0
 
-    invoke-virtual {v0, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    .line 68
+    .local v0, sms:Ljava/lang/String;
+    const-string v1, ""
 
+    invoke-static {p0, v1, v0}, Lcom/zhangdan/app/util/CommonMethod;->launchSendSms(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 71
+    .end local v0           #sms:Ljava/lang/String;
     :cond_0
+    return-void
+.end method
+
+.method protected onCreate(Landroid/os/Bundle;)V
+    .locals 1
+    .parameter "savedInstanceState"
+
+    .prologue
+    .line 29
+    invoke-super {p0, p1}, Lcom/zhangdan/app/activities/WrappedActivity;->onCreate(Landroid/os/Bundle;)V
+
+    .line 30
+    const v0, 0x7f030037
+
+    invoke-virtual {p0, v0}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->setContentView(I)V
+
+    .line 31
+    invoke-direct {p0}, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->initManualImportViews()V
+
+    .line 32
     return-void
 .end method
 
 .method protected onDestroy()V
     .locals 1
 
+    .prologue
+    .line 36
     invoke-super {p0}, Lcom/zhangdan/app/activities/WrappedActivity;->onDestroy()V
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->d:Lcom/zhangdan/app/activities/mailimport/e;
+    .line 37
+    iget-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->d:Lcom/zhangdan/app/activities/mailimport/e;
+    .line 38
+    iget-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
-    invoke-virtual {v0}, Lcom/zhangdan/app/activities/mailimport/e;->a()V
+    invoke-virtual {v0}, Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;->onDestroy()V
 
+    .line 39
     const/4 v0, 0x0
 
-    iput-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->d:Lcom/zhangdan/app/activities/mailimport/e;
+    iput-object v0, p0, Lcom/zhangdan/app/activities/mailimport/MailImportManualActivity;->mImportTitleManager:Lcom/zhangdan/app/activities/mailimport/ImportTitleManager;
 
+    .line 41
     :cond_0
     return-void
 .end method

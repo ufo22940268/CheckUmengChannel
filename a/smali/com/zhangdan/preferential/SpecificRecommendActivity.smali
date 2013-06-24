@@ -1,233 +1,199 @@
 .class public Lcom/zhangdan/preferential/SpecificRecommendActivity;
-.super Lcom/zhangdan/preferential/t;
+.super Lcom/zhangdan/preferential/PrefBaseActivity;
+.source "SpecificRecommendActivity.java"
 
 # interfaces
+.implements Lcom/zhangdan/preferential/utils/PositionProvider$PositionListener;
 .implements Landroid/view/View$OnClickListener;
-.implements Lcom/zhangdan/preferential/a/j;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;,
+        Lcom/zhangdan/preferential/SpecificRecommendActivity$GetNextPageTask;,
+        Lcom/zhangdan/preferential/SpecificRecommendActivity$GetInitPageTask;,
+        Lcom/zhangdan/preferential/SpecificRecommendActivity$AbsGetPageTask;
+    }
+.end annotation
 
 
 # instance fields
-.field private i:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+.field private mAdapter:Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;
 
-.field private j:Landroid/widget/ListView;
+.field private mBankIds:[I
 
-.field private k:Lcom/zhangdan/preferential/bk;
+.field private mCity:Ljava/lang/String;
 
-.field private l:I
+.field private mFakeListView:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
 
-.field private m:Ljava/lang/String;
+.field private mListView:Landroid/widget/ListView;
 
-.field private n:[I
+.field private mPage:I
 
-.field private o:Lcom/handmark/pulltorefresh/library/j;
+.field private mRefreshListener:Lcom/handmark/pulltorefresh/library/PullToRefreshBase$OnRefreshListener2;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Lcom/handmark/pulltorefresh/library/PullToRefreshBase$OnRefreshListener2",
+            "<",
+            "Landroid/widget/ListView;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # direct methods
 .method public constructor <init>()V
     .locals 1
 
-    invoke-direct {p0}, Lcom/zhangdan/preferential/t;-><init>()V
+    .prologue
+    .line 29
+    invoke-direct {p0}, Lcom/zhangdan/preferential/PrefBaseActivity;-><init>()V
 
-    new-instance v0, Lcom/zhangdan/preferential/bg;
+    .line 181
+    new-instance v0, Lcom/zhangdan/preferential/SpecificRecommendActivity$1;
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/preferential/bg;-><init>(Lcom/zhangdan/preferential/SpecificRecommendActivity;)V
+    invoke-direct {v0, p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity$1;-><init>(Lcom/zhangdan/preferential/SpecificRecommendActivity;)V
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->o:Lcom/handmark/pulltorefresh/library/j;
+    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mRefreshListener:Lcom/handmark/pulltorefresh/library/PullToRefreshBase$OnRefreshListener2;
 
+    .line 193
     return-void
 .end method
 
-.method static synthetic a(Lcom/zhangdan/preferential/SpecificRecommendActivity;)Lcom/zhangdan/preferential/bk;
+.method static synthetic access$100(Lcom/zhangdan/preferential/SpecificRecommendActivity;)Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;
     .locals 1
+    .parameter "x0"
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->k:Lcom/zhangdan/preferential/bk;
+    .prologue
+    .line 29
+    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mAdapter:Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;
 
     return-object v0
 .end method
 
-.method private a(I)Lorg/json/JSONObject;
-    .locals 4
+.method static synthetic access$200(Lcom/zhangdan/preferential/SpecificRecommendActivity;)Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+    .locals 1
+    .parameter "x0"
 
-    const/4 v0, 0x0
+    .prologue
+    .line 29
+    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mFakeListView:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
 
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->m:Ljava/lang/String;
-
-    if-eqz v1, :cond_0
-
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->f:Lcom/zhangdan/preferential/a/o;
-
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->m:Ljava/lang/String;
-
-    iget-object v2, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->n:[I
-
-    const-string v3, ""
-
-    invoke-static {v0, v1, p1, v3, v2}, Lcom/zhangdan/preferential/a/o;->a(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;[I)Lorg/json/JSONObject;
-
-    move-result-object v0
-
-    :cond_0
     return-object v0
 .end method
 
-.method static synthetic a(Lcom/zhangdan/preferential/SpecificRecommendActivity;I)V
+.method static synthetic access$402(Lcom/zhangdan/preferential/SpecificRecommendActivity;I)I
     .locals 0
+    .parameter "x0"
+    .parameter "x1"
 
-    iput p1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->l:I
+    .prologue
+    .line 29
+    iput p1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mPage:I
 
-    return-void
+    return p1
 .end method
 
-.method static synthetic b(Lcom/zhangdan/preferential/SpecificRecommendActivity;)Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+.method static synthetic access$412(Lcom/zhangdan/preferential/SpecificRecommendActivity;I)I
     .locals 1
+    .parameter "x0"
+    .parameter "x1"
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->i:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+    .prologue
+    .line 29
+    iget v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mPage:I
 
-    return-object v0
-.end method
+    add-int/2addr v0, p1
 
-.method static synthetic c(Lcom/zhangdan/preferential/SpecificRecommendActivity;)Lorg/json/JSONObject;
-    .locals 2
-
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->e:Lcom/zhangdan/preferential/a/i;
-
-    invoke-static {}, Lcom/zhangdan/preferential/a/i;->a()Lcom/zhangdan/preferential/data/model/Position;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_0
-
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->f:Lcom/zhangdan/preferential/a/o;
-
-    invoke-static {v0}, Lcom/zhangdan/preferential/a/o;->a(Lcom/zhangdan/preferential/data/model/Position;)Ljava/lang/String;
-
-    move-result-object v0
-
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->c:Lcom/zhangdan/preferential/a/f;
-
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->c:Lcom/zhangdan/preferential/a/f;
-
-    invoke-virtual {v1, v0}, Lcom/zhangdan/preferential/a/f;->a(Ljava/lang/String;)Lorg/json/JSONObject;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lcom/zhangdan/preferential/a/f;->k(Lorg/json/JSONObject;)Ljava/lang/String;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_0
-
-    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->m:Ljava/lang/String;
-
-    :cond_0
-    const/4 v0, 0x1
-
-    invoke-direct {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->a(I)Lorg/json/JSONObject;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method static synthetic d(Lcom/zhangdan/preferential/SpecificRecommendActivity;)I
-    .locals 1
-
-    iget v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->l:I
+    iput v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mPage:I
 
     return v0
 .end method
 
-.method static synthetic e(Lcom/zhangdan/preferential/SpecificRecommendActivity;)Lorg/json/JSONObject;
+.method static synthetic access$500(Lcom/zhangdan/preferential/SpecificRecommendActivity;)Lorg/json/JSONObject;
     .locals 1
+    .parameter "x0"
 
-    iget v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->l:I
-
-    add-int/lit8 v0, v0, 0x1
-
-    invoke-direct {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->a(I)Lorg/json/JSONObject;
+    .prologue
+    .line 29
+    invoke-direct {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->getInitPageRequest()Lorg/json/JSONObject;
 
     move-result-object v0
 
     return-object v0
 .end method
 
+.method static synthetic access$600(Lcom/zhangdan/preferential/SpecificRecommendActivity;)Lorg/json/JSONObject;
+    .locals 1
+    .parameter "x0"
 
-# virtual methods
-.method public final e_()V
-    .locals 2
+    .prologue
+    .line 29
+    invoke-direct {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->getNextPageRequest()Lorg/json/JSONObject;
 
-    const/4 v1, 0x0
+    move-result-object v0
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->i:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+    return-object v0
+.end method
 
-    invoke-virtual {v0}, Lcom/handmark/pulltorefresh/library/PullToRefreshListView;->A()V
+.method private configureCity()V
+    .locals 5
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->e:Lcom/zhangdan/preferential/a/i;
+    .prologue
+    .line 148
+    iget-object v3, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mPositionProvider:Lcom/zhangdan/preferential/utils/PositionProvider;
 
-    invoke-static {}, Lcom/zhangdan/preferential/a/i;->a()Lcom/zhangdan/preferential/data/model/Position;
+    invoke-virtual {v3}, Lcom/zhangdan/preferential/utils/PositionProvider;->getPosition()Lcom/zhangdan/preferential/data/model/Position;
 
-    new-instance v0, Lcom/zhangdan/preferential/bi;
+    move-result-object v1
 
-    invoke-direct {v0, p0, v1}, Lcom/zhangdan/preferential/bi;-><init>(Lcom/zhangdan/preferential/SpecificRecommendActivity;B)V
+    .line 149
+    .local v1, pos:Lcom/zhangdan/preferential/data/model/Position;
+    if-eqz v1, :cond_0
 
-    new-array v1, v1, [Ljava/lang/Void;
+    .line 150
+    iget-object v3, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mRequestGenerator:Lcom/zhangdan/preferential/utils/RequestGenerator;
 
-    invoke-virtual {v0, v1}, Lcom/zhangdan/preferential/bi;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
+    invoke-virtual {v3, v1}, Lcom/zhangdan/preferential/utils/RequestGenerator;->getCityRequestUrl(Lcom/zhangdan/preferential/data/model/Position;)Ljava/lang/String;
 
+    move-result-object v2
+
+    .line 151
+    .local v2, url:Ljava/lang/String;
+    iget-object v3, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mParser:Lcom/zhangdan/preferential/utils/JsonParser;
+
+    iget-object v4, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mParser:Lcom/zhangdan/preferential/utils/JsonParser;
+
+    invoke-virtual {v4, v2}, Lcom/zhangdan/preferential/utils/JsonParser;->parseUrl(Ljava/lang/String;)Lorg/json/JSONObject;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Lcom/zhangdan/preferential/utils/JsonParser;->inflateCity(Lorg/json/JSONObject;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 152
+    .local v0, city:Ljava/lang/String;
+    if-eqz v0, :cond_0
+
+    .line 153
+    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mCity:Ljava/lang/String;
+
+    .line 156
+    .end local v0           #city:Ljava/lang/String;
+    .end local v2           #url:Ljava/lang/String;
+    :cond_0
     return-void
 .end method
 
-.method public onClick(Landroid/view/View;)V
+.method private findViews()V
     .locals 1
 
-    invoke-virtual {p1}, Landroid/view/View;->getId()I
-
-    move-result v0
-
-    packed-switch v0, :pswitch_data_0
-
-    :goto_0
-    return-void
-
-    :pswitch_0
-    invoke-virtual {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->finish()V
-
-    goto :goto_0
-
-    :pswitch_data_0
-    .packed-switch 0x7f060040
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method protected onCreate(Landroid/os/Bundle;)V
-    .locals 3
-
-    const/4 v2, 0x0
-
-    invoke-super {p0, p1}, Lcom/zhangdan/preferential/t;->onCreate(Landroid/os/Bundle;)V
-
-    const v0, 0x7f0300ff
-
-    invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->setContentView(I)V
-
-    invoke-virtual {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->getIntent()Landroid/content/Intent;
-
-    move-result-object v0
-
-    invoke-virtual {v0}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
-
-    move-result-object v0
-
-    const-string v1, "ids"
-
-    invoke-virtual {v0, v1}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
-
-    move-result-object v0
-
-    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->n:[I
-
-    const v0, 0x7f060313
+    .prologue
+    .line 60
+    const v0, 0x7f090321
 
     invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->findViewById(I)Landroid/view/View;
 
@@ -235,43 +201,118 @@
 
     check-cast v0, Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->i:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mFakeListView:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->i:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+    .line 61
+    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mFakeListView:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
 
-    invoke-virtual {v0}, Lcom/handmark/pulltorefresh/library/PullToRefreshListView;->i()Landroid/view/View;
+    invoke-virtual {v0}, Lcom/handmark/pulltorefresh/library/PullToRefreshListView;->getRefreshableView()Landroid/view/View;
 
     move-result-object v0
 
     check-cast v0, Landroid/widget/ListView;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->j:Landroid/widget/ListView;
+    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mListView:Landroid/widget/ListView;
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->i:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+    .line 62
+    return-void
+.end method
 
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->o:Lcom/handmark/pulltorefresh/library/j;
+.method private getInitPageRequest()Lorg/json/JSONObject;
+    .locals 1
 
-    invoke-virtual {v0, v1}, Lcom/handmark/pulltorefresh/library/PullToRefreshListView;->a(Lcom/handmark/pulltorefresh/library/j;)V
+    .prologue
+    .line 165
+    invoke-direct {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->configureCity()V
 
-    new-instance v0, Lcom/zhangdan/preferential/bk;
+    .line 166
+    const/4 v0, 0x1
 
-    invoke-direct {v0, p0}, Lcom/zhangdan/preferential/bk;-><init>(Lcom/zhangdan/preferential/SpecificRecommendActivity;)V
+    invoke-direct {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->getPageRequest(I)Lorg/json/JSONObject;
 
-    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->k:Lcom/zhangdan/preferential/bk;
+    move-result-object v0
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->j:Landroid/widget/ListView;
+    return-object v0
+.end method
 
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->k:Lcom/zhangdan/preferential/bk;
+.method private getNextPageRequest()Lorg/json/JSONObject;
+    .locals 1
+
+    .prologue
+    .line 170
+    iget v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mPage:I
+
+    add-int/lit8 v0, v0, 0x1
+
+    invoke-direct {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->getPageRequest(I)Lorg/json/JSONObject;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method private getPageRequest(I)Lorg/json/JSONObject;
+    .locals 4
+    .parameter "page"
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 174
+    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mCity:Ljava/lang/String;
+
+    if-eqz v1, :cond_0
+
+    .line 175
+    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mRequestGenerator:Lcom/zhangdan/preferential/utils/RequestGenerator;
+
+    iget-object v2, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mCity:Ljava/lang/String;
+
+    iget-object v3, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mBankIds:[I
+
+    invoke-virtual {v1, v0, v2, p1, v3}, Lcom/zhangdan/preferential/utils/RequestGenerator;->getAllPromotionListRequest(Ljava/lang/String;Ljava/lang/String;I[I)Lorg/json/JSONObject;
+
+    move-result-object v0
+
+    .line 177
+    :cond_0
+    return-object v0
+.end method
+
+.method private initViews()V
+    .locals 2
+
+    .prologue
+    .line 65
+    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mFakeListView:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+
+    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mRefreshListener:Lcom/handmark/pulltorefresh/library/PullToRefreshBase$OnRefreshListener2;
+
+    invoke-virtual {v0, v1}, Lcom/handmark/pulltorefresh/library/PullToRefreshListView;->setOnRefreshListener(Lcom/handmark/pulltorefresh/library/PullToRefreshBase$OnRefreshListener2;)V
+
+    .line 66
+    new-instance v0, Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;
+
+    invoke-direct {v0, p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;-><init>(Lcom/zhangdan/preferential/SpecificRecommendActivity;)V
+
+    iput-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mAdapter:Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;
+
+    .line 67
+    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mListView:Landroid/widget/ListView;
+
+    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mAdapter:Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->j:Landroid/widget/ListView;
+    .line 68
+    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mListView:Landroid/widget/ListView;
 
-    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->k:Lcom/zhangdan/preferential/bk;
+    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mAdapter:Lcom/zhangdan/preferential/SpecificRecommendActivity$SpecificAdapter;
 
     invoke-virtual {v0, v1}, Landroid/widget/ListView;->setOnItemClickListener(Landroid/widget/AdapterView$OnItemClickListener;)V
 
-    const v0, 0x7f06007a
+    .line 69
+    const v0, 0x7f09007e
 
     invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->findViewById(I)Landroid/view/View;
 
@@ -279,11 +320,12 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    const v1, 0x7f0801a3
+    const v1, 0x7f0701aa
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 
-    const v0, 0x7f060040
+    .line 70
+    const v0, 0x7f09003f
 
     invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->findViewById(I)Landroid/view/View;
 
@@ -291,38 +333,158 @@
 
     invoke-virtual {v0, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->e:Lcom/zhangdan/preferential/a/i;
+    .line 71
+    return-void
+.end method
 
-    invoke-static {}, Lcom/zhangdan/preferential/a/i;->a()Lcom/zhangdan/preferential/data/model/Position;
 
-    move-result-object v0
+# virtual methods
+.method public onClick(Landroid/view/View;)V
+    .locals 1
+    .parameter "view"
 
-    if-nez v0, :cond_0
+    .prologue
+    .line 280
+    invoke-virtual {p1}, Landroid/view/View;->getId()I
 
-    iget-object v0, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->e:Lcom/zhangdan/preferential/a/i;
+    move-result v0
 
-    invoke-static {p0}, Lcom/zhangdan/preferential/a/i;->a(Lcom/zhangdan/preferential/a/j;)V
+    packed-switch v0, :pswitch_data_0
 
+    .line 284
     :goto_0
     return-void
 
-    :cond_0
-    new-instance v0, Lcom/zhangdan/preferential/bi;
-
-    invoke-direct {v0, p0, v2}, Lcom/zhangdan/preferential/bi;-><init>(Lcom/zhangdan/preferential/SpecificRecommendActivity;B)V
-
-    new-array v1, v2, [Ljava/lang/Void;
-
-    invoke-virtual {v0, v1}, Lcom/zhangdan/preferential/bi;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
+    .line 282
+    :pswitch_0
+    invoke-virtual {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->finish()V
 
     goto :goto_0
+
+    .line 280
+    :pswitch_data_0
+    .packed-switch 0x7f09003f
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method protected onCreate(Landroid/os/Bundle;)V
+    .locals 4
+    .parameter "savedBundleInstance"
+
+    .prologue
+    .line 44
+    invoke-super {p0, p1}, Lcom/zhangdan/preferential/PrefBaseActivity;->onCreate(Landroid/os/Bundle;)V
+
+    .line 45
+    const v2, 0x7f030104
+
+    invoke-virtual {p0, v2}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->setContentView(I)V
+
+    .line 46
+    invoke-virtual {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->getIntent()Landroid/content/Intent;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/Intent;->getExtras()Landroid/os/Bundle;
+
+    move-result-object v0
+
+    .line 47
+    .local v0, extra:Landroid/os/Bundle;
+    const-string v2, "ids"
+
+    invoke-virtual {v0, v2}, Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I
+
+    move-result-object v2
+
+    iput-object v2, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mBankIds:[I
+
+    .line 48
+    invoke-direct {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->findViews()V
+
+    .line 49
+    invoke-direct {p0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->initViews()V
+
+    .line 51
+    iget-object v2, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mPositionProvider:Lcom/zhangdan/preferential/utils/PositionProvider;
+
+    invoke-virtual {v2}, Lcom/zhangdan/preferential/utils/PositionProvider;->getPosition()Lcom/zhangdan/preferential/data/model/Position;
+
+    move-result-object v1
+
+    .line 52
+    .local v1, pos:Lcom/zhangdan/preferential/data/model/Position;
+    if-nez v1, :cond_0
+
+    .line 53
+    iget-object v2, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mPositionProvider:Lcom/zhangdan/preferential/utils/PositionProvider;
+
+    invoke-virtual {v2, p0}, Lcom/zhangdan/preferential/utils/PositionProvider;->setPositionListener(Lcom/zhangdan/preferential/utils/PositionProvider$PositionListener;)V
+
+    .line 57
+    :goto_0
+    return-void
+
+    .line 55
+    :cond_0
+    new-instance v2, Lcom/zhangdan/preferential/SpecificRecommendActivity$GetInitPageTask;
+
+    const/4 v3, 0x0
+
+    invoke-direct {v2, p0, v3}, Lcom/zhangdan/preferential/SpecificRecommendActivity$GetInitPageTask;-><init>(Lcom/zhangdan/preferential/SpecificRecommendActivity;Lcom/zhangdan/preferential/SpecificRecommendActivity$1;)V
+
+    const/4 v3, 0x0
+
+    new-array v3, v3, [Ljava/lang/Void;
+
+    invoke-virtual {v2, v3}, Lcom/zhangdan/preferential/SpecificRecommendActivity$GetInitPageTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
+
+    goto :goto_0
+.end method
+
+.method public onPositionUpdated()V
+    .locals 3
+
+    .prologue
+    .line 159
+    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mFakeListView:Lcom/handmark/pulltorefresh/library/PullToRefreshListView;
+
+    invoke-virtual {v1}, Lcom/handmark/pulltorefresh/library/PullToRefreshListView;->showLoading()V
+
+    .line 160
+    iget-object v1, p0, Lcom/zhangdan/preferential/SpecificRecommendActivity;->mPositionProvider:Lcom/zhangdan/preferential/utils/PositionProvider;
+
+    invoke-virtual {v1}, Lcom/zhangdan/preferential/utils/PositionProvider;->getPosition()Lcom/zhangdan/preferential/data/model/Position;
+
+    move-result-object v0
+
+    .line 161
+    .local v0, pos:Lcom/zhangdan/preferential/data/model/Position;
+    new-instance v1, Lcom/zhangdan/preferential/SpecificRecommendActivity$GetInitPageTask;
+
+    const/4 v2, 0x0
+
+    invoke-direct {v1, p0, v2}, Lcom/zhangdan/preferential/SpecificRecommendActivity$GetInitPageTask;-><init>(Lcom/zhangdan/preferential/SpecificRecommendActivity;Lcom/zhangdan/preferential/SpecificRecommendActivity$1;)V
+
+    const/4 v2, 0x0
+
+    new-array v2, v2, [Ljava/lang/Void;
+
+    invoke-virtual {v1, v2}, Lcom/zhangdan/preferential/SpecificRecommendActivity$GetInitPageTask;->execute([Ljava/lang/Object;)Landroid/os/AsyncTask;
+
+    .line 162
+    return-void
 .end method
 
 .method protected onResume()V
     .locals 2
 
-    invoke-super {p0}, Lcom/zhangdan/preferential/t;->onResume()V
+    .prologue
+    .line 75
+    invoke-super {p0}, Lcom/zhangdan/preferential/PrefBaseActivity;->onResume()V
 
+    .line 76
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.intent.action.UPDATE_POSITION"
@@ -331,14 +493,18 @@
 
     invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
 
+    .line 77
     return-void
 .end method
 
 .method public onStop()V
     .locals 2
 
-    invoke-super {p0}, Lcom/zhangdan/preferential/t;->onStop()V
+    .prologue
+    .line 81
+    invoke-super {p0}, Lcom/zhangdan/preferential/PrefBaseActivity;->onStop()V
 
+    .line 82
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.intent.action.UPDATE_POSITION"
@@ -347,5 +513,6 @@
 
     invoke-virtual {p0, v0}, Lcom/zhangdan/preferential/SpecificRecommendActivity;->stopService(Landroid/content/Intent;)Z
 
+    .line 83
     return-void
 .end method

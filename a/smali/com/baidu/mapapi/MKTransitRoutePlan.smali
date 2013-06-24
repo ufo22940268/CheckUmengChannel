@@ -8,8 +8,26 @@
 .field private b:Ljava/lang/String;
 
 .field private c:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKRoute;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private d:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKLine;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private e:Lcom/baidu/mapapi/GeoPoint;
 
@@ -45,6 +63,15 @@
 
 .method a(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKRoute;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKTransitRoutePlan;->c:Ljava/util/ArrayList;
 
@@ -185,6 +212,15 @@
 
 .method public setLine(Ljava/util/ArrayList;)V
     .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/MKLine;",
+            ">;)V"
+        }
+    .end annotation
 
     iput-object p1, p0, Lcom/baidu/mapapi/MKTransitRoutePlan;->d:Ljava/util/ArrayList;
 

@@ -1,4 +1,4 @@
-.class final Lsdk/b/a/a/e/e/f;
+.class Lsdk/b/a/a/e/e/f;
 .super Ljava/lang/Object;
 
 
@@ -45,8 +45,8 @@
     return-void
 .end method
 
-.method constructor <init>(Ljava/lang/String;Ljava/lang/String;Lsdk/c/a/b/d;Lsdk/b/a/a/e/e/d;)V
-    .locals 1
+.method constructor <init>(Ljava/lang/String;Ljava/lang/String;Lsdk/c/a/b/d;ILsdk/b/a/a/e/e/d;)V
+    .locals 0
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -56,17 +56,17 @@
 
     iput-object p3, p0, Lsdk/b/a/a/e/e/f;->e:Lsdk/c/a/b/d;
 
-    const/16 v0, 0x64
+    iput p4, p0, Lsdk/b/a/a/e/e/f;->f:I
 
-    iput v0, p0, Lsdk/b/a/a/e/e/f;->f:I
-
-    iput-object p4, p0, Lsdk/b/a/a/e/e/f;->g:Lsdk/b/a/a/e/e/d;
+    iput-object p5, p0, Lsdk/b/a/a/e/e/f;->g:Lsdk/b/a/a/e/e/d;
 
     return-void
 .end method
 
-.method private a(Lsdk/b/a/a/e/e/e;)V
-    .locals 2
+
+# virtual methods
+.method a(Lsdk/b/a/a/e/e/e;Ljava/lang/Exception;)V
+    .locals 6
 
     const/4 v0, 0x1
 
@@ -74,20 +74,22 @@
 
     iget-object v0, p0, Lsdk/b/a/a/e/e/f;->g:Lsdk/b/a/a/e/e/d;
 
-    iget-object v1, p0, Lsdk/b/a/a/e/e/f;->c:Ljava/lang/String;
+    iget-object v2, p0, Lsdk/b/a/a/e/e/f;->c:Ljava/lang/String;
 
-    iget-object v1, p0, Lsdk/b/a/a/e/e/f;->d:Ljava/lang/String;
+    iget-object v3, p0, Lsdk/b/a/a/e/e/f;->d:Ljava/lang/String;
 
-    iget-object v1, p0, Lsdk/b/a/a/e/e/f;->k:Ljava/lang/String;
+    iget-object v4, p0, Lsdk/b/a/a/e/e/f;->k:Ljava/lang/String;
 
-    invoke-interface {v0, p1, v1}, Lsdk/b/a/a/e/e/d;->a(Lsdk/b/a/a/e/e/e;Ljava/lang/String;)V
+    move-object v1, p1
+
+    move-object v5, p2
+
+    invoke-interface/range {v0 .. v5}, Lsdk/b/a/a/e/e/d;->a(Lsdk/b/a/a/e/e/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Exception;)V
 
     return-void
 .end method
 
-
-# virtual methods
-.method final a()Z
+.method a()Z
     .locals 1
 
     iget-boolean v0, p0, Lsdk/b/a/a/e/e/f;->l:Z
@@ -95,8 +97,10 @@
     return v0
 .end method
 
-.method final a(Lsdk/c/a/e/a/f;)Z
+.method a(Lsdk/c/a/e/a/f;Lsdk/c/a/e/e;)Z
     .locals 9
+
+    const/4 v3, 0x0
 
     const/4 v8, 0x0
 
@@ -172,37 +176,53 @@
 
     check-cast v0, Lsdk/b/a/a/e/e/a;
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    const-string v2, "GexinSdk"
 
-    const-string v3, "bean.filePath : "
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    iget-object v3, v0, Lsdk/b/a/a/e/e/a;->a:Ljava/lang/String;
+    const-string v4, "bean.filePath : "
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v2
+    move-result-object v3
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    iget-object v4, v0, Lsdk/b/a/a/e/e/a;->a:Ljava/lang/String;
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    new-instance v2, Ljava/lang/StringBuilder;
+    move-result-object v3
 
-    const-string v3, "bean.url : "
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    move-result-object v3
 
-    iget-object v3, v0, Lsdk/b/a/a/e/e/a;->b:Ljava/lang/String;
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, "GexinSdk"
 
-    move-result-object v2
+    new-instance v3, Ljava/lang/StringBuilder;
 
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
 
-    invoke-static {}, Lsdk/c/a/c/a;->b()V
+    const-string v4, "bean.url : "
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    iget-object v4, v0, Lsdk/b/a/a/e/e/a;->b:Ljava/lang/String;
+
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-static {v2, v3}, Lsdk/c/a/c/a;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     iget-object v2, p0, Lsdk/b/a/a/e/e/f;->e:Lsdk/c/a/b/d;
 
@@ -227,11 +247,13 @@
     :cond_1
     sget-object v0, Lsdk/b/a/a/e/e/e;->a:Lsdk/b/a/a/e/e/e;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/e/f;->a(Lsdk/b/a/a/e/e/e;)V
+    invoke-virtual {p0, v0, v3}, Lsdk/b/a/a/e/e/f;->a(Lsdk/b/a/a/e/e/e;Ljava/lang/Exception;)V
 
-    goto :goto_0
+    goto/16 :goto_0
 
     :pswitch_1
+    check-cast p1, Lsdk/b/a/a/e/e/b;
+
     iget v0, p0, Lsdk/b/a/a/e/e/f;->i:I
 
     add-int/lit8 v0, v0, 0x1
@@ -250,7 +272,7 @@
 
     sget-object v0, Lsdk/b/a/a/e/e/e;->a:Lsdk/b/a/a/e/e/e;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/e/f;->a(Lsdk/b/a/a/e/e/e;)V
+    invoke-virtual {p0, v0, v3}, Lsdk/b/a/a/e/e/f;->a(Lsdk/b/a/a/e/e/e;Ljava/lang/Exception;)V
 
     goto/16 :goto_0
 
@@ -263,7 +285,7 @@
     .end packed-switch
 .end method
 
-.method final a(Lsdk/c/a/e/d;)Z
+.method a(Lsdk/c/a/e/d;Lsdk/c/a/e/e;)Z
     .locals 8
 
     const/4 v7, 0x1
@@ -292,7 +314,7 @@
     :goto_1
     iget-object v1, p1, Lsdk/b/a/a/e/e/c;->O:Ljava/lang/Exception;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/e/f;->a(Lsdk/b/a/a/e/e/e;)V
+    invoke-virtual {p0, v0, v1}, Lsdk/b/a/a/e/e/f;->a(Lsdk/b/a/a/e/e/e;Ljava/lang/Exception;)V
 
     goto :goto_0
 
@@ -331,9 +353,9 @@
 
     new-instance v3, Lsdk/b/a/a/e/e/b;
 
-    iget-object v4, v0, Lsdk/b/a/a/e/e/b;->b:Ljava/lang/String;
+    iget-object v4, v0, Lsdk/b/a/a/e/e/b;->g:Ljava/lang/String;
 
-    iget-object v5, v0, Lsdk/b/a/a/e/e/b;->a:Ljava/lang/String;
+    iget-object v5, v0, Lsdk/b/a/a/e/e/b;->f:Ljava/lang/String;
 
     iget-object v6, p0, Lsdk/b/a/a/e/e/f;->c:Ljava/lang/String;
 
@@ -362,7 +384,9 @@
 
     sget-object v0, Lsdk/b/a/a/e/e/e;->d:Lsdk/b/a/a/e/e/e;
 
-    invoke-direct {p0, v0}, Lsdk/b/a/a/e/e/f;->a(Lsdk/b/a/a/e/e/e;)V
+    const/4 v1, 0x0
+
+    invoke-virtual {p0, v0, v1}, Lsdk/b/a/a/e/e/f;->a(Lsdk/b/a/a/e/e/e;Ljava/lang/Exception;)V
 
     goto :goto_0
 
@@ -374,8 +398,6 @@
     iput v0, p0, Lsdk/b/a/a/e/e/f;->j:I
 
     goto :goto_2
-
-    nop
 
     :sswitch_data_0
     .sparse-switch
@@ -389,7 +411,7 @@
     .end packed-switch
 .end method
 
-.method final b()V
+.method b()V
     .locals 5
 
     new-instance v0, Ljava/io/File;

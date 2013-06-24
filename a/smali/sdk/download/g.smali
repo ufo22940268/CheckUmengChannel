@@ -1,4 +1,4 @@
-.class final Lsdk/download/g;
+.class Lsdk/download/g;
 .super Landroid/database/ContentObserver;
 
 
@@ -23,7 +23,7 @@
 
 
 # virtual methods
-.method public final onChange(Z)V
+.method public onChange(Z)V
     .locals 1
 
     iget-object v0, p0, Lsdk/download/g;->a:Lsdk/download/DownloadService;

@@ -2,8 +2,36 @@
 .super Lcom/baidu/mapapi/ItemizedOverlay;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/baidu/mapapi/RouteOverlay$1;,
+        Lcom/baidu/mapapi/RouteOverlay$a;,
+        Lcom/baidu/mapapi/RouteOverlay$b;
+    }
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/baidu/mapapi/ItemizedOverlay",
+        "<",
+        "Lcom/baidu/mapapi/OverlayItem;",
+        ">;"
+    }
+.end annotation
+
+
 # instance fields
 .field private a:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Lcom/baidu/mapapi/RouteOverlay$b;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private b:Lcom/baidu/mapapi/MapView;
 
@@ -14,6 +42,16 @@
 .field private e:I
 
 .field private f:Ljava/util/HashMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/HashMap",
+            "<",
+            "Ljava/lang/Integer;",
+            "Lcom/baidu/mapapi/RouteOverlay$a;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field public mRoute:Lcom/baidu/mapapi/MKRoute;
 
@@ -349,7 +387,7 @@
 
     iget-object v2, v0, Lcom/baidu/mapapi/RouteOverlay;->mRoute:Lcom/baidu/mapapi/MKRoute;
 
-    if-eqz v2, :cond_5
+    if-eqz v2, :cond_4
 
     move-object/from16 v0, p0
 
@@ -365,13 +403,13 @@
 
     iget-object v8, v2, Lcom/baidu/mapapi/MKRoute;->a:Ljava/util/ArrayList;
 
-    if-eqz v7, :cond_5
+    if-eqz v7, :cond_4
 
     invoke-virtual {v7}, Ljava/util/ArrayList;->size()I
 
     move-result v2
 
-    if-lez v2, :cond_5
+    if-lez v2, :cond_4
 
     move-object/from16 v0, p0
 
@@ -387,7 +425,7 @@
 
     check-cast v2, Lcom/baidu/mapapi/RouteOverlay$a;
 
-    if-nez v2, :cond_8
+    if-nez v2, :cond_9
 
     new-instance v4, Lcom/baidu/mapapi/RouteOverlay$a;
 
@@ -514,7 +552,7 @@
 
     const/4 v2, 0x1
 
-    if-le v13, v2, :cond_5
+    if-le v13, v2, :cond_4
 
     const/4 v10, 0x0
 
@@ -750,7 +788,7 @@
     move v11, v2
 
     :goto_3
-    if-ge v11, v13, :cond_5
+    if-ge v11, v13, :cond_4
 
     iget-object v2, v8, Lcom/baidu/mapapi/RouteOverlay$a;->b:Ljava/util/ArrayList;
 
@@ -907,7 +945,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_4
+    if-eqz v2, :cond_5
 
     const/4 v9, 0x1
 
@@ -946,28 +984,30 @@
 
     const/16 v4, 0x32
 
-    if-gt v3, v4, :cond_5
-
-    add-int/lit8 v4, v11, 0x1
-
-    move v10, v3
-
-    move v11, v4
-
-    move v3, v2
-
-    goto/16 :goto_3
+    if-le v3, v4, :cond_6
 
     :cond_4
+    const/4 v2, 0x3
+
+    if-lt v12, v2, :cond_7
+
+    invoke-super/range {p0 .. p5}, Lcom/baidu/mapapi/ItemizedOverlay;->draw(Landroid/graphics/Canvas;Lcom/baidu/mapapi/MapView;ZJ)Z
+
+    move-result v2
+
+    :goto_5
+    return v2
+
+    :cond_5
     const/4 v2, 0x1
 
-    if-ne v3, v2, :cond_7
+    if-ne v3, v2, :cond_8
 
     add-int/lit8 v2, v10, 0x1
 
     const/16 v4, 0x32
 
-    if-gt v2, v4, :cond_5
+    if-gt v2, v4, :cond_4
 
     move/from16 v20, v3
 
@@ -977,31 +1017,30 @@
 
     goto :goto_4
 
-    :cond_5
-    const/4 v2, 0x3
-
-    if-lt v12, v2, :cond_6
-
-    invoke-super/range {p0 .. p5}, Lcom/baidu/mapapi/ItemizedOverlay;->draw(Landroid/graphics/Canvas;Lcom/baidu/mapapi/MapView;ZJ)Z
-
-    move-result v2
-
-    :goto_5
-    return v2
-
     :cond_6
+    add-int/lit8 v4, v11, 0x1
+
+    move v11, v4
+
+    move v10, v3
+
+    move v3, v2
+
+    goto/16 :goto_3
+
+    :cond_7
     const/4 v2, 0x1
 
     goto :goto_5
 
-    :cond_7
+    :cond_8
     move v2, v3
 
     move v3, v10
 
     goto :goto_4
 
-    :cond_8
+    :cond_9
     move-object v8, v2
 
     goto/16 :goto_2

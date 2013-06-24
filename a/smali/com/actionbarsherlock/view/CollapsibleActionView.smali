@@ -1,5 +1,6 @@
 .class public interface abstract Lcom/actionbarsherlock/view/CollapsibleActionView;
 .super Ljava/lang/Object;
+.source "CollapsibleActionView.java"
 
 
 # virtual methods

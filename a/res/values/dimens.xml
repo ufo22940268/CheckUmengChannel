@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="default_gap">16.0dip</dimen>
     <dimen name="indicator_right_padding">10.0dip</dimen>
     <dimen name="indicator_corner_radius">12.0dip</dimen>
     <dimen name="indicator_internal_padding">4.0dip</dimen>
@@ -15,13 +16,12 @@
     <dimen name="abs__action_button_min_width">56.0dip</dimen>
     <dimen name="abs__alert_dialog_title_height">64.0dip</dimen>
     <item type="dimen" name="abs__dialog_min_width_major">65.0%</item>
-    <item type="dimen" name="abs__dialog_min_width_minor">94.99999%</item>
+    <item type="dimen" name="abs__dialog_min_width_minor">95.00001%</item>
     <dimen name="abs__dropdownitem_text_padding_left">8.0dip</dimen>
     <dimen name="abs__dropdownitem_text_padding_right">8.0dip</dimen>
     <dimen name="abs__dropdownitem_icon_width">32.0dip</dimen>
     <dimen name="abs__search_view_text_min_width">160.0dip</dimen>
     <dimen name="abs__search_view_preferred_width">320.0dip</dimen>
-    <dimen name="default_gap">16.0dip</dimen>
     <dimen name="menu_item_padding">10.0dip</dimen>
     <dimen name="menu_header_padding_top">8.0dip</dimen>
     <dimen name="menu_header_line">3.0dip</dimen>
@@ -88,4 +88,5 @@
     <dimen name="pop_menu_shop_list_height">240.0dip</dimen>
     <dimen name="today_dialog_width">250.0dip</dimen>
     <dimen name="today_dialog_height">428.0dip</dimen>
+    <dimen name="banner_height">140.0dip</dimen>
 </resources>
