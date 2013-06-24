@@ -2,11 +2,7 @@
 /*global window, $ */
 $(function () {
     'use strict';
-    // Change this to the location of your server-side upload handler:
-    //var url = (window.location.hostname === 'blueimp.github.io' ||
-    //            window.location.hostname === 'blueimp.github.io') ?
-    //            '//jquery-file-upload.appspot.com/' : 'server/php/';
-    var url = '/upload';
+    var url = '/upload?id=' + $('#fileupload').attr("id");
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',
@@ -31,5 +27,9 @@ $(function () {
                 progress + '%'
             );
         }
+    });
+
+    $('#fileupload').click(function() {
+        $('#parse-results').append('<div id="progress" class="progress progress-success progress-striped active"> <div class="bar"></div> </div> <div id="parse-result" class="alert alert-success" style="visibility:hidden"> </div>');
     });
 });

@@ -19,6 +19,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 class UploadHandler(tornado.web.RequestHandler):
     def post(self):
+        util.log(self.get_argument("id", default="0"));
         file1 = self.request.files['files[]'][0];
         util.log(file1['filename']);
         outfile = open("a.apk", "w");
