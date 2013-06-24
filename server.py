@@ -6,24 +6,31 @@ from tornado.template import Loader
 import logging
 import util
 import parser
+import json
+import re
+import urllib
 
 logger = logging.getLogger("test");
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
 	loader = Loader("./");
-	self.write(loader.load("basic.html").generate());
+	self.write(loader.load("index.html").generate());
 
 class UploadHandler(tornado.web.RequestHandler):
     def post(self):
-	util.log("iiiii");
-	
-	file1 = self.request.files['files[]'][0];
-	util.log(file1['filename']);
-	outfile = open("a.apk", "w");
-	outfile.write(file1['body']);
-	outfile.close();
+        file1 = self.request.files['files[]'][0];
+        util.log(file1['filename']);
+        outfile = open("a.apk", "w");
+        outfile.write(file1['body']);
+        outfile.close();
 
-	self.finish("渠道名字是" + parser.parseChannel())
+        try: 
+            jo = json.dumps(dict(channel=parser.parseChannel(), state=0));
+            js = str(jo);
+            self.write(js);
+        except:
+            jo = json.dumps(dict(state=-1));
+            self.write(str(jo));
 
 application = tornado.web.Application([
     (r"/", MainHandler),

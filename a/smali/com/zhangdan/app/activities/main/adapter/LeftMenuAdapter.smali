@@ -26,11 +26,11 @@
     .parameter "context"
 
     .prologue
-    const v12, 0x7f070053
-
-    const v11, 0x7f070052
+    const v12, 0x7f070052
 
     const v9, 0x7f070037
+
+    const v11, 0x7f0202b1
 
     const/4 v8, 0x1
 
@@ -104,7 +104,7 @@
 
     .line 49
     .restart local v5       #item:Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
-    invoke-virtual {v6, v11}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+    invoke-virtual {v6, v12}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v7
 
@@ -127,7 +127,7 @@
 
     .line 53
     .restart local v5       #item:Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
-    invoke-virtual {v6, v11}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+    invoke-virtual {v6, v12}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v7
 
@@ -150,7 +150,9 @@
 
     .line 57
     .restart local v5       #item:Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
-    invoke-virtual {v6, v12}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+    const v7, 0x7f070053
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v7
 
@@ -173,7 +175,9 @@
 
     .line 61
     .restart local v5       #item:Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
-    invoke-virtual {v6, v12}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+    const v7, 0x7f070053
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
     move-result-object v7
 
@@ -247,13 +251,25 @@
     .end local v5           #item:Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
     const v7, 0x7f07003f
 
-    const v8, 0x7f0202b1
+    const/16 v8, 0x8
 
-    const/16 v9, 0x8
-
-    invoke-direct {v5, v7, v8, v9}, Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;-><init>(III)V
+    invoke-direct {v5, v7, v11, v8}, Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;-><init>(III)V
 
     .line 77
+    .restart local v5       #item:Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
+    invoke-virtual {v2, v5}, Lcom/zhangdan/app/activities/main/menu/LeftMenuGroup;->addMenuItem(Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;)V
+
+    .line 79
+    new-instance v5, Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
+
+    .end local v5           #item:Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
+    const v7, 0x7f070040
+
+    const/16 v8, 0xc
+
+    invoke-direct {v5, v7, v11, v8}, Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;-><init>(III)V
+
+    .line 80
     .restart local v5       #item:Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;
     invoke-virtual {v2, v5}, Lcom/zhangdan/app/activities/main/menu/LeftMenuGroup;->addMenuItem(Lcom/zhangdan/app/activities/main/menu/LeftMenuItem;)V
 

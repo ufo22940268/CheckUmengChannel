@@ -56,7 +56,7 @@
 
     iput-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;->mProms:Ljava/util/List;
 
-    .line 433
+    .line 444
     return-void
 .end method
 
@@ -162,7 +162,18 @@
 
     invoke-direct {v0, v10}, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;->loadImage(Landroid/widget/ImageView;)V
 
-    .line 404
+    .line 403
+    iget-object v10, v2, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$ViewHolder;->icon:Landroid/widget/ImageView;
+
+    new-instance v11, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$1;
+
+    move-object/from16 v0, p0
+
+    invoke-direct {v11, v0, v6}, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$1;-><init>(Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;Lcom/zhangdan/preferential/data/model/Promotion;)V
+
+    invoke-virtual {v10, v11}, Landroid/widget/ImageView;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 415
     iget-object v10, v2, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$ViewHolder;->photo:Landroid/widget/ImageView;
 
     iget-object v11, v6, Lcom/zhangdan/preferential/data/model/Promotion;->imageUrl:Ljava/lang/String;
@@ -171,7 +182,7 @@
 
     invoke-direct {v0, v10, v11}, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;->setImageTag(Landroid/widget/ImageView;Ljava/lang/String;)V
 
-    .line 405
+    .line 416
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
@@ -183,14 +194,14 @@
 
     if-nez v10, :cond_0
 
-    .line 406
+    .line 417
     iget-object v10, v2, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$ViewHolder;->photo:Landroid/widget/ImageView;
 
     move-object/from16 v0, p0
 
     invoke-direct {v0, v10}, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;->loadImage(Landroid/widget/ImageView;)V
 
-    .line 408
+    .line 419
     :cond_0
     iget-object v10, v2, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$ViewHolder;->starView:Lcom/zhangdan/preferential/widget/CustomStarView;
 
@@ -200,12 +211,12 @@
 
     invoke-virtual {v10, v11}, Lcom/zhangdan/preferential/widget/CustomStarView;->setRating(I)V
 
-    .line 410
+    .line 421
     iget-object v10, v2, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$ViewHolder;->tagsView:Landroid/view/ViewGroup;
 
     invoke-virtual {v10}, Landroid/view/ViewGroup;->removeAllViews()V
 
-    .line 411
+    .line 422
     move-object/from16 v0, p0
 
     iget-object v10, v0, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
@@ -218,13 +229,13 @@
 
     move-result-object v4
 
-    .line 412
+    .line 423
     .local v4, inflater:Landroid/view/LayoutInflater;
     invoke-virtual {v6}, Lcom/zhangdan/preferential/data/model/Promotion;->getDiscountWeeks()[Ljava/lang/String;
 
     move-result-object v9
 
-    .line 413
+    .line 424
     .local v9, weeks:[Ljava/lang/String;
     move-object v1, v9
 
@@ -240,7 +251,7 @@
 
     aget-object v8, v1, v3
 
-    .line 414
+    .line 425
     .local v8, week:Ljava/lang/String;
     const v10, 0x7f030110
 
@@ -254,21 +265,21 @@
 
     check-cast v7, Landroid/widget/TextView;
 
-    .line 416
+    .line 427
     .local v7, tv:Landroid/widget/TextView;
     invoke-virtual {v7, v8}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 417
+    .line 428
     iget-object v10, v2, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$ViewHolder;->tagsView:Landroid/view/ViewGroup;
 
     invoke-virtual {v10, v7}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
-    .line 413
+    .line 424
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 420
+    .line 431
     .end local v7           #tv:Landroid/widget/TextView;
     .end local v8           #week:Ljava/lang/String;
     :cond_1
@@ -283,14 +294,14 @@
 
     if-eqz v10, :cond_2
 
-    .line 421
+    .line 432
     iget-object v10, v2, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$ViewHolder;->photo:Landroid/widget/ImageView;
 
     const/16 v11, 0x8
 
     invoke-virtual {v10, v11}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    .line 423
+    .line 434
     :cond_2
     return-void
 .end method
@@ -300,7 +311,7 @@
     .parameter "view"
 
     .prologue
-    .line 430
+    .line 441
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     iget-object v0, v0, Lcom/zhangdan/preferential/RecommendFragment;->imageManager:Lcom/novoda/imageloader/core/ImageManager;
@@ -311,7 +322,7 @@
 
     invoke-interface {v0, p1}, Lcom/novoda/imageloader/core/loader/Loader;->load(Landroid/widget/ImageView;)V
 
-    .line 431
+    .line 442
     return-void
 .end method
 
@@ -321,7 +332,7 @@
     .parameter "url"
 
     .prologue
-    .line 426
+    .line 437
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     iget-object v0, v0, Lcom/zhangdan/preferential/RecommendFragment;->imageTagFactory:Lcom/novoda/imageloader/core/model/ImageTagFactory;
@@ -338,7 +349,7 @@
 
     invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setTag(Ljava/lang/Object;)V
 
-    .line 427
+    .line 438
     return-void
 .end method
 

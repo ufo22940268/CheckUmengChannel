@@ -38,7 +38,7 @@
     .parameter
 
     .prologue
-    .line 433
+    .line 444
     iput-object p1, p0, Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter$ViewHolder;->this$1:Lcom/zhangdan/preferential/RecommendFragment$RecommendAdapter;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V

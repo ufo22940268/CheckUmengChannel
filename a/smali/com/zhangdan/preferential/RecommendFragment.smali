@@ -397,7 +397,7 @@
     .locals 6
 
     .prologue
-    .line 478
+    .line 489
     invoke-virtual {p0}, Lcom/zhangdan/preferential/RecommendFragment;->getActivity()Landroid/support/v4/app/FragmentActivity;
 
     move-result-object v2
@@ -418,7 +418,7 @@
 
     check-cast v1, Lcom/zhangdan/preferential/widget/TodayDialogView;
 
-    .line 479
+    .line 490
     .local v1, view:Lcom/zhangdan/preferential/widget/TodayDialogView;
     new-instance v2, Landroid/app/AlertDialog$Builder;
 
@@ -438,7 +438,7 @@
 
     iput-object v2, p0, Lcom/zhangdan/preferential/RecommendFragment;->mTodayDialog:Landroid/app/AlertDialog;
 
-    .line 482
+    .line 493
     invoke-virtual {p0}, Lcom/zhangdan/preferential/RecommendFragment;->getActivity()Landroid/support/v4/app/FragmentActivity;
 
     move-result-object v2
@@ -447,7 +447,7 @@
 
     move-result-object v0
 
-    .line 483
+    .line 494
     .local v0, res:Landroid/content/res/Resources;
     iget-object v2, p0, Lcom/zhangdan/preferential/RecommendFragment;->mTodayDialog:Landroid/app/AlertDialog;
 
@@ -469,7 +469,7 @@
 
     invoke-virtual {v2, v3, v4}, Landroid/view/Window;->setLayout(II)V
 
-    .line 484
+    .line 495
     return-void
 .end method
 
@@ -527,13 +527,13 @@
     .locals 3
 
     .prologue
-    .line 522
+    .line 533
     :try_start_0
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment;->mActionBarView:Landroid/view/View;
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 523
+    .line 534
     .local v0, parent:Landroid/view/ViewGroup;
     const v1, 0x7f090040
 
@@ -545,7 +545,7 @@
 
     invoke-virtual {v1, v2}, Landroid/view/View;->setClickable(Z)V
 
-    .line 524
+    .line 535
     const v1, 0x7f090051
 
     invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
@@ -558,12 +558,12 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 527
+    .line 538
     .end local v0           #parent:Landroid/view/ViewGroup;
     :goto_0
     return-void
 
-    .line 525
+    .line 536
     :catch_0
     move-exception v1
 
@@ -574,12 +574,12 @@
     .locals 3
 
     .prologue
-    .line 530
+    .line 541
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment;->mActionBarView:Landroid/view/View;
 
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 531
+    .line 542
     .local v0, parent:Landroid/view/ViewGroup;
     const v1, 0x7f090040
 
@@ -591,7 +591,7 @@
 
     invoke-virtual {v1, v2}, Landroid/view/View;->setClickable(Z)V
 
-    .line 532
+    .line 543
     const v1, 0x7f090051
 
     invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
@@ -602,7 +602,7 @@
 
     invoke-virtual {v1, v2}, Landroid/view/View;->setVisibility(I)V
 
-    .line 533
+    .line 544
     return-void
 .end method
 
@@ -1065,7 +1065,7 @@
     .parameter "context"
 
     .prologue
-    .line 509
+    .line 520
     invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v1
@@ -1080,14 +1080,14 @@
 
     move-result-object v0
 
-    .line 510
+    .line 521
     .local v0, view:Landroid/view/View;
     iput-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment;->mActionBarView:Landroid/view/View;
 
-    .line 511
+    .line 522
     invoke-virtual {p0}, Lcom/zhangdan/preferential/RecommendFragment;->initActionBarView()V
 
-    .line 512
+    .line 523
     return-object v0
 .end method
 
@@ -1095,7 +1095,7 @@
     .locals 2
 
     .prologue
-    .line 516
+    .line 527
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment;->mActionBarView:Landroid/view/View;
 
     const v1, 0x7f090040
@@ -1106,7 +1106,7 @@
 
     invoke-virtual {v0, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 517
+    .line 528
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment;->mActionBarView:Landroid/view/View;
 
     const v1, 0x7f09003f
@@ -1117,7 +1117,7 @@
 
     invoke-virtual {v0, p0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 518
+    .line 529
     return-void
 .end method
 
@@ -1234,18 +1234,18 @@
     .parameter "view"
 
     .prologue
-    .line 446
+    .line 457
     invoke-virtual {p1}, Landroid/view/View;->getId()I
 
     move-result v2
 
     packed-switch v2, :pswitch_data_0
 
-    .line 458
+    .line 469
     :goto_0
     return-void
 
-    .line 448
+    .line 459
     :pswitch_0
     invoke-virtual {p0}, Lcom/zhangdan/preferential/RecommendFragment;->getActivity()Landroid/support/v4/app/FragmentActivity;
 
@@ -1253,13 +1253,13 @@
 
     check-cast v1, Lcom/zhangdan/app/activities/MainFragmentActivity;
 
-    .line 449
+    .line 460
     .local v1, mainActivity:Lcom/zhangdan/app/activities/MainFragmentActivity;
     invoke-virtual {v1}, Lcom/zhangdan/app/activities/MainFragmentActivity;->showMenu()V
 
     goto :goto_0
 
-    .line 452
+    .line 463
     .end local v1           #mainActivity:Lcom/zhangdan/app/activities/MainFragmentActivity;
     :pswitch_1
     iget-object v2, p0, Lcom/zhangdan/preferential/RecommendFragment;->mActionBarView:Landroid/view/View;
@@ -1270,20 +1270,20 @@
 
     move-result-object v0
 
-    .line 453
+    .line 464
     .local v0, abLeft:Landroid/view/View;
     iget-object v2, p0, Lcom/zhangdan/preferential/RecommendFragment;->mMenuPopup:Lcom/zhangdan/app/popmenu/ZdListPopupWindow;
 
     invoke-virtual {v2, v0}, Lcom/zhangdan/app/popmenu/ZdListPopupWindow;->setAnchorView(Landroid/view/View;)V
 
-    .line 454
+    .line 465
     iget-object v2, p0, Lcom/zhangdan/preferential/RecommendFragment;->mMenuPopup:Lcom/zhangdan/app/popmenu/ZdListPopupWindow;
 
     invoke-virtual {v2}, Lcom/zhangdan/app/popmenu/ZdListPopupWindow;->show()V
 
     goto :goto_0
 
-    .line 446
+    .line 457
     :pswitch_data_0
     .packed-switch 0x7f09003f
         :pswitch_0
@@ -1296,12 +1296,12 @@
     .parameter "tag"
 
     .prologue
-    .line 461
+    .line 472
     iget v0, p1, Lcom/zhangdan/preferential/data/model/MenuTag;->typeId:I
 
     iput v0, p0, Lcom/zhangdan/preferential/RecommendFragment;->mTypeId:I
 
-    .line 462
+    .line 473
     const-string v0, "\u5168\u90e8"
 
     iget-object v1, p1, Lcom/zhangdan/preferential/data/model/MenuTag;->name:Ljava/lang/String;
@@ -1312,19 +1312,19 @@
 
     if-eqz v0, :cond_0
 
-    .line 463
+    .line 474
     const-string v0, ""
 
     iput-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment;->mTagName:Ljava/lang/String;
 
-    .line 468
+    .line 479
     :goto_0
     invoke-direct {p0}, Lcom/zhangdan/preferential/RecommendFragment;->updatePromptBar()V
 
-    .line 469
+    .line 480
     return-void
 
-    .line 465
+    .line 476
     :cond_0
     iget-object v0, p1, Lcom/zhangdan/preferential/data/model/MenuTag;->name:Ljava/lang/String;
 
@@ -1466,15 +1466,15 @@
     .locals 1
 
     .prologue
-    .line 473
+    .line 484
     invoke-super {p0}, Lcom/zhangdan/app/activities/BaseFragment;->onDetach()V
 
-    .line 474
+    .line 485
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment;->mReceiveManager:Lcom/zhangdan/preferential/utils/PrefReceiverManager;
 
     invoke-virtual {v0}, Lcom/zhangdan/preferential/utils/PrefReceiverManager;->unregisterReceiver()V
 
-    .line 475
+    .line 486
     return-void
 .end method
 

@@ -43,32 +43,32 @@
     .parameter
 
     .prologue
-    .line 541
+    .line 552
     iput-object p1, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
 
-    .line 537
+    .line 548
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     iput-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->tags:Ljava/util/List;
 
-    .line 538
+    .line 549
     const/4 v0, 0x0
 
     iput v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->TYPE_TODAY:I
 
-    .line 539
+    .line 550
     const/4 v0, 0x1
 
     iput v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->TYPE_COMMON:I
 
-    .line 542
+    .line 553
     invoke-direct {p0}, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->updateSelector()V
 
-    .line 543
+    .line 554
     return-void
 .end method
 
@@ -76,7 +76,7 @@
     .locals 1
 
     .prologue
-    .line 551
+    .line 562
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->tags:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I
@@ -85,17 +85,17 @@
 
     if-nez v0, :cond_0
 
-    .line 552
+    .line 563
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     #calls: Lcom/zhangdan/preferential/RecommendFragment;->disableCategorySelector()V
     invoke-static {v0}, Lcom/zhangdan/preferential/RecommendFragment;->access$2000(Lcom/zhangdan/preferential/RecommendFragment;)V
 
-    .line 556
+    .line 567
     :goto_0
     return-void
 
-    .line 554
+    .line 565
     :cond_0
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
@@ -111,7 +111,7 @@
     .locals 1
 
     .prologue
-    .line 559
+    .line 570
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->tags:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I
@@ -126,7 +126,7 @@
     .parameter "position"
 
     .prologue
-    .line 563
+    .line 574
     const/4 v0, 0x0
 
     return-object v0
@@ -137,7 +137,7 @@
     .parameter "position"
 
     .prologue
-    .line 567
+    .line 578
     int-to-long v0, p1
 
     return-wide v0
@@ -148,15 +148,15 @@
     .parameter "position"
 
     .prologue
-    .line 590
+    .line 601
     const/4 v0, 0x1
 
     if-ne p1, v0, :cond_0
 
-    .line 591
+    .line 602
     iget v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->TYPE_TODAY:I
 
-    .line 593
+    .line 604
     :goto_0
     return v0
 
@@ -177,20 +177,20 @@
 
     const/4 v5, 0x0
 
-    .line 571
+    .line 582
     move-object v2, p2
 
-    .line 572
+    .line 583
     .local v2, view:Landroid/view/View;
     invoke-virtual {p0, p1}, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->getItemViewType(I)I
 
     move-result v1
 
-    .line 573
+    .line 584
     .local v1, type:I
     if-nez v2, :cond_0
 
-    .line 574
+    .line 585
     iget-object v3, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     invoke-virtual {v3}, Lcom/zhangdan/preferential/RecommendFragment;->getActivity()Landroid/support/v4/app/FragmentActivity;
@@ -207,12 +207,12 @@
 
     move-result-object v2
 
-    .line 576
+    .line 587
     iget v3, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->TYPE_TODAY:I
 
     if-ne v1, v3, :cond_0
 
-    .line 577
+    .line 588
     const v3, 0x7f0902ad
 
     invoke-virtual {v2, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -221,7 +221,7 @@
 
     invoke-virtual {v3, v5}, Landroid/view/View;->setVisibility(I)V
 
-    .line 578
+    .line 589
     invoke-virtual {v2, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     move-result-object v3
@@ -249,7 +249,7 @@
     :cond_0
     move-object v3, v2
 
-    .line 583
+    .line 594
     check-cast v3, Landroid/view/ViewGroup;
 
     invoke-virtual {v3, v6}, Landroid/view/ViewGroup;->findViewById(I)Landroid/view/View;
@@ -258,7 +258,7 @@
 
     check-cast v0, Landroid/widget/TextView;
 
-    .line 584
+    .line 595
     .local v0, tv:Landroid/widget/TextView;
     iget-object v3, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->tags:Ljava/util/List;
 
@@ -272,7 +272,7 @@
 
     invoke-virtual {v0, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 585
+    .line 596
     return-object v2
 .end method
 
@@ -280,7 +280,7 @@
     .locals 1
 
     .prologue
-    .line 599
+    .line 610
     const/4 v0, 0x2
 
     return v0
@@ -294,12 +294,12 @@
     .parameter "id"
 
     .prologue
-    .line 604
+    .line 615
     invoke-virtual {p0, p3}, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->getItemViewType(I)I
 
     move-result v2
 
-    .line 606
+    .line 617
     .local v2, type:I
     new-instance v1, Landroid/content/Intent;
 
@@ -307,13 +307,13 @@
 
     invoke-direct {v1, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 607
+    .line 618
     .local v1, intent:Landroid/content/Intent;
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
-    .line 608
+    .line 619
     .local v0, extra:Landroid/os/Bundle;
     const-string v4, "menu_tag"
 
@@ -327,10 +327,10 @@
 
     invoke-virtual {v0, v4, v3}, Landroid/os/Bundle;->putSerializable(Ljava/lang/String;Ljava/io/Serializable;)V
 
-    .line 609
+    .line 620
     invoke-virtual {v1, v0}, Landroid/content/Intent;->putExtras(Landroid/os/Bundle;)Landroid/content/Intent;
 
-    .line 610
+    .line 621
     iget-object v3, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     invoke-virtual {v3}, Lcom/zhangdan/preferential/RecommendFragment;->getActivity()Landroid/support/v4/app/FragmentActivity;
@@ -339,7 +339,7 @@
 
     invoke-virtual {v3, v1}, Landroid/support/v4/app/FragmentActivity;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 611
+    .line 622
     iget-object v3, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     #getter for: Lcom/zhangdan/preferential/RecommendFragment;->mMenuPopup:Lcom/zhangdan/app/popmenu/ZdListPopupWindow;
@@ -349,7 +349,7 @@
 
     invoke-virtual {v3}, Lcom/zhangdan/app/popmenu/ZdListPopupWindow;->dismiss()V
 
-    .line 612
+    .line 623
     return-void
 .end method
 
@@ -361,7 +361,7 @@
     .parameter "id"
 
     .prologue
-    .line 616
+    .line 627
     invoke-virtual {p0, p3}, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->getItemViewType(I)I
 
     move-result v0
@@ -370,13 +370,13 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 617
+    .line 628
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     #calls: Lcom/zhangdan/preferential/RecommendFragment;->buildTodayDialog()V
     invoke-static {v0}, Lcom/zhangdan/preferential/RecommendFragment;->access$2300(Lcom/zhangdan/preferential/RecommendFragment;)V
 
-    .line 618
+    .line 629
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     #getter for: Lcom/zhangdan/preferential/RecommendFragment;->mMenuPopup:Lcom/zhangdan/app/popmenu/ZdListPopupWindow;
@@ -386,10 +386,10 @@
 
     invoke-virtual {v0}, Lcom/zhangdan/app/popmenu/ZdListPopupWindow;->dismiss()V
 
-    .line 619
+    .line 630
     const/4 v0, 0x1
 
-    .line 622
+    .line 633
     :goto_0
     return v0
 
@@ -413,13 +413,13 @@
     .end annotation
 
     .prologue
-    .line 546
+    .line 557
     .local p1, tags:Ljava/util/List;,"Ljava/util/List<Lcom/zhangdan/preferential/data/model/MenuTag;>;"
     iput-object p1, p0, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->tags:Ljava/util/List;
 
-    .line 547
+    .line 558
     invoke-direct {p0}, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->updateSelector()V
 
-    .line 548
+    .line 559
     return-void
 .end method

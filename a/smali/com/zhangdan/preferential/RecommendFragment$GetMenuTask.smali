@@ -37,7 +37,7 @@
     .parameter
 
     .prologue
-    .line 486
+    .line 497
     iput-object p1, p0, Lcom/zhangdan/preferential/RecommendFragment$GetMenuTask;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
@@ -51,7 +51,7 @@
     .parameter "x1"
 
     .prologue
-    .line 486
+    .line 497
     invoke-direct {p0, p1}, Lcom/zhangdan/preferential/RecommendFragment$GetMenuTask;-><init>(Lcom/zhangdan/preferential/RecommendFragment;)V
 
     return-void
@@ -64,7 +64,7 @@
     .parameter "x0"
 
     .prologue
-    .line 486
+    .line 497
     check-cast p1, [Ljava/lang/Void;
 
     .end local p1
@@ -91,7 +91,7 @@
     .end annotation
 
     .prologue
-    .line 489
+    .line 500
     iget-object v1, p0, Lcom/zhangdan/preferential/RecommendFragment$GetMenuTask;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     #getter for: Lcom/zhangdan/preferential/RecommendFragment;->mTags:Ljava/util/List;
@@ -101,7 +101,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 490
+    .line 501
     iget-object v1, p0, Lcom/zhangdan/preferential/RecommendFragment$GetMenuTask;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     #getter for: Lcom/zhangdan/preferential/RecommendFragment;->mTags:Ljava/util/List;
@@ -109,11 +109,11 @@
 
     move-result-object v0
 
-    .line 495
+    .line 506
     :goto_0
     return-object v0
 
-    .line 492
+    .line 503
     :cond_0
     iget-object v1, p0, Lcom/zhangdan/preferential/RecommendFragment$GetMenuTask;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
@@ -126,7 +126,7 @@
 
     move-result-object v0
 
-    .line 493
+    .line 504
     .local v0, tags:Ljava/util/List;,"Ljava/util/List<Lcom/zhangdan/preferential/data/model/MenuTag;>;"
     const/4 v1, 0x0
 
@@ -136,7 +136,7 @@
 
     invoke-interface {v0, v1, v2}, Ljava/util/List;->add(ILjava/lang/Object;)V
 
-    .line 494
+    .line 505
     const/4 v1, 0x1
 
     invoke-static {}, Lcom/zhangdan/preferential/data/model/MenuTag;->getTodayTag()Lcom/zhangdan/preferential/data/model/MenuTag;
@@ -153,7 +153,7 @@
     .parameter "x0"
 
     .prologue
-    .line 486
+    .line 497
     check-cast p1, Ljava/util/List;
 
     .end local p1
@@ -176,7 +176,7 @@
     .end annotation
 
     .prologue
-    .line 501
+    .line 512
     .local p1, tags:Ljava/util/List;,"Ljava/util/List<Lcom/zhangdan/preferential/data/model/MenuTag;>;"
     if-eqz p1, :cond_0
 
@@ -188,7 +188,7 @@
 
     if-lt v0, v1, :cond_0
 
-    .line 502
+    .line 513
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$GetMenuTask;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     #getter for: Lcom/zhangdan/preferential/RecommendFragment;->mMenuAdapter:Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;
@@ -198,13 +198,13 @@
 
     invoke-virtual {v0, p1}, Lcom/zhangdan/preferential/RecommendFragment$MenuAdapter;->setTags(Ljava/util/List;)V
 
-    .line 503
+    .line 514
     iget-object v0, p0, Lcom/zhangdan/preferential/RecommendFragment$GetMenuTask;->this$0:Lcom/zhangdan/preferential/RecommendFragment;
 
     #setter for: Lcom/zhangdan/preferential/RecommendFragment;->mTags:Ljava/util/List;
     invoke-static {v0, p1}, Lcom/zhangdan/preferential/RecommendFragment;->access$1802(Lcom/zhangdan/preferential/RecommendFragment;Ljava/util/List;)Ljava/util/List;
 
-    .line 505
+    .line 516
     :cond_0
     return-void
 .end method
