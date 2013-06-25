@@ -41,7 +41,7 @@ class UploadHandler(tornado.web.RequestHandler):
             self.write(str(jo));
 
 application = tornado.web.Application([
-    (r"/", MainHandler),
+    (r"/umeng", MainHandler),
     (r"/css/(.*)", tornado.web.StaticFileHandler, {"path": "./css/"}),
     (r"/js/(.*)", tornado.web.StaticFileHandler, {"path": "./js/"}),
     (r"/js/vendor/(.*)", tornado.web.StaticFileHandler, {"path": "./js/"}),
@@ -52,5 +52,5 @@ application = tornado.web.Application([
     ]);
 
 if __name__ == "__main__":
-    application.listen(8880)
+    application.listen(8885)
     tornado.ioloop.IOLoop.instance().start()

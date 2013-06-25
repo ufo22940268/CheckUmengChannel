@@ -7,16 +7,22 @@ $(function () {
         url: url,
         dataType: 'json',
         done: function (e, data) {
-            $("#progress").removeClass("active");
-            $("#parse-result").css("visibility", "visible");
+            var progressElem = $(".progress:last");
+            var resultElem = $(".parse-result:last");
+            progressElem.removeClass("active");
+            resultElem.css("visibility", "visible");
             if (data.result.state == 0) {
-                $("#parse-result").html("渠道名:" + data.result.channel);
-                $("#parse-result").removeClass("alert-fail");
-                $("#parse-result").addClass("alert-success");
+                resultElem.html("渠道名:" + data.result.channel);
+                resultElem.removeClass("alert-fail");
+                resultElem.addClass("alert-success");
+                progressElem.removeClass("progress-warning");
+                progressElem.addClass("progress-success");
             } else {
-                $("#parse-result").html("无效文件");
-                $("#parse-result").removeClass("alert-success");
-                $("#parse-result").addClass("alert-fail");
+                resultElem.html("无效文件");
+                resultElem.removeClass("alert-success");
+                resultElem.addClass("alert-fail");
+                progressElem.removeClass("progress-success");
+                progressElem.addClass("progress-warning");
             }
 
             $.each(data.files, function(index, file) {
@@ -34,6 +40,6 @@ $(function () {
     });
 
     $('#fileupload').click(function() {
-        $('#parse-results').append('<div id="progress" class="progress progress-success progress-striped active"> <div class="bar"></div> </div> <div id="parse-result" class="alert alert-success" style="visibility:hidden"> </div>');
+        $('#parse-results').append('<div id="progress" class="progress progress-striped active"> <div class="bar"></div> </div> <div id="parse-result" class="alert alert-success parse-result" style="visibility:hidden"> </div>');
     });
 });

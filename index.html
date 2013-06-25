@@ -32,22 +32,19 @@
 
 <div class="container">
     <!-- The fileinput-button span is used to style the file input field as button -->
-    <span class="btn btn-success fileinput-button">
-        <i class="icon-plus icon-white"></i>
-        <span>选择apk...</span>
-        <!-- The file input field used as target for the file upload widget -->
-        <input id="fileupload" type="file" name="files[]" multiple>
-    </span>
-    <br>
-    <br>
+    <div class="page-header">
+        <h1>友盟渠道名解析工具</h1>
+    </div>
+    <p class="lead">
+        <span class="btn fileinput-button">
+            <i class="icon-plus"></i>
+            <span>选择apk...</span>
+            <!-- The file input field used as target for the file upload widget -->
+            <input id="fileupload" type="file" name="files[]" multiple>
+        </span>
+    </p>
     <div id="parse-results">
     </div>
-    <!--[> The global progress bar <]-->
-    <!--<div id="progress" class="progress progress-success progress-striped active">-->
-        <!--<div class="bar"></div>-->
-    <!--</div>-->
-    <!--<div id="parse-result" class="alert alert-success" style="visibility:hidden">-->
-    <!--</div>-->
 
     <!-- The container for the uploaded files -->
     <div id="files" class="files"></div>
