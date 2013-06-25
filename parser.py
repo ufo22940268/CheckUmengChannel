@@ -1,7 +1,7 @@
 import os
 import re
 
-APKTOOL_DIRECTORY = "/home/ccheng/program/apktool1.5.2/"
+APKTOOL_DIRECTORY = "./apktool"
 
 def parseChannel():
     if os.system("java -jar %s/apktool.jar d -f a.apk" % APKTOOL_DIRECTORY) != 0:

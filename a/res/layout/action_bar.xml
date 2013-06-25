@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/bg_orange" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/bottom_menu_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ab_left" android:padding="7.0dip" android:layout_width="@dimen/bottom_menu_height" android:layout_height="@dimen/bottom_menu_height" android:src="@drawable/ab_left" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/ab_return" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/main_icon_guanjia" android:layout_toRightOf="@id/ab_left" android:layout_centerVertical="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ab_addr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/ab_city" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/CustomText.White" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/ab_street" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/CustomTextExSmall.White" />
+    </LinearLayout>
+    <TextView android:id="@id/ab_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="@*android:color/black" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_centerInParent="true" style="@style/CustomText.White" />
+    <ImageView android:id="@id/ab_right" android:layout_width="@dimen/ab_icon_size" android:layout_height="@dimen/ab_icon_size" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/map" android:visibility="invisible" android:layout_width="@dimen/ab_icon_size" android:layout_height="@dimen/ab_icon_size" android:layout_marginRight="6.0dip" android:src="@drawable/map_icon" android:layout_toLeftOf="@id/ab_right" android:layout_centerVertical="true" />
+</RelativeLayout>
