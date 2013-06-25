@@ -2,7 +2,7 @@
 /*global window, $ */
 $(function () {
     'use strict';
-    var url = '/upload?id=' + $('#fileupload').attr("id");
+    var url = '/upload';
     $('#fileupload').fileupload({
         url: url,
         dataType: 'json',
@@ -18,6 +18,10 @@ $(function () {
                 $("#parse-result").removeClass("alert-success");
                 $("#parse-result").addClass("alert-fail");
             }
+
+            $.each(data.files, function(index, file) {
+                console.log("index:" + index);
+            });
         },
 
         progressall: function (e, data) {

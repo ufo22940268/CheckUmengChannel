@@ -18,6 +18,7 @@ class MainHandler(tornado.web.RequestHandler):
 	self.write(loader.load("index.html").generate());
 
 class UploadHandler(tornado.web.RequestHandler):
+
     def post(self):
         util.log(self.get_argument("id", default="0"));
         file1 = self.request.files['files[]'][0];

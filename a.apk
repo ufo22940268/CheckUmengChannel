@@ -1,10 +1,17 @@
-#Last build type
-#Mon, 24 Jun 2013 18:16:33 +0000
-
-build.last.target=debug
-
-build.last.is.instrumented=false
-
-build.last.is.packaging.debug=true
-
-build.last.is.signing.debug=true
+# cache for current jar dependency. DO NOT EDIT.
+# format is <lastModified> <length> <SHA-1> <path>
+# Encoding is UTF-8
+1371480944000 401165 157a33eb0f2ba8bb09219bedf95e224c4be2bdb8 /home/ccheng/workspace/mixed_zhangdan/dependencies/banka_kehu/libs/GexinSdk-open-1.1.18.2.jar
+1371480945000 401165 157a33eb0f2ba8bb09219bedf95e224c4be2bdb8 /home/ccheng/workspace/mixed_zhangdan/dependencies/banka/libs/GexinSdk-open-1.1.18.2.jar
+1371123820000 401165 157a33eb0f2ba8bb09219bedf95e224c4be2bdb8 /home/ccheng/workspace/mixed_zhangdan/trunk/libs/GexinSdk-open-1.1.18.2.jar
+1371480945000 95965 e81daa09ae0ba8614ac736487b55fe3bb7679b87 /home/ccheng/workspace/mixed_zhangdan/dependencies/banka/libs/weibo.sdk.android.sso.jar
+1371123820000 95965 e81daa09ae0ba8614ac736487b55fe3bb7679b87 /home/ccheng/workspace/mixed_zhangdan/trunk/libs/weibo.sdk.android.sso.jar
+1371662833000 225007 880dfe11e49325c4598831e2ca139db58bca6d12 /home/ccheng/workspace/mixed_zhangdan/dependencies/banka/libs/open_sdk.jar
+1371662609000 225007 880dfe11e49325c4598831e2ca139db58bca6d12 /home/ccheng/workspace/mixed_zhangdan/trunk/libs/open_sdk.jar
+1371480945000 100410 590d32bdf5bb37ee372a21696b8f7853b224e31f /home/ccheng/workspace/mixed_zhangdan/dependencies/banka/libs/locSDK_3.3.jar
+1371123820000 100410 590d32bdf5bb37ee372a21696b8f7853b224e31f /home/ccheng/workspace/mixed_zhangdan/trunk/libs/locSDK_3.3.jar
+1371481264000 143245 b377667d371adee5dab1b6c2464980a18a59ad82 /home/ccheng/workspace/mixed_zhangdan/dependencies/banka_kehu/libs/umeng_sdk.jar
+1371480945000 143245 b377667d371adee5dab1b6c2464980a18a59ad82 /home/ccheng/workspace/mixed_zhangdan/dependencies/banka/libs/umeng_sdk.jar
+1371123820000 143245 b377667d371adee5dab1b6c2464980a18a59ad82 /home/ccheng/workspace/mixed_zhangdan/trunk/libs/umeng_sdk.jar
+1371123820000 385685 48c94ae70fa65718b382098237806a5909bb096e /home/ccheng/workspace/mixed_zhangdan/dependencies/SlidingMenu/libs/android-support-v4.jar
+1371123820000 385685 48c94ae70fa65718b382098237806a5909bb096e /home/ccheng/workspace/mixed_zhangdan/dependencies/Sherlock/libs/android-support-v4.jar
