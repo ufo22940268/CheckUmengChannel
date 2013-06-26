@@ -9,10 +9,12 @@ $(function () {
         done: function (e, data) {
             var progressElem = $(".progress:last");
             var resultElem = $(".parse-result:last");
+            var fileElem = $(".uploaded-file:last");
             progressElem.removeClass("active");
             resultElem.css("visibility", "visible");
+            var fileName = data.files[data.files.length - 1].name;
             if (data.result.state == 0) {
-                resultElem.html("渠道名:" + data.result.channel);
+                resultElem.html("文件" + fileName + "的渠道名:" + data.result.channel);
                 resultElem.removeClass("alert-fail");
                 resultElem.addClass("alert-success");
                 progressElem.removeClass("progress-warning");
@@ -40,6 +42,6 @@ $(function () {
     });
 
     $('#fileupload').click(function() {
-        $('#parse-results').append('<div id="progress" class="progress progress-striped active"> <div class="bar"></div> </div> <div id="parse-result" class="alert alert-success parse-result" style="visibility:hidden"> </div>');
+        $('#parse-results').append('<div class="uploaded-file"></div><div id="progress" class="progress progress-striped active"> <div class="bar"></div> </div> <div id="parse-result" class="alert alert-success parse-result" style="visibility:hidden"> </div>');
     });
 });
